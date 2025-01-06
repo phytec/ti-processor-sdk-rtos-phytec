@@ -44,7 +44,7 @@
 extern "C" {
 #endif
 
-#include <ti/board/src/j721s2_evm/include/board_internal.h>
+#include <ti/board/src/phyboard_izar/include/board_internal.h>
 
 /**
  * \brief Enables module clock

@@ -49,7 +49,7 @@ extern "C" {
 
 /* Board ID information */
 #define BOARD_INFO_CPU_NAME     "j721s2"
-#define BOARD_INFO_BOARD_NAME   "j721s2_evm"
+#define BOARD_INFO_BOARD_NAME   "phyboard_izar"
 
 /* Memory sections */
 #define BOARD_DDR_START_ADDR                            (0x80000000U)

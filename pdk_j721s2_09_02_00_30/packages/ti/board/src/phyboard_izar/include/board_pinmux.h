@@ -45,8 +45,8 @@
 /*                             Include Files                                  */
 /* ========================================================================== */
 
-#include <ti/board/src/j721s2_evm/include/pinmux.h>
-#include <ti/board/src/j721s2_evm/J721S2_pinmux.h>
+#include <ti/board/src/phyboard_izar/include/pinmux.h>
+#include <ti/board/src/phyboard_izar/J721S2_pinmux.h>
 #include <ti/csl/csl_types.h>
 
 #ifdef __cplusplus

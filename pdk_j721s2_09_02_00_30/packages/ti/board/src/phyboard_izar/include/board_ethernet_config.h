@@ -42,8 +42,8 @@
 #define _BOARD_ETHERNET_CONFIG_H_
 
 #include <ti/board/board.h>
-#include <ti/board/src/j721s2_evm/include/board_i2c_io_exp.h>
-#include <ti/board/src/j721s2_evm/include/board_control.h>
+#include <ti/board/src/phyboard_izar/include/board_i2c_io_exp.h>
+#include <ti/board/src/phyboard_izar/include/board_control.h>
 
 #ifdef __cplusplus
 extern "C" {
