@@ -1,0 +1,24 @@
+var searchData=
+[
+  ['r11',['r11',['../structTIDL__ODLayerObjectPose.html#a805cc01cc4c570850ae1c7f2ff9a1d9c',1,'TIDL_ODLayerObjectPose']]],
+  ['r12',['r12',['../structTIDL__ODLayerObjectPose.html#af214cd058a200e6025bd9dffec7d5928',1,'TIDL_ODLayerObjectPose']]],
+  ['r21',['r21',['../structTIDL__ODLayerObjectPose.html#a9882f7507741eed1a736387d39161ceb',1,'TIDL_ODLayerObjectPose']]],
+  ['r22',['r22',['../structTIDL__ODLayerObjectPose.html#ac4244d8df2bc6c7e218edf579edd1620',1,'TIDL_ODLayerObjectPose']]],
+  ['r31',['r31',['../structTIDL__ODLayerObjectPose.html#a72a0492668ab0e1340fe0f714efd8a46',1,'TIDL_ODLayerObjectPose']]],
+  ['r32',['r32',['../structTIDL__ODLayerObjectPose.html#a09646832dd123fa3c3287859004bbd17',1,'TIDL_ODLayerObjectPose']]],
+  ['rawdatainelementtype',['rawDataInElementType',['../structsTIDL__IOBufDesc__t.html#a87bb6223d468e810dddd30d12a570db2',1,'sTIDL_IOBufDesc_t']]],
+  ['readme_2emd',['readme.md',['../readme_8md.html',1,'']]],
+  ['reduceparams',['reduceParams',['../unionsTIDL__LayerParams__t.html#a60a181678d10d59b2624771ee701a2dc',1,'sTIDL_LayerParams_t']]],
+  ['reduction',['reduction',['../structsTIDL__ScatterElementsParams__t.html#a3bcfd5ec9b5fbef0183f3cc47e7d3ff2',1,'sTIDL_ScatterElementsParams_t']]],
+  ['reserved',['reserved',['../structsBuffer__t.html#a7624e9d652220dba6a1d18e58ec46665',1,'sBuffer_t::reserved()'],['../structsTIDL__Network__t.html#a15e41c719e62ff605afd280e4626516f',1,'sTIDL_Network_t::reserved()']]],
+  ['reservedctrl',['reservedCtrl',['../structTIDL__CreateParams.html#a4d185d51ee62c3f46bcfff4d57c7e1c8',1,'TIDL_CreateParams']]],
+  ['resizeheight',['resizeHeight',['../structsTIDL__IOBufDesc__t.html#a781c3127a255bae06545043e867d4a7a',1,'sTIDL_IOBufDesc_t']]],
+  ['resizeparams',['resizeParams',['../unionsTIDL__LayerParams__t.html#a379a6c5a9efab8e6d78b7d7ae0810990',1,'sTIDL_LayerParams_t']]],
+  ['resizeratio',['resizeRatio',['../structsTIDL__ResizeLayerParams__t.html#afc3510c1f2933643bec4d2b9b858ce4d',1,'sTIDL_ResizeLayerParams_t']]],
+  ['resizewidth',['resizeWidth',['../structsTIDL__IOBufDesc__t.html#a06a3e9fe32bc179cf0ddec15048a4e60',1,'sTIDL_IOBufDesc_t']]],
+  ['resvd',['resvd',['../structsTIDL__ShuffleLayerParams__t.html#a0b13198bb631d123aa69ea907e0a9765',1,'sTIDL_ShuffleLayerParams_t']]],
+  ['roipoolingparams',['roiPoolingParams',['../unionsTIDL__LayerParams__t.html#ad225cd6caac3cf0e3ed40a654e5fa740',1,'sTIDL_LayerParams_t']]],
+  ['roundbits',['roundBits',['../structsTIDL__DataParams__t.html#a2145860569c6183849bea1fe78c0c0f8',1,'sTIDL_DataParams_t']]],
+  ['rsvdpassthrough',['rsvdPassThrough',['../structsTIDL__CustomParams__t.html#ad977299d0af76bc7308c9f4eda105d65',1,'sTIDL_CustomParams_t']]],
+  ['rsvdpassthroughsize',['rsvdPassThroughSize',['../structsTIDL__CustomParams__t.html#a27aeb0b49505bc70ba4a39b8b0a165fe',1,'sTIDL_CustomParams_t']]]
+];

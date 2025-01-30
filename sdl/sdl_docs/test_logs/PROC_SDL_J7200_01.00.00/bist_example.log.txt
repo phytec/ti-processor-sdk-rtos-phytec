@@ -1,0 +1,75 @@
+mcuClkFreq 1000000000
+
+BIST Example Application
+
+ Starting PBIST failure insertion test on Main R5F 0 PBIST, index 0...
+
+ Starting PBIST failure insertion test on Main R5F 0 PBIST, index 0...
+
+ Starting PBIST failure insertion test on Main R5F 0 PBIST, index 0...
+
+ Starting PBIST test on Main R5F 0 PBIST, index 0...
+
+ Starting PBIST test on Main R5F 0 PBIST, index 0...
+
+ Starting PBIST test on Main R5F 0 PBIST, index 0...
+
+ Starting PBIST failure insertion test on Main R5F 0 PBIST, index 0...
+
+ Starting PBIST test on Main R5F 0 PBIST, index 0...
+
+ *** Boot stage 0 is complete, cores for this stage may now be loaded ***
+
+
+ Starting PBIST failure insertion test on Main R5F 0 PBIST, index 0...
+
+ Starting PBIST test on Main R5F 0 PBIST, index 0...
+   Primary core: Sciclient_procBootRequestProcessor, ProcId 0xa2...FAILED
+LBIST functional test failed for 2
+
+ *** Boot stage 1 is complete, cores for this stage may now be loaded ***
+
+
+ Starting PBIST failure insertion test on A72 PBIST, index 1...
+
+ Starting PBIST test on A72 PBIST, index 1...
+
+ *** Boot stage 2 is complete, cores for this stage may now be loaded ***
+
+==========================
+BIST: Example App Summary:
+==========================
+BIST: Pre-boot Stage - Ran negative PBIST ID - PBIST_INSTANCE_MAIN_PULSAR_0, Result = PASS
+BIST: Pre-boot Stage - Ran negative PBIST ID - PBIST_INSTANCE_MAIN_PULSAR_0, Result = PASS
+BIST: Pre-boot Stage - Ran negative PBIST ID - PBIST_INSTANCE_MAIN_PULSAR_0, Result = PASS
+Pre-boot stage - Ran 3 negative PBIST total sections
+BIST: Pre-boot Stage - Ran PBIST ID - PBIST_INSTANCE_MAIN_PULSAR_0, Result = PASS
+BIST: Pre-boot Stage - Ran PBIST ID - PBIST_INSTANCE_MAIN_PULSAR_0, Result = PASS
+BIST: Pre-boot Stage - Ran PBIST ID - PBIST_INSTANCE_MAIN_PULSAR_0, Result = PASS
+Pre-boot stage - Ran 3 PBIST total sections
+BIST: Pre-boot Stage - Ran LBIST ID - LBIST_MAIN_MCU0_INDEX, Result = LBIST_POST_COMPLETED_SUCCESS
+BIST: Pre-boot Stage - Ran LBIST ID - LBIST_MAIN_MCU0_INDEX, Result = LBIST_POST_COMPLETED_SUCCESS
+Pre-boot stage - Ran 2 LBIST total sections
+BIST: Stage 0 - Ran negative PBIST ID - PBIST_INSTANCE_MAIN_PULSAR_0, Result = PASS
+BIST: Stage 0 - Ran 1 negative PBIST total sections
+BIST: Stage 0 - Ran PBIST ID - PBIST_INSTANCE_MAIN_PULSAR_0, Result = PASS
+BIST: Stage 0 - Ran 1 PBIST total sections
+BIST: Stage 0 - Ran LBIST ID - LBIST_MAIN_MCU0_INDEX, Result = PASS
+BIST: Stage 0 - Ran 1 LBIST sections
+BIST: Stage 1 - Ran negative PBIST ID - PBIST_INSTANCE_MAIN_PULSAR_0, Result = PASS
+BIST: Stage 1 - Ran 1 negative PBIST total sections
+BIST: Stage 1 - Ran PBIST ID - PBIST_INSTANCE_MAIN_PULSAR_0, Result = PASS
+BIST: Stage 1 - Ran 1 PBIST total sections
+BIST: Stage 1 - Ran LBIST ID - INVALID ID, Result = FAIL or NOT RUN
+BIST: Stage 1 - Ran 1 LBIST sections
+BIST: Stage 2 - Ran negative PBIST ID - PBIST_INSTANCE_A72, Result = PASS
+BIST: Stage 2 - Ran 1 negative PBIST total sections
+BIST: Stage 2 - Ran PBIST ID - PBIST_INSTANCE_A72, Result = PASS
+BIST: Stage 2 - Ran 1 PBIST total sections
+BIST: Stage 2 - Ran LBIST ID - LBIST_A72_CORE_INDEX, Result = PASS
+BIST: Stage 2 - Ran 1 LBIST sections
+main.c:185:bist_example_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored
+OK

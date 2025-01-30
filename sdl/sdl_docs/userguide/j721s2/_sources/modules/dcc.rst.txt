@@ -1,0 +1,164 @@
+DCC : Dual Clock Comparator
+===========================
+
+Introduction
+------------
+
+The Dual Clock Comparator (DCC) is used to determine the accuracy of a clock signal during the time executaion of an application. The DCC measure the frequency of a selectable clock sources using another input clock as a reference. The clock sources as well as the accuracy are programmed by the application.
+
+The DCC can also be configured to operate in single-shot or continuous mode. In single-shot mode, DCC performs a one-time countdown where DCC stops operation when the counters reach 0. A completion interrupt is raised and the status can be checked. In continuous mode, DCC reloads both counts with the seed value upon completion without error. In case of an error, an ESM error event is raised.
+
+The DCC module provides the following functionality:
+
+* Ability to configure a DCC instance
+* Ability to verify the configuration of the DCC instance
+* Ability to enable a DCC instance
+* Ability to disable a DCC instance
+* Ability to query the status of a DCC instance including current configuration, error information, interrupt status, and counter values
+* Ability to clear the pending interrupt(s)
+* Ability to readback the DCC static registers
+
+Errors detected by the DCC module during operation are reported via ESM error (application will receive via ESM application callback).
+
+.. ifconfig:: CONFIG_family in ('j721e')
+
+    There are 16 DCC modules in the device - 3 in MCU domain and 13 in Main domain.
+    The Input Source clock mapping for each DCC instance can be found in the DCC section of the |__PART_SOC_TRM__|.
+
+.. ifconfig:: CONFIG_family in ('j7200')
+
+    There are 10 DCC modules in the device - 3 in MCU domain and 7 in Main domain.
+    The Input Source clock mapping for each DCC instance can be found in the DCC section of the |__PART_SOC_TRM__|.
+ 
+.. ifconfig:: CONFIG_family in ('j721s2')
+
+    There are 13 DCC modules in the device - 3 in MCU domain and 10 in Main domain.
+    The Input Source clock mapping for each DCC instance can be found in the DCC section of the |__PART_SOC_TRM__|.
+
+Example Usage
+-------------
+
+The following shows an example of SDL DCC API usage by the application to set up a DCC instance and usage of the various APIs. Error events can be monitored by enabling the events in the associated ESM instance.
+
+Initialize the ESM to report DCC errors
+
+    .. code:: bash
+       
+       SDL_ESM_config DCC_Test_esmInitConfig_MCU =
+       {
+           .esmErrorConfig = {0u, 3u}, /* Self test error config */
+           .enableBitmap = {0xffffffffu, 0xff0fffffu, 0x7fffffffu, 0x00000007u,
+           /*                                             ^                           */
+           /*                                             MCU DCC0 event (86) enabled */
+                           },
+           /**< All events enable: except timer and self test  events, and Main ESM output */
+           /* Temporarily disabling vim compare error as well*/
+           .priorityBitmap = {0xffffffffu, 0xff0fffffu, 0x7fffffffu, 0x00000007u,
+                             },
+           /**< All events high priority: except timer, selftest error events, and Main ESM output */
+           .errorpinBitmap = {0xffffffffu, 0xff0fffffu, 0x7fffffffu, 0x00000007u,
+                             },
+           /**< All events high priority: except timer, selftest error events, and Main ESM output */
+       };
+
+       SDL_ECC_init(SDL_ESM_INST_MCU_ESM0, &DCC_Test_esmInitConfig_MCU, SDL_ESM_applicationCallbackFunction, NULL);
+
+Configure MCU DCC Instance 0 for continuous mode
+
+    .. code:: bash
+
+        SDL_DCC_config configParams;
+        
+        /* Select continuous mode */
+        configParams.mode    = SDL_DCC_MODE_CONTINUOUS;
+
+        /* Select Input0 to be CLOCK0[2] - CLK_12M_RC */
+        configParams.clk0Src = SDL_DCC_CLK0_SRC_CLOCK0_2;
+        /* Select Input1 to be CLKSRC2 - MCU_PLL1_HSDIV2_CLKOUT - MCAN */
+        configParams.clk1Src = SDL_DCC_CLK1_SRC_CLOCKSRC2;
+        
+        /* Not shown: 
+         * Determine the clock frequencies for the sources
+         * Figure out the seed values for successful completion
+         * Check DCC example code for reference
+         */
+
+        /* Assign the seed values for the clock selections */
+        configParams->clk0Seed = clk0_seed_value;
+        configParams->clk1Seed = clk1_seed_value;
+        configParams->clk0ValidSeed = clk0_valid_seed_value;
+
+        retVal = SDL_DCC_configure(SDL_DCC_INST_MCU_DCC0, &configParams);
+
+        if (retVal == SDL_EFAIL)
+        {
+            UART_printf("Error during DCC configuration.\n");
+        }
+
+Verify the config
+
+    .. code:: bash
+
+        /* Verify the config */
+        retVal = SDL_DCC_verifyConfig(SDL_DCC_INST_MCU_DCC0, &configParams);
+        
+        if (retVal == SDL_EFAIL)
+        {
+            UART_printf("Error during DCC Verify configuration.\n");
+        }
+
+Read the static registers
+
+    .. code:: bash
+
+        SDL_RTI_staticRegs pStaticRegs;
+
+        retVal = SDL_RTI_readStaticRegs(SDL_INSTANCE_MCU_RTI0_CFG, &pStaticRegs);
+
+Register and enable interrupt
+
+    .. code:: bash
+
+        /* Register for Completion (single-shot) and error interrupts */
+        OsalRegisterIntrParams_t intrPrms;
+
+        Osal_RegisterInterrupt_initParams(&intrPrms);
+        intrPrms.corepacConfig.intVecNum = CSLR_MCU_R5FSS0_CORE0_INTR_MCU_DCC0_INTR_DONE_LEVEL_0;
+        intrPrms.corepacConfig.isrRoutine   = &DCCAppDoneIntrISR;
+        Osal_RegisterInterrupt(&intrPrms, &hwiHandle);
+
+        /* Enable the interrupts for DCC instance */
+        SDL_DCC_enableIntr(SDL_DCC_INST_MCU_DCC0, SDL_DCC_INTERRUPT_ERR);
+        SDL_DCC_enableIntr(SDL_DCC_INST_MCU_DCC0, SDL_DCC_INTERRUPT_DONE);
+
+
+Enable DCC Instance
+
+    .. code:: bash
+        
+        /* Enable the DCC instance */
+        SDL_DCC_enable(SDL_DCC_INST_MCU_DCC0);
+
+In single-shot mode, the completion (Done) interrupt will happen at the end of the test if there are no errors. If error happens, then ESM interrupt will occur as well as the DCC error interrupt.
+
+
+Examples
+--------
+
+The DCC module provides Safety Examples to show how to use DCC in various modes for monitoring the clocks, injecting an error and checking the error response, and also ESM application callback usage. Details regarding the DCC Safety Example can be found `here <../examples/dcc.html>`_.
+
+Test apps that are meant for verifying the functionality of the module are also provided.
+
++---------------------+--------------------------------------------------------+--------------------------------------+------------------------------------------+
+| Test App Name       | Description                                            | Location                             | Build Command                            |
++=====================+========================================================+======================================+==========================================+
+| dcc_func_test_app   | - Configures the MCU DCC0 instance                     |                                      |                                          |
+|                     | - Triggers an error by manipulating seed values        | [sdl_install_dir]/test/dcc/func_test | make dcc_func_test_app PROFILE=release   |
+|                     | - Checks for error response                            |                                      |                                          |
++---------------------+--------------------------------------------------------+--------------------------------------+------------------------------------------+
+
+
+API
+---
+
+|__DCC_API_LNK__|

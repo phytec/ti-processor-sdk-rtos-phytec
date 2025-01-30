@@ -1,0 +1,485 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Documentation for call_graph.pl</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Documentation for call_graph.pl</span></strong></big>
+</td></tr>
+</table>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#LIMITATIONS">LIMITATIONS</a>
+    <ul>
+      <li><a href="#LIMITATIONS-RELATED-TO-COMPUTING-STACK-DEPTH">LIMITATIONS RELATED TO COMPUTING STACK DEPTH</a></li>
+      <li><a href="#LIMITATIONS-FOR-C6000">LIMITATIONS FOR C6000</a></li>
+      <li><a href="#LIMITATIONS-FOR-ARM-TMS470">LIMITATIONS FOR ARM (TMS470)</a></li>
+      <li><a href="#LIMITATIONS-FOR-C5500">LIMITATIONS FOR C5500</a></li>
+    </ul>
+  </li>
+  <li><a href="#USAGE">USAGE</a></li>
+  <li><a href="#OPTIONS">OPTIONS</a></li>
+  <li><a href="#CREATING-XML-INPUT">CREATING XML INPUT</a></li>
+  <li><a href="#OFD-OPTIONS">OFD OPTIONS</a></li>
+  <li><a href="#DESCRIPTION-OF-THE-OUTPUT">DESCRIPTION OF THE OUTPUT</a>
+    <ul>
+      <li><a href="#MAIN-CALL-GRAPH">MAIN CALL GRAPH</a></li>
+      <li><a href="#REPEAT-FUNCTION-DISPLAY">REPEAT FUNCTION DISPLAY</a></li>
+      <li><a href="#ORPHANED-CALL-GRAPHS">ORPHANED CALL GRAPHS</a></li>
+      <li><a href="#FUNCTIONS-THAT-MAKE-INDIRECT-CALLS">FUNCTIONS THAT MAKE INDIRECT CALLS</a></li>
+      <li><a href="#WHEN-GRAPHING-A-LIBRARY">WHEN GRAPHING A LIBRARY</a></li>
+      <li><a href="#FUNCTION-SYMBOL-ALIASING">FUNCTION SYMBOL ALIASING</a>
+        <ul>
+          <li><a href="#FUNCTION-SYMBOL-ALIASING-AND-CONFIGURATION-FILES">FUNCTION SYMBOL ALIASING AND CONFIGURATION FILES</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#DESCRIPTION-OF---stack_max-OUTPUT">DESCRIPTION OF --stack_max OUTPUT</a>
+    <ul>
+      <li><a href="#EFFECT-OF-INDIRECT-CALLS">EFFECT OF INDIRECT CALLS</a></li>
+      <li><a href="#NESTING-OF-INTERRUPTS">NESTING OF INTERRUPTS</a></li>
+      <li><a href="#CANNOT-COMBINE---stack_max-AND---func_info">CANNOT COMBINE --stack_max AND --func_info</a></li>
+    </ul>
+  </li>
+  <li><a href="#ARM-SUPPORT-DETAILS">ARM SUPPORT DETAILS</a>
+    <ul>
+      <li><a href="#FALSE-INDIRECT-CALLS">FALSE INDIRECT CALLS</a></li>
+      <li><a href="#Y">Y</a></li>
+      <li><a href="#N">N</a></li>
+      <li><a href="#NA">NA</a></li>
+      <li><a href="#pod4.4.3">4.4.3</a></li>
+    </ul>
+  </li>
+  <li><a href="#C64-FUNCTION-CALL-OPTIMIZATION-LIMITS-OUTPUT">C64+ FUNCTION CALL OPTIMIZATION LIMITS OUTPUT</a></li>
+  <li><a href="#CONFIGURATION-FILE-FOR-INDIRECT-FUNCTION-CALLS">CONFIGURATION FILE FOR INDIRECT FUNCTION CALLS</a>
+    <ul>
+      <li><a href="#SYNTAX-OF-THE-CONFIGURATION-FILE">SYNTAX OF THE CONFIGURATION FILE</a></li>
+      <li><a href="#CONFIGURATION-FILES-FOR-COMPILER-RTS-FUNCTIONS">CONFIGURATION FILES FOR COMPILER RTS FUNCTIONS</a></li>
+      <li><a href="#DIAGNOSTICS">DIAGNOSTICS</a></li>
+    </ul>
+  </li>
+  <li><a href="#ASSEMBLY-FUNCTIONS">ASSEMBLY FUNCTIONS</a></li>
+  <li><a href="#RECURSION">RECURSION</a></li>
+  <li><a href="#ENTRY-POINT-DETAILS">ENTRY POINT DETAILS</a></li>
+  <li><a href="#PERL-VERSION-DETAILS">PERL VERSION DETAILS</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>call_graph.pl</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<p>Generates a call graph, including the worst case stack depth.</p>
+
+<h1 id="LIMITATIONS">LIMITATIONS</h1>
+
+<h2 id="LIMITATIONS-RELATED-TO-COMPUTING-STACK-DEPTH">LIMITATIONS RELATED TO COMPUTING STACK DEPTH</h2>
+
+<p>Older compiler versions, when building with -g, prevent computing the stack depth. If you build with a compiler version &gt;= than those shown here, then this limitation does NOT apply to you.</p>
+
+<pre><code> Device Family         Minimum Compiler Version
+ -------------         ------------------------
+ ARM                   4.6.0
+ C2000                 5.2.0
+ C6000                 7.0.0
+ MSP430                3.1.0</code></pre>
+
+<p>If you use an older compiler version, then none of the code can be built with the -g switch. If the code is built with -g, a call graph can still be built. But the stack depth information is inaccurate.</p>
+
+<h2 id="LIMITATIONS-FOR-C6000">LIMITATIONS FOR C6000</h2>
+
+<ul>
+
+<li><p>Only tested with C6000 compiler tools v6.1.0 or higher. It is likely to work with older compiler revisions, but there may be an occasional inaccuracy, especially regarding which functions are called indirectly.</p>
+
+</li>
+<li><p>A function call optimization performed for C64+, when compiling for minimal code size, can limit the ability to construct the call graph. Details below.</p>
+
+</li>
+</ul>
+
+<h2 id="LIMITATIONS-FOR-ARM-TMS470">LIMITATIONS FOR ARM (TMS470)</h2>
+
+<ul>
+
+<li><p>Must use compiler version 4.4.3 or later to get accurate results for most devices. The script cannot detect which compiler version was used.</p>
+
+</li>
+<li><p>In some cases, an indirect call is incorrectly found in a function which makes no indirect calls.</p>
+
+</li>
+<li><p>For ARM7, only works for TIABI</p>
+
+</li>
+<li><p>The utility ofd470 is used to create the XML input for this script. That utility was not released until v4.1.0. However, it is possible to combine the use of a new ofd470 executable with older ARM toolsets.</p>
+
+</li>
+</ul>
+
+<h2 id="LIMITATIONS-FOR-C5500">LIMITATIONS FOR C5500</h2>
+
+<ul>
+
+<li><p>The code must be built with compiler version 3.2.X or higher.</p>
+
+</li>
+</ul>
+
+<h1 id="USAGE">USAGE</h1>
+
+<p>call_graph.pl [options] <i>xml file</i></p>
+
+<pre><code>   ... OR ...</code></pre>
+
+<p>ofdXX -g -x <i>file</i> | perl call_graph.pl [options]</p>
+
+<h1 id="OPTIONS">OPTIONS</h1>
+
+<pre><code> -h                   : Dump usage and quit
+ --entry_point=&lt;name&gt; : Name root function for the call graph
+ --i_cfg=&lt;file&gt;       : Configuration file for indirect function calls
+ --verbose            : Enable warnings
+ --func_info          : Show the file name and size for each function
+ --stack_max          : Print the function which uses the most stack
+ --cg_xml_version     : Print out the version of the cg_xml package in use</code></pre>
+
+<p>The module Getopt::Long is used to parse the options, thus you can substitute single letter versions of the options, i.e. -e for --entry_point. Except you can never abbreviate --cg_xml_version.</p>
+
+<p>You can use --i_cfg multiple times to supply multiple configuration files.</p>
+
+<p>C6000 specific ... To see a complete call graph starting at the application entry point, you may need to use -i=c60_rts_indirect.txt. Details below.</p>
+
+<h1 id="CREATING-XML-INPUT">CREATING XML INPUT</h1>
+
+<p>OFD stands for Object File Display utility. Examples include ofd6x for C6000 and ofd55 for C5500.</p>
+
+<p>Use the -x and -g options of OFD to create the XML file. Example ...</p>
+
+<pre><code>      ofd6x -xg -o=file.xml file.out</code></pre>
+
+<p>Alternatively, pipe the output from OFD into the script ...</p>
+
+<pre><code>      ofd6x -xg file.out | perl call_graph.pl</code></pre>
+
+<p>On Windows systems, piping the output from OFD tends to be slower; sometimes much slower.</p>
+
+<p>The -g option is required. Otherwise, the XML does not contain the Dwarf debug information this script uses.</p>
+
+<h1 id="OFD-OPTIONS">OFD OPTIONS</h1>
+
+<p>Recent releases of OFD support options for filtering the XML output down to what is strictly of interest. When processing a .out file, the best options to use in combination with this script are:</p>
+
+<pre><code>  -xg --xml_indent=0 --obj_display=none,header,optheader,symbols,battrs --dwarf_display=none,dinfo</code></pre>
+
+<p>When processing a library, symbols are not needed, so the best options to use are:</p>
+
+<pre><code>  -xg --xml_indent=0 --obj_display=none,header,optheader,battrs --dwarf_display=none,dinfo</code></pre>
+
+<p>Filtering the XML in this way reduces the amount of data processed by this script, thus making it run faster.</p>
+
+<h1 id="DESCRIPTION-OF-THE-OUTPUT">DESCRIPTION OF THE OUTPUT</h1>
+
+<p>The section presumes you are not using the --stack_max option.</p>
+
+<h2 id="MAIN-CALL-GRAPH">MAIN CALL GRAPH</h2>
+
+<p>The first thing you see is the main call graph rooted at the entry point of the module. How the entry point is determined is described later. Here is an example ...</p>
+
+<pre><code> Call Graph for main.obj
+ **********************************************************************
+ _main : wcs = 72
+ |  _level1 : wcs = 64
+ |  |  _level2 : wcs = 48</code></pre>
+
+<p>After each function name the worst case stack (wcs) depth is shown. That is the maximum amount stack memory used by that function and all the functions it calls. The values are in 8-bit bytes for C6000 and ARM, 16-bit words for C5500. As you can see, the child function(s) called by the parent are indented.</p>
+
+<p>If you use the option --func_info, you additionally see the file name that supplies the function, and the size of the function.</p>
+
+<pre><code> Call Graph for main.obj
+ **********************************************************************
+ _main : wcs = 72 : fn = main.c : sz = 32
+ |  _level1 : wcs = 64 : fn = level.c : sz = 64
+ |  |  _level2 : wcs = 48 : fn = level.c : sz = 64</code></pre>
+
+<p>Note the file name shown is not 100% reliable. In instances of function inlining, building with -pm, or linear assembly, you may see ??? instead of a file name, or an incorrect file name.</p>
+
+<p>If the input file is a library, then there is no entry point and you do not see a main call graph.</p>
+
+<h2 id="REPEAT-FUNCTION-DISPLAY">REPEAT FUNCTION DISPLAY</h2>
+
+<p>For code like this:</p>
+
+<pre><code> top_level()
+ {
+    first();
+    second();
+ }
+
+ first()
+ {
+    big_tree();   // calls many functions
+ }
+
+ second()
+ {
+    big_tree();   // calls those same functions
+ }</code></pre>
+
+<p>The output will look like this:</p>
+
+<pre><code> top_level
+ |  first
+ |  |  big_tree
+ |  |  |  many
+ |  |  |  |  function
+ |  |  |  |  calls
+ |  |  |  appear
+ |  |  |  |  here
+ |  second
+ |  |  big_tree
+ |  |  |  &lt;repeat ...&gt;</code></pre>
+
+<p>All the functions that appear under &quot;big_tree&quot; are always the same, and always in the same order. Rather than print it out all again under &quot;second&quot;, &lt;repeat ...&gt; appears instead. Printing it out again takes lots of space. For very large apps, this technique saves lots of execution time and output file space.</p>
+
+<h2 id="ORPHANED-CALL-GRAPHS">ORPHANED CALL GRAPHS</h2>
+
+<p>Followed by the main call graph are the orphaned call graphs. Functions which are never called directly are termed orphans because their parent cannot be found. There are two possible explanations for orphans. One, the function really is never called. Two, the function is called, but indirectly, and the parent that makes that indirect call is not noted in a configuration file described below. The full call graph of each orphan, including all the functions it calls, is shown.</p>
+
+<p>Note interrupt functions are legitimate orphans.</p>
+
+<h2 id="FUNCTIONS-THAT-MAKE-INDIRECT-CALLS">FUNCTIONS THAT MAKE INDIRECT CALLS</h2>
+
+<p>Last, is a list of functions known to make indirect function calls, but which have no information in the configuration file described below.</p>
+
+<p>To distinguish orphans and functions that make indirect calls, here is an example ...</p>
+
+<pre><code> - Consider two functions _top_level and _next_level
+ - _top_level is called directly from _main
+ - _top_level makes an indirect call to _next_level
+ - There are no other calls to _next_level
+ - No configuration file about indirect calls is used</code></pre>
+
+<p>In that case, _top_level is listed as making an indirect call, and _next_level is an orphan.</p>
+
+<h2 id="WHEN-GRAPHING-A-LIBRARY">WHEN GRAPHING A LIBRARY</h2>
+
+<p>When the input file is a library, all of the code in the library is examined and combined into a single call graph with many entry points. The entry points to the graph are all the functions which are not called directly. The file boundaries in the library are not considered. Suppose file1.c has a function named _level1, which calls a function in file2.c named _level2. Suppose further there are no other calls to _level1 or _level2. Then, _level1 is an entry point into the graph, and the corresponding graph will show the call to _level2. Neither function will appear elsewhere in the output.</p>
+
+<p>Note it is possible that an entry point into the graph is called indirectly. That will occur when that indirect call is not listed in the configuration file provided with the i_cfg=file option.</p>
+
+<h2 id="FUNCTION-SYMBOL-ALIASING">FUNCTION SYMBOL ALIASING</h2>
+
+<p>One optimization performed by the compiler is called Function Symbol Aliasing. For this code ...</p>
+
+<pre><code> int bbb(int arg1, char *arg2);
+
+ int aaa(int n, char *str)
+ {
+    return bbb(n, str);
+ }</code></pre>
+
+<p>The compiler makes aaa an alias of bbb. The symbols aaa and bbb have the same address.</p>
+
+<p>This is represented in the call graph with ...</p>
+
+<pre><code> |  |  main : wcs = 1356
+ |  |  |  ( aaa
+            bbb ) : wcs = 1356
+ |  |  |  |  printf : wcs = 1348</code></pre>
+
+<p>And it appears in the orphan function listing ...</p>
+
+<pre><code> one_orphan
+ ( aaa bbb )
+ another_orphan</code></pre>
+
+<p>If you use the --verbose option, a table of Function Symbol Aliases is output to stderr.</p>
+
+<pre><code> Function Symbol Aliases
+ -----------------------
+ ( aaa bbb )
+ ( level1 level2 )</code></pre>
+
+<p>Function symbol aliases are represented internally with a name like &quot;aaa:bbb&quot;. Thus, you may see names of that form in diagnostics.</p>
+
+<h3 id="FUNCTION-SYMBOL-ALIASING-AND-CONFIGURATION-FILES">FUNCTION SYMBOL ALIASING AND CONFIGURATION FILES</h3>
+
+<p>Consider the example above with the functions aaa and bbb. Suppose your call_graph configuration file contains ...</p>
+
+<pre><code>   aaa : bbb</code></pre>
+
+<p>This indicates that the function aaa calls bbb. Now that call_graph combines aaa and bbb together in the graph, this is the same as writing ...</p>
+
+<pre><code>   (aaa bbb) : (aaa bbb)</code></pre>
+
+<p>The configuration entry, in effect, says that this function calls itself. In nearly all such cases, that is not true.</p>
+
+<p>To find this situation, run call_graph with --verbose (or just -v) and look for ( aaa bbb ) in the Function Symbol Aliases table. That entry means aaa and bbb cannot be written to call each other in the configuration file.</p>
+
+<h1 id="DESCRIPTION-OF---stack_max-OUTPUT">DESCRIPTION OF --stack_max OUTPUT</h1>
+
+<p>Under the option --stack_max the output is only one line like this ...</p>
+
+<pre><code> _name_of_function : wcs = 1172</code></pre>
+
+<p>The function name is the root of the call graph, whether the main call graph or an orphan call graph, that uses the most stack.</p>
+
+<p>This option is intended to support automatically finding maximum stack usage. Care must be taken, however. There is no guarantee that the number output is, in all cases, the maximum amount of stack used. These two factors must be considered: the effect of possible indirect calls, and possible nesting of interrupts.</p>
+
+<h2 id="EFFECT-OF-INDIRECT-CALLS">EFFECT OF INDIRECT CALLS</h2>
+
+<p>It is possible that some function in the maximum stack call graph makes an indirect call to some other function, thus increasing stack usage even more than what is reported. To know this is not occuring, you have to run without --stack_max, and insure that the last section of output is empty. The last section lists the functions known to make indirect calls but have no configuration file information about those calls. Note, further, the information in the configuration file(s) about those indirect calls must be complete and correct.</p>
+
+<h2 id="NESTING-OF-INTERRUPTS">NESTING OF INTERRUPTS</h2>
+
+<p>If building the call graph for a library, this section can be ignored. When building the call graph for a complete application, you have to consider the possibility of nesting interrupts that use the same stack. In most applications, interrupts that could nest use separate stacks. But it is possible for nested interrupts to use the same stack. The case not addressed in the --stack_max output is the possiblity that while the functions in the maximum stack graph are executing, an interrupt is taken, that interrupt uses the same stack, and thus causes the stack to grow even more.</p>
+
+<h2 id="CANNOT-COMBINE---stack_max-AND---func_info">CANNOT COMBINE --stack_max AND --func_info</h2>
+
+<p>When the options combination --stack_max and --func_info is attempted, a warning message is issued, and --func_info is ignored.</p>
+
+<h1 id="ARM-SUPPORT-DETAILS">ARM SUPPORT DETAILS</h1>
+
+<p>This table summarizes ARM support ...</p>
+
+<pre><code>                                      All
+ ABI         |   ARM7   ARM9   ARM11  Cortex
+ ------------+------------------------------
+ TIABI       |   Y      NA     NA     NA
+ TI_ARM9_ABI |   N      4.4.3  4.4.3  4.4.3
+ EABI        |   N      4.4.3  4.4.3  4.4.3</code></pre>
+
+<p>First, a general issue which affects all ARM devices is described. The table entries are described next.</p>
+
+<h2 id="FALSE-INDIRECT-CALLS">FALSE INDIRECT CALLS</h2>
+
+<p>Due to a bug in the compiler, this script may incorrectly display an indirect call in a function which makes no indirect function calls. The ClearQuest entry is SDSCM00020700. If you know you have no indirect calls in your code, then you can presume any indirect calls found are these false ones.</p>
+
+<h2 id="Y">Y</h2>
+
+<p>Generally supported, even when builds are done with older toolsets.</p>
+
+<h2 id="N">N</h2>
+
+<p>Not supported. When the combination is detected, a diagnostic is issued. The script tries to execute anyway. But the results could be incorrect, and there is no easy way detect any errors.</p>
+
+<p>Why? The compiler has a bug where an indirect call sequence is not encoded as a call in the Dwarf debug information. This means an indirect call is ignored by this script. The ClearQuest entry is SDSCM00020565.</p>
+
+<p>If you know you have no indirect calls in your code, then you can ignore the warning.</p>
+
+<h2 id="NA">NA</h2>
+
+<p>Not applicable. You cannot build code for TIABI while specifying any target other than ARM7. Note, however, you can execute ARM7/TIABI code on other ARM devices.</p>
+
+<h2 id="pod4.4.3">4.4.3</h2>
+
+<p>Supported only if all the code is built with tools version 4.4.3 or later. The script cannot detect the version of the tools used to do the build.</p>
+
+<h1 id="C64-FUNCTION-CALL-OPTIMIZATION-LIMITS-OUTPUT">C64+ FUNCTION CALL OPTIMIZATION LIMITS OUTPUT</h1>
+
+<p>A code size optimization, performed when building for C64P with the build options -ms2 or -ms3, changes how some functions are called. The net effect is that a direct function call at source level is changed to an indirect function call in assembly. The Dwarf information used to build the call graph shows such a call as an indirect function call. Such a call will appear in the call graph similar to this ...</p>
+
+<pre><code> _user_func1 : wcs = 0
+ |  __local_call_stub : wcs = 0
+ |  |  __call_stub : wcs = 0</code></pre>
+
+<p>In this case, _user_func1 does a direct call to _user_func2. The optimization, however, changes it to an indirect function call performed by the two functions _local_call_stub and __call_stub. In many cases, _user_func2 will show up later in the call graph output as an orphan.</p>
+
+<h1 id="CONFIGURATION-FILE-FOR-INDIRECT-FUNCTION-CALLS">CONFIGURATION FILE FOR INDIRECT FUNCTION CALLS</h1>
+
+<p>Supply information about what functions are called through indirection with configuration files. The option -i_cfg=file gives the name of the configuration file. You can use the option multiple times to supply, for instance, one configuration file for each library you use.</p>
+
+<h2 id="SYNTAX-OF-THE-CONFIGURATION-FILE">SYNTAX OF THE CONFIGURATION FILE</h2>
+
+<p>General syntax ...</p>
+
+<pre><code>   parent : child1 child2 child3 ...</code></pre>
+
+<p>Where the &quot;parent&quot; function may make one or more indirect function calls to the listed &quot;child&quot; functions. It must all appear on one line. Multiple lines that start with the same parent are OK. Comments begin with &#39;#&#39;. Blank lines are ignored. All other space is normalized.</p>
+
+<p>The function names must be written as they appear in *assembly*, not C. For all targets except MSP430, when building with the default COFF ABI, this means the function name must begin with an &#39;_&#39;. For MSP430 or when building with EABI, the C function name and the assembly name is the same, which means a leading &#39;_&#39; is usually not present. At this writing, only the ARM and C6000 compilers provide support for EABI. Other TI compilers will add EABI support over time.</p>
+
+<h2 id="CONFIGURATION-FILES-FOR-COMPILER-RTS-FUNCTIONS">CONFIGURATION FILES FOR COMPILER RTS FUNCTIONS</h2>
+
+<p>The compiler runtime support library code makes indirect function calls. The configuration files ti_rts_indirect.txt, c60_rts_indirect.txt, arm_rts_indirect.txt, and c55_rts_indirect.txt supply information for these indirect function calls. The file ti_rts_indirect.txt supplies information that is common across those different RTS libs. For full correctness, it must be used in combination with a target specific file. For example ...</p>
+
+<pre><code>   call_graph.pl -i=ti_rts_indirect.txt -i=c60_rts_indirect.txt c60_app.xml</code></pre>
+
+<p>These files also serve as examples of how you can write your own such configuration files.</p>
+
+<h2 id="DIAGNOSTICS">DIAGNOSTICS</h2>
+
+<p>These diagnostics are emitted only under the option --verbose.</p>
+
+<p>If you name a parent function for which there is no information on the main source of the function (i.e. declarations don&#39;t count), then you get a warning message and the parent function, and all the children listed, are ignored.</p>
+
+<p>If you name a child function for which there is similarly no information, you get a diagnostic. But, since this could legitimately occur in cases where you are processing only part of an application, or the routine is written in assembly, the child function is still entered in the call graph.</p>
+
+<h1 id="ASSEMBLY-FUNCTIONS">ASSEMBLY FUNCTIONS</h1>
+
+<p>The call graph is developed entirely from Dwarf debug information. The assembler will encode proper Dwarf debug information for an assembly function if you follow these steps.</p>
+
+<pre><code> - Use the .asmfunc and .endasmfunc directives
+ - Indicate stack usage with the stack_usage(&lt;num&gt;) argument
+   to .asmfunc.  Specify the number of bytes for C6000 and ARM.  Specify
+   the number of words for C5500.
+ - For C6000, use the CALL and RET mnemonics instead of simple B</code></pre>
+
+<p>Here is a C6000 assembly example ...</p>
+
+<pre><code> in_asm:     .asmfunc    stack_usage(16)     ; uses 16 bytes of stack
+             ...
+ loop:
+             ...
+             b     loop    ; normal branches need no special handling
+             ...
+             call  func    ; instead of b   func
+             ...
+             ret   b3      ; instead of b   b3
+             .endasmfunc</code></pre>
+
+<h1 id="RECURSION">RECURSION</h1>
+
+<p>Recursion is detected. It is stopped in the graph with the first function that begins the cycle of recursion. Under --verbose, you get a warning message about how the script cannot compute worst case stack depth in this case.</p>
+
+<h1 id="ENTRY-POINT-DETAILS">ENTRY POINT DETAILS</h1>
+
+<p>This section does not apply to libraries, but only to full application builds.</p>
+
+<p>The script attempts to automatically find the entry point of the application, and root the call graph there. This doesn&#39;t always work.</p>
+
+<p>In COFF files, the entry point is given in the optional file header. The optional file header is not always present. Simple object (.obj) files created by the assembler do not have an optional file header.</p>
+
+<p>In C6000, there is an additional issue. In compiler version v7.2.0, there is a bug in the Dwarf information created by the compiler. The chain of calls from the entry point to main is: _c_int00 -&gt; args_main -&gt; main. Because of the bug, the Dwarf information about the call from args_main to main is not present. The bug is SDSCM00039952 in the ClearQuest system. There are entries in the configuration file c60_rts_indirect.txt to make up for this bug. Thus the option ...</p>
+
+<pre><code>  -i=c60_rts_indirect.txt</code></pre>
+
+<p>is a workaround for the problem.</p>
+
+<h1 id="PERL-VERSION-DETAILS">PERL VERSION DETAILS</h1>
+
+<p>This script was written using Perl version 5.8.3. It may not work with earlier revisions of Perl.</p>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Documentation for call_graph.pl</span></strong></big>
+</td></tr>
+</table>
+
+</body>
+
+</html>
+
+

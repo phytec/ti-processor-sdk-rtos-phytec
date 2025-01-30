@@ -1,0 +1,168 @@
+Welcome to minicom 2.7.1                                                                                                                    
+                                                                                                                                            
+OPTIONS: I18n                                                                                                                               
+Compiled on Dec 23 2019, 02:06:26.                                                                                                          
+Port /dev/ttyUSB1, 16:14:56                                                                                                                 
+                                                                                                                                            
+Press CTRL-A Z for help on special keys                                                                                                     
+                                                                                                                                            
+01000000011a00006a3761657000000000000000475020200008010000080100C1.00.10.01 (Jun 29 2023 - 13:38:40)                                        
+Waiting for tifs.bin ...                                                                                                                    
+CCCCCCCCCCCCCCCCCTIFS  ver: 9.0.6--v09.00.06 (Kool Koala)                                                                                   
+Waiting for multicore app ...                                                                                                               
+CCC 1000000000                                                                                                                              
+                                                                                                                                            
+TOG Test Applications                                                                                                                       
+                                                                                                                                            
+ sdlAppEsmSetupCommon...Done                                                                                                                
+ sdlAppEsmSetupCommon...Done                                                                                                                
+ sdlAppEsmSetup...Done                                                                                                                      
+ Starting TOG test on NAVSS_TO_AC, index 0...                                                                                               
+ sdlAppEsmConfig...Done                                                                                                                     
+ sdlAppEsmDisable...Done                                                                                                                    
+  Delta TOG prep time in micro secs 26057                                                                                                   
+  Delta TOG execution time in micro secs 60                                                                                                 
+  Delta TOG restore time in micro secs 27048                                                                                                
+  TOG complete for NAVSS_TO_AC                                                                                                              
+                                                                                                                                            
+ Starting TOG test on AC_CFG_TO_AC, index 1...                                                                                              
+ sdlAppEsmConfig...Done                                                                                                                     
+ sdlAppEsmDisable...Done                                                                                                                    
+  Delta TOG prep time in micro secs 27041                                                                                                   
+  Delta TOG execution time in micro secs 14                                                                                                 
+  Delta TOG restore time in micro secs 27042                                                                                                
+  TOG complete for AC_CFG_TO_AC                                                                                                             
+                                                                                                                                            
+ Starting TOG test on AC_CFG, index 2...                                                                                                    
+ sdlAppEsmConfig...Done                                                                                                                     
+ sdlAppEsmDisable...Done                                                                                                                    
+  Delta TOG prep time in micro secs 27040                                                                                                   
+  Delta TOG execution time in micro secs 11                                                                                                 
+  Delta TOG restore time in micro secs 27038                                                                                                
+  TOG complete for AC_CFG                                                                                                                   
+                                                                                                                                            
+ Starting TOG test on RC_TO_HC2, index 3...                                                                                                 
+ sdlAppEsmConfig...Done                                                                                                                     
+ sdlAppEsmDisable...Done                                                                                                                    
+  Delta TOG prep time in micro secs 27039                                                                                                   
+  Delta TOG execution time in micro secs 12                                                                                                 
+  Delta TOG restore time in micro secs 27039                                                                                                
+  TOG complete for RC_TO_HC2                                                                                                                
+
+ Starting TOG test on RC_TO_HC2_2, index 4...                                                                                               
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done
+  Delta TOG prep time in micro secs 27039 
+  Delta TOG execution time in micro secs 13 
+  Delta TOG restore time in micro secs 27039 
+  TOG complete for RC_TO_HC2_2 
+
+ Starting TOG test on HC2_TO_HC, index 5...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done
+  Delta TOG prep time in micro secs 27039 
+  Delta TOG execution time in micro secs 13 
+  Delta TOG restore time in micro secs 27039 
+  TOG complete for HC2_TO_HC 
+
+ Starting TOG test on RC_TO_RC, index 6...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done
+  Delta TOG prep time in micro secs 27039 
+  Delta TOG execution time in micro secs 9 
+  Delta TOG restore time in micro secs 27038 
+  TOG complete for RC_TO_RC 
+
+ Starting TOG test on IPPHY_TO_RTI, index 7...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done
+  Delta TOG prep time in micro secs 27038 
+  Delta TOG execution time in micro secs 10 
+  Delta TOG restore time in micro secs 27038 
+  TOG complete for IPPHY_TO_RTI 
+
+ Starting TOG test on IPPHY_TO_IPPHY, index 8...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done
+  Delta TOG prep time in micro secs 27039 
+  Delta TOG execution time in micro secs 8 
+  Delta TOG restore time in micro secs 27038 
+  TOG complete for IPPHY_TO_IPPHY 
+
+ Starting TOG test on MAIN_INFRA, index 9...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done
+  Delta TOG prep time in micro secs 27039 
+  Delta TOG execution time in micro secs 10 
+  Delta TOG restore time in micro secs 27039 
+  TOG complete for MAIN_INFRA 
+
+ Starting TOG test on PVU0_CFG, index 10...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done
+  Delta TOG prep time in micro secs 27040 
+  Delta TOG execution time in micro secs 8 
+  Delta TOG restore time in micro secs 27038 
+  TOG complete for PVU0_CFG 
+
+ Starting TOG test on WKUP_VDC_INFRA, index 11...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done
+  Delta TOG prep time in micro secs 27037 
+  Delta TOG execution time in micro secs 5 
+  Delta TOG restore time in micro secs 28037 
+  TOG complete for WKUP_VDC_INFRA 
+
+ Starting TOG test on TIMEOUT_64B2, index 12...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done
+  Delta TOG prep time in micro secs 27037 
+  Delta TOG execution time in micro secs 7 
+  Delta TOG restore time in micro secs 28038 
+  TOG complete for TIMEOUT_64B2 
+
+ Starting TOG test on TIMEOUT_64B3, index 13...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done
+  Delta TOG prep time in micro secs 27037 
+  Delta TOG execution time in micro secs 5124094 
+  Delta TOG restore time in micro secs 27037 
+  TOG complete for TIMEOUT_64B3 
+
+ Starting TOG test on TIMEOUT_64B4, index 14...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done
+  Delta TOG prep time in micro secs 27037 
+  Delta TOG execution time in micro secs 5124089 
+  Delta TOG restore time in micro secs 27038 
+  TOG complete for TIMEOUT_64B4 
+
+ Starting TOG test on MCU_VDC_SOC, index 15...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done
+  Delta TOG prep time in micro secs 27037 
+  Delta TOG execution time in micro secs 3 
+  Delta TOG restore time in micro secs 28038 
+  TOG complete for MCU_VDC_SOC 
+
+ Starting TOG test on MCU_VDC_INFRA, index 16...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done
+  Delta TOG prep time in micro secs 27037 
+  Delta TOG execution time in micro secs 4 
+  Delta TOG restore time in micro secs 28038 
+  TOG complete for MCU_VDC_INFRA 
+
+ TOG Functionality Test Functionality test Passed.
+
+ TOG API Module Test API test Passed.
+
+ TOG Error Module Test Error test Passed.
+
+All tests have passed. 
+tog_test_main.c:342:test_sdl_tog_test_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored 
+OK
+

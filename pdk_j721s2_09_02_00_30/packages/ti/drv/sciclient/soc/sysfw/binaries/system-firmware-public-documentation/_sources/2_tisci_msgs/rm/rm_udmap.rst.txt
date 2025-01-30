@@ -1,0 +1,603 @@
+===================================================
+Resource Management UDMAP TISCI Message Description
+===================================================
+
+Introduction
+============
+
+This chapter provides information on usage of the RM UDMAP management TISCI
+message API parameters.
+
++------------------+---------------------------------------------------------------------------------------------------------------------+
+| TISCI Message ID |                                                    Message Name                                                     |
++==================+=====================================================================================================================+
+| 0x1200           | RESERVED, DO NOT (RE)USE                                                                                            |
++------------------+---------------------------------------------------------------------------------------------------------------------+
+| 0x1201           | RESERVED, DO NOT (RE)USE                                                                                            |
++------------------+---------------------------------------------------------------------------------------------------------------------+
+| 0x1210           | RESERVED, DO NOT (RE)USE                                                                                            |
++------------------+---------------------------------------------------------------------------------------------------------------------+
+| 0x1211           | RESERVED, DO NOT (RE)USE                                                                                            |
++------------------+---------------------------------------------------------------------------------------------------------------------+
+| 0x1220           | RESERVED, DO NOT (RE)USE                                                                                            |
++------------------+---------------------------------------------------------------------------------------------------------------------+
+| 0x1221           | RESERVED, DO NOT (RE)USE                                                                                            |
++------------------+---------------------------------------------------------------------------------------------------------------------+
+| 0x1205           | :ref:`TISCI_MSG_RM_UDMAP_TX_CH_CFG <pub_rm_public_udmap_tx_ch_cfg>`                                                 |
++------------------+---------------------------------------------------------------------------------------------------------------------+
+| N/A              | :ref:`TISCI_MSG_RM_UDMAP_TX_CH_CFG Response <pub_rm_public_udmap_tx_ch_cfg_response>`                               |
++------------------+---------------------------------------------------------------------------------------------------------------------+
+| 0x1206           | RESERVED, DO NOT (RE)USE                                                                                            |
++------------------+---------------------------------------------------------------------------------------------------------------------+
+| 0x1215           | :ref:`TISCI_MSG_RM_UDMAP_RX_CH_CFG <pub_rm_public_udmap_rx_ch_cfg>`                                                 |
++------------------+---------------------------------------------------------------------------------------------------------------------+
+| N/A              | :ref:`TISCI_MSG_RM_UDMAP_RX_CH_CFG Response <pub_rm_public_udmap_rx_ch_cfg_response>`                               |
++------------------+---------------------------------------------------------------------------------------------------------------------+
+| 0x1216           | RESERVED, DO NOT (RE)USE                                                                                            |
++------------------+---------------------------------------------------------------------------------------------------------------------+
+| 0x1230           | :ref:`TISCI_MSG_RM_UDMAP_FLOW_CFG <pub_rm_public_udmap_flow_cfg>`                                                   |
++------------------+---------------------------------------------------------------------------------------------------------------------+
+| N/A              | :ref:`TISCI_MSG_RM_UDMAP_FLOW_CFG Response <pub_rm_public_udmap_flow_cfg_response>`                                 |
++------------------+---------------------------------------------------------------------------------------------------------------------+
+| 0x1231           | :ref:`TISCI_MSG_RM_UDMAP_FLOW_SIZE_THRESH_CFG <pub_rm_public_udmap_flow_size_thresh_cfg>`                           |
++------------------+---------------------------------------------------------------------------------------------------------------------+
+| N/A              | :ref:`TISCI_MSG_RM_UDMAP_FLOW_SIZE_THRESH_CFG Response <pub_rm_public_udmap_flow_size_thresh_cfg_response>`         |
++------------------+---------------------------------------------------------------------------------------------------------------------+
+| 0x1232           | RESERVED, DO NOT (RE)USE                                                                                            |
++------------------+---------------------------------------------------------------------------------------------------------------------+
+| 0x1233           | RESERVED, DO NOT (RE)USE                                                                                            |
++------------------+---------------------------------------------------------------------------------------------------------------------+
+| 0x1234           | :ref:`TISCI_MSG_RM_UDMAP_FLOW_DELEGATE <pub_rm_public_udmap_flow_delegate>`                                         |
++------------------+---------------------------------------------------------------------------------------------------------------------+
+| N/A              | :ref:`TISCI_MSG_RM_UDMAP_FLOW_DELEGATE Response <pub_rm_public_udmap_flow_delegate_response>`                       |
++------------------+---------------------------------------------------------------------------------------------------------------------+
+| 0x1240           | :ref:`TISCI_MSG_RM_UDMAP_GCFG_CFG <pub_rm_public_udmap_gcfg_cfg>`                                                   |
++------------------+---------------------------------------------------------------------------------------------------------------------+
+| N/A              | :ref:`TISCI_MSG_RM_UDMAP_GCFG_CFG Response <pub_rm_public_udmap_gcfg_cfg_response>`                                 |
++------------------+---------------------------------------------------------------------------------------------------------------------+
+| 0x1241           | RESERVED, DO NOT (RE)USE                                                                                            |
++------------------+---------------------------------------------------------------------------------------------------------------------+
+
+.. _pub_rm_public_udmap_valid_params:
+
+UDMAP Valid Parameters Field Usage
+----------------------------------
+
+Some UDMAP TISCI message APIs make use of a valid_params bit field.  Bits within
+the valid_params field define whether or not individual TISCI message
+parameters are valid.  When a bit corresponding to a parameter is set (to 1)
+the parameter is considered valid and will be programmed into its
+corresponding register field, assuming validation of the parameter passes.
+When a valid_params bit is not set, i.e. a value of 0, the corresponding
+register field is read and used within the validation process of the request.
+The register field for a parameter is not programmed if the corresponding
+valid_params bit is not set.
+
+TISCI_MSG_RM_UDMAP_TX_CH_CFG - UDMAP Transmit Channel Configure
+===============================================================
+
+.. _pub_rm_public_udmap_tx_ch_cfg:
+
+UDMAP Transmit Channel Configure Request
+----------------------------------------
+
+The **UDMAP tx channel cfg** TISCI message API is used to configure SoC
+Navigator Subsystem UDMAP transmit channels. The API only allows
+configuration of a transmit channel by passing the tx channel index and the
+Navigator SoC device ID in which the channel is located.  Only the non-real-time
+transmit channel registers are programmed as part of the channel configuration.
+The host is granted access to the transmit channel real-time registers via the
+SoC channelized firewalls based on the RM board configuration.  The OS can
+access the channel real-time registers directly after transmit channel
+configuration is complete.
+
+The UDMAP global invalid receive flow event and per transmit channel output
+event (OES) and error output event (EOES) registers are not programmed as part
+of the **UDMAP tx channel cfg** API. They're programmed internally via the
+:ref:`RM IRQ Set <pub_rm_irq_route_set>` message.
+
+The **UDMAP tx channel cfg** API can be used to configure transmit channels
+within any Navigator Subsystem UDMAP on the device.
+
+Usage
+^^^^^
+
++------------------------+--------+
+| **Message Type**       | Normal |
++------------------------+--------+
+| **Secure Queue Only?** | No     |
++------------------------+--------+
+
+TISCI Message ID
+^^^^^^^^^^^^^^^^
+
+.. sysfwapimacro:: TISCI_MSG_RM_UDMAP_TX_CH_CFG
+
+UDMAP Transmit Channel Configure Message Parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. sysfwapistruct:: tisci_msg_rm_udmap_tx_ch_cfg_req
+
+.. _pub_rm_public_udmap_tx_ch_cfg_valid_params:
+
+UDMAP Transmit Channel Configuration Valid Parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The following table describes the valid bit mappings for the UDMAP transmit
+channel configure message optional parameters:
+
++------------------+-------------------------------------------------------------------+
+| valid_params Bit | Corresponding tisci_msg_rm_udmap_tx_ch_cfg_req Optional Parameter |
++==================+===================================================================+
+|  0               | tx_pause_on_err                                                   |
++------------------+-------------------------------------------------------------------+
+|  1               | tx_atype                                                          |
++------------------+-------------------------------------------------------------------+
+|  2               | tx_chan_type                                                      |
++------------------+-------------------------------------------------------------------+
+|  3               | tx_fetch_size                                                     |
++------------------+-------------------------------------------------------------------+
+|  4               | txcq_qnum                                                         |
++------------------+-------------------------------------------------------------------+
+|  5               | tx_priority                                                       |
++------------------+-------------------------------------------------------------------+
+|  6               | tx_qos                                                            |
++------------------+-------------------------------------------------------------------+
+|  7               | tx_orderid                                                        |
++------------------+-------------------------------------------------------------------+
+|  8               | tx_sched_priority                                                 |
++------------------+-------------------------------------------------------------------+
+|  9               | tx_filt_einfo                                                     |
++------------------+-------------------------------------------------------------------+
+|  10              | tx_filt_pswords                                                   |
++------------------+-------------------------------------------------------------------+
+|  11              | tx_supr_tdpkt                                                     |
++------------------+-------------------------------------------------------------------+
+|  12              | tx_credit_count                                                   |
++------------------+-------------------------------------------------------------------+
+|  13              | fdepth                                                            |
++------------------+-------------------------------------------------------------------+
+|  14              | tx_burst_size                                                     |
++------------------+-------------------------------------------------------------------+
+|  15              | tx_tdtype                                                         |
++------------------+-------------------------------------------------------------------+
+|  16              | extended_ch_type                                                  |
++------------------+-------------------------------------------------------------------+
+
+.. _pub_rm_public_udmap_tx_ch_cfg_response:
+
+UDMAP Transmit Channel Configure Response
+-----------------------------------------
+
+The **udmap tx channel cfg response** message returns the result status of the
+processed **udmap tx channel cfg** message.
+
+UDMAP Transmit Channel Configure Response Message Parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. sysfwapistruct:: tisci_msg_rm_udmap_tx_ch_cfg_resp
+
+TISCI_MSG_RM_UDMAP_RX_CH_CFG - UDMAP Receive Channel Configure
+==============================================================
+
+.. _pub_rm_public_udmap_rx_ch_cfg:
+
+UDMAP Receive Channel Configure
+-------------------------------
+
+The **UDMAP rx channel cfg** TISCI message API is used to configure SoC
+Navigator Subsystem UDMAP receive channels. The API only allows
+configuration of a receive channel by passing the rx channel index and the
+Navigator SoC device ID in which the channel is located.  Only the non-real-time
+receive channel registers are programmed as part of the channel configuration.
+The host is granted access to the receive channel real-time registers via the
+SoC channelized firewalls based on the RM board configuration.  The OS can
+access the channel real-time registers directly after receive channel
+configuration is complete.
+
+The UDMAP global invalid receive flow event and per receive channel output
+event (OES) and error output event (EOES) registers are not programmed as part
+of the **UDMAP rx channel cfg** API. They're programmed internally via the
+:ref:`RM IRQ Set <pub_rm_irq_route_set>` message.
+
+The **UDMAP rx channel cfg** API can be used to configure receive channels
+within any Navigator Subsystem UDMAP on the device.
+
+Usage
+^^^^^
+
++------------------------+--------+
+| **Message Type**       | Normal |
++------------------------+--------+
+| **Secure Queue Only?** | No     |
++------------------------+--------+
+
+TISCI Message ID
+^^^^^^^^^^^^^^^^
+
+.. sysfwapimacro:: TISCI_MSG_RM_UDMAP_RX_CH_CFG
+
+UDMAP Receive Channel Configure Message Parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. sysfwapistruct:: tisci_msg_rm_udmap_rx_ch_cfg_req
+
+.. _pub_rm_public_udmap_rx_ch_cfg_valid_params:
+
+UDMAP Receive Channel Configuration Valid Parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The following table describes the valid bit mappings for the UDMAP receive
+channel configure message optional parameters:
+
++------------------+-------------------------------------------------------------------+
+| valid_params Bit | Corresponding tisci_msg_rm_udmap_rx_ch_cfg_req Optional Parameter |
++==================+===================================================================+
+|  0               | rx_pause_on_err                                                   |
++------------------+-------------------------------------------------------------------+
+|  1               | rx_atype                                                          |
++------------------+-------------------------------------------------------------------+
+|  2               | rx_chan_type                                                      |
++------------------+-------------------------------------------------------------------+
+|  3               | rx_fetch_size                                                     |
++------------------+-------------------------------------------------------------------+
+|  4               | rxcq_qnum                                                         |
++------------------+-------------------------------------------------------------------+
+|  5               | rx_priority                                                       |
++------------------+-------------------------------------------------------------------+
+|  6               | rx_qos                                                            |
++------------------+-------------------------------------------------------------------+
+|  7               | rx_orderid                                                        |
++------------------+-------------------------------------------------------------------+
+|  8               | rx_sched_priority                                                 |
++------------------+-------------------------------------------------------------------+
+|  9               | flowid_start                                                      |
++------------------+-------------------------------------------------------------------+
+|  10              | flowid_cnt                                                        |
++------------------+-------------------------------------------------------------------+
+|  11              | rx_ignore_short                                                   |
++------------------+-------------------------------------------------------------------+
+|  12              | rx_ignore_long                                                    |
++------------------+-------------------------------------------------------------------+
+|  14              | rx_burst_size                                                     |
++------------------+-------------------------------------------------------------------+
+
+.. _pub_rm_public_udmap_rx_ch_cfg_response:
+
+UDMAP Receive Channel Configure Response
+----------------------------------------
+
+The **udmap rx channel cfg response** message returns the result status of the
+processed **udmap rx channel cfg** message.
+
+UDMAP Receive Channel Configure Response Message Parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. sysfwapistruct:: tisci_msg_rm_udmap_rx_ch_cfg_resp
+
+TISCI_MSG_RM_UDMAP_FLOW_CFG - UDMAP Receive Flow Configure
+==========================================================
+
+.. _pub_rm_public_udmap_flow_cfg:
+
+UDMAP Receive Flow Configure Request
+------------------------------------
+
+The **UDMAP flow cfg** TISCI message API is used to configure a SoC Navigator
+Subsystem UDMAP receive flow's standard, non-size threshold registers. The flow
+index must be assigned to the host defined in the TISCI header via the RM board
+configuration resource assignment range list.
+
+It's the user's responsibility to make sure any receive channels using the
+flow are disabled when changing the receive flow configuration.  Otherwise,
+unknown operation may occur.
+
+The UDMAP global invalid receive flow event register is not programmed as part
+of the **UDMAP flow cfg** API. It is programmed internally via the :ref:`RM IRQ
+Set <pub_rm_irq_route_set>` message.
+
+The **UDMAP flow cfg** API can be used to configure receive flows within any
+Navigator Subsystem UDMAP on the device.
+
+Usage
+^^^^^
+
++------------------------+--------+
+| **Message Type**       | Normal |
++------------------------+--------+
+| **Secure Queue Only?** | No     |
++------------------------+--------+
+
+TISCI Message ID
+^^^^^^^^^^^^^^^^
+
+.. sysfwapimacro:: TISCI_MSG_RM_UDMAP_FLOW_CFG
+
+
+UDMAP Receive Flow Configure Message Parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. sysfwapistruct:: tisci_msg_rm_udmap_flow_cfg_req
+
+.. _pub_rm_public_udmap_flow_cfg_valid_params:
+
+UDMAP Receive Flow Configure Valid Parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The following table describes the valid bit mappings for the UDMAP receive
+flow configure message parameters:
+
++------------------+---------------------------------------------------------+
+| valid_params Bit | Corresponding tisci_msg_rm_udmap_flow_cfg_req Parameter |
++==================+=========================================================+
+|  0               | rx_einfo_present                                        |
++------------------+---------------------------------------------------------+
+|  1               | rx_psinfo_present                                       |
++------------------+---------------------------------------------------------+
+|  2               | rx_error_handling                                       |
++------------------+---------------------------------------------------------+
+|  3               | rx_desc_type                                            |
++------------------+---------------------------------------------------------+
+|  4               | rx_sop_offset                                           |
++------------------+---------------------------------------------------------+
+|  5               | rx_dest_qnum                                            |
++------------------+---------------------------------------------------------+
+|  6               | rx_src_tag_hi                                           |
++------------------+---------------------------------------------------------+
+|  7               | rx_src_tag_lo                                           |
++------------------+---------------------------------------------------------+
+|  8               | rx_dest_tag_hi                                          |
++------------------+---------------------------------------------------------+
+|  9               | rx_dest_tag_lo                                          |
++------------------+---------------------------------------------------------+
+|  10              | rx_src_tag_hi_sel                                       |
++------------------+---------------------------------------------------------+
+|  11              | rx_src_tag_lo_sel                                       |
++------------------+---------------------------------------------------------+
+|  12              | rx_dest_tag_hi_sel                                      |
++------------------+---------------------------------------------------------+
+|  13              | rx_dest_tag_lo_sel                                      |
++------------------+---------------------------------------------------------+
+|  14              | rx_fdq0_sz0_qnum                                        |
++------------------+---------------------------------------------------------+
+|  15              | rx_fdq1_sz0_qnum                                        |
++------------------+---------------------------------------------------------+
+|  16              | rx_fdq2_sz0_qnum                                        |
++------------------+---------------------------------------------------------+
+|  17              | rx_fdq3_sz0_qnum                                        |
++------------------+---------------------------------------------------------+
+|  18              | rx_ps_location                                          |
++------------------+---------------------------------------------------------+
+
+.. _pub_rm_public_udmap_flow_cfg_response:
+
+UDMAP Receive Flow Configure Response
+-------------------------------------
+
+The **udmap flow cfg response** message returns the result status of the
+processed **udmap flow cfg** message.
+
+UDMAP Receive Flow Configure Response Message Parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. sysfwapistruct:: tisci_msg_rm_udmap_flow_cfg_resp
+
+TISCI_MSG_RM_UDMAP_FLOW_SIZE_THRESH_CFG - UDMAP Receive Flow Size Threshold Configure
+=====================================================================================
+
+.. _pub_rm_public_udmap_flow_size_thresh_cfg:
+
+UDMAP Receive Flow Size Threshold Configure Request
+---------------------------------------------------
+
+The **UDMAP flow size threshold cfg** TISCI message API is used to configure
+the size-based free descriptor queue routing registers for flow.  The flow
+index must be assigned to the host defined in the TISCI header via the RM
+board configuration resource assignment range list.
+
+It's the user's responsibility to make sure any receive channels using the
+flow are disabled when changing the receive flow configuration.  Otherwise,
+unknown operation may occur.
+
+The **UDMAP flow size threshold cfg** API can be used to configure receive
+flows within any Navigator Subsystem UDMAP on the device.
+
+Usage
+^^^^^
+
++------------------------+--------+
+| **Message Type**       | Normal |
++------------------------+--------+
+| **Secure Queue Only?** | No     |
++------------------------+--------+
+
+TISCI Message ID
+^^^^^^^^^^^^^^^^
+
+.. sysfwapimacro:: TISCI_MSG_RM_UDMAP_FLOW_SIZE_THRESH_CFG
+
+UDMAP Receive Flow Size Threshold Configure Message Parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. sysfwapistruct:: tisci_msg_rm_udmap_flow_size_thresh_cfg_req
+
+.. _pub_rm_public_udmap_flow_size_thresh_cfg_valid_params:
+
+UDMAP Receive Flow Size Threshold Configure Valid Parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The following table describes the valid bit mappings for the UDMAP receive
+flow size threshold configure message parameters:
+
++------------------+---------------------------------------------------------------------+
+| valid_params Bit | Corresponding tisci_msg_rm_udmap_flow_size_thresh_cfg_req Parameter |
++==================+=====================================================================+
+|  0               | rx_size_thresh0                                                     |
++------------------+---------------------------------------------------------------------+
+|  1               | rx_size_thresh1                                                     |
++------------------+---------------------------------------------------------------------+
+|  2               | rx_size_thresh2                                                     |
++------------------+---------------------------------------------------------------------+
+|  3               | rx_fdq0_sz1_qnum                                                    |
++------------------+---------------------------------------------------------------------+
+|  4               | rx_fdq0_sz2_qnum                                                    |
++------------------+---------------------------------------------------------------------+
+|  5               | rx_fdq0_sz3_qnum                                                    |
++------------------+---------------------------------------------------------------------+
+|  6               | rx_size_thresh_en                                                   |
++------------------+---------------------------------------------------------------------+
+
+.. _pub_rm_public_udmap_flow_size_thresh_cfg_response:
+
+UDMAP Receive Flow Size Threshold Configure Response
+----------------------------------------------------
+
+The **udmap flow size threshold cfg response** message returns the result
+status of the processed **udmap flow size threshold cfg** message.
+
+UDMAP Receive Flow Size Threshold Configure Response Message Parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. sysfwapistruct:: tisci_msg_rm_udmap_flow_size_thresh_cfg_resp
+
+TISCI_MSG_RM_UDMAP_FLOW_DELEGATE - UDMAP Flow Delegate
+======================================================
+
+.. _pub_rm_public_udmap_flow_delegate:
+
+UDMAP Flow Delegate Request
+---------------------------
+
+The **UDMAP flow delegate** TISCI message API is used by a host to delegate
+configuration of an owned, according to the RM board configuration, common DMA
+flow to another host.  After delegation the host owning the flow and the
+delegated host are allowed to configure the flow via the flow configuration
+TISCI messages.  The delegation can be cleared by the host who owns the flow
+by setting the clear parameter of the flow delegate message.
+
+The flow index set for delegation must be assigned to the host defined in the
+TISCI header via the RM board configuration resource assignment range list.
+
+Usage
+^^^^^
+
++------------------------+--------+
+| **Message Type**       | Normal |
++------------------------+--------+
+| **Secure Queue Only?** | No     |
++------------------------+--------+
+
+TISCI Message ID
+^^^^^^^^^^^^^^^^
+
+.. sysfwapimacro:: TISCI_MSG_RM_UDMAP_FLOW_DELEGATE
+
+
+UDMAP Flow Delegate Message Parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. sysfwapistruct:: tisci_msg_rm_udmap_flow_delegate_req
+
+.. _pub_rm_public_udmap_flow_delegate_valid_params:
+
+UDMAP Flow Delegate Valid Parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The following table describes the valid bit mappings for the UDMAP flow
+delegate message parameters:
+
++------------------+--------------------------------------------------------------+
+| valid_params Bit | Corresponding tisci_msg_rm_udmap_flow_delegate_req Parameter |
++==================+==============================================================+
+|  0               | delegated_host                                               |
++------------------+--------------------------------------------------------------+
+|  1               | clear                                                        |
++------------------+--------------------------------------------------------------+
+
+.. _pub_rm_public_udmap_flow_delegate_response:
+
+UDMAP Flow Delegate Response
+----------------------------
+
+The **udmap flow delegate response** message returns the result status of the
+processed **udmap flow delegate** message.
+
+UDMAP Flow Delegate Response Message Parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. sysfwapistruct:: tisci_msg_rm_udmap_flow_delegate_resp
+
+
+TISCI_MSG_RM_UDMAP_GCFG_CFG - UDMAP Global Configuration Configure
+==================================================================
+
+.. _pub_rm_public_udmap_gcfg_cfg:
+
+UDMAP Global Configuration Configure Request
+--------------------------------------------
+
+The **udmap_gcfg_cfg** TISCI message API is used to configure non-real-time
+registers in the UDMAP subsystem's global configuration region.  The host, or a
+supervisor of the host, who owns the global configuration region must be the
+requesting host.  The API allows configuration of the global configuration
+region by passing the Navigator SoC device ID of the UDMAP subsystem in which
+the region is located.
+
+Usage
+^^^^^
+
++------------------------+--------+
+| **Message Type**       | Normal |
++------------------------+--------+
+| **Secure Queue Only?** | No     |
++------------------------+--------+
+
+TISCI Message ID
+^^^^^^^^^^^^^^^^
+
+.. sysfwapimacro:: TISCI_MSG_RM_UDMAP_GCFG_CFG
+
+UDMAP Global Configuration Configure Message Parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. sysfwapistruct:: tisci_msg_rm_udmap_gcfg_cfg_req
+
+.. _pub_rm_public_udmap_gcfg_cfg_valid_params:
+
+UDMAP Global Configuration Configure Valid Parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The following table describes the valid bit mappings for the UDMAP global
+configuration configure parameters:
+
++------------------+---------------------------------------------------------+
+| valid_params Bit | Corresponding tisci_msg_rm_udmap_gcfg_cfg_req Parameter |
++==================+=========================================================+
+|  0               | perf_ctrl_timeout_cnt                                   |
++------------------+---------------------------------------------------------+
+|  1               | emu_ctrl_soft                                           |
++------------------+---------------------------------------------------------+
+|  2               | emu_ctrl_free                                           |
++------------------+---------------------------------------------------------+
+|  3               | psil_to_tout                                            |
++------------------+---------------------------------------------------------+
+|  4               | psil_to_tout_cnt                                        |
++------------------+---------------------------------------------------------+
+|  5               | utc_chan_start                                          |
++------------------+---------------------------------------------------------+
+|  6               | rflowfwstat_pend                                        |
++------------------+---------------------------------------------------------+
+
+.. _pub_rm_public_udmap_gcfg_cfg_response:
+
+UDMAP Global Configuration Configure Response
+---------------------------------------------
+
+The **udmap_gcfg_cfg_response** message returns the result status of the
+processed **udmap_gcfg_cfg** message.
+
+UDMAP Global Configuration Configure Response Message Parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. sysfwapistruct:: tisci_msg_rm_udmap_gcfg_cfg_resp
+

@@ -1,0 +1,14 @@
+mcuClkFreq 1000000000
+
+CCM Test Application
+
+ CCM IP API Test Passed.
+
+ CCM IP Error Test Passed.
+
+All tests have passed.
+ccm_ip_test/ccm_test_main.c:228:test_sdl_ccm_test_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored
+OK

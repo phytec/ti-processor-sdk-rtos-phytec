@@ -1,0 +1,106 @@
+root@j7-evm:/opt/vision_apps# ./vx_app_test_framework.out 
+APP: Init ... !!!
+MEM: Init ... !!!
+MEM: Initialized DMA HEAP (fd=4) !!!
+MEM: Init ... Done !!!
+IPC: Init ... !!!
+IPC: Init ... Done !!!
+REMOTE_SERVICE: Init ... !!!
+REMOTE_SERVICE: Init ... Done !!!
+APP: Init ... Done !!!
+   236.891252 s:  VX_ZONE_INIT:Enabled
+   236.891278 s:  VX_ZONE_ERROR:Enabled
+   236.891283 s:  VX_ZONE_WARNING:Enabled
+   236.893877 s:  VX_ZONE_INIT:[tivxInit:71] Initialization Done !!!
+   236.894158 s:  VX_ZONE_INIT:[tivxHostInit:48] Initialization Done for HOST !!!
+VxTests version: unknown
+VCS version: unknown
+Build config: Release
+
+[ ======== ] Total 12 tests from 7 test cases
+Use global OpenVX context: FALSE
+
+
+[ -------- ] tests from tivxSrvPointDetect
+[ RUN 0001 ] tivxSrvPointDetect.SingleImage ...
+[     DONE ] tivxSrvPointDetect.SingleImage
+[ RUN 0002 ] tivxSrvPointDetect.SingleImage_2mpix ...
+[     DONE ] tivxSrvPointDetect.SingleImage_2mpix
+[ -------- ] 2 tests from test case tivxSrvPointDetect
+
+[ -------- ] tests from tivxSrvPoseEstimation
+[ RUN 0001 ] tivxSrvPoseEstimation.SingleImage ...
+[     DONE ] tivxSrvPoseEstimation.SingleImage
+[ RUN 0002 ] tivxSrvPoseEstimation.SingleImage_2mpix ...
+[     DONE ] tivxSrvPoseEstimation.SingleImage_2mpix
+[ -------- ] 2 tests from test case tivxSrvPoseEstimation
+
+[ -------- ] tests from tivxSrvGenerate3Dbowl
+[ RUN 0001 ] tivxSrvGenerate3Dbowl.Bowl_2mpix ...
+[     DONE ] tivxSrvGenerate3Dbowl.Bowl_2mpix
+[ -------- ] 1 tests from test case tivxSrvGenerate3Dbowl
+
+[ -------- ] tests from tivxSrvGenerateGpulut
+[ RUN 0001 ] tivxSrvGenerateGpulut.Bowl_2mpix ...
+[     DONE ] tivxSrvGenerateGpulut.Bowl_2mpix
+[ -------- ] 1 tests from test case tivxSrvGenerateGpulut
+
+[ -------- ] tests from tivxSrvBowlLutGenApplib
+[ RUN 0001 ] tivxSrvBowlLutGenApplib.Applib/0/srv_bowl_lut_gen ...
+Reading calmat file 
+file read completed 
+Reading gpulut file 
+file read completed 
+[     DONE ] tivxSrvBowlLutGenApplib.Applib/0/srv_bowl_lut_gen
+[ -------- ] 1 tests from test case tivxSrvBowlLutGenApplib
+
+[ -------- ] tests from tivxSrvCalibApplib
+[ RUN 0001 ] tivxSrvCalibApplib.Applib/0/srv_calib_applib ...
+[     DONE ] tivxSrvCalibApplib.Applib/0/srv_calib_applib
+[ RUN 0002 ] tivxSrvCalibApplib.Applib/1/srv_calib_applib ...
+[     DONE ] tivxSrvCalibApplib.Applib/1/srv_calib_applib
+[ -------- ] 2 tests from test case tivxSrvCalibApplib
+
+[ -------- ] tests from tivxHwaVpacVissAewb
+[ RUN 0001 ] tivxHwaVpacVissAewb.SingleChannel ...
+[MCU2_0]    249.406685 s:  VX_ZONE_WARNING:[tivxVpacVissCreate:365] VISS H3A output is not generated due to DCC not being enabled
+[     DONE ] tivxHwaVpacVissAewb.SingleChannel
+[ RUN 0002 ] tivxHwaVpacVissAewb.MultiChannel ...
+[MCU2_0]    249.474006 s:  VX_ZONE_WARNING:[tivxVpacVissCreate:365] VISS H3A output is not generated due to DCC not being enabled
+[MCU2_0]    249.493485 s:  VX_ZONE_WARNING:[tivxVpacVissCreate:365] VISS H3A output is not generated due to DCC not being enabled
+[MCU2_0]    249.495631 s:  VX_ZONE_WARNING:[tivxVpacVissCreate:365] VISS H3A output is not generated due to DCC not being enabled
+[MCU2_0]    249.497774 s:  VX_ZONE_WARNING:[tivxVpacVissCreate:365] VISS H3A output is not generated due to DCC not being enabled
+[     DONE ] tivxHwaVpacVissAewb.MultiChannel
+[ RUN 0003 ] tivxHwaVpacVissAewb.MultiChannelNullH3A ...
+[     DONE ] tivxHwaVpacVissAewb.MultiChannelNullH3A
+[ -------- ] 3 tests from test case tivxHwaVpacVissAewb
+
+[ ======== ]
+[ ALL DONE ] 12 test(s) from 7 test case(s) ran
+[ PASSED   ] 12 test(s)
+[ FAILED   ] 0 test(s)
+[ DISABLED ] 0 test(s)
+
+=================================
+OpenVX Conformance report summary
+=================================
+
+To be conformant to the OpenVX baseline, 12 required test(s) must pass. 12 tests passed, 0 tests failed. PASSED.
+To be conformant to the User Data Object extension, 0 required test(s) must pass. 0 tests passed, 0 tests failed. PASSED.
+Note: The 0 disabled tests are optional and are not considered for conformance.
+
+#REPORT: YYYYMMDDHHMMSS ALL 12 0 12 12 12 0 (version unknown)
+   249.735935 s:  VX_ZONE_INIT:[tivxHostDeInit:56] De-Initialization Done for HOST !!!
+   249.740249 s:  VX_ZONE_INIT:[tivxDeInit:111] De-Initialization Done !!!
+APP: Deinit ... !!!
+REMOTE_SERVICE: Deinit ... !!!
+REMOTE_SERVICE: Deinit ... Done !!!
+IPC: Deinit ... !!!
+IPC: DeInit ... Done !!!
+MEM: Deinit ... !!!
+MEM: Alloc's: 288 alloc's of 257042393 bytes 
+MEM: Free's : 288 free's  of 257042393 bytes 
+MEM: Open's : 0 allocs  of 0 bytes 
+MEM: Deinit ... Done !!!
+APP: Deinit ... Done !!!
+root@j7-evm:/opt/vision_apps# 

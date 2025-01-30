@@ -1,0 +1,87 @@
+var group__MCAL__ICU__API =
+[
+    [ "ICU Configuration", "group__MCAL__ICU__CFG.html", "group__MCAL__ICU__CFG" ],
+    [ "ICU Driver Interrupt Handlers", "group__MCAL__ICU__IRQ.html", "group__MCAL__ICU__IRQ" ],
+    [ "ICU_VENDOR_ID", "group__MCAL__ICU__API.html#ga057070a4a62795ff54e21021af83d227", null ],
+    [ "ICU_MODULE_ID", "group__MCAL__ICU__API.html#gafbf91ec816df5f4f2e45388537180c43", null ],
+    [ "ICU_INSTANCE_ID", "group__MCAL__ICU__API.html#gaf3d6f51f73b4c8db89b67bf19f80bb8e", null ],
+    [ "ICU_SW_MAJOR_VERSION", "group__MCAL__ICU__API.html#gaf8f1e5105986ee9e233601a64f525dfb", null ],
+    [ "ICU_SW_MINOR_VERSION", "group__MCAL__ICU__API.html#ga9246c123f98a9d985c40b39a49139f66", null ],
+    [ "ICU_SW_PATCH_VERSION", "group__MCAL__ICU__API.html#gaba103859e94666825f7b6b4695ea55aa", null ],
+    [ "ICU_AR_RELEASE_MAJOR_VERSION", "group__MCAL__ICU__API.html#ga17b05f3ec7e2cb4c17cb8b84ba588b49", null ],
+    [ "ICU_AR_RELEASE_MINOR_VERSION", "group__MCAL__ICU__API.html#ga96fa8a905e6543838ae7622c73cf8b25", null ],
+    [ "ICU_AR_RELEASE_REVISION_VERSION", "group__MCAL__ICU__API.html#gad30a15cb4d3e390a66ae96222e87e8bb", null ],
+    [ "ICU_INIT_ID", "group__MCAL__ICU__API.html#ga2e580648eab87592c9b9753cdda420be", null ],
+    [ "ICU_DEINIT_ID", "group__MCAL__ICU__API.html#ga8122cef479f25e39ff5364a027596994", null ],
+    [ "ICU_SETMODE_ID", "group__MCAL__ICU__API.html#ga5fb84c7f6c135531d7908af46562a0c4", null ],
+    [ "ICU_SETACTIVATIONCONDITION_ID", "group__MCAL__ICU__API.html#ga4f369791828ec249217fee835a20cfcb", null ],
+    [ "ICU_DISABLENOTIFICATION_ID", "group__MCAL__ICU__API.html#ga280b6cbe307b3a9bc9cd32ce02beb8aa", null ],
+    [ "ICU_ENABLENOTIFICATION_ID", "group__MCAL__ICU__API.html#ga06658cc1d29383eda8a1889e3465d9b2", null ],
+    [ "ICU_GETINPUTSTATE_ID", "group__MCAL__ICU__API.html#ga65b60003fed76ec986680fcceae46361", null ],
+    [ "ICU_STARTTIMESTAMP_ID", "group__MCAL__ICU__API.html#gad5f7ac86ce9ce67ea49c02f87d2a85ee", null ],
+    [ "ICU_STOPTIMESTAMP_ID", "group__MCAL__ICU__API.html#gaab1d888f22de482b4490d25e36e13c35", null ],
+    [ "ICU_GETTIMESTAMPINDEX_ID", "group__MCAL__ICU__API.html#gaf1d0ae69ccd3b82b8774d5d61cb6c9c8", null ],
+    [ "ICU_RESETEDGECOUNT_ID", "group__MCAL__ICU__API.html#ga286a6107731aad11becf553884d8a65d", null ],
+    [ "ICU_ENABLEEDGECOUNT_ID", "group__MCAL__ICU__API.html#ga6bf2f5c20a87394b18293feb53068b24", null ],
+    [ "ICU_ENABLEEDGEDETECTION_ID", "group__MCAL__ICU__API.html#ga3ff55a38defd08bc007e6c1d6161d1cb", null ],
+    [ "ICU_DISABLEEDGEDETECTION_ID", "group__MCAL__ICU__API.html#gad0335ad920bd8aa1b34df651dbe8352f", null ],
+    [ "ICU_DISABLEEDGECOUNT_ID", "group__MCAL__ICU__API.html#ga961de2a745c5c59a7b374c2a56528c1e", null ],
+    [ "ICU_GETEDGENUMBERS_ID", "group__MCAL__ICU__API.html#ga342efc6fe223dfbbe1b9d5acf24513bd", null ],
+    [ "ICU_STARTSIGNALMEASUREMENT_ID", "group__MCAL__ICU__API.html#gaefc190d2369af534f0eae50f6a66cf98", null ],
+    [ "ICU_STOPSIGNALMEASUREMENT_ID", "group__MCAL__ICU__API.html#gae2f4125df68ea1a1c2092f582e265bda", null ],
+    [ "ICU_GETTIMEELAPSED_ID", "group__MCAL__ICU__API.html#ga678325a9ff3399fbfd18f7a85ceaa7b1", null ],
+    [ "ICU_GETDUTYCYCLEVALUES_ID", "group__MCAL__ICU__API.html#ga82ecf3b29535a6640f21049e4ab48394", null ],
+    [ "ICU_GETVERSIONINFO_ID", "group__MCAL__ICU__API.html#gad3853f89993b8f86247b61383897ae30", null ],
+    [ "ICU_SID_REGISTER_READBACK", "group__MCAL__ICU__API.html#ga50039701e4be0b727878b526f098c10a", null ],
+    [ "ICU_E_PARAM_POINTER", "group__MCAL__ICU__API.html#ga305fc3efac7c630d4a9df8524d05fc41", null ],
+    [ "ICU_E_PARAM_CHANNEL", "group__MCAL__ICU__API.html#ga32d610e953363e52b3559b5458d540dd", null ],
+    [ "ICU_E_PARAM_ACTIVATION", "group__MCAL__ICU__API.html#ga0aa83fa99a4ff74dc1b05a784d6eccdc", null ],
+    [ "ICU_E_INIT_FAILED", "group__MCAL__ICU__API.html#ga9b3e6c0db6416632afec9b7a896253a4", null ],
+    [ "ICU_E_PARAM_BUFFER_SIZE", "group__MCAL__ICU__API.html#ga6315d9a1b4ccbda0ed412ee62af8d1bf", null ],
+    [ "ICU_E_PARAM_MODE", "group__MCAL__ICU__API.html#ga5311d813b7f2d1cfd827586f39a70992", null ],
+    [ "ICU_E_UNINIT", "group__MCAL__ICU__API.html#ga634f2f74709679ac0689a8cac14c7e40", null ],
+    [ "ICU_E_NOT_STARTED", "group__MCAL__ICU__API.html#ga4373ba9ed082432503d41ae7bb6c040e", null ],
+    [ "ICU_E_BUSY_OPERATION", "group__MCAL__ICU__API.html#ga91c1f20206041caa09044abde6f26f52", null ],
+    [ "ICU_E_ALREADY_INITIALIZED", "group__MCAL__ICU__API.html#gad16d5f034bd60d535297daeafebe64f3", null ],
+    [ "ICU_E_PARAM_NOTIFY_INTERVAL", "group__MCAL__ICU__API.html#ga0635eba3d3a1352a91c5eaa1350af82c", null ],
+    [ "ICU_E_PARAM_VINFO", "group__MCAL__ICU__API.html#gaec5c6b540a3f65b5fb8b305f93fa0a60", null ],
+    [ "ICU_STATUS_UNINIT", "group__MCAL__ICU__API.html#gae944f67a3c2bc2bf26f5768fd7ffc097", null ],
+    [ "ICU_STATUS_INIT", "group__MCAL__ICU__API.html#gacd2266efd3009cd0b0cf068419c1d284", null ],
+    [ "ICU_FALLING", "group__MCAL__ICU__API.html#gaaea48e14e474cb975a418ee2ef2f4c25", null ],
+    [ "ICU_RISING", "group__MCAL__ICU__API.html#ga9aa842f2433f2347659e2805aced5776", null ],
+    [ "Icu_ValueType", "group__MCAL__ICU__API.html#ga8f5117c645a6d19baf4046fa3f8f579a", null ],
+    [ "Icu_IndexType", "group__MCAL__ICU__API.html#gaf63710f8a03ac32d50ca215476b4192b", null ],
+    [ "Icu_EdgeNumberType", "group__MCAL__ICU__API.html#ga630fe0de53b50aac1c7a74d4528a11a5", null ],
+    [ "Icu_NotifyFuncType", "group__MCAL__ICU__API.html#gae57f75d2205e4e53baad452df62da519", null ],
+    [ "Icu_ChannelType", "group__MCAL__ICU__API.html#gaa29803b25886a9e870d4da8f82c4a92b", null ],
+    [ "Icu_ChannelPrescalerType", "group__MCAL__ICU__API.html#gac4b52a0a9a950b60199800dd88ef4568", null ],
+    [ "Icu_ModeType", "group__MCAL__ICU__API.html#ga21b0035b5da07687050c3cdcfc617f79", [
+      [ "ICU_MODE_NORMAL", "group__MCAL__ICU__CFG.html#gga21b0035b5da07687050c3cdcfc617f79aa180564f1c05943505f8145c865c826a", null ],
+      [ "ICU_MODE_SLEEP", "group__MCAL__ICU__CFG.html#gga21b0035b5da07687050c3cdcfc617f79a6104b4b7993e452f60a16c07c44bcfab", null ]
+    ] ],
+    [ "Icu_InputStateType", "group__MCAL__ICU__API.html#ga1aaa5f33692b085f6e133947e5b2a5e8", [
+      [ "ICU_ACTIVE", "group__MCAL__ICU__CFG.html#gga1aaa5f33692b085f6e133947e5b2a5e8a937f683aadda671213ca92bd07579814", null ],
+      [ "ICU_IDLE", "group__MCAL__ICU__CFG.html#gga1aaa5f33692b085f6e133947e5b2a5e8ad02b1dd54aaa23e099ba0790deafe023", null ]
+    ] ],
+    [ "Icu_ActivationType", "group__MCAL__ICU__API.html#ga00aa4bd32417e2f74f28a3b20b47d5f0", [
+      [ "ICU_RISING_EDGE", "group__MCAL__ICU__CFG.html#gga00aa4bd32417e2f74f28a3b20b47d5f0a3493b1d28ecd3a764c85765f92011516", null ],
+      [ "ICU_FALLING_EDGE", "group__MCAL__ICU__CFG.html#gga00aa4bd32417e2f74f28a3b20b47d5f0a93337e7e722ca7e24f28747e5b785cec", null ],
+      [ "ICU_BOTH_EDGES", "group__MCAL__ICU__CFG.html#gga00aa4bd32417e2f74f28a3b20b47d5f0aeef151dff18253f547400f214be9a7f8", null ]
+    ] ],
+    [ "Icu_MeasurementModeType", "group__MCAL__ICU__API.html#ga59fbcb3ef95add127c6960853bacf1b4", [
+      [ "ICU_MODE_SIGNAL_EDGE_DETECT", "group__MCAL__ICU__CFG.html#gga59fbcb3ef95add127c6960853bacf1b4a5c436cf20781946f6a4727b3840a79de", null ],
+      [ "ICU_MODE_SIGNAL_MEASUREMENT", "group__MCAL__ICU__CFG.html#gga59fbcb3ef95add127c6960853bacf1b4a83190fb4722a60da299ca2bcbc2e26c8", null ],
+      [ "ICU_MODE_TIMESTAMP", "group__MCAL__ICU__CFG.html#gga59fbcb3ef95add127c6960853bacf1b4a7ad59dbfbd3e4fd4db4045141959f881", null ],
+      [ "ICU_MODE_EDGE_COUNTER", "group__MCAL__ICU__CFG.html#gga59fbcb3ef95add127c6960853bacf1b4a22c8dfb3c8f2ee839c195d1fc21ff7c0", null ]
+    ] ],
+    [ "Icu_SignalMeasurementPropertyType", "group__MCAL__ICU__API.html#ga83513d38f0b24d642a1cd8cf6c88cd31", [
+      [ "ICU_LOW_TIME", "group__MCAL__ICU__CFG.html#gga83513d38f0b24d642a1cd8cf6c88cd31aecc80f0bdb823730f0988c1b324c52f1", null ],
+      [ "ICU_HIGH_TIME", "group__MCAL__ICU__CFG.html#gga83513d38f0b24d642a1cd8cf6c88cd31a5f08fb2da47526b5bdcb18916913f894", null ],
+      [ "ICU_PERIOD_TIME", "group__MCAL__ICU__CFG.html#gga83513d38f0b24d642a1cd8cf6c88cd31ab94835cd66894cd9b4c94c515278b6fa", null ],
+      [ "ICU_DUTY_CYCLE", "group__MCAL__ICU__CFG.html#gga83513d38f0b24d642a1cd8cf6c88cd31adf2a0c1a636c718b002f43659cb81da4", null ]
+    ] ],
+    [ "Icu_TimestampBufferType", "group__MCAL__ICU__API.html#ga07402d6dd3279b4f5662a7f055b69a60", [
+      [ "ICU_LINEAR_BUFFER", "group__MCAL__ICU__CFG.html#gga07402d6dd3279b4f5662a7f055b69a60a3a084d0a859a25758a90487bade225a2", null ],
+      [ "ICU_CIRCULAR_BUFFER", "group__MCAL__ICU__CFG.html#gga07402d6dd3279b4f5662a7f055b69a60a545c3f8ace7be571e28fe89184c0faf4", null ]
+    ] ]
+];

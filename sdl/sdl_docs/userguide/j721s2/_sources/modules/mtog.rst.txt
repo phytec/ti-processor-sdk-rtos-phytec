@@ -1,0 +1,113 @@
+MTOG : Master Time-Out Gasket
+=============================
+
+Introduction
+------------
+
+The Interconnect Isolation Gasket is a TI proprietary IP that is used to prevent a hang caused by master, which can hold up the interconnect and terminate such a transaction safely. It tracks transactions, and times out if outstanding too long, and reports the error via interrupt that can be monitored.
+
+The MTOGs help to achieve Freedom From Interference by monitoring the various VBUS transactions and providing a way to detect any errors, and helping to avoid the bus to be locked up due to a transaction error.
+
+These MTOGs have the following functions, to avoid these concerns:
+
+* Monitors various VBUS transaction and provide a way to detect errors
+* Helps avoid the bus to be locked up due to a transaction in error.
+
+Each of the Master Timeout gaskets can be programmed to a specific timeout and any transaction exceeding the timeout will result in all requests are blocked, readies are set high from the master. Once all transactions are returned, the gasket indicates idle. This will also result in an error event triggered through ESM, which will in turn can be programmed to interrupt the CPU.
+
+In addition the master timeout gasket can be stopped, started and reset at anytime.
+
+Safety diagnostics are provided for MTOG module through API's
+
+* Configure the MTOG
+* Read the static registers
+* Verify the written configuration
+
+.. ifconfig:: CONFIG_family in ('j7200')
+
+    J7200 supports 16 instances on the device.
+
+.. ifconfig:: CONFIG_family in ('j721s2')
+
+    J7200 supports 24 instances on the device.
+
+Example Usage
+-------------
+
+The following shows an example of SDL MTOG API usage by the application to set up the MTOG for monitoring for events. Events can be monitored by enabling the events in the associated ESM instance.
+
+Configure a MTOG instance with a timeout value
+
+    .. code:: bash
+
+        SDL_MTOG_Inst instance;
+        SDL_MTOG_config cfg;
+        int32_t status;
+
+        cfg.timeOut = MTOG_TEST_TIMEOUTVAL;
+
+        status = SDL_MTOG_init(instance, &cfg);
+        if (status != SDL_PASS)
+        {
+            // init failed
+        }
+
+Start the MTOG
+
+    .. code:: bash
+
+        /* Call SDL API to enable Master Timeout Gasket */
+        status = SDL_MTOG_start(instance);
+        if (status != SDL_PASS)
+        {
+            // start failed
+        }
+
+Inject error in the MTOG
+
+    .. code:: bash
+
+        /* Call SDL API to inject error by forcing timeout */
+        status = SDL_MTOG_forceTimeout(instance);
+        if (status != SDL_PASS)
+        {
+            // start failed
+        }
+
+Reset the MTOG
+
+    .. code:: bash
+
+        /* Reset the Master Timeout gasket when error occurs*/
+        SDL_MTOG_reset( instance );
+
+Stop the MTOG
+
+    .. code:: bash
+
+        /* Disable the Master Timeout gasket */
+        SDL_MTOG_Inst instance;
+
+        SDL_MTOG_stop(instance);
+
+      
+Examples
+--------
+
+The MTOG module provide a Safety Example to show how to use MTOG with error injection and testing for error response, and also ESM application callback usage.
+
+Test apps that are meant for verifying the functionality of the module are also provided.
+
++---------------------+--------------------------------------------------------+--------------------------------------+------------------------------------------+
+| Test App Name       | Description                                            | Location                             | Build Command                            |
++=====================+========================================================+======================================+==========================================+
+| mtog_test_app       | - Configures the timeout                               |                                      |                                          |
+|                     | - Triggers the error events                            | [sdl_install_dir]/test/mtog          | make mtog_test_app PROFILE=release       |
+|                     | - Checks for error response                            |                                      |                                          |
++---------------------+--------------------------------------------------------+--------------------------------------+------------------------------------------+
+
+
+API
+---
+
+|__MTOG_API_LNK__|

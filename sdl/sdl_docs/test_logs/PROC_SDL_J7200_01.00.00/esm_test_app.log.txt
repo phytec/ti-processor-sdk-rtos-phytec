@@ -1,0 +1,21 @@
+ ESM Test Application
+
+sdl_Esm_posTest: Init WKUP ESM complete
+
+sdlEsm_pos_apiTest: Init WKUP ESM complete
+
+ESM_ECC_Example_init: Init MAIN ESM complete
+
+ ESM inject: test starting for Esm instance 3
+  ESM Call back function called : instType 0x3, intType 0x1, grpChannel 0x3, index 0x0, intSrc 0x60
+  Take action
+
+ ESM inject test for Esm instance 3 DoneTest Name: ESM POSITIVE TEST  PASSED
+Test Name: ESM NEGATIVE TEST  PASSED
+
+ All tests have passed.
+esm_unit_test/esm_test_main.c:208:test_sdl_esm_baremetal_test_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored
+OK

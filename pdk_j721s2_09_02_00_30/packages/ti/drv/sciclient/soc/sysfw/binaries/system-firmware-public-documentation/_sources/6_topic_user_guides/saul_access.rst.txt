@@ -1,0 +1,147 @@
+=============================
+SAUL Access Outside of SYSFW
+=============================
+
+This guide describes which cryptographic accelerator features are available for
+access outside of |sysfw| and how host software may gain access to the its
+resources.
+
+Introduction
+============
+
+SAUL is the crypto accelerator subsystem in TIs K3 family of devices. Each SoC
+has one or more instances of this subsystem. On High Secure (HS) devices,
+portions of an SAUL subsystem are dedicated to support authentication and
+decryption services in |sysfw|, while other portions are freely avable for host
+software to access. |sysfw| does not use any SAUL resources on General Purpose
+(GP) devices, and on HS devices with multiple SAUL instances |sysfw| does not
+use the resources on the additional instances. For example:
+
+SA2UL
+-----
+
++--------+---------------------------+-----------------------------+-------------------------+-----------------------+
+| SoC    | Number of SA2UL instances | Device                      | Used by System Firmware | Host access available |
++========+===========================+=============================+=========================+=======================+
+| am64x  | 1                         | AM64X_DEV_SA2_UL0           | Yes                     | Limited               |
++--------+---------------------------+-----------------------------+-------------------------+-----------------------+
+| am65x  | 1                         | AM6_DEV_SA2_UL0             | Yes                     | Limited               |
++--------+---------------------------+-----------------------------+-------------------------+-----------------------+
+| j721e  | 2                         | J721E_DEV_MCU_SA2_UL0       | Yes                     | Limited               |
+|        |                           +-----------------------------+-------------------------+-----------------------+
+|        |                           | J721E_DEV_SA2_UL0           | No                      | Yes                   |
++--------+---------------------------+-----------------------------+-------------------------+-----------------------+
+| j721s2 | 2                         | J721S2_DEV_SA2_CPSW_PSILSS0 | No                      | Yes                   |
+|        |                           +-----------------------------+-------------------------+-----------------------+
+|        |                           | J721S2_DEV_SA2_UL0          | No                      | Yes                   |
++--------+---------------------------+-----------------------------+-------------------------+-----------------------+
+| j784s4 | 2                         | J784S4_DEV_SA2_CPSW_PSILSS0 | No                      | Yes                   |
+|        |                           +-----------------------------+-------------------------+-----------------------+
+|        |                           | J784S4_DEV_SA2_UL0          | No                      | Yes                   |
++--------+---------------------------+-----------------------------+-------------------------+-----------------------+
+| j7200  | 1                         | J7200_DEV_MCU_SA2_UL0       | Yes                     | Limited               |
++--------+---------------------------+-----------------------------+-------------------------+-----------------------+
+
+SA3UL
+-----
+
++--------+---------------------------+-------------------------+-----------------------+
+| SoC    | Number of SA3UL instances | Used by System Firmware | Host access available |
++========+===========================+=========================+=======================+
+| am62ax | 1                         | Yes                     | No                    |
++--------+---------------------------+-------------------------+-----------------------+
+| am62x  | 1                         | Yes                     | No                    |
++--------+---------------------------+-------------------------+-----------------------+
+| j721s2 | 1                         | Yes                     | No                    |
++--------+---------------------------+-------------------------+-----------------------+
+| j784s4 | 1                         | Yes                     | No                    |
++--------+---------------------------+-------------------------+-----------------------+
+
+.. note::
+
+   This does not cover the overview of SAUL or its functional description -
+   please refer to the device TRM for further details.
+
+.. _pub_ug_saul_resources:
+
+SAUL Resource Availability
+===========================
+
+The following table describes the access policies for all SAUL instances on GP
+and HS devices
+
++----------------+----------------+--------------------------------------------+------------------------------------------------+
+| Resource       | SAUL instance  | GP Policy                                  | HS Policy                                      | 
++================+================+============================================+================================================+
+| Control MMR    | Primary        | Open Access                                | **Read-only access**                           |
+|                +----------------+                                            +------------------------------------------------+
+|                | Others         |                                            | Open Access                                    |
++----------------+----------------+--------------------------------------------+------------------------------------------------+
+| MMRA           | Primary        | Open Access                                | **Reserved for System Firmware.**              |
+|                |                |                                            | System Firmware enables all engines at device  |
+|                |                |                                            | boot. Software must confirm engine status from |
+|                |                |                                            | base control MMR.                              |
+|                +----------------+                                            +------------------------------------------------+
+|                | Others         |                                            | Open Access                                    |
++----------------+----------------+--------------------------------------------+------------------------------------------------+
+| ECC Aggregator | Primary        | Open Access                                | Open Access                                    |
+| MMR (for SAUL  +----------------+                                            |                                                |
+| memories)      | Others         |                                            |                                                |
++----------------+----------------+--------------------------------------------+------------------------------------------------+
+| TRNG MMR       | Primary        | Open Access. Engine must be enabled by     | Open access. Engine is enabled indefinitely by |
+|                |                | host software.                             | System Firmware and cannot be modified.        |
+|                +----------------+                                            +------------------------------------------------+
+|                | Others         |                                            | Open Access. Engine must be enabled by         |
+|                |                |                                            | host software.                                 |
++----------------+----------------+--------------------------------------------+------------------------------------------------+
+| PKA MMR        | Primary        | Open Access. Engine must be enabled by     | **Reserved for System Firmware.**              |
+|                |                | host software.                             | Not availablere for host access.               |
+|                +----------------+                                            +------------------------------------------------+
+|                | Others         |                                            | Open Access. Engine must be enabled by         |
+|                |                |                                            | host software.                                 |
++----------------+----------------+--------------------------------------------+------------------------------------------------+
+| PSIL Threads   | Primary        | Full access to all threads 0:M-1 and 0:N-1,| **System Firmware owns secure threads: ingress |
+|                |                | where M refers to the total number of      | thread 0, egress thread 0,1**. Open access to  |
+|                |                | ingress threads and N refers to the total  | ingress thread **1:M-1** and egress threads    |
+|                |                | egress threads (M * 2 = N). All related    | **2:N-1** only.                                |
+|                |                | engines must beenabled by host software.   |                                                |
+|                +----------------+                                            +------------------------------------------------+
+|                | Others         |                                            | Open Access to all threads. All related        |
+|                |                |                                            | engines must be enabled by host software.      |
++----------------+----------------+--------------------------------------------+------------------------------------------------+
+
+Resource Access
+---------------
+
+Resources listed as open to host software may be accessed through various API
+available in |sysfw|
+
+**MMR access**
+
+Open MMR regions can be accessed as follows:
+
+* On GP devices, MMRs are open for read/write at device boot
+
+* On HS devices, MMRs are behind unowned firewall regions and configured for
+  read/write access by all initiators (wildcard access). Permissions can be
+  updated through :ref:`TISCI_MSG_SET_FWL_REGION <set-firewall-region>` API.
+  Firewall ownership can be transitioned by :ref:`TISCI_MSG_CHANGE_FWL_OWNER
+  <change-firewall-owner>` API in case the host would like to enforce stricter
+  control access to the module.
+
+  * TRNG values may be used for deriving sensitive data (e.g. key generation).
+    Host software may claim firewall ownership and restrict all read/write
+    permissions to just itself in order to prevent eavesdroppers from obtaining
+    the TRNG values. The host can then choose to release the firewall ownership
+    by setting the owner back to none if other hosts require direct access to
+    the module.
+
+Read-only regions are owned by |sysfw| and have permissions set up such that all
+hosts may read the MMR.
+
+**PSIL thread access**
+
+All PSIL thread pairing and unpairing is performed by the
+:ref:`TISCI_MSG_RM_PSIL_PAIR <pub_rm_public_psil_pair>` and
+:ref:`TISCI_MSG_RM_PSIL_WRITE <pub_rm_public_psil_write>` API.
+

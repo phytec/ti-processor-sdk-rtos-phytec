@@ -1,0 +1,122 @@
+/**
+ * These arguments were used when this file was generated. They will be automatically applied on subsequent loads
+ * via the GUI or CLI. Run CLI with '--help' for additional information on how to override these arguments.
+ * @cliArgs --device "AM62x" --package "ALW" --part "Default" --context "r5fss0-0" --product "MCU_PLUS_SDK_AM62x@08.04.00"
+ * @versions {"tool":"1.12.1+2446"}
+ */
+
+/**
+ * Import the modules used in this configuration.
+ */
+const i2c             = scripting.addModule("/drivers/i2c/i2c", {}, false);
+const i2c1            = i2c.addInstance();
+const addr_translate  = scripting.addModule("/kernel/dpl/addr_translate", {}, false);
+const addr_translate1 = addr_translate.addInstance();
+const clock           = scripting.addModule("/kernel/dpl/clock");
+const debug_log       = scripting.addModule("/kernel/dpl/debug_log");
+const mpu_armv7       = scripting.addModule("/kernel/dpl/mpu_armv7", {}, false);
+const mpu_armv71      = mpu_armv7.addInstance();
+const mpu_armv72      = mpu_armv7.addInstance();
+const mpu_armv73      = mpu_armv7.addInstance();
+const mpu_armv74      = mpu_armv7.addInstance();
+const mpu_armv75      = mpu_armv7.addInstance();
+const mpu_armv76      = mpu_armv7.addInstance();
+const mpu_armv77      = mpu_armv7.addInstance();
+const mpu_armv78      = mpu_armv7.addInstance();
+
+/**
+ * Write custom configuration values to the imported modules.
+ */
+i2c1.$name = "CONFIG_I2C0";
+
+addr_translate1.$name      = "CONFIG_ADDR_TRANSLATE_REGION0";
+addr_translate1.localAddr  = 0x80000000;
+addr_translate1.systemAddr = 0x80000000;
+
+clock.instance = "TIMER1";
+
+debug_log.enableUartLog                   = true;
+debug_log.uartLog.$name                   = "CONFIG_UART0";
+debug_log.uartLog.useMcuDomainPeripherals = true;
+debug_log.uartLog.MCU_UART.$assign        = "MCU_USART0";
+
+mpu_armv71.$name             = "CONFIG_MPU_REGION0";
+mpu_armv71.accessPermissions = "Supervisor RD+WR, User RD";
+mpu_armv71.allowExecute      = false;
+mpu_armv71.attributes        = "Device";
+
+mpu_armv72.$name             = "CONFIG_MPU_REGION1";
+mpu_armv72.accessPermissions = "Supervisor RD+WR, User RD";
+mpu_armv72.size              = 7;
+
+mpu_armv73.$name             = "CONFIG_MPU_REGION2";
+mpu_armv73.accessPermissions = "Supervisor RD+WR, User RD";
+mpu_armv73.baseAddr          = 0x41C00000;
+mpu_armv73.size              = 19;
+
+mpu_armv74.$name             = "CONFIG_MPU_REGION3";
+mpu_armv74.accessPermissions = "Supervisor RD+WR, User RD";
+mpu_armv74.baseAddr          = 0x70000000;
+mpu_armv74.size              = 16;
+
+mpu_armv75.$name    = "CONFIG_MPU_REGION4";
+mpu_armv75.baseAddr = 0x80000000;
+mpu_armv75.size     = 31;
+
+mpu_armv76.$name      = "CONFIG_MPU_REGION5";
+mpu_armv76.baseAddr   = 0x41010000;
+mpu_armv76.size       = 15;
+mpu_armv76.attributes = "NonCached";
+
+mpu_armv77.$name      = "CONFIG_MPU_REGION6";
+mpu_armv77.size       = 15;
+mpu_armv77.attributes = "NonCached";
+
+mpu_armv78.$name    = "CONFIG_MPU_REGION8";
+mpu_armv78.baseAddr = 0x43C00000;
+mpu_armv78.size     = 18;
+
+/**
+ * These are the reserved peripherals and settings in this configuration
+ */
+const iRGMII1   = scripting.addPeripheral("RGMII");
+iRGMII1.$name   = "EthernetPHY1";
+iRGMII1.$assign = "RGMII1";
+const iRGMII2   = scripting.addPeripheral("RGMII");
+iRGMII2.$name   = "EthernetPHY2";
+iRGMII2.$assign = "RGMII2";
+
+/**
+ * Pinmux solution for unlocked pins/peripherals. This ensures that minor changes to the automatic solver in a future
+ * version of the tool will not impact the pinmux you originally saw.  These lines can be completely deleted in order to
+ * re-solve from scratch.
+ */
+i2c1.WKUP_I2C.$suggestSolution                  = "WKUP_I2C0";
+i2c1.WKUP_I2C.SCL.$suggestSolution              = "ball.B9";
+i2c1.WKUP_I2C.SDA.$suggestSolution              = "ball.A9";
+debug_log.uartLog.MCU_UART.RXD.$suggestSolution = "ball.B5";
+debug_log.uartLog.MCU_UART.TXD.$suggestSolution = "ball.A5";
+iRGMII1.RD0.$suggestSolution                    = "ball.AB17";
+iRGMII1.RD1.$suggestSolution                    = "ball.AC17";
+iRGMII1.RD2.$suggestSolution                    = "ball.AB16";
+iRGMII1.RD3.$suggestSolution                    = "ball.AA15";
+iRGMII1.RXC.$suggestSolution                    = "ball.AD17";
+iRGMII1.RX_CTL.$suggestSolution                 = "ball.AE17";
+iRGMII1.TD0.$suggestSolution                    = "ball.AE20";
+iRGMII1.TD1.$suggestSolution                    = "ball.AD20";
+iRGMII1.TD2.$suggestSolution                    = "ball.AE18";
+iRGMII1.TD3.$suggestSolution                    = "ball.AD18";
+iRGMII1.TXC.$suggestSolution                    = "ball.AE19";
+iRGMII1.TX_CTL.$suggestSolution                 = "ball.AD19";
+iRGMII2.RD0.$suggestSolution                    = "ball.AE23";
+iRGMII2.RD1.$suggestSolution                    = "ball.AB20";
+iRGMII2.RD2.$suggestSolution                    = "ball.AC21";
+iRGMII2.RD3.$suggestSolution                    = "ball.AE22";
+iRGMII2.RXC.$suggestSolution                    = "ball.AD23";
+iRGMII2.RX_CTL.$suggestSolution                 = "ball.AD22";
+iRGMII2.TD0.$suggestSolution                    = "ball.Y18";
+iRGMII2.TD1.$suggestSolution                    = "ball.AA18";
+iRGMII2.TD2.$suggestSolution                    = "ball.AD21";
+iRGMII2.TD3.$suggestSolution                    = "ball.AC20";
+iRGMII2.TXC.$suggestSolution                    = "ball.AE21";
+iRGMII2.TX_CTL.$suggestSolution                 = "ball.AA19";

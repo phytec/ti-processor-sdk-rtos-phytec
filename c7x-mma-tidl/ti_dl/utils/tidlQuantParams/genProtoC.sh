@@ -1,0 +1,1 @@
+<path_to_protobuf>/protobuf-3.11.3/src/protoc --proto_path=. --cpp_out=. tidl_quant_params.proto

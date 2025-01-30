@@ -1,0 +1,65 @@
+DCC Example Test Application
+
+DCC_Test_init: Init MCU ESM complete
+
+
+SDL DCC EXAMPLE TEST: Start UC-4
+
+INSTANCE: MCU_DCC0
+
+Source clock: HFOSC0
+
+Test clock source: CBASS
+SDL DCC EXAMPLE TEST: Seed values calculation done.
+SDL DCC EXAMPLE TEST: DCC configured
+SDL DCC EXAMPLE TEST: Enabling DCC and waiting for completion interrupt
+SDL DCC EXAMPLE TEST: DCC Generated completion interrupt
+SDL DCC EXAMPLE TEST: No Clock Drift was observed
+
+Test clock source: MCAN
+SDL DCC EXAMPLE TEST: Seed values calculation done.
+SDL DCC EXAMPLE TEST: DCC configured
+SDL DCC EXAMPLE TEST: Enabling DCC and waiting for completion interrupt
+SDL DCC EXAMPLE TEST: DCC Generated completion interrupt
+SDL DCC EXAMPLE TEST: No Clock Drift was observed
+
+Test clock source: ADC
+SDL DCC EXAMPLE TEST: Seed values calculation done.
+SDL DCC EXAMPLE TEST: DCC configured
+SDL DCC EXAMPLE TEST: Enabling DCC and waiting for completion interrupt
+SDL DCC EXAMPLE TEST: DCC Generated completion interrupt
+SDL DCC EXAMPLE TEST: No Clock Drift was observed
+
+
+
+
+SDL DCC EXAMPLE TEST: Start UC-2
+
+INSTANCE: MCU_DCC0
+
+Source clock: RC OSC
+
+Test clock source: CBASS
+SDL DCC EXAMPLE TEST: Seed values calculation done.
+SDL DCC EXAMPLE TEST: DCC configured
+SDL DCC EXAMPLE TEST: Enabling DCC and waiting for completion interrupt
+SDL DCC EXAMPLE TEST: DCC Generated completion interrupt
+SDL DCC EXAMPLE TEST: No Clock Drift was observed
+
+Test clock source: MCAN
+SDL DCC EXAMPLE TEST: Seed values calculation done.
+SDL DCC EXAMPLE TEST: DCC configured
+SDL DCC EXAMPLE TEST: Enabling DCC and waiting for completion interrupt
+SDL DCC EXAMPLE TEST: DCC Generated completion interrupt
+SDL DCC EXAMPLE TEST: No Clock Drift was observed
+
+Test clock source: ADC
+SDL DCC EXAMPLE TEST: Seed values calculation done.
+SDL DCC EXAMPLE TEST: DCC configured
+SDL DCC EXAMPLE TEST: Enabling DCC and waiting for completion interrupt
+SDL DCC EXAMPLE TEST: DCC Generated completion interrupt
+SDL DCC EXAMPLE TEST: No Clock Drift was observed
+
+Test Name: DCC EXAMPLE TEST  PASSED
+
+ All tests have passed.

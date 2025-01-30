@@ -1,0 +1,105 @@
+
+Overview
+^^^^^^^^
+
+Introduction
+============
+
+The |__PART_FAMILY_NAME__| family of SoC’s provides various safety mechanisms and features, as well as recommendations for usage of these safety mechanisms and features. The Software Diagnostic Library (SDL) provides interfaces to these safety mechanisms and features. The provides these interfaces to assist in the development of software applications involving Functional Safety.
+
+In an application involving functional safety, the detection of random hardware faults and ability to take the appropriate response to get the system to a safe state is of utmost importance. Methods to detect and respond to faults in a system are called functional safety mechanisms or safety functions. Examples of safety mechanisms available on an SoC include error correction/detection (ECC) on memory regions, Error Signaling Module (ESM) to monitor error events, etc.
+
+The safety-critical processor product family provides various hardware functional safety mechanisms. For example, this software release provides an API to configure ECC and a reference example to set up interrupts to check on ECC error events detected by hardware. Overall, the system integrator can use this API and implement software diagnostics to meet the safety system goals.
+
+The user of this document should have a general familiarity with the safety-critical processor family.
+
+The Software Diagnostics Library consists of different blocks for Error Capture and Safety Mechanisms. Error response is managed by the Application based on the device Safety Manual requirements. The interface for the Application is in the form of software APIs. The following diagram shows the high-level blocks of the SDL as well as the overall system. The application may use either no OS or an OS. In the diagram an OS is shown as an example only. This is an overview and doesn't list all the IPs supported as part of the SDL.
+
+In the following diagram, the green blocks represent the scope of the SDL. The dark blue is the application, and the light blue represents external modules used by the application along with SDL.
+
+.. ifconfig:: CONFIG_family in ('j721e')
+
+   .. figure:: ../images/SDL_architecture.png
+
+      SDL Architecture
+
+.. ifconfig:: CONFIG_family in ('j7200')
+
+   .. figure:: ../images/SDL_architecture.png
+
+      SDL Architecture
+
+.. ifconfig:: CONFIG_family in ('j721s2')
+
+   .. figure:: ../images/SDL_architecture.png
+
+      SDL Architecture
+
+.. ifconfig:: CONFIG_family in ('j784s4')
+
+   .. figure:: ../images/SDL_architecture_J784S4.png
+
+      SDL Architecture	  
+
+The Software Diagnostics Library provides the functionality for implementing hardware safety mechanisms that can be run during the various operation modes of the device. The functions of the SDL which are used by the application during the various modes are as follows:
+
+* Startup of device
+
+ * Self-test diagnostics to verify correct operation of the device
+ * SDL APIs to initialize continuous diagnostics 
+
+* Runtime
+
+  * Notification of errors detected by the continuous diagnostics through the ESM handler
+  * SDL APIs to execute periodic diagnostics 
+
+
+Technical Support
+=================
+
++--------------------------------+--------------------------------------------------------------------------------------------------+
+| .. Image:: ../images/e2e.jpg   | For technical support please post your questions at `http://e2e.ti.com <http://e2e.ti.com/>`__.  |
++--------------------------------+--------------------------------------------------------------------------------------------------+
+
+
+TI Disclaimer
+=============
+
+.. IMPORTANT NOTICE::
+
+Texas Instruments and its subsidiaries (TI) reserve the right to make changes to their products or to discontinue any
+product or service without notice, and advise customers to obtain the latest version of relevant information to verify, before
+placing orders, that information being relied on is current and complete. All products are sold subject to the terms and
+conditions of sale supplied at the time of order acknowledgment, including those pertaining to warranty, patent
+infringement, and limitation of liability.
+
+TI warrants performance of its products to the specifications applicable at the time of sale in accordance with TI's
+standard warranty. Testing and other quality control techniques are utilized to the extent TI deems necessary to support
+this warranty. Specific testing of all parameters of each device is not necessarily performed, except those mandated by
+government requirements.
+
+Customers are responsible for their applications using TI components.
+In order to minimize risks associated with the customer's applications, adequate design and operating safeguards must be
+provided by the customer to minimize inherent or procedural hazards.
+
+TI assumes no liability for applications assistance or customer product design. TI does not warrant or represent that any
+license, either express or implied, is granted under any patent right, copyright, mask work right, or other intellectual
+property right of TI covering or relating to any combination, machine, or process in which such products or services might
+be or are used. TI's publication of information regarding any third party's products or services does not constitute TI's
+approval, license, warranty or endorsement thereof.
+
+Reproduction of information in TI data books or data sheets is permissible only if reproduction is without alteration and is
+accompanied by all associated warranties, conditions, limitations and notices. Representation or reproduction o f this
+information with alteration voids all warranties provided for an associated TI product or service, is an unfair and deceptive
+business practice, and TI is not responsible nor liable for any such use.
+
+Resale of TI's products or services with statements different from or beyond the parameters stated by TI for that product
+or service voids all express and any implied warranties for the associated TI product or service, is an unfair and deceptive
+business practice, and TI is not responsible nor liable for any such use.
+
+Also see: Standard Terms and Conditions of Sale for Semiconductor Products http://www.ti.com/sc/docs/stdterms.htm
+
+Mailing Address:
+Texas Instruments
+Post Office Box 655303
+Dallas, Texas 75265

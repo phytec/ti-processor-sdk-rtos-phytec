@@ -1,0 +1,37 @@
+Welcome to minicom 2.7.1                                                                                                                        
+                                                                                                                                                
+OPTIONS: I18n                                                                                                                                   
+Compiled on Dec 23 2019, 02:06:26.                                                                                                              
+Port /dev/ttyUSB1, 18:46:48                                                                                                                     
+                                                                                                                                                
+Press CTRL-A Z for help on special keys                                                                                                         
+                                                                                                                                                
+01000000011a00006a3761657000000000000000475020200008010000080100C1.00.10.01 (Jun 29 2023 - 13:38:40)                                            
+Waiting for tifs.bin ...                                                                                                                        
+CCCCCTIFS  ver: 9.0.6--v09.00.06 (Kool Koala)                                                                                                   
+Waiting for multicore app ...                                                                                                                   
+CCCCCCst Application                                                                                                                            
+                                                                                                                                                
+sdl_Esm_posTest: Init WKUP ESM complete                                                                                                         
+                                                                                                                                                
+sdlEsm_pos_apiTest: Init WKUP ESM complete                                                                                                      
+                                                                                                                                                
+ESM_ECC_Example_init: Init MAIN ESM complete                                                                                                    
+                                                                                                                                                
+ ESM inject: test starting for Esm instance 3                                                                                                   
+                                                                                                                                                
+  ESM Call back function called : instType 0x3, intType 0x1, grpChannel 0x3, index 0x0, intSrc 0x60                                             
+  Take action                                                                                                                                   
+                                                                                                                                                
+ ESM inject test for Esm instance 3 Done                                                                                                        
+Test Name: ESM POSITIVE TEST  PASSED                                                                                                            
+Test Name: ESM NEGATIVE TEST  PASSED                                                                                                            
+                                                                                                                                                
+ All tests have passed.                                                                                                                         
+esm_unit_test/esm_test_main.c:208:test_sdl_esm_baremetal_test_app:PASS                                                                          
+                                                                                                                                                
+-----------------------                                                                                                                         
+1 Tests 0 Failures 0 Ignored                                                                                                                    
+OK                                                                                                                                              
+                                                                                                                                                
+         

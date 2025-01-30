@@ -1,0 +1,44 @@
+root@j7-evm:/opt/vision_apps# ./run_app_stereo.sh 
+APP: Init ... !!!
+MEM: Init ... !!!
+MEM: Initialized DMA HEAP (fd=4) !!!
+MEM: Init ... Done !!!
+IPC: Init ... !!!
+IPC: Init ... Done !!!
+REMOTE_SERVICE: Init ... !!!
+REMOTE_SERVICE: Init ... Done !!!
+APP: Init ... Done !!!
+   340.223180 s:  VX_ZONE_INIT:Enabled
+   340.223207 s:  VX_ZONE_ERROR:Enabled
+   340.223221 s:  VX_ZONE_WARNING:Enabled
+   340.223714 s:  VX_ZONE_INIT:[tivxInit:71] Initialization Done !!!
+   340.223900 s:  VX_ZONE_INIT:[tivxHostInit:48] Initialization Done for HOST !!!
+Pipeline Flow Enabled
+
+
+ =================================
+ Demo : Stereo Disparity Example
+ =================================
+
+ p: Print performance statistics
+
+ e: Export performance statistics
+
+ x: Exit
+
+ Enter Choice: x
+
+   342.287039 s:  VX_ZONE_INIT:[tivxHostDeInit:56] De-Initialization Done for HOST !!!
+   342.291389 s:  VX_ZONE_INIT:[tivxDeInit:111] De-Initialization Done !!!
+APP: Deinit ... !!!
+REMOTE_SERVICE: Deinit ... !!!
+REMOTE_SERVICE: Deinit ... Done !!!
+IPC: Deinit ... !!!
+IPC: DeInit ... Done !!!
+MEM: Deinit ... !!!
+MEM: Alloc's: 185 alloc's of 170060920 bytes 
+MEM: Free's : 185 free's  of 170060920 bytes 
+MEM: Open's : 0 allocs  of 0 bytes 
+MEM: Deinit ... Done !!!
+APP: Deinit ... Done !!!
+root@j7-evm:/opt/vision_apps# 

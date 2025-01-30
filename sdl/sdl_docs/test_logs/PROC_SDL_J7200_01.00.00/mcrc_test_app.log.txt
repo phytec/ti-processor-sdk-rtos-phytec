@@ -1,0 +1,12 @@
+mcrc Test Application
+Test Name: mcrc API POSITIVE TEST  PASSED
+Test Name: mcrc API NEGATIVE TEST  PASSED
+Test Name: mcrc Ip_POSITIVE TEST  PASSED
+Test Name: mcrc Ip_NEGATIVE TEST  PASSED
+
+ All tests have passed.
+/home/gtbldadm/nightlybuilds/SDL_NIGHTLY_BUILD_J7200/180-2022-07-25_11-00-05/workarea/sdl/test/mcrc/mcrcUt/mcrc_main.c:196:test_sdl_mcrc_baremetal_test_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored
+OK

@@ -1,0 +1,9 @@
+
+Release Notes
+^^^^^^^^^^^^^
+
+.. toctree::
+   :maxdepth: 1
+
+   release_notes_09_00_00_j721s2_gp
+   release_notes_09_00_00_j784s4_gp

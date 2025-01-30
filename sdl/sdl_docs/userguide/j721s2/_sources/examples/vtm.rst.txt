@@ -1,0 +1,169 @@
+VTM Safety Example
+==================
+
+Introduction
+------------
+
+This example demonstrates the usage of the VTM to detect overtemperature events and signal the events through the ESM. The example shows how to configure the VTM for the various alerts and listen for VTM events using the ESM. It also shows forcing an error in order to demonstrate application notification of overtemperature events.
+
+The example demonstrates:
+
+    * Configuring the VTM thresholds
+    * Early alert event detection
+    * Critial threshold event detection
+    * Follow-up event notification when temperature has dropped to a safe level
+
+Use Cases
+---------
+
+    +----------+-------------------------------------+-----------+-----------------------------------+
+    | Use Case | Description                         | ESM       | Input Event                       |
+    +==========+=====================================+===========+===================================+
+    | UC-1     | Configuration of VTM threshold to   | WKUP_ESM0 | WKUP_VTM0_THERM_LVL_GT_TH1_INTR_0 |
+    |          | trigger early warning, then return  |           | Temp greater than early warning   |
+    |          | thresholds back to normal to        |           | threshold                         |
+    |          | simulate "cooling down".            |           |                                   |
+    +----------+-------------------------------------+-----------+-----------------------------------+
+    | UC-2     | Configuration of VTM to trigger     | WKUP_ESM0 | WKUP_VTM0_THERM_LVL_GT_TH2_INTR_0 |
+    |          | early warning, then alter the       |           |                                   |
+    |          | thresholds again to pass temperature|           |                                   |
+    |          | critical threshold. Then, return    |           |                                   |
+    |          | thresholds back to normal to        |           |                                   |
+    |          | simulate "cooling down".            |           |                                   |
+    |          |                                     |           |                                   |
+    +----------+-------------------------------------+-----------+-----------------------------------+
+
+
+Example Details
+---------------
+
+The example should be loaded to the hardware using the Secondary Boot Loader (SBL) from the SDK.
+
++---------------------+------------------------------------------------+------------------------------------------+
+| Example Name        | Location                                       | Build Command                            |
++=====================+================================================+==========================================+
+| vtm_app             | [sdl_install_dir]/examples/vtm/                | make vtm_app PROFILE=release             |
++---------------------+------------------------------------------------+------------------------------------------+
+
+Expected Output
+---------------
+
+.. code:: bash
+
+  VTM Example Application
+   
+  VTM_ESM_init: Init WKUP ESM complete 
+  
+  VTM_ESM_init complete
+  Starting Use Case 0 
+  
+      Got gtThr1 interrupt through ESM module
+  
+      Crossed early warning threshold of gt_thr1 
+      System should take action to implement system cooling 
+  
+    ESM Call back function called : instType 0x1, intType 0x2, grpChannel 0x0, index 0x8, intSrc 0x8 
+    Take action 
+    ESM instance #1, ESM interrupt type = Low Priority ESM event
+  
+      Got ltThr0 interrupt through ESM module
+  
+      System at a temperature below the threshold of lt_thr0 
+      System running at a safe temperature 
+  
+    ESM Call back function called : instType 0x1, intType 0x2, grpChannel 0x0, index 0x9, intSrc 0x9 
+    Take action 
+    ESM instance #1, ESM interrupt type = Low Priority ESM event
+  
+    ESM Call back function called : instType 0x1, intType 0x1, grpChannel 0x0, index 0xa, intSrc 0xa 
+    Take action 
+    ESM instance #1, ESM interrupt type = High Priority ESM event
+  case 0 sucess
+  
+   Use Case 0 completed: Input Event Trigger = Step completed successfully, 
+  
+  Starting Use Case 1 
+  
+      Got gtThr1 interrupt through ESM module
+  
+      Crossed early warning threshold of gt_thr1 
+      System should take action to implement system cooling 
+  
+    ESM Call back function called : instType 0x1, intType 0x2, grpChannel 0x0, index 0x8, intSrc 0x8 
+    Take action 
+    ESM instance #1, ESM interrupt type = Low Priority ESM event
+  
+      Got gtThr2 interrupt through ESM module
+  
+      Crossed critical threshold of gt_thr2 
+      System should take critical action to implement system cooling 
+  
+    ESM Call back function called : instType 0x1, intType 0x1, grpChannel 0x0, index 0xa, intSrc 0xa 
+    Take action 
+    ESM instance #1, ESM interrupt type = High Priority ESM event
+  
+      Got gtThr1 interrupt through ESM module
+  
+      Crossed early warning threshold of gt_thr1 
+      System should take action to implement system cooling 
+  
+    ESM Call back function called : instType 0x1, intType 0x2, grpChannel 0x0, index 0x8, intSrc 0x8 
+    Take action 
+    ESM instance #1, ESM interrupt type = Low Priority ESM event
+  
+      Got ltThr0 interrupt through ESM module
+  
+      System at a temperature below the threshold of lt_thr0 
+      System running at a safe temperature 
+  
+    ESM Call back function called : instType 0x1, intType 0x2, grpChannel 0x0, index 0x9, intSrc 0x9 
+    Take action 
+    ESM instance #1, ESM interrupt type = Low Priority ESM event
+  
+   Use Case 1 completed: Input Event Trigger = Step completed successfully, 
+  
+  
+  ESM Example Application summary
+  -------------------------------
+  Completed 2 Test Cases
+  Received 2 High Priority Interrupts
+  Received 5 Low Priority Interrupts
+  
+  Test Case Event Log
+  ------------------
+  
+  Test Case 0: ESM Call back function called : grpChannel 0x0, index 0x8, intSrc 0x8 
+    ESM instance #1, ESM interrupt type = Low Priority ESM event
+  
+  Test Case 0: ESM Call back function called : grpChannel 0x0, index 0x9, intSrc 0x9 
+    ESM instance #1, ESM interrupt type = Low Priority ESM event
+  
+  Test Case 0: ESM Call back function called : grpChannel 0x0, index 0xa, intSrc 0xa 
+    ESM instance #1, ESM interrupt type = High Priority ESM event
+  
+  Test Case 1: ESM Call back function called : grpChannel 0x0, index 0x8, intSrc 0x8 
+    ESM instance #1, ESM interrupt type = Low Priority ESM event
+  
+  Test Case 1: ESM Call back function called : grpChannel 0x0, index 0xa, intSrc 0xa 
+    ESM instance #1, ESM interrupt type = High Priority ESM event
+  
+  Test Case 1: ESM Call back function called : grpChannel 0x0, index 0x8, intSrc 0x8 
+    ESM instance #1, ESM interrupt type = Low Priority ESM event
+  
+  Test Case 1: ESM Call back function called : grpChannel 0x0, index 0x9, intSrc 0x9 
+    ESM instance #1, ESM interrupt type = Low Priority ESM event
+  
+   VTM Example Application: Complete
+   All Use cases have passed. 
+  main.c:531:vtm_example_app:PASS
+  
+  -----------------------
+  1 Tests 0 Failures 0 Ignored 
+
+
+
+
+Reference
+---------
+
+`VTM User Guide <../modules/vtm.html>`_

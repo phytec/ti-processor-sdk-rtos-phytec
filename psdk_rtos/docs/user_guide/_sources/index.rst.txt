@@ -1,0 +1,120 @@
+
+Processor SDK RTOS |platform|
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Welcome
+=======
+
+This documentation covers the Texas Instruments **Processor SDK RTOS** for the |platform| platform.  The following
+table lists the product devices associated with this platform:
+
+.. ifconfig:: CONFIG_part_variant in ('J721E')
+
+    +------------------------+---------------------------------------+
+    | **Platform**           | **Devices**                           |
+    +------------------------+---------------------------------------+
+    | |platform|             | TDA4VM, DRA829V                       |
+    +------------------------+---------------------------------------+
+
+.. ifconfig:: CONFIG_part_variant in ('J721S2')
+
+    +------------------------+---------------------------------------+
+    | **Platform**           | **Devices**                           |
+    +------------------------+---------------------------------------+
+    | |platform|             | TDA4VL, TDA4AL, TDA4VE, AM68A         |
+    +------------------------+---------------------------------------+
+
+.. ifconfig:: CONFIG_part_variant in ('J784S4')
+
+    +------------------------+---------------------------------------+
+    | **Platform**           | **Devices**                           |
+    +------------------------+---------------------------------------+
+    | |platform|             | TDA4AP, TDA4VP, TDA4AH, TDA4VH, AM69A |
+    +------------------------+---------------------------------------+
+
+.. ifconfig:: CONFIG_part_variant in ('J7200')
+
+    +------------------------+---------------------------------------+
+    | **Platform**           | **Device**                            |
+    +------------------------+---------------------------------------+
+    | |platform|             | DRA821                                |
+    +------------------------+---------------------------------------+
+
+.. ifconfig:: CONFIG_part_variant in ('AM65XX')
+
+    +------------------------+-----------------------------------------+
+    | **Platform**           | **Devices**                             |
+    +------------------------+-----------------------------------------+
+    | |platform|             | AM6548, AM6546, AM6528, AM6526, DRA80xM |
+    +------------------------+-----------------------------------------+
+
+
+.. ifconfig:: CONFIG_part_variant in ('AM68')
+
+    +------------------------+---------------------------------------+
+    | **Platform**           | **Devices**                           |
+    +------------------------+---------------------------------------+
+    | |platform|             | TDA4VL, TDA4AL, TDA4VE, AM68A, AM68   |
+    +------------------------+---------------------------------------+
+
+.. ifconfig:: CONFIG_part_variant in ('AM69')
+
+    +------------------------+----------------------------------------------+
+    | **Platform**           | **Devices**                                  |
+    +------------------------+----------------------------------------------+
+    | |platform|             | TDA4AP, TDA4VP, TDA4AH, TDA4VH, AM69A, AM69  |
+    +------------------------+----------------------------------------------+
+
+Please refer to the :ref:`getting_started` page for an overview of dependencies and entry point into the different
+components and demos available.
+
+Please refer to :ref:`sdk_components` for a complete listing of components included in this platform package.
+
+.. ifconfig:: CONFIG_part_variant in ('J721E', 'J721S2', 'J784S4')
+
+    .. IMPORTANT::
+
+       To run many of the demos in this SDK, the companion **Processor SDK Linux** for |platform| also needs to be downloaded separately.
+
+.. toctree::
+   :maxdepth: 2
+   :numbered:
+   :caption: Table of Contents
+
+   overview
+   overview_gp
+   getting_started_j721e
+   getting_started_j721s2
+   getting_started_j721s2_gp
+   getting_started_j7200
+   getting_started_am65xx
+   getting_started_j784s4
+   getting_started_j784s4_gp
+   firmware_builder
+   sdk_components_j721e
+   sdk_components_j721s2
+   sdk_components_j721s2_gp
+   sdk_components_j7200
+   sdk_components_am65xx
+   sdk_components_j784s4
+   sdk_components_j784s4_gp
+   release_notes
+   release_notes_gp
+   evm_setup_j721e
+   evm_setup_j721s2
+   evm_setup_j7200
+   evm_setup_am65xx
+   evm_setup_j784s4
+   ccs_setup_j721e
+   ccs_setup_j721s2
+   ccs_setup_j7200
+   ccs_setup_am65xx
+   ccs_setup_j784s4
+   datasheet_sdk_j721e
+   datasheet_sdk_j721s2
+   datasheet_sdk_j721s2_gp
+   datasheet_sdk_j7200
+   datasheet_sdk_j784s4
+   datasheet_sdk_j784s4_gp
+   developer_notes
+   documentation_tarball

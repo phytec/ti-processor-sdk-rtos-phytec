@@ -1,0 +1,3 @@
+[submodule "arm-tidl"]
+	path = arm-tidl
+	url = ssh://git@bitbucket.itg.ti.com/processor-sdk-vision/arm-tidl.git

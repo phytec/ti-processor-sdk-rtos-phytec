@@ -1,0 +1,51 @@
+root@j7-evm:/opt/vision_apps# ./run_app_tidl_avp2.sh
+APP: Init ... !!!
+MEM: Init ... !!!
+MEM: Initialized DMA HEAP (fd=4) !!!
+MEM: Init ... Done !!!
+IPC: Init ... !!!
+IPC: Init ... Done !!!
+REMOTE_SERVICE: Init ... !!!
+REMOTE_SERVICE: Init ... Done !!!
+APP: Init ... Done !!!
+   108.356609 s:  VX_ZONE_INIT:Enabled
+   108.356623 s:  VX_ZONE_ERROR:Enabled
+   108.356628 s:  VX_ZONE_WARNING:Enabled
+   108.358934 s:  VX_ZONE_INIT:[tivxInit:71] Initialization Done !!!
+   108.360312 s:  VX_ZONE_INIT:[tivxHostInit:48] Initialization Done for HOST !!!
+Computing checksum at 0x0000FFFFB492AD40, size = 262136
+Computing checksum at 0x0000FFFFB43B3240, size = 386312
+[C7x_1 ]    108.706247 s:  VX_ZONE_WARNING:[tivxKernelTIDLCreate:615] All Interrupts DISABLED during TIDL process
+[C7x_1 ]    108.737359 s:  VX_ZONE_WARNING:[tivxKernelTIDLCreate:615] All Interrupts DISABLED during TIDL process
+[C7x_1 ]    108.768082 s:  VX_ZONE_WARNING:[tivxKernelTIDLCreate:615] All Interrupts DISABLED during TIDL process
+[C7x_1 ]    108.797311 s:  VX_ZONE_WARNING:[tivxKernelTIDLCreate:615] All Interrupts DISABLED during TIDL process
+[C7x_1 ]    108.826269 s:  VX_ZONE_WARNING:[tivxKernelTIDLCreate:615] All Interrupts DISABLED during TIDL process
+[C7x_1 ]    108.854615 s:  VX_ZONE_WARNING:[tivxKernelTIDLCreate:615] All Interrupts DISABLED during TIDL process
+
+
+ =========================
+ Demo : TIDL AVP Demo 2
+ =========================
+
+ p: Print performance statistics
+
+ x: Exit
+
+ Enter Choice: x
+
+app_avp2: Iteration 0 of 1000000000 ... Done.
+ PERF:            TOTAL:   10.90 FPS
+   112.101984 s:  VX_ZONE_INIT:[tivxHostDeInit:56] De-Initialization Done for HOST !!!
+   112.106351 s:  VX_ZONE_INIT:[tivxDeInit:111] De-Initialization Done !!!
+APP: Deinit ... !!!
+REMOTE_SERVICE: Deinit ... !!!
+REMOTE_SERVICE: Deinit ... Done !!!
+IPC: Deinit ... !!!
+IPC: DeInit ... Done !!!
+MEM: Deinit ... !!!
+MEM: Alloc's: 195 alloc's of 61617146 bytes 
+MEM: Free's : 195 free's  of 61617146 bytes 
+MEM: Open's : 0 allocs  of 0 bytes 
+MEM: Deinit ... Done !!!
+APP: Deinit ... Done !!!
+root@j7-evm:/opt/vision_apps#

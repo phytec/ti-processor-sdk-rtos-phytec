@@ -1,0 +1,626 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://autosar.org/schema/r4.0 autosar_4-2-1.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE UUID="718e75f1-0050-4427-894f-a6b070762b60">
+      <SHORT-NAME>AUTOSAR</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE UUID="faad1e96-8fab-47b8-9133-733231a384ea">
+          <SHORT-NAME>Adc</SHORT-NAME>
+          <AR-PACKAGES>
+            <AR-PACKAGE UUID="e6a674e0-f1b5-4af5-b7d9-b7ae597a8432">
+              <SHORT-NAME>BswModuleDescriptions</SHORT-NAME>
+              <ELEMENTS>
+                <BSW-MODULE-DESCRIPTION UUID="2e9b5c29-65b5-4fd8-ba05-3c386d0e2fd4">
+                  <SHORT-NAME>Adc</SHORT-NAME>
+                  <MODULE-ID>123</MODULE-ID>
+                  <PROVIDED-ENTRYS>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Adc_Init">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Adc/BswModuleEntries/Adc_Init</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Adc_DeInit">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Adc/BswModuleEntries/Adc_DeInit</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Adc_SetupResultBuffer">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Adc/BswModuleEntries/Adc_SetupResultBuffer</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Adc_GetGroupStatus">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Adc/BswModuleEntries/Adc_GetGroupStatus</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Adc_GetStreamLastPointer">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Adc/BswModuleEntries/Adc_GetStreamLastPointer</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Adc_StartGroupConversion">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Adc/BswModuleEntries/Adc_StartGroupConversion</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Adc_StopGroupConversion">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Adc/BswModuleEntries/Adc_StopGroupConversion</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Adc_ReadGroup">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Adc/BswModuleEntries/Adc_ReadGroup</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Adc_EnableGroupNotification">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Adc/BswModuleEntries/Adc_EnableGroupNotification</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Adc_DisableGroupNotification">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Adc/BswModuleEntries/Adc_DisableGroupNotification</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Adc_GetVersionInfo">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Adc/BswModuleEntries/Adc_GetVersionInfo</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Adc_IrqUnit1">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Adc/BswModuleEntries/Adc_IrqUnit1</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                  </PROVIDED-ENTRYS>
+                  <BSW-MODULE-DEPENDENCYS>
+                    <BSW-MODULE-DEPENDENCY UUID="4ed1918d-e9b2-4bc8-a709-a9316b91969e">
+                      <SHORT-NAME>Det</SHORT-NAME>
+                      <TARGET-MODULE-ID>15</TARGET-MODULE-ID>
+                      <REQUIRED-ENTRYS>
+                        <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                          <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Det/BswModuleEntries/Det_ReportError</BSW-MODULE-ENTRY-REF>
+                        </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                      </REQUIRED-ENTRYS>
+                    </BSW-MODULE-DEPENDENCY>
+                  </BSW-MODULE-DEPENDENCYS>
+                  <INTERNAL-BEHAVIORS>
+                    <BSW-INTERNAL-BEHAVIOR UUID="f10e5f5d-74aa-479b-9261-4e22b9fa6d35">
+                      <SHORT-NAME>InternalBehaviour_0</SHORT-NAME>
+                      <EXCLUSIVE-AREAS>
+                        <EXCLUSIVE-AREA UUID="3e34c735-71c0-4ee0-a45a-81c8212ecfe9">
+                          <SHORT-NAME>ADC_EXCLUSIVE_AREA_0</SHORT-NAME>
+                        </EXCLUSIVE-AREA>
+                      </EXCLUSIVE-AREAS>
+                      <ENTITYS>
+                        <BSW-CALLED-ENTITY S="" UUID="dbcb5ba4-4189-4bf8-9d89-0240ce577f48">
+                          <SHORT-NAME>Adc_Init</SHORT-NAME>
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>NON-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE_SLOW</SW-ADDR-METHOD-REF>
+                          <CALL-POINTS>
+                            <BSW-DIRECT-CALL-POINT>
+                              <SHORT-NAME>Det_ReportError</SHORT-NAME>
+                              <CALLED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Det/BswModuleEntries/Det_ReportError</CALLED-ENTRY-REF>
+                            </BSW-DIRECT-CALL-POINT>
+                          </CALL-POINTS>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Adc/BswModuleEntries/Adc_Init</IMPLEMENTED-ENTRY-REF>
+                        </BSW-CALLED-ENTITY>
+                        <BSW-CALLED-ENTITY UUID="639f7327-e8f2-4c3c-a6be-c26046726445">
+                          <SHORT-NAME>Adc_DeInit</SHORT-NAME>
+                          <CAN-ENTER-EXCLUSIVE-AREA-REFS>
+                            <CAN-ENTER-EXCLUSIVE-AREA-REF DEST="EXCLUSIVE-AREA">/AUTOSAR/Adc/BswModuleDescriptions/Adc/InternalBehaviour_0/ADC_EXCLUSIVE_AREA_0</CAN-ENTER-EXCLUSIVE-AREA-REF>
+                          </CAN-ENTER-EXCLUSIVE-AREA-REFS>
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>NON-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE</SW-ADDR-METHOD-REF>
+                          <CALL-POINTS>
+                            <BSW-DIRECT-CALL-POINT>
+                              <SHORT-NAME>Det_ReportError</SHORT-NAME>
+                              <CALLED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Det/BswModuleEntries/Det_ReportError</CALLED-ENTRY-REF>
+                            </BSW-DIRECT-CALL-POINT>
+                          </CALL-POINTS>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Adc/BswModuleEntries/Adc_DeInit</IMPLEMENTED-ENTRY-REF>
+                        </BSW-CALLED-ENTITY>
+                        <BSW-CALLED-ENTITY UUID="cdd1955e-e08e-4804-9e4b-02a29b24ff7d">
+                          <SHORT-NAME>Adc_SetupResultBuffer</SHORT-NAME>
+                          <CAN-ENTER-EXCLUSIVE-AREA-REFS>
+                            <CAN-ENTER-EXCLUSIVE-AREA-REF DEST="EXCLUSIVE-AREA">/AUTOSAR/Adc/BswModuleDescriptions/Adc/InternalBehaviour_0/ADC_EXCLUSIVE_AREA_0</CAN-ENTER-EXCLUSIVE-AREA-REF>
+                          </CAN-ENTER-EXCLUSIVE-AREA-REFS>
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>SINGLE-CORE-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE</SW-ADDR-METHOD-REF>
+                          <CALL-POINTS>
+                            <BSW-DIRECT-CALL-POINT>
+                              <SHORT-NAME>Det_ReportError</SHORT-NAME>
+                              <CALLED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Det/BswModuleEntries/Det_ReportError</CALLED-ENTRY-REF>
+                            </BSW-DIRECT-CALL-POINT>
+                          </CALL-POINTS>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Adc/BswModuleEntries/Adc_SetupResultBuffer</IMPLEMENTED-ENTRY-REF>
+                        </BSW-CALLED-ENTITY>
+                        <BSW-CALLED-ENTITY UUID="67ea3af0-fefc-4980-9d0c-d78fdd89d548">
+                          <SHORT-NAME>Adc_GetGroupStatus</SHORT-NAME>
+                          <CAN-ENTER-EXCLUSIVE-AREA-REFS>
+                            <CAN-ENTER-EXCLUSIVE-AREA-REF DEST="EXCLUSIVE-AREA">/AUTOSAR/Adc/BswModuleDescriptions/Adc/InternalBehaviour_0/ADC_EXCLUSIVE_AREA_0</CAN-ENTER-EXCLUSIVE-AREA-REF>
+                          </CAN-ENTER-EXCLUSIVE-AREA-REFS>
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>SINGLE-CORE-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE</SW-ADDR-METHOD-REF>
+                          <CALL-POINTS>
+                            <BSW-DIRECT-CALL-POINT>
+                              <SHORT-NAME>Det_ReportError</SHORT-NAME>
+                              <CALLED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Det/BswModuleEntries/Det_ReportError</CALLED-ENTRY-REF>
+                            </BSW-DIRECT-CALL-POINT>
+                          </CALL-POINTS>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Adc/BswModuleEntries/Adc_GetGroupStatus</IMPLEMENTED-ENTRY-REF>
+                        </BSW-CALLED-ENTITY>
+                        <BSW-CALLED-ENTITY UUID="070de051-1b4a-4346-964f-c7698c5a2400">
+                          <SHORT-NAME>Adc_GetStreamLastPointer</SHORT-NAME>
+                          <CAN-ENTER-EXCLUSIVE-AREA-REFS>
+                            <CAN-ENTER-EXCLUSIVE-AREA-REF DEST="EXCLUSIVE-AREA">/AUTOSAR/Adc/BswModuleDescriptions/Adc/InternalBehaviour_0/ADC_EXCLUSIVE_AREA_0</CAN-ENTER-EXCLUSIVE-AREA-REF>
+                          </CAN-ENTER-EXCLUSIVE-AREA-REFS>
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>SINGLE-CORE-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE</SW-ADDR-METHOD-REF>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Adc/BswModuleEntries/Adc_GetStreamLastPointer</IMPLEMENTED-ENTRY-REF>
+                        </BSW-CALLED-ENTITY>
+                        <BSW-CALLED-ENTITY UUID="dbae8d80-c895-44cc-9485-485d59599f3e">
+                          <SHORT-NAME>Adc_StartGroupConversion</SHORT-NAME>
+                          <CAN-ENTER-EXCLUSIVE-AREA-REFS>
+                            <CAN-ENTER-EXCLUSIVE-AREA-REF DEST="EXCLUSIVE-AREA">/AUTOSAR/Adc/BswModuleDescriptions/Adc/InternalBehaviour_0/ADC_EXCLUSIVE_AREA_0</CAN-ENTER-EXCLUSIVE-AREA-REF>
+                          </CAN-ENTER-EXCLUSIVE-AREA-REFS>
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>SINGLE-CORE-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE</SW-ADDR-METHOD-REF>
+                          <CALL-POINTS>
+                            <BSW-DIRECT-CALL-POINT>
+                              <SHORT-NAME>Det_ReportError</SHORT-NAME>
+                              <CALLED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Det/BswModuleEntries/Det_ReportError</CALLED-ENTRY-REF>
+                            </BSW-DIRECT-CALL-POINT>
+                          </CALL-POINTS>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Adc/BswModuleEntries/Adc_StartGroupConversion</IMPLEMENTED-ENTRY-REF>
+                        </BSW-CALLED-ENTITY>
+                        <BSW-CALLED-ENTITY S="" UUID="499d551e-9a92-4b7f-b764-d3a4c9444472">
+                          <SHORT-NAME>Adc_StopGroupConversion</SHORT-NAME>
+                          <CAN-ENTER-EXCLUSIVE-AREA-REFS>
+                            <CAN-ENTER-EXCLUSIVE-AREA-REF DEST="EXCLUSIVE-AREA">/AUTOSAR/Adc/BswModuleDescriptions/Adc/InternalBehaviour_0/ADC_EXCLUSIVE_AREA_0</CAN-ENTER-EXCLUSIVE-AREA-REF>
+                          </CAN-ENTER-EXCLUSIVE-AREA-REFS>
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>SINGLE-CORE-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE</SW-ADDR-METHOD-REF>
+                          <CALL-POINTS>
+                            <BSW-DIRECT-CALL-POINT>
+                              <SHORT-NAME>Det_ReportError</SHORT-NAME>
+                              <CALLED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Det/BswModuleEntries/Det_ReportError</CALLED-ENTRY-REF>
+                            </BSW-DIRECT-CALL-POINT>
+                          </CALL-POINTS>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Adc/BswModuleEntries/Adc_StopGroupConversion</IMPLEMENTED-ENTRY-REF>
+                        </BSW-CALLED-ENTITY>
+                        <BSW-CALLED-ENTITY S="" UUID="ed4481db-ea62-4a16-8142-ab8598fabb24">
+                          <SHORT-NAME>Adc_ReadGroup</SHORT-NAME>
+                          <CAN-ENTER-EXCLUSIVE-AREA-REFS>
+                            <CAN-ENTER-EXCLUSIVE-AREA-REF DEST="EXCLUSIVE-AREA">/AUTOSAR/Adc/BswModuleDescriptions/Adc/InternalBehaviour_0/ADC_EXCLUSIVE_AREA_0</CAN-ENTER-EXCLUSIVE-AREA-REF>
+                          </CAN-ENTER-EXCLUSIVE-AREA-REFS>
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>SINGLE-CORE-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE</SW-ADDR-METHOD-REF>
+                          <CALL-POINTS>
+                            <BSW-DIRECT-CALL-POINT>
+                              <SHORT-NAME>Det_ReportError</SHORT-NAME>
+                              <CALLED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Det/BswModuleEntries/Det_ReportError</CALLED-ENTRY-REF>
+                            </BSW-DIRECT-CALL-POINT>
+                          </CALL-POINTS>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Adc/BswModuleEntries/Adc_ReadGroup</IMPLEMENTED-ENTRY-REF>
+                        </BSW-CALLED-ENTITY>
+                        <BSW-CALLED-ENTITY S="" UUID="64005a9f-74e8-495d-a8bc-7ee0f779029e">
+                          <SHORT-NAME>Adc_EnableGroupNotification</SHORT-NAME>
+                          <CAN-ENTER-EXCLUSIVE-AREA-REFS>
+                            <CAN-ENTER-EXCLUSIVE-AREA-REF DEST="EXCLUSIVE-AREA">/AUTOSAR/Adc/BswModuleDescriptions/Adc/InternalBehaviour_0/ADC_EXCLUSIVE_AREA_0</CAN-ENTER-EXCLUSIVE-AREA-REF>
+                          </CAN-ENTER-EXCLUSIVE-AREA-REFS>
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>SINGLE-CORE-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE</SW-ADDR-METHOD-REF>
+                          <CALL-POINTS>
+                            <BSW-DIRECT-CALL-POINT>
+                              <SHORT-NAME>Det_ReportError</SHORT-NAME>
+                              <CALLED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Det/BswModuleEntries/Det_ReportError</CALLED-ENTRY-REF>
+                            </BSW-DIRECT-CALL-POINT>
+                          </CALL-POINTS>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Adc/BswModuleEntries/Adc_EnableGroupNotification</IMPLEMENTED-ENTRY-REF>
+                        </BSW-CALLED-ENTITY>
+                        <BSW-CALLED-ENTITY S="" UUID="f122fff4-dbf8-44da-8540-c5420a7c706b">
+                          <SHORT-NAME>Adc_DisableGroupNotification</SHORT-NAME>
+                          <CAN-ENTER-EXCLUSIVE-AREA-REFS>
+                            <CAN-ENTER-EXCLUSIVE-AREA-REF DEST="EXCLUSIVE-AREA">/AUTOSAR/Adc/BswModuleDescriptions/Adc/InternalBehaviour_0/ADC_EXCLUSIVE_AREA_0</CAN-ENTER-EXCLUSIVE-AREA-REF>
+                          </CAN-ENTER-EXCLUSIVE-AREA-REFS>
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>SINGLE-CORE-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE</SW-ADDR-METHOD-REF>
+                          <CALL-POINTS>
+                            <BSW-DIRECT-CALL-POINT>
+                              <SHORT-NAME>Det_ReportError</SHORT-NAME>
+                              <CALLED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Det/BswModuleEntries/Det_ReportError</CALLED-ENTRY-REF>
+                            </BSW-DIRECT-CALL-POINT>
+                          </CALL-POINTS>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Adc/BswModuleEntries/Adc_DisableGroupNotification</IMPLEMENTED-ENTRY-REF>
+                        </BSW-CALLED-ENTITY>
+                        <BSW-CALLED-ENTITY S="" UUID="6f42e6fe-878c-4b0b-a271-ea4c0964f335">
+                          <SHORT-NAME>Adc_GetVersionInfo</SHORT-NAME>
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>SINGLE-CORE-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE</SW-ADDR-METHOD-REF>
+                          <CALL-POINTS>
+                            <BSW-DIRECT-CALL-POINT>
+                              <SHORT-NAME>Det_ReportError</SHORT-NAME>
+                              <CALLED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Det/BswModuleEntries/Det_ReportError</CALLED-ENTRY-REF>
+                            </BSW-DIRECT-CALL-POINT>
+                          </CALL-POINTS>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Adc/BswModuleEntries/Adc_GetVersionInfo</IMPLEMENTED-ENTRY-REF>
+                        </BSW-CALLED-ENTITY>
+                        <BSW-INTERRUPT-ENTITY S="" UUID="154ba312-4517-4b13-84c5-417b08be7c92">
+                          <SHORT-NAME>Adc_IrqUnit1</SHORT-NAME>
+                          <REENTRANCY-LEVEL>NON-REENTRANT</REENTRANCY-LEVEL>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Adc/BswModuleEntries/Adc_IrqUnit1</IMPLEMENTED-ENTRY-REF>
+                          <INTERRUPT-CATEGORY>CAT-1</INTERRUPT-CATEGORY>
+                          <INTERRUPT-SOURCE />
+                        </BSW-INTERRUPT-ENTITY>
+                      </ENTITYS>
+                    </BSW-INTERNAL-BEHAVIOR>
+                  </INTERNAL-BEHAVIORS>
+                </BSW-MODULE-DESCRIPTION>
+              </ELEMENTS>
+            </AR-PACKAGE>
+            <AR-PACKAGE S="" UUID="a42b9bfb-f19d-4018-bba2-84bd1d892b99">
+              <SHORT-NAME>BswModuleEntries</SHORT-NAME>
+              <ELEMENTS>
+                <BSW-MODULE-ENTRY UUID="b9f1f514-c2c8-421e-958a-76387cca07d1">
+                  <SHORT-NAME>Adc_Init</SHORT-NAME>
+                  <SHORT-NAME-PATTERN />
+                  <SERVICE-ID>0x00</SERVICE-ID>
+                  <ROLE />
+                  <IS-REENTRANT>false</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>TASK</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY S="" UUID="273e063a-4a0c-451f-8a6f-0dd893d036ed">
+                  <SHORT-NAME>Adc_DeInit</SHORT-NAME>
+                  <SERVICE-ID>0x01</SERVICE-ID>
+                  <ROLE />
+                  <IS-REENTRANT>false</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>TASK</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="20964871-b982-40fc-8418-53ec009a5525">
+                  <SHORT-NAME>Adc_SetupResultBuffer</SHORT-NAME>
+                  <SHORT-NAME-PATTERN />
+                  <SERVICE-ID>0x0c</SERVICE-ID>
+                  <ROLE />
+                  <IS-REENTRANT>true</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>TASK</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="e22ccdee-7d1b-4518-97b8-1c486018febc">
+                  <SHORT-NAME>Adc_GetGroupStatus</SHORT-NAME>
+                  <SHORT-NAME-PATTERN />
+                  <SERVICE-ID>0x09</SERVICE-ID>
+                  <ROLE />
+                  <IS-REENTRANT>true</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="250669c8-0fb5-48a5-9881-a81cec19e283">
+                  <SHORT-NAME>Adc_GetStreamLastPointer</SHORT-NAME>
+                  <SHORT-NAME-PATTERN />
+                  <SERVICE-ID>0x0b</SERVICE-ID>
+                  <ROLE />
+                  <IS-REENTRANT>true</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>TASK</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="35c3f69a-5056-4ecf-a0a1-6214818a863f">
+                  <SHORT-NAME>Adc_StartGroupConversion</SHORT-NAME>
+                  <SHORT-NAME-PATTERN />
+                  <SERVICE-ID>0x02</SERVICE-ID>
+                  <ROLE />
+                  <IS-REENTRANT>true</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>false</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="c547559e-8b82-4433-b486-d9558ec744d4">
+                  <SHORT-NAME>Adc_StopGroupConversion</SHORT-NAME>
+                  <SHORT-NAME-PATTERN />
+                  <SERVICE-ID>0x03</SERVICE-ID>
+                  <ROLE />
+                  <IS-REENTRANT>true</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="f795807e-4383-4043-a0bd-a09adf1db264">
+                  <SHORT-NAME>Adc_ReadGroup</SHORT-NAME>
+                  <SHORT-NAME-PATTERN />
+                  <SERVICE-ID>0x04</SERVICE-ID>
+                  <ROLE />
+                  <IS-REENTRANT>true</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>TASK</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="be30cfa7-5845-4846-a2be-4579de1978eb">
+                  <SHORT-NAME>Adc_EnableGroupNotification</SHORT-NAME>
+                  <SHORT-NAME-PATTERN />
+                  <SERVICE-ID>0x07</SERVICE-ID>
+                  <ROLE />
+                  <IS-REENTRANT>true</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>TASK</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="21e85701-e766-4e7d-aa9d-27b0d7d57b77">
+                  <SHORT-NAME>Adc_DisableGroupNotification</SHORT-NAME>
+                  <SHORT-NAME-PATTERN />
+                  <SERVICE-ID>0x08</SERVICE-ID>
+                  <ROLE />
+                  <IS-REENTRANT>true</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>TASK</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="2bcc8347-3cc6-432a-940a-6c77dd37b72e">
+                  <SHORT-NAME>Adc_GetVersionInfo</SHORT-NAME>
+                  <SHORT-NAME-PATTERN />
+                  <SERVICE-ID>0x0a</SERVICE-ID>
+                  <ROLE />
+                  <IS-REENTRANT>true</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>TASK</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="6acb783d-a19b-49bd-ba3a-68395b01c365">
+                  <SHORT-NAME>Adc_IrqUnit1</SHORT-NAME>
+                  <SHORT-NAME-PATTERN />
+                  <ROLE />
+                  <IS-REENTRANT>false</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>INTERRUPT</CALL-TYPE>
+                  <EXECUTION-CONTEXT>INTERRUPT-CAT-1</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+              </ELEMENTS>
+            </AR-PACKAGE>
+          </AR-PACKAGES>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="dc7120ec-0d00-41f7-8dbd-503077864687">
+          <SHORT-NAME>Det</SHORT-NAME>
+          <AR-PACKAGES>
+            <AR-PACKAGE UUID="1f94a73b-271f-48eb-ba9f-ce5e17f29726">
+              <SHORT-NAME>BswModuleEntries</SHORT-NAME>
+              <ELEMENTS>
+                <BSW-MODULE-ENTRY UUID="86db904c-f51b-4212-9f48-a32fec166290">
+                  <SHORT-NAME>Det_ReportError</SHORT-NAME>
+                  <SERVICE-ID>1</SERVICE-ID>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                </BSW-MODULE-ENTRY>
+              </ELEMENTS>
+            </AR-PACKAGE>
+          </AR-PACKAGES>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+    <AR-PACKAGE UUID="e13229a7-3011-4a6b-8025-dfa551ee324c">
+      <SHORT-NAME>TI_TDAXX</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE UUID="c1e3bdba-b7df-445c-b9e5-7003fcd258ef">
+          <SHORT-NAME>Adc</SHORT-NAME>
+          <ELEMENTS>
+            <BSW-IMPLEMENTATION S="" UUID="613d75a2-21a4-412a-82c7-190617cec3d0">
+              <SHORT-NAME>TI_TDAXX_Adc</SHORT-NAME>
+
+              <CODE-DESCRIPTORS>
+                <CODE UUID="57ffd63b-0fe5-4ba8-b23f-5f45072c65c9">
+                  <SHORT-NAME>Files</SHORT-NAME>
+                  <ARTIFACT-DESCRIPTORS>
+                    <AUTOSAR-ENGINEERING-OBJECT S="">
+                      <SHORT-LABEL>Adc.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                      <DOMAIN />
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT S="">
+                      <SHORT-LABEL>Adc_Irq.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                      <DOMAIN />
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT S="">
+                      <SHORT-LABEL>Adc_Priv.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                      <DOMAIN />
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT S="">
+                      <SHORT-LABEL>Adc_Utils.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                      <DOMAIN />
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT S="">
+                      <SHORT-LABEL>Adc_PBcfg.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                      <DOMAIN />
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                  </ARTIFACT-DESCRIPTORS>
+                </CODE>
+              </CODE-DESCRIPTORS>
+              <COMPILERS>
+                <COMPILER UUID="8c436acd-4213-4895-b992-237507fcb102">
+                  <SHORT-NAME>armcl</SHORT-NAME>
+                  <NAME>TI ARM Compiler</NAME>
+                  <OPTIONS>-c -qq --endian=little -mv7M4 --float_support=vfplib --abi=eabi -eo.oem4 -ea.sem4 --symdebug:dwarf --embed_inline_assembly --gcc --emit_warnings_as_errors -g -ms --opt_level=3 -os --optimize_with_debug</OPTIONS>
+                  <VENDOR>Texas Instruments</VENDOR>
+                  <VERSION>5.2.5</VERSION>
+                </COMPILER>
+              </COMPILERS>
+              <LINKERS>
+                <LINKER UUID="b275d0fd-411d-4df6-9793-e62ce91360a9">
+                  <SHORT-NAME>armcl</SHORT-NAME>
+                  <NAME>TI ARM Linker</NAME>
+                  <OPTIONS />
+                  <VENDOR>Texas Instruments</VENDOR>
+                  <VERSION>5.2.5</VERSION>
+                </LINKER>
+              </LINKERS>
+              <PROGRAMMING-LANGUAGE>C</PROGRAMMING-LANGUAGE>
+              <REQUIRED-ARTIFACTS>
+                <DEPENDENCY-ON-ARTIFACT S="" UUID="67740326-71ac-4a32-bc44-a721fbad9730">
+                  <SHORT-NAME>ExternalLibs</SHORT-NAME>
+
+                  <ARTIFACT-DESCRIPTOR S="">
+                    <SHORT-LABEL>libc</SHORT-LABEL>
+                    <CATEGORY>SWLIB</CATEGORY>
+                    <DOMAIN />
+                  </ARTIFACT-DESCRIPTOR>
+                  <USAGES>
+                    <USAGE>LINK</USAGE>
+                    <USAGE>COMPILE</USAGE>
+                  </USAGES>
+                </DEPENDENCY-ON-ARTIFACT>
+              </REQUIRED-ARTIFACTS>
+              <RESOURCE-CONSUMPTION UUID="1b0da275-e369-4186-a0de-d074477273b9">
+                <SHORT-NAME>TI_TDAXX_Adc_Resources</SHORT-NAME>
+                <MEMORY-SECTIONS>
+                  <MEMORY-SECTION S="" UUID="f55e0f22-f85a-46ad-81be-b28e775d8353">
+                    <SHORT-NAME>CONFIG_DATA</SHORT-NAME>
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <MEM-CLASS-SYMBOL />
+                    <SIZE>1024</SIZE>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CONFIG_DATA</SW-ADDRMETHOD-REF>
+                    <SYMBOL />
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION S="" UUID="35cb2711-f8e0-4e75-bb57-4a21c3ddb4bc">
+                    <SHORT-NAME>CODE</SHORT-NAME>
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <EXECUTABLE-ENTITY-REFS>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Adc/BswModuleDescriptions/Adc/InternalBehaviour_0/Adc_Init</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Adc/BswModuleDescriptions/Adc/InternalBehaviour_0/Adc_DeInit</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Adc/BswModuleDescriptions/Adc/InternalBehaviour_0/Adc_SetupResultBuffer</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Adc/BswModuleDescriptions/Adc/InternalBehaviour_0/Adc_GetGroupStatus</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Adc/BswModuleDescriptions/Adc/InternalBehaviour_0/Adc_GetStreamLastPointer</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Adc/BswModuleDescriptions/Adc/InternalBehaviour_0/Adc_StartGroupConversion</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Adc/BswModuleDescriptions/Adc/InternalBehaviour_0/Adc_StopGroupConversion</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Adc/BswModuleDescriptions/Adc/InternalBehaviour_0/Adc_ReadGroup</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Adc/BswModuleDescriptions/Adc/InternalBehaviour_0/Adc_EnableGroupNotification</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Adc/BswModuleDescriptions/Adc/InternalBehaviour_0/Adc_DisableGroupNotification</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Adc/BswModuleDescriptions/Adc/InternalBehaviour_0/Adc_GetVersionInfo</EXECUTABLE-ENTITY-REF>
+                    </EXECUTABLE-ENTITY-REFS>
+                    <MEM-CLASS-SYMBOL />
+                    <SIZE>0x2af8</SIZE>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE</SW-ADDRMETHOD-REF>
+                    <SYMBOL />
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION S="" UUID="949f3018-b1af-4851-a482-40d69f1d3734">
+                    <SHORT-NAME>VAR_INIT_UNSPECIFIED</SHORT-NAME>
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <MEM-CLASS-SYMBOL />
+                    <SIZE>64</SIZE>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/VAR</SW-ADDRMETHOD-REF>
+                    <SYMBOL />
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION S="" UUID="916c4219-7015-47b0-881d-82f747c1e72d">
+                    <SHORT-NAME>VAR_NOINIT_UNSPECIFIED</SHORT-NAME>
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <MEM-CLASS-SYMBOL />
+                    <SIZE>8192</SIZE>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/VAR</SW-ADDRMETHOD-REF>
+                    <SYMBOL />
+                  </MEMORY-SECTION>
+                </MEMORY-SECTIONS>
+                <STACK-USAGES>
+                  <MEASURED-STACK-USAGE S="" UUID="c80e71ed-0feb-47aa-90de-c4c66ca25d7c">
+                    <SHORT-NAME>Adc_Init_Stack</SHORT-NAME>
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Adc/BswModuleDescriptions/Adc/InternalBehaviour_0/Adc_Init</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>120</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>120</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>120</MINIMUM-MEMORY-CONSUMPTION>
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="e364c1da-7d5b-43c1-bc6b-6929c32c368d">
+                    <SHORT-NAME>Adc_DeInit_Stack</SHORT-NAME>
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Adc/BswModuleDescriptions/Adc/InternalBehaviour_0/Adc_DeInit</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>64</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>64</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>64</MINIMUM-MEMORY-CONSUMPTION>
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="0bdb4848-0e33-4c94-a712-657d4acaaffe">
+                    <SHORT-NAME>Adc_SetupResultBuffer_Stack</SHORT-NAME>
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-SCHEDULABLE-ENTITY">/AUTOSAR/Adc/BswModuleDescriptions/Adc/InternalBehaviour_0/Adc_SetupResultBuffer</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>32</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>32</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>32</MINIMUM-MEMORY-CONSUMPTION>
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="55dff316-2036-4027-a937-fcf5a6af431e">
+                    <SHORT-NAME>Adc_GetGroupStatus_Stack</SHORT-NAME>
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-SCHEDULABLE-ENTITY">/AUTOSAR/Adc/BswModuleDescriptions/Adc/InternalBehaviour_0/Adc_GetGroupStatus</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>24</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>24</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>24</MINIMUM-MEMORY-CONSUMPTION>
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="d78def05-f43e-49e0-8db5-1dfdef077d78">
+                    <SHORT-NAME>Adc_GetStreamLastPointer_Stack</SHORT-NAME>
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-SCHEDULABLE-ENTITY">/AUTOSAR/Adc/BswModuleDescriptions/Adc/InternalBehaviour_0/Adc_GetStreamLastPointer</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>64</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>64</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>64</MINIMUM-MEMORY-CONSUMPTION>
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="4d30c507-34a9-47e9-b3c0-cacf2be51a03">
+                    <SHORT-NAME>Adc_StartGroupConversion_Stack</SHORT-NAME>
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-SCHEDULABLE-ENTITY">/AUTOSAR/Adc/BswModuleDescriptions/Adc/InternalBehaviour_0/Adc_StartGroupConversion</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>136</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>136</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>136</MINIMUM-MEMORY-CONSUMPTION>
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="3a39190b-36e4-4b08-bcdb-039a8bb8075d">
+                    <SHORT-NAME>Adc_StopGroupConversion_Stack</SHORT-NAME>
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-SCHEDULABLE-ENTITY">/AUTOSAR/Adc/BswModuleDescriptions/Adc/InternalBehaviour_0/Adc_StopGroupConversion</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>136</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>136</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>136</MINIMUM-MEMORY-CONSUMPTION>
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="0a6c43e7-459b-42de-b99d-7901297fe989">
+                    <SHORT-NAME>Adc_ReadGroup_Stack</SHORT-NAME>
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-SCHEDULABLE-ENTITY">/AUTOSAR/Adc/BswModuleDescriptions/Adc/InternalBehaviour_0/Adc_ReadGroup</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>48</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>48</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>48</MINIMUM-MEMORY-CONSUMPTION>
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="6cf21d9e-cbfc-4fe2-a8d6-0ae9f38ed444">
+                    <SHORT-NAME>Adc_EnableGroupNotification_Stack</SHORT-NAME>
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-SCHEDULABLE-ENTITY">/AUTOSAR/Adc/BswModuleDescriptions/Adc/InternalBehaviour_0/Adc_EnableGroupNotification</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>24</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>24</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>24</MINIMUM-MEMORY-CONSUMPTION>
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="5587e1ed-99d8-4471-902f-66c6879ab98e">
+                    <SHORT-NAME>Adc_DisableGroupNotification_Stack</SHORT-NAME>
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-SCHEDULABLE-ENTITY">/AUTOSAR/Adc/BswModuleDescriptions/Adc/InternalBehaviour_0/Adc_DisableGroupNotification</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>24</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>24</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>24</MINIMUM-MEMORY-CONSUMPTION>
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="2025d417-cf34-474b-ae7e-b5595560404e">
+                    <SHORT-NAME>Adc_GetVersionInfo_Stack</SHORT-NAME>
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-SCHEDULABLE-ENTITY">/AUTOSAR/Adc/BswModuleDescriptions/Adc/InternalBehaviour_0/Adc_GetVersionInfo</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>16</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>16</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>16</MINIMUM-MEMORY-CONSUMPTION>
+                  </MEASURED-STACK-USAGE>
+                </STACK-USAGES>
+              </RESOURCE-CONSUMPTION>
+              <SW-VERSION>1.10.0</SW-VERSION>
+              <USED-CODE-GENERATOR>EB Tresos</USED-CODE-GENERATOR>
+              <VENDOR-ID>44</VENDOR-ID>
+              <AR-RELEASE-VERSION>4.2.1</AR-RELEASE-VERSION>
+              <BEHAVIOR-REF DEST="BSW-INTERNAL-BEHAVIOR">/AUTOSAR/Adc/BswModuleDescriptions/Adc/InternalBehaviour_0</BEHAVIOR-REF>
+              <VENDOR-API-INFIX />
+              <VENDOR-SPECIFIC-MODULE-DEF-REFS>
+                <VENDOR-SPECIFIC-MODULE-DEF-REF DEST="ECUC-MODULE-DEF">/TI_TDAXX/ADC</VENDOR-SPECIFIC-MODULE-DEF-REF>
+              </VENDOR-SPECIFIC-MODULE-DEF-REFS>
+            </BSW-IMPLEMENTATION>
+          </ELEMENTS>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>

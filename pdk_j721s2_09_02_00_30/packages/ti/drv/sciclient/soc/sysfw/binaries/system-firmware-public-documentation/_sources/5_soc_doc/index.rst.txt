@@ -1,0 +1,250 @@
+.. _pub_soc_family_doc:
+
+############################################
+Chapter 5: SoC Family Specific Documentation
+############################################
+
+=========
+AM65x SR1
+=========
+
+.. toctree::
+   :maxdepth: 1
+
+   am65x/hosts
+   am65x/devices
+   am65x/clocks
+   am65x/pll_data
+   am65x/resasg_types
+   am65x/interrupt_cfg
+   am65x/ra_cfg
+   am65x/dma_cfg
+   am65x/psil_cfg
+   am65x/proxy_cfg
+   am65x/sec_proxy
+   am65x/processors
+   am65x/runtime_keystore
+   am65x/firewalls
+   am65x/soc_devgrps
+
+=========
+AM65x SR2
+=========
+
+.. toctree::
+   :maxdepth: 1
+
+   am65x_sr2/hosts
+   am65x_sr2/devices
+   am65x_sr2/clocks
+   am65x_sr2/pll_data
+   am65x_sr2/resasg_types
+   am65x_sr2/interrupt_cfg
+   am65x_sr2/ra_cfg
+   am65x_sr2/dma_cfg
+   am65x_sr2/psil_cfg
+   am65x_sr2/proxy_cfg
+   am65x_sr2/sec_proxy
+   am65x_sr2/processors
+   am65x_sr2/runtime_keystore
+   am65x_sr2/firewalls
+   am65x_sr2/soc_devgrps
+
+=====
+AM64x
+=====
+
+.. toctree::
+   :maxdepth: 1
+
+   am64x/hosts
+   am64x/devices
+   am64x/clocks
+   am64x/pll_data
+   am64x/resasg_types
+   am64x/interrupt_cfg
+   am64x/ra_cfg
+   am64x/dma_cfg
+   am64x/psil_cfg
+   am64x/proxy_cfg
+   am64x/sec_proxy
+   am64x/processors
+   am64x/firewalls
+   am64x/soc_devgrps
+
+=====
+AM62x
+=====
+
+.. toctree::
+   :maxdepth: 1
+
+   am62x/hosts
+   am62x/devices
+   am62x/clocks
+   am62x/pll_data
+   am62x/resasg_types
+   am62x/interrupt_cfg
+   am62x/ra_cfg
+   am62x/dma_cfg
+   am62x/psil_cfg
+   am62x/proxy_cfg
+   am62x/sec_proxy
+   am62x/processors
+   am62x/firewalls
+   am62x/soc_devgrps
+
+======
+AM62Ax
+======
+
+.. toctree::
+   :maxdepth: 1
+
+   am62ax/hosts
+   am62ax/devices
+   am62ax/clocks
+   am62ax/pll_data
+   am62ax/resasg_types
+   am62ax/interrupt_cfg
+   am62ax/ra_cfg
+   am62ax/dma_cfg
+   am62ax/psil_cfg
+   am62ax/proxy_cfg
+   am62ax/sec_proxy
+   am62ax/processors
+   am62ax/firewalls
+   am62ax/soc_devgrps
+
+======
+AM62Px
+======
+
+.. toctree::
+   :maxdepth: 1
+
+   am62px/hosts
+   am62px/devices
+   am62px/clocks
+   am62px/pll_data
+   am62px/resasg_types
+   am62px/interrupt_cfg
+   am62px/ra_cfg
+   am62px/dma_cfg
+   am62px/psil_cfg
+   am62px/proxy_cfg
+   am62px/sec_proxy
+   am62px/processors
+   am62px/firewalls
+   am62px/soc_devgrps
+
+=====
+J721E
+=====
+
+.. toctree::
+   :maxdepth: 1
+
+   j721e/hosts
+   j721e/devices
+   j721e/clocks
+   j721e/pll_data
+   j721e/resasg_types
+   j721e/interrupt_cfg
+   j721e/ra_cfg
+   j721e/dma_cfg
+   j721e/psil_cfg
+   j721e/proxy_cfg
+   j721e/sec_proxy
+   j721e/processors
+   j721e/firewalls
+   j721e/soc_devgrps
+   j721e/soc_domgrps
+
+=====
+J7200
+=====
+
+.. toctree::
+   :maxdepth: 1
+
+   j7200/hosts
+   j7200/devices
+   j7200/clocks
+   j7200/pll_data
+   j7200/resasg_types
+   j7200/interrupt_cfg
+   j7200/ra_cfg
+   j7200/dma_cfg
+   j7200/psil_cfg
+   j7200/proxy_cfg
+   j7200/sec_proxy
+   j7200/processors
+   j7200/firewalls
+   j7200/soc_devgrps
+
+======
+J721S2
+======
+
+.. toctree::
+   :maxdepth: 1
+
+   j721s2/hosts
+   j721s2/devices
+   j721s2/clocks
+   j721s2/pll_data
+   j721s2/resasg_types
+   j721s2/interrupt_cfg
+   j721s2/ra_cfg
+   j721s2/dma_cfg
+   j721s2/psil_cfg
+   j721s2/proxy_cfg
+   j721s2/sec_proxy
+   j721s2/processors
+   j721s2/firewalls
+   j721s2/soc_devgrps
+
+=====
+J722S
+=====
+
+.. toctree::
+   :maxdepth: 1
+
+   j722s/hosts
+   j722s/devices
+   j722s/clocks
+   j722s/pll_data
+   j722s/resasg_types
+   j722s/interrupt_cfg
+   j722s/ra_cfg
+   j722s/dma_cfg
+   j722s/psil_cfg
+   j722s/proxy_cfg
+   j722s/sec_proxy
+   j722s/processors
+   j722s/firewalls
+   j722s/soc_devgrps
+
+======
+J784S4
+======
+
+.. toctree::
+   :maxdepth: 1
+
+   j784s4/hosts
+   j784s4/devices
+   j784s4/clocks
+   j784s4/pll_data
+   j784s4/resasg_types
+   j784s4/interrupt_cfg
+   j784s4/ra_cfg
+   j784s4/dma_cfg
+   j784s4/psil_cfg
+   j784s4/proxy_cfg
+   j784s4/sec_proxy
+   j784s4/processors
+   j784s4/firewalls
+   j784s4/soc_devgrps

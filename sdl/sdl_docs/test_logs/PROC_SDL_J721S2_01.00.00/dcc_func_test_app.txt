@@ -1,0 +1,52 @@
+ DCC Function Test Application
+
+Interrupt is generated to ESM
+    ESM Call back function called : instType 0x3, intType 0x1, grpChannel 0x1, index 0x5, intSrc 0x25
+    Take action
+
+
+DCC_Test_init: Init MCU ESM complete
+
+
+SDL DCC FUNCTION TEST: Start
+
+INSTANCE: DCC0
+
+ Reference clock source: HFOSC0
+ Test clock source: MAIN_SYSCLK0
+SDL DCC FUNCTION TEST: Seed values calculation done.
+SDL DCC FUNCTION TEST: DCC configured
+SDL DCC FUNCTION TEST: Enabling DCC
+SDL DCC FUNCTION TEST: Waiting for some time to perform Continuous mode
+SDL DCC FUNCTION TEST: DCC module is disabled
+
+ Reference clock source: HFOSC1
+ Test clock source: SERDES
+SDL DCC FUNCTION TEST: Seed values calculation done.
+SDL DCC FUNCTION TEST: DCC configured
+SDL DCC FUNCTION TEST: Enabling DCC
+SDL DCC FUNCTION TEST: Waiting for some time to perform Continuous mode
+SDL DCC FUNCTION TEST: DCC module is disabled
+
+
+
+ Reference clock source: HFOSC1
+ Test clock source: MCAN
+SDL DCC FUNCTION TEST: Changing the clock source
+SDL DCC FUNCTION TEST: Enabling DCC and waiting for Error interrupt
+
+Interrupt is generated to ESM
+    ESM Call back function called : instType 0x3, intType 0x1, grpChannel 0x3, index 0x8, intSrc 0x68
+    Take action
+
+SDL DCC FUNCTION TEST: DCC Generated Error interrupt
+SDL DCC FUNCTION TEST: Indicating clock drift/change
+
+Test Name: DCC FUNCTION TEST  PASSED
+
+ All tests have passed.
+main.c:290:test_sdl_dcc_baremetal_test_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored
+OK

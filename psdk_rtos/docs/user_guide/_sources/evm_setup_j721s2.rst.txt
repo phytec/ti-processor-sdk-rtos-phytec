@@ -1,0 +1,263 @@
+
+.. _evm_setup_j721s2:
+
+EVM Setup for J721S2
+====================
+
+This section is intended to give a quick reference of EVM related to SDK usage.  Full EVM documentation
+can be referenced at `TDA4VL & TDA4AL system-on-module <https://www.ti.com/tool/J721S2XSOMXEVM>`_.
+
+.. IMPORTANT::
+
+   - The power supply current requires more than 1A @12V input
+   - DisplayPort-to-DVI or DisplayPort-to-HDMI adapters don't work with DisplayPort
+   - The SOM board has to be tightly inserted into the connector sockets.
+   - When connecting the fusion daughter card, the power cable connecting processor board
+     and fusion board should look exactly like the picture in section :ref:`j721s2_evm_daughter_card`.
+     (P.S. The same cable from TDA2P EVM has the opposite wire connection at one end)
+
+EVM Setup to run SDK demos
+--------------------------
+
+Daughter card requirements
+**************************
+
+Below table shows the daughter cards required for various features/demos
+
++-----------------------------------------+-------------------+---------------+------------------------------+-----------+
+| Feature                                 | Infotainment card | Fusion 1 card | IMX390+UB953 FPDLink sensors | GESI card |
++=========================================+===================+===============+==============================+===========+
+| HDMI display                            | REQUIRED          | na            | na                           | na        |
++-----------------------------------------+-------------------+---------------+------------------------------+-----------+
+| eDP (DisplayPort)display                | na                | na            | na                           | na        |
++-----------------------------------------+-------------------+---------------+------------------------------+-----------+
+| CSI2RX camera input                     | na                | REQURIED      | REQURIED                     | na        |
++-----------------------------------------+-------------------+---------------+------------------------------+-----------+
+| CAN demos                               | na                | na            | na                           | REQUIRED  |
++-----------------------------------------+-------------------+---------------+------------------------------+-----------+
+
+UART terminal setup
+*******************
+
+- Connect USB cable to Main UART port on common processor board (see :ref:`j721s2_common-processor-board`)
+
+  - 4 UART ports would be visible at the PC side
+  - Port 0 from this is used this for Linux, RTOS UART terminal from A72
+
+- **Setup UART for 115200 baud rate, 8 data bits, no party, 1 stop bit**
+
+Boot Modes
+**********
+
+Bootmodes are selected using the SW8 and SW9 switches on the common processor board.
+
+.. _j721s2_no_boot_mode:
+
+No Boot Mode
+############
+
+When you want the binaries to be loaded from a debugger (CCS), the common
+processor boards has to be set in the NO boot mode.
+
+Following are the switch settings to do the same.::
+
+    SW8[1-8] = 1000 1000
+    SW9[1-8] = 0111 0000
+
+
+.. figure::  images/K3-J721E-EVM-Switch-NO-boot.png
+
+   No Boot Mode
+
+
+.. _j721s2_sd_boot_mode:
+
+SD Boot Mode
+############
+
+Following are the switch settings to set the boot mode to SD for common processor board.::
+
+    SW8[1-8] = 1000 0010
+    SW9[1-8] = 0000 0000
+
+.. figure:: images/K3-J721E-EVM-Switch-SD-boot.png
+
+   MMC/SD Boot Mode
+
+
+.. _j721s2_xspi_boot_mode:
+
+XSPI Boot Mode
+##############
+
+Following are the switch settings to set the boot mode to XSPI for common processor board.::
+
+    SW3[1-8] = 0xxx xxxx
+    SW8[1-8] = 0000 1010
+    SW9[1-8] = 0110 0000
+
+.. figure:: images/K3-J721E-EVM-SW3-UART-boot.png
+   :scale: 75%
+
+   XSPI Boot Mode SW3
+
+.. figure:: images/K3-J721S2-EVM-Switch-XSPI-boot.png
+
+   XSPI Boot Mode SW8 and SW9
+
+
+.. _j721s2_uart_boot_mode:
+
+UART Boot Mode
+##############
+
+Following are the switch settings to set the boot mode to SD for common processor board.::
+
+    SW3[1-8] = 0xxx xxxx
+    SW8[1-8] = 0000 0000
+    SW9[1-8] = 0111 0000
+
+.. figure:: images/K3-J721E-EVM-SW3-UART-boot.png
+   :scale: 75%
+
+   UART Boot Mode SW3
+
+.. figure:: images/K3-J721E-EVM-Switch-UART-boot.png
+
+   UART Boot Mode SW8 and SW9
+
+
+EVM and Daughter Card information
+---------------------------------
+
+|platform| SOM
+********************
+
+The |platform| Evaluation Module consists of a SOM (System on Module), shown in the red box below, fitted to a common processor board or base EVM.
+
+.. _j721s2_evm_daughter_card:
+
+.. figure:: images/K3-J7ES-SOM.png
+
+   |platform| SOM
+
+Contents of the board
+
+- |platform| SoC
+- Power controller
+- 4 GiB DDR RAM
+- OSPI NOR flash
+- Hyperflash
+
+.. _j721s2_common-processor-board:
+
+Common Processor Board
+**********************
+
+Common Processor Board is the main board which has peripherals to provide
+most common functionality. It has expander ports to connect to different adapter cards.
+
+.. figure:: images/K3-Common-Proc-Board.png
+
+   |platform| Common Processor Board
+
+Contents of the board
+
+#. 4xUART to USB port for Main uarts
+
+   - Port0 from this is used this for Linux, RTOS UART terminal from A72
+
+#. 2xUART to USB port MCU domain uarts
+
+   - Port0 from this is used for Cortex M4F UART
+   - Port1 from this is used for MCU R5F UART
+
+#. 2x Display (eDP/DP) ports
+
+   - Display0 is used by software for eDP/DP output
+
+#. Ethernet (CPSW2G) port
+#. SD card slot
+#. XDS110 on board USB JTAG connector
+#. USB ports
+#. 12V Power input
+#. Power switch
+#. MIPI JTAG connector
+
+Infotainment daughter card
+**************************
+
+Infotainment daughter card is adapter board which has additional peripherals for
+infotainment use cases. This has support for HDMI display, FPDlink display
+extra audio channels.
+
+.. figure:: images/K3-Infotainment-card.png
+
+   Infotainment daughter card
+
+Contents of the board
+
+- HDMI display connector
+- 2x FPDlink display connectors
+- 14x 3.5mm audio jacks
+- Parallel port Omnivision camera connector (direct connection, i.e no FPDLink)
+- CSI camera connector (direct connection, i.e no FPDLink)
+
+Quad Port Ethernet daughter card
+********************************
+
+Quad Port Ethernet (QPENet) board is an adapter board which offers
+additional Ethernet port capabilities to the Jacinto7 EVM.
+
+.. Note::
+
+    J721S2 does not make use of this card.  It is used by other SoCs
+    in the Jacinto Family.
+
+.. figure:: images/K3-QPENet-card.png
+
+   QPENet daughter card
+
+
+GESI daughter card
+******************
+
+GESI(Gateway/Ethernet Switch/Industrial) daughter card is an adapter board which
+has additional peripherals for gateway and industrial use cases.
+This has support for extra Ethernet ports and CAN ports.
+
+.. figure:: images/K3-GESI-card.png
+
+   GESI daughter card
+
+Contents of the board
+
+- 5x Ethernet ports (J721S2 only uses port PRG0_RGMII1_B)
+- Profinet connector
+- Motor control headers
+- Additional CAN Transceivers/ headers
+
+.. _j721s2_fusion-daughter-card:
+
+Fusion daughter card
+********************
+
+Fusion daughter card is adapter board to connect 4 camera sensors (IMX390+UB953 serializer)
+through de-serializer (UB960) available on the Fusion1 daughter card to CSI2RX ports of |platform| SoC.
+
+Connect the daughter card to common processor board at "CSI2 Exp" connector J25.
+
+.. figure:: images/Fusion_card_connector.png
+
+   CSI2 Exp Connector
+
+.. figure:: images/fusion1_board.png
+
+   Fusion1 Board
+
+.. figure:: images/fusion1_board_camera.png
+
+   Fusion1 Camera Setup
+
+
+

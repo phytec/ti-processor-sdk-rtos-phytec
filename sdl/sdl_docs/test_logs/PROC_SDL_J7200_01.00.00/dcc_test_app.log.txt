@@ -1,0 +1,10 @@
+ DCC UNIT Test Application
+Test Name: DCC POSITIVE TEST  PASSED
+Test Name: DCC NEGATIVE TEST  PASSED
+
+ All tests have passed.
+dcc_test_main.c:196:test_sdl_dcc_baremetal_test_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored
+OK

@@ -1,0 +1,90 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Documentation for lib_versions.pl</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Documentation for lib_versions.pl</span></strong></big>
+</td></tr>
+</table>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#USAGE">USAGE</a></li>
+  <li><a href="#OPTIONS">OPTIONS</a></li>
+  <li><a href="#DEPENDENCIES">DEPENDENCIES</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>lib_versions.pl</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<p>Prints out version of code generation tools used to compile each library.</p>
+
+<p>A sample output might be: -</p>
+
+<p>Library: c:\chan.l64</p>
+
+<p>Built by: TMS320C6x C/C++ Codegen Unix v5.1.0 Copyright (c) 1996-2004 Texas Instruments Incorporated</p>
+
+<h1 id="USAGE">USAGE</h1>
+
+<p>lib_versions [options] &lt;list of libraries or xml files&gt;</p>
+
+<p>Example : - from a DOS prompt: -</p>
+
+<pre><code>    [&gt;] &lt;ccstudiodir&gt;\dosrun.bat
+    [&gt;] perl lib_versions.pl rts6000.l*</code></pre>
+
+<p>.. OR ..</p>
+
+<pre><code>    [&gt;] &lt;ccstudiodir&gt;\dosrun.bat
+    [&gt;] ofd6x -xg -o=rts6000.lib.xml rts6000.lib
+    [&gt;] perl lib_versions.pl -x rts6000.lib.xml</code></pre>
+
+<h1 id="OPTIONS">OPTIONS</h1>
+
+<pre><code> -h: show usage
+ -o: show version info on a per object file basis
+ -x: do not run ofd internally. Arguments are a list of xml files from ofd utility
+ --cg_xml_version : Print out the version of the cg_xml package in use</code></pre>
+
+<h1 id="DEPENDENCIES">DEPENDENCIES</h1>
+
+<p>The script will only work on library files built with code generation tools &gt;= v5.0 for c6000, v3.0 for C55, v4.0 for C54</p>
+
+<p>The script could take awhile to run depending on the size of the libraries. It takes time to process the xml output from the ofd utility, which typically can get as large as tens of megabytes.</p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>For each library listed, the script would print out the version of the codegen tools used to build it. By default, it prints out the version used for the first object file it finds in the library file.</p>
+
+<p>Use the -o switch to get version information on a per object file basis in case the library is a combination of C and assembly code, and the assembly code modules do not have any Dwarf information. The compiler RTS library is such library. You may also use -o for the rare case where different object files were compiled using different code generation tools.</p>
+
+<p>Specifying the -x switch allows users to pass in ofd-generated xml files to the script instead of the library files. This is generally faster since ofd does not need to be run by the script.</p>
+
+<p>This script was written using Perl version 5.8.3. It may not work with earlier revisions of Perl.</p>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Documentation for lib_versions.pl</span></strong></big>
+</td></tr>
+</table>
+
+</body>
+
+</html>
+
+

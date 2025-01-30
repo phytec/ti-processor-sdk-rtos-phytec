@@ -1,0 +1,1053 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>8.1. MCU1_0 Application Development with SYSFW &mdash; Processor SDK RTOS J721S2</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Processor SDK RTOS J721S2" href="index.html"/>
+        <link rel="up" title="8. Developer Notes" href="developer_notes.html"/>
+        <link rel="next" title="9. Documentation Tarball" href="documentation_tarball.html"/>
+        <link rel="prev" title="8. Developer Notes" href="developer_notes.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Processor SDK RTOS J721S2
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                09_02_00
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview_gp.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_j721s2_gp.html">2. Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sdk_components_j721s2_gp.html">3. SDK Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes_gp.html">4. Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evm_setup_j721s2.html">5. EVM Setup for J721S2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ccs_setup_j721s2.html">6. CCS Setup for J721S2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datasheet_sdk_j721s2_gp.html">7. Data Sheet</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="developer_notes.html">8. Developer Notes</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">8.1. MCU1_0 Application Development with SYSFW</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">8.1.1. Introduction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#audience">8.1.1.1. Audience</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#motivation">8.1.1.2. Motivation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#mcu1-0-application-requirement-details">8.1.2. MCU1_0 Application Requirement Details</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#libraries-to-link">8.1.2.1. Libraries to Link</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#functions-to-call">8.1.2.2. Functions to Call</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#memory-map-considerations">8.1.2.3. Memory Map Considerations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#mcu1-0-loading-scenarios">8.1.3. MCU1_0 Loading Scenarios</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ccs-loading">8.1.3.1. CCS Loading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sbl-loading">8.1.3.2. SBL Loading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#spl-uboot-loading">8.1.3.3. SPL/uboot Loading</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#mcu1-0-application-migration-to-7-1">8.1.4. MCU1_0 Application Migration to 7.1</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#vision-apps-diff-file">8.1.4.1. Vision Apps Diff file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enabling-sciserver-debug-logs">8.1.4.2. Enabling Sciserver Debug Logs</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#board-configuration-passing-between-spl-sbl-and-mcu1-0-applications">8.1.5. Board configuration passing between SPL/SBL and MCU1_0 applications</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="documentation_tarball.html">9. Documentation Tarball</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Processor SDK RTOS J721S2</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="developer_notes.html"><span class="section-number">8. </span>Developer Notes</a> &raquo;</li>
+      
+    <li><span class="section-number">8.1. </span>MCU1_0 Application Development with SYSFW</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="mcu1-0-application-development-with-sysfw">
+<span id="mcu1-0-app-with-sysfw"></span><h1><span class="section-number">8.1. </span>MCU1_0 Application Development with SYSFW<a class="headerlink" href="#mcu1-0-application-development-with-sysfw" title="Permalink to this headline">¶</a></h1>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#introduction" id="toc-entry-1">Introduction</a></p>
+<ul>
+<li><p><a class="reference internal" href="#audience" id="toc-entry-2">Audience</a></p></li>
+<li><p><a class="reference internal" href="#motivation" id="toc-entry-3">Motivation</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#mcu1-0-application-requirement-details" id="toc-entry-4">MCU1_0 Application Requirement Details</a></p>
+<ul>
+<li><p><a class="reference internal" href="#libraries-to-link" id="toc-entry-5">Libraries to Link</a></p></li>
+<li><p><a class="reference internal" href="#functions-to-call" id="toc-entry-6">Functions to Call</a></p></li>
+<li><p><a class="reference internal" href="#memory-map-considerations" id="toc-entry-7">Memory Map Considerations</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#mcu1-0-loading-scenarios" id="toc-entry-8">MCU1_0 Loading Scenarios</a></p>
+<ul>
+<li><p><a class="reference internal" href="#ccs-loading" id="toc-entry-9">CCS Loading</a></p></li>
+<li><p><a class="reference internal" href="#sbl-loading" id="toc-entry-10">SBL Loading</a></p></li>
+<li><p><a class="reference internal" href="#spl-uboot-loading" id="toc-entry-11">SPL/uboot Loading</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#mcu1-0-application-migration-to-7-1" id="toc-entry-12">MCU1_0 Application Migration to 7.1</a></p>
+<ul>
+<li><p><a class="reference internal" href="#vision-apps-diff-file" id="toc-entry-13">Vision Apps Diff file</a></p></li>
+<li><p><a class="reference internal" href="#enabling-sciserver-debug-logs" id="toc-entry-14">Enabling Sciserver Debug Logs</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#board-configuration-passing-between-spl-sbl-and-mcu1-0-applications" id="toc-entry-15">Board configuration passing between SPL/SBL and MCU1_0 applications</a></p></li>
+</ul>
+</nav>
+<section id="introduction">
+<h2><a class="toc-backref" href="#toc-entry-1" role="doc-backlink"><span class="section-number">8.1.1. </span>Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Starting with Processor SDK 7.1, the following System Firmware (SYSFW)
+components on this device are required to run on the MCU1_0 core of the MCU Subsystem
+instead of the DMSC core:</p>
+<ul class="simple">
+<li><p>System Controller Interface Server (SCISERVER)</p></li>
+<li><p>Resource Management (RM) Services</p></li>
+<li><p>Power Management (PM) Services</p></li>
+</ul>
+<p>These components make up the Device Manager (DM) role of SYSFW.  The software stack view of
+these components can be seen in section <a href="../../../pdk_j721s2_09_02_00_30/packages/ti/drv/sciclient/soc/sysfw/binaries/system-firmware-public-documentation/1_intro/TISCI.html#architecture-change-between-sdk-7-0-and-sdk-7-1" target="_blank">Architecture Change between SDK 7.0 and SDK 7.1</a>.</p>
+<p>This architecture has two important requirements for MCU1_0 developers to be aware of:</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p><strong>Applications running on MCU1_0</strong> need to:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>ensure that the associated libraries are properly linked into the MCU1_0 firmware image build</p></li>
+<li><p>call the associated initialization functions to start these services.</p></li>
+</ul>
+<p>Refer to section <a class="reference internal" href="#mcu1-0-app-requirements"><span class="std std-ref">MCU1_0 Application Requirement Details</span></a> for more details.</p>
+</div></blockquote>
+</li>
+<li><p><strong>Bootloaders</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>If using SPL/uboot, the tispl.bin generation step is now dependent on the compiled
+MCU1_0 firmware image. So each time the MCU1_0 image is regenerated, the tispl.bin
+also need to be regenerated as part of the build flow.</p></li>
+<li><p>Bootloaders must read the board configuration from the boot media as before and also
+leave the board configuration at a predefined location to allow the MCU1_0 application
+containing the SCISERVER to read the board configuration and initialize RM and PM.</p></li>
+</ul>
+<p>Refer to section <a class="reference internal" href="#spl-loading"><span class="std std-ref">SPL/uboot Loading</span></a> for more details.</p>
+</div></blockquote>
+</li>
+</ol>
+</div></blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>These system firmware components are foundational services which <em>all</em> cores on the SoC depend on.  Consequences
+of building the system without proper integration of these components running on the MCU1_0 may result multiple
+run-time failures, including failure to boot.</p>
+</aside>
+<p>The purpose of this document is to guide MCU1_0 developers on details for how to satisfy the above two requirements.</p>
+<p>The TI Foundational Security (TIFS) software continues to run on the DMSC in Processor SDK 7.1 as well.</p>
+<p>The following table highlights the variations of where the RM and PM execute versus the TI Foundational Security
+on the different K3 family of devices.</p>
+<table class="docutils align-default" id="table-1">
+<caption><span class="caption-number">Table 8.1 </span><span class="caption-text">TI Foundational Security Software and RM/PM SCI Server Mapping</span><a class="headerlink" href="#table-1" title="Permalink to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Device</p></th>
+<th class="head"><p>TI Foundation Security</p></th>
+<th class="head"><p>3rd Party HSM/SHE stack</p></th>
+<th class="head"><p>RM/PM, SCI Server</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>AM65x/ DRA80x,
+AM64x</p></td>
+<td><p>DMSC (M3 based)</p></td>
+<td><p>NA</p></td>
+<td><p>DMSC (M3 based)</p></td>
+</tr>
+<tr class="row-odd"><td><p>J721E, J7200</p></td>
+<td><p>DMSC (M3 based)</p></td>
+<td><p>DMSC (M3 based)</p></td>
+<td><p>Library on MCU R5*</p></td>
+</tr>
+<tr class="row-even"><td><p>J721S2, J784S4</p></td>
+<td><p>SMS (M4 based)</p></td>
+<td><p>SMS (M4 based)</p></td>
+<td><p>Library on MCU R5*</p></td>
+</tr>
+</tbody>
+</table>
+<p>More details related to these System Firmware components, and its role in the overall system architecture can be found at <a href="../../../pdk_j721s2_09_02_00_30/packages/ti/drv/sciclient/soc/sysfw/binaries/system-firmware-public-documentation/1_intro/TISCI.html#Introduction" target="_blank">TISCI Introduction</a>.</p>
+<p>The rest of this document is applicable only to devices where the RM/PM and SCI server execute on MCU_R5F.</p>
+<section id="audience">
+<h3><a class="toc-backref" href="#toc-entry-2" role="doc-backlink"><span class="section-number">8.1.1.1. </span>Audience</a><a class="headerlink" href="#audience" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Primary</strong>: Developers working on application firmware on MCU1_0.</p></li>
+<li><p><strong>Secondary</strong>: Developers responsible for build flow generation of SPL bootloader : (tispl.bin)</p></li>
+</ul>
+</section>
+<section id="motivation">
+<h3><a class="toc-backref" href="#toc-entry-3" role="doc-backlink"><span class="section-number">8.1.1.2. </span>Motivation</a><a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h3>
+<p>This System Firmware architecture is motivated by the following points:</p>
+<ul class="simple">
+<li><p>Secure <strong>Hardware Security Module</strong> (HSM) functions can run on a DMSC Security Island.
+The Security Island is responsible to execute TI foundational security software
+which enables use of TI’s hardware security features and HSM software stack which
+enables other software/system specific security features.</p></li>
+<li><p>Enable MCU Only mode with HSM functions on DMSC. In the MCU only mode a typical software
+stack can have the AUTOSAR functioning on the MCU R5F and the security HSM stack can run
+on the DMSC allowing the customer to have MCU only mode of operation with security features
+enabled.</p></li>
+<li><p>Lockstep Safety R5F runs safety critical PM &amp; RM functions. PM and RM influence the
+safe operation of the device. Hence having these run on a lock step R5F helps the overall
+system safety goal.</p></li>
+<li><p>Software security functions can also be run on dedicated R5F core but this is not
+recomended as the whole R5F core needs to be then dedicated for security operations. Having
+the HSM run on the DMSC allows to free up the R5F and also enables better utilization of
+the DMSC security island.</p></li>
+</ul>
+<p>Note, customers are recommended to work with their desired Third Party to develop
+the HSM and full security solution on the DMSC. TI provides only the TI Foundational
+Security Software.</p>
+<p>Further details about the motivation of this architecture can be found at <a href="../../../pdk_j721s2_09_02_00_30/packages/ti/drv/sciclient/soc/sysfw/binaries/system-firmware-public-documentation/1_intro/TISCI.html#architecture-change-between-sdk-7-0-and-sdk-7-1" target="_blank">Architecture Change between SDK 7.0 and SDK 7.1</a>.</p>
+</section>
+</section>
+<section id="mcu1-0-application-requirement-details">
+<span id="mcu1-0-app-requirements"></span><h2><a class="toc-backref" href="#toc-entry-4" role="doc-backlink"><span class="section-number">8.1.2. </span>MCU1_0 Application Requirement Details</a><a class="headerlink" href="#mcu1-0-application-requirement-details" title="Permalink to this headline">¶</a></h2>
+<p>The introduction referred to MCU1_0 Application requirements.  This section gives the specific
+details as to these requirements.</p>
+<section id="libraries-to-link">
+<h3><a class="toc-backref" href="#toc-entry-5" role="doc-backlink"><span class="section-number">8.1.2.1. </span>Libraries to Link</a><a class="headerlink" href="#libraries-to-link" title="Permalink to this headline">¶</a></h3>
+<p>All MCU1_0 applications should link the first three device manager related libraries in the table below. These libraries are provided
+as a part of PDK.</p>
+<p>In the following table, <strong>SCI_PATH</strong>=”pdk_&lt;soc&gt;_&lt;version&gt;/packages/ti/drv/sciclient”</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Library Name</p></th>
+<th class="head"><p>Library Path</p></th>
+<th class="head"><p>Include Header</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>sciserver_tirtos</strong></p></td>
+<td><p><cite>$(SCI_PATH)/lib/&lt;soc&gt;/mcu1_0/&lt;profile&gt;/sciserver_tirtos.aer5f</cite></p></td>
+<td><p><cite>$(SCI_PATH)/sciserver_tirtos.h</cite></p></td>
+<td><p>Applicable when RTOS is
+executing on the MCU1_0</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>sciclient_direct</strong></p></td>
+<td><p><cite>$(SCI_PATH)/lib/&lt;soc&gt;/mcu1_0/&lt;profile&gt;/sciclient_direct.aer5f</cite></p></td>
+<td><p><cite>$(SCI_PATH)/sciclient.h</cite></p></td>
+<td><p>Direct function calls to RM/PM
+HAL services. Applicable to
+baremetal, TI-RTOS or other OS
+based applications.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>rm_pm_hal</strong></p></td>
+<td><p><cite>$(SCI_PATH)/lib/&lt;soc&gt;/mcu1_0/&lt;profile&gt;/rm_pm_hal.aer5f</cite></p></td>
+<td><p>NA - Always call via sciclient APIs.</p></td>
+<td><p>Actual implementation of the
+RM/PM HAL operations. Applicable
+to baremetal, TI-RTOS or other OS
+based applications.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>sciserver_baremetal</strong></p></td>
+<td><p><cite>$(SCI_PATH)/lib/&lt;soc&gt;/mcu1_0/&lt;profile&gt;/sciserver_baremetal.aer5f</cite></p></td>
+<td><p><cite>$(SCI_PATH)/sciserver.h</cite></p></td>
+<td><p>This is the bare-metal barebones
+functions of Sciserver. Note you
+cannot run sciserver without an OS.
+The application developer must develop
+their own version of
+<cite>$(SCI_PATH)/src/
+sciserver/sciserver_tirtos.c</cite>
+for the OS you are using before working
+with Sciserver on the MCU1_0.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="functions-to-call">
+<h3><a class="toc-backref" href="#toc-entry-6" role="doc-backlink"><span class="section-number">8.1.2.2. </span>Functions to Call</a><a class="headerlink" href="#functions-to-call" title="Permalink to this headline">¶</a></h3>
+<p>The typical set of APIs to be called by the application are given in the
+example file:
+<cite>pdk_&lt;soc&gt;_&lt;version&gt;/packages/ti/drv/sciclient/examples/sciserver_testapp/sciserver_testapp_main.c</cite>.</p>
+<p>The sequence is explained here for reference:</p>
+<ol class="arabic simple">
+<li><p>Sciclient initialization parameters are required for the Sciclient
+direct interface for MCU1_0 applications.</p></li>
+</ol>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Sciclient_ConfigPrms_t</span><span class="w"> </span><span class="n">clientPrms</span><span class="p">;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Sciserver initialization parameters are required for the Sciserver
+RTOS based applications. Note for other OSes the appPrms will be corresponding
+to your own implementation of the sciserver_tirtos.c file.</p></li>
+</ol>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Sciserver_TirtosCfgPrms_t</span><span class="w"> </span><span class="n">appPrms</span><span class="p">;</span>
+</pre></div>
+</div>
+<ol class="arabic" start="3">
+<li><p>The first API that needs to be called for initializing the default
+configuration of the Sciclient and Sciserver is as given below.
+If this step passes, then the code must proceed to read the board configuration
+left behind by the SBL. To know more about the board configuration passing
+between SBL/SPL to the MCU1_0 application please refer <a class="reference internal" href="#board-cfg-passing"><span class="std std-ref">Board configuration passing between SPL/SBL and MCU1_0 applications</span></a>.</p>
+<p>By default the Sciserver task is kept at a task priority of 3 - High priority
+task and 1 - Low priority task. Refer <cite>pdk_&lt;soc&gt;_&lt;version&gt;/packages/ti/drv/sciclient/sciserver_tirtos.h</cite>
+One can change this value after the default initialization.</p>
+</li>
+</ol>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Sciclient_configPrmsInit</span><span class="p">(</span><span class="o">&amp;</span><span class="n">clientPrms</span><span class="p">);</span>
+<span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Sciserver_tirtosInitPrms_Init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">appPrms</span><span class="p">);</span>
+</pre></div>
+</div>
+<ol class="arabic" start="4">
+<li><p>The <cite>Sciclient_boardCfgParseHeader</cite> should then be called to parse the content left behind by
+the SPL/SBL and populate the address for board configurations for the
+RM/PM services. To know more about the Board configurations which
+TISCI needs please refer <a href="../../../pdk_j721s2_09_02_00_30/packages/ti/drv/sciclient/soc/sysfw/binaries/system-firmware-public-documentation/3_boardcfg/index.htlm" target="_blank">TISCI Board Configuration</a>.</p>
+<p>The address at which the common board configuration is set is given in
+<a class="reference internal" href="#board-cfg-passing"><span class="std std-ref">Board configuration passing between SPL/SBL and MCU1_0 applications</span></a>.</p>
+</li>
+</ol>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#define SCISERVER_COMMON_X509_HEADER_ADDR (0x41cffb00)</span>
+
+<span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Sciclient_boardCfgParseHeader</span><span class="p">(</span>
+<span class="w">    </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">SCISERVER_COMMON_X509_HEADER_ADDR</span><span class="p">,</span>
+<span class="w">    </span><span class="o">&amp;</span><span class="n">clientPrms</span><span class="p">.</span><span class="n">inPmPrms</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">clientPrms</span><span class="p">.</span><span class="n">inRmPrms</span><span class="p">);</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>The Init APIs should then be called to  initialize the Sciclient and
+also perform the board configuration for RM and PM.
+The <cite>Sciserver_tirtosInit</cite> will set up the Tasks and HWIs
+needed for the servicing of non-secure messsages for RM and PM.</p></li>
+</ol>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Sciclient_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">clientPrms</span><span class="p">);</span>
+<span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Sciserver_tirtosInit</span><span class="p">(</span><span class="o">&amp;</span><span class="n">appPrms</span><span class="p">);</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li><p>After OS_start is called the Sciserver task would start.</p></li>
+</ol>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">OS_start</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>For other cores, post this point the Sciserver on MCU1_0 will be ready to
+receive and service messages. This can be checked from other cores by requesting
+for a get version on a non-secure Secure Proxy queue. The Get version message
+can be sent via TISCI_MSG_VERSION message.</p>
+</section>
+<section id="memory-map-considerations">
+<h3><a class="toc-backref" href="#toc-entry-7" role="doc-backlink"><span class="section-number">8.1.2.3. </span>Memory Map Considerations</a><a class="headerlink" href="#memory-map-considerations" title="Permalink to this headline">¶</a></h3>
+<p>The application developer should also account for memory locations reserved for
+passing board configuration from SBL/SPL to the application on MCU1_0.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Address</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Purpose</p></th>
+<th class="head"><p>Persistence</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0x41C0_0000</p></td>
+<td><p>512   KB</p></td>
+<td><p>Hold
+SPL/SBL Image</p></td>
+<td><p>Only   during SPL/SBL execution.
+Can be claimed once MCU1_0 app
+is jumped to.</p></td>
+</tr>
+<tr class="row-odd"><td><p>0x41C8_0000</p></td>
+<td><p>8 KB</p></td>
+<td><p>Hold the Board
+configuration passed
+between SPL/SBL and
+SCISERVER_APP</p></td>
+<td><p>Can be claimed once MCU1_0 app
+executes Sciclient_init on
+MCU1_0</p></td>
+</tr>
+<tr class="row-even"><td><p>0x41C8_2000</p></td>
+<td><p>502 KB</p></td>
+<td><p>Loadable application
+on OCMS RAM (including
+SCISERVER)</p></td>
+<td><p>Through out MCU1_0 app execution</p></td>
+</tr>
+<tr class="row-odd"><td><p>0x41cf_fb00</p></td>
+<td><p>~1.2 KB</p></td>
+<td><p>Common header used in
+ROM combined image
+format as well.</p></td>
+<td><p>Can be claimed once MCU1_0 app
+executes Sciclient_init on
+MCU1_0</p></td>
+</tr>
+</tbody>
+</table>
+<p>For more details on the sections of memory and their usage refer <a class="reference internal" href="#board-cfg-passing"><span class="std std-ref">Board configuration passing between SPL/SBL and MCU1_0 applications</span></a>.</p>
+</section>
+</section>
+<section id="mcu1-0-loading-scenarios">
+<h2><a class="toc-backref" href="#toc-entry-8" role="doc-backlink"><span class="section-number">8.1.3. </span>MCU1_0 Loading Scenarios</a><a class="headerlink" href="#mcu1-0-loading-scenarios" title="Permalink to this headline">¶</a></h2>
+<p>This section details key care-abouts depending on the specific boot loading scenario of
+interest.</p>
+<nav class="contents local" id="topic-1">
+<ul class="simple">
+<li><p><a class="reference internal" href="#ccs-loading" id="toc-entry-16">CCS Loading</a></p>
+<ul>
+<li><p><a class="reference internal" href="#using-pdk-mcusw-examples" id="toc-entry-17">Using PDK, MCUSW Examples</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#sbl-loading" id="toc-entry-18">SBL Loading</a></p>
+<ul>
+<li><p><a class="reference internal" href="#using-pdk-mcusw-examples-1" id="toc-entry-19">Using PDK, MCUSW Examples</a></p></li>
+<li><p><a class="reference internal" href="#using-qnx-filesystem-vision-apps" id="toc-entry-20">Using QNX Filesystem + Vision Apps</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#spl-uboot-loading" id="toc-entry-21">SPL/uboot Loading</a></p>
+<ul>
+<li><p><a class="reference internal" href="#using-sdk-default-linux-filesystem" id="toc-entry-22">Using SDK Default Linux Filesystem</a></p></li>
+<li><p><a class="reference internal" href="#using-vision-apps-for-linux-and-qnx-spl-boot" id="toc-entry-23">Using Vision Apps for Linux and QNX SPL Boot</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+<section id="ccs-loading">
+<h3><a class="toc-backref" href="#toc-entry-16" role="doc-backlink"><span class="section-number">8.1.3.1. </span>CCS Loading</a><a class="headerlink" href="#ccs-loading" title="Permalink to this headline">¶</a></h3>
+<section id="using-pdk-mcusw-examples">
+<h4><a class="toc-backref" href="#toc-entry-17" role="doc-backlink"><span class="section-number">8.1.3.1.1. </span>Using PDK, MCUSW Examples</a><a class="headerlink" href="#using-pdk-mcusw-examples" title="Permalink to this headline">¶</a></h4>
+<p>In order to load examples via CCS the following sub usecases should be kept in mind.</p>
+<dl>
+<dt>Loading Applications on MCU1_0</dt><dd><p>When loading applications on the MCU1_0 the Sciclient_direct
+(in baremetal case and TI RTOS case) and Sciserver (in TI RTOS case) are
+assumed to be a part of the MCU1_0 application.
+Use the <cite>pdk/packages/ti/drv/sciclient/tools/ccsLoadDmsc/&lt;soc&gt;/launch.js</cite>
+file as descibed in <a href="../../../pdk_j721s2_09_02_00_30/docs/pdk_introduction.html#Documentation" target="_blank">LINK</a> to launch the TIFS on the DMSC M3 and run
+the board configuration for the secure proxy setup and the security board
+configuration via <cite>sciclient_ccs_init</cite> app.</p>
+<p><strong>A special configuration flag has been added to the `launch.js` file `loadSciserverFlag`.
+The default value of this flag is 1. When running your own application on the
+MCU1_0, please make sure to change this flag to 0.</strong></p>
+</dd>
+<dt>For other cpus</dt><dd><p>When loading applications on other CPU cores apart from MCU1_0 which link the
+sciclient library which sends the TISCI messages over secure proxy use the <cite>launch.js</cite> file
+to load the TIFS on the DMSC M3, run the common and security board configuration via the
+<cite>sciclient_ccs_init</cite> app and then load the <cite>sciserver_testapp</cite> on the MCU1_0.</p>
+<p>The MCU1_0 is left at the main() function of the <cite>sciserver_testapp</cite> before giving control
+back to the user. At this point one can load the non MCU1_0 core with the application of
+interest and then run both the MCU1_0 and the application core of choice.</p>
+<p><strong>A special configuration flag has been added to the `launch.js` file `loadSciserverFlag`.
+The default value of this flag is 1. When running your own application on the non-MCU1_0 core,
+please make sure to keep this flag as 1.</strong></p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="sbl-loading">
+<h3><a class="toc-backref" href="#toc-entry-18" role="doc-backlink"><span class="section-number">8.1.3.2. </span>SBL Loading</a><a class="headerlink" href="#sbl-loading" title="Permalink to this headline">¶</a></h3>
+<p>When loading via SBL, the SBL will load the binaries corresponding to the application
+core which has the appropriate images in the AppImage file in SD Card, or flashed in OSPI, or sent
+via UART. In the case of MCU1_0 applications, the AppImage should contain the binary corresponding
+to the MCU application the developer has built along with the <cite>sciclient_direct</cite>, <cite>sciserver</cite>, <cite>rm_pm_hal</cite>
+libraries.</p>
+<p>In the case of non MCU1_0 applications, in case the developer has no application running on MCU1_0, they
+must load the <cite>sciserver_testapp</cite> on the MCU1_0 core. If they have an application running on the MCU1_0,
+they must integrate the <cite>sciclient_direct</cite>, <cite>sciserver</cite>, <cite>rm_pm_hal</cite> libraries and also call the set
+of APIs from their MCU1_0 app. In summary, an MCU1_0 application is mandatory with an OS running when there
+are multiple cores.</p>
+<p>In the PDK examples, the makefile is setup to always include the MCU1_0 sciserver_testapp_mcu1_0_release.rprc
+image in the Appimage if the MCU1_0 app is not present.</p>
+<p>SBL by itself links the <cite>sciclient_direct</cite> and the <cite>rm_pm_hal</cite> libraries to be able to initialize the system.</p>
+<p>The TI Foundational Security (TIFS) security code loading to the DMSC remains the same as it was before. API
+calls to the processor boot and security services remain the same as what it was before.</p>
+<section id="using-pdk-mcusw-examples-1">
+<h4><a class="toc-backref" href="#toc-entry-19" role="doc-backlink"><span class="section-number">8.1.3.2.1. </span>Using PDK, MCUSW Examples</a><a class="headerlink" href="#using-pdk-mcusw-examples-1" title="Permalink to this headline">¶</a></h4>
+<p>The top level Sciclient_* APIs remain the same for the applications. The only careabout
+PDK applications should consider are:</p>
+<ul class="simple">
+<li><p>PM/RM service will need to be integrated in the example itself for MCU1_0 applications</p></li>
+<li><p>For other non MCU1_0 applications there is no change  (Need to load MCU R5F now to run Sciserver.)</p></li>
+</ul>
+<figure class="align-default" id="figure-1">
+<img alt="_images/swimpact.png" src="_images/swimpact.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 8.1 </span><span class="caption-text">Software Impact for Applications</span><a class="headerlink" href="#figure-1" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="using-qnx-filesystem-vision-apps">
+<h4><a class="toc-backref" href="#toc-entry-20" role="doc-backlink"><span class="section-number">8.1.3.2.2. </span>Using QNX Filesystem + Vision Apps</a><a class="headerlink" href="#using-qnx-filesystem-vision-apps" title="Permalink to this headline">¶</a></h4>
+<p>The QNX SBL boot flow uses the boot app on the MCU1-0 (located at <em>mcusw/mcuss_demos/boot_app_mcu_rtos/</em>).
+The boot app has been updated to run Sciserver.</p>
+</section>
+</section>
+<section id="spl-uboot-loading">
+<span id="spl-loading"></span><h3><a class="toc-backref" href="#toc-entry-21" role="doc-backlink"><span class="section-number">8.1.3.3. </span>SPL/uboot Loading</a><a class="headerlink" href="#spl-uboot-loading" title="Permalink to this headline">¶</a></h3>
+<p>As mentioned in the introduction, when using SPL/uboot, the tispl.bin
+generation step is now dependent on the compiled MCU1_0 firmware image.
+So each time the MCU1_0 image is regenerated, the uboot and tispl.bin
+also need to be regenerated as part of the build flow.  Likewise, if
+the uboot or tispl.bin need to be rebuilt, then the user needs to pass
+the appropriate MCU1_0 firmware image to the uboot build command.</p>
+<p>The MCU1_0 image is passed to the uboot make command via the “DM” variable
+on the make command, as shown in the highlighted line below.</p>
+<div class="literal-block-wrapper docutils container" id="uboot-command">
+<div class="code-block-caption"><span class="caption-number">Listing 8.1 </span><span class="caption-text">SPL/uboot build command example</span><a class="headerlink" href="#uboot-command" title="Permalink to this code">¶</a></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="w"> </span><span class="n">$</span><span class="p">(</span><span class="n">MAKE</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="n">C</span><span class="w"> </span><span class="n">$</span><span class="p">(</span><span class="n">PSDK_LINUX_PATH</span><span class="p">)</span><span class="o">/</span><span class="n">board</span><span class="o">-</span><span class="n">support</span><span class="o">/</span><span class="n">u</span><span class="o">-</span><span class="n">boot</span><span class="o">-*</span><span class="w"> </span><span class="n">ARCH</span><span class="o">=</span><span class="n">arm</span><span class="w"> </span><span class="n">CROSS_COMPILE</span><span class="o">=</span><span class="n">$</span><span class="p">(</span><span class="n">GCC_LINUX_ARM_ROOT</span><span class="p">)</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">aarch64</span><span class="o">-</span><span class="n">none</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">gnu</span><span class="o">-</span><span class="w"> </span>\
+<span class="w">                                                      </span><span class="n">O</span><span class="o">=</span><span class="n">j721e</span><span class="o">-</span><span class="n">arm64</span><span class="o">-</span><span class="n">linux</span><span class="w"> </span><span class="o">-</span><span class="n">j8</span><span class="w"> </span><span class="n">j721e_evm_a72_defconfig</span>
+<span class="w"> </span><span class="n">$</span><span class="p">(</span><span class="n">MAKE</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="n">C</span><span class="w"> </span><span class="n">$</span><span class="p">(</span><span class="n">PSDK_LINUX_PATH</span><span class="p">)</span><span class="o">/</span><span class="n">board</span><span class="o">-</span><span class="n">support</span><span class="o">/</span><span class="n">u</span><span class="o">-</span><span class="n">boot</span><span class="o">-*</span><span class="w"> </span><span class="n">ARCH</span><span class="o">=</span><span class="n">arm</span><span class="w"> </span><span class="n">CROSS_COMPILE</span><span class="o">=</span><span class="n">$</span><span class="p">(</span><span class="n">GCC_LINUX_ARM_ROOT</span><span class="p">)</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">aarch64</span><span class="o">-</span><span class="n">none</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">gnu</span><span class="o">-</span><span class="w"> </span>\
+<span class="w">                                                      </span><span class="n">ATF</span><span class="o">=</span><span class="n">$</span><span class="p">(</span><span class="n">PSDK_LINUX_PATH</span><span class="p">)</span><span class="o">/</span><span class="n">board</span><span class="o">-</span><span class="n">support</span><span class="o">/</span><span class="n">prebuilt</span><span class="o">-</span><span class="n">images</span><span class="o">/</span><span class="n">bl31</span><span class="p">.</span><span class="n">bin</span><span class="w"> </span>\
+<span class="w">                                                      </span><span class="n">TEE</span><span class="o">=</span><span class="n">$</span><span class="p">(</span><span class="n">PSDK_LINUX_PATH</span><span class="p">)</span><span class="o">/</span><span class="n">board</span><span class="o">-</span><span class="n">support</span><span class="o">/</span><span class="n">prebuilt</span><span class="o">-</span><span class="n">images</span><span class="o">/</span><span class="n">bl32</span><span class="p">.</span><span class="n">bin</span><span class="w"> </span>\
+<span class="hll"><span class="w">                                                      </span><span class="n">DM</span><span class="o">=</span><span class="n">$</span><span class="p">(</span><span class="n">FIRMWARE_PATH</span><span class="p">)</span><span class="o">/</span><span class="n">ipc_echo_testb_mcu1_0_release_strip</span><span class="p">.</span><span class="n">xer5f</span><span class="w"> </span>\
+</span><span class="w">                                                      </span><span class="n">O</span><span class="o">=</span><span class="n">j721e</span><span class="o">-</span><span class="n">arm64</span><span class="o">-</span><span class="n">linux</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The image passed to the “DM” parameter when building uboot <em>must</em> match the corresponding firmware image located in
+the linux filesystem at the following path:</p>
+<p>/lib/firmware/j7-mcu-r5f0_0-fw</p>
+<p>This is needed because linux needs to extract the resource table information from the image.</p>
+</aside>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If the <em>/lib/firmware/j7-mcu-r5f0_0-fw</em> image (or soft link to the image) is missing or does not match the image passed to the “DM”
+parameter when building uboot, the kernel may boot fine, but applications trying to communication via IPC between Linux and MCU1_0
+may fail to synchronize and communicate.</p>
+</aside>
+<section id="using-sdk-default-linux-filesystem">
+<h4><a class="toc-backref" href="#toc-entry-22" role="doc-backlink"><span class="section-number">8.1.3.3.1. </span>Using SDK Default Linux Filesystem</a><a class="headerlink" href="#using-sdk-default-linux-filesystem" title="Permalink to this headline">¶</a></h4>
+<p>By default, the file system that comes in the Processor SDK Linux package
+has simple echo test firmware built using the RTOS PDK for each RTOS core as shown
+below.  The highlighted line corresponds to the MCU1_0 firmware which already includes
+the SCISERVER and RM/PM services.</p>
+<div class="literal-block-wrapper docutils container" id="default-mcu1-0">
+<div class="code-block-caption"><span class="caption-number">Listing 8.2 </span><span class="caption-text">Contents of /lib/firmware folder</span><a class="headerlink" href="#default-mcu1-0" title="Permalink to this code">¶</a></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="w"> </span><span class="n">j7</span><span class="o">-</span><span class="n">c66_0</span><span class="o">-</span><span class="n">fw</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">pdk</span><span class="o">-</span><span class="n">ipc</span><span class="o">/</span><span class="n">ipc_echo_test_c66xdsp_1_release_strip</span><span class="p">.</span><span class="n">xe66</span>
+<span class="w"> </span><span class="n">j7</span><span class="o">-</span><span class="n">c66_1</span><span class="o">-</span><span class="n">fw</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">pdk</span><span class="o">-</span><span class="n">ipc</span><span class="o">/</span><span class="n">ipc_echo_test_c66xdsp_2_release_strip</span><span class="p">.</span><span class="n">xe66</span>
+<span class="w"> </span><span class="n">j7</span><span class="o">-</span><span class="n">c71_0</span><span class="o">-</span><span class="n">fw</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">pdk</span><span class="o">-</span><span class="n">ipc</span><span class="o">/</span><span class="n">ipc_echo_test_c7x_1_release_strip</span><span class="p">.</span><span class="n">xe71</span>
+<span class="w"> </span><span class="n">j7</span><span class="o">-</span><span class="n">c71_1</span><span class="o">-</span><span class="n">fw</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">pdk</span><span class="o">-</span><span class="n">ipc</span><span class="o">/</span><span class="n">ipc_echo_test_c7x_2_release_strip</span><span class="p">.</span><span class="n">xe71</span>
+<span class="w"> </span><span class="n">j7</span><span class="o">-</span><span class="n">main</span><span class="o">-</span><span class="n">r5f0_0</span><span class="o">-</span><span class="n">fw</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">ethfw</span><span class="o">/</span><span class="n">app_remoteswitchcfg_server_strip</span><span class="p">.</span><span class="n">xer5f</span>
+<span class="w"> </span><span class="n">j7</span><span class="o">-</span><span class="n">main</span><span class="o">-</span><span class="n">r5f0_1</span><span class="o">-</span><span class="n">fw</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">pdk</span><span class="o">-</span><span class="n">ipc</span><span class="o">/</span><span class="n">ipc_echo_test_mcu2_1_release_strip</span><span class="p">.</span><span class="n">xer5f</span>
+<span class="w"> </span><span class="n">j7</span><span class="o">-</span><span class="n">main</span><span class="o">-</span><span class="n">r5f1_0</span><span class="o">-</span><span class="n">fw</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">pdk</span><span class="o">-</span><span class="n">ipc</span><span class="o">/</span><span class="n">ipc_echo_test_mcu3_0_release_strip</span><span class="p">.</span><span class="n">xer5f</span>
+<span class="hll"><span class="w"> </span><span class="n">j7</span><span class="o">-</span><span class="n">main</span><span class="o">-</span><span class="n">r5f1_1</span><span class="o">-</span><span class="n">fw</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">pdk</span><span class="o">-</span><span class="n">ipc</span><span class="o">/</span><span class="n">ipc_echo_test_mcu3_1_release_strip</span><span class="p">.</span><span class="n">xer5f</span>
+</span><span class="w"> </span><span class="n">j7</span><span class="o">-</span><span class="n">mcu</span><span class="o">-</span><span class="n">r5f0_0</span><span class="o">-</span><span class="n">fw</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">pdk</span><span class="o">-</span><span class="n">ipc</span><span class="o">/</span><span class="n">ipc_echo_testb_mcu1_0_release_strip</span><span class="p">.</span><span class="n">xer5f</span>
+<span class="w"> </span><span class="n">j7</span><span class="o">-</span><span class="n">mcu</span><span class="o">-</span><span class="n">r5f0_1</span><span class="o">-</span><span class="n">fw</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">pdk</span><span class="o">-</span><span class="n">ipc</span><span class="o">/</span><span class="n">ipc_echo_test_mcu1_1_release_strip</span><span class="p">.</span><span class="n">xer5f</span>
+</pre></div>
+</div>
+</div>
+<p>The default uboot and tispl.bin file in the boot partition of the
+Processor SDK Linux were built by passing this image to the DM variable
+of the uboot make command line as shown in <a class="reference internal" href="#uboot-command"><span class="std std-ref">SPL/uboot build command example</span></a></p>
+<p>So, as long as the user is not needing to rebuild uboot or change the MCU1_0
+firmware from the default, then the default MCU1_0 firmware and uboot and tispl.bin can
+be used while changing other firmware without any issues.</p>
+</section>
+<section id="using-vision-apps-for-linux-and-qnx-spl-boot">
+<h4><a class="toc-backref" href="#toc-entry-23" role="doc-backlink"><span class="section-number">8.1.3.3.2. </span>Using Vision Apps for Linux and QNX SPL Boot</a><a class="headerlink" href="#using-vision-apps-for-linux-and-qnx-spl-boot" title="Permalink to this headline">¶</a></h4>
+<p>By default, the Processor SDK RTOS package uses the default MCU1_0 firmware
+from the Processor SDK Linux, as shown in <a class="reference internal" href="#default-mcu1-0"><span class="std std-ref">Contents of /lib/firmware folder</span></a>. The vision_apps
+demos rely primarily on OpenVX HWA nodes running on the the main domain r5fs (MCU2_0
+&amp; MCU2_1), and TIDL and DSP acceleration running on the DSPs.  This way, if customizations
+are made to the vision_apps firmware without needing to develop on the MCU1_0,
+then there should be no need to rebuilt the uboot or MCU1_0 firmware.</p>
+<p>However, for those who would like to have apps running on MCU1_0, the vision_apps
+makefiles can easily accomodate this option.  The following are the additional steps
+required beyond the standard build steps outlined in the vision_apps documentation.</p>
+<ol class="arabic">
+<li><p>Download and install the Processor SDK Linux package.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>By default, the installer extracts the package into the <cite>/home/$(USER)</cite> folder.
+If you decide to install it into a different location, be sure to update the
+<strong>PSDK_LINUX_PATH</strong> variable in the <cite>sdk_builder/tools_path.mak</cite> file.</p></li>
+<li><p>This is needed to get access to dependencies needed to rebuild uboot</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Turn on the <strong>BUILD_CPU_MCU1_0</strong> build flag from “no” to “yes” in the <cite>sdk_builder/vision_apps_build_flags.mak</cite></p></li>
+</ol>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BUILD_CPU_MCU1_0</span><span class="o">?=</span><span class="n">yes</span>
+</pre></div>
+</div>
+<p>Beyond this, simply follow the rest of the steps in the vision_apps build and run guide.  The makefiles will build both
+MCU1_0 example image and uboot, and the sd card install steps will also load both of these if the <strong>BUILD_CPU_MCU1_0</strong>
+build flag is set to “yes”.</p>
+<p>The source code for the MCU1_0 application that comes with vision_apps is located at the following path:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">vision_apps</span><span class="o">/</span><span class="n">platform</span><span class="o">/&lt;</span><span class="n">soc</span><span class="o">&gt;/</span><span class="n">rtos</span><span class="o">/</span><span class="n">mcu1_0</span><span class="o">/</span><span class="n">main</span><span class="p">.</span><span class="n">c</span>
+</pre></div>
+</div>
+<p>As of now, it doesn’t do much beyond serving as a starting point example.  As expected for MCU1_0 application firmware,
+it does link and run the SCISERVER, and RM/PM services for the SoC.</p>
+</section>
+</section>
+</section>
+<section id="mcu1-0-application-migration-to-7-1">
+<h2><a class="toc-backref" href="#toc-entry-12" role="doc-backlink"><span class="section-number">8.1.4. </span>MCU1_0 Application Migration to 7.1</a><a class="headerlink" href="#mcu1-0-application-migration-to-7-1" title="Permalink to this headline">¶</a></h2>
+<section id="vision-apps-diff-file">
+<h3><a class="toc-backref" href="#toc-entry-13" role="doc-backlink"><span class="section-number">8.1.4.1. </span>Vision Apps Diff file</a><a class="headerlink" href="#vision-apps-diff-file" title="Permalink to this headline">¶</a></h3>
+<p>For those who are interested in understanding how vision apps adapted to
+this SYSFW architecture upgrade from 7.0 to 7.1, we have provided a diff
+file of relevant changes in the vision apps component related to this migration.
+This can be used as a reference to better understanding changes that
+may need to be done in a custom application.</p>
+<p><a class="reference external" href="vision_apps_diff.html">vision_apps_diff.html</a></p>
+</section>
+<section id="enabling-sciserver-debug-logs">
+<h3><a class="toc-backref" href="#toc-entry-14" role="doc-backlink"><span class="section-number">8.1.4.2. </span>Enabling Sciserver Debug Logs</a><a class="headerlink" href="#enabling-sciserver-debug-logs" title="Permalink to this headline">¶</a></h3>
+<p>If it is required to debug issues with the Sciserver, logging can
+be enabled to provide details as to the issue being faced. However, please note
+that the logging mechanism described below should not be used when using the vision
+apps build of MCU1_0 as it causes issues when running the MCU1_0 application.</p>
+<p>In order to enable Sciserver logs, please set the  VERBOSE macro to 1 in the file
+<cite>pdk/packages/ti/drv/sciclient/src/sciserver/sciserver.c</cite>
+and rebuild for Sciserver logs on MCU UART.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/* Set VERBOSE to 1 for trace information on message routing */</span>
+<span class="cp">#define VERBOSE 0</span>
+
+<span class="cp">#if VERBOSE</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;ti/drv/uart/UART_stdio.h&gt;</span>
+<span class="cp">#define Sciserver_printf UART_printf</span>
+<span class="cp">#else</span>
+<span class="cp">#define Sciserver_printf(...)</span>
+<span class="cp">#endif</span>
+</pre></div>
+</div>
+<p>If you are using sciserver_testapp then the re-built sciserver_testapp should be copied to the following location
+replacing the following files.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">pdk</span><span class="o">/</span><span class="n">packages</span><span class="o">/</span><span class="n">ti</span><span class="o">/</span><span class="n">drv</span><span class="o">/</span><span class="n">sciclient</span><span class="o">/</span><span class="n">tools</span><span class="o">/</span><span class="n">ccsLoadDmsc</span><span class="o">/&lt;</span><span class="n">soc</span><span class="o">&gt;/</span><span class="n">sciserver_testapp_mcu1_0_release</span><span class="p">.</span><span class="n">rprc</span>
+<span class="n">pdk</span><span class="o">/</span><span class="n">packages</span><span class="o">/</span><span class="n">ti</span><span class="o">/</span><span class="n">drv</span><span class="o">/</span><span class="n">sciclient</span><span class="o">/</span><span class="n">tools</span><span class="o">/</span><span class="n">ccsLoadDmsc</span><span class="o">/&lt;</span><span class="n">soc</span><span class="o">&gt;/</span><span class="n">sciserver_testapp_mcu1_0_release</span><span class="p">.</span><span class="n">xer5f</span>
+</pre></div>
+</div>
+<p>The make command for the sciserver_testapp is:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">make</span><span class="w"> </span><span class="o">-</span><span class="n">j</span><span class="w"> </span><span class="o">-</span><span class="n">s</span><span class="w"> </span><span class="n">sciserver_testapp</span><span class="w"> </span><span class="n">BOARD</span><span class="o">=&lt;</span><span class="n">name</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">evm</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Please make sure you are enabling UART before sciserver is initialized when using the VERBOSE option.</p>
+</section>
+</section>
+<section id="board-configuration-passing-between-spl-sbl-and-mcu1-0-applications">
+<span id="board-cfg-passing"></span><h2><a class="toc-backref" href="#toc-entry-15" role="doc-backlink"><span class="section-number">8.1.5. </span>Board configuration passing between SPL/SBL and MCU1_0 applications</a><a class="headerlink" href="#board-configuration-passing-between-spl-sbl-and-mcu1-0-applications" title="Permalink to this headline">¶</a></h2>
+<p>SBL/SPL reads the board configuration from the boot media. The SCISERVER also requires the board
+configuration data for setting up the RM and PM services. Hence the SPL/SBL needs to keep the board
+configuration data in an aligned memory location with a header which the SCISERVER can later
+read, check the header and if it finds the header, parse the board configuration and process it.</p>
+<p>The main responsibilities for the SBL/SPL are:</p>
+<ol class="arabic simple">
+<li><p>Read the board configuration from the boot media.</p></li>
+<li><p>Copy or store the configuration using the format shown Here</p></li>
+<li><p>Run the TIFS board configurations (Common board config and Security Board configuration)</p></li>
+</ol>
+<p>The main responsibilities of the SCISERVER APP are:</p>
+<ol class="arabic simple">
+<li><p>Look for the magic word in the aligned address.</p></li>
+<li><p>If the magic word matches, board configuration data is present and then read the board configuration address offsets</p></li>
+<li><p>Configure the config parameters for Sciclient init for the board configuration.</p></li>
+</ol>
+<p>The flow is as below:</p>
+<figure class="align-default" id="figure-2">
+<img alt="_images/SCISERVER_BOARDCFG.png" src="_images/SCISERVER_BOARDCFG.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 8.2 </span><span class="caption-text">Board configuration passing from SBL/SPL to SCISERVER</span><a class="headerlink" href="#figure-2" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>The format for the structure which is passed between SBL/SPL and the SCISERVER has 3 parts:</p>
+<ol class="arabic simple">
+<li><p>Common Header</p></li>
+<li><p>Board Configuration Header</p></li>
+<li><p>Board Configuration</p></li>
+</ol>
+<p>The Common Header format is as below:</p>
+<figure class="align-default" id="figure-3">
+<img alt="_images/SCISERVER_COMMON_HEADER.png" src="_images/SCISERVER_COMMON_HEADER.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 8.3 </span><span class="caption-text">Common Header Format</span><a class="headerlink" href="#figure-3" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>The Board configuration Header format is as below:</p>
+<figure class="align-default" id="figure-4">
+<img alt="_images/SCISERVER_BOARDCFG_HEADER.png" src="_images/SCISERVER_BOARDCFG_HEADER.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 8.4 </span><span class="caption-text">Board Configuration Header Format</span><a class="headerlink" href="#figure-4" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>The code version of the same formats are as below:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * \def EXTBOOT_X509_MAGIC_WORD_LEN</span>
+<span class="cm"> * Length of magic word for extended boot info table.</span>
+<span class="cm"> *</span>
+<span class="cm"> * \def EXTBOOT_X509_MIN_COMPONENTS</span>
+<span class="cm"> * Minimum number of components that should be present in combined image.</span>
+<span class="cm"> *</span>
+<span class="cm"> * \def EXTBOOT_X509_MAX_COMPONENTS</span>
+<span class="cm"> * Max number of components in extended boot info table.</span>
+<span class="cm"> *</span>
+<span class="cm"> * \def EXTBOOT_X509_ROM_INFO_BASE</span>
+<span class="cm"> * Base address where ROM loads the extended boot info.</span>
+<span class="cm"> *</span>
+<span class="cm"> * \def EXTBOOT_X509_COMPTYPE_SYSFW_DATA</span>
+<span class="cm"> * Component type corresponding to SYSFW data blob.</span>
+<span class="cm"> */</span>
+<span class="cp">#define EXTBOOT_X509_MAGIC_WORD_LEN             (8)</span>
+<span class="cp">#define EXTBOOT_X509_MIN_COMPONENTS             (3)</span>
+<span class="cp">#define EXTBOOT_X509_MAX_COMPONENTS             (8)</span>
+<span class="cp">#define EXTBOOT_X509_COMPTYPE_SYSFW_DATA        (0x12)</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * \def EXTBOOT_X509_MAGIC_WORD</span>
+<span class="cm"> * Magic word that specifies whether combined image is being used.</span>
+<span class="cm"> */</span>
+<span class="k">const</span><span class="w"> </span><span class="n">u8</span><span class="w"> </span><span class="n">EXTBOOT_X509_MAGIC_WORD</span><span class="p">[</span><span class="n">EXTBOOT_X509_MAGIC_WORD_LEN</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="sc">&#39;E&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;X&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;T&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;B&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;O&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;O&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;T&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">};</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * \brief Component information populated by ROM. The combined image has multiple components.</span>
+<span class="cm"> *                  ROM populates this information for each component.</span>
+<span class="cm"> *</span>
+<span class="cm"> * \param comp_type Type of component</span>
+<span class="cm"> * \param boot_core Core that loads or runs image</span>
+<span class="cm"> * \param comp_opts Component options. Not used for now.</span>
+<span class="cm"> * \param dest_addr Image destination address</span>
+<span class="cm"> * \param comp_size Size of the component in bytes</span>
+<span class="cm"> */</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">extboot_x509_comp</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">u32</span><span class="w"> </span><span class="n">comp_type</span><span class="p">;</span>
+<span class="w">    </span><span class="n">u32</span><span class="w"> </span><span class="n">boot_core</span><span class="p">;</span>
+<span class="w">    </span><span class="n">u32</span><span class="w"> </span><span class="n">comp_opts</span><span class="p">;</span>
+<span class="w">    </span><span class="n">u64</span><span class="w"> </span><span class="n">dest_addr</span><span class="p">;</span>
+<span class="w">    </span><span class="n">u32</span><span class="w"> </span><span class="n">comp_size</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * \brief Component information table populated by ROM.</span>
+<span class="cm"> *</span>
+<span class="cm"> * \param magic_word Magic word for extended boot</span>
+<span class="cm"> * \param num_comps Number of components present in extended boot info table</span>
+<span class="cm"> * \param comps Information for each component</span>
+<span class="cm"> */</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">extboot_x509_table</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">u8</span><span class="w">              </span><span class="n">magic_word</span><span class="p">[</span><span class="n">EXTBOOT_X509_MAGIC_WORD_LEN</span><span class="p">];</span>
+<span class="w">    </span><span class="n">u32</span><span class="w">             </span><span class="n">num_comps</span><span class="p">;</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">extboot_x509_comp</span><span class="w">    </span><span class="n">comps</span><span class="p">[</span><span class="n">EXTBOOT_X509_MAX_COMPONENTS</span><span class="p">];</span>
+<span class="p">};</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * \brief Describes the board config data</span>
+<span class="cm"> *</span>
+<span class="cm"> * \param type Type of board config data. This should map to corresponding TISCI</span>
+<span class="cm"> *      message type. For example, a PM boardcfg should have a descriptor</span>
+<span class="cm"> *      type TISCI_MSG_BOARD_CONFIG_PM.</span>
+<span class="cm"> * \param offset Offset for board config data from beginning of SYSFW data binary blob</span>
+<span class="cm"> * \param size Size of board config data</span>
+<span class="cm"> * \param devgrp Device group to be used by SYSFW for automatic board config processing</span>
+<span class="cm"> * \param reserved Reserved field. Not to be used.</span>
+<span class="cm"> */</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">extboot_boardcfg_desc</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">u16</span><span class="w"> </span><span class="n">type</span><span class="p">;</span>
+<span class="w">    </span><span class="n">u16</span><span class="w"> </span><span class="n">offset</span><span class="p">;</span>
+<span class="w">    </span><span class="n">u16</span><span class="w"> </span><span class="n">size</span><span class="p">;</span>
+<span class="w">    </span><span class="n">u8</span><span class="w">  </span><span class="n">devgrp</span><span class="p">;</span>
+<span class="w">    </span><span class="n">u8</span><span class="w">  </span><span class="n">reserved</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">__packed__</span><span class="p">));</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * \def EXTBOOT_BOARDCFG_NUM_DESCS</span>
+<span class="cm"> * Number of boardcfg data in SYSFW data blob.</span>
+<span class="cm"> */</span>
+<span class="cp">#define EXTBOOT_BOARDCFG_NUM_DESCS              (4)</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * \brief Boardcfg descriptor table provided by system integrator</span>
+<span class="cm"> *</span>
+<span class="cm"> * \param num_elems Number of elements in board config table.</span>
+<span class="cm"> * \param sw_rev SW revision populated by system integrator.</span>
+<span class="cm"> * \param descs Array of board config descriptors</span>
+<span class="cm"> */</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">boardcfg_desc_table</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">u8</span><span class="w">              </span><span class="n">num_elems</span><span class="p">;</span>
+<span class="w">    </span><span class="n">u8</span><span class="w">              </span><span class="n">sw_rev</span><span class="p">;</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">extboot_boardcfg_desc</span><span class="w">    </span><span class="n">descs</span><span class="p">[</span><span class="n">EXTBOOT_BOARDCFG_NUM_DESCS</span><span class="p">];</span>
+<span class="p">}</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">__packed__</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>The memory map for where the board configuration is left behind is as below:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Address</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Purpose</p></th>
+<th class="head"><p>Persistence</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0x41C0_0000</p></td>
+<td><p>512   KB</p></td>
+<td><p>Hold
+SPL/SBL Image</p></td>
+<td><p>Only   during SPL/SBL execution.
+Can be claimed once MCU1_0 app
+is jumped to.</p></td>
+</tr>
+<tr class="row-odd"><td><p>0x41C8_0000</p></td>
+<td><p>8 KB</p></td>
+<td><p>Hold the Board
+configuration passed
+between SPL/SBL and
+SCISERVER_APP</p></td>
+<td><p>Can be claimed once MCU1_0 app
+executes Sciclient_init on
+MCU1_0</p></td>
+</tr>
+<tr class="row-even"><td><p>0x41C8_2000</p></td>
+<td><p>502 KB</p></td>
+<td><p>Loadable application
+on OCMS RAM (including
+SCISERVER)</p></td>
+<td><p>Through out MCU1_0 app execution</p></td>
+</tr>
+<tr class="row-odd"><td><p>0x41cf_fb00</p></td>
+<td><p>~1.2 KB</p></td>
+<td><p>Common header used in
+ROM combined image
+format as well.</p></td>
+<td><p>Can be claimed once MCU1_0 app
+executes Sciclient_init on
+MCU1_0</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For devices on which the ROM supports the combined image format support where
+a single X509 certificate can be used to load the TIFS and the MCU1_0 SPL, the ROM
+leaves a header with the details of which image went where. The 0x41cf_fb00 is
+the address where this table is left. The design of the table for the common
+header and ROM left behind table is the same to make sure any subsequent apps
+see the same format accross J721E, J7200, J721S2, J784S4 and future devices.</p>
+<p>The choice of 0x41C8_0000 is to make sure multiple holes are not present in the
+loadable sections of the application.</p>
+</aside>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Please make sure to use the board configuration in the MCU SRAM memory left behind by
+the SPL/SBL. Any other board configuration built into the MCU1_0 App should not be used.
+Also, if the board configuration is kept in any other memory apart from MCU SRAM the TIFS
+will crash. The TIFS is needed to authenticate the board configuration in HS devices.
+TIFS also uses the RM board configuration to set up channelized firewalls.</p>
+</aside>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="documentation_tarball.html" class="btn btn-neutral float-right" title="9. Documentation Tarball" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="developer_notes.html" class="btn btn-neutral" title="8. Developer Notes" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyright 1995-2022</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+      });
+  </script>
+   
+
+</body>
+</html>

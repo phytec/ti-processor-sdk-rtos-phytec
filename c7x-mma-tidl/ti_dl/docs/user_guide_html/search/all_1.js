@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['backgroundlabelid',['backgroundLabelId',['../structsTIDL__DetectOutputParams__t.html#ab858ede63785f4fc4442a86e73f2b5ab',1,'sTIDL_DetectOutputParams_t']]],
+  ['base',['base',['../structsTIDL__sysMemHandle__t.html#a9705f1a16c2a76350351d82c2d2e16ed',1,'sTIDL_sysMemHandle_t']]],
+  ['batchnormparams',['batchNormParams',['../unionsTIDL__LayerParams__t.html#ae806e3dc00e58007053d644822d74ee7',1,'sTIDL_LayerParams_t']]],
+  ['batchpadh',['batchPadH',['../structsTIDL__DataParams__t.html#a975b25138468cede234b8ac21c1ca42b',1,'sTIDL_DataParams_t']]],
+  ['batchpadw',['batchPadW',['../structsTIDL__DataParams__t.html#a2c0af10ab27a1e985b872990430328a7',1,'sTIDL_DataParams_t']]],
+  ['bias',['bias',['../structsTIDL__ConvParams__t.html#a1a998eaa8510e98e442aad9b200f68c1',1,'sTIDL_ConvParams_t::bias()'],['../structsTIDL__BatchNormParams__t.html#a6b4da34f65a552e8c0d49df941ecc087',1,'sTIDL_BatchNormParams_t::bias()'],['../structsTIDL__BiasParams__t.html#ae6190a279cf4c961c21b6a03ff3e8acc',1,'sTIDL_BiasParams_t::bias()'],['../structsTIDL__InnerProductParams__t.html#aa5173bf1a2ae8a8a8b644ab3818a4faa',1,'sTIDL_InnerProductParams_t::bias()'],['../structsTIDL__EltWiseParams__t.html#add522751fc295b66e691fdd1f7befca4',1,'sTIDL_EltWiseParams_t::bias()']]],
+  ['biasb',['biasB',['../structsTIDL__ConvParams__t.html#ad0e405d5e36c0e8aebe472cbc969e86f',1,'sTIDL_ConvParams_t::biasB()'],['../structsTIDL__InnerProductParams__t.html#a33a2551903d74777a6003f509230c97c',1,'sTIDL_InnerProductParams_t::biasB()']]],
+  ['biascalibrationfactor',['biasCalibrationFactor',['../structsTIDL__CalibParams__t.html#a774771895dfc9b727112a9668985f72d',1,'sTIDL_CalibParams_t']]],
+  ['biascalibrationiterations',['biasCalibrationIterations',['../structsTIDL__CalibParams__t.html#af6f35cb3d561f516bed4ec4c857519d8',1,'sTIDL_CalibParams_t']]],
+  ['biaselementsize',['biasElementSize',['../structsTIDL__Network__t.html#a58c35fa8351e9880860617ded30b88d6',1,'sTIDL_Network_t']]],
+  ['biasparams',['biasParams',['../unionsTIDL__LayerParams__t.html#a377b6ae9278e47beb965407bc32ae253',1,'sTIDL_LayerParams_t']]],
+  ['biasq',['biasQ',['../structsTIDL__ConvParams__t.html#aa1f2444721d5b89e82aa962f93a80f95',1,'sTIDL_ConvParams_t::biasQ()'],['../structsTIDL__BatchNormParams__t.html#aa83e058a1b4b2a00d3d9d0d1ecebb534',1,'sTIDL_BatchNormParams_t::biasQ()'],['../structsTIDL__BiasParams__t.html#a20105df69b31598ab435c7c5110a4d57',1,'sTIDL_BiasParams_t::biasQ()'],['../structsTIDL__InnerProductParams__t.html#ac1b8c765d6b2504be65fd943125537d5',1,'sTIDL_InnerProductParams_t::biasQ()'],['../structsTIDL__EltWiseParams__t.html#ac012b0191950c7bff44c15b25f7f7e6c',1,'sTIDL_EltWiseParams_t::biasQ()']]],
+  ['biasscale',['biasScale',['../structsTIDL__ConvParams__t.html#ab771d39cc8e2ecb3514cb67e24766d5c',1,'sTIDL_ConvParams_t::biasScale()'],['../structsTIDL__BatchNormParams__t.html#aaae123a0ab660c27febe3794b261ead5',1,'sTIDL_BatchNormParams_t::biasScale()'],['../structsTIDL__InnerProductParams__t.html#a45e90139a7c3ec770f0022bde5a554a0',1,'sTIDL_InnerProductParams_t::biasScale()']]],
+  ['biasscales',['biasScales',['../structsTIDL__ConvParams__t.html#abed4a209d0f95026e6ba006259a89066',1,'sTIDL_ConvParams_t::biasScales()'],['../structsTIDL__InnerProductParams__t.html#aee7475798dd2185acf33a668fba27c2a',1,'sTIDL_InnerProductParams_t::biasScales()']]],
+  ['biasterm',['biasTerm',['../structsTIDL__EltWiseParams__t.html#abbf15b5d11e0ab2189594fbda9dc66e6',1,'sTIDL_EltWiseParams_t']]],
+  ['biaszeropoints',['biasZeroPoints',['../structsTIDL__ConvParams__t.html#a28862680c4a8da58f62cbaf475dc90e4',1,'sTIDL_ConvParams_t::biasZeroPoints()'],['../structsTIDL__InnerProductParams__t.html#a3c8c05596f30263b5044660f355fb3c7',1,'sTIDL_InnerProductParams_t::biasZeroPoints()']]],
+  ['blocksize',['blockSize',['../structsTIDL__DepthToSpaceParams__t.html#a2c627f3a21e0addee0031cefe2234829',1,'sTIDL_DepthToSpaceParams_t']]],
+  ['boxangle',['boxAngle',['../structsTIDL__AnchorBoxParams__t.html#ad7b6a46008f43e5985bc302cd386ec2b',1,'sTIDL_AnchorBoxParams_t']]],
+  ['boxheight',['boxHeight',['../structsTIDL__AnchorBoxParams__t.html#a6e85abc6a89449e6a5ba5d6f54e04149',1,'sTIDL_AnchorBoxParams_t']]],
+  ['boxlength',['boxLength',['../structsTIDL__AnchorBoxParams__t.html#a01bc51a0f95087cced262f3cdec7b625',1,'sTIDL_AnchorBoxParams_t']]],
+  ['boxscales',['boxScales',['../structsTIDL__AnchorBoxParams__t.html#a94005ff278478d7495088c3441e551ac',1,'sTIDL_AnchorBoxParams_t']]],
+  ['boxwidth',['boxWidth',['../structsTIDL__AnchorBoxParams__t.html#a694899c93e183f7034fa880361cf2d99',1,'sTIDL_AnchorBoxParams_t']]],
+  ['bufsize',['bufSize',['../structsBuffer__t.html#ad689e69f4650985595935c3a8b1c3100',1,'sBuffer_t']]],
+  ['build_20instruction',['Build Instruction',['../md_tidl_build_instruction.html',1,'']]]
+];

@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['draw2d_5fclearbuf',['Draw2D_clearBuf',['../group__DRAW__2D__API.html#ga8648771bb4fa439a37c860b4dcfc9c1a',1,'draw2d.h']]],
+  ['draw2d_5fclearregion',['Draw2D_clearRegion',['../group__DRAW__2D__API.html#ga0194adc4eef59cc4904ce1c2d59f43f4',1,'draw2d.h']]],
+  ['draw2d_5fclearstring',['Draw2D_clearString',['../group__DRAW__2D__API.html#gaa1b896c7278ade2888f4d53a06c67281',1,'draw2d.h']]],
+  ['draw2d_5fcreate',['Draw2D_create',['../group__DRAW__2D__API.html#ga10a50bbacf8625ae7b4061a81e7af56f',1,'draw2d.h']]],
+  ['draw2d_5fdelete',['Draw2D_delete',['../group__DRAW__2D__API.html#ga79d3f943872c2db3f41e7f00fafa6ea4',1,'draw2d.h']]],
+  ['draw2d_5fdrawbmp',['Draw2D_drawBmp',['../group__DRAW__2D__API.html#ga89bdaac1c6f533bd9874e8952a7204ae',1,'draw2d.h']]],
+  ['draw2d_5fdrawbmp_5frot',['Draw2D_drawBmp_rot',['../group__DRAW__2D__API.html#ga239fc8ecb9cb13ce0740a13affd86652',1,'draw2d.h']]],
+  ['draw2d_5fdrawline',['Draw2D_drawLine',['../group__DRAW__2D__API.html#ga9a2bc7b6e3d1a49e0435be8fefbceefb',1,'draw2d.h']]],
+  ['draw2d_5fdrawpixel',['Draw2D_drawPixel',['../group__DRAW__2D__API.html#ga58b71f4311c0fc53fe75c895ec5e19c4',1,'draw2d.h']]],
+  ['draw2d_5fdrawrect',['Draw2D_drawRect',['../group__DRAW__2D__API.html#gabcc9634516dfc565e374b1b790dddd80',1,'draw2d.h']]],
+  ['draw2d_5fdrawstring',['Draw2D_drawString',['../group__DRAW__2D__API.html#gaca3f2ce32564103cd646fe5f7185aca2',1,'draw2d.h']]],
+  ['draw2d_5fdrawstring_5frot',['Draw2D_drawString_rot',['../group__DRAW__2D__API.html#ga12bcd38da6f25264c6ef35e458406f00',1,'draw2d.h']]],
+  ['draw2d_5ffillregion',['Draw2D_fillRegion',['../group__DRAW__2D__API.html#gad6a172629f0c23cd99a6b1b37bc1a4d6',1,'draw2d.h']]],
+  ['draw2d_5ffloor',['Draw2D_floor',['../group__DRAW__2D__API.html#ga434ab60841deca56e13699511dc6ff89',1,'draw2d.h']]],
+  ['draw2d_5fgetbmpproperty',['Draw2D_getBmpProperty',['../group__DRAW__2D__API.html#gaa8e6b404755636acaefafb97ece04087',1,'draw2d.h']]],
+  ['draw2d_5fgetfontproperty',['Draw2D_getFontProperty',['../group__DRAW__2D__API.html#ga539ce695cd67e7b5fa305fc16257e16e',1,'draw2d.h']]],
+  ['draw2d_5finsertbmp',['Draw2D_insertBmp',['../group__DRAW__2D__API.html#gaedbe473193a5b49b8508a9873c14d3b5',1,'draw2d.h']]],
+  ['draw2d_5finsertbmpfrommemory',['Draw2D_insertBmpFromMemory',['../group__DRAW__2D__API.html#gab5423449c30491e5ad0f766ccb904816',1,'draw2d.h']]],
+  ['draw2d_5fresetfontcolor',['Draw2D_resetFontColor',['../group__DRAW__2D__API.html#ga8db31a22425bd568e6eac11437bde6e7',1,'draw2d.h']]],
+  ['draw2d_5fsetbufinfo',['Draw2D_setBufInfo',['../group__DRAW__2D__API.html#ga2dad09c19892a7ce7dc2bb39c7059037',1,'draw2d.h']]],
+  ['draw2d_5fsetfontcolor',['Draw2D_setFontColor',['../group__DRAW__2D__API.html#ga05ce5e242f2a5c5195dfa66afbf23c8b',1,'draw2d.h']]],
+  ['draw2d_5fupdatebufaddr',['Draw2D_updateBufAddr',['../group__DRAW__2D__API.html#ga029df58714900ac59552834a77a3f47d',1,'draw2d.h']]]
+];

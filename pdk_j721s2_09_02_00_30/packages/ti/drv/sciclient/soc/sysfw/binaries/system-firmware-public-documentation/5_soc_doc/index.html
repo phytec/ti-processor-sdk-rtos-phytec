@@ -1,0 +1,690 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Chapter 5: SoC Family Specific Documentation &mdash; TISCI User Guide</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="TISCI User Guide" href="../index.html"/>
+        <link rel="next" title="AM65X_SR1 Host Descriptions" href="am65x/hosts.html"/>
+        <link rel="prev" title="Trace Layer" href="../4_trace/trace.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="../_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> TISCI
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                09.02.04
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../1_intro/index.html">Chapter 1: Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_tisci_msgs/index.html">Chapter 2: TISCI Message Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_boardcfg/index.html">Chapter 3: Board Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_trace/index.html">Chapter 4: Interpreting Trace Data</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Chapter 5: SoC Family Specific Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#am65x-sr1">AM65x SR1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="am65x/hosts.html">AM65X_SR1 Host Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am65x/devices.html">AM65X_SR1 Devices Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am65x/clocks.html">AM65X_SR1 Clock Identifiers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am65x/pll_data.html">AM65X_SR1 PLL Defaults</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am65x/resasg_types.html">AM65X_SR1 Board Configuration Resource Assignment Type Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am65x/interrupt_cfg.html">AM65X_SR1 Interrupt Management Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am65x/ra_cfg.html">AM65X_SR1 Ring Accelerator Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am65x/dma_cfg.html">AM65X_SR1 DMA Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am65x/psil_cfg.html">AM65X_SR1 PSI-L Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am65x/proxy_cfg.html">AM65X_SR1 Proxy Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am65x/sec_proxy.html">AM65X_SR1 Secure Proxy Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am65x/processors.html">AM65X_SR1 Processor Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am65x/runtime_keystore.html">AM65X_SR1 Runtime Keystore</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am65x/firewalls.html">AM65X_SR1 Firewall Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am65x/soc_devgrps.html">AM65X_SR1 Device Group descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#am65x-sr2">AM65x SR2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="am65x_sr2/hosts.html">AM65X_SR2 Host Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am65x_sr2/devices.html">AM65X_SR2 Devices Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am65x_sr2/clocks.html">AM65X_SR2 Clock Identifiers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am65x_sr2/pll_data.html">AM65X_SR2 PLL Defaults</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am65x_sr2/resasg_types.html">AM65X_SR2 Board Configuration Resource Assignment Type Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am65x_sr2/interrupt_cfg.html">AM65X_SR2 Interrupt Management Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am65x_sr2/ra_cfg.html">AM65X_SR2 Ring Accelerator Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am65x_sr2/dma_cfg.html">AM65X_SR2 DMA Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am65x_sr2/psil_cfg.html">AM65X_SR2 PSI-L Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am65x_sr2/proxy_cfg.html">AM65X_SR2 Proxy Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am65x_sr2/sec_proxy.html">AM65X_SR2 Secure Proxy Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am65x_sr2/processors.html">AM65X_SR2 Processor Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am65x_sr2/runtime_keystore.html">AM65X_SR2 Runtime Keystore</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am65x_sr2/firewalls.html">AM65X_SR2 Firewall Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am65x_sr2/soc_devgrps.html">AM65X_SR2 Device Group descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#am64x">AM64x</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="am64x/hosts.html">AM64X Host Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am64x/devices.html">AM64X Devices Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am64x/clocks.html">AM64X Clock Identifiers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am64x/pll_data.html">AM64X PLL Defaults</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am64x/resasg_types.html">AM64X Board Configuration Resource Assignment Type Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am64x/interrupt_cfg.html">AM64X Interrupt Management Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am64x/ra_cfg.html">AM64X Ring Accelerator Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am64x/dma_cfg.html">AM64X DMA Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am64x/psil_cfg.html">AM64X PSI-L Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am64x/proxy_cfg.html">AM64X Proxy Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am64x/sec_proxy.html">AM64X Secure Proxy Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am64x/processors.html">AM64X Processor Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am64x/firewalls.html">AM64X Firewall Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am64x/soc_devgrps.html">AM64X Device Group descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#am62x">AM62x</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="am62x/hosts.html">AM62X Host Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am62x/devices.html">AM62X Devices Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am62x/clocks.html">AM62X Clock Identifiers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am62x/pll_data.html">AM62X PLL Defaults</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am62x/resasg_types.html">AM62X Board Configuration Resource Assignment Type Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am62x/interrupt_cfg.html">AM62X Interrupt Management Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am62x/ra_cfg.html">AM62X Ring Accelerator Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am62x/dma_cfg.html">AM62X DMA Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am62x/psil_cfg.html">AM62X PSI-L Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am62x/proxy_cfg.html">AM62X Proxy Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am62x/sec_proxy.html">AM62X Secure Proxy Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am62x/processors.html">AM62X Processor Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am62x/firewalls.html">AM62X Firewall Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am62x/soc_devgrps.html">AM62X Device Group descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#am62ax">AM62Ax</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="am62ax/hosts.html">AM62AX Host Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am62ax/devices.html">AM62AX Devices Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am62ax/clocks.html">AM62AX Clock Identifiers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am62ax/pll_data.html">AM62AX PLL Defaults</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am62ax/resasg_types.html">AM62AX Board Configuration Resource Assignment Type Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am62ax/interrupt_cfg.html">AM62AX Interrupt Management Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am62ax/ra_cfg.html">AM62AX Ring Accelerator Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am62ax/dma_cfg.html">AM62AX DMA Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am62ax/psil_cfg.html">AM62AX PSI-L Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am62ax/proxy_cfg.html">AM62A Proxy Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am62ax/sec_proxy.html">AM62AX Secure Proxy Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am62ax/processors.html">AM62AX Processor Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am62ax/firewalls.html">AM62AX Firewall Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am62ax/soc_devgrps.html">AM62AX Device Group descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#am62px">AM62Px</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="am62px/hosts.html">AM62PX Host Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am62px/devices.html">AM62PX Devices Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am62px/clocks.html">AM62PX Clock Identifiers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am62px/pll_data.html">AM62PX PLL Defaults</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am62px/resasg_types.html">AM62PX Board Configuration Resource Assignment Type Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am62px/interrupt_cfg.html">AM62PX Interrupt Management Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am62px/ra_cfg.html">AM62PX Ring Accelerator Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am62px/dma_cfg.html">AM62PX DMA Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am62px/psil_cfg.html">AM62PX PSI-L Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am62px/proxy_cfg.html">AM62PX Proxy Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am62px/sec_proxy.html">AM62PX Secure Proxy Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am62px/processors.html">AM62PX Processor Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am62px/firewalls.html">AM62PX Firewall Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="am62px/soc_devgrps.html">AM62PX Device Group descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#j721e">J721E</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="j721e/hosts.html">J721E Host Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j721e/devices.html">J721E Devices Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j721e/clocks.html">J721E Clock Identifiers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j721e/pll_data.html">J721E PLL Defaults</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j721e/resasg_types.html">J721E Board Configuration Resource Assignment Type Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j721e/interrupt_cfg.html">J721E Interrupt Management Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j721e/ra_cfg.html">J721E Ring Accelerator Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j721e/dma_cfg.html">J721E DMA Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j721e/psil_cfg.html">J721E PSI-L Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j721e/proxy_cfg.html">J721E Proxy Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j721e/sec_proxy.html">J721E Secure Proxy Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j721e/processors.html">J721E Processor Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j721e/firewalls.html">J721E Firewall Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j721e/soc_devgrps.html">J721E Device Group descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j721e/soc_domgrps.html">J721E Domain Group descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#j7200">J7200</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="j7200/hosts.html">J7200 Host Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j7200/devices.html">J7200 Devices Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j7200/clocks.html">J7200 Clock Identifiers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j7200/pll_data.html">J7200 PLL Defaults</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j7200/resasg_types.html">J7200 Board Configuration Resource Assignment Type Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j7200/interrupt_cfg.html">J7200 Interrupt Management Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j7200/ra_cfg.html">J7200 Ring Accelerator Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j7200/dma_cfg.html">J7200 DMA Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j7200/psil_cfg.html">J7200 PSI-L Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j7200/proxy_cfg.html">J7200 Proxy Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j7200/sec_proxy.html">J7200 Secure Proxy Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j7200/processors.html">J7200 Processor Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j7200/firewalls.html">J7200 Firewall Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j7200/soc_devgrps.html">J7200 Device Group descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#j721s2">J721S2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="j721s2/hosts.html">J721S2 Host Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j721s2/devices.html">J721S2 Devices Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j721s2/clocks.html">J721S2 Clock Identifiers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j721s2/pll_data.html">J721S2 PLL Defaults</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j721s2/resasg_types.html">J721S2 Board Configuration Resource Assignment Type Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j721s2/interrupt_cfg.html">J721S2 Interrupt Management Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j721s2/ra_cfg.html">J721S2 Ring Accelerator Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j721s2/dma_cfg.html">J721S2 DMA Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j721s2/psil_cfg.html">J721S2 PSI-L Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j721s2/proxy_cfg.html">J721S2 Proxy Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j721s2/sec_proxy.html">J721S2 Secure Proxy Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j721s2/processors.html">J721S2 Processor Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j721s2/firewalls.html">J721S2 Firewall Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j721s2/soc_devgrps.html">J721S2 Device Group descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#j722s">J722S</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="j722s/hosts.html">J722S Host Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j722s/devices.html">J722S Devices Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j722s/clocks.html">J722S Clock Identifiers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j722s/pll_data.html">J722S PLL Defaults</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j722s/resasg_types.html">J722S Board Configuration Resource Assignment Type Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j722s/interrupt_cfg.html">J722S Interrupt Management Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j722s/ra_cfg.html">J722S Ring Accelerator Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j722s/dma_cfg.html">J722S DMA Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j722s/psil_cfg.html">J722S PSI-L Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j722s/proxy_cfg.html">J722S Proxy Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j722s/sec_proxy.html">J722S Secure Proxy Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j722s/processors.html">J722S Processor Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j722s/firewalls.html">J722S Firewall Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j722s/soc_devgrps.html">J722S Device Group descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#j784s4">J784S4</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="j784s4/hosts.html">J784S4 Host Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j784s4/devices.html">J784S4 Devices Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j784s4/clocks.html">J784S4 Clock Identifiers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j784s4/pll_data.html">J784S4 PLL Defaults</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j784s4/resasg_types.html">J784S4 Board Configuration Resource Assignment Type Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j784s4/interrupt_cfg.html">J784S4 Interrupt Management Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j784s4/ra_cfg.html">J784S4 Ring Accelerator Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j784s4/dma_cfg.html">J784S4 DMA Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j784s4/psil_cfg.html">J784S4 PSI-L Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j784s4/proxy_cfg.html">J784S4 Proxy Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j784s4/sec_proxy.html">J784S4 Secure Proxy Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j784s4/processors.html">J784S4 Processor Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j784s4/firewalls.html">J784S4 Firewall Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="j784s4/soc_devgrps.html">J784S4 Device Group descriptions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../6_topic_user_guides/index.html">Chapter 6: Topic User Guides</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">TISCI</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li>Chapter 5: SoC Family Specific Documentation</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="chapter-5-soc-family-specific-documentation">
+<span id="pub-soc-family-doc"></span><h1>Chapter 5: SoC Family Specific Documentation<a class="headerlink" href="#chapter-5-soc-family-specific-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="am65x-sr1">
+<h2>AM65x SR1<a class="headerlink" href="#am65x-sr1" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="am65x/hosts.html">AM65X_SR1 Host Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am65x/devices.html">AM65X_SR1 Devices Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am65x/clocks.html">AM65X_SR1 Clock Identifiers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am65x/pll_data.html">AM65X_SR1 PLL Defaults</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am65x/resasg_types.html">AM65X_SR1 Board Configuration Resource Assignment Type Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am65x/interrupt_cfg.html">AM65X_SR1 Interrupt Management Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am65x/ra_cfg.html">AM65X_SR1 Ring Accelerator Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am65x/dma_cfg.html">AM65X_SR1 DMA Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am65x/psil_cfg.html">AM65X_SR1 PSI-L Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am65x/proxy_cfg.html">AM65X_SR1 Proxy Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am65x/sec_proxy.html">AM65X_SR1 Secure Proxy Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am65x/processors.html">AM65X_SR1 Processor Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am65x/runtime_keystore.html">AM65X_SR1 Runtime Keystore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am65x/firewalls.html">AM65X_SR1 Firewall Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am65x/soc_devgrps.html">AM65X_SR1 Device Group descriptions</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="am65x-sr2">
+<h2>AM65x SR2<a class="headerlink" href="#am65x-sr2" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="am65x_sr2/hosts.html">AM65X_SR2 Host Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am65x_sr2/devices.html">AM65X_SR2 Devices Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am65x_sr2/clocks.html">AM65X_SR2 Clock Identifiers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am65x_sr2/pll_data.html">AM65X_SR2 PLL Defaults</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am65x_sr2/resasg_types.html">AM65X_SR2 Board Configuration Resource Assignment Type Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am65x_sr2/interrupt_cfg.html">AM65X_SR2 Interrupt Management Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am65x_sr2/ra_cfg.html">AM65X_SR2 Ring Accelerator Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am65x_sr2/dma_cfg.html">AM65X_SR2 DMA Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am65x_sr2/psil_cfg.html">AM65X_SR2 PSI-L Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am65x_sr2/proxy_cfg.html">AM65X_SR2 Proxy Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am65x_sr2/sec_proxy.html">AM65X_SR2 Secure Proxy Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am65x_sr2/processors.html">AM65X_SR2 Processor Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am65x_sr2/runtime_keystore.html">AM65X_SR2 Runtime Keystore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am65x_sr2/firewalls.html">AM65X_SR2 Firewall Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am65x_sr2/soc_devgrps.html">AM65X_SR2 Device Group descriptions</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="am64x">
+<h2>AM64x<a class="headerlink" href="#am64x" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="am64x/hosts.html">AM64X Host Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am64x/devices.html">AM64X Devices Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am64x/clocks.html">AM64X Clock Identifiers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am64x/pll_data.html">AM64X PLL Defaults</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am64x/resasg_types.html">AM64X Board Configuration Resource Assignment Type Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am64x/interrupt_cfg.html">AM64X Interrupt Management Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am64x/ra_cfg.html">AM64X Ring Accelerator Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am64x/dma_cfg.html">AM64X DMA Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am64x/psil_cfg.html">AM64X PSI-L Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am64x/proxy_cfg.html">AM64X Proxy Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am64x/sec_proxy.html">AM64X Secure Proxy Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am64x/processors.html">AM64X Processor Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am64x/firewalls.html">AM64X Firewall Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am64x/soc_devgrps.html">AM64X Device Group descriptions</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="am62x">
+<h2>AM62x<a class="headerlink" href="#am62x" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="am62x/hosts.html">AM62X Host Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am62x/devices.html">AM62X Devices Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am62x/clocks.html">AM62X Clock Identifiers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am62x/pll_data.html">AM62X PLL Defaults</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am62x/resasg_types.html">AM62X Board Configuration Resource Assignment Type Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am62x/interrupt_cfg.html">AM62X Interrupt Management Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am62x/ra_cfg.html">AM62X Ring Accelerator Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am62x/dma_cfg.html">AM62X DMA Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am62x/psil_cfg.html">AM62X PSI-L Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am62x/proxy_cfg.html">AM62X Proxy Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am62x/sec_proxy.html">AM62X Secure Proxy Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am62x/processors.html">AM62X Processor Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am62x/firewalls.html">AM62X Firewall Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am62x/soc_devgrps.html">AM62X Device Group descriptions</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="am62ax">
+<h2>AM62Ax<a class="headerlink" href="#am62ax" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="am62ax/hosts.html">AM62AX Host Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am62ax/devices.html">AM62AX Devices Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am62ax/clocks.html">AM62AX Clock Identifiers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am62ax/pll_data.html">AM62AX PLL Defaults</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am62ax/resasg_types.html">AM62AX Board Configuration Resource Assignment Type Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am62ax/interrupt_cfg.html">AM62AX Interrupt Management Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am62ax/ra_cfg.html">AM62AX Ring Accelerator Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am62ax/dma_cfg.html">AM62AX DMA Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am62ax/psil_cfg.html">AM62AX PSI-L Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am62ax/proxy_cfg.html">AM62A Proxy Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am62ax/sec_proxy.html">AM62AX Secure Proxy Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am62ax/processors.html">AM62AX Processor Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am62ax/firewalls.html">AM62AX Firewall Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am62ax/soc_devgrps.html">AM62AX Device Group descriptions</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="am62px">
+<h2>AM62Px<a class="headerlink" href="#am62px" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="am62px/hosts.html">AM62PX Host Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am62px/devices.html">AM62PX Devices Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am62px/clocks.html">AM62PX Clock Identifiers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am62px/pll_data.html">AM62PX PLL Defaults</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am62px/resasg_types.html">AM62PX Board Configuration Resource Assignment Type Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am62px/interrupt_cfg.html">AM62PX Interrupt Management Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am62px/ra_cfg.html">AM62PX Ring Accelerator Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am62px/dma_cfg.html">AM62PX DMA Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am62px/psil_cfg.html">AM62PX PSI-L Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am62px/proxy_cfg.html">AM62PX Proxy Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am62px/sec_proxy.html">AM62PX Secure Proxy Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am62px/processors.html">AM62PX Processor Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am62px/firewalls.html">AM62PX Firewall Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="am62px/soc_devgrps.html">AM62PX Device Group descriptions</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="j721e">
+<h2>J721E<a class="headerlink" href="#j721e" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="j721e/hosts.html">J721E Host Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j721e/devices.html">J721E Devices Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j721e/clocks.html">J721E Clock Identifiers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j721e/pll_data.html">J721E PLL Defaults</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j721e/resasg_types.html">J721E Board Configuration Resource Assignment Type Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j721e/interrupt_cfg.html">J721E Interrupt Management Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j721e/ra_cfg.html">J721E Ring Accelerator Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j721e/dma_cfg.html">J721E DMA Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j721e/psil_cfg.html">J721E PSI-L Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j721e/proxy_cfg.html">J721E Proxy Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j721e/sec_proxy.html">J721E Secure Proxy Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j721e/processors.html">J721E Processor Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j721e/firewalls.html">J721E Firewall Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j721e/soc_devgrps.html">J721E Device Group descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j721e/soc_domgrps.html">J721E Domain Group descriptions</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="j7200">
+<h2>J7200<a class="headerlink" href="#j7200" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="j7200/hosts.html">J7200 Host Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j7200/devices.html">J7200 Devices Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j7200/clocks.html">J7200 Clock Identifiers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j7200/pll_data.html">J7200 PLL Defaults</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j7200/resasg_types.html">J7200 Board Configuration Resource Assignment Type Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j7200/interrupt_cfg.html">J7200 Interrupt Management Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j7200/ra_cfg.html">J7200 Ring Accelerator Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j7200/dma_cfg.html">J7200 DMA Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j7200/psil_cfg.html">J7200 PSI-L Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j7200/proxy_cfg.html">J7200 Proxy Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j7200/sec_proxy.html">J7200 Secure Proxy Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j7200/processors.html">J7200 Processor Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j7200/firewalls.html">J7200 Firewall Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j7200/soc_devgrps.html">J7200 Device Group descriptions</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="j721s2">
+<h2>J721S2<a class="headerlink" href="#j721s2" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="j721s2/hosts.html">J721S2 Host Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j721s2/devices.html">J721S2 Devices Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j721s2/clocks.html">J721S2 Clock Identifiers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j721s2/pll_data.html">J721S2 PLL Defaults</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j721s2/resasg_types.html">J721S2 Board Configuration Resource Assignment Type Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j721s2/interrupt_cfg.html">J721S2 Interrupt Management Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j721s2/ra_cfg.html">J721S2 Ring Accelerator Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j721s2/dma_cfg.html">J721S2 DMA Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j721s2/psil_cfg.html">J721S2 PSI-L Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j721s2/proxy_cfg.html">J721S2 Proxy Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j721s2/sec_proxy.html">J721S2 Secure Proxy Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j721s2/processors.html">J721S2 Processor Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j721s2/firewalls.html">J721S2 Firewall Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j721s2/soc_devgrps.html">J721S2 Device Group descriptions</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="j722s">
+<h2>J722S<a class="headerlink" href="#j722s" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="j722s/hosts.html">J722S Host Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j722s/devices.html">J722S Devices Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j722s/clocks.html">J722S Clock Identifiers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j722s/pll_data.html">J722S PLL Defaults</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j722s/resasg_types.html">J722S Board Configuration Resource Assignment Type Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j722s/interrupt_cfg.html">J722S Interrupt Management Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j722s/ra_cfg.html">J722S Ring Accelerator Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j722s/dma_cfg.html">J722S DMA Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j722s/psil_cfg.html">J722S PSI-L Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j722s/proxy_cfg.html">J722S Proxy Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j722s/sec_proxy.html">J722S Secure Proxy Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j722s/processors.html">J722S Processor Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j722s/firewalls.html">J722S Firewall Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j722s/soc_devgrps.html">J722S Device Group descriptions</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="j784s4">
+<h2>J784S4<a class="headerlink" href="#j784s4" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="j784s4/hosts.html">J784S4 Host Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j784s4/devices.html">J784S4 Devices Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j784s4/clocks.html">J784S4 Clock Identifiers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j784s4/pll_data.html">J784S4 PLL Defaults</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j784s4/resasg_types.html">J784S4 Board Configuration Resource Assignment Type Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j784s4/interrupt_cfg.html">J784S4 Interrupt Management Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j784s4/ra_cfg.html">J784S4 Ring Accelerator Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j784s4/dma_cfg.html">J784S4 DMA Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j784s4/psil_cfg.html">J784S4 PSI-L Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j784s4/proxy_cfg.html">J784S4 Proxy Device Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j784s4/sec_proxy.html">J784S4 Secure Proxy Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j784s4/processors.html">J784S4 Processor Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j784s4/firewalls.html">J784S4 Firewall Descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="j784s4/soc_devgrps.html">J784S4 Device Group descriptions</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="am65x/hosts.html" class="btn btn-neutral float-right" title="AM65X_SR1 Host Descriptions" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../4_trace/trace.html" class="btn btn-neutral" title="Trace Layer" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyright 2016-2024</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'09.02.04',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+
+        $('body').on("mousewheel", function () {
+            // Remove default behavior
+            event.preventDefault();
+            // Scroll without smoothing
+            var wheelDelta = event.wheelDelta;
+            var currentScrollPosition = window.pageYOffset;
+            window.scrollTo(0, currentScrollPosition - wheelDelta);
+        });
+      });
+  </script>
+   
+
+</body>
+</html>

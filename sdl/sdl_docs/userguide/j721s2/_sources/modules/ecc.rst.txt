@@ -1,0 +1,336 @@
+ECC : Error Correcting Code
+===========================
+
+Introduction
+------------
+
+To increase functional and system reliability, the memories in many device modules and subsystems are protected by Error Correcting Code (ECC), which performs Single Error Correction (SEC) and Double Error Detection (DED). Detected errors are reported via ESM. Single bit errors are corrected, and double bit errors are detected. The ECC Aggregator is connected to these memory and interconnect components which have the ECC. The ECC aggregator provides access to control and monitor the ECC protected memories in a module or subsystem.
+
+SDL provides support for ECC aggregator configuration. Each ECC aggregator instance can be independently configured through the same SDL API by passing a different instance. The safety manual also defines test-for-diagnostics for the various IPs with ECC/parity support. The SDL also provides the support for executing ECC aggregator self-tests, using the error injection feature of the ECC aggregator.
+The ECC aggregators should be configured at startup, after running BIST.
+
+The SDL provides support for the ECC through:
+
+* ECC Configuration API
+* ECC self-test API
+* ECC error injection API
+* ECC static register readback API
+* ECC error status APIs
+
+    .. NOTE::
+
+        * The SDL ECC module requires a mapping of certain aggregator registers into the address space of the R5F Core. In these cases, the ECC module will use the OSAL API SDL_OSAL_addrTranslate() to get the address. The application must provide the mapped address through this call. This mapping is required for any ECC aggregator that is used which has an address which is not in the 32-bit address space.
+          The mapping is expected to always be valid because it may be needed at runtime to get information about ECC errors that may be encountered.
+
+        * ECC DED is supported only for wrapper type memories as well as interconnect type memories of EDC types.
+          It's not supported to redundent and parity types of checker-groups.
+.. ifconfig:: CONFIG_family in ('j721e')
+
+    There are over 100 ECC aggregators on the device each supporting multiple memories and interconnects.
+
+.. ifconfig:: CONFIG_family in ('j7200')
+
+    There are over 100 ECC aggregators on the device each supporting multiple memories and interconnects.
+
+.. ifconfig:: CONFIG_family in ('j721s2')
+
+    There are over 100 ECC aggregators on the device each supporting multiple memories and interconnects.
+
+Error Injection for Various RAM ID types
+----------------------------------------
+
+There are two types of ECC aggregator RAM IDs supported on the device (wrapper and interconnect). The wrapper types are used for memories where local computations are performed for particular processing cores in the device, and the interconnect types are utilized for interconnect bus signals between cores or to/from peripherals.
+
+For wrapper RAM ID types, after injecting an error, the memory associated with that RAM ID needs to be accessed in order to trigger the error interrupt event. It is the application's responsibility to trigger the error event through memory access after injecting the error.
+
+Example Usage
+-------------
+
+The following shows an example of SDL ECC API usage by the application to set up the ECC to monitor for errors, as well as how to perform ECC self-test. The ESM should be configured to notify of the desired ECC events for the IPs. Please refer to the |__PART_SOC_TRM__| for a list of the ESM events.
+
+The following function is required to be defined by the application. It is used by the ECC module to notify the application in case of certain ECC errors that are reported through the R5F exception handlers. If it is not defined, it will result in a linker error. An example implementation is given below.
+
+    .. code:: bash
+
+        void SDL_ECC_applicationCallbackFunction(SDL_ECC_MemType eccMemType,
+                                         uint32_t errorSrc,
+                                         uint32_t address,
+                                         uint32_t ramId,
+                                         uint64_t bitErrorOffset,
+                                         uint32_t bitErrorGroup){
+
+            UART_printf("\n  ECC Error Call back function called : eccMemType %d, errorSrc 0x%x, " \
+                        "address 0x%x, ramId %d, bitErrorOffset 0x%04x%04x, bitErrorGroup %d\n",
+                        eccMemType, errorSrc, address, ramId, (uint32_t)(bitErrorOffset >> 32),
+                        (uint32_t)(bitErrorOffset & 0x00000000FFFFFFFF), bitErrorGroup);
+            UART_printf("  Take action \n");
+            
+            /* Any additional customer specific actions can be added here */
+            
+        }  
+
+Certain ECC events on CPU memory are reported as Exception events. In this case, the ECC SDL provdes a set of exception handlers that can be used to enable the SDL ECC self-test functionality and for notification of the ECC errors. The following example shows how to set up the exception handlers to use the SDL ECC implementations, and also provide application-specific handlers that will be called by the SDL handlers after the handler checks for ECC errors:
+
+    .. code:: bash
+     
+        /* This is the list of exception handle and the parameters */
+        const SDL_R5ExptnHandlers ECC_Test_R5ExptnHandlers =
+        {
+            .udefExptnHandler = &SDL_EXCEPTION_undefInstructionExptnHandler,
+            .swiExptnHandler = &SDL_EXCEPTION_swIntrExptnHandler,
+            .pabtExptnHandler = &SDL_EXCEPTION_prefetchAbortExptnHandler,
+            .dabtExptnHandler = &SDL_EXCEPTION_dataAbortExptnHandler,
+            .irqExptnHandler = &SDL_EXCEPTION_irqExptnHandler,
+            .fiqExptnHandler = &SDL_EXCEPTION_fiqExptnHandler,
+            .udefExptnHandlerArgs = ((void *)0u),
+            .swiExptnHandlerArgs = ((void *)0u),
+            .pabtExptnHandlerArgs = ((void *)0u),
+            .dabtExptnHandlerArgs = ((void *)0u),
+            .irqExptnHandlerArgs = ((void *)0u),
+        };
+
+        /* The following are the application implementations */
+        void ECC_Test_undefInstructionExptnCallback(void)
+        {
+            UART_printf("\n Undefined Instruction exception");
+        }
+
+        void ECC_Test_swIntrExptnCallback(void)
+        {
+            UART_printf("\n Software interrupt exception");
+        }
+
+        void ECC_Test_prefetchAbortExptnCallback(void)
+        {
+            UART_printf("\n Prefetch Abort exception");
+        }
+        
+        void ECC_Test_dataAbortExptnCallback(void)
+        {
+            UART_printf("\n Data Abort exception");
+        }
+        
+        void ECC_Test_irqExptnCallback(void)
+        {
+            UART_printf("\n Irq exception");
+        }
+        
+        void ECC_Test_fiqExptnCallback(void)
+        {
+            UART_printf("\n Fiq exception");
+        }
+        
+        /* The following function inits and registers the SDL exception handlers */
+        void ECC_Test_exceptionInit(void)
+        {
+        
+            SDL_EXCEPTION_CallbackFunctions_t exceptionCallbackFunctions =
+            {
+                .udefExptnCallback = ECC_Test_undefInstructionExptnCallback,
+                .swiExptnCallback = ECC_Test_swIntrExptnCallback,
+                .pabtExptnCallback = ECC_Test_prefetchAbortExptnCallback,
+                .dabtExptnCallback = ECC_Test_dataAbortExptnCallback,
+                .irqExptnCallback = ECC_Test_irqExptnCallback,
+                .fiqExptnCallback = ECC_Test_fiqExptnCallback,
+            };
+        
+            /* Initialize SDL exception handler */
+            SDL_EXCEPTION_init(&exceptionCallbackFunctions);
+            /* Register SDL exception handler */
+            Intc_RegisterExptnHandlers(&ECC_Test_R5ExptnHandlers);
+         
+            return;
+        }
+
+To configure ECC for an instance and specified ram IDs:
+
+    .. code:: bash
+
+        static SDL_ECC_MemSubType ECC_Test_MAINMSMC_A0subMemTypeList[MAIN_MSMC_AGGR0_MAX_MEM_SECTIONS] =
+        {
+            SDL_ECC_MAIN_MSMC_MEM_INTERCONN_SUBTYPE,/* SDL_COMPUTE_CLUSTER0_MSMC_ECC_AGGR0_MSMC_MMR_BUSECC_RAM_ID */
+            SDL_ECC_MAIN_MSMC_CACHE_TAG_MEM_INTERCONN_SUBTYPE, /*SDL_COMPUTE_CLUSTER0_MSMC_ECC_AGGR0_RMW2_CACHE_TAG_PIPE_BUSECC_RAM_ID */
+            SDL_ECC_MAIN_MSMC_MEM_WRAPPER_SUBTYPE, /* SDL_COMPUTE_CLUSTER0_MSMC_ECC_AGGR0_CLEC_SRAM_RAMECC_RAM_ID */
+            SDL_ECC_MAIN_MSMC_MEM_CLEC_EDC_CTRL_BUSECC_SUBTYPE, /*SDL_COMPUTE_CLUSTER0_MSMC_ECC_AGGR0_CLEC_J7ES_CLEC_EDC_CTRL_BUSECC_RAM_ID */
+        };
+        
+        
+        static SDL_ECC_InitConfig_t ECC_Test_MAINMSMCA0ECCInitConfig =
+        {
+            .numRams = MAIN_MSMC_AGGR0_MAX_MEM_SECTIONS,
+            /**< Number of Rams ECC is enabled  */
+            .pMemSubTypeList = &(ECC_Test_MAINMSMC_A0subMemTypeList[0]),
+            /**< Sub type list  */
+        };
+        
+        ...
+        
+        /* Initialize MAIN ESM module - ESM config should be aligned with the desired error events */
+        result = SDL_ESM_init(SDL_ESM_INST_MAIN_ESM0, &ECC_Test_esmInitConfig_MAIN,SDL_ESM_applicationCallbackFunction,ptr);
+        if (result != SDL_PASS) {
+            /* print error and quit */
+            UART_printf("ECC_Test_init: Error initializing MAIN ESM: result = %d\n", result);
+
+            retValue = -1;
+        } else {
+            UART_printf("\nECC_Test_init: Init MAIN ESM complete \n");
+        }
+
+        /* Initialize ECC */
+        result = SDL_ECC_init(SDL_ECC_MEMTYPE_MAIN_MSMC_AGGR0, &ECC_Test_MAINMSMCA0ECCInitConfig);
+        if (result != SDL_PASS) {
+            /* print error and quit */
+             UART_printf("ECC_Test_init: Error initializing R5F core ECC: result = %d\n", result);
+
+            retValue = -1;
+        } else {
+            UART_printf("\nECC_Test_init: MCU CBASS ECC Init complete \n");
+        }
+
+        /* Initialize ECC callbacks within the Main ESM - this is used in the self-test path */
+        result = SDL_ECC_initEsm(SDL_ESM_INST_MAIN_ESM0);
+        if (result != SDL_PASS) {
+            /* print error and quit */
+             UART_printf("ECC_Test_init: Error initializing ECC callback for Main ESM: result = %d\n", result);
+
+            retValue = -1;
+        } else {
+            UART_printf("\nECC_Test_init: ECC Callback Init complete for Main ESM \n");
+        }
+
+Once the ECC is configured, then error notifications will come to the ESM module, and will activate the ESM-registered application callback.
+The application callback may want to retrive the error information in order to take some action based on the error, like clearing the ECC interrupts, logging the error information, or some other action.
+
+Example of retrieving error information
+
+    .. code:: bash
+
+        SDL_ECC_MemType eccmemtype;
+        SDL_Ecc_AggrIntrSrc eccIntrSrc;
+        SDL_ECC_ErrorInfo_t eccErrorInfo;
+
+        /* Get the information about which ECC memtype and ECC interrupt Src */
+        /* esmInst is the ESM Instance (such as MCU, MAIN, WKUP), intSrc is the ESM error event */
+        retVal = SDL_ECC_getESMErrorInfo(esmInst, intSrc, &eccmemtype, &eccIntrSrc);
+
+        /* Based on the ECC memtype and ECC interrupt source, get the ECC error info */
+        retVal = SDL_ECC_getErrorInfo(eccmemtype, eccIntrSrc, &eccErrorInfo);
+
+To clear and acknowledge the ECC interrupt:
+
+    .. code:: bash 
+
+        /* If the error was due to injecting an error and is from an EDC type, then use SDL_ECC_AGGR_ERROR_SUBTYPE_INJECT */
+        if (eccErrorInfo.injectBitErrCnt != 0)
+        {
+            SDL_ECC_clearNIntrPending(eccmemtype, eccErrorInfo.memSubType, eccIntrSrc, SDL_ECC_AGGR_ERROR_SUBTYPE_INJECT, eccErrorInfo.injectBitErrCnt);
+        }
+        else
+        {
+            SDL_ECC_clearNIntrPending(eccmemtype, eccErrorInfo.memSubType, eccIntrSrc, SDL_ECC_AGGR_ERROR_SUBTYPE_NORMAL, eccErrorInfo.bitErrCnt);
+        }
+
+        /* Ack the interrupt source for the ECC memtype */
+        retVal = SDL_ECC_ackIntr(eccmemtype, eccIntrSrc);
+
+Execute an ECC Self-Test for a specified ECC aggregator (memtype) and RAM Id (subtype)
+
+    .. code:: bash
+
+        uint32_t subType;
+
+        SDL_ECC_InjectErrorConfig_t injectErrorConfig;
+
+        UART_printf("\n MSMC_BUSECC_RAM Single bit error self test: starting");
+
+        memset(&injectErrorConfig, 0, sizeof(injectErrorConfig));
+
+        /* Run one shot test for MSMC_BUSECC_RAM 1 bit error */
+        /* Note the address is relative to start of ram */
+        injectErrorConfig.pErrMem = (uint32_t *)(0u);
+
+        injectErrorConfig.flipBitMask = 0x1;
+        injectErrorConfig.chkGrp = 0x1;
+        subType = SDL_ECC_MAIN_MSMC_MEM_INTERCONN_SUBTYPE;
+
+        result = SDL_ECC_selfTest(SDL_ECC_MEMTYPE_MAIN_MSMC_AGGR0,
+                                  subType,
+                                  SDL_INJECT_ECC_ERROR_FORCING_1BIT_ONCE,
+                                  &injectErrorConfig,
+                                  1000);
+        
+        
+        if (result != SDL_PASS ) {
+            UART_printf("\n MSMC_BUSECC_RAM  Single bit error self test: Subtype %d: test failed",
+                        subType);
+            retVal = -1;
+        }
+
+Inject an error for a specified ECC aggregator (memtype) and RAM Id (subtype)
+
+    .. code:: bash
+
+       uint32_t subType;
+
+       SDL_ECC_InjectErrorConfig_t injectErrorConfig;
+
+       UART_printf("\n MSMC_BUSECC_RAM Single bit error injection: starting");
+
+       memset(&injectErrorConfig, 0, sizeof(injectErrorConfig));
+
+        /* Run one shot test for MSMC_BUSECC_RAM 1 bit error */
+        /* Note the address is relative to start of ram */
+        injectErrorConfig.pErrMem = (uint32_t *)(0u);
+
+        injectErrorConfig.flipBitMask = 0x1;
+        injectErrorConfig.chkGrp = 0x1;
+        subType = SDL_ECC_MAIN_MSMC_MEM_INTERCONN_SUBTYPE;
+
+        result = SDL_ECC_injectError(SDL_ECC_MEMTYPE_MAIN_MSMC_AGGR0,
+                                     subType,
+                                     SDL_INJECT_ECC_ERROR_FORCING_1BIT_ONCE,
+                                     &injectErrorConfig);
+        
+        
+        if (result != SDL_PASS ) {
+            UART_printf("\n MSMC_BUSECC_RAM  Single bit error injection: Subtype %d: failed",
+                        subType);
+            retVal = -1;
+        }
+
+
+Read the Static registers:
+
+    .. code:: bash
+
+        SDL_ECC_staticRegs staticRegs;
+
+        /* Read back the static registers */
+        result = SDL_ECC_getStaticRegisters(SDL_ECC_MEMTYPE_MCU_R5F0_CORE, &staticRegs);
+        if (result != SDL_PASS) {
+            /* print error and quit */
+            UART_printf("ECC_Test_init: Error reading the static registers: result = %d\n");
+
+            retValue = -1;
+        }
+
+
+Examples
+--------
+
+The ECC module provides a test app that demonstrates the ECC functionality. Details of the test app name, location and build instructions are given in the table below.
+
++---------------------+--------------------------------------------------------+--------------------------------+------------------------------------------+
+| Test App Name       | Description                                            | Location                       | Build Command                            |
++=====================+========================================================+================================+==========================================+
+| sdl_ecc_test_app    | - Initializes ECC instances                            |                                |                                          |
+|                     | - Initializes ESM for ECC errors                       | [sdl_install_dir]/test/ecc/    | make sdl_ecc_test_app PROFILE=release    |
+|                     | - Initializes ECC self-test callbacks                  |                                |                                          |
+|                     | - Injects errors and checks for ESM callback           |                                |                                          |
+|                     | - Performs ECC Self-tests                              |                                |                                          |
++---------------------+--------------------------------------------------------+--------------------------------+------------------------------------------+
+
+API
+---
+
+|__ECC_API_LNK__|

@@ -1,0 +1,13 @@
+SBL Revision: 01.00.10.01 (Dec  1 2021 - 08:15:07)
+TIFS  ver: 21.9.1--v2021.09a (Terrific Lla
+
+ VTM Unit Test Application
+Test Name: VTM API TEST  PASSED 
+Test Name: VTM Negative TEST  PASSED 
+
+ All tests have passed 
+vtm_test_main.c:174:test_sdl_vtm_baremetal_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored 
+OK

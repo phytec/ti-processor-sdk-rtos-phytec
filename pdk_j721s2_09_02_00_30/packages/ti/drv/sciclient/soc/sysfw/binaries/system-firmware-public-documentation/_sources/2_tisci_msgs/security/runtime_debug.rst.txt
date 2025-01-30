@@ -1,0 +1,98 @@
+=================================
+ Runtime Debug TISCI Description
+=================================
+
+.. _sec_api_runtime_debug_tisci_desc:
+
+This chapter provides information on available TISCI messages
+for configuring runtime debug.
+
++------------------+----------------------------------------------------+-----------------+--------------------+
+| TISCI Message ID |                        Message Name                | Available in GP | Avialable in HS-FS |
++==================+====================================================+=================+====================+
+| 0x900C           | :ref:`TISCI_MSG_OPEN_DEBUG_FWLS <open-debug-fwls>` | No              | No                 |
++------------------+----------------------------------------------------+-----------------+--------------------+
+| 0x9021           | :ref:`TISCI_MSG_GET_SOC_UID <get-soc-uid>`         | Yes             | Yes                |
++------------------+----------------------------------------------------+-----------------+--------------------+
+
+.. _sec_api_runtime_debug_intro:
+
+Introduction
+============
+
+.. note::
+
+   This document is applicable to HS devices only.
+
+.. note::
+
+   Opening the JTAG port through the Secure AP command interface is the primary
+   method of unlocking JTAG on K3 devices. This method is documented in
+   :doc:`sec_ap_data_transfer`. For debug flexbility, |sysfw| also supports
+   unlocking JTAG on target via a TISCI message documented in this chapter.
+
+API Description
+===============
+
+.. _get-soc-uid:
+
+TISCI_MSG_GET_SOC_UID - Get SOC UID
+-----------------------------------
+
+**Usage**:
+
++------------------------+--------+
+| **Message Type**       | Normal |
++------------------------+--------+
+| **Secure Queue Only?** | No     |
++------------------------+--------+
+
+Unlocking the JTAG port requires a X509 certificate signed with the active root
+of trust asymmetric key. The X509 certificate must contain the Unique identifier
+for the SOC (SOC UID). This enables debug certificates to be tied to specific
+devices. SOC UID is calculated on the device by the BOOT ROM and must be
+extracted from the device. This TISCI message is used to obtain the SOC UID to
+populate in the debug unlock certificate. For more information, see
+:ref:`sysfw_debug_ext`.
+
+TISCI Message ID
+^^^^^^^^^^^^^^^^
+.. sysfwapimacro:: TISCI_MSG_GET_SOC_UID
+
+.. sysfwapistruct:: tisci_msg_get_soc_uid_req
+
+.. sysfwapimacro:: UID_LEN_WORDS
+
+.. sysfwapistruct:: tisci_msg_get_soc_uid_resp
+
+.. _open-debug-fwls:
+
+TISCI_MSG_OPEN_DEBUG_FWLS - Open Debug Firewalls
+------------------------------------------------
+
+**Usage**:
+
++------------------------+--------+
+| **Message Type**       | Normal |
++------------------------+--------+
+| **Secure Queue Only?** | Yes    |
++------------------------+--------+
+
+Unlocking the JTAG port requires a X509 certificate signed with the active root
+of trust asymmetric key. This API is used to provide the signed certificate to
+|sysfw| for proceessing and JTAG unlock.
+
+The X509 certificate format is described in :doc:`sec_cert_format`. The fields of
+the certificate should be filled as specified in the
+:ref:`sysfw_debug_ext`. The X509 debug extension is mandatory.
+The other X509 extensions are not processed by |sysfw| while performing JTAG
+unlock.
+
+TISCI Message ID
+^^^^^^^^^^^^^^^^
+
+.. sysfwapimacro:: TISCI_MSG_OPEN_DEBUG_FWLS
+
+.. sysfwapistruct:: tisci_msg_open_debug_fwls_req
+
+.. sysfwapistruct:: tisci_msg_open_debug_fwls_resp

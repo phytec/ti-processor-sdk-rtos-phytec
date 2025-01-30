@@ -1,0 +1,540 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>SAUL Access Outside of SYSFW &mdash; TISCI User Guide</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="TISCI User Guide" href="../index.html"/>
+        <link rel="up" title="Chapter 6: Topic User Guides" href="index.html"/>
+        <link rel="next" title="Performing Security Handover" href="security_handover.html"/>
+        <link rel="prev" title="Firewall FAQ" href="firewall_faq.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="../_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> TISCI
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                09.02.04
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../1_intro/index.html">Chapter 1: Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_tisci_msgs/index.html">Chapter 2: TISCI Message Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_boardcfg/index.html">Chapter 3: Board Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_trace/index.html">Chapter 4: Interpreting Trace Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_soc_doc/index.html">Chapter 5: SoC Family Specific Documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Chapter 6: Topic User Guides</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="authentication.html">System Firmware Authentication and Decryption Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devgrp_usage.html">Device Group Primer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domgrp_usage.html">Domain Group Primer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="secure_boot_signing.html">Signing binaries for Secure Boot on HS Devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hs_boardcfg_signing.html">Signing Board Configuration on HS devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openssl_usage.html">Using OpenSSL for certificate creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extended_otp.html">Using Extended OTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dkek_management.html">Using Derived KEK on HS devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firewall_faq.html">Firewall FAQ</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">SAUL Access Outside of SYSFW</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sa2ul">SA2UL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sa3ul">SA3UL</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#saul-resource-availability">SAUL Resource Availability</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#resource-access">Resource Access</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="security_handover.html">Performing Security Handover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="secure_debug.html">Secure Debug User Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="key_writer.html">Key  Writer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="otp_revision.html">Run time read/write to KEYREV and SWREV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keyring.html">Keyring Management</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">TISCI</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Chapter 6: Topic User Guides</a> &raquo;</li>
+      
+    <li>SAUL Access Outside of SYSFW</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="saul-access-outside-of-sysfw">
+<h1>SAUL Access Outside of SYSFW<a class="headerlink" href="#saul-access-outside-of-sysfw" title="Permalink to this headline">¶</a></h1>
+<p>This guide describes which cryptographic accelerator features are available for
+access outside of System Firmware and how host software may gain access to the its
+resources.</p>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>SAUL is the crypto accelerator subsystem in TIs K3 family of devices. Each SoC
+has one or more instances of this subsystem. On High Secure (HS) devices,
+portions of an SAUL subsystem are dedicated to support authentication and
+decryption services in System Firmware, while other portions are freely avable for host
+software to access. System Firmware does not use any SAUL resources on General Purpose
+(GP) devices, and on HS devices with multiple SAUL instances System Firmware does not
+use the resources on the additional instances. For example:</p>
+<div class="section" id="sa2ul">
+<h3>SA2UL<a class="headerlink" href="#sa2ul" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="7%" />
+<col width="24%" />
+<col width="26%" />
+<col width="22%" />
+<col width="21%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">SoC</th>
+<th class="head">Number of SA2UL instances</th>
+<th class="head">Device</th>
+<th class="head">Used by System Firmware</th>
+<th class="head">Host access available</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>am64x</td>
+<td>1</td>
+<td>AM64X_DEV_SA2_UL0</td>
+<td>Yes</td>
+<td>Limited</td>
+</tr>
+<tr class="row-odd"><td>am65x</td>
+<td>1</td>
+<td>AM6_DEV_SA2_UL0</td>
+<td>Yes</td>
+<td>Limited</td>
+</tr>
+<tr class="row-even"><td rowspan="2">j721e</td>
+<td rowspan="2">2</td>
+<td>J721E_DEV_MCU_SA2_UL0</td>
+<td>Yes</td>
+<td>Limited</td>
+</tr>
+<tr class="row-odd"><td>J721E_DEV_SA2_UL0</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="row-even"><td rowspan="2">j721s2</td>
+<td rowspan="2">2</td>
+<td>J721S2_DEV_SA2_CPSW_PSILSS0</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="row-odd"><td>J721S2_DEV_SA2_UL0</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="row-even"><td rowspan="2">j784s4</td>
+<td rowspan="2">2</td>
+<td>J784S4_DEV_SA2_CPSW_PSILSS0</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="row-odd"><td>J784S4_DEV_SA2_UL0</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="row-even"><td>j7200</td>
+<td>1</td>
+<td>J7200_DEV_MCU_SA2_UL0</td>
+<td>Yes</td>
+<td>Limited</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="sa3ul">
+<h3>SA3UL<a class="headerlink" href="#sa3ul" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="33%" />
+<col width="30%" />
+<col width="28%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">SoC</th>
+<th class="head">Number of SA3UL instances</th>
+<th class="head">Used by System Firmware</th>
+<th class="head">Host access available</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>am62ax</td>
+<td>1</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>am62x</td>
+<td>1</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>j721s2</td>
+<td>1</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>j784s4</td>
+<td>1</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This does not cover the overview of SAUL or its functional description -
+please refer to the device TRM for further details.</p>
+</div>
+</div>
+</div>
+<div class="section" id="saul-resource-availability">
+<span id="pub-ug-saul-resources"></span><h2>SAUL Resource Availability<a class="headerlink" href="#saul-resource-availability" title="Permalink to this headline">¶</a></h2>
+<p>The following table describes the access policies for all SAUL instances on GP
+and HS devices</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="13%" />
+<col width="35%" />
+<col width="39%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Resource</th>
+<th class="head">SAUL instance</th>
+<th class="head">GP Policy</th>
+<th class="head">HS Policy</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td rowspan="2">Control MMR</td>
+<td>Primary</td>
+<td rowspan="2">Open Access</td>
+<td><strong>Read-only access</strong></td>
+</tr>
+<tr class="row-odd"><td>Others</td>
+<td>Open Access</td>
+</tr>
+<tr class="row-even"><td rowspan="2">MMRA</td>
+<td>Primary</td>
+<td rowspan="2">Open Access</td>
+<td><strong>Reserved for System Firmware.</strong>
+System Firmware enables all engines at device
+boot. Software must confirm engine status from
+base control MMR.</td>
+</tr>
+<tr class="row-odd"><td>Others</td>
+<td>Open Access</td>
+</tr>
+<tr class="row-even"><td rowspan="2">ECC Aggregator
+MMR (for SAUL
+memories)</td>
+<td>Primary</td>
+<td rowspan="2">Open Access</td>
+<td rowspan="2">Open Access</td>
+</tr>
+<tr class="row-odd"><td>Others</td>
+</tr>
+<tr class="row-even"><td rowspan="2">TRNG MMR</td>
+<td>Primary</td>
+<td rowspan="2">Open Access. Engine must be enabled by
+host software.</td>
+<td>Open access. Engine is enabled indefinitely by
+System Firmware and cannot be modified.</td>
+</tr>
+<tr class="row-odd"><td>Others</td>
+<td>Open Access. Engine must be enabled by
+host software.</td>
+</tr>
+<tr class="row-even"><td rowspan="2">PKA MMR</td>
+<td>Primary</td>
+<td rowspan="2">Open Access. Engine must be enabled by
+host software.</td>
+<td><strong>Reserved for System Firmware.</strong>
+Not availablere for host access.</td>
+</tr>
+<tr class="row-odd"><td>Others</td>
+<td>Open Access. Engine must be enabled by
+host software.</td>
+</tr>
+<tr class="row-even"><td rowspan="2">PSIL Threads</td>
+<td>Primary</td>
+<td rowspan="2">Full access to all threads 0:M-1 and 0:N-1,
+where M refers to the total number of
+ingress threads and N refers to the total
+egress threads (M * 2 = N). All related
+engines must beenabled by host software.</td>
+<td><strong>System Firmware owns secure threads: ingress
+thread 0, egress thread 0,1</strong>. Open access to
+ingress thread <strong>1:M-1</strong> and egress threads
+<strong>2:N-1</strong> only.</td>
+</tr>
+<tr class="row-odd"><td>Others</td>
+<td>Open Access to all threads. All related
+engines must be enabled by host software.</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="resource-access">
+<h3>Resource Access<a class="headerlink" href="#resource-access" title="Permalink to this headline">¶</a></h3>
+<p>Resources listed as open to host software may be accessed through various API
+available in System Firmware</p>
+<p><strong>MMR access</strong></p>
+<p>Open MMR regions can be accessed as follows:</p>
+<ul class="simple">
+<li>On GP devices, MMRs are open for read/write at device boot</li>
+<li>On HS devices, MMRs are behind unowned firewall regions and configured for
+read/write access by all initiators (wildcard access). Permissions can be
+updated through <a class="reference internal" href="../2_tisci_msgs/security/firewall_api.html#set-firewall-region"><span class="std std-ref">TISCI_MSG_SET_FWL_REGION</span></a> API.
+Firewall ownership can be transitioned by <a class="reference internal" href="../2_tisci_msgs/security/firewall_api.html#change-firewall-owner"><span class="std std-ref">TISCI_MSG_CHANGE_FWL_OWNER</span></a> API in case the host would like to enforce stricter
+control access to the module.<ul>
+<li>TRNG values may be used for deriving sensitive data (e.g. key generation).
+Host software may claim firewall ownership and restrict all read/write
+permissions to just itself in order to prevent eavesdroppers from obtaining
+the TRNG values. The host can then choose to release the firewall ownership
+by setting the owner back to none if other hosts require direct access to
+the module.</li>
+</ul>
+</li>
+</ul>
+<p>Read-only regions are owned by System Firmware and have permissions set up such that all
+hosts may read the MMR.</p>
+<p><strong>PSIL thread access</strong></p>
+<p>All PSIL thread pairing and unpairing is performed by the
+<a class="reference internal" href="../2_tisci_msgs/rm/rm_psil.html#pub-rm-public-psil-pair"><span class="std std-ref">TISCI_MSG_RM_PSIL_PAIR</span></a> and
+<a class="reference internal" href="../2_tisci_msgs/rm/rm_psil.html#pub-rm-public-psil-write"><span class="std std-ref">TISCI_MSG_RM_PSIL_WRITE</span></a> API.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="security_handover.html" class="btn btn-neutral float-right" title="Performing Security Handover" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="firewall_faq.html" class="btn btn-neutral" title="Firewall FAQ" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyright 2016-2024</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'09.02.04',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+
+        $('body').on("mousewheel", function () {
+            // Remove default behavior
+            event.preventDefault();
+            // Scroll without smoothing
+            var wheelDelta = event.wheelDelta;
+            var currentScrollPosition = window.pageYOffset;
+            window.scrollTo(0, currentScrollPosition - wheelDelta);
+        });
+      });
+  </script>
+   
+
+</body>
+</html>

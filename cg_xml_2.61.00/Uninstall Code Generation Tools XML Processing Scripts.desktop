@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=0.9.4
+Name=Uninstall Code Generation Tools XML Processing Scripts
+Comment=Uninstall
+Icon=
+Exec=/nightlybuild/repo_manifests/scripts/jenkins/release_area/cg_xml_2.61.00/uninstall
+Terminal=false
+Path=/nightlybuild/repo_manifests/scripts/jenkins/release_area/cg_xml_2.61.00

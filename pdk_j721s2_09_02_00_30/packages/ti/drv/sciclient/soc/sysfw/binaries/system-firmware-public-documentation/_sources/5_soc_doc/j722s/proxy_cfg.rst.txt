@@ -1,0 +1,7 @@
+===============================
+J722S Proxy Device Descriptions
+===============================
+
+
+J722S does not contain any Proxy devices
+

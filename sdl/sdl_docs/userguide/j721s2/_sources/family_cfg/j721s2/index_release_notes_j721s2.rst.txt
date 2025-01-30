@@ -1,0 +1,11 @@
+Release Notes
+^^^^^^^^^^^^^
+
+.. toctree::
+    :maxdepth: 1
+
+    ../../release_notes/j721s2/release_notes_01_03_00.rst
+    ../../release_notes/j721s2/release_notes_01_02_00.rst
+    ../../release_notes/j721s2/release_notes_01_01_00.rst
+    ../../release_notes/j721s2/release_notes_01_00_01.rst
+    ../../release_notes/j721s2/release_notes_01_00_00.rst

@@ -1,0 +1,76 @@
+var group__MMALIB__CNN__convolve__row__ixX__ixX__oxX =
+[
+    [ "MMALIB_CNN_convolve_row_ixX_ixX_oxX_InitArgs", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__InitArgs.html", [
+      [ "funcStyle", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__InitArgs.html#a3308bc5cfcf84f615dd5ddf08f967c0e", null ],
+      [ "No", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__InitArgs.html#a5681587af4508c620713ca8c3fa61169", null ],
+      [ "inChOffset", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__InitArgs.html#ad718550b0bee481e2ea658617382b7fa", null ],
+      [ "validColsIn", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__InitArgs.html#a7999e57943466e6f0146bff8c79b2c9c", null ],
+      [ "validColsPerRowIn", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__InitArgs.html#a073cab4101cefe573367e965028b23d2", null ],
+      [ "validRowsIn", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__InitArgs.html#abf6f2e4a47d1a65985182e20f36566fe", null ],
+      [ "inputPitchPerRow", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__InitArgs.html#a7f5272f50b8c4e059ebfe6ea0371f74f", null ],
+      [ "outputPitchPerRow", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__InitArgs.html#aaed64b8f6ca35bfb67fac5b37140f45f", null ],
+      [ "inWidth", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__InitArgs.html#af9b151f0ce17d4c7bc6288663db02911", null ],
+      [ "pad", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__InitArgs.html#a3d086d4affce5bef0ea340d1c694a710", null ],
+      [ "maxHeight", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__InitArgs.html#af89e67b2bdcfcba8fb9d37e3e6dcaf35", null ],
+      [ "subMChannels", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__InitArgs.html#a608bb548eadde4d2edbd4a9f20362046", null ],
+      [ "numGroupsPerKernel", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__InitArgs.html#aa22fee410ab664490e3383f5c1b18489", null ],
+      [ "shift", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__InitArgs.html#ae70ddc3bd7fbbc3c1a80c505db6a97eb", null ],
+      [ "Fr", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__InitArgs.html#a86ee0714f03049787ccebc535f5b2b8f", null ],
+      [ "Fc", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__InitArgs.html#ad9794208ff54e4e63065ed3ffc401706", null ],
+      [ "strideX", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__InitArgs.html#adc65fb8fcf891d4312a7421b6ce7952d", null ],
+      [ "strideY", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__InitArgs.html#ab6c297dfc410ae228fe9dffc386f2a09", null ],
+      [ "dilationX", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__InitArgs.html#a5059202cf432ef6aeb1a268f0f5c65f9", null ],
+      [ "dilationY", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__InitArgs.html#a2130b5b73e8819d7dcedec527d21a2c4", null ],
+      [ "bias", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__InitArgs.html#a43dac735d6e4c8c446ec1e1a43065359", null ],
+      [ "activationType", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__InitArgs.html#abcf08b703f0821a45d3976e0879aeb60", null ],
+      [ "mode", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__InitArgs.html#a4c05c086841a115793ff57c39ff9d781", null ],
+      [ "weightReorderFlag", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__InitArgs.html#a9b5a18f028eee88ae64b0eedc1a480a4", null ],
+      [ "numBiasVals", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__InitArgs.html#aaf327b0ff563f85a1e28202ef8bbf122", null ]
+    ] ],
+    [ "MMALIB_CNN_convolve_row_ixX_ixX_oxX_ExecInArgs", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__ExecInArgs.html", [
+      [ "validColsIn", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__ExecInArgs.html#aed9097cad2bfd4b1f9157eebeaf10a6e", null ],
+      [ "validColsPerRowIn", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__ExecInArgs.html#a667be1a9bcf990a64851b42915400ffc", null ],
+      [ "validRowsIn", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__ExecInArgs.html#ab6d4f23cd0f56c80d8561298b73319b8", null ],
+      [ "pad", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__ExecInArgs.html#acf1eabcb090ff5dc2e93cb4a7f654b08", null ],
+      [ "subMChannels", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__ExecInArgs.html#a469b80ec6430ac887a4caae3c51382e4", null ],
+      [ "bufferReset", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__ExecInArgs.html#a25f8b7672881e11e92845760bab0fa79", null ]
+    ] ],
+    [ "MMALIB_CNN_convolve_row_ixX_ixX_oxX_reorderWeights_Args", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__reorderWeights__Args.html", [
+      [ "dataType", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__reorderWeights__Args.html#a45fdcf139dcc0b8290943dbb2cb70f08", null ],
+      [ "Ni", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__reorderWeights__Args.html#a675a3422e4ba02792105e0891f2f34ac", null ],
+      [ "No", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__reorderWeights__Args.html#aa127c543eea7621276315f4915f25969", null ],
+      [ "Fr", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__reorderWeights__Args.html#a5cde97d8096c47f7f8a4c6377264e130", null ],
+      [ "Fc", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__reorderWeights__Args.html#afe23f9cd1a8a58e7e487ca99c356f2e9", null ],
+      [ "strideX", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__reorderWeights__Args.html#a084c10baea9858349b4e445013aa2450", null ],
+      [ "strideY", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__reorderWeights__Args.html#a523e1432c4c58455bcd95b912d541d1a", null ],
+      [ "dilationX", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__reorderWeights__Args.html#ae4a1986d70e1914dcb90095d92c62f58", null ],
+      [ "dilationY", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__reorderWeights__Args.html#ae02d06f409053a0c2c78e2cb82a80fa5", null ],
+      [ "numBiasVals", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__reorderWeights__Args.html#a39cb391594fa2cc84de233b39e77ee40", null ],
+      [ "subMChannels", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__reorderWeights__Args.html#ae428050f725b357cc4e34f23f2841206", null ],
+      [ "inWidth", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__reorderWeights__Args.html#aa5dd6329fdd77dd743ee43a02fad029d", null ],
+      [ "pad", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__reorderWeights__Args.html#a9e02157bc07128278d4a3909f15e5a21", null ],
+      [ "validColsIn", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__reorderWeights__Args.html#aac2bcadfb87b0a4c6f351e3bc026179c", null ],
+      [ "numGroupsPerKernel", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__reorderWeights__Args.html#ae39b280d9177088464a98cae537c4b78", null ]
+    ] ],
+    [ "MMALIB_CNN_convolve_row_ixX_ixX_oxX_ExecOutArgs", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__ExecOutArgs.html", [
+      [ "validColsOut", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__ExecOutArgs.html#a2e5985821acbd5d60f262ce85cfb2216", null ],
+      [ "validColsPerRowOut", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__ExecOutArgs.html#af6e27cd3264a6d2b64afe673cd9d2986", null ],
+      [ "validRowsOut", "structMMALIB__CNN__convolve__row__ixX__ixX__oxX__ExecOutArgs.html#a291541eac0eff39bb34c5e0c38f10781", null ]
+    ] ],
+    [ "MMALIB_CNN_CONVOLVE_ROW_IXX_IXX_OXX_STATUS_NAME", "group__MMALIB__CNN__convolve__row__ixX__ixX__oxX.html#gafcd679658e5407bd50d7be80d601abbd", [
+      [ "MMALIB_CNN_CONVOLVE_ROW_IXX_IXX_OXX_ERR_SMALL_K", "group__MMALIB__CNN__convolve__row__ixX__ixX__oxX.html#ggafcd679658e5407bd50d7be80d601abbda6e4061cbf814426ce6c7da564baa6627", null ],
+      [ "MMALIB_CNN_CONVOLVE_ROW_IXX_IXX_OXX_ERR_MAX", "group__MMALIB__CNN__convolve__row__ixX__ixX__oxX.html#ggafcd679658e5407bd50d7be80d601abbda2c03b977fc9c07961aedfec2789a2c95", null ]
+    ] ],
+    [ "MMALIB_CNN_convolve_row_ixX_ixX_oxX_getHandleSize", "group__MMALIB__CNN__convolve__row__ixX__ixX__oxX.html#gae7416c595535197c61ede39d20b97872", null ],
+    [ "MMALIB_CNN_convolve_row_ixX_ixX_oxX_init", "group__MMALIB__CNN__convolve__row__ixX__ixX__oxX.html#gada5231f77681607ffc592c580a059702", null ],
+    [ "MMALIB_CNN_convolve_row_ixX_ixX_oxX_init_checkParams", "group__MMALIB__CNN__convolve__row__ixX__ixX__oxX.html#gacf500d505b7c126418303a715a27aed6", null ],
+    [ "MMALIB_CNN_convolve_row_ixX_ixX_oxX_exec", "group__MMALIB__CNN__convolve__row__ixX__ixX__oxX.html#ga938b7c22e621f4d3c59fd07938af2e63", null ],
+    [ "MMALIB_CNN_convolve_row_ixX_ixX_oxX_exec_checkParams", "group__MMALIB__CNN__convolve__row__ixX__ixX__oxX.html#ga7330a4532cab2b856b715dc11336d5ba", null ],
+    [ "MMALIB_CNN_generateFillSeamPredicateRegisters", "group__MMALIB__CNN__convolve__row__ixX__ixX__oxX.html#gac06eb85e32658f41ad7a977b385ee105", null ],
+    [ "MMALIB_CNN_seamPredicateRegistersSize", "group__MMALIB__CNN__convolve__row__ixX__ixX__oxX.html#ga6d09584465d4bfa760b0e9ee783302de", null ],
+    [ "MMALIB_CNN_convolve_row_reorderWeights", "group__MMALIB__CNN__convolve__row__ixX__ixX__oxX.html#gaa55ed76f043bfea9e77a7d36242b394a", null ],
+    [ "MMALIB_CNN_convolve_row_reorderWeightsFlag", "group__MMALIB__CNN__convolve__row__ixX__ixX__oxX.html#gad3dbdcbb56eadc14c087b368b76b77b4", null ],
+    [ "MMALIB_CNN_convolve_row_reorderWeightsBufferSize", "group__MMALIB__CNN__convolve__row__ixX__ixX__oxX.html#ga3b363b5a8bc3a4dca9afc6fc03c33b7b", null ],
+    [ "MMALIB_CNN_seamPredicateRegistersSizeDefault", "group__MMALIB__CNN__convolve__row__ixX__ixX__oxX.html#ga00f0753ede75b210731803b37757c47b", null ],
+    [ "MMA_CNNLIB_convolveBiasReLUCompute_ixX_ixX_oxX_perfEst", "group__MMALIB__CNN__convolve__row__ixX__ixX__oxX.html#ga2499f64cbebd5cd9d862ebc8fcd12e8f", null ]
+];

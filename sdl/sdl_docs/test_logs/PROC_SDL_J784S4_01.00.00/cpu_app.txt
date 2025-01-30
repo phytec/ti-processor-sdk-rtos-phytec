@@ -1,0 +1,122 @@
+01000000011a00006a3761657000000000000000475020200008010000080100CSBL Revision: 0                                                                                        1.00.10.01 (Feb 22 2023 - 13:03:23)
+Waiting for tifs.bin ...
+CCTIFS  ver: 8.6.3--v08.06.03 (Chill Capybar
+Waiting for multicore app ...
+CCCCmcuClkFreq 1000000000
+
+ R5 CPU Application
+
+ R5F-CPU example application CCM_Test_init: Init MCU ESM complete
+
+R5F-CPU example application CCM_Test_init: Init MAIN ESM complete
+
+ R5F-CPU example application CCM_Test_init: Init WKUP ESM complete
+
+CCM_Test_init: CCM Init complete
+
+R5F-CPU example application CCM_Test_init: CCM Init complete
+
+CCM Functional Test
+
+ R5F-CPU example application CCM_Test_init: Init MCU ESM complete
+
+R5F-CPU example application CCM_Test_init: Init MAIN ESM complete
+
+ R5F-CPU example application CCM_Test_init: Init WKUP ESM complete
+
+CCM_Test_init: CCM Init complete
+
+R5F-CPU example application CCM_Test_init: CCM Init complete
+
+ R5F-CPU example application CCM self test: starting
+ R5F-CPU example application CCM Self Test complete
+ R5F-CPU example application CCM self test with error forcing: starting
+  ESM Call back function called : instType 0x2, intType 0x1, grpChannel 0x3, ind                                                                                        ex 0x0, intSrc 0x60
+  Take action
+
+ R5F-CPU example application CCM Self Test with error forcing complete
+ R5F-CPU example application CCM inject  error: test starting
+  ESM Call back function called : instType 0x2, intType 0x1, grpChannel 0x3, ind                                                                                        ex 0x0, intSrc 0x60
+  Take action
+
+  ESM Call back function called : instType 0x2, intType 0x1, grpChannel 0x3, ind                                                                                        ex 0x1, intSrc 0x61
+  Take action
+
+ R5F-CPU example application CCM inject Test complete
+ R5F-CPU example application MPU self test for Mem Write Access Fault: starting
+ R5F-CPU example application MPU self test for Mem Write Access Fault complete
+ Cycles taken 13192
+ R5F-CPU example application MPU self test for Mem Read Access Fault: starting
+ R5F-CPU example application MPU self test for Mem Read Access Fault complete
+ Cycles taken 3622
+ R5F-CPU example application MPU self test for Mem Write Access Fault (Wait Fore                                                                                        ver): starting
+ R5F-CPU example application MPU self test for Mem Write Access Fault  (Wait For                                                                                        ever) complete
+ Cycles taken 3249
+ R5F-CPU example application MPU self test for Mem Read Access Fault  (Wait Fore                                                                                        ver): starting
+ R5F-CPU example application MPU self test for Mem Read Access Fault  (Wait Fore                                                                                        ver) complete
+ Cycles taken 2909
+ CPU Functionality  Passed.
+
+All tests have passed.
+main.c:239:test_sdl_cpu_test_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored
+OK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

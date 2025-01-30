@@ -1,0 +1,33 @@
+root@j7-evm:/opt/vision_apps# ./run_app_c7x.sh 
+APP: Init ... !!!
+MEM: Init ... !!!
+MEM: Initialized DMA HEAP (fd=4) !!!
+MEM: Init ... Done !!!
+IPC: Init ... !!!
+IPC: Init ... Done !!!
+REMOTE_SERVICE: Init ... !!!
+REMOTE_SERVICE: Init ... Done !!!
+APP: Init ... Done !!!
+   393.338893 s:  VX_ZONE_INIT:Enabled
+   393.338918 s:  VX_ZONE_ERROR:Enabled
+   393.338923 s:  VX_ZONE_WARNING:Enabled
+   393.339491 s:  VX_ZONE_INIT:[tivxInit:71] Initialization Done !!!
+   393.339722 s:  VX_ZONE_INIT:[tivxHostInit:48] Initialization Done for HOST !!!
+ Loading [/opt/vision_apps/test_data/psdkra/app_c7x/img_1.bmp] ...
+ Loading [/opt/vision_apps/test_data/psdkra/app_c7x/img_2.bmp] ...
+ Running graph ...
+ Saving [app_c7x_out_img.bmp] ...
+ Done !!!
+   393.357127 s:  VX_ZONE_INIT:[tivxHostDeInit:56] De-Initialization Done for HOST !!!
+   393.361441 s:  VX_ZONE_INIT:[tivxDeInit:111] De-Initialization Done !!!
+APP: Deinit ... !!!
+REMOTE_SERVICE: Deinit ... !!!
+REMOTE_SERVICE: Deinit ... Done !!!
+IPC: Deinit ... !!!
+IPC: DeInit ... Done !!!
+MEM: Deinit ... !!!
+MEM: Alloc's: 8 alloc's of 692756 bytes 
+MEM: Free's : 8 free's  of 692756 bytes 
+MEM: Open's : 0 allocs  of 0 bytes 
+MEM: Deinit ... Done !!!
+APP: Deinit ... Done !!!

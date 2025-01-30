@@ -1,0 +1,794 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>TISCI PM Low Power Mode API Documentation &mdash; TISCI User Guide</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="TISCI User Guide" href="../../index.html"/>
+        <link rel="up" title="Chapter 2: TISCI Message Documentation" href="../index.html"/>
+        <link rel="next" title="Resource Management IRQ TISCI Message Description" href="../rm/rm_irq.html"/>
+        <link rel="prev" title="TISCI PM System Reset API Documentation" href="sysreset.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="../../_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> TISCI
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                09.02.04
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../1_intro/index.html">Chapter 1: Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Chapter 2: TISCI Message Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../general/TISCI_header.html">Texas Instruments System Controller Interface (TISCI)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#general">General</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#power-management-pm">Power Management (PM)</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="devices.html">TISCI PM Device API Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="clocks.html">TISCI PM Clock API Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sysreset.html">TISCI PM System Reset API Documentation</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">TISCI PM Low Power Mode API Documentation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tisci-msg-prepare-sleep">TISCI_MSG_PREPARE_SLEEP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tisci-msg-enter-sleep">TISCI_MSG_ENTER_SLEEP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tisci-msg-lpm-wake-reason">TISCI_MSG_LPM_WAKE_REASON</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tisci-msg-set-io-isolation">TISCI_MSG_SET_IO_ISOLATION</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#resource-management-rm">Resource Management (RM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#secure-management">Secure Management</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../3_boardcfg/index.html">Chapter 3: Board Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../4_trace/index.html">Chapter 4: Interpreting Trace Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../5_soc_doc/index.html">Chapter 5: SoC Family Specific Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../6_topic_user_guides/index.html">Chapter 6: Topic User Guides</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">TISCI</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Chapter 2: TISCI Message Documentation</a> &raquo;</li>
+      
+    <li>TISCI PM Low Power Mode API Documentation</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tisci-pm-low-power-mode-api-documentation">
+<h1>TISCI PM Low Power Mode API Documentation<a class="headerlink" href="#tisci-pm-low-power-mode-api-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This document is only applicable to AM62x and AM62Ax devices.</p>
+</div>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>This document describes the TISCI API for entering different low power modes
+supported by the SOC.</p>
+<div class="section" id="supported-low-power-modes">
+<h3>Supported low power modes<a class="headerlink" href="#supported-low-power-modes" title="Permalink to this headline">¶</a></h3>
+<p><p><code class="docutils literal"><span class="pre">TISCI_MSG_VALUE_SLEEP_MODE_DEEP_SLEEP</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">0x0</span></code></p>
+<p>Sleep mode in which complete SOC except the wakeup domain is turned off.</p>
+</p>
+<p><p><code class="docutils literal"><span class="pre">TISCI_MSG_VALUE_SLEEP_MODE_MCU_ONLY</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">0x1</span></code></p>
+<p>Sleep mode in which complete SOC except the wakeup and MCU domain is turned off.</p>
+</p>
+<p><p><code class="docutils literal"><span class="pre">TISCI_MSG_VALUE_SLEEP_MODE_STANDBY</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">0x2</span></code></p>
+<p>Sleep mode in which software is in low power mode but the hardware remains
+ on.</p>
+</p>
+<p><p><code class="docutils literal"><span class="pre">TISCI_MSG_VALUE_SLEEP_MODE_PARTIAL_IO</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">0x3</span></code></p>
+<p>Sleep mode in which complete SOC except the CAN IOs is turned off.</p>
+</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="46%" />
+<col width="54%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Low power mode</th>
+<th class="head">Supported by</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>DEEP_SLEEP</td>
+<td>am62x, am62ax</td>
+</tr>
+<tr class="row-odd"><td>MCU_ONLY</td>
+<td>am62x</td>
+</tr>
+<tr class="row-even"><td>STANDBY</td>
+<td>None</td>
+</tr>
+<tr class="row-odd"><td>PARTIAL_IO</td>
+<td>am62x</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="device-configuration-and-control-apis">
+<h3>Device configuration and control APIs<a class="headerlink" href="#device-configuration-and-control-apis" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">TISCI Message ID</th>
+<th class="head">Message Name</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0x0300</td>
+<td><a class="reference internal" href="#pm-lpm-msg-prepare-sleep"><span class="std std-ref">TISCI_MSG_PREPARE_SLEEP</span></a></td>
+</tr>
+<tr class="row-odd"><td>0x0301</td>
+<td><a class="reference internal" href="#pm-lpm-msg-enter-sleep"><span class="std std-ref">TISCI_MSG_ENTER_SLEEP</span></a></td>
+</tr>
+<tr class="row-even"><td>0x0306</td>
+<td><a class="reference internal" href="#pm-lpm-msg-wake-reason"><span class="std std-ref">TISCI_MSG_LPM_WAKE_REASON</span></a></td>
+</tr>
+<tr class="row-odd"><td>0x0307</td>
+<td><a class="reference internal" href="#pm-lpm-msg-set-io-isolation"><span class="std std-ref">TISCI_MSG_SET_IO_ISOLATION</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="tisci-msg-prepare-sleep">
+<span id="pm-lpm-msg-prepare-sleep"></span><h2>TISCI_MSG_PREPARE_SLEEP<a class="headerlink" href="#tisci-msg-prepare-sleep" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="objective">
+<h3>Objective<a class="headerlink" href="#objective" title="Permalink to this headline">¶</a></h3>
+<p>Prepare the SOC for entering into a low power mode.</p>
+</div>
+<div class="section" id="usage">
+<h3>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="75%" />
+<col width="25%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Message Type</strong></td>
+<td>Normal</td>
+</tr>
+<tr class="row-even"><td><strong>Secure Queue Only?</strong></td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="tisci-message-id">
+<h3>TISCI Message ID<a class="headerlink" href="#tisci-message-id" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">TISCI_MSG_PREPARE_SLEEP</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">(0x0300U)</span></code></p>
+</div>
+<div class="section" id="message-data-structures">
+<h3>Message Data Structures<a class="headerlink" href="#message-data-structures" title="Permalink to this headline">¶</a></h3>
+<p><p><strong>struct tisci_msg_prepare_sleep_req</strong></p>
+<p>Request for TISCI_MSG_PREPARE_SLEEP.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="15%" />
+<col width="76%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>hdr</td>
+<td>struct tisci_header</td>
+<td>TISCI header to provide ACK/NAK flags to the host.</td>
+</tr>
+<tr class="row-odd"><td>mode</td>
+<td>u8</td>
+<td>Low power mode to enter.</td>
+</tr>
+<tr class="row-even"><td>ctx_lo</td>
+<td>u32</td>
+<td>Low 32-bits of physical pointer to address to use for context save.</td>
+</tr>
+<tr class="row-odd"><td>ctx_hi</td>
+<td>u32</td>
+<td>High 32-bits of physical pointer to address to use for context save.</td>
+</tr>
+<tr class="row-even"><td>debug_flags</td>
+<td>u32</td>
+<td>Flags that can be set to halt the sequence during suspend or resume to allow JTAG connection and debug.</td>
+</tr>
+</tbody>
+</table>
+<p>This message is used as the first step of entering a low power mode. It
+ allows configurable information, including which state to enter to be
+ easily shared from the application, as this is a non-secure message and
+ therefore can be sent by anyone.
+ Notes:
+ Mode is defined as one of TISCI_MSG_VALUE_SLEEP_MODE_x macros.
+ ctx_lo and ctx_hi are to be a reserved memory region as decided on by
+ the HLOS. This region should be a carveout in DDR and valid for use
+ with DMA. Otherwise there are no constraints on this memory. An
+ encrypted blob will be placed here and only a valid blob can be
+ decrypted and authenticated, which eliminates risk of tampering.</p>
+</p>
+<p><p><strong>struct tisci_msg_prepare_sleep_resp</strong></p>
+<p>Response for TISCI_MSG_PREPARE_SLEEP.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="24%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>hdr</td>
+<td>struct tisci_header</td>
+<td>TISCI header to provide ACK/NAK flags to the host.</td>
+</tr>
+</tbody>
+</table>
+</p>
+</div>
+</div>
+<div class="section" id="tisci-msg-enter-sleep">
+<span id="pm-lpm-msg-enter-sleep"></span><h2>TISCI_MSG_ENTER_SLEEP<a class="headerlink" href="#tisci-msg-enter-sleep" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>Objective<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Enter into a low power mode.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Before calling the TISCI_MSG_ENTER_SLEEP, TISCI_MSG_PREPARE_SLEEP should be
+called to prepare for the low power mode.</p>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>Usage<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="75%" />
+<col width="25%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Message Type</strong></td>
+<td>Normal</td>
+</tr>
+<tr class="row-even"><td><strong>Secure Queue Only?</strong></td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id3">
+<h3>TISCI Message ID<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">TISCI_MSG_ENTER_SLEEP</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">(0x0301U)</span></code></p>
+</div>
+<div class="section" id="id4">
+<h3>Message Data Structures<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p><p><strong>struct tisci_msg_enter_sleep_req</strong></p>
+<p>Request for TISCI_MSG_ENTER_SLEEP.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="17%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>hdr</td>
+<td>struct tisci_header</td>
+<td>TISCI header to provide ACK/NAK flags to the host.</td>
+</tr>
+<tr class="row-odd"><td>mode</td>
+<td>u8</td>
+<td>Low power mode to enter.</td>
+</tr>
+<tr class="row-even"><td>proc_id</td>
+<td>u8</td>
+<td>Processor id to be used for restoring boot vector and debug status upon resume</td>
+</tr>
+<tr class="row-odd"><td>core_resume_lo</td>
+<td>u32</td>
+<td>Low 32-bits of physical pointer to address for core to begin execution upon resume.</td>
+</tr>
+<tr class="row-even"><td>core_resume_hi</td>
+<td>u32</td>
+<td>High 32-bits of physical pointer to address for core to begin execution upon resume.</td>
+</tr>
+</tbody>
+</table>
+<p>This message is to be sent after TISCI_MSG_PREPARE_SLEEP and actually triggers entry into the specified
+ low power mode.</p>
+</p>
+<p><p><strong>struct tisci_msg_enter_sleep_resp</strong></p>
+<p>Response for TISCI_MSG_ENTER_SLEEP.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="21%" />
+<col width="66%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>hdr</td>
+<td>struct tisci_header</td>
+<td>TISCI header to provide ACK/NAK flags to the host.</td>
+</tr>
+<tr class="row-odd"><td>status</td>
+<td>u32</td>
+<td>Value that gives information about what happened during LPM cycle</td>
+</tr>
+</tbody>
+</table>
+</p>
+</div>
+</div>
+<div class="section" id="tisci-msg-lpm-wake-reason">
+<span id="pm-lpm-msg-wake-reason"></span><h2>TISCI_MSG_LPM_WAKE_REASON<a class="headerlink" href="#tisci-msg-lpm-wake-reason" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h3>Objective<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>Get which wake up source woke the soc from low power mode.</p>
+</div>
+<div class="section" id="wake-up-sources">
+<h3>Wake up sources<a class="headerlink" href="#wake-up-sources" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="60%" />
+<col width="40%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Wake Up Source</th>
+<th class="head">Source ID</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>WKUP_I2C0</td>
+<td>0x00</td>
+</tr>
+<tr class="row-odd"><td>WKUP_UART0</td>
+<td>0x10</td>
+</tr>
+<tr class="row-even"><td>MCU_GPIO0</td>
+<td>0x20</td>
+</tr>
+<tr class="row-odd"><td>WKUP_ICEMELTER0</td>
+<td>0x30</td>
+</tr>
+<tr class="row-even"><td>WKUP_TIMER0</td>
+<td>0x40</td>
+</tr>
+<tr class="row-odd"><td>WKUP_TIMER1</td>
+<td>0x41</td>
+</tr>
+<tr class="row-even"><td>WKUP_RTC0</td>
+<td>0x50</td>
+</tr>
+<tr class="row-odd"><td>RESET</td>
+<td>0x60</td>
+</tr>
+<tr class="row-even"><td>USB0</td>
+<td>0x70</td>
+</tr>
+<tr class="row-odd"><td>USB1</td>
+<td>0x71</td>
+</tr>
+<tr class="row-even"><td>MAIN_IO</td>
+<td>0x80</td>
+</tr>
+<tr class="row-odd"><td>MCU_IO</td>
+<td>0x81</td>
+</tr>
+<tr class="row-even"><td>CAN_IO</td>
+<td>0x82</td>
+</tr>
+<tr class="row-odd"><td>MCU_IPC</td>
+<td>0x90</td>
+</tr>
+<tr class="row-even"><td>INVALID</td>
+<td>0xFF</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id6">
+<h3>Usage<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="75%" />
+<col width="25%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Message Type</strong></td>
+<td>Normal</td>
+</tr>
+<tr class="row-even"><td><strong>Secure Queue Only?</strong></td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id7">
+<h3>TISCI Message ID<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">TISCI_MSG_LPM_WAKE_REASON</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">(0x0306U)</span></code></p>
+</div>
+<div class="section" id="id8">
+<h3>Message Data Structures<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p><p><strong>struct tisci_msg_lpm_wake_reason_req</strong></p>
+<p>Request for TISCI_MSG_LPM_WAKE_REASON.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="24%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>hdr</td>
+<td>struct tisci_header</td>
+<td>TISCI header to provide ACK/NAK flags to the host.</td>
+</tr>
+</tbody>
+</table>
+<p>This message is used to query the wake up source from low power mode.</p>
+</p>
+<p><p><strong>struct tisci_msg_lpm_wake_reason_resp</strong></p>
+<p>Response for TISCI_MSG_LPM_WAKE_REASON.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="24%" />
+<col width="58%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>hdr</td>
+<td>struct tisci_header</td>
+<td>TISCI header to provide ACK/NAK flags to the host.</td>
+</tr>
+<tr class="row-odd"><td>wake_source</td>
+<td>u32</td>
+<td>The wake up source that woke soc from LPM.</td>
+</tr>
+<tr class="row-even"><td>wake_timestamp</td>
+<td>u64</td>
+<td>Timestamp at which soc woke.</td>
+</tr>
+</tbody>
+</table>
+</p>
+</div>
+</div>
+<div class="section" id="tisci-msg-set-io-isolation">
+<span id="pm-lpm-msg-set-io-isolation"></span><h2>TISCI_MSG_SET_IO_ISOLATION<a class="headerlink" href="#tisci-msg-set-io-isolation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id9">
+<h3>Objective<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p>Enable and disable IO isolation</p>
+</div>
+<div class="section" id="id10">
+<h3>Usage<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="75%" />
+<col width="25%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Message Type</strong></td>
+<td>Normal</td>
+</tr>
+<tr class="row-even"><td><strong>Secure Queue Only?</strong></td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id11">
+<h3>TISCI Message ID<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">TISCI_MSG_SET_IO_ISOLATION</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">(0x0307U)</span></code></p>
+</div>
+<div class="section" id="id12">
+<h3>Message Data Structures<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<p><p><strong>struct tisci_msg_set_io_isolation_req</strong></p>
+<p>Request for TISCI_MSG_SET_IO_ISOLATION.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="24%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>hdr</td>
+<td>struct tisci_header</td>
+<td>TISCI header to provide ACK/NAK flags to the host.</td>
+</tr>
+<tr class="row-odd"><td>state</td>
+<td>u8</td>
+<td>The deseared state of the IO isolation.</td>
+</tr>
+</tbody>
+</table>
+<p>This message is used to enable/disable IO isolation for low power modes.</p>
+</p>
+<p><p><strong>struct tisci_msg_set_io_isolation_resp</strong></p>
+<p>Response for TISCI_MSG_SET_IO_ISOLATION.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="24%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>hdr</td>
+<td>struct tisci_header</td>
+<td>TISCI header to provide ACK/NAK flags to the host.</td>
+</tr>
+</tbody>
+</table>
+</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../rm/rm_irq.html" class="btn btn-neutral float-right" title="Resource Management IRQ TISCI Message Description" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="sysreset.html" class="btn btn-neutral" title="TISCI PM System Reset API Documentation" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyright 2016-2024</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'09.02.04',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+
+        $('body').on("mousewheel", function () {
+            // Remove default behavior
+            event.preventDefault();
+            // Scroll without smoothing
+            var wheelDelta = event.wheelDelta;
+            var currentScrollPosition = window.pageYOffset;
+            window.scrollTo(0, currentScrollPosition - wheelDelta);
+        });
+      });
+  </script>
+   
+
+</body>
+</html>

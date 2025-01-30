@@ -1,0 +1,7 @@
+TOG Test Applications
+
+ sdlAppEsmSetupCommon...Done
+ sdlAppEsmSetupCommon...Done
+ sdlAppEsmSetup...Done
+ Starting TOG test on MCU INFRA0, index 0...
+ sdlAppEsmConfig...Done

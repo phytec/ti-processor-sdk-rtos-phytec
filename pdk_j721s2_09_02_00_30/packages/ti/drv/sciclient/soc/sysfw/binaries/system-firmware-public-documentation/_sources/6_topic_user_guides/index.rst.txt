@@ -1,0 +1,24 @@
+.. _pub_user_guides:
+
+==============================
+ Chapter 6: Topic User Guides
+==============================
+
+.. toctree::
+   :maxdepth: 1
+
+   ./authentication
+   ./devgrp_usage
+   ./domgrp_usage
+   ./secure_boot_signing
+   ./hs_boardcfg_signing
+   ./openssl_usage
+   ./extended_otp
+   ./dkek_management
+   ./firewall_faq
+   ./saul_access
+   ./security_handover
+   ./secure_debug
+   ./key_writer
+   ./otp_revision
+   ./keyring

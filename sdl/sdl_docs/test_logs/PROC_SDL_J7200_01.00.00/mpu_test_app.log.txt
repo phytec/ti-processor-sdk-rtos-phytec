@@ -1,0 +1,53 @@
+ MPU Test Application
+Mpu reginons are:the region is 6
+the base address is 50000000
+the size is 34
+the permissions is 30b
+
+Mpu reginons static register is sucessful
+ Mpu reginons are:the region is 5
+the base address is 41010000
+the size is 1d
+the permissions is 320
+
+Mpu reginons static register is sucessful
+ Mpu reginons are:the region is 4
+the base address is 80000000
+the size is 3d
+the permissions is 30b
+
+Mpu reginons static register is sucessful
+ Mpu reginons are:the region is 3
+the base address is 70000000
+the size is 29
+the permissions is 30b
+
+Mpu reginons static register is sucessful
+ Mpu reginons are:the region is 2
+the base address is 41c00000
+the size is 25
+the permissions is 30b
+
+Mpu reginons static register is sucessful
+ Mpu reginons are:the region is 1
+the base address is 0
+the size is 3d
+the permissions is 320
+
+Mpu reginons static register is sucessful
+ Mpu reginons are:the region is 0
+the base address is 0
+the size is 3f
+the permissions is 1310
+
+Mpu reginons static register is sucessful
+  MPU API tests complete: number of regisions tested are : 0x10
+
+ Test Name: sdlcore_r5_mpuTest  PASSED
+
+ All tests have passed.
+main.c:188:test_sdl_mpu_baremetal_test_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored
+OK

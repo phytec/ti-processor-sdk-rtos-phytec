@@ -1,0 +1,120 @@
+===============================
+AM62X PSI-L Device Descriptions
+===============================
+
+Introduction
+============
+
+This chapter provides information on the PSI-L devices in the AM62X SoC.  Some
+System Firmware TISCI messages take device specific inputs. This chapter
+provides information on the valid values for PSI-L TISCI message parameters.
+
+.. _pub_soc_am62x_psil_proxy_device_ids:
+
+PSI-L Proxy Device IDs
+======================
+
+Some System Firmware TISCI message APIs require the PSI-L Proxy device ID be
+provided as part of the request. Based on :doc:`AM62X Device IDs <devices>`
+these are the valid PSI-L Proxy device IDs.
+
++---------------------------+-------------------------+
+| PSI-L Proxy Device Name   |   PSI-L Proxy Device ID |
++===========================+=========================+
+| AM62X_DEV_DMASS0          |                      25 |
++---------------------------+-------------------------+
+
+.. _pub_soc_am62x_psil_thread_ids:
+
+PSI-L Source and Destination Thread IDs
+=======================================
+
+This section describes valid PSI-L source and destination thread IDs for each
+thread type. The thread IDs are used in the PSI-L based TISCI messages.
+
+
+.. warning::
+
+    PSI-L threads marked as reserved for use by TIFS **cannot** be linked to
+    another thread.
+
++----------------------+------------------+
+| Thread Type          | Thread Range     |
++======================+==================+
+| pktdma_tx            | 0x1000 to 0x101c |
++----------------------+------------------+
+| bcdma_tx             | 0x2000 to 0x2015 |
++----------------------+------------------+
+| pdma_main0_mcspi0_rx | 0x4300 to 0x4303 |
++----------------------+------------------+
+| pdma_main0_mcspi1_rx | 0x4304 to 0x4307 |
++----------------------+------------------+
+| pdma_main0_mcspi2_rx | 0x4308 to 0x430b |
++----------------------+------------------+
+| pdma_main1_uart0_rx  | 0x4400 to 0x4400 |
++----------------------+------------------+
+| pdma_main1_uart1_rx  | 0x4401 to 0x4401 |
++----------------------+------------------+
+| pdma_main1_uart2_rx  | 0x4402 to 0x4402 |
++----------------------+------------------+
+| pdma_main1_uart3_rx  | 0x4403 to 0x4403 |
++----------------------+------------------+
+| pdma_main1_uart4_rx  | 0x4404 to 0x4404 |
++----------------------+------------------+
+| pdma_main1_uart5_rx  | 0x4405 to 0x4405 |
++----------------------+------------------+
+| pdma_main1_uart6_rx  | 0x4406 to 0x4406 |
++----------------------+------------------+
+| pdma_main0_mcan0_rx  | 0x440c to 0x440e |
++----------------------+------------------+
+| pdma_mcasp_mcasp0_rx | 0x4500 to 0x4500 |
++----------------------+------------------+
+| pdma_mcasp_mcasp1_rx | 0x4501 to 0x4501 |
++----------------------+------------------+
+| pdma_mcasp_mcasp2_rx | 0x4502 to 0x4502 |
++----------------------+------------------+
+| cpsw2_rx             | 0x4600 to 0x4600 |
++----------------------+------------------+
+| csi_rx               | 0x4700 to 0x471f |
++----------------------+------------------+
+| saul0_rx             | 0x7504 to 0x750b |
++----------------------+------------------+
+| pktdma_rx            | 0x9000 to 0x9017 |
++----------------------+------------------+
+| bcdma_rx             | 0xa000 to 0xa01b |
++----------------------+------------------+
+| pdma_main0_mcspi0_tx | 0xc300 to 0xc303 |
++----------------------+------------------+
+| pdma_main0_mcspi1_tx | 0xc304 to 0xc307 |
++----------------------+------------------+
+| pdma_main0_mcspi2_tx | 0xc308 to 0xc30b |
++----------------------+------------------+
+| pdma_main1_uart0_tx  | 0xc400 to 0xc400 |
++----------------------+------------------+
+| pdma_main1_uart1_tx  | 0xc401 to 0xc401 |
++----------------------+------------------+
+| pdma_main1_uart2_tx  | 0xc402 to 0xc402 |
++----------------------+------------------+
+| pdma_main1_uart3_tx  | 0xc403 to 0xc403 |
++----------------------+------------------+
+| pdma_main1_uart4_tx  | 0xc404 to 0xc404 |
++----------------------+------------------+
+| pdma_main1_uart5_tx  | 0xc405 to 0xc405 |
++----------------------+------------------+
+| pdma_main1_uart6_tx  | 0xc406 to 0xc406 |
++----------------------+------------------+
+| pdma_main0_mcan0_tx  | 0xc40c to 0xc40e |
++----------------------+------------------+
+| pdma_mcasp_mcasp0_tx | 0xc500 to 0xc500 |
++----------------------+------------------+
+| pdma_mcasp_mcasp1_tx | 0xc501 to 0xc501 |
++----------------------+------------------+
+| pdma_mcasp_mcasp2_tx | 0xc502 to 0xc502 |
++----------------------+------------------+
+| cpsw2_tx             | 0xc600 to 0xc607 |
++----------------------+------------------+
+| csi_tx               | 0xc700 to 0xc71f |
++----------------------+------------------+
+| saul0_tx             | 0xf500 to 0xf503 |
++----------------------+------------------+
+

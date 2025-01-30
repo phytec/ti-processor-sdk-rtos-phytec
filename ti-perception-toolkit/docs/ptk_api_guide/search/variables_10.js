@@ -1,0 +1,19 @@
+var searchData=
+[
+  ['sat',['SAT',['../structcsr__type.html#ab7642c5a110f53faa392608fa42e2acd',1,'csr_type']]],
+  ['sde_5fconfidence_5fthreshold',['sde_confidence_threshold',['../structPTK__Alg__StereoAlgo__configParams.html#a9b85fee0a39dcc8f37ce982bef23c1e9',1,'PTK_Alg_StereoAlgo_configParams']]],
+  ['segavg',['segAvg',['../structPTK__Alg__StereoPP__HoleFillingObj.html#a5aea6d755f510c6fdc08c71a51ae0844',1,'PTK_Alg_StereoPP_HoleFillingObj']]],
+  ['seglength',['segLength',['../structPTK__Alg__StereoPP__HoleFillingObj.html#a1b0a2fe655822a87bd44abe32317bd88',1,'PTK_Alg_StereoPP_HoleFillingObj']]],
+  ['segstart',['segStart',['../structPTK__Alg__StereoPP__HoleFillingObj.html#a75449907165cf50cb6bdc514c2871530',1,'PTK_Alg_StereoPP_HoleFillingObj']]],
+  ['sinpitch',['sinPitch',['../structPTK__Alg__StereoAlgo__camParams.html#a30da5ee762f927322d8f9cdddc9e40cd',1,'PTK_Alg_StereoAlgo_camParams::sinPitch()'],['../structPTK__Alg__StereoOG__CreateOGCamParams.html#afb18487d265005f76a914d2115f16f97',1,'PTK_Alg_StereoOG_CreateOGCamParams::sinPitch()'],['../structPTK__Alg__StereoOG__CreatePCCamParams.html#af4f36a9bd2da3caca5c455db21e68bc3',1,'PTK_Alg_StereoOG_CreatePCCamParams::sinPitch()']]],
+  ['size',['size',['../structPTK__Api__MemoryBlkReq.html#afcdff5474f5f27b689a5350866f3148a',1,'PTK_Api_MemoryBlkReq::size()'],['../structPTK__Api__MemoryBlkRsp.html#a893e8826c44b2c89dd3bb7c87e22b1ce',1,'PTK_Api_MemoryBlkRsp::size()']]],
+  ['slope',['slope',['../structPTK__Alg__StereoAlgo__groundModelParams.html#a161e680fcff30c289e42337c3700ae97',1,'PTK_Alg_StereoAlgo_groundModelParams']]],
+  ['slopearray',['slopeArray',['../structPTK__Alg__StereoAlgo__groundModelHistory.html#a2c8eaff9732efa57c9a5641d1352450a',1,'PTK_Alg_StereoAlgo_groundModelHistory']]],
+  ['soparams',['soParams',['../structPTK__Alg__StereoAlgo__ObjectDetect__allParams.html#ab6687addae0dd1359e363078d01734b2',1,'PTK_Alg_StereoAlgo_ObjectDetect_allParams']]],
+  ['sorteddisparity',['sortedDisparity',['../structPTK__Alg__StereoAlgo__ObjectDetectObj.html#ab05d703fafaa9e8755c4845229ea98ee',1,'PTK_Alg_StereoAlgo_ObjectDetectObj']]],
+  ['splitinlierthreshold',['splitInlierThreshold',['../structPTK__Alg__StereoAlgo__splitObsParams.html#ae9f52460b8ecf6d30077ccb33beb1a68',1,'PTK_Alg_StereoAlgo_splitObsParams']]],
+  ['startx',['startX',['../structPTK__Alg__StereoAlgo__uvDispParams.html#a13cf034975d36304ba0dbfc11519042c',1,'PTK_Alg_StereoAlgo_uvDispParams']]],
+  ['starty',['startY',['../structPTK__Alg__StereoAlgo__uvDispParams.html#a9e7b8eba8769d8e9970b47d641914476',1,'PTK_Alg_StereoAlgo_uvDispParams']]],
+  ['statisticsboxheight',['statisticsBoxHeight',['../structPTK__Alg__StereoAlgo__closestObsParams.html#a2e2060f690e8671c64035a276c7eb2b0',1,'PTK_Alg_StereoAlgo_closestObsParams']]],
+  ['statisticsnearestpercent',['statisticsNearestPercent',['../structPTK__Alg__StereoAlgo__closestObsParams.html#af827f80c39861bc0ec43a7326d3a0190',1,'PTK_Alg_StereoAlgo_closestObsParams']]]
+];

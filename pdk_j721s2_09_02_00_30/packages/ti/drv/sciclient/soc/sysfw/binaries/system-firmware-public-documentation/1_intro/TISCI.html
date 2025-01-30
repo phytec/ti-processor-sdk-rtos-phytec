@@ -1,0 +1,482 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Introduction &mdash; TISCI User Guide</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="TISCI User Guide" href="../index.html"/>
+        <link rel="up" title="Chapter 1: Introduction" href="index.html"/>
+        <link rel="next" title="Chapter 2: TISCI Message Documentation" href="../2_tisci_msgs/index.html"/>
+        <link rel="prev" title="Chapter 1: Introduction" href="index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="../_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> TISCI
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                09.02.04
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Chapter 1: Introduction</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#centralized-device-management">Centralized Device Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#centralized-foundational-security-management">Centralized Foundational Security Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#architecture-change-between-sdk-7-0-and-sdk-7-1">Architecture Change between SDK 7.0 and SDK 7.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#further-reading">Further Reading</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#glossary">Glossary</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../2_tisci_msgs/index.html">Chapter 2: TISCI Message Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_boardcfg/index.html">Chapter 3: Board Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_trace/index.html">Chapter 4: Interpreting Trace Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_soc_doc/index.html">Chapter 5: SoC Family Specific Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_topic_user_guides/index.html">Chapter 6: Topic User Guides</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">TISCI</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Chapter 1: Introduction</a> &raquo;</li>
+      
+    <li>Introduction</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="introduction">
+<span id="pub-sysfw-introduction"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p>Traditional Texas Instruments SoCs implement system control functions such as
+power management on each of the processing units (ARM/DSP etc).
+However, the traditional approach had tremendous challenges
+to ensure system stability. A few of the challenges include:</p>
+<ul class="simple">
+<li>Complex interactions between Operating Systems on heterogeneous SoCs for
+generic features.</li>
+<li>Lack of centralized knowledge of system state.</li>
+<li>Complex implementation challenges with regards to implementation of
+workarounds for system quirks.</li>
+<li>Equivalent system capability entitlement on all variations of operation
+conditions.</li>
+</ul>
+<p>Keystone 3 (K3) devices introduces the concept of a centralized Power, Resource and Security
+Management to allow mitigating the challenges of the traditional approach to
+system control.</p>
+<p>System Firmware is a collective term used to describe the TI Foundational Security (TIFS)
+and Resource Management (RM)/ Power Management (PM) services.</p>
+<p>System Firmware executes on the Security Manager and Device Manager Core.
+On K3 devices, the DMSC subsystem is the Security Manager Core in the SoC.
+The Device Manager core can be on the DMSC itself or the MCU R5F.
+The choice of whether this runs on the DMSC or the
+MCU R5F is based on the kind of applications the device is targeting.
+If the device is targetting applications, where there is a need for a dedicated
+Hardware Security Module (HSM), the Device manager core is independent of the DMSC (which is exclusively
+kept for Security functions). For devices which do not have need for a dedicated
+security island or HSM, the device manager runs on the DMSC.</p>
+<p>The following table highlights the variations
+of where the RM and PM execute versus the TIFS on the different K3 family of
+devices.</p>
+<span id="pub-sysfw-map-per-device"></span><table border="1" class="docutils" id="id1">
+<caption><span class="caption-number">Table 1 </span><span class="caption-text">TI Foundational Security Software and RM/PM SCI Server Mapping</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="18%" />
+<col width="29%" />
+<col width="29%" />
+<col width="24%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Device</th>
+<th class="head">TI Foundation Security</th>
+<th class="head">3rd Party HSM/SHE stack</th>
+<th class="head">RM/PM SCI Server</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>AM65x/ DRA80x,
+AM64x</td>
+<td>DMSC (M3 based)</td>
+<td>NA</td>
+<td>DMSC (M3 based)</td>
+</tr>
+<tr class="row-odd"><td>DRA82X, TDA4X</td>
+<td>DMSC (M3 based)</td>
+<td>DMSC (M3 based)</td>
+<td>Library on MCU R5*</td>
+</tr>
+<tr class="row-even"><td>TDA4VLX,
+TDA4VHX</td>
+<td>SMS (M4 based)</td>
+<td>SMS (M4 based)</td>
+<td>Library on MCU R5*</td>
+</tr>
+<tr class="row-odd"><td>AM62X, AM62Ax,
+AM62Px, J722S</td>
+<td>SMS (M4 based)</td>
+<td>SMS (M4 based)</td>
+<td>Library on DM R5*</td>
+</tr>
+</tbody>
+</table>
+<p>Note, the TI provided software does not allow for a given SoC to support both HSM and non
+HSM applications. To know the mapping refer <a class="reference internal" href="#pub-sysfw-map-per-device"><span class="std std-ref">TI Foundational Security Software and RM/PM SCI Server Mapping</span></a>.</p>
+<p>The purpose of this document is to define the software interface for
+the System Firmware. The split up of the responsibilities are:</p>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>TIFS:</dt>
+<dd><ul class="first last">
+<li>Responsible for Centralized Foundational Security Management. These
+include functions like authenticated boot, JTAG unlock etc.</li>
+<li>Behaves like a forwarding agent for Resource Management and Power Management
+requests made by Secure hosts (other CPUs) in the SoC.</li>
+<li>Behaves as a forwarding agent for Resource Management and Power Management
+responses from the device manager to the Secure Hosts.</li>
+<li>Firewall Management for resources requested by both secure and non-secure
+hosts.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Device Manager (DMSC M3 or MCU R5F based on the device)</dt>
+<dd><ul class="first last">
+<li>Responsible for servicing resource management and power management messages
+from secure and non-secure hosts.</li>
+<li>Reponsible for forwarding non-secure host requests to set the processor
+boot control or firewall configuration for safety applications to the DMSC.</li>
+<li>Responsible for forwaring response recieved from the DMSC to non-secure
+hosts for the above forwarded messages.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="section" id="centralized-device-management">
+<h2>Centralized Device Management<a class="headerlink" href="#centralized-device-management" title="Permalink to this headline">¶</a></h2>
+<p>In the Power management domain, the centralized power management takes into account that every device has:</p>
+<ul class="simple">
+<li>Different power and clock domains.</li>
+<li>Derivatives have slight differences in the clocking architecture based on combination of modules.</li>
+</ul>
+<p>It provides an OS agnostic interface for power management allowing peripherals and clocks to be
+handled by multiple processors running different OSes (Linux, RTOS, etc.). The centralized power
+management entity aims to provide the same control for power and clock setting across all OSes.</p>
+<p>Centralized Resource management is driven by the centralized DMA architecture. Key components
+of the centralized resource management include:</p>
+<ul class="simple">
+<li>Navigator Subsystem: Collection of Data movement components</li>
+<li>UDMA (Unified DMA), PKTDMA, BCDMA: DMA engine for standard parallel DMA (CBA) or PSI/stream based IP.</li>
+<li>RA (Ring Accelerator): Queue management providing abstract SW view to HW DMA queues</li>
+<li>Proxy: Allows efficient access to RA queues, also enables address containment/virtualization (access RA via separate MMU page / regions)</li>
+<li>Interrupt &amp; events handling: Interrupt aggregators and Interrupt routers</li>
+</ul>
+</div>
+<div class="section" id="centralized-foundational-security-management">
+<h2>Centralized Foundational Security Management<a class="headerlink" href="#centralized-foundational-security-management" title="Permalink to this headline">¶</a></h2>
+<p>The DMSC M3 subsystem in the K3 family of devices is responsible to run the software stack for
+the device foundational security management. This software entity is responsible for:</p>
+<ul>
+<li><p class="first">Foundational device security in DMSC</p>
+<blockquote>
+<div><ul class="simple">
+<li>Secure boot with secure keys/root-of-trust, Security configuration and Debug unlock</li>
+<li>RSA or ECC Root Keys, AES symmetric key</li>
+<li>Utilizes PKA, SHA2 and AES Crypto accelerators</li>
+<li>Basic security functionality to extend root of trust (optional)</li>
+<li>Authenticated Key ring to extend root-of-trust keys</li>
+<li>SYSFW and Bootloader Rollback protection via eFuse</li>
+<li>Device Unique Key / Key Derivation to support 3P stacks</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>The centralized power, resource and security management entity is henceforth
+refered to as System Control Entity and System Firmware interchangeably.
+Any software and hardware entity which communicates with the System Control
+Entity is refered to as “Host”.
+The block diagram of the System Controller Entity or System firmware is as below:</p>
+<div class="figure" id="id2">
+<img alt="../_images/blockDiagram.png" src="../_images/blockDiagram.png" />
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">System Controller Entity interacting with Other Hosts</span></p>
+</div>
+</div>
+<div class="section" id="architecture-change-between-sdk-7-0-and-sdk-7-1">
+<h2>Architecture Change between SDK 7.0 and SDK 7.1<a class="headerlink" href="#architecture-change-between-sdk-7-0-and-sdk-7-1" title="Permalink to this headline">¶</a></h2>
+<p>The SDK 7.1 (v2020.08 of System Firmware) firmware is not compatible with SDK 7.0.
+(v2020.04 of the System Firmware) and earlier releases in terms of location of the binaries.
+Note the TISCI interface is the same as what is available on earlier releases.</p>
+<p>The following figure describes the typical software stack and highlights the
+difference in the location of execution of centralized services from System Firmware.</p>
+<div class="figure" id="id3">
+<img alt="../_images/softwareStack.png" src="../_images/softwareStack.png" />
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">DMSC Firmware Change | TDA4VM, DRA829, DRA821</span></p>
+</div>
+<p>Purpose of DMSC firmware change</p>
+<ul class="simple">
+<li>Secure HSM functions can run on a DMSC Security Island</li>
+<li>Free a main domain R5F for general customer use.</li>
+<li>Enables MCU Only mode with HSM functions on DMSC</li>
+<li>Lockstep Safety R5F runs safety critical PM &amp; RM functions.</li>
+</ul>
+<p>The Memory / CPU requirement is minimal (&lt; 150 KB, &lt; 10 MHz) so having the RM
+and PM execute on the MCU R5f has minimal impact to user applications.</p>
+<p>The SW impact summary for the end users is as given below. Kindly note since the
+API interface remains the same, the rest of the documentation for System Firmware is the
+same between SDK 7.1 and 7.0. Refer to the SDK documentation to know more about
+the changes required for integration of the SCISERVER and RM/PM on the MCU R5F.</p>
+<div class="figure" id="id4">
+<img alt="../_images/swimpact.png" src="../_images/swimpact.png" />
+<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">SW Impact for end-users between SDK 7.0 and SDK 7.1</span></p>
+</div>
+</div>
+<div class="section" id="further-reading">
+<h2>Further Reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>In <a class="reference internal" href="../2_tisci_msgs/index.html#pub-tisci-msg-doc"><span class="std std-ref">Chapter 2: TISCI Message Documentation</span></a>, we describe how one can communicate with the system control entity and the various messages that can be used.</li>
+<li>In <a class="reference internal" href="../3_boardcfg/index.html#pub-boardcfg-messages-index"><span class="std std-ref">Chapter 3: Board Configuration</span></a>, we desribe the format and content of the boardcfg messages that does onetime configuration of System Firmware.</li>
+<li>In <a class="reference internal" href="../4_trace/index.html#pub-interpret-trace"><span class="std std-ref">Chapter 4: Interpreting Trace Data</span></a>, we define trace data format.</li>
+<li>In <a class="reference internal" href="../5_soc_doc/index.html#pub-soc-family-doc"><span class="std std-ref">Chapter 5: SoC Family Specific Documentation</span></a>, we provide information specific to each SOC that is required using the TISCI messages described in <a class="reference internal" href="../2_tisci_msgs/index.html#pub-tisci-msg-doc"><span class="std std-ref">Chapter 2: TISCI Message Documentation</span></a>.</li>
+<li>In <a class="reference internal" href="../6_topic_user_guides/index.html#pub-user-guides"><span class="std std-ref">Chapter 6: Topic User Guides</span></a>, we provide user guides for the more complex scenarios.</li>
+</ul>
+</div>
+<div class="section" id="glossary">
+<h2>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h2>
+<p>The following list defines the different acronyms and terms used in the rest of the document:</p>
+<ul class="simple">
+<li><strong>TIFS</strong> (Texas Instruments Foundational Security): Foundational security software provided from TI.</li>
+<li><strong>TISCI</strong> (Texas Instruments System Controller Interface) : API interface to TIFS, RM/PM services.</li>
+<li><strong>DM</strong> (Device Manager) : Collective term used to refer to the Resource Management and Power Management Software.</li>
+<li><strong>RM</strong> (Resource Management): Term used to refer to the Resource Management Software.</li>
+<li><strong>PM</strong> (Power Management): Term used to refer to the Power Management Software.</li>
+<li><strong>SYSFW</strong> (System Firmware): Collective term used to refer to the TIFS and RM/PM Software.</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../2_tisci_msgs/index.html" class="btn btn-neutral float-right" title="Chapter 2: TISCI Message Documentation" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Chapter 1: Introduction" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyright 2016-2024</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'09.02.04',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+
+        $('body').on("mousewheel", function () {
+            // Remove default behavior
+            event.preventDefault();
+            // Scroll without smoothing
+            var wheelDelta = event.wheelDelta;
+            var currentScrollPosition = window.pageYOffset;
+            window.scrollTo(0, currentScrollPosition - wheelDelta);
+        });
+      });
+  </script>
+   
+
+</body>
+</html>

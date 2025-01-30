@@ -1,0 +1,15 @@
+01000000011a00006a3761657000000000000000475020200100010001000100CSBL Revision: 01.00.10.01 (Jun 29 2023 - 14:46:48)
+Waiting for tifs.bin ...
+CCCTIFS  ver: 9.0.6--v09.00.06 (Kool Koala)
+Waiting for multicore app ...
+CC
+ DCC UNIT Test Application
+Test Name: DCC POSITIVE TEST  PASSED
+Test Name: DCC NEGATIVE TEST  PASSED
+
+ All tests have passed.
+dcc_test_main.c:196:test_sdl_dcc_baremetal_test_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored
+OK

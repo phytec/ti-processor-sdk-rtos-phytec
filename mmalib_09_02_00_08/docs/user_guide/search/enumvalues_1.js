@@ -1,0 +1,6 @@
+var searchData=
+[
+  ['legacy_5freorder_5fbias_1007',['LEGACY_REORDER_BIAS',['../group__MMALIB__CNN__convolve__col__smallNo__legacy__ixX__ixX__oxX__reorderWeights.html#ggaf9a255fb2e84a307f77288fac487f9b6abf203b63852ba0d69a818e83a9b1c84b',1,'MMALIB_CNN_convolve_col_smallNo_legacy_ixX_ixX_oxX_reorderWeights.h']]],
+  ['legacy_5freorder_5fweights_1008',['LEGACY_REORDER_WEIGHTS',['../group__MMALIB__CNN__convolve__col__smallNo__legacy__ixX__ixX__oxX__reorderWeights.html#ggaf9a255fb2e84a307f77288fac487f9b6a8d19dd37ccb905c5c2cb6141e1a27b4c',1,'MMALIB_CNN_convolve_col_smallNo_legacy_ixX_ixX_oxX_reorderWeights.h']]],
+  ['legacy_5freorder_5fweights_5fand_5fbias_1009',['LEGACY_REORDER_WEIGHTS_AND_BIAS',['../group__MMALIB__CNN__convolve__col__smallNo__legacy__ixX__ixX__oxX__reorderWeights.html#ggaf9a255fb2e84a307f77288fac487f9b6ae38d56ac8416e884b79cd13b14a7d6f2',1,'MMALIB_CNN_convolve_col_smallNo_legacy_ixX_ixX_oxX_reorderWeights.h']]]
+];

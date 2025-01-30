@@ -1,0 +1,163 @@
+CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCmcuClkFreq 1000000000
+
+MTOG Test Applications
+
+ sdlAppEsmSetupCommon...Done
+ sdlAppEsmSetupCommon...Done
+ sdlAppEsmSetup...Done
+ Starting MTOG test on MAIN MTOG0, index 0...
+ sdlAppEsmConfig...Done
+ MTOG instance - 0 reset passed
+ sdlAppEsmDisable...Done  Delta MTOG prep time in micro secs 26066
+  Delta MTOG execution time in micro secs 33069
+  Delta MTOG restore time in micro secs 27053
+  MTOG complete for MAIN MTOG0
+   MTOG functional test instance 0 passed
+
+ Starting MTOG test on MAIN MTOG1, index 1...
+ sdlAppEsmConfig...Done
+ MTOG instance - 1 reset passed
+ sdlAppEsmDisable...Done  Delta MTOG prep time in micro secs 27050
+  Delta MTOG execution time in micro secs 34059
+  Delta MTOG restore time in micro secs 28048
+  MTOG complete for MAIN MTOG1
+   MTOG functional test instance 1 passed
+
+ Starting MTOG test on MAIN MTOG2, index 2...
+ sdlAppEsmConfig...Done
+ MTOG instance - 2 reset passed
+ sdlAppEsmDisable...Done  Delta MTOG prep time in micro secs 27048
+  Delta MTOG execution time in micro secs 34058
+  Delta MTOG restore time in micro secs 28047
+  MTOG complete for MAIN MTOG2
+   MTOG functional test instance 2 passed
+
+ Starting MTOG test on MAIN MTOG3, index 3...
+ sdlAppEsmConfig...Done
+ MTOG instance - 3 reset passed
+ sdlAppEsmDisable...Done  Delta MTOG prep time in micro secs 27047
+  Delta MTOG execution time in micro secs 34059
+  Delta MTOG restore time in micro secs 28046
+  MTOG complete for MAIN MTOG3
+   MTOG functional test instance 3 passed
+
+ Starting MTOG test on MAIN MTOG4, index 4...
+ sdlAppEsmConfig...Done
+ MTOG instance - 4 reset passed
+ sdlAppEsmDisable...Done  Delta MTOG prep time in micro secs 27047
+  Delta MTOG execution time in micro secs 34058
+  Delta MTOG restore time in micro secs 28046
+  MTOG complete for MAIN MTOG4
+   MTOG functional test instance 4 passed
+
+ Starting MTOG test on MAIN MTOG5, index 5...
+ sdlAppEsmConfig...Done
+ MTOG instance - 5 reset passed
+ sdlAppEsmDisable...Done  Delta MTOG prep time in micro secs 27047
+  Delta MTOG execution time in micro secs 34057
+  Delta MTOG restore time in micro secs 28046
+  MTOG complete for MAIN MTOG5
+   MTOG functional test instance 5 passed
+
+ Starting MTOG test on MAIN MTOG10, index 6...
+ sdlAppEsmConfig...Done
+ MTOG instance - 6 reset passed
+ sdlAppEsmDisable...Done  Delta MTOG prep time in micro secs 27047
+  Delta MTOG execution time in micro secs 34058
+  Delta MTOG restore time in micro secs 28045
+  MTOG complete for MAIN MTOG10
+   MTOG functional test instance 6 passed
+
+ Starting MTOG test on MAIN MTOG11, index 7...
+ sdlAppEsmConfig...Done
+ MTOG instance - 7 reset passed
+ sdlAppEsmDisable...Done  Delta MTOG prep time in micro secs 27047
+  Delta MTOG execution time in micro secs 34058
+  Delta MTOG restore time in micro secs 28046
+  MTOG complete for MAIN MTOG11
+   MTOG functional test instance 7 passed
+
+ Starting MTOG test on MAIN MTOG12, index 8...
+ sdlAppEsmConfig...Done
+ MTOG instance - 8 reset passed
+ sdlAppEsmDisable...Done  Delta MTOG prep time in micro secs 27047
+  Delta MTOG execution time in micro secs 34058
+  Delta MTOG restore time in micro secs 28046
+  MTOG complete for MAIN MTOG12
+   MTOG functional test instance 8 passed
+
+ Starting MTOG test on MAIN MTOG13, index 9...
+ sdlAppEsmConfig...Done
+ MTOG instance - 9 reset passed
+ sdlAppEsmDisable...Done  Delta MTOG prep time in micro secs 27047
+  Delta MTOG execution time in micro secs 34057
+  Delta MTOG restore time in micro secs 28047
+  MTOG complete for MAIN MTOG13
+   MTOG functional test instance 9 passed
+
+ Starting MTOG test on MAIN MTOG14, index 10...
+ sdlAppEsmConfig...Done
+ MTOG instance - 10 reset passed
+ sdlAppEsmDisable...Done  Delta MTOG prep time in micro secs 27047
+  Delta MTOG execution time in micro secs 35060
+  Delta MTOG restore time in micro secs 28045
+  MTOG complete for MAIN MTOG14
+   MTOG functional test instance 10 passed
+
+ Starting MTOG test on MCU MTOG0, index 11...
+ sdlAppEsmConfig...Done
+ MTOG instance - 11 reset passed
+ sdlAppEsmDisable...Done  Delta MTOG prep time in micro secs 27044
+  Delta MTOG execution time in micro secs 35058
+  Delta MTOG restore time in micro secs 28044
+  MTOG complete for MCU MTOG0
+   MTOG functional test instance 11 passed
+
+ Starting MTOG test on MCU MTOG16, index 12...
+ sdlAppEsmConfig...Done
+ MTOG instance - 12 reset passed
+ sdlAppEsmDisable...Done  Delta MTOG prep time in micro secs 27045
+  Delta MTOG execution time in micro secs 35059
+  Delta MTOG restore time in micro secs 28045
+  MTOG complete for MCU MTOG16
+   MTOG functional test instance 12 passed
+
+ Starting MTOG test on MCU MTOG17, index 13...
+ sdlAppEsmConfig...Done
+ MTOG instance - 13 reset passed
+ sdlAppEsmDisable...Done  Delta MTOG prep time in micro secs 27046
+  Delta MTOG execution time in micro secs 35057
+  Delta MTOG restore time in micro secs 28045
+  MTOG complete for MCU MTOG17
+   MTOG functional test instance 13 passed
+
+ Starting MTOG test on MCU MTOG18, index 14...
+ sdlAppEsmConfig...Done
+ MTOG instance - 14 reset passed
+ sdlAppEsmDisable...Done  Delta MTOG prep time in micro secs 27045
+  Delta MTOG execution time in micro secs 35058
+  Delta MTOG restore time in micro secs 28045
+  MTOG complete for MCU MTOG18
+   MTOG functional test instance 14 passed
+
+ Starting MTOG test on MCU MTOG19, index 15...
+ sdlAppEsmConfig...Done
+ MTOG instance - 15 reset passed
+ sdlAppEsmDisable...Done  Delta MTOG prep time in micro secs 27045
+  Delta MTOG execution time in micro secs 35059
+  Delta MTOG restore time in micro secs 28044
+  MTOG complete for MCU MTOG19
+   MTOG functional test instance 15 passed
+
+ MTOG Function Module Test Function test Passed.
+
+ MTOG API Module Test API test Passed.
+
+ MTOG Error Module Test Error test Passed.
+
+All tests have passed.
+mtog_test_main.c:284:test_sdl_mtog_test_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored
+OK

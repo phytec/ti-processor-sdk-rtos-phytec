@@ -1,0 +1,1339 @@
+MCRC Safety Example
+===================
+
+Introduction
+------------
+
+This example demonstrates the usage of the MCRC module. The example shows how to setup and use the MCRC controller in the semi and full modes of operation. 
+Show both generation of matching CRC as well as non-matching signature due to insertion of error in the block of information on which the CRC 
+is being performed or in the signature provided to the PSA Signature Register (or both, depending on the mode).
+
+The example demonstrates:
+
+    * Configure MCRC controller for semi and full mode to calculate the CRC.
+    * Configure of matching CRC and non-matching signature.
+    * Generation of interrupt due to pattern compression.
+
+Use Cases
+---------
+    +----------+--------------------------------------------------+
+    | Use Case | Description                                      |
+    +==========+==================================================+
+    | UC-1     | Full CPU-mode signature compute for MCU instance |
+    |          | and comparison against known value.              |
+    +----------+--------------------------------------------------+
+    | UC-2     | Full CPU-mode signature compute for Main domain  |
+    |          | instance and comparison against known value.     |
+    |          |                                                  |
+    +----------+--------------------------------------------------+
+    | UC-3     | Semi-cpu mode configuration with DMA channel for |
+    |          | MCU instance and verify signature calculated as  |
+    |          | expected.                                        |
+    +----------+--------------------------------------------------+
+    | UC-4     | Semi-cpu mode configuration with DMA channel for |
+    |          | Main instance and show case with "non matching"  |
+    |          | signature.                                       |
+    +----------+--------------------------------------------------+
+    | UC-5     | Semi-cpu mode configuration with DMA channel for |
+    |          | MCU instance, calculate reference/expected value |
+    |          | using full-CPU mode and verify signature         |
+    |          | calculated from semi-CPU mode is as expected.    |
+    +----------+--------------------------------------------------+
+
+Example Details
+---------------
+
+The example should be loaded to the hardware using the Secondary Boot Loader (SBL) from the SDK.
+
++---------------------+------------------------------------------------+------------------------------------------+
+| Example Name        | Location                                       | Build Command                            |
++=====================+================================================+==========================================+
+| mcrc_app            | [sdl_install_dir]/examples/mcrc/               | make mcrc_app PROFILE=release            |
++---------------------+------------------------------------------------+------------------------------------------+
+
+Expected Output
+---------------
+
+.. code:: bash
+
+    
+    MCRC Application
+
+    MCRC FULL CPU mode : starting 32 bit atomic write
+    Full_CPU mode MCRC signature verification done successfully for the instance MCRC_MCU_NAVSS 
+
+
+    MCRC FULL CPU mode : starting 32 bit atomic write
+    Full_CPU mode MCRC signature verification done successfully for the instance NAVSS0_MCRC_0.
+
+
+    MCRC FULL CPU mode : starting 32 bit atomic write
+    Full_CPU mode MCRC signature verification done successfully for the instance MCRC_MCU_NAVSS 
+
+
+    MCRC FULL CPU mode : starting 32 bit atomic write
+    Full_CPU mode MCRC signature verification done successfully for the instance NAVSS0_MCRC_0.
+
+
+    MCRC FULL CPU mode : starting 64 bit atomic write
+    Full_CPU mode MCRC signature verification done successfully for the instance MCRC_MCU_NAVSS 
+
+
+    MCRC FULL CPU mode : starting 64 bit atomic write
+    Full_CPU mode MCRC signature verification done successfully for the instance NAVSS0_MCRC_0.
+
+
+    MCRC FULL CPU mode : starting 64 bit atomic write
+    Full_CPU mode MCRC signature verification done successfully for the instance MCRC_MCU_NAVSS 
+
+
+    MCRC FULL CPU mode : starting 64 bit atomic write
+    Full_CPU mode MCRC signature verification done successfully for the instance NAVSS0_MCRC_0.
+
+
+
+    MCRC Semi_CPU mode : starting
+
+
+    MCRC Semi CPU mode : starting 32 bit atomic write  for useCase =  0
+    Copied reference data into memory @803f4800.
+    Using Pre-Defined Reference MCRC signature Value.
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    MCRC signature verification done successfully.
+    Processed data of size 200000 Bytes 20 times in 4801 ms.
+    MCRC performance: 0 MB/s
+    udmaEventCb occured. eventype 2 
+    .
+    MCRC Semi CPU mode : starting 32 bit atomic write  for useCase =  1
+    Copied reference data into memory @803f4800.
+    Using Pre-Defined Reference MCRC signature Value.
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    MCRC signature verification done successfully.
+    Processed data of size 200000 Bytes 20 times in 4761 ms.
+    MCRC performance: 0 MB/s
+    udmaEventCb occured. eventype 2 
+    .
+    MCRC Semi CPU mode : starting 32 bit atomic write  for useCase =  2
+    Copied reference data into memory @803f4800.
+    Calculating Reference MCRC signature Value.
+    MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0xc60b4fb8d98307f6U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    MCRC signature verification done successfully.
+    Processed data of size 200000 Bytes 20 times in 4801 ms.
+    MCRC performance: 0 MB/s
+    udmaEventCb occured. eventype 2 
+    .
+    MCRC Semi CPU mode : starting 32 bit atomic write  for useCase =  3
+    Copied reference data into memory @803f4800.
+    Using Pre-Defined Reference MCRC signature Value.
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0xc60b4f77d9830765U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0xc60b4f77d9830765U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0xc60b4f77d9830765U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0xc60b4f77d9830765U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0xc60b4f77d9830765U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0xc60b4f77d9830765U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0xc60b4f77d9830765U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0xc60b4f77d9830765U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0xc60b4f77d9830765U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0xc60b4f77d9830765U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0xc60b4f77d9830765U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0xc60b4f77d9830765U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0xc60b4f77d9830765U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0xc60b4f77d9830765U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0xc60b4f77d9830765U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0xc60b4f77d9830765U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0xc60b4f77d9830765U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0xc60b4f77d9830765U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0xc60b4f77d9830765U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 256
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0xc60b4f77d9830765U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    MCRC signature verification done successfully.
+    Processed data of size 200000 Bytes 20 times in 5582 ms.
+    MCRC performance: 0 MB/s
+    udmaEventCb occured. eventype 2 
+    .
+    MCRC Semi CPU mode : starting 32 bit atomic write  for useCase =  4
+    Copied reference data into memory @803f4800.
+    Using Pre-Defined Reference MCRC signature Value.
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0xc60b4f35d9830765U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0xc60b4f35d9830765U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0xc60b4f35d9830765U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0xc60b4f35d9830765U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0xc60b4f35d9830765U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0xc60b4f35d9830765U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0xc60b4f35d9830765U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0xc60b4f35d9830765U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0xc60b4f35d9830765U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0xc60b4f35d9830765U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0xc60b4f35d9830765U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0xc60b4f35d9830765U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0xc60b4f35d9830765U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0xc60b4f35d9830765U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0xc60b4f35d9830765U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0xc60b4f35d9830765U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0xc60b4f35d9830765U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0xc60b4f35d9830765U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0xc60b4f35d9830765U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0xc60b4f35d9830765U
+    Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+    MCRC signature verification done successfully.
+    Processed data of size 200000 Bytes 20 times in 5542 ms.
+    MCRC performance: 0 MB/s
+    udmaEventCb occured. eventype 2 
+    .
+    MCRC Semi CPU mode : starting 64 bit atomic write for useCase = 5
+    Copied reference data into memory @803f4800.
+    Using Pre-Defined Reference MCRC signature Value.
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0x8bacd4fe10598f29U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0x8bacd4fe10598f29U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0x8bacd4fe10598f29U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0x8bacd4fe10598f29U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0x8bacd4fe10598f29U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0x8bacd4fe10598f29U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0x8bacd4fe10598f29U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0x8bacd4fe10598f29U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0x8bacd4fe10598f29U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0x8bacd4fe10598f29U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0x8bacd4fe10598f29U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0x8bacd4fe10598f29U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0x8bacd4fe10598f29U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0x8bacd4fe10598f29U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0x8bacd4fe10598f29U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0x8bacd4fe10598f29U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0x8bacd4fe10598f29U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0x8bacd4fe10598f29U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0x8bacd4fe10598f29U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0x8bacd4fe10598f29U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    MCRC signature verification done successfully.
+    Processed data of size 1843200 Bytes 20 times in 4872 ms.
+    MCRC performance: 7 MB/s
+    udmaEventCb occured. eventype 2 
+    .
+    MCRC Semi CPU mode : starting 64 bit atomic write for useCase = 6
+    Copied reference data into memory @803f4800.
+    Using Pre-Defined Reference MCRC signature Value.
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0x8bacd4fe10598f29U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0x8bacd4fe10598f29U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0x8bacd4fe10598f29U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0x8bacd4fe10598f29U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0x8bacd4fe10598f29U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0x8bacd4fe10598f29U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0x8bacd4fe10598f29U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0x8bacd4fe10598f29U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0x8bacd4fe10598f29U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0x8bacd4fe10598f29U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0x8bacd4fe10598f29U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0x8bacd4fe10598f29U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0x8bacd4fe10598f29U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0x8bacd4fe10598f29U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0x8bacd4fe10598f29U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0x8bacd4fe10598f29U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0x8bacd4fe10598f29U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0x8bacd4fe10598f29U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0x8bacd4fe10598f29U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Positive test, expected that signature will match.
+    Expected MCRC signature value : 0x8bacd4fe10598f29U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    MCRC signature verification done successfully.
+    Processed data of size 1843200 Bytes 20 times in 4872 ms.
+    MCRC performance: 7 MB/s
+    udmaEventCb occured. eventype 2 
+    .
+    MCRC Semi CPU mode : starting 64 bit atomic write for useCase = 7
+    Copied reference data into memory @803f4800.
+    Using Pre-Defined Reference MCRC signature Value.
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0x8bacd44410598f22U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0x8bacd44410598f22U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0x8bacd44410598f22U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0x8bacd44410598f22U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0x8bacd44410598f22U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0x8bacd44410598f22U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0x8bacd44410598f22U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0x8bacd44410598f22U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0x8bacd44410598f22U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0x8bacd44410598f22U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0x8bacd44410598f22U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0x8bacd44410598f22U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0x8bacd44410598f22U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0x8bacd44410598f22U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0x8bacd44410598f22U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0x8bacd44410598f22U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0x8bacd44410598f22U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0x8bacd44410598f22U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0x8bacd44410598f22U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0x8bacd44410598f22U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    MCRC signature verification done successfully.
+    Processed data of size 1843200 Bytes 20 times in 5653 ms.
+    MCRC performance: 6 MB/s
+    udmaEventCb occured. eventype 2 
+    .
+    MCRC Semi CPU mode : starting 64 bit atomic write for useCase = 8
+    Copied reference data into memory @803f4800.
+    Using Pre-Defined Reference MCRC signature Value.
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0x8bacd4f710598f24U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0x8bacd4f710598f24U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0x8bacd4f710598f24U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0x8bacd4f710598f24U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0x8bacd4f710598f24U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0x8bacd4f710598f24U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0x8bacd4f710598f24U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0x8bacd4f710598f24U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0x8bacd4f710598f24U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0x8bacd4f710598f24U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0x8bacd4f710598f24U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0x8bacd4f710598f24U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0x8bacd4f710598f24U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0x8bacd4f710598f24U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0x8bacd4f710598f24U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0x8bacd4f710598f24U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0x8bacd4f710598f24U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0x8bacd4f710598f24U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0x8bacd4f710598f24U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    udmaEventCb occured. eventype 1 
+    .MCRC Semi CPU intrrupt status : 1
+
+    Negative test, expected that signature will not match.
+    Sector signature does not match.
+    Expected MCRC signature value : 0x8bacd4f710598f24U
+    Calculated MCRC signature value : 0x8bacd4fe10598f29U
+    MCRC signature verification done successfully.
+    Processed data of size 1843200 Bytes 20 times in 5653 ms.
+    MCRC performance: 6 MB/s
+    udmaEventCb occured. eventype 2 
+    .Applications Name: MCRC_fullCPU_mode  PASSED 
+    Applications Name: MCRC_semiCPU_mode  PASSED 
+
+    All applications have passed. 
+
+
+Reference
+---------
+
+`MCRC User Guide <../modules/mcrc.html>`_

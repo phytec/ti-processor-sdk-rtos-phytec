@@ -1,0 +1,23 @@
+01000000011a00006a3761657000000000000000475020200008010000080100CSBL Revision: 01.00.10.01 (Feb 22 2023 - 13:03:23)
+Waiting for tifs.bin ...
+CCCTIFS  ver: 8.6.3--v08.06.03 (Chill Capybar
+Waiting for multicore app ...
+CCmcuClkFreq 1000000000
+
+CCM Test Application
+
+ CCM IP API Test Passed.
+
+ CCM IP Error Test Passed.
+
+All tests have passed.
+ccm_ip_test/ccm_test_main.c:228:test_sdl_ccm_test_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored
+OK
+
+
+
+
+

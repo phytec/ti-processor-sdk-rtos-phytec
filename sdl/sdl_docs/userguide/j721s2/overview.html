@@ -1,0 +1,336 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>1. Overview &mdash; Software Diagnostics Library (SDL) - J721S2 User Guide</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Software Diagnostics Library (SDL) - J721S2 User Guide" href="index.html"/>
+        <link rel="next" title="1. Release Notes" href="family_cfg/j721s2/index_release_notes_j721s2.html"/>
+        <link rel="prev" title="Software Diagnostics Library (SDL)" href="index_j721s2.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index_j721s2.html" class="icon icon-home"> Software Diagnostics Library (SDL) - J721S2 User Guide
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                01_03_00
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1. Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">1.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#technical-support">1.2. Technical Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ti-disclaimer">1.3. TI Disclaimer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="family_cfg/j721s2/index_release_notes_j721s2.html">1. Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">2. Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="family_cfg/j721s2/index_modules_j721s2.html">2. Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="family_cfg/j721s2/index_examples_j721s2.html">3. Safety Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagnostic_mappings.html">3. Diagnostic Mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="family_cfg/j721s2/index_application_notes_j721s2.html">4. Developer Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index_j721s2.html">Software Diagnostics Library (SDL) - J721S2 User Guide</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index_j721s2.html">Docs</a> &raquo;</li>
+      
+    <li><span class="section-number">1. </span>Overview</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="overview">
+<h1><span class="section-number">1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
+<section id="introduction">
+<h2><span class="section-number">1.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>The J721S2 family of SoC’s provides various safety mechanisms and features, as well as recommendations for usage of these safety mechanisms and features. The Software Diagnostic Library (SDL) provides interfaces to these safety mechanisms and features. The provides these interfaces to assist in the development of software applications involving Functional Safety.</p>
+<p>In an application involving functional safety, the detection of random hardware faults and ability to take the appropriate response to get the system to a safe state is of utmost importance. Methods to detect and respond to faults in a system are called functional safety mechanisms or safety functions. Examples of safety mechanisms available on an SoC include error correction/detection (ECC) on memory regions, Error Signaling Module (ESM) to monitor error events, etc.</p>
+<p>The safety-critical processor product family provides various hardware functional safety mechanisms. For example, this software release provides an API to configure ECC and a reference example to set up interrupts to check on ECC error events detected by hardware. Overall, the system integrator can use this API and implement software diagnostics to meet the safety system goals.</p>
+<p>The user of this document should have a general familiarity with the safety-critical processor family.</p>
+<p>The Software Diagnostics Library consists of different blocks for Error Capture and Safety Mechanisms. Error response is managed by the Application based on the device Safety Manual requirements. The interface for the Application is in the form of software APIs. The following diagram shows the high-level blocks of the SDL as well as the overall system. The application may use either no OS or an OS. In the diagram an OS is shown as an example only. This is an overview and doesn’t list all the IPs supported as part of the SDL.</p>
+<p>In the following diagram, the green blocks represent the scope of the SDL. The dark blue is the application, and the light blue represents external modules used by the application along with SDL.</p>
+<figure class="align-default" id="figure-3">
+<img alt="_images/SDL_architecture.png" src="_images/SDL_architecture.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 1.3 </span><span class="caption-text">SDL Architecture</span><a class="headerlink" href="#figure-3" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>The Software Diagnostics Library provides the functionality for implementing hardware safety mechanisms that can be run during the various operation modes of the device. The functions of the SDL which are used by the application during the various modes are as follows:</p>
+<ul class="simple">
+<li><p>Startup of device</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>Self-test diagnostics to verify correct operation of the device</p></li>
+<li><p>SDL APIs to initialize continuous diagnostics</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>Runtime</p>
+<ul>
+<li><p>Notification of errors detected by the continuous diagnostics through the ESM handler</p></li>
+<li><p>SDL APIs to execute periodic diagnostics</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="technical-support">
+<h2><span class="section-number">1.2. </span>Technical Support<a class="headerlink" href="#technical-support" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><img alt="_images/e2e.jpg" src="_images/e2e.jpg" />
+</td>
+<td><p>For technical support please post your questions at <a class="reference external" href="http://e2e.ti.com/">http://e2e.ti.com</a>.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="ti-disclaimer">
+<h2><span class="section-number">1.3. </span>TI Disclaimer<a class="headerlink" href="#ti-disclaimer" title="Permalink to this headline">¶</a></h2>
+<p>Texas Instruments and its subsidiaries (TI) reserve the right to make changes to their products or to discontinue any
+product or service without notice, and advise customers to obtain the latest version of relevant information to verify, before
+placing orders, that information being relied on is current and complete. All products are sold subject to the terms and
+conditions of sale supplied at the time of order acknowledgment, including those pertaining to warranty, patent
+infringement, and limitation of liability.</p>
+<p>TI warrants performance of its products to the specifications applicable at the time of sale in accordance with TI’s
+standard warranty. Testing and other quality control techniques are utilized to the extent TI deems necessary to support
+this warranty. Specific testing of all parameters of each device is not necessarily performed, except those mandated by
+government requirements.</p>
+<p>Customers are responsible for their applications using TI components.
+In order to minimize risks associated with the customer’s applications, adequate design and operating safeguards must be
+provided by the customer to minimize inherent or procedural hazards.</p>
+<p>TI assumes no liability for applications assistance or customer product design. TI does not warrant or represent that any
+license, either express or implied, is granted under any patent right, copyright, mask work right, or other intellectual
+property right of TI covering or relating to any combination, machine, or process in which such products or services might
+be or are used. TI’s publication of information regarding any third party’s products or services does not constitute TI’s
+approval, license, warranty or endorsement thereof.</p>
+<p>Reproduction of information in TI data books or data sheets is permissible only if reproduction is without alteration and is
+accompanied by all associated warranties, conditions, limitations and notices. Representation or reproduction o f this
+information with alteration voids all warranties provided for an associated TI product or service, is an unfair and deceptive
+business practice, and TI is not responsible nor liable for any such use.</p>
+<p>Resale of TI’s products or services with statements different from or beyond the parameters stated by TI for that product
+or service voids all express and any implied warranties for the associated TI product or service, is an unfair and deceptive
+business practice, and TI is not responsible nor liable for any such use.</p>
+<p>Also see: Standard Terms and Conditions of Sale for Semiconductor Products <a class="reference external" href="http://www.ti.com/sc/docs/stdterms.htm">http://www.ti.com/sc/docs/stdterms.htm</a></p>
+<p>Mailing Address:
+Texas Instruments
+Post Office Box 655303
+Dallas, Texas 75265</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="family_cfg/j721s2/index_release_notes_j721s2.html" class="btn btn-neutral float-right" title="1. Release Notes" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index_j721s2.html" class="btn btn-neutral" title="Software Diagnostics Library (SDL)" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyright 1995-2021</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'01_03_00',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+01000000011a00006a3776636c00000000000000475020200200010002000100CSBL Revision: 01.00.10.01 (Jun 29 2023 - 15:29:32)
+Waiting for tifs.bin ...
+CCTIFS  ver: 9.0.6--v09.00.06 (Kool Koala)
+Waiting for multicore app ...
+CC
+ POK Test Application
+Test Name: POK API POSITIVE TEST  PASSED
+Test Name: POK API NEGATIVE TEST  PASSED
+Test Name: POK Ip_NEGATIVE TEST  PASSED
+Test Name: POK Ip_POSITIVE TEST  PASSED
+
+ All tests have passed.
+/home/gtbldadm/nightlybuilds/SDL_J7200_BUILD/292-2023-07-06_05-42-04/workarea/sdl/test/pok/pokUt/test_main.c:200:test_sdl_pok_baremetal_test_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored
+OK

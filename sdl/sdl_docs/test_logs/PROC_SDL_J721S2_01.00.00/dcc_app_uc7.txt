@@ -1,0 +1,24 @@
+ DCC Example Test Application
+
+Interrupt is generated to ESM
+    ESM Call back function called : instType 0x3, intType 0x1, grpChannel 0x1, index 0x5, intSrc 0x25
+    Take action
+
+
+DCC_Test_init: Init MCU ESM complete
+
+
+INSTANCE: DCC0
+Source clock: RC OSC
+Test clock: HFOSC1
+
+
+SDL DCC EXAMPLE TEST: Start UC-7
+SDL DCC EXAMPLE TEST: Seed values calculation done.
+SDL DCC EXAMPLE TEST: DCC configured
+SDL DCC EXAMPLE TEST: Enabling DCC
+SDL DCC EXAMPLE TEST: Waiting for some time to perform Continuous mode
+SDL DCC EXAMPLE TEST: DCC module is disabled
+Test Name: DCC EXAMPLE TEST  PASSED
+
+ All tests have passed.

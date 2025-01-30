@@ -1,0 +1,12 @@
+<map id="PTK_Alg_StereoAlgo_GroundEstimationObj" name="PTK_Alg_StereoAlgo_GroundEstimationObj">
+<area shape="rect" id="node2" href="$structPTK__Alg__StereoAlgo__GroundEstimation__allParams.html" title="Stereo algorithm &#45; all required parameters structure for ground plane estimation. ..." alt="" coords="876,656,1093,748"/>
+<area shape="rect" id="node3" href="$structPTK__Alg__StereoAlgo__uvDispParams.html" title="Stereo algorithm &#45; uvDisparity parameters. " alt="" coords="1431,472,1584,564"/>
+<area shape="rect" id="node9" href="$structPTK__Alg__StereoAlgo__configParams.html" title="Stereo algorithm &#45; config Parameters. " alt="" coords="979,472,1132,564"/>
+<area shape="rect" id="node12" href="$structPTK__Alg__StereoAlgo__dispParams.html" title="Stereo algorithm &#45; disparity parameters. " alt="" coords="616,472,769,564"/>
+<area shape="rect" id="node13" href="$structPTK__Alg__StereoAlgo__groundModelHistory__Array.html" title="Stereo algorithm &#45; V&#45;disparity ground plane model histroy array for muliple models. " alt="" coords="1213,656,1415,748"/>
+<area shape="rect" id="node10" href="$structPTK__Alg__StereoAlgo__camParams.html" title="Stereo algorithm &#45; road Parameters. " alt="" coords="5,472,159,564"/>
+<area shape="rect" id="node11" href="$structPTK__3D__Matrix.html" title="Definition of a 3x3 matrix. " alt="" coords="199,202,320,279"/>
+<area shape="rect" id="node14" href="$structPTK__Alg__StereoAlgo__groundModelHistory.html" title="Stereo algorithm &#45; V&#45;disparity ground plane model histroy. " alt="" coords="793,472,955,564"/>
+<area shape="rect" id="node16" href="$structPTK__Alg__StereoAlgo__groundParams.html" title="Stereo algorithm &#45; ground plane parameters. " alt="" coords="1757,343,1911,435"/>
+<area shape="rect" id="node8" href="$structPTK__Alg__StereoAlgo__roadParams.html" title="Stereo algorithm &#45; road Parameters. " alt="" coords="195,472,348,564"/>
+</map>

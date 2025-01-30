@@ -1,0 +1,161 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1"
+ width="900px" height="319px"
+ viewBox="0 0 900 319"
+ xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges"
+ stroke-width="1" text-rendering="geometricPrecision">
+<polygon fill="white" points="96,7 126,7 126,16 96,16"/>
+<text x="112" y="16" textLength="29" font-family="Helvetica" font-size="12" fill="black" text-anchor="middle">
+
+sa2ul
+</text>
+<polygon fill="white" points="320,7 352,7 352,16 320,16"/>
+<text x="337" y="16" textLength="30" font-family="Helvetica" font-size="12" fill="black" text-anchor="middle">
+
+udma
+</text>
+<polygon fill="white" points="546,7 576,7 576,16 546,16"/>
+<text x="562" y="16" textLength="29" font-family="Helvetica" font-size="12" fill="black" text-anchor="middle">
+
+host0
+</text>
+<polygon fill="white" points="771,7 801,7 801,16 771,16"/>
+<text x="787" y="16" textLength="29" font-family="Helvetica" font-size="12" fill="black" text-anchor="middle">
+
+dmsc
+</text>
+<line x1="112" y1="22" x2="112" y2="50" stroke="black"/>
+<line x1="337" y1="22" x2="337" y2="50" stroke="black"/>
+<line x1="562" y1="22" x2="562" y2="50" stroke="black"/>
+<line x1="787" y1="22" x2="787" y2="50" stroke="black"/>
+<line x1="562" y1="33" x2="787" y2="33" stroke="black"/>
+<line x1="787" y1="33" x2="777" y2="39" stroke="black"/>
+<polygon fill="white" points="584,23 765,23 765,32 584,32"/>
+<text x="585" y="32" textLength="179" font-family="Helvetica" font-size="12" fill="black">
+TISCI_MSG_SA2UL_SET_DKEK
+</text>
+<line x1="112" y1="50" x2="112" y2="67" stroke="black"/>
+<line x1="337" y1="50" x2="337" y2="67" stroke="black"/>
+<line x1="562" y1="50" x2="562" y2="67" stroke="black"/>
+<line x1="787" y1="50" x2="787" y2="67" stroke="black"/>
+<line x1="56" y1="55" x2="844" y2="55" stroke="black" stroke-dasharray="2,2"/>
+<line x1="112" y1="67" x2="112" y2="95" stroke="black"/>
+<line x1="337" y1="67" x2="337" y2="95" stroke="black"/>
+<line x1="562" y1="67" x2="562" y2="95" stroke="black"/>
+<line x1="787" y1="67" x2="787" y2="95" stroke="black"/>
+<line x1="787" y1="78" x2="562" y2="78" stroke="black"/>
+<line x1="562" y1="78" x2="572" y2="84" stroke="black"/>
+<polygon fill="white" points="661,68 688,68 688,77 661,77"/>
+<text x="662" y="77" textLength="25" font-family="Helvetica" font-size="12" fill="black">
+ACK
+</text>
+<line x1="112" y1="95" x2="112" y2="123" stroke="black"/>
+<line x1="337" y1="95" x2="337" y2="123" stroke="black"/>
+<line x1="562" y1="95" x2="562" y2="123" stroke="black"/>
+<line x1="787" y1="95" x2="787" y2="123" stroke="black"/>
+<polygon fill="white" points="458,95 667,95 667,117 458,117"/>
+<line x1="458" y1="95" x2="667" y2="95" stroke="black"/>
+<line x1="458" y1="117" x2="667" y2="117" stroke="black"/>
+<line x1="458" y1="95" x2="458" y2="117" stroke="black"/>
+<line x1="667" y1="95" x2="667" y2="117" stroke="black"/>
+<polygon fill="white" points="484,102 638,102 638,111 484,111"/>
+<text x="485" y="111" textLength="152" font-family="Helvetica" font-size="12" fill="black">
+form SA2UL security context
+</text>
+<line x1="112" y1="123" x2="112" y2="151" stroke="black"/>
+<line x1="337" y1="123" x2="337" y2="151" stroke="black"/>
+<line x1="562" y1="123" x2="562" y2="151" stroke="black"/>
+<line x1="787" y1="123" x2="787" y2="151" stroke="black"/>
+<polygon fill="white" points="458,123 667,123 667,145 458,145"/>
+<line x1="458" y1="123" x2="667" y2="123" stroke="black"/>
+<line x1="458" y1="145" x2="667" y2="145" stroke="black"/>
+<line x1="458" y1="123" x2="458" y2="145" stroke="black"/>
+<line x1="667" y1="123" x2="667" y2="145" stroke="black"/>
+<polygon fill="white" points="479,124 643,124 643,133 479,133"/>
+<text x="480" y="133" textLength="162" font-family="Helvetica" font-size="12" fill="black">
+Set USE_DKEK flag in SA2UL
+</text>
+<polygon fill="white" points="519,135 604,135 604,144 519,144"/>
+<text x="520" y="144" textLength="83" font-family="Helvetica" font-size="12" fill="black">
+security context
+</text>
+<line x1="112" y1="151" x2="112" y2="179" stroke="black"/>
+<line x1="337" y1="151" x2="337" y2="179" stroke="black"/>
+<line x1="562" y1="151" x2="562" y2="179" stroke="black"/>
+<line x1="787" y1="151" x2="787" y2="179" stroke="black"/>
+<line x1="562" y1="162" x2="337" y2="162" stroke="black"/>
+<line x1="337" y1="162" x2="347" y2="168" stroke="black"/>
+<polygon fill="white" points="387,152 511,152 511,161 387,161"/>
+<text x="388" y="161" textLength="122" font-family="Helvetica" font-size="12" fill="black">
+UDMA to SA2UL using
+</text>
+<polygon fill="white" points="389,163 510,163 510,172 389,172"/>
+<text x="390" y="172" textLength="119" font-family="Helvetica" font-size="12" fill="black">
+above security context
+</text>
+<line x1="112" y1="179" x2="112" y2="207" stroke="black"/>
+<line x1="337" y1="179" x2="337" y2="207" stroke="black"/>
+<line x1="562" y1="179" x2="562" y2="207" stroke="black"/>
+<line x1="787" y1="179" x2="787" y2="207" stroke="black"/>
+<line x1="337" y1="190" x2="112" y2="190" stroke="black"/>
+<polygon fill="black" points="112,190 122,196 122,184"/>
+<polygon fill="white" points="204,180 245,180 245,189 204,189"/>
+<text x="205" y="189" textLength="39" font-family="Helvetica" font-size="12" fill="black">
+Data In
+</text>
+<line x1="112" y1="207" x2="112" y2="235" stroke="black"/>
+<line x1="337" y1="207" x2="337" y2="235" stroke="black"/>
+<line x1="562" y1="207" x2="562" y2="235" stroke="black"/>
+<line x1="787" y1="207" x2="787" y2="235" stroke="black"/>
+<polygon fill="white" points="8,207 217,207 217,229 8,229"/>
+<line x1="8" y1="207" x2="217" y2="207" stroke="black"/>
+<line x1="8" y1="229" x2="217" y2="229" stroke="black"/>
+<line x1="8" y1="207" x2="8" y2="229" stroke="black"/>
+<line x1="217" y1="207" x2="217" y2="229" stroke="black"/>
+<polygon fill="white" points="12,208 210,208 210,217 12,217"/>
+<text x="13" y="217" textLength="196" font-family="Helvetica" font-size="12" fill="black">
+Check privid of UDMA against DKEK
+</text>
+<polygon fill="white" points="71,219 151,219 151,228 71,228"/>
+<text x="72" y="228" textLength="78" font-family="Helvetica" font-size="12" fill="black">
+privid registers
+</text>
+<line x1="112" y1="235" x2="112" y2="263" stroke="black"/>
+<line x1="337" y1="235" x2="337" y2="263" stroke="black"/>
+<line x1="562" y1="235" x2="562" y2="263" stroke="black"/>
+<line x1="787" y1="235" x2="787" y2="263" stroke="black"/>
+<polygon fill="white" points="8,235 217,235 217,257 8,257"/>
+<line x1="8" y1="235" x2="217" y2="235" stroke="black"/>
+<line x1="8" y1="257" x2="217" y2="257" stroke="black"/>
+<line x1="8" y1="235" x2="8" y2="257" stroke="black"/>
+<line x1="217" y1="235" x2="217" y2="257" stroke="black"/>
+<polygon fill="white" points="32,242 190,242 190,251 32,251"/>
+<text x="33" y="251" textLength="156" font-family="Helvetica" font-size="12" fill="black">
+Use key from DKEK registers
+</text>
+<line x1="112" y1="263" x2="112" y2="291" stroke="black"/>
+<line x1="337" y1="263" x2="337" y2="291" stroke="black"/>
+<line x1="562" y1="263" x2="562" y2="291" stroke="black"/>
+<line x1="787" y1="263" x2="787" y2="291" stroke="black"/>
+<line x1="112" y1="274" x2="337" y2="274" stroke="black"/>
+<polygon fill="black" points="337,274 327,280 327,268"/>
+<polygon fill="white" points="199,264 249,264 249,273 199,273"/>
+<text x="200" y="273" textLength="48" font-family="Helvetica" font-size="12" fill="black">
+Data Out
+</text>
+<line x1="112" y1="291" x2="112" y2="319" stroke="black"/>
+<line x1="337" y1="291" x2="337" y2="319" stroke="black"/>
+<line x1="562" y1="291" x2="562" y2="319" stroke="black"/>
+<line x1="787" y1="291" x2="787" y2="319" stroke="black"/>
+<line x1="337" y1="302" x2="562" y2="302" stroke="black"/>
+<line x1="562" y1="302" x2="552" y2="308" stroke="black"/>
+<polygon fill="white" points="396,292 503,292 503,301 396,301"/>
+<text x="397" y="301" textLength="105" font-family="Helvetica" font-size="12" fill="black">
+Operation complete
+</text>
+<line x1="112" y1="313" x2="112" y2="319" stroke="black"/>
+<line x1="337" y1="313" x2="337" y2="319" stroke="black"/>
+<line x1="562" y1="313" x2="562" y2="319" stroke="black"/>
+<line x1="787" y1="313" x2="787" y2="319" stroke="black"/>
+</svg>

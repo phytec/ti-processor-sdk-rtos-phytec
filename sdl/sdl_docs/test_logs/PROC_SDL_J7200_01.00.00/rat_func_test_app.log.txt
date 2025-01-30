@@ -1,0 +1,18 @@
+ RAT Test Application
+
+ RAT Test: starting
+ pStaticRegs RAT_EXCEPTION_ENABLE_SET value 1103277036
+
+ TEST for error injecting when illegal boundary transaction occurs.
+
+        Enabling the Exception Log
+        Configuring the RAT region
+        Writing 0xaaaa5555 to RAT region to cross the boundaryTest Name: RAT FUNCTION TEST  FAILED
+
+ Few/all tests Failed
+/home/gtbldadm/nightlybuilds/SDL_NIGHTLY_BUILD_J7200/180-2022-07-25_11-00-05/workarea/sdl/test/rat/func_test/main.c:184:test_sdl_rat_baremetal_test_app:FAIL: Expected 0 Was -1
+
+-----------------------
+1 Tests 1 Failures 0 Ignored
+FAIL
+

@@ -1,0 +1,390 @@
+============================
+Security Board Configuration
+============================
+
+.. _pub_boardcfg_sec_intro:
+
+Security Configuration in System Firmware
+=========================================
+
+The security portion of system firmware has options that can be configured
+independently of the main Board Configuration. These options are controlled
+through the security board configuration. In addition, initialization of the
+secure portion of the system firmware is deferred until the secure board
+configuration is sent to allow tuning of the system boot time.
+
+.. warning::
+
+   This message MUST be sent in order to initialize the security capabilities of
+   system firmware. Until it is received no security functionality is available.
+
+A standalone board configuration message contains the security
+data within a flat-typed array.  The security data is provided
+separately to reduce DMSC boot time.  The security board cfg message
+is sent any time after the boot notification message is sent and has no
+dependence upon receipt of the standard board configuration message.
+
+.. note::
+
+  Security Board configuration requires to be signed and encrypted on HS devices
+  to ensure authenticity and protect secrets. Please refer to
+  :doc:`../6_topic_user_guides/hs_boardcfg_signing` on how to sign and encrypt
+  board configuration on HS devices.
+
+.. _pub_boardcfg_security_tisci:
+
+TISCI API for Security Board Config
+-----------------------------------
+
+The following are the parameters required in the TI-SCI message to pass security
+board configuration data to DMSC after DMSC sends boot notification complete.
+The security board configuration message is not dependent on receipt of the
+standard board configuration message.
+
+Usage
+^^^^^
+
++------------------------+--------+
+| **Message Type**       | Normal |
++------------------------+--------+
+| **Secure Queue Only?** | Yes    |
++------------------------+--------+
+
+TISCI Message ID
+^^^^^^^^^^^^^^^^
+
+.. sysfwapimacro:: TISCI_MSG_BOARD_CONFIG_SECURITY
+
+Message Data Structures
+^^^^^^^^^^^^^^^^^^^^^^^
+
+.. sysfwapistruct:: tisci_msg_board_config_security_req
+
+
+.. note::
+
+   Even though the security board configuration structure contains the
+   ``boardcfg_security_devgrp`` member, it is ignored. Initialization of
+   firewalls is performed for a devgrp when it is enabled via the core board
+   configuration message. This is necessary to ensure isolation. See
+   :doc:`./BOARDCFG`.
+
+   The reamining security services are initialized when the |sec_bcfg| is
+   received for the first time. Subsequent |sec_bcfg| messages do not have
+   any effect on operation of |sysfw|.
+
+.. sysfwapistruct:: tisci_msg_board_config_security_resp
+
+.. warning::
+
+   The boardcfg data structures described below **must** be placed in
+   MCU OCMC SRAM. The address used in the TISCI message will be
+   in MCU OCMC SRAM.
+
+.. _pub_boardcfg_sec:
+
+Configuration substructure enumeration
+--------------------------------------
+
+This is a fixed size c-structure which both defines the format of the
+configuration as well as reserves DMSC memory to store the
+configuration. The boardcfg_sec data structure makes use of the same
+:ref:`pub_boardcfg_abi_rev` structure for the top level and
+:ref:`pub_boardcfg_subhdr` for each member structure as the top level
+boardcfg structure does..
+
++--------------------+----------------------------------------------+-----------------------------------------------------------+
+|      Element       |             Type                             |                        Description                        |
++====================+==============================================+===========================================================+
+| boardcfg_abi_rev   | :ref:`pub_boardcfg_abi_rev`                  | Board Config ABI version (separate from DMSC ABI version) |
++--------------------+----------------------------------------------+-----------------------------------------------------------+
+| processor_acl_list | :ref:`pub_boardcfg_proc_acl`                 | Processor access control list configuration               |
++--------------------+----------------------------------------------+-----------------------------------------------------------+
+| host_hierarchy     | :ref:`pub_boardcfg_host_hierarchy`           | Host hierarchy configuration                              |
++--------------------+----------------------------------------------+-----------------------------------------------------------+
+| otp_config         | :ref:`pub_boardcfg_ext_otp_config`           | Extended OTP access configuration                         |
++--------------------+----------------------------------------------+-----------------------------------------------------------+
+| dkek_config        | :ref:`pub_boardcfg_dkek_config`              | DKEK access configuration                                 |
++--------------------+----------------------------------------------+-----------------------------------------------------------+
+| sa2ul_config       | :ref:`pub_boardcfg_sa2ul_config`             | SA2UL access configuration                                |
++--------------------+----------------------------------------------+-----------------------------------------------------------+
+| sec_dbg_config     | :ref:`pub_boardcfg_secure_debug_unlock`      | Secure debug unlock configuration                         |
++--------------------+----------------------------------------------+-----------------------------------------------------------+
+| sec_handover_cfg   | :ref:`pub_boardcfg_security_handover`        | Security handover configuration                           |
++--------------------+----------------------------------------------+-----------------------------------------------------------+
+
+.. _pub_boardcfg_proc_acl:
+
+Processor Access List
+---------------------
+
+Access Control List for various Processors in the SoC.
+
+.. _pub_boardcfg_proc:
+
+boardcfg_proc
+^^^^^^^^^^^^^
+
++------------------+---------------------------------------------------------------+------------------------------------+
+|     Element      |                             Type                              |            Description             |
++==================+===============================================================+====================================+
+| subhdr           | :ref:`pub_boardcfg_subhdr`                                    | Magic and size for integrity check |
++------------------+---------------------------------------------------------------+------------------------------------+
+| proc_access_list | :ref:`processor_access_list <pub_processor_access_list>` [32] | Processor access description       |
++------------------+---------------------------------------------------------------+------------------------------------+
+
+The magic number to be populated in the ``subhdr`` is ``0xF1EA``.
+
+.. _pub_processor_access_list:
+
+Processor access list entry
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
++----------------------------+------+-------------------------------------------------------------------------------+
+|          Element           | Type |                                  Description                                  |
++============================+======+===============================================================================+
+| processor_id               | u8   | Processor ID (mandatory) - Use 0 to mark unused                               |
++----------------------------+------+-------------------------------------------------------------------------------+
+| proc_access_master         | u8   | Recovery Host ID or Primary control master host ID (mandatory)                |
++----------------------------+------+-------------------------------------------------------------------------------+
+| proc_access_secondary[0-2] | u8   | Other Host IDs that can control this processor(set to DMSC host ID if unused) |
++----------------------------+------+-------------------------------------------------------------------------------+
+
+.. _pub_boardcfg_host_hierarchy:
+
+Host Hierarchy
+--------------
+
+Host Hierarchy for various processing entities in the SoC.  Host hierarchy
+defines the supervisory tree for all processing entities in the SoC.
+
+boardcfg_host_hierarchy
+^^^^^^^^^^^^^^^^^^^^^^^
+
++------------------------+----------------------------------------------------------+------------------------------------+
+|     Element            |                              Type                        |            Description             |
++========================+==========================================================+====================================+
+| subhdr                 | :ref:`pub_boardcfg_subhdr`                               | Magic and size for integrity check |
++------------------------+----------------------------------------------------------+------------------------------------+
+| host_hierarchy_entries | :ref:`host_hierarchy_entries <pub_host_hierarchy>` [32]  | Host hierarchy description         |
++------------------------+----------------------------------------------------------+------------------------------------+
+
+The magic number to be populated in the ``subhdr`` is ``0x8D27``.
+
+.. _pub_host_hierarchy:
+
+Host hierarchy entry
+^^^^^^^^^^^^^^^^^^^^
+
++--------------------+------+--------------------------------------------------------------+
+|          Element   | Type |                                  Description                 |
++====================+======+==============================================================+
+| host_id            | u8   | Processing entity Host ID (mandatory) - Use 0 to mark unused |
++--------------------+------+--------------------------------------------------------------+
+| supervisor_host_id | u8   | Supervisor Host ID                                           |
++--------------------+------+--------------------------------------------------------------+
+
+.. _pub_boardcfg_ext_otp_config:
+
+Extended OTP array configuration
+--------------------------------
+
+The below structure defines which hosts read the OTP area and which host has
+permissions to write to the OTP area. Please also refer to the below documents
+to understand the usage of the board configuration structure.
+
+1. :doc:`../6_topic_user_guides/extended_otp` and
+2. :doc:`../2_tisci_msgs/security/extended_otp` and
+
++------------------------+----------------------------------------------------------+------------------------------------+
+|     Element            |                              Type                        |            Description             |
++========================+==========================================================+====================================+
+| subhdr                 | :ref:`pub_boardcfg_subhdr`                               | Magic and size for integrity check |
++------------------------+----------------------------------------------------------+------------------------------------+
+| otp_entry              | :ref:`otp_entry <pub_boardcfg_otp_entry>` [32]           | OTP MMR access control per row     |
++------------------------+----------------------------------------------------------+------------------------------------+
+| write_host             | u8                                                       | ID of the host who can perform     |
+|                        |                                                          | writes to OTP rows                 |
++------------------------+----------------------------------------------------------+------------------------------------+
+
+The magic number to be populated in the ``subhdr`` is ``0x4081``.
+
+.. note::
+
+    Wildcard host ID (128U/0x80) cannot be used in the ``write_host`` field. The host ID used here must map to 
+    a secure proxy thread.
+
+.. important::
+
+    Only ``write_host`` can perform writes to OTP revision (swrev, keyrev) using 
+    :ref:`TISCI_MSG_WRITE_SWREV <sec-api-wr-swrev-otp>` and 
+    :ref:`TISCI_MSG_WRITE_KEYREV <sec-api-wr-keyrev-otp>`
+
+.. warning::
+
+    Even though OTP functionality is not available on GP devices, the boardcfg structure for OTP must be present.
+    The header must be populated with the size and magic number correctly.
+
+.. _pub_boardcfg_otp_entry:
+
+Extended OTP Row Entry
+^^^^^^^^^^^^^^^^^^^^^^
+
++--------------------+-----------+------------------------------------------------------------------------------------+
+| Element            | Type      | Description                                                                        |
++====================+===========+====================================================================================+
+| host_id            | u8        | Host ID                                                                            |
+|                    |           |                                                                                    |
+|                    |           | -  Set to 128 if the MMR must be accesible to all hosts                            |
+|                    |           | -  Set to 0 if the MMR must not be accesible to any host                           |
++--------------------+-----------+------------------------------------------------------------------------------------+
+| host_perms         | u8        | 2 bit wide fields specifying permissions                                           |
+|                    |           |                                                                                    |
+|                    |           | -  bit 1:0 - 10b - non-secure, any other value secure                              |
+|                    |           | -  bit 7:2 - Reserved for future use.                                              |
++--------------------+-----------+------------------------------------------------------------------------------------+
+
+.. _pub_boardcfg_dkek_config:
+
+Derived KEK Management
+----------------------
+
+The below structure controls access to DKEK on the SOC.
+Please also refer to the below documents to understand the usage of the board configuration structure.
+
+1. :doc:`../6_topic_user_guides/dkek_management` and
+2. :doc:`../2_tisci_msgs/security/dkek_management` and
+
++------------------------------+----------------------------+---------------------------------------------------------------+
+|     Element                  |                 Type       |            Description                                        |
++==============================+============================+===============================================================+
+| subhdr                       | :ref:`pub_boardcfg_subhdr` | Magic and size for integrity check                            |
++------------------------------+----------------------------+---------------------------------------------------------------+
+| dkek_allowed_hosts           | u8[4]                      | Hosts allowed access to DKEK                                  |
+|                              |                            |                                                               |
+|                              |                            | Set one of the entries to 128 if DKEK must accessible to all  |
+|                              |                            | hosts.                                                        |
++------------------------------+----------------------------+---------------------------------------------------------------+
+| allow_dkek_export_tisci      | u8                         | Flag indicating whether DKEK can be exported via TISCI API    |
+|                              |                            |                                                               |
+|                              |                            | Set to 0x5A if TISCI export is allowed.                       |
++------------------------------+----------------------------+---------------------------------------------------------------+
+| rsvd                         | u8[3]                      | Reserved field. Currently unused. Set to 0.                   |
++------------------------------+----------------------------+---------------------------------------------------------------+
+
+The magic number to be populated in the ``subhdr`` is ``0x5170``.
+
+.. _pub_boardcfg_sa2ul_config:
+
+SA2UL Configuration
+-------------------
+
+The below entry controls the SAUL configuration on the SOC.
+
++---------------------------------------+----------------------------+------------------------------------------------------+
+|     Element                           |            Type            |            Description                               |
++=======================================+============================+======================================================+
+| subhdr                                | :ref:`pub_boardcfg_subhdr` | Magic and size for integrity check                   |
++---------------------------------------+----------------------------+------------------------------------------------------+
+| auth_resource_owner                   | u8                         | ID of the host allowed to acquire/release the        |
+|                                       |                            | authentication resources                             |
+|                                       |                            |                                                      |
+|                                       |                            | This feature is not currently supported              |
++---------------------------------------+----------------------------+------------------------------------------------------+
+| enable_saul_psil_global_config_writes | ftbool                     | Flag for allowing pairing requests from PSIL.        |
+|                                       |                            | Set to 0x5A to enable                                |
++---------------------------------------+----------------------------+------------------------------------------------------+
+| rsvd                                  | u8[2]                      | Reserved for future use. Set to 0                    |
++---------------------------------------+----------------------------+------------------------------------------------------+
+
+The magic number to be populated in the ``subhdr`` is ``0x23BE``.
+
+.. _pub_boardcfg_secure_debug_unlock:
+
+Secure Debug Unlock
+-------------------
+
++------------------------------+----------------------------+---------------------------------------------------------------+
+|     Element                  |                 Type       |            Description                                        |
++==============================+============================+===============================================================+
+| subhdr                       | :ref:`pub_boardcfg_subhdr` | Magic and size for integrity check                            |
++------------------------------+----------------------------+---------------------------------------------------------------+
+| allow_jtag_unlock            | u8                         | Set to 0x5A if runtime jtag unlock is allowed.                |
+|                              |                            |                                                               |
+|                              |                            | Set to 0 otherwise.                                           |
++------------------------------+----------------------------+---------------------------------------------------------------+
+| allow_wildcard_unlock        | u8                         | If this field is set to 0x5A, the same debug unlock           |
+|                              |                            | certificate will work across all devices where it passes the  |
+|                              |                            | remaining checks.                                             |
+|                              |                            |                                                               |
+|                              |                            | Set to 0 otherwise to enforce UID match before jtag unlock    |
+|                              |                            | The X509 certificate must contain the UID of the device       |
+|                              |                            | being unlocked in the designated field                        |
+|                              |                            |                                                               |
+|                              |                            | NOTE: This field is dependent on the ``allow_jtag_unlock``    |
+|                              |                            | field above. If ``allow_jtag_unlock`` is set to 0, this field |
+|                              |                            | is not used.                                                  |
++------------------------------+----------------------------+---------------------------------------------------------------+
+| allow_debug_level_rsvd       | u8                         | Reserved field. Currently unused. Set to 0.                   |
+|                              |                            |                                                               |
+|                              |                            | This field can be used in the future to control the level of  |
+|                              |                            | debug allowed with a certificate.                             |
++------------------------------+----------------------------+---------------------------------------------------------------+
+| rsvd                         | u8                         | Reserved field. Currently unused. Set to 0.                   |
++------------------------------+----------------------------+---------------------------------------------------------------+
+| min_cert_rev                 | u32                        | Minimum revision value that must be contained in the debug    |
+|                              |                            | unlock certificate for it to be accepted.                     |
+|                              |                            | Use this field to enforce rollback protection for debug       |
+|                              |                            | unlock certificates.                                          |
+|                              |                            | Set to 0 if you do not wish to use this field.                |
++------------------------------+----------------------------+---------------------------------------------------------------+
+| jtag_unlock_hosts            | u8[4]                      | Hosts allowed send jtag unlock message via TISCI              |
+|                              |                            |                                                               |
+|                              |                            | Set one of the entries to 128 if jtag unlock must be allowed  |
+|                              |                            | for all hosts.                                                |
++------------------------------+----------------------------+---------------------------------------------------------------+
+
+The magic number to be populated in the ``subhdr`` is ``0x42AF``.
+
+
+.. _pub_boardcfg_security_handover:
+
+Security Handover
+-----------------
+
+.. note::
+
+   This section is only processed on AM64 devices.
+
+Please also refer to the below documents to understand the usage of the board configuration structure.
+
+1. :doc:`../6_topic_user_guides/security_handover` and
+2. :doc:`../2_tisci_msgs/security/security_handover` and
+
++------------------------------+----------------------------+---------------------------------------------------------------+
+|     Element                  |                 Type       |            Description                                        |
++==============================+============================+===============================================================+
+| subhdr                       | :ref:`pub_boardcfg_subhdr` | Magic and size for integrity check                            |
++------------------------------+----------------------------+---------------------------------------------------------------+
+| handover_msg_sender          | u8                         | ID of the host who will send the security handover message    |
+|                              |                            |                                                               |
+|                              |                            | Set to 0 if security handover is not desired                  |
+|                              |                            | or is unsupported on the device.                              |
++------------------------------+----------------------------+---------------------------------------------------------------+
+| handover_to_host_id          | u8                         | ID of the host who takes over the security functionality      |
+|                              |                            |                                                               |
+|                              |                            | The credentials of this host are programmed in the firewalls  |
+|                              |                            | protecting the security configuration registers.              |
+|                              |                            |                                                               |
+|                              |                            | Set to 0 if security handover is not desired                  |
+|                              |                            | or is unsupported on the device.                              |
++------------------------------+----------------------------+---------------------------------------------------------------+
+| rsvd                         | u8[4]                      | Reserved field. Currently unused. Set to 0.                   |
+|                              |                            |                                                               |
+|                              |                            | Security handover currently transfers   ownership of the      |
+|                              |                            | SOC firewalls. These flags are intended for future use        |
+|                              |                            | to indicate whether ownership of additional resources must    |
+|                              |                            | be transferred                                                |
++------------------------------+----------------------------+---------------------------------------------------------------+
+
+The magic number to be populated in the ``subhdr`` is ``0x608F``.

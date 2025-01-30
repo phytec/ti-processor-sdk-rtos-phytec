@@ -1,0 +1,123 @@
+LBIST : Logic Built-In Self-Test
+================================
+
+Introduction
+------------
+
+Built-in Self-test (BIST) is a feature taht allows self testing of the memory areas and logic circuitry in an Integrated Circuit (IC) without any external test equipment. In an embedded system, these tests are typically used during boot time or shutdown of the system to check the health of an SoC.
+
+LBIST is used to test the logic circuitry in an SoC associated with the CPU cores. There are multiple LBIST instances in the SoC, and each has a different processor core associated with it. There are LBIST tests that can be software-initiated. Those are supported by SDL. SDL also provides support for checking of the status of HW POST LBIST. 
+
+Some things to note:
+
+* LBIST is expected to be run at startup or once per drive cycle.
+* LBIST must be initiated from a different core than is being tested, similar to PBIST
+* BIST is executed by hardware for MCU and DMSC automatically at boot up as part of HW POST
+
+J7ES supports a software-initiated LBIST that can run be initiated at runtime. Note, however, that LBIST is destructive to the core/IP on which it is run. If it is executed after the IP under test is already in use in the system, it is the application's responsibility to perform any necessary context save/restore necessary for the core/IP. Also, it is not supported to run the LBIST test for a core on itself, as it will be self destructive.
+
+The LBIST Module of the SDL supports execution of the software-initiated LBIST for the various supported instances. It provides the following services:
+
+* Execution of the LBIST test for a specified instance
+* Configuration of the LBIST test for an instance
+* Start of the LBIST test
+* Checking of the LBIST results
+* Restore core to system control (LBIST reset and release test mode)
+* Return the status of the test
+
+.. ifconfig:: CONFIG_family in ('j721e')
+
+    There are 6 LBIST instances in J7ES.
+
+.. ifconfig:: CONFIG_family in ('j7200')
+
+    There are 3 LBIST instances in J7VCL.
+
+.. ifconfig:: CONFIG_family in ('j721s2')
+
+    There are 7 LBIST instances in J7AEP.
+
+
+.. NOTE::
+    Execution of the LBIST tests requires preparation of the IPs under test by bringing them to a certain power and reset state before executing the test. It will be required that the application bring the cores/IPs to the proper state before executing the LBIST. Additionally, there is an "exit sequence" that is required to bring the cores/IPs back to the system control after the LBIST test is executed. This will also be the responsibility of the application. The LBIST examples provided with SDL will give the necessary sequences, which can be used by the application for implementing the sequence.
+
+
+Example Usage
+-------------
+
+The following shows an example of SDL LBIST API usage by the application to check the HW POST results, and execute the LBIST test.
+
+Check the HW POST result (if supported on device):
+
+    .. code:: bash
+
+        int32_t status = SDL_PASS;
+        SDL_LBIST_postResult result;
+        
+        status = SDL_LBIST_getPOSTStatus(&result);
+
+        /* Check the result, which will be one of SDL_LBIST_postResult */
+        if (result.mcuPostStatus == SDL_LBIST_POST_NOT_RUN)
+        {
+            // LBIST did not run
+        }
+        else if (result.mcuPostStatus == SDL_LBIST_POST_TIMEOUT)
+        {
+            // LBIST test timed out
+        }
+        else if (result.mcuPostStatus == SDL_PBIST_POST_COMPLETED_FAILURE)
+        {
+            // LBIST failed
+        }
+        else if (result.mcuPostStatus == SDL_PBIST_POST_COMPLETED_SUCCESS)
+        {
+            // LBIST passed
+        }
+
+
+Before executing the following LBIST tests, the IP under test must be brought to a certain power and reset state. The included LBIST example shows the sequence needed for each of the LBIST instances.
+
+Once the core(s) are brought to the required state, the following APIs can be run.
+
+Perform the LBIST test
+
+    .. code:: bash
+
+        bool LBISTResult;
+
+        /* Prior to calling, perform the needed core initialization sequence - check thest application for example */
+        
+        status = SDL_LBIST_selfTest(SDL_LBIST_INST_MAINR5F0, SDL_LBIST_TEST, &LBISTResult);
+        if ((status != SDL_PASS) || (PBISTResult == false))
+        {
+            // test failed
+        }
+        else
+        {
+            // LBIST test passed
+        }
+
+        /* Perform Core restore sequence - check test application for example */
+
+        /* Release the core from isolation */
+        status = SDL_LBIST_selfTest(SDL_LBIST_INST_MAINR5F0, SDL_LBIST_TEST_RELEASE, &result);
+
+
+
+
+Examples
+--------
+
+The LBIST module provides a test app that demonstrate the LBIST functionality. Details of the test app name, location and build instructions are given in the table below.
+
++---------------------+--------------------------------------------------------+--------------------------------+------------------------------------------+
+| Test App Name       | Description                                            | Location                       | Build Command                            |
++=====================+========================================================+================================+==========================================+
+| sdl_lbist_test_app  | - Checks the Status of HW POST                         |                                |                                          |
+|                     | - Executes LBIST_TEST for all supported instances      | [sdl_install_dir]/test/lbist/  | make sdl_lbist_test_app PROFILE=release  |
++---------------------+--------------------------------------------------------+--------------------------------+------------------------------------------+
+
+API
+---
+
+|__LBIST_API_LNK__|

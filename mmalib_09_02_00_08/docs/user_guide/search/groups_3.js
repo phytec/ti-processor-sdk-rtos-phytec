@@ -1,0 +1,26 @@
+var searchData=
+[
+  ['mmalib_5fcnn_5fconvolve_5fcol_5fsmallno_5fhighprecision_1180',['MMALIB_CNN_convolve_col_smallNo_highPrecision',['../group__MMALIB__CNN__convolve__col__smallNo__highPrecision.html',1,'']]],
+  ['mmalib_5fcnn_5fconvolve_5fcol_5fsmallno_5fhighprecision_5fpointwisepost_1181',['MMALIB_CNN_convolve_col_smallNo_highPrecision_pointwisePost',['../group__MMALIB__CNN__convolve__col__smallNo__highPrecision__pointwisePost.html',1,'']]],
+  ['mmalib_5fcnn_5fconvolve_5fcol_5fsmallno_5fhighprecision_5fpointwisepost_5freorderweights_1182',['MMALIB_CNN_convolve_col_smallNo_highPrecision_pointwisePost_reorderWeights',['../group__MMALIB__CNN__convolve__col__smallNo__highPrecision__pointwisePost__reorderWeights.html',1,'']]],
+  ['mmalib_5fcnn_5fconvolve_5fcol_5fsmallno_5fhighprecision_5freorderweights_1183',['MMALIB_CNN_convolve_col_smallNo_highPrecision_reorderWeights',['../group__MMALIB__CNN__convolve__col__smallNo__highPrecision__reorderWeights.html',1,'']]],
+  ['mmalib_5fcnn_5fconvolve_5fcol_5fsmallno_5fixx_5fixx_5foxx_1184',['MMALIB_CNN_convolve_col_smallNo_ixX_ixX_oxX',['../group__MMALIB__CNN__convolve__col__smallNo__ixX__ixX__oxX.html',1,'']]],
+  ['mmalib_5fcnn_5fconvolve_5fcol_5fsmallno_5fixx_5fixx_5foxx_5freorderweights_1185',['MMALIB_CNN_convolve_col_smallNo_ixX_ixX_oxX_reorderWeights',['../group__MMALIB__CNN__convolve__col__smallNo__ixX__ixX__oxX__reorderWeights.html',1,'']]],
+  ['mmalib_5fcnn_5fconvolve_5fcol_5fsmallno_5flegacy_5fixx_5fixx_5foxx_1186',['MMALIB_CNN_convolve_col_smallNo_legacy_ixX_ixX_oxX',['../group__MMALIB__CNN__convolve__col__smallNo__legacy__ixX__ixX__oxX.html',1,'']]],
+  ['mmalib_5fcnn_5fconvolve_5fcol_5fsmallno_5flegacy_5fixx_5fixx_5foxx_5freorderweights_1187',['MMALIB_CNN_convolve_col_smallNo_legacy_ixX_ixX_oxX_reorderWeights',['../group__MMALIB__CNN__convolve__col__smallNo__legacy__ixX__ixX__oxX__reorderWeights.html',1,'']]],
+  ['mmalib_5fcnn_5fconvolve_5frow_5fixx_5fixx_5foxx_1188',['MMALIB_CNN_convolve_row_ixX_ixX_oxX',['../group__MMALIB__CNN__convolve__row__ixX__ixX__oxX.html',1,'']]],
+  ['mmalib_5fcnn_5fconvolvebias_5frow_5fixx_5fixx_5foxx_1189',['MMALIB_CNN_convolveBias_row_ixX_ixX_oxX',['../group__MMALIB__CNN__convolveBias__row__ixX__ixX__oxX.html',1,'']]],
+  ['mmalib_5fcnn_5fdeconvolve_5frow_5fixx_5fixx_5foxx_1190',['MMALIB_CNN_deconvolve_row_ixX_ixX_oxX',['../group__MMALIB__CNN__deconvolve__row__ixX__ixX__oxX.html',1,'']]],
+  ['mmalib_5fcnn_5fdeconvolvebias_5frow_5fixx_5fixx_5foxx_1191',['MMALIB_CNN_deconvolveBias_row_ixX_ixX_oxX',['../group__MMALIB__CNN__deconvolveBias__row__ixX__ixX__oxX.html',1,'']]],
+  ['mmalib_5fcnn_5ffullyconnected_5fixx_5fixx_5foxx_1192',['MMALIB_CNN_fullyConnected_ixX_ixX_oxX',['../group__MMALIB__CNN__fullyConnected__ixX__ixX__oxX.html',1,'']]],
+  ['mmalib_5fcnn_5ffullyconnectedbias_5fixx_5fixx_5foxx_1193',['MMALIB_CNN_fullyConnectedBias_ixX_ixX_oxX',['../group__MMALIB__CNN__fullyConnectedBias__ixX__ixX__oxX.html',1,'']]],
+  ['mmalib_5fcnn_5fpixelshuffle_5frow_5fixx_5fixx_5foxx_1194',['MMALIB_CNN_pixelShuffle_row_ixX_ixX_oxX',['../group__MMALIB__CNN__pixelShuffle__row__ixX__ixX__oxX.html',1,'']]],
+  ['mmalib_5fcnn_5ftensor_5fconvert_5fixx_5foxx_1195',['MMALIB_CNN_tensor_convert_ixX_oxX',['../group__MMALIB__CNN__tensor__convert__ixX__oxX.html',1,'']]],
+  ['mmalib_5fdsp_5ffir_5fixx_5fixx_5foxx_1196',['MMALIB_DSP_fir_ixX_ixX_oxX',['../group__MMALIB__DSP__fir__ixX__ixX__oxX.html',1,'']]],
+  ['mmalib_5fdsp_5ffirsmall_5fixx_5fixx_5foxx_1197',['MMALIB_DSP_firSmall_ixX_ixX_oxX',['../group__MMALIB__DSP__firSmall__ixX__ixX__oxX.html',1,'']]],
+  ['mmalib_5flinalg_5fmatrixmatrixmultiply_5fixx_5fixx_5foxx_1198',['MMALIB_LINALG_matrixMatrixMultiply_ixX_ixX_oxX',['../group__MMALIB__LINALG__matrixMatrixMultiply__ixX__ixX__oxX.html',1,'']]],
+  ['mmalib_5flinalg_5fmatrixmatrixmultiplyaccumulate_5fixx_5fixx_5fixx_5foxx_1199',['MMALIB_LINALG_matrixMatrixMultiplyAccumulate_ixX_ixX_ixX_oxX',['../group__MMALIB__LINALG__matrixMatrixMultiplyAccumulate__ixX__ixX__ixX__oxX.html',1,'']]],
+  ['mmalib_5flinalg_5fmatrixmatrixmultiplybias_5fixx_5fixx_5foxx_1200',['MMALIB_LINALG_matrixMatrixMultiplyBias_ixX_ixX_oxX',['../group__MMALIB__LINALG__matrixMatrixMultiplyBias__ixX__ixX__oxX.html',1,'']]],
+  ['mmalib_5flinalg_5fmatrixtranspose_5fixx_5foxx_1201',['MMALIB_LINALG_matrixTranspose_ixX_oxX',['../group__MMALIB__LINALG__matrixTranspose__ixX__oxX.html',1,'']]],
+  ['mmalib_5flinalg_5fpointwisematrixmatrixmultiply_5fixx_5fixx_5foxx_1202',['MMALIB_LINALG_pointwiseMatrixMatrixMultiply_ixX_ixX_oxX',['../group__MMALIB__LINALG__pointwiseMatrixMatrixMultiply__ixX__ixX__oxX.html',1,'']]]
+];

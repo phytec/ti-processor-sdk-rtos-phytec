@@ -1,0 +1,109 @@
+Release notes - 09_00_00
+========================
+
+Features
+--------
+
+.. NOTE::
+
+   New features vs previous release are marked in **bold**
+
+Hardware support
+^^^^^^^^^^^^^^^^
+
+#. J721S2 EVM support with Leo and Hera PMIC processor board
+#. J721S2 HS support
+#. Fusion1 RevC daughter card with UB960 FPDLink deserializer
+
+Software features
+^^^^^^^^^^^^^^^^^
+
+.. IMPORTANT::
+
+   Below is a summary of key features. Refer individual :ref:`sdk_components` release notes for more details
+
+Platform Development Kit (PDK)
+""""""""""""""""""""""""""""""
+
+- RTOS device drivers running on |rtos_cores|
+- Supported drivers and modules
+
+  - ENET CPSW (2G) in MCU and Main domains, RGMII, lwIP, FreeRTOS & SafeRTOS
+  - CSL-FL (Chip support library)
+  - GPIO
+  - I2C
+  - IPC (inter processor communication)
+  - MMCSD with FATFS
+  - OSAL
+  - SBL secondary bootloader
+  - SCI Client (DMSC interface)
+  - SPI driver (SPI, OSPI)
+  - OSPI (NOR, NAND)
+  - UART
+  - UDMA and DRU
+  - FreeRTOS Support on R5
+  - SafeRTOS Support on R5
+  - Boot App for Tertiary Boot
+
+Refer to PDK release notes |pdk_release_notes| for more details.
+
+MCU Software (MCUSW)
+""""""""""""""""""""
+- AutoSAR 4.3.1 MCAL driver and MCU1_0 example applications running on R5F (TI Arm Clang Compiler).
+- AutoSAR MCAL driver for Adc, Can, CDD IPC, Dio, Eth, Gpt, Pwm, Epwm Spi, Icu & Wdg
+
+Software Diagnostics Library (SDL)
+""""""""""""""""""""""""""""""""""
+
+The Software Diagnostics Library provides the functionality for implementing hardware safety mechanisms that can be run during the various operation modes of the device.  Supported diagnostic modules are:
+
+- ESM : Error Signalling Module
+- ECC : Error Correcting Code
+- PBIST : Memory Built-In Self-Test
+- LBIST : Logic Built-In Self-Test
+- VTM : Voltage and Thermal Management
+- RTI : RTI/WWDT Windowed Watchdog Timer
+- POK: Power OK
+- TOG : Time-Out Gasket
+- MTOG : Master Time-Out Gasket
+- DCC : Dual Clock Comparator
+- MCRC : Cyclic Redundancy Check
+- R5F CCM: CPU Compare Module
+- OSAL
+- R5 Core Modules
+
+FreeRTOS
+""""""""
+- FreeRTOS for R5F
+
+Code Gen Tools (CGT)
+""""""""""""""""""""
+- TI LLVM (CLANG) Compiler, assembler, linker for R5F
+- |separate_download|
+ 
+Device Support and Validation Information
+-----------------------------------------
+
++------------------------+-------------------------------+----------------------------------+-------------------------------------------+
+| SoC                    | Build Host (OS)               | Run Target (OS)                  | Test Plaform                              |
++========================+===============================+==================================+===========================================+
+| |platform|             | x86_64 (Linux Ubuntu 22.04)   | |rtos_cores| running FreeRTOS    | |platform| EVM with daughter cards        |
+|                        |                               |                                  |                                           |
+|                        |                               |  A72 running Linux               |                                           |
++------------------------+-------------------------------+----------------------------------+-------------------------------------------+
+
+
+Upgrade and Compatibility
+-------------------------
+Refer to individual :ref:`sdk_components` release notes
+
+Known Issues
+------------
+
+Refer to individual :ref:`sdk_components` release notes for known issues in each component
+
+Errata workarounds
+^^^^^^^^^^^^^^^^^^
+
+None
+

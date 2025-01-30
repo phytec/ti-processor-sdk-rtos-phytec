@@ -1,0 +1,498 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Runtime Debug TISCI Description &mdash; TISCI User Guide</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="TISCI User Guide" href="../../index.html"/>
+        <link rel="up" title="Chapter 2: TISCI Message Documentation" href="../index.html"/>
+        <link rel="next" title="Extended OTP TISCI Description" href="extended_otp.html"/>
+        <link rel="prev" title="Secure AP Command Interface" href="sec_ap_data_transfer.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="../../_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> TISCI
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                09.02.04
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../1_intro/index.html">Chapter 1: Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Chapter 2: TISCI Message Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../general/TISCI_header.html">Texas Instruments System Controller Interface (TISCI)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#general">General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#power-management-pm">Power Management (PM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#resource-management-rm">Resource Management (RM)</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#secure-management">Secure Management</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="sec_cert_format.html">Security X509 Certificate Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PROC_BOOT.html">Processor Boot Management TISCI Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="firewall_api.html">Firewall TISCI Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sec_ap_data_transfer.html">Secure AP Command Interface</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Runtime Debug TISCI Description</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api-description">API Description</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="extended_otp.html">Extended OTP TISCI Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dkek_management.html">Derived KEK TISCI Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dsmek_management.html">Derived SMEK TISCI Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="security_handover.html">Security Handover Message Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="keywriter.html">OTP Keywriter TISCI Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="otp_revision.html">OTP Revision Read/Write Message Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="keyring.html">KEYRING TISCI Description</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../3_boardcfg/index.html">Chapter 3: Board Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../4_trace/index.html">Chapter 4: Interpreting Trace Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../5_soc_doc/index.html">Chapter 5: SoC Family Specific Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../6_topic_user_guides/index.html">Chapter 6: Topic User Guides</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">TISCI</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Chapter 2: TISCI Message Documentation</a> &raquo;</li>
+      
+    <li>Runtime Debug TISCI Description</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="runtime-debug-tisci-description">
+<h1>Runtime Debug TISCI Description<a class="headerlink" href="#runtime-debug-tisci-description" title="Permalink to this headline">¶</a></h1>
+<p id="sec-api-runtime-debug-tisci-desc">This chapter provides information on available TISCI messages
+for configuring runtime debug.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="49%" />
+<col width="16%" />
+<col width="19%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">TISCI Message ID</th>
+<th class="head">Message Name</th>
+<th class="head">Available in GP</th>
+<th class="head">Avialable in HS-FS</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0x900C</td>
+<td><a class="reference internal" href="#open-debug-fwls"><span class="std std-ref">TISCI_MSG_OPEN_DEBUG_FWLS</span></a></td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>0x9021</td>
+<td><a class="reference internal" href="#get-soc-uid"><span class="std std-ref">TISCI_MSG_GET_SOC_UID</span></a></td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="introduction">
+<span id="sec-api-runtime-debug-intro"></span><h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This document is applicable to HS devices only.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Opening the JTAG port through the Secure AP command interface is the primary
+method of unlocking JTAG on K3 devices. This method is documented in
+<a class="reference internal" href="sec_ap_data_transfer.html"><span class="doc">Secure AP Command Interface</span></a>. For debug flexbility, System Firmware also supports
+unlocking JTAG on target via a TISCI message documented in this chapter.</p>
+</div>
+</div>
+<div class="section" id="api-description">
+<h2>API Description<a class="headerlink" href="#api-description" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="tisci-msg-get-soc-uid-get-soc-uid">
+<span id="get-soc-uid"></span><h3>TISCI_MSG_GET_SOC_UID - Get SOC UID<a class="headerlink" href="#tisci-msg-get-soc-uid-get-soc-uid" title="Permalink to this headline">¶</a></h3>
+<p><strong>Usage</strong>:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="75%" />
+<col width="25%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Message Type</strong></td>
+<td>Normal</td>
+</tr>
+<tr class="row-even"><td><strong>Secure Queue Only?</strong></td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p>Unlocking the JTAG port requires a X509 certificate signed with the active root
+of trust asymmetric key. The X509 certificate must contain the Unique identifier
+for the SOC (SOC UID). This enables debug certificates to be tied to specific
+devices. SOC UID is calculated on the device by the BOOT ROM and must be
+extracted from the device. This TISCI message is used to obtain the SOC UID to
+populate in the debug unlock certificate. For more information, see
+<a class="reference internal" href="sec_cert_format.html#sysfw-debug-ext"><span class="std std-ref">System Firmware Debug Extension</span></a>.</p>
+<div class="section" id="tisci-message-id">
+<h4>TISCI Message ID<a class="headerlink" href="#tisci-message-id" title="Permalink to this headline">¶</a></h4>
+<p><p><code class="docutils literal"><span class="pre">TISCI_MSG_GET_SOC_UID</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">(0x9021U)</span></code></p>
+<p>Message to get SOC UID</p>
+</p>
+<p><p><strong>struct tisci_msg_get_soc_uid_req</strong></p>
+<p>Request to provide the SOC UID via TISCI_MSG_GET_SOC_UID</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="38%" />
+<col width="39%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>hdr</td>
+<td>struct tisci_header</td>
+<td>Common TI-SCI header</td>
+</tr>
+</tbody>
+</table>
+</p>
+<p><code class="docutils literal"><span class="pre">UID_LEN_WORDS</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">(8U)</span></code></p>
+<p><p><strong>struct tisci_msg_get_soc_uid_resp</strong></p>
+<p>Response to the TISCI_MSG_GET_SOC_UID message</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="35%" />
+<col width="43%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>hdr</td>
+<td>struct tisci_header</td>
+<td>Common TI-SCI header</td>
+</tr>
+<tr class="row-odd"><td>soc_uid</td>
+<td>u32</td>
+<td>8 words with the SOC UID</td>
+</tr>
+</tbody>
+</table>
+</p>
+</div>
+</div>
+<div class="section" id="tisci-msg-open-debug-fwls-open-debug-firewalls">
+<span id="open-debug-fwls"></span><h3>TISCI_MSG_OPEN_DEBUG_FWLS - Open Debug Firewalls<a class="headerlink" href="#tisci-msg-open-debug-fwls-open-debug-firewalls" title="Permalink to this headline">¶</a></h3>
+<p><strong>Usage</strong>:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="75%" />
+<col width="25%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Message Type</strong></td>
+<td>Normal</td>
+</tr>
+<tr class="row-even"><td><strong>Secure Queue Only?</strong></td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p>Unlocking the JTAG port requires a X509 certificate signed with the active root
+of trust asymmetric key. This API is used to provide the signed certificate to
+System Firmware for proceessing and JTAG unlock.</p>
+<p>The X509 certificate format is described in <a class="reference internal" href="sec_cert_format.html"><span class="doc">Security X509 Certificate Documentation</span></a>. The fields of
+the certificate should be filled as specified in the
+<a class="reference internal" href="sec_cert_format.html#sysfw-debug-ext"><span class="std std-ref">System Firmware Debug Extension</span></a>. The X509 debug extension is mandatory.
+The other X509 extensions are not processed by System Firmware while performing JTAG
+unlock.</p>
+<div class="section" id="id1">
+<h4>TISCI Message ID<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<p><p><code class="docutils literal"><span class="pre">TISCI_MSG_OPEN_DEBUG_FWLS</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">(0x900CU)</span></code></p>
+<p>Message to open debug firewalls using a certificate</p>
+</p>
+<p><p><strong>struct tisci_msg_open_debug_fwls_req</strong></p>
+<p>Request to provide the SOC UID via TISCI_MSG_OPEN_DEBUG_FWLS</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="24%" />
+<col width="57%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>hdr</td>
+<td>struct tisci_header</td>
+<td>Common TI-SCI header</td>
+</tr>
+<tr class="row-odd"><td>debug_cert_addr</td>
+<td>u64</td>
+<td>Physical address of the debug unlock certificate</td>
+</tr>
+</tbody>
+</table>
+</p>
+<p><p><strong>struct tisci_msg_open_debug_fwls_resp</strong></p>
+<p>Response to the TISCI_MSG_OPEN_DEBUG_FWLS message</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="38%" />
+<col width="39%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>hdr</td>
+<td>struct tisci_header</td>
+<td>Common TI-SCI header</td>
+</tr>
+</tbody>
+</table>
+</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="extended_otp.html" class="btn btn-neutral float-right" title="Extended OTP TISCI Description" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="sec_ap_data_transfer.html" class="btn btn-neutral" title="Secure AP Command Interface" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyright 2016-2024</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'09.02.04',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+
+        $('body').on("mousewheel", function () {
+            // Remove default behavior
+            event.preventDefault();
+            // Scroll without smoothing
+            var wheelDelta = event.wheelDelta;
+            var currentScrollPosition = window.pageYOffset;
+            window.scrollTo(0, currentScrollPosition - wheelDelta);
+        });
+      });
+  </script>
+   
+
+</body>
+</html>

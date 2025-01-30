@@ -1,0 +1,818 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>AM62X Device Group descriptions &mdash; TISCI User Guide</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="TISCI User Guide" href="../../index.html"/>
+        <link rel="up" title="Chapter 5: SoC Family Specific Documentation" href="../index.html"/>
+        <link rel="next" title="AM62AX Host Descriptions" href="../am62ax/hosts.html"/>
+        <link rel="prev" title="AM62X Firewall Descriptions" href="firewalls.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="../../_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> TISCI
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                09.02.04
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../1_intro/index.html">Chapter 1: Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../2_tisci_msgs/index.html">Chapter 2: TISCI Message Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../3_boardcfg/index.html">Chapter 3: Board Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../4_trace/index.html">Chapter 4: Interpreting Trace Data</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Chapter 5: SoC Family Specific Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#am65x-sr1">AM65x SR1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#am65x-sr2">AM65x SR2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#am64x">AM64x</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#am62x">AM62x</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="hosts.html">AM62X Host Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="devices.html">AM62X Devices Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="clocks.html">AM62X Clock Identifiers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pll_data.html">AM62X PLL Defaults</a></li>
+<li class="toctree-l3"><a class="reference internal" href="resasg_types.html">AM62X Board Configuration Resource Assignment Type Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interrupt_cfg.html">AM62X Interrupt Management Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ra_cfg.html">AM62X Ring Accelerator Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dma_cfg.html">AM62X DMA Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="psil_cfg.html">AM62X PSI-L Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="proxy_cfg.html">AM62X Proxy Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sec_proxy.html">AM62X Secure Proxy Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="processors.html">AM62X Processor Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="firewalls.html">AM62X Firewall Descriptions</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">AM62X Device Group descriptions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enumeration-of-device-group-ids">Enumeration of Device group IDs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enumeration-devices-accessible-in-devgrp-mcu-wakeup">Enumeration Devices accessible in devgrp “MCU_WAKEUP”</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enumeration-devices-accessible-in-devgrp-main">Enumeration Devices accessible in devgrp “MAIN”</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#am62ax">AM62Ax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#am62px">AM62Px</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#j721e">J721E</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#j7200">J7200</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#j721s2">J721S2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#j722s">J722S</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#j784s4">J784S4</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../6_topic_user_guides/index.html">Chapter 6: Topic User Guides</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">TISCI</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Chapter 5: SoC Family Specific Documentation</a> &raquo;</li>
+      
+    <li>AM62X Device Group descriptions</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="am62x-device-group-descriptions">
+<h1>AM62X Device Group descriptions<a class="headerlink" href="#am62x-device-group-descriptions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<span id="soc-doc-am62x-public-devgrp-desc-intro"></span><h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>This chapter provides information of specific device groups(DEVGRP)
+that are permitted in the AM62X SoC. These device groups are more specific
+grouping of devices and resources used optionally to have staged init
+sequence control of the SoC.</p>
+</div>
+<div class="section" id="enumeration-of-device-group-ids">
+<span id="soc-doc-am62x-public-devgrp-desc-devgrp-list"></span><h2>Enumeration of Device group IDs<a class="headerlink" href="#enumeration-of-device-group-ids" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="16%" />
+<col width="11%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">SoC Devgrp ID</th>
+<th class="head">Generic Devgrp ID</th>
+<th class="head">Flag Value</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>MCU_WAKEUP</td>
+<td>DEVGRP_01</td>
+<td>0x1U &lt;&lt;  1U</td>
+<td>Set of MCU domain peripherals to initialize at boot and use during runtime.</td>
+</tr>
+<tr class="row-odd"><td>MAIN</td>
+<td>DEVGRP_00</td>
+<td>0x1U &lt;&lt;  0U</td>
+<td>Set of Main domain peripherals to initialize at boot and use during runtime.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="enumeration-devices-accessible-in-devgrp-mcu-wakeup">
+<span id="soc-doc-am62x-public-devgrp-desc-mcu-wakeup-ip-list"></span><h2>Enumeration Devices accessible in devgrp “MCU_WAKEUP”<a class="headerlink" href="#enumeration-devices-accessible-in-devgrp-mcu-wakeup" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="75%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Device ID</th>
+<th class="head">Device Name</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>5</td>
+<td>AM62X_DEV_WKUP_MCU_GPIOMUX_INTROUTER0</td>
+</tr>
+<tr class="row-odd"><td>7</td>
+<td>AM62X_DEV_MCU_M4FSS0</td>
+</tr>
+<tr class="row-even"><td>23</td>
+<td>AM62X_DEV_MCU_DCC0</td>
+</tr>
+<tr class="row-odd"><td>35</td>
+<td>AM62X_DEV_MCU_TIMER0</td>
+</tr>
+<tr class="row-even"><td>48</td>
+<td>AM62X_DEV_MCU_TIMER1</td>
+</tr>
+<tr class="row-odd"><td>49</td>
+<td>AM62X_DEV_MCU_TIMER2</td>
+</tr>
+<tr class="row-even"><td>50</td>
+<td>AM62X_DEV_MCU_TIMER3</td>
+</tr>
+<tr class="row-odd"><td>64</td>
+<td>AM62X_DEV_WKUP_ESM0</td>
+</tr>
+<tr class="row-even"><td>79</td>
+<td>AM62X_DEV_MCU_GPIO0</td>
+</tr>
+<tr class="row-odd"><td>100</td>
+<td>AM62X_DEV_MCU_MCRC64_0</td>
+</tr>
+<tr class="row-even"><td>106</td>
+<td>AM62X_DEV_MCU_I2C0</td>
+</tr>
+<tr class="row-odd"><td>107</td>
+<td>AM62X_DEV_WKUP_I2C0</td>
+</tr>
+<tr class="row-even"><td>110</td>
+<td>AM62X_DEV_WKUP_TIMER0</td>
+</tr>
+<tr class="row-odd"><td>111</td>
+<td>AM62X_DEV_WKUP_TIMER1</td>
+</tr>
+<tr class="row-even"><td>114</td>
+<td>AM62X_DEV_WKUP_UART0</td>
+</tr>
+<tr class="row-odd"><td>131</td>
+<td>AM62X_DEV_MCU_RTI0</td>
+</tr>
+<tr class="row-even"><td>132</td>
+<td>AM62X_DEV_WKUP_RTI0</td>
+</tr>
+<tr class="row-odd"><td>140</td>
+<td>AM62X_DEV_WKUP_PSC0</td>
+</tr>
+<tr class="row-even"><td>147</td>
+<td>AM62X_DEV_MCU_MCSPI0</td>
+</tr>
+<tr class="row-odd"><td>148</td>
+<td>AM62X_DEV_MCU_MCSPI1</td>
+</tr>
+<tr class="row-even"><td>149</td>
+<td>AM62X_DEV_MCU_UART0</td>
+</tr>
+<tr class="row-odd"><td>188</td>
+<td>AM62X_DEV_MCU_MCAN0</td>
+</tr>
+<tr class="row-even"><td>189</td>
+<td>AM62X_DEV_MCU_MCAN1</td>
+</tr>
+<tr class="row-odd"><td>193</td>
+<td>AM62X_DEV_CLK_32K_RC_SEL_DEV_VD</td>
+</tr>
+<tr class="row-even"><td>227</td>
+<td>AM62X_DEV_MCU_OBSCLK_MUX_SEL_DEV_VD</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="enumeration-devices-accessible-in-devgrp-main">
+<span id="soc-doc-am62x-public-devgrp-desc-main-ip-list"></span><h2>Enumeration Devices accessible in devgrp “MAIN”<a class="headerlink" href="#enumeration-devices-accessible-in-devgrp-main" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="73%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Device ID</th>
+<th class="head">Device Name</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>AM62X_DEV_CMP_EVENT_INTROUTER0</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>AM62X_DEV_DBGSUSPENDROUTER0</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>AM62X_DEV_MAIN_GPIOMUX_INTROUTER0</td>
+</tr>
+<tr class="row-odd"><td>6</td>
+<td>AM62X_DEV_TIMESYNC_EVENT_ROUTER0</td>
+</tr>
+<tr class="row-even"><td>8</td>
+<td>AM62X_DEV_MCU_M4FSS0_CBASS_0</td>
+</tr>
+<tr class="row-odd"><td>9</td>
+<td>AM62X_DEV_MCU_M4FSS0_CORE0</td>
+</tr>
+<tr class="row-even"><td>13</td>
+<td>AM62X_DEV_CPSW0</td>
+</tr>
+<tr class="row-odd"><td>14</td>
+<td>AM62X_DEV_CPT2_AGGR0</td>
+</tr>
+<tr class="row-even"><td>15</td>
+<td>AM62X_DEV_STM0</td>
+</tr>
+<tr class="row-odd"><td>16</td>
+<td>AM62X_DEV_DCC0</td>
+</tr>
+<tr class="row-even"><td>17</td>
+<td>AM62X_DEV_DCC1</td>
+</tr>
+<tr class="row-odd"><td>18</td>
+<td>AM62X_DEV_DCC2</td>
+</tr>
+<tr class="row-even"><td>19</td>
+<td>AM62X_DEV_DCC3</td>
+</tr>
+<tr class="row-odd"><td>20</td>
+<td>AM62X_DEV_DCC4</td>
+</tr>
+<tr class="row-even"><td>21</td>
+<td>AM62X_DEV_DCC5</td>
+</tr>
+<tr class="row-odd"><td>22</td>
+<td>AM62X_DEV_SMS0</td>
+</tr>
+<tr class="row-even"><td>24</td>
+<td>AM62X_DEV_DEBUGSS_WRAP0</td>
+</tr>
+<tr class="row-odd"><td>25</td>
+<td>AM62X_DEV_DMASS0</td>
+</tr>
+<tr class="row-even"><td>26</td>
+<td>AM62X_DEV_DMASS0_BCDMA_0</td>
+</tr>
+<tr class="row-odd"><td>27</td>
+<td>AM62X_DEV_DMASS0_CBASS_0</td>
+</tr>
+<tr class="row-even"><td>28</td>
+<td>AM62X_DEV_DMASS0_INTAGGR_0</td>
+</tr>
+<tr class="row-odd"><td>29</td>
+<td>AM62X_DEV_DMASS0_IPCSS_0</td>
+</tr>
+<tr class="row-even"><td>30</td>
+<td>AM62X_DEV_DMASS0_PKTDMA_0</td>
+</tr>
+<tr class="row-odd"><td>36</td>
+<td>AM62X_DEV_TIMER0</td>
+</tr>
+<tr class="row-even"><td>37</td>
+<td>AM62X_DEV_TIMER1</td>
+</tr>
+<tr class="row-odd"><td>38</td>
+<td>AM62X_DEV_TIMER2</td>
+</tr>
+<tr class="row-even"><td>39</td>
+<td>AM62X_DEV_TIMER3</td>
+</tr>
+<tr class="row-odd"><td>40</td>
+<td>AM62X_DEV_TIMER4</td>
+</tr>
+<tr class="row-even"><td>41</td>
+<td>AM62X_DEV_TIMER5</td>
+</tr>
+<tr class="row-odd"><td>42</td>
+<td>AM62X_DEV_TIMER6</td>
+</tr>
+<tr class="row-even"><td>43</td>
+<td>AM62X_DEV_TIMER7</td>
+</tr>
+<tr class="row-odd"><td>51</td>
+<td>AM62X_DEV_ECAP0</td>
+</tr>
+<tr class="row-even"><td>52</td>
+<td>AM62X_DEV_ECAP1</td>
+</tr>
+<tr class="row-odd"><td>53</td>
+<td>AM62X_DEV_ECAP2</td>
+</tr>
+<tr class="row-even"><td>54</td>
+<td>AM62X_DEV_ELM0</td>
+</tr>
+<tr class="row-odd"><td>55</td>
+<td>AM62X_DEV_EMIF_DATA_ISO_VD</td>
+</tr>
+<tr class="row-even"><td>57</td>
+<td>AM62X_DEV_MMCSD0</td>
+</tr>
+<tr class="row-odd"><td>58</td>
+<td>AM62X_DEV_MMCSD1</td>
+</tr>
+<tr class="row-even"><td>59</td>
+<td>AM62X_DEV_EQEP0</td>
+</tr>
+<tr class="row-odd"><td>60</td>
+<td>AM62X_DEV_EQEP1</td>
+</tr>
+<tr class="row-even"><td>61</td>
+<td>AM62X_DEV_WKUP_GTC0</td>
+</tr>
+<tr class="row-odd"><td>62</td>
+<td>AM62X_DEV_EQEP2</td>
+</tr>
+<tr class="row-even"><td>63</td>
+<td>AM62X_DEV_ESM0</td>
+</tr>
+<tr class="row-odd"><td>73</td>
+<td>AM62X_DEV_FSS0</td>
+</tr>
+<tr class="row-even"><td>74</td>
+<td>AM62X_DEV_FSS0_FSAS_0</td>
+</tr>
+<tr class="row-odd"><td>75</td>
+<td>AM62X_DEV_FSS0_OSPI_0</td>
+</tr>
+<tr class="row-even"><td>76</td>
+<td>AM62X_DEV_GICSS0</td>
+</tr>
+<tr class="row-odd"><td>77</td>
+<td>AM62X_DEV_GPIO0</td>
+</tr>
+<tr class="row-even"><td>78</td>
+<td>AM62X_DEV_GPIO1</td>
+</tr>
+<tr class="row-odd"><td>80</td>
+<td>AM62X_DEV_GPMC0</td>
+</tr>
+<tr class="row-even"><td>81</td>
+<td>AM62X_DEV_ICSSM0</td>
+</tr>
+<tr class="row-odd"><td>83</td>
+<td>AM62X_DEV_LED0</td>
+</tr>
+<tr class="row-even"><td>85</td>
+<td>AM62X_DEV_DDPA0</td>
+</tr>
+<tr class="row-odd"><td>86</td>
+<td>AM62X_DEV_EPWM0</td>
+</tr>
+<tr class="row-even"><td>87</td>
+<td>AM62X_DEV_EPWM1</td>
+</tr>
+<tr class="row-odd"><td>88</td>
+<td>AM62X_DEV_EPWM2</td>
+</tr>
+<tr class="row-even"><td>95</td>
+<td>AM62X_DEV_WKUP_VTM0</td>
+</tr>
+<tr class="row-odd"><td>96</td>
+<td>AM62X_DEV_MAILBOX0</td>
+</tr>
+<tr class="row-even"><td>97</td>
+<td>AM62X_DEV_MAIN2MCU_VD</td>
+</tr>
+<tr class="row-odd"><td>98</td>
+<td>AM62X_DEV_MCAN0</td>
+</tr>
+<tr class="row-even"><td>101</td>
+<td>AM62X_DEV_MCU2MAIN_VD</td>
+</tr>
+<tr class="row-odd"><td>102</td>
+<td>AM62X_DEV_I2C0</td>
+</tr>
+<tr class="row-even"><td>103</td>
+<td>AM62X_DEV_I2C1</td>
+</tr>
+<tr class="row-odd"><td>104</td>
+<td>AM62X_DEV_I2C2</td>
+</tr>
+<tr class="row-even"><td>105</td>
+<td>AM62X_DEV_I2C3</td>
+</tr>
+<tr class="row-odd"><td>116</td>
+<td>AM62X_DEV_MCRC64_0</td>
+</tr>
+<tr class="row-even"><td>117</td>
+<td>AM62X_DEV_WKUP_RTCSS0</td>
+</tr>
+<tr class="row-odd"><td>118</td>
+<td>AM62X_DEV_WKUP_R5FSS0_SS0</td>
+</tr>
+<tr class="row-even"><td>119</td>
+<td>AM62X_DEV_WKUP_R5FSS0</td>
+</tr>
+<tr class="row-odd"><td>121</td>
+<td>AM62X_DEV_WKUP_R5FSS0_CORE0</td>
+</tr>
+<tr class="row-even"><td>125</td>
+<td>AM62X_DEV_RTI0</td>
+</tr>
+<tr class="row-odd"><td>126</td>
+<td>AM62X_DEV_RTI1</td>
+</tr>
+<tr class="row-even"><td>127</td>
+<td>AM62X_DEV_RTI2</td>
+</tr>
+<tr class="row-odd"><td>128</td>
+<td>AM62X_DEV_RTI3</td>
+</tr>
+<tr class="row-even"><td>130</td>
+<td>AM62X_DEV_RTI15</td>
+</tr>
+<tr class="row-odd"><td>134</td>
+<td>AM62X_DEV_COMPUTE_CLUSTER0</td>
+</tr>
+<tr class="row-even"><td>135</td>
+<td>AM62X_DEV_A53SS0_CORE_0</td>
+</tr>
+<tr class="row-odd"><td>136</td>
+<td>AM62X_DEV_A53SS0_CORE_1</td>
+</tr>
+<tr class="row-even"><td>137</td>
+<td>AM62X_DEV_A53SS0_CORE_2</td>
+</tr>
+<tr class="row-odd"><td>138</td>
+<td>AM62X_DEV_A53SS0_CORE_3</td>
+</tr>
+<tr class="row-even"><td>139</td>
+<td>AM62X_DEV_PSCSS0</td>
+</tr>
+<tr class="row-odd"><td>141</td>
+<td>AM62X_DEV_MCSPI0</td>
+</tr>
+<tr class="row-even"><td>142</td>
+<td>AM62X_DEV_MCSPI1</td>
+</tr>
+<tr class="row-odd"><td>143</td>
+<td>AM62X_DEV_MCSPI2</td>
+</tr>
+<tr class="row-even"><td>146</td>
+<td>AM62X_DEV_UART0</td>
+</tr>
+<tr class="row-odd"><td>150</td>
+<td>AM62X_DEV_SPINLOCK0</td>
+</tr>
+<tr class="row-even"><td>152</td>
+<td>AM62X_DEV_UART1</td>
+</tr>
+<tr class="row-odd"><td>153</td>
+<td>AM62X_DEV_UART2</td>
+</tr>
+<tr class="row-even"><td>154</td>
+<td>AM62X_DEV_UART3</td>
+</tr>
+<tr class="row-odd"><td>155</td>
+<td>AM62X_DEV_UART4</td>
+</tr>
+<tr class="row-even"><td>156</td>
+<td>AM62X_DEV_UART5</td>
+</tr>
+<tr class="row-odd"><td>157</td>
+<td>AM62X_DEV_BOARD0</td>
+</tr>
+<tr class="row-even"><td>158</td>
+<td>AM62X_DEV_UART6</td>
+</tr>
+<tr class="row-odd"><td>161</td>
+<td>AM62X_DEV_USB0</td>
+</tr>
+<tr class="row-even"><td>162</td>
+<td>AM62X_DEV_USB1</td>
+</tr>
+<tr class="row-odd"><td>163</td>
+<td>AM62X_DEV_PBIST0</td>
+</tr>
+<tr class="row-even"><td>164</td>
+<td>AM62X_DEV_PBIST1</td>
+</tr>
+<tr class="row-odd"><td>165</td>
+<td>AM62X_DEV_WKUP_PBIST0</td>
+</tr>
+<tr class="row-even"><td>166</td>
+<td>AM62X_DEV_A53SS0</td>
+</tr>
+<tr class="row-odd"><td>167</td>
+<td>AM62X_DEV_COMPUTE_CLUSTER0_PBIST_0</td>
+</tr>
+<tr class="row-even"><td>168</td>
+<td>AM62X_DEV_PSC0_FW_0</td>
+</tr>
+<tr class="row-odd"><td>169</td>
+<td>AM62X_DEV_PSC0</td>
+</tr>
+<tr class="row-even"><td>170</td>
+<td>AM62X_DEV_DDR16SS0</td>
+</tr>
+<tr class="row-odd"><td>171</td>
+<td>AM62X_DEV_DEBUGSS0</td>
+</tr>
+<tr class="row-even"><td>172</td>
+<td>AM62X_DEV_A53_RS_BW_LIMITER0</td>
+</tr>
+<tr class="row-odd"><td>173</td>
+<td>AM62X_DEV_A53_WS_BW_LIMITER1</td>
+</tr>
+<tr class="row-even"><td>174</td>
+<td>AM62X_DEV_GPU_RS_BW_LIMITER2</td>
+</tr>
+<tr class="row-odd"><td>175</td>
+<td>AM62X_DEV_GPU_WS_BW_LIMITER3</td>
+</tr>
+<tr class="row-even"><td>176</td>
+<td>AM62X_DEV_WKUP_DEEPSLEEP_SOURCES0</td>
+</tr>
+<tr class="row-odd"><td>177</td>
+<td>AM62X_DEV_EMIF_CFG_ISO_VD</td>
+</tr>
+<tr class="row-even"><td>178</td>
+<td>AM62X_DEV_MAIN_USB0_ISO_VD</td>
+</tr>
+<tr class="row-odd"><td>179</td>
+<td>AM62X_DEV_MAIN_USB1_ISO_VD</td>
+</tr>
+<tr class="row-even"><td>180</td>
+<td>AM62X_DEV_MCU_MCU_16FF0</td>
+</tr>
+<tr class="row-odd"><td>181</td>
+<td>AM62X_DEV_CPT2_AGGR1</td>
+</tr>
+<tr class="row-even"><td>182</td>
+<td>AM62X_DEV_CSI_RX_IF0</td>
+</tr>
+<tr class="row-odd"><td>183</td>
+<td>AM62X_DEV_DCC6</td>
+</tr>
+<tr class="row-even"><td>184</td>
+<td>AM62X_DEV_MMCSD2</td>
+</tr>
+<tr class="row-odd"><td>185</td>
+<td>AM62X_DEV_DPHY_RX0</td>
+</tr>
+<tr class="row-even"><td>186</td>
+<td>AM62X_DEV_DSS0</td>
+</tr>
+<tr class="row-odd"><td>187</td>
+<td>AM62X_DEV_GPU0</td>
+</tr>
+<tr class="row-even"><td>190</td>
+<td>AM62X_DEV_MCASP0</td>
+</tr>
+<tr class="row-odd"><td>191</td>
+<td>AM62X_DEV_MCASP1</td>
+</tr>
+<tr class="row-even"><td>192</td>
+<td>AM62X_DEV_MCASP2</td>
+</tr>
+<tr class="row-odd"><td>225</td>
+<td>AM62X_DEV_HSM0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../am62ax/hosts.html" class="btn btn-neutral float-right" title="AM62AX Host Descriptions" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="firewalls.html" class="btn btn-neutral" title="AM62X Firewall Descriptions" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyright 2016-2024</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'09.02.04',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+
+        $('body').on("mousewheel", function () {
+            // Remove default behavior
+            event.preventDefault();
+            // Scroll without smoothing
+            var wheelDelta = event.wheelDelta;
+            var currentScrollPosition = window.pageYOffset;
+            window.scrollTo(0, currentScrollPosition - wheelDelta);
+        });
+      });
+  </script>
+   
+
+</body>
+</html>

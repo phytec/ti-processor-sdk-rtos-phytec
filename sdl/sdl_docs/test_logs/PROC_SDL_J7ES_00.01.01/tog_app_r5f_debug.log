@@ -1,0 +1,26 @@
+SBL Revision: 01.00.10.01 (Dec  1 2021 - 08:15:07)
+TIFS  ver: 21.9.1--v2021.09a (Terrific Lla
+
+TOG Sample Example 
+
+ Demo for minimum value timeout 
+
+ECC_Test_init: Init MCU ESM complete 
+
+SDL_TOG_setIntrEnable complete 
+
+SDL_TOG_init.timeout complete 
+
+SDL_TOG_start complete 
+ 
+  TOG_eventHandler  
+
+  ESM Call back function called : instType 0x2, intType 0x1, grpChannel 0x2, index 0xd, intSrc 0x4d 
+  Take action 
+
+SDL_TOG_stop complete 
+tog_main.c:182:tog_example_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored 
+OK

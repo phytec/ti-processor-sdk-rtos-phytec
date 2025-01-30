@@ -1,0 +1,133 @@
+ ESM Test Application
+
+ Running all sdr test commands supported
+ inside ecc testcase
+
+ ESM inject: test starting for Esm instance 3
+  ESM ECC Call back function called : instType 0x3, intType 0x1, grpChannel 0x3, index 0x1, intSrc 0x61
+  This is ECC-registered callback  Take action
+
+  ESM ECC Call back function called : instType 0x3, intType 0x1, grpChannel 0x3, index 0x1, intSrc 0x61
+  This is application-registered callback
+  Take action
+
+ ESM inject test for Esm instance 3 Done
+ All tests have passed.
+
+ Running all sdr test commands supported
+ESM_ECC_Example_init: Init MAIN ESM complete
+
+ ESM inject: test starting for Esm instance 1
+  ESM Call back function called : instType 0x1, intType 0x1, grpChannel 0x0, index 0x9, intSrc 0x9
+  Take action
+
+ ESM inject test for Esm instance 1 Done
+ESM_ECC_Example_init: Init MAIN ESM complete
+
+ ESM inject: test starting for Esm instance 1
+  ESM Call back function called : instType 0x1, intType 0x2, grpChannel 0x0, index 0xa, intSrc 0xa
+  Take action
+
+ ESM inject test for Esm instance 1 Done
+ESM_ECC_Example_init: Init MAIN ESM complete
+
+ ESM inject: test starting for Esm instance 2
+  ESM Call back function called : instType 0x2, intType 0x1, grpChannel 0x1, index 0x4, intSrc 0x24
+  Take action
+
+ ESM inject test for Esm instance 2 Done
+ESM_ECC_Example_init: Init MAIN ESM complete
+
+ ESM inject: test starting for Esm instance 2
+  ESM Call back function called : instType 0x2, intType 0x2, grpChannel 0x1, index 0x0, intSrc 0x20
+  Take action
+
+ ESM inject test for Esm instance 2 Done
+ESM_ECC_Example_init: Init MAIN ESM complete
+
+ ESM inject: test starting for Esm instance 2
+  ESM Call back function called : instType 0x2, intType 0x1, grpChannel 0x3, index 0x0, intSrc 0x60
+  Take action
+
+ ESM inject test for Esm instance 2 Done
+ESM_ECC_Example_init: Init MAIN ESM complete
+
+ ESM inject: test starting for Esm instance 3
+  ESM ECC Call back function called : instType 0x3, intType 0x1, grpChannel 0x3, index 0x0, intSrc 0x60
+  This is ECC-registered callback  Take action
+
+  ESM Call back function called : instType 0x3, intType 0x1, grpChannel 0x3, index 0x0, intSrc 0x60
+  Take action
+
+ ESM inject test for Esm instance 3 Done
+ESM_ECC_Example_init: Init MAIN ESM complete
+
+ ESM inject: test starting for Esm instance 3
+  ESM ECC Call back function called : instType 0x3, intType 0x2, grpChannel 0x3, index 0x1, intSrc 0x61
+  This is ECC-registered callback  Take action
+
+  ESM Call back function called : instType 0x3, intType 0x2, grpChannel 0x3, index 0x1, intSrc 0x61
+  Take action
+
+ ESM inject test for Esm instance 3 Done
+ESM_ECC_Example_init: Init MAIN ESM complete
+
+ ESM inject: test starting for Esm instance 3
+ ESM inject test for Esm instance 3 Done
+  ESM Call back function called : instType 0x1, intType 0x2, grpChannel 0x1, index 0x8, intSrc 0x28
+  Take action
+
+ ESM inject: test starting for Esm instance 1
+  ESM Call back function called : instType 0x1, intType 0x2, grpChannel 0x1, index 0x8, intSrc 0x28
+  Take action
+
+ ESM inject test for Esm instance 1 Done
+ All tests have passed.
+
+ Running all sdr test commands supported
+ inside ccm testcase
+
+ ESM inject: test starting for Esm instance 2
+  ESM CCM Call back function called : instType 0x2, intType 0x2, grpChannel 0x1, index 0x0, intSrc 0x20
+  This is CCM-registered callback  Take action
+
+  ESM CCM Call back function called : instType 0x2, intType 0x2, grpChannel 0x1, index 0x0, intSrc 0x20
+  This is application-registered callback
+  Take action
+
+ ESM inject test for Esm instance 2 Done
+ All tests have passed.
+
+ Running all sdr test commands supported
+ESM_ECC_Example_init: Init MAIN ESM complete
+
+  ESM Call back function called : instType 0x1, intType 0x3, grpChannel 0x0, index 0x0, intSrc 0x0
+  Take action
+
+ESM_ECC_Example_init: Init MAIN ESM complete
+
+  ESM Call back function called : instType 0x2, intType 0x3, grpChannel 0x20, index 0x0, intSrc 0x0
+  Take action
+
+ESM_ECC_Example_init: Init MAIN ESM complete
+
+  ESM Call back function called : instType 0x2, intType 0x3, grpChannel 0x20, index 0x0, intSrc 0x0
+  Take action
+
+ESM_ECC_Example_init: Init MAIN ESM complete
+
+  ESM Call back function called : instType 0x3, intType 0x3, grpChannel 0x0, index 0x0, intSrc 0x0
+  Take action
+
+ All tests have passed.
+Test Name: ecc cb test  PASSED
+Test Name: callback test  PASSED
+Test Name: ccm cb test  PASSED
+Test Name: sdl config test  PASSED
+
+ All tests have passed.
+esm_func_test/esm_test_main.c:301:test_sdl_esm_baremetal_test_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored
+OK

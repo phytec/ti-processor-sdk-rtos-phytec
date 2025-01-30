@@ -1,0 +1,84 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1"
+ width="900px" height="190px"
+ viewBox="0 0 900 190"
+ xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges"
+ stroke-width="1" text-rendering="geometricPrecision">
+<polygon fill="white" points="209,7 239,7 239,16 209,16"/>
+<text x="225" y="16" textLength="29" font-family="Helvetica" font-size="12" fill="black" text-anchor="middle">
+
+host0
+</text>
+<polygon fill="white" points="659,7 689,7 689,16 659,16"/>
+<text x="675" y="16" textLength="29" font-family="Helvetica" font-size="12" fill="black" text-anchor="middle">
+
+dmsc
+</text>
+<line x1="225" y1="22" x2="225" y2="50" stroke="black"/>
+<line x1="675" y1="22" x2="675" y2="50" stroke="black"/>
+<line x1="225" y1="33" x2="675" y2="33" stroke="black"/>
+<line x1="675" y1="33" x2="665" y2="39" stroke="black"/>
+<polygon fill="white" points="359,23 540,23 540,32 359,32"/>
+<text x="360" y="32" textLength="179" font-family="Helvetica" font-size="12" fill="black">
+TISCI_MSG_SA2UL_SET_DKEK
+</text>
+<line x1="225" y1="50" x2="225" y2="78" stroke="black"/>
+<line x1="675" y1="50" x2="675" y2="78" stroke="black"/>
+<polygon fill="white" points="458,50 892,50 892,72 458,72"/>
+<line x1="458" y1="50" x2="892" y2="50" stroke="black"/>
+<line x1="458" y1="72" x2="892" y2="72" stroke="black"/>
+<line x1="458" y1="50" x2="458" y2="72" stroke="black"/>
+<line x1="892" y1="50" x2="892" y2="72" stroke="black"/>
+<polygon fill="white" points="598,57 751,57 751,66 598,66"/>
+<text x="599" y="66" textLength="151" font-family="Helvetica" font-size="12" fill="black">
+Check if host can use DKEK
+</text>
+<line x1="225" y1="78" x2="225" y2="106" stroke="black"/>
+<line x1="675" y1="78" x2="675" y2="106" stroke="black"/>
+<polygon fill="white" points="458,78 892,78 892,100 458,100"/>
+<line x1="458" y1="78" x2="892" y2="78" stroke="black"/>
+<line x1="458" y1="100" x2="892" y2="100" stroke="black"/>
+<line x1="458" y1="78" x2="458" y2="100" stroke="black"/>
+<line x1="892" y1="78" x2="892" y2="100" stroke="black"/>
+<polygon fill="white" points="534,79 815,79 815,88 534,88"/>
+<text x="535" y="88" textLength="279" font-family="Helvetica" font-size="12" fill="black">
+Derive DKEK with label and context supplied by host
+</text>
+<polygon fill="white" points="580,90 769,90 769,99 580,99"/>
+<text x="581" y="99" textLength="187" font-family="Helvetica" font-size="12" fill="black">
+Append host Id internally to context
+</text>
+<line x1="225" y1="106" x2="225" y2="134" stroke="black"/>
+<line x1="675" y1="106" x2="675" y2="134" stroke="black"/>
+<polygon fill="white" points="458,106 892,106 892,128 458,128"/>
+<line x1="458" y1="106" x2="892" y2="106" stroke="black"/>
+<line x1="458" y1="128" x2="892" y2="128" stroke="black"/>
+<line x1="458" y1="106" x2="458" y2="128" stroke="black"/>
+<line x1="892" y1="106" x2="892" y2="128" stroke="black"/>
+<polygon fill="white" points="534,113 815,113 815,122 534,122"/>
+<text x="535" y="122" textLength="279" font-family="Helvetica" font-size="12" fill="black">
+Program host privid into SA2UL DKEK privid register
+</text>
+<line x1="225" y1="134" x2="225" y2="162" stroke="black"/>
+<line x1="675" y1="134" x2="675" y2="162" stroke="black"/>
+<polygon fill="white" points="458,134 892,134 892,156 458,156"/>
+<line x1="458" y1="134" x2="892" y2="134" stroke="black"/>
+<line x1="458" y1="156" x2="892" y2="156" stroke="black"/>
+<line x1="458" y1="134" x2="458" y2="156" stroke="black"/>
+<line x1="892" y1="134" x2="892" y2="156" stroke="black"/>
+<polygon fill="white" points="558,141 791,141 791,150 558,150"/>
+<text x="559" y="150" textLength="231" font-family="Helvetica" font-size="12" fill="black">
+Program DKEK into SA2UL DKEK registers
+</text>
+<line x1="225" y1="162" x2="225" y2="190" stroke="black"/>
+<line x1="675" y1="162" x2="675" y2="190" stroke="black"/>
+<line x1="675" y1="173" x2="225" y2="173" stroke="black"/>
+<line x1="225" y1="173" x2="235" y2="179" stroke="black"/>
+<polygon fill="white" points="436,163 463,163 463,172 436,172"/>
+<text x="437" y="172" textLength="25" font-family="Helvetica" font-size="12" fill="black">
+ACK
+</text>
+<line x1="225" y1="184" x2="225" y2="190" stroke="black"/>
+<line x1="675" y1="184" x2="675" y2="190" stroke="black"/>
+</svg>

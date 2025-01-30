@@ -1,0 +1,15 @@
+ ESM inmcuClkFreq 1000000000
+
+ ESM Example Application
+
+VTM_ESM_init: Init WKUP ESM complete 
+
+TIMER_ESM_init: Init MCU ESM complete 
+
+ESM example init complete
+  Any clear of MCU_SAFETY_ERRORn pin will first wait 10 usecs
+  Minimum Time Interval is 99 usecs
+ESM timer initialization complete
+
+Starting Test Case 0 
+case 0 sucess

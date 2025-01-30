@@ -1,0 +1,121 @@
+OSAL
+====
+
+Introduction
+------------
+
+The SDL requires the application to provide an OSAL implementation for various functionalities in order to keep SDL as OS-agnostic.
+Primarily, the SDL requires OSAL implementations for interrupt registration and enable/disable, and also for a delay mechanism needed for POK programming.
+
+The following APIs shall be provided by the application by calling SDL_OSAL_init:
+
+* SDL_OSAL_init()
+* SDL_OSAL_enableInterrupt()
+* SDL_OSAL_disableInterrupt()
+* SDL_OSAL_registerInterrupt()
+* SDL_OSAL_deregisterInterrupt()
+* SDL_OSAL_globalDisableInterrupts()
+* SDL_OSAL_globalRestoreInterrupts()
+* SDL_OSAL_printf()
+* SDL_OSAL_delay()
+
+Additionally, the following optional APIs may be provided
+
+* SDL_OSAL_printf();
+
+Example Usage
+-------------
+
+The SDL provides a sample implementation of these APIs as part of the SDL test suite. The sample implementation re-uses PDK OSAL APIs from the SDK in order to provide the services.
+This is verified with the following Operating Systems:
+
+* Non-OS (Baremetal)
+
+The existing baremetal sample OSAL interface can be used, or the application may implement it's own. To use the existing sample interface:
+
+1. Add the source file osal_interface.c (located in test/osal/src/) to the application's build
+2. Include the header osal_interface.h (located in test/osal/) to the application's source file
+3. Call the example's OSAL initializtion function SDL_TEST_osalInit() to initialize the OSAL. Do this before calling any SDL APIs.
+
+Alternatively, the application may implement it's own OSAL. An example of how to do this is shown below
+
+Define the OSAL APIs
+
+    .. code:: bash
+        
+        pSDL_OSAL_hwipHandle SDL_TEST_registerInterrupt(SDL_OSAL_hwipParams *pParams)
+        {
+            HwiP_Params hwipParams;
+            HwiP_Params_init(&hwipParams);
+        
+            hwipParams.arg = pParams->callbackArg;
+        
+            return HwiP_create(pParams->intNum, pParams->callback, &hwipParams);
+        }
+        
+        int32_t SDL_TEST_enableInterrupt(uint32_t intNum)
+        {
+            HwiP_enableInterrupt(intNum);
+            return SDL_PASS;
+        }
+        
+        int32_t SDL_TEST_disableInterrupt(uint32_t intNum)
+        {
+            HwiP_disableInterrupt(intNum);
+            return SDL_PASS;
+        }
+        
+        int32_t SDL_TEST_globalDisableInterrupts(uintptr_t *key)
+        {
+            *key = HwiP_disable();
+            return SDL_PASS;
+        }
+        
+        int32_t SDL_TEST_globalRestoreInterrupts(uintptr_t key)
+        {
+            HwiP_restore(key);
+            return SDL_PASS;
+        }
+
+Initalize the OSAL Interface
+
+    .. code:: bash
+        
+        SDL_OSAL_Interface osal_interface =
+        {
+            .enableInterrupt = (pSDL_OSAL_interruptFunction) SDL_TEST_enableInterrupt,
+            .disableInterrupt = (pSDL_OSAL_interruptFunction) SDL_TEST_disableInterrupt,
+            .registerInterrupt = (pSDL_OSAL_registerFunction) SDL_TEST_registerInterrupt,
+            .deregisterInterrupt = (pSDL_OSAL_deregisterFunction) HwiP_delete,
+            .globalDisableInterrupts = (pSDL_OSAL_globalDisableInterruptsFunction) SDL_TEST_globalDisableInterrupts,
+            .globalRestoreInterrupts = (pSDL_OSAL_globalRestoreInterruptsFunction) SDL_TEST_globalRestoreInterrupts,
+            .printFxn = (pSDL_OSAL_printFunction) UART_printf,
+            .delay = (pSDL_OSAL_delayFunction) Osal_delay,
+        };
+        
+        int32_t main(void)
+        {
+            SDL_ErrType_t ret = SDL_PASS;
+        
+            ret = SDL_OSAL_init(&osal_interface);
+        
+            return ret;
+        }
+
+
+
+Examples
+--------
+
+Test apps that are meant for verifying the functionality of the module are also provided.
+
++---------------------+--------------------------------------------------------+--------------------------------------+------------------------------------------+
+| Test App Name       | Description                                            | Location                             | Build Command                            |
++=====================+========================================================+======================================+==========================================+
+| osal_app            | - Initialized the OSAL and tests the interfaces        | [sdl_install_dir]/test/osal          | make osal_test_app PROFILE=release       |
++---------------------+--------------------------------------------------------+--------------------------------------+------------------------------------------+
+
+API
+---
+
+|__OSAL_API_LNK__|

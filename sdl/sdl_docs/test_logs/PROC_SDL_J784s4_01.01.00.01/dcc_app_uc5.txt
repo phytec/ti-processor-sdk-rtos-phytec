@@ -1,0 +1,52 @@
+Welcome to minicom 2.7.1                                                                                                                    
+                                                                                                                                            
+OPTIONS: I18n                                                                                                                               
+Compiled on Dec 23 2019, 02:06:26.                                                                                                          
+Port /dev/ttyUSB1, 17:17:57                                                                                                                 
+                                                                                                                                            
+Press CTRL-A Z for help on special keys                                                                                                     
+                                                                                                                                            
+01000000011a00006a3761657000000000000000475020200008010000080100C1.00.10.01 (Jun 29 2023 - 13:38:40)                                        
+Waiting for tifs.bin ...                                                                                                                    
+CCCCCCCCCTIFS  ver: 9.0.6--v09.00.06 (Kool Koala)                                                                                           
+Waiting for multicore app ...                                                                                                               
+CCCCCCCxample Test Application                                                                                                              
+                                                                                                                                            
+Interrupt is generated to ESM                                                                                                               
+    ESM Call back function called : instType 0x3, intType 0x1, grpChannel 0x1, index 0x5, intSrc 0x25                                       
+    Take action                                                                                                                             
+                                                                                                                                            
+                                                                                                                                            
+Interrupt is generated to ESM                                                                                                               
+    ESM Call back function called : instType 0x3, intType 0x1, grpChannel 0x9, index 0x2, intSrc 0x122                                      
+    Take action                                                                                                                             
+                                                                                                                                            
+                                                                                                                                            
+Interrupt is generated to ESM                                                                                                               
+    ESM Call back function called : instType 0x3, intType 0x1, grpChannel 0xc, index 0xf, intSrc 0x18f                                      
+    Take action                                                                                                                             
+                                                                                                                                            
+                                                                                                                                            
+DCC_Test_init: Init MCU ESM complete                                                                                                        
+                                                                                                                                            
+                                                                                                                                            
+INSTANCE: DCC0                                                                                                                              
+Source clock: RC OSC                                                                                                                        
+Test clock: MCAN                                                                                                                            
+                                                                                                                                            
+                                                                                                                                            
+SDL DCC EXAMPLE TEST: Start UC-5                                                                                                            
+SDL DCC EXAMPLE TEST: Seed values calculation done.                                                                                         
+SDL DCC EXAMPLE TEST: Changing the clock ratios                                                                                             
+SDL DCC EXAMPLE TEST: Seed values calculation done.                                                                                         
+SDL DCC EXAMPLE TEST: Enabling DCC and waiting for Error interrupt                                                                          
+SDL DCC EXAMP                                                                                                                               
+Interrupt is generated to ESM                                                                                                               
+    ESM Call back function called : instType 0x3, intType 0x1, grpChannel 0x3, index 0x8, intSrc 0x68                                       
+    Take action                                                                                                                             
+                                                                                                                                            
+LE TEST: DCC Generated Error interrupt                                                                                                      
+SDL DCC EXAMPLE TEST: Indicating clock drift/change                                                                                         
+Test Name: DCC EXAMPLE TEST  PASSED                                                                                                         
+
+ All tests have passed.  

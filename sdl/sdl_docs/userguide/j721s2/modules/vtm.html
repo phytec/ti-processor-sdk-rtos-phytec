@@ -1,0 +1,416 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>2.5. VTM : Voltage and Thermal Management &mdash; Software Diagnostics Library (SDL) - J721S2 User Guide</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Software Diagnostics Library (SDL) - J721S2 User Guide" href="../index.html"/>
+        <link rel="up" title="2. Modules" href="../family_cfg/j721s2/index_modules_j721s2.html"/>
+        <link rel="next" title="2.6. RTI : RTI/WWDT Windowed Watchdog Timer" href="rti.html"/>
+        <link rel="prev" title="2.4. LBIST : Logic Built-In Self-Test" href="lbist.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="../_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index_j721s2.html" class="icon icon-home"> Software Diagnostics Library (SDL) - J721S2 User Guide
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                01_03_00
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/j721s2/index_release_notes_j721s2.html">1. Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">2. Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../family_cfg/j721s2/index_modules_j721s2.html">2. Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="esm.html">2.1. ESM : Error Signalling Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ecc.html">2.2. ECC : Error Correcting Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pbist.html">2.3. PBIST : Memory Built-In Self-Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lbist.html">2.4. LBIST : Logic Built-In Self-Test</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.5. VTM : Voltage and Thermal Management</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">2.5.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-usage">2.5.2. Example Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#examples">2.5.3. Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#api">2.5.4. API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rti.html">2.6. RTI : RTI/WWDT Windowed Watchdog Timer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pok.html">2.7. POK: Power OK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tog.html">2.8. TOG : Time-Out Gasket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mtog.html">2.9. MTOG : Master Time-Out Gasket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dcc.html">2.10. DCC : Dual Clock Comparator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mcrc.html">2.11. MCRC : Cyclic Redundancy Check</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r5fccm.html">2.12. R5F CCM: CPU Compare Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="osal.html">2.13. OSAL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r5.html">2.14. R5 Core Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rom_checksum.html">2.15. ROM_CHECKSUM: ROM Checksum Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/j721s2/index_examples_j721s2.html">3. Safety Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diagnostic_mappings.html">3. Diagnostic Mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/j721s2/index_application_notes_j721s2.html">4. Developer Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index_j721s2.html">Software Diagnostics Library (SDL) - J721S2 User Guide</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index_j721s2.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../family_cfg/j721s2/index_modules_j721s2.html"><span class="section-number">2. </span>Modules</a> &raquo;</li>
+      
+    <li><span class="section-number">2.5. </span>VTM : Voltage and Thermal Management</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="vtm-voltage-and-thermal-management">
+<h1><span class="section-number">2.5. </span>VTM : Voltage and Thermal Management<a class="headerlink" href="#vtm-voltage-and-thermal-management" title="Permalink to this headline">¶</a></h1>
+<section id="introduction">
+<h2><span class="section-number">2.5.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>The Voltage and Thermal Management (VTM) controls the temperature monitors in the die. The VTM provides interrupt and event generation for overtemperature through the Error Signaling Module (ESM). It supports 3 different alerts:</p>
+<ul class="simple">
+<li><p>an early alert so that firmware/software can start doing high-temperature thermal management,</p></li>
+<li><p>a follow-up interrupt for reporting to firmware/software that the temperature has dropped to a safe level,</p></li>
+<li><p>and a late interrupt whose high level can be used to trigger a hardware-voltage domain reset</p></li>
+</ul>
+<p>SDL supports configuration of the VTM voltage domain and temperature warning. The 3 different alerts are also supported via the SDL ESM Handler, like all other ESM events. The SDL API can also be used to configure the VTM Maximum temperature threshold.</p>
+<p>The VTM module provides the following functionality  for the application</p>
+<ul class="simple">
+<li><p>Ability to initialize VTM</p></li>
+<li><p>Ability to check the status of the temperature sensor based on alert temperature</p></li>
+<li><p>Ability to clear and contorl the VTM event inerrupts</p></li>
+</ul>
+<p>There is 1 VTM module in the device, with 7 integrated temperature monitors. If the temperature exceeds the maximum threshold, an SoC reset is initiated.</p>
+</section>
+<section id="example-usage">
+<h2><span class="section-number">2.5.2. </span>Example Usage<a class="headerlink" href="#example-usage" title="Permalink to this headline">¶</a></h2>
+<p>The following shows an example of SDL VTM API usage by the application to set up the VTM for monitoring for events. Events can be monitored by enabling the events in the associated ESM instance.</p>
+<p>Configure the VTM Thresholds and enable events</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>SDL_VTM_configTs<span class="w"> </span>cfgTs<span class="p">;</span>
+SDL_VTM_intrCtrl<span class="w"> </span>ctrl<span class="p">;</span>
+SDL_VTM_configVd<span class="w"> </span>cfgVd<span class="p">;</span>
+
+/*<span class="w"> </span>Initialize<span class="w"> </span>the<span class="w"> </span>config<span class="w"> </span>structure<span class="w"> </span>*/
+memset<span class="o">(</span><span class="p">&amp;</span>cfgTs,<span class="w"> </span>0x0,<span class="w"> </span>sizeof<span class="o">(</span>SDL_VTM_configTs<span class="o">))</span><span class="p">;</span>
+
+/*<span class="w"> </span>Set<span class="w"> </span>the<span class="w"> </span>control<span class="w"> </span>bit<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>Temperature<span class="w"> </span>sensor<span class="w"> </span>config<span class="w"> </span>to<span class="w"> </span><span class="s2">&quot;SET_THR&quot;</span>,<span class="w"> </span>indicating<span class="w"> </span>we<span class="w"> </span>want<span class="w"> </span>to<span class="w"> </span><span class="nb">set</span><span class="w"> </span>the<span class="w"> </span>thresholds<span class="w"> </span>*/
+cfgTs.configTsCtrl<span class="w"> </span><span class="o">=</span><span class="w"> </span>SDL_VTM_VD_CONFIG_CTRL_SET_THR<span class="p">;</span>
+
+/*<span class="w"> </span>Set<span class="w"> </span>the<span class="w"> </span>Temperature<span class="w"> </span>sensor<span class="w"> </span>config<span class="w"> </span>*/
+cfgTs.thr_val.thrValidMap<span class="w"> </span><span class="o">=</span><span class="w"> </span>SDL_VTM_GT_TH1_VALID<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+<span class="w">                            </span>SDL_VTM_GT_TH2_VALID<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+<span class="w">                            </span>SDL_VTM_LT_TH0_VALID<span class="p">;</span>
+cfgTs.thr_val.gtTh2En<span class="w">     </span><span class="o">=</span><span class="w"> </span>TRUE<span class="p">;</span>
+cfgTs.thr_val.gtTh2<span class="w">       </span><span class="o">=</span><span class="w"> </span>gt_thr2_adc_code<span class="p">;</span>
+cfgTs.thr_val.gtTh1En<span class="w">     </span><span class="o">=</span><span class="w"> </span>TRUE<span class="p">;</span>
+cfgTs.thr_val.gtTh1<span class="w">       </span><span class="o">=</span><span class="w"> </span>gt_thr1_adc_code<span class="p">;</span>
+cfgTs.thr_val.ltTh0En<span class="w">     </span><span class="o">=</span><span class="w"> </span>TRUE<span class="p">;</span>
+cfgTs.thr_val.ltTh0<span class="w">       </span><span class="o">=</span><span class="w"> </span>lt_thr0_adc_code<span class="p">;</span>
+
+SDL_VTM_initTs<span class="o">(</span>SDL_VTM_INSTANCE_TS_0<span class="w"> </span>,<span class="w"> </span><span class="p">&amp;</span>cfgTs<span class="o">)</span><span class="p">;</span>
+
+/*<span class="w"> </span>Select<span class="w"> </span>all<span class="w"> </span><span class="m">3</span><span class="w"> </span>interrupts<span class="w"> </span>to<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>using<span class="w"> </span><span class="s2">&quot;INTR_EN_SET&quot;</span><span class="w"> </span>control<span class="w"> </span>bits<span class="w"> </span>*/
+<span class="nv">ctrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>SDL_VTM_VD_GT_THR2_INTR_EN_SET<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+<span class="w">       </span>SDL_VTM_VD_GT_THR1_INTR_EN_SET<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+<span class="w">       </span>SDL_VTM_VD_LT_THR0_INTR_EN_CLR<span class="p">;</span>
+
+/*<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>the<span class="w"> </span>threshold<span class="w"> </span>interrupts<span class="w"> </span>*/
+SDL_VTM_intrCntrl<span class="o">(</span>SDL_VTM_INSTANCE_VD_DOMAIN_1,<span class="w"> </span>ctrl<span class="o">)</span><span class="p">;</span>
+
+/*<span class="w"> </span>Initialize<span class="w"> </span>the<span class="w"> </span>config<span class="w"> </span>structure<span class="w"> </span>*/
+memset<span class="o">(</span><span class="p">&amp;</span>cfgVd,<span class="w"> </span>0x0,<span class="w"> </span>sizeof<span class="o">(</span>SDL_VTM_configVd<span class="o">))</span><span class="p">;</span>
+cfgVd.configVdCtrl<span class="w"> </span><span class="o">=</span><span class="w"> </span>SDL_VTM_VD_CONFIG_CTRL_EVT_SEL<span class="p">;</span>
+cfgVd.vd_temp_evts<span class="w"> </span><span class="o">=</span><span class="w"> </span>SDL_VTM_VD_EVT_SELECT_TEMP_SENSOR_0<span class="p">;</span>
+
+/*<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>the<span class="w"> </span>tracking<span class="w"> </span>of<span class="w"> </span>temperature<span class="w"> </span>events<span class="w"> </span>on<span class="w"> </span>this<span class="w"> </span>VD<span class="w"> </span>*/
+SDL_VTM_initVd<span class="o">(</span>SDL_VTM_INSTANCE_VD_DOMAIN_1,<span class="w"> </span><span class="p">&amp;</span>cfgVd<span class="o">)</span><span class="p">;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Convert from Temperature to ADC Code</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>int32_t<span class="w"> </span><span class="nv">temp_val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">64000</span><span class="p">;</span><span class="w"> </span>//<span class="w"> </span>temperature<span class="w"> </span><span class="k">in</span><span class="w"> </span>milli<span class="w"> </span>degrees<span class="w"> </span>Celsius
+SDL_VTM_adc_code<span class="w"> </span>adc_code<span class="p">;</span>
+
+SDL_VTM_tsConvTempToAdc<span class="o">(</span>temp_val,<span class="w"> </span>SDL_VTM_INSTANCE_TS_0,<span class="w">  </span><span class="p">&amp;</span>adc_code<span class="o">)</span><span class="p">;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Convert from ADC Code to Temperature</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>SDL_VTM_adc_code<span class="w"> </span><span class="nv">adc_code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">404</span><span class="p">;</span>
+int32_t<span class="w"> </span>temp_val<span class="p">;</span><span class="w"> </span>//<span class="w"> </span>temperature<span class="w"> </span><span class="k">in</span><span class="w"> </span>milli<span class="w"> </span>degrees<span class="w"> </span>Celsius
+
+SDL_VTM_tsConvAdcToTemp<span class="o">(</span>adc_code,<span class="w"> </span>SDL_VTM_INSTANCE_TS_0,<span class="w"> </span><span class="p">&amp;</span>temp_val<span class="o">)</span><span class="p">;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Get Current Temperature Value</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>SDL_VTM_iStat_read_ctrl<span class="w"> </span>readCtrl<span class="p">;</span>
+SDL_VTM_adc_code<span class="w"> </span>adc_code<span class="p">;</span>
+
+/*<span class="w"> </span>Get<span class="w"> </span>current<span class="w"> </span>temperature<span class="w"> </span>value<span class="w"> </span>*/
+<span class="nv">readCtrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>SDL_VTM_TS_READ_DATA_OUT_VAL<span class="p">;</span>
+SDL_VTM_getSensorStatus<span class="o">(</span>iSDL_VTM_INSTANCE_TS_0,<span class="w"> </span><span class="p">&amp;</span>readCtrl,<span class="w"> </span><span class="p">&amp;</span>statusVal<span class="o">)</span><span class="p">;</span>
+<span class="nv">adc_code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>statusVal.data_out<span class="p">;</span><span class="w"> </span>//<span class="w"> </span>data_out<span class="w"> </span>has<span class="w"> </span>the<span class="w"> </span>current<span class="w"> </span>temperature
+</pre></div>
+</div>
+</div></blockquote>
+<p>Acknowledge and Disable an interrupt</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>SDL_VTM_intrCtrl<span class="w"> </span>ctrl<span class="p">;</span>
+
+/*<span class="w"> </span>Ack<span class="w"> </span>and<span class="w"> </span>disable<span class="w"> </span>the<span class="w"> </span>interrupt,<span class="w"> </span>by<span class="w"> </span>clearing<span class="w"> </span>the<span class="w"> </span>pending<span class="w"> </span>and<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>bits<span class="w"> </span>*/
+<span class="nv">ctrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">(</span>SDL_VTM_VD_GT_THR2_INTR_EN_CLR<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>SDL_VTM_VD_GT_THR2_INTR_RAW_CLR<span class="o">)</span><span class="p">;</span>
+SDL_VTM_intrCntrl<span class="o">(</span>SDL_VTM_INSTANCE_VD_DOMAIN_1,<span class="w"> </span>ctrl<span class="o">)</span><span class="p">;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="examples">
+<h2><span class="section-number">2.5.3. </span>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<p>The VTM module provide a Safety Example to show how to use VTM for some typical use-cases, and also ESM application callback usage. Details regarding the VTM Safety Example can be found <a class="reference external" href="../examples/vtm.html">here</a>.</p>
+<p>Test apps that are meant for verifying the functionality of the module are also provided.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Test App Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Location</p></th>
+<th class="head"><p>Build Command</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>sdl_vtm_test_app</p></td>
+<td><ul class="simple">
+<li><p>Configures the thresholds</p></li>
+<li><p>Triggers the error events</p></li>
+<li><p>Checks for error response</p></li>
+</ul>
+</td>
+<td><p>[sdl_install_dir]/test/vtm/vtm_func</p></td>
+<td><p>make sdl_vtm_test_app PROFILE=release</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="api">
+<h2><span class="section-number">2.5.4. </span>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="../../../apiguide/j721s2/html/group__SDL__VTM__API.html">VTM API Guide</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="rti.html" class="btn btn-neutral float-right" title="2.6. RTI : RTI/WWDT Windowed Watchdog Timer" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lbist.html" class="btn btn-neutral" title="2.4. LBIST : Logic Built-In Self-Test" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyright 1995-2021</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'01_03_00',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+      });
+  </script>
+   
+
+</body>
+</html>

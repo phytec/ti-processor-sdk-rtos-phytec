@@ -1,0 +1,36 @@
+
+
+Welcome to minicom 2.7.1                                                                                                                    
+                                                                                                                                            
+OPTIONS: I18n                                                                                                                               
+Compiled on Dec 23 2019, 02:06:26.                                                                                                          
+Port /dev/ttyUSB1, 17:24:40                                                                                                                 
+                                                                                                                                            
+Press CTRL-A Z for help on special keys                                                                                                     
+                                                                                                                                            
+01000000011a00006a3761657000000000000000475020200008010000080100C1.00.10.01 (Jun 29 2023 - 13:38:40)                                        
+Waiting for tifs.bin ...                                                                                                                    
+CCCCCTIFS  ver: 9.0.6--v09.00.06 (Kool Koala)                                                                                               
+Waiting for multicore app ...                                                                                                               
+CCCCCample Test Application                                                                                                                 
+                                                                                                                                            
+DCC_Test_init: Init MCU ESM complete                                                                                                        
+                                                                                                                                            
+                                                                                                                                            
+INSTANCE: MCU_DCC2                                                                                                                          
+Source clock: RC OSC                                                                                                                        
+Test clock: HFOSC0                                                                                                                          
+                                                                                                                                            
+                                                                                                                                            
+SDL DCC EXAMPLE TEST: Start UC-8                                                                                                            
+SDL DCC EXAMPLE TEST: Seed values calculation done.                                                                                         
+SDL DCC EXAMPLE TEST: DCC configured                                                                                                        
+SDL DCC EXAMPLE TEST: Enabling DCC                                                                                                          
+SDL DCC EXAMPLE TEST: Waiting for some time to perform Continuous mode                                                                      
+SDL DCC EXAMPLE TEST: DCC module is disabled                                                                                                
+Test Name: DCC EXAMPLE TEST  PASSED                                                                                                         
+                                                                                                                                            
+ All tests have passed.                                                                                                                     
+                                                                                                                                            
+                                                                                                                                            
+                     

@@ -1,0 +1,113 @@
+CPU Safety Example
+==================
+
+Introduction
+------------
+This example demonstrates the usage of the R5F_CPU for R5F Lockstep as a safety mechanism to detect errors in R5F execution. Examples show how to configure and use all 4 modes and also show how to configure PMU,MPU and illegal instruction trapping.
+
+
+The example demonstrates:
+
+    * Setting R5F Lockstep mode
+    *   Usage of Compute Compare Module (CCM) and use all 4 modes Compare active block, Self test, Error forcing, Self test error forcing using CPU output compare function mode.
+    * Usage of MPU in different regions & Usage of three PMU Registers for event Monitring .
+
+Use Cases
+---------
+
+    +----------+--------------------------------------------------+-----------+
+    | Use Case | Description                                      | ESM       |
+    +==========+==================================================+===========+
+    | UC-1     | The R5F_CPU is programmed with R5F Lockstep mode | MCU_ESM0  |
+    |          | and Usage of Compute Compare Module(CCM) and use |           |
+    |          | all 4 modes. Usage of MPU to configure the       |           |
+    |          | different regions and Usage of three PMU         |           |
+    |          | Registers for event Monitring.                   |           |
+    +----------+--------------------------------------------------+-----------+
+
+
+Example Details
+---------------
+
+The example should be loaded to the hardware using the Secondary Boot Loader (SBL) from the SDK.
+
++---------------------+------------------------------------------------+------------------------------------------+
+| Example Name        | Location                                       | Build Command                            |
++=====================+================================================+==========================================+
+| cpu_app             | [sdl_install_dir]/examples/cpu/                | make cpu_app PROFILE=release             |
++---------------------+------------------------------------------------+------------------------------------------+
+
+Expected Output
+---------------
+
+.. code:: bash
+
+        R5 CPU Application
+        
+        ESM Call back function called : instType 0x2, intType 0x1, grpChannel 0x3, index 0x0, intSrc 0x60
+        Take action
+        
+        R5F-CPU example application CCM_Test_init: Init MCU ESM complete
+        
+        R5F-CPU example application CCM_Test_init: Init MAIN ESM complete
+        
+        R5F-CPU example application CCM_Test_init: Init WKUP ESM complete
+        
+        CCM_Test_init: CCM Init complete
+        
+        R5F-CPU example application CCM_Test_init: CCM Init complete
+        
+        CCM Functional Test
+        
+        R5F-CPU example application CCM_Test_init: Init MCU ESM complete
+        
+        R5F-CPU example application CCM_Test_init: Init MAIN ESM complete
+        
+        R5F-CPU example application CCM_Test_init: Init WKUP ESM complete
+        
+        CCM_Test_init: CCM Init complete
+        
+        R5F-CPU example application CCM_Test_init: CCM Init complete
+        
+        R5F-CPU example application CCM self test: starting
+        R5F-CPU example application CCM Self Test complete
+        R5F-CPU example application CCM self test with error forcing: starting
+        ESM Call back function called : instType 0x2, intType 0x1, grpChannel 0x3, index 0x0, intSrc 0x60
+        Take action
+        
+        R5F-CPU example application CCM Self Test with error forcing complete
+        R5F-CPU example application CCM inject  error: test starting
+        ESM Call back function called : instType 0x2, intType 0x1, grpChannel 0x3, index 0x0, intSrc 0x60
+        Take action
+        
+        ESM Call back function called : instType 0x2, intType 0x1, grpChannel 0x3, index 0x1, intSrc 0x61
+        Take action
+        
+        R5F-CPU example application CCM inject Test complete
+        R5F-CPU example application MPU self test for Mem Write Access Fault: starting
+        R5F-CPU example application MPU self test for Mem Write Access Fault complete
+        Cycles taken 11571
+        R5F-CPU example application MPU self test for Mem Read Access Fault: starting
+        R5F-CPU example application MPU self test for Mem Read Access Fault complete
+        Cycles taken 5844
+        R5F-CPU example application MPU self test for Mem Write Access Fault (Wait Forever): starting
+        R5F-CPU example application MPU self test for Mem Write Access Fault  (Wait Forever) complete
+        Cycles taken 4718
+        R5F-CPU example application MPU self test for Mem Read Access Fault  (Wait Forever): starting
+        R5F-CPU example application MPU self test for Mem Read Access Fault  (Wait Forever) complete
+        Cycles taken 4642
+        CPU Functionality  Passed.
+        
+        All tests have passed.
+        main.c:239:test_sdl_cpu_test_app:PASS
+        
+        -----------------------
+        1 Tests 0 Failures 0 Ignored
+        OK
+        
+
+
+Reference
+---------
+
+`CPU User Guide <../modules/cpu.html>`_

@@ -1,0 +1,88 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Documentation for mkhex4bin.pl</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Documentation for mkhex4bin.pl</span></strong></big>
+</td></tr>
+</table>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#USAGE">USAGE</a></li>
+  <li><a href="#OPTIONS">OPTIONS</a></li>
+  <li><a href="#CREATING-XML-INPUT">CREATING XML INPUT</a></li>
+  <li><a href="#OFD-OPTIONS">OFD OPTIONS</a></li>
+  <li><a href="#PERL-VERSION-DETAILS">PERL VERSION DETAILS</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>mkhex4bin.pl</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<p>Creates a command file for the TI hex conversion utility (such as hex470) that is useful for converting a TI COFF or ELF .out file to a binary .bin file.</p>
+
+<h1 id="USAGE">USAGE</h1>
+
+<p>Rarely invoked alone. Usually invoked as part of running the accompanying batch file tiobj2bin.bat. Instructions on using tiobj2bin.bat are at the top of that file.</p>
+
+<p>If invoked directly ...</p>
+
+<p>mkhex4bin.pl [options] <i>xml file</i></p>
+
+<pre><code>   ... OR ...</code></pre>
+
+<p>ofdXX -x <i>out file</i> | perl mkhex4bin.pl [options]</p>
+
+<h1 id="OPTIONS">OPTIONS</h1>
+
+<pre><code> -h               : Output usage and quit
+ --cg_xml_version : Print out the version of the cg_xml package in use</code></pre>
+
+<h1 id="CREATING-XML-INPUT">CREATING XML INPUT</h1>
+
+<p>OFD stands for Object File Display utility. Examples include ofd6x for C6000 and ofd55 for C5500.</p>
+
+<p>Use the -x option of OFD to create the XML file. Example ...</p>
+
+<pre><code>      ofd6x -x -o=file.xml file.out</code></pre>
+
+<p>Alternatively, pipe the output from OFD into the script ...</p>
+
+<pre><code>      ofd6x -x file.out | perl mkhex4bin.pl</code></pre>
+
+<h1 id="OFD-OPTIONS">OFD OPTIONS</h1>
+
+<p>Recent releases of OFD support options for filtering the XML output down to what is strictly of interest. The best options to use in combination with this script are:</p>
+
+<pre><code>  -x --xml_indent=0 --obj_display=none,sections,header,segments</code></pre>
+
+<p>Filtering the XML in this way reduces the amount of data processed by this script, thus making it run faster.</p>
+
+<h1 id="PERL-VERSION-DETAILS">PERL VERSION DETAILS</h1>
+
+<p>This script was written using Perl version 5.8.3. It may not work with earlier revisions of Perl.</p>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Documentation for mkhex4bin.pl</span></strong></big>
+</td></tr>
+</table>
+
+</body>
+
+</html>
+
+

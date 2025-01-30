@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://autosar.org/schema/r4.0 autosar_4-2-1.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE>
+      <SHORT-NAME>AUTOSAR</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE>
+          <SHORT-NAME>Pwm</SHORT-NAME>
+          <AR-PACKAGES>
+            <AR-PACKAGE>
+              <SHORT-NAME>BswModuleDescriptions</SHORT-NAME>
+              <ELEMENTS>
+                <BSW-MODULE-DESCRIPTION>
+                  <SHORT-NAME>Pwm</SHORT-NAME>
+                  <MODULE-ID>121</MODULE-ID>
+                  <PROVIDED-ENTRYS>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Pwm_Init">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Pwm/BswModuleEntrys/Pwm_Init</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Pwm_DeInit">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Pwm/BswModuleEntrys/Pwm_DeInit</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Pwm_SetDutyCycle">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Pwm/BswModuleEntrys/Pwm_SetDutyCycle</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Pwm_SetPeriodAndDuty">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Pwm/BswModuleEntrys/Pwm_SetPeriodAndDuty</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Pwm_SetOutputToIdle">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Pwm/BswModuleEntrys/Pwm_SetOutputToIdle</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Pwm_DisableNotification">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Pwm/BswModuleEntrys/Pwm_DisableNotification</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Pwm_EnableNotification">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Pwm/BswModuleEntrys/Pwm_EnableNotification</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Pwm_Ch1Notify">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Pwm/BswModuleEntrys/Pwm_Ch1Notify</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Pwm_GetVersionInfo">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Pwm/BswModuleEntrys/Pwm_GetVersionInfo</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Pwm_RegisterReadBack">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Pwm/BswModuleEntrys/Pwm_RegisterReadBack</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                  </PROVIDED-ENTRYS>
+                  <BSW-MODULE-DEPENDENCYS>
+                    <BSW-MODULE-DEPENDENCY UUID="8084c5fe-da0a-4bef-8ee0-cbe21e33acdb">
+                      <SHORT-NAME>Det</SHORT-NAME>
+                      <TARGET-MODULE-ID>15</TARGET-MODULE-ID>
+                      <REQUIRED-ENTRYS>
+                        <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                          <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Det/BswModuleEntries/Det_ReportError</BSW-MODULE-ENTRY-REF>
+                        </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                      </REQUIRED-ENTRYS>
+                    </BSW-MODULE-DEPENDENCY>
+                  </BSW-MODULE-DEPENDENCYS>
+                  <INTERNAL-BEHAVIORS>
+                    <BSW-INTERNAL-BEHAVIOR>
+                      <SHORT-NAME>InternalBehavior_0</SHORT-NAME>
+                      <EXCLUSIVE-AREAS>
+                        <EXCLUSIVE-AREA>
+                          <SHORT-NAME>PWM_EXCLUSIVE_AREA_0</SHORT-NAME>
+                        </EXCLUSIVE-AREA>
+                      </EXCLUSIVE-AREAS>
+                      <ENTITYS>
+                        <BSW-CALLED-ENTITY UUID="">
+                          <SHORT-NAME>Pwm_Init</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>NON-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE_SLOW</SW-ADDR-METHOD-REF>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Pwm/BswModuleEntries/Pwm_Init</IMPLEMENTED-ENTRY-REF>
+                        </BSW-CALLED-ENTITY>
+                        <BSW-CALLED-ENTITY UUID="">
+                          <SHORT-NAME>Pwm_DeInit</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>NON-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE</SW-ADDR-METHOD-REF>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Pwm/BswModuleEntries/Pwm_DeInit</IMPLEMENTED-ENTRY-REF>
+                        </BSW-CALLED-ENTITY>
+                        <BSW-CALLED-ENTITY UUID="">
+                          <SHORT-NAME>Pwm_SetDutyCycle</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE</SW-ADDR-METHOD-REF>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Pwm/BswModuleEntries/Pwm_SetDutyCycle</IMPLEMENTED-ENTRY-REF>
+                        </BSW-CALLED-ENTITY>
+                        <BSW-CALLED-ENTITY UUID="">
+                          <SHORT-NAME>Pwm_SetPeriodAndDuty</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE</SW-ADDR-METHOD-REF>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Pwm/BswModuleEntries/Pwm_SetPeriodAndDuty</IMPLEMENTED-ENTRY-REF>
+                        </BSW-CALLED-ENTITY>
+                        <BSW-CALLED-ENTITY UUID="">
+                          <SHORT-NAME>Pwm_SetOutputToIdle</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE</SW-ADDR-METHOD-REF>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Pwm/BswModuleEntries/Pwm_SetOutputToIdle</IMPLEMENTED-ENTRY-REF>
+                        </BSW-CALLED-ENTITY>
+                        <BSW-CALLED-ENTITY UUID="">
+                          <SHORT-NAME>Pwm_DisableNotification</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE</SW-ADDR-METHOD-REF>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Pwm/BswModuleEntries/Pwm_DisableNotification</IMPLEMENTED-ENTRY-REF>
+                        </BSW-CALLED-ENTITY>
+                        <BSW-CALLED-ENTITY UUID="">
+                          <SHORT-NAME>Pwm_EnableNotification</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE</SW-ADDR-METHOD-REF>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Pwm/BswModuleEntries/Pwm_EnableNotification</IMPLEMENTED-ENTRY-REF>
+                        </BSW-CALLED-ENTITY>
+                        <BSW-INTERRUPT-ENTITY UUID="">
+                          <SHORT-NAME>Pwm_Ch1Notify</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>NON-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE_FAST</SW-ADDR-METHOD-REF>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Pwm/BswModuleEntries/Pwm_Ch1Notify</IMPLEMENTED-ENTRY-REF>
+                          <INTERRUPT-CATEGORY>CAT-1</INTERRUPT-CATEGORY>
+                          <INTERRUPT-SOURCE />
+                        </BSW-INTERRUPT-ENTITY>
+                        <BSW-CALLED-ENTITY UUID="">
+                          <SHORT-NAME>Pwm_GetVersionInfo</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE</SW-ADDR-METHOD-REF>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Pwm/BswModuleEntries/Pwm_GetVersionInfo</IMPLEMENTED-ENTRY-REF>
+                        </BSW-CALLED-ENTITY>
+                        <BSW-CALLED-ENTITY UUID="">
+                          <SHORT-NAME>Pwm_RegisterReadBack</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE</SW-ADDR-METHOD-REF>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Pwm/BswModuleEntries/Pwm_RegisterReadBack</IMPLEMENTED-ENTRY-REF>
+                        </BSW-CALLED-ENTITY>
+                      </ENTITYS>
+                    </BSW-INTERNAL-BEHAVIOR>
+                  </INTERNAL-BEHAVIORS>
+                </BSW-MODULE-DESCRIPTION>
+              </ELEMENTS>
+            </AR-PACKAGE>
+            <AR-PACKAGE>
+              <SHORT-NAME>BswModuleEntrys</SHORT-NAME>
+              <ELEMENTS>
+                <BSW-MODULE-ENTRY>
+                  <SHORT-NAME>Pwm_Init</SHORT-NAME>
+                  <SERVICE-ID>0</SERVICE-ID>
+                  <IS-REENTRANT>false</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>TASK</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY>
+                  <SHORT-NAME>Pwm_DeInit</SHORT-NAME>
+                  <SERVICE-ID>1</SERVICE-ID>
+                  <IS-REENTRANT>false</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>TASK</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY>
+                  <SHORT-NAME>Pwm_SetDutyCycle</SHORT-NAME>
+                  <SERVICE-ID>2</SERVICE-ID>
+                  <IS-REENTRANT>true</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>TASK</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY>
+                  <SHORT-NAME>Pwm_SetPeriodAndDuty</SHORT-NAME>
+                  <SERVICE-ID>3</SERVICE-ID>
+                  <IS-REENTRANT>true</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>TASK</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY>
+                  <SHORT-NAME>Pwm_SetOutputToIdle</SHORT-NAME>
+                  <SERVICE-ID>4</SERVICE-ID>
+                  <IS-REENTRANT>true</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>TASK</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY>
+                  <SHORT-NAME>Pwm_DisableNotification</SHORT-NAME>
+                  <SERVICE-ID>6</SERVICE-ID>
+                  <IS-REENTRANT>true</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>TASK</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY>
+                  <SHORT-NAME>Pwm_EnableNotification</SHORT-NAME>
+                  <SERVICE-ID>7</SERVICE-ID>
+                  <IS-REENTRANT>true</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>TASK</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY>
+                  <SHORT-NAME>Pwm_GetVersionInfo</SHORT-NAME>
+                  <SERVICE-ID>8</SERVICE-ID>
+                  <IS-REENTRANT>true</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>TASK</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY>
+                  <SHORT-NAME>Pwm_RegisterReadBack</SHORT-NAME>
+                  <SERVICE-ID>13</SERVICE-ID>
+                  <IS-REENTRANT>true</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>TASK</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+              </ELEMENTS>
+            </AR-PACKAGE>
+          </AR-PACKAGES>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+
+    <AR-PACKAGE>
+      <SHORT-NAME>TI_TDA3XX</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE>
+          <SHORT-NAME>Implementations</SHORT-NAME>
+          <ELEMENTS>
+            <BSW-IMPLEMENTATION>
+              <SHORT-NAME>BswImplementation_0</SHORT-NAME>
+              <CODE-DESCRIPTORS>
+                <CODE>
+                  <SHORT-NAME>Files</SHORT-NAME>
+                  <ARTIFACT-DESCRIPTORS>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Pwm.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                      <DOMAIN />
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Pwm_Irq.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                      <DOMAIN />
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Pwm_Priv.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                      <DOMAIN />
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Pwm_PBcfg_tda3xx.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                      <DOMAIN />
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                  </ARTIFACT-DESCRIPTORS>
+                </CODE>
+              </CODE-DESCRIPTORS>
+              <COMPILERS>
+                <COMPILER UUID="1f1050f5-b2d9-4815-9808-87fb6843bed9">
+                  <SHORT-NAME>armcl</SHORT-NAME>
+                  <CATEGORY />
+                  <NAME>TI ARM Compiler</NAME>
+                  <OPTIONS>-c -qq --endian=little -mv7M4 --float_support=vfplib --abi=eabi -eo.oem4 -ea.sem4 --symdebug:dwarf --embed_inline_assembly --gcc --emit_warnings_as_errors -g -ms --opt_level=3 -os --optimize_with_debug</OPTIONS>
+                  <VENDOR>Texas Instruments</VENDOR>
+                  <VERSION>5.2.5</VERSION>
+                </COMPILER>
+              </COMPILERS>
+              <LINKERS>
+                <LINKER UUID="ef8f7416-06a0-4b22-8946-b37297fa0e38">
+                  <SHORT-NAME>armcl</SHORT-NAME>
+                  <NAME>TI ARM Linker</NAME>
+                  <OPTIONS />
+                  <VENDOR>Texas Instruments</VENDOR>
+                  <VERSION>5.2.5</VERSION>
+                </LINKER>
+              </LINKERS>
+              <PROGRAMMING-LANGUAGE>C</PROGRAMMING-LANGUAGE>
+              <REQUIRED-ARTIFACTS>
+                <DEPENDENCY-ON-ARTIFACT UUID="39538946-a864-41af-a771-c7e4c71b7232">
+                  <SHORT-NAME>ExternalLibs</SHORT-NAME>
+                  <CATEGORY />
+                  <ARTIFACT-DESCRIPTOR>
+                    <SHORT-LABEL>libc</SHORT-LABEL>
+                    <CATEGORY>SWLIB</CATEGORY>
+                    <DOMAIN />
+                  </ARTIFACT-DESCRIPTOR>
+                  <USAGES>
+                    <USAGE>LINK</USAGE>
+                    <USAGE>COMPILE</USAGE>
+                  </USAGES>
+                </DEPENDENCY-ON-ARTIFACT>
+              </REQUIRED-ARTIFACTS>
+              <RESOURCE-CONSUMPTION>
+                <SHORT-NAME>ResourceConsumption</SHORT-NAME>
+                <SHORT-NAME>TI_TDA3XX_Pwm_Resources</SHORT-NAME>
+                <CATEGORY />
+                <MEMORY-SECTIONS>
+                  <MEMORY-SECTION UUID="0d0e4fd8-9c1c-4ea4-8413-705d8c71d6f0">
+                    <SHORT-NAME>CONFIG_DATA</SHORT-NAME>
+                    <CATEGORY />
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <MEM-CLASS-SYMBOL />
+                    <SIZE>1024</SIZE>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CONFIG_DATA</SW-ADDRMETHOD-REF>
+                    <SYMBOL />
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION UUID="a77eec7f-5dbc-4a82-b666-70ea56d5a095">
+                    <SHORT-NAME>CODE</SHORT-NAME>
+                    <CATEGORY />
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <EXECUTABLE-ENTITY-REFS>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Pwm/BswModuleDescriptions/Pwm/InternalBehaviour_0/Pwm_Init</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Pwm/BswModuleDescriptions/Pwm/InternalBehaviour_0/Pwm_DeInit</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Pwm/BswModuleDescriptions/Pwm/InternalBehaviour_0/Pwm_SetDutyCycle</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Pwm/BswModuleDescriptions/Pwm/InternalBehaviour_0/Pwm_SetPeriodAndDuty</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Pwm/BswModuleDescriptions/Pwm/InternalBehaviour_0/Pwm_SetOutputToIdle</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Pwm/BswModuleDescriptions/Pwm/InternalBehaviour_0/Pwm_DisableNotification</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Pwm/BswModuleDescriptions/Pwm/InternalBehaviour_0/Pwm_EnableNotification</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Pwm/BswModuleDescriptions/Pwm/InternalBehaviour_0/Pwm_GetVersionInfo</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Pwm/BswModuleDescriptions/Pwm/InternalBehaviour_0/Pwm_RegisterReadBack</EXECUTABLE-ENTITY-REF>
+                    </EXECUTABLE-ENTITY-REFS>
+                    <MEM-CLASS-SYMBOL />
+                    <SIZE>7800</SIZE>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE</SW-ADDRMETHOD-REF>
+                    <SYMBOL />
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION UUID="5cf7a097-6a85-437c-b323-6dba70f08d9f">
+                    <SHORT-NAME>VAR_INIT_UNSPECIFIED</SHORT-NAME>
+                    <CATEGORY />
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <MEM-CLASS-SYMBOL />
+                    <SIZE>32</SIZE>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/VAR</SW-ADDRMETHOD-REF>
+                    <SYMBOL />
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION UUID="6315dcdd-2c8d-4bc9-a3fd-0ec86d3fb016">
+                    <SHORT-NAME>VAR_NOINIT_UNSPECIFIED</SHORT-NAME>
+                    <CATEGORY />
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <MEM-CLASS-SYMBOL />
+                    <SIZE>8192</SIZE>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/VAR</SW-ADDRMETHOD-REF>
+                    <SYMBOL />
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION UUID="34360d22-f422-4a1e-87f6-e192fd4db703">
+                    <SHORT-NAME>CONST_UNSPECIFIED</SHORT-NAME>
+                    <CATEGORY />
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <MEM-CLASS-SYMBOL />
+                    <SIZE>1400</SIZE>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CONST</SW-ADDRMETHOD-REF>
+                    <SYMBOL />
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION UUID="d21a9a63-829b-46db-8e0c-7a1b1b32677f">
+                    <SHORT-NAME>CODE_ISR</SHORT-NAME>
+                    <CATEGORY />
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <EXECUTABLE-ENTITY-REFS>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Pwm/BswModuleDescriptions/Pwm/InternalBehaviour_0/Pwm_Ch1Notify</EXECUTABLE-ENTITY-REF>
+                    </EXECUTABLE-ENTITY-REFS>
+                    <MEM-CLASS-SYMBOL />
+                    <SIZE>768</SIZE>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE_FAST</SW-ADDRMETHOD-REF>
+                    <SYMBOL />
+                  </MEMORY-SECTION>
+                </MEMORY-SECTIONS>
+                <STACK-USAGES>
+                  <MEASURED-STACK-USAGE UUID="af773383-fe4b-4620-b891-9c86c2e1f04c">
+                    <SHORT-NAME>Pwm_Init</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Pwm/BswModuleDescriptions/Pwm/InternalBehaviour_0/Pwm_Init
+                    </EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>144</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>144</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>144</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE UUID="af773383-fe4b-4620-b891-9c86c2e1f04c">
+                    <SHORT-NAME>Pwm_DeInit</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Pwm/BswModuleDescriptions/Pwm/InternalBehaviour_0/Pwm_DeInit
+                    </EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>96</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>96</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>96</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE UUID="af773383-fe4b-4620-b891-9c86c2e1f04c">
+                    <SHORT-NAME>Pwm_SetDutyCycle</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Pwm/BswModuleDescriptions/Pwm/InternalBehaviour_0/Pwm_SetDutyCycle
+                    </EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>144</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>144</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>144</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE UUID="af773383-fe4b-4620-b891-9c86c2e1f04c">
+                    <SHORT-NAME>Pwm_SetPeriodAndDuty</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Pwm/BswModuleDescriptions/Pwm/InternalBehaviour_0/Pwm_SetPeriodAndDuty
+                    </EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>144</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>144</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>144</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE UUID="af773383-fe4b-4620-b891-9c86c2e1f04c">
+                    <SHORT-NAME>Pwm_SetOutputToIdle</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Pwm/BswModuleDescriptions/Pwm/InternalBehaviour_0/Pwm_SetOutputToIdle
+                    </EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>88</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>88</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>88</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE UUID="af773383-fe4b-4620-b891-9c86c2e1f04c">
+                    <SHORT-NAME>Pwm_DisableNotification</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Pwm/BswModuleDescriptions/Pwm/InternalBehaviour_0/Pwm_DisableNotification
+                    </EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>48</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>48</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>48</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE UUID="af773383-fe4b-4620-b891-9c86c2e1f04c">
+                    <SHORT-NAME>Pwm_EnableNotification</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Pwm/BswModuleDescriptions/Pwm/InternalBehaviour_0/Pwm_EnableNotification
+                    </EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>88</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>88</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>88</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE UUID="af773383-fe4b-4620-b891-9c86c2e1f04c">
+                    <SHORT-NAME>Pwm_GetVersionInfo</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Pwm/BswModuleDescriptions/Pwm/InternalBehaviour_0/Pwm_GetVersionInfo
+                    </EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>16</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>16</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>16</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE UUID="af773383-fe4b-4620-b891-9c86c2e1f04c">
+                    <SHORT-NAME>Pwm_RegisterReadBack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Pwm/BswModuleDescriptions/Pwm/InternalBehaviour_0/Pwm_RegisterReadBack
+                    </EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>40</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>40</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>40</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                </STACK-USAGES>
+              </RESOURCE-CONSUMPTION>
+              <SW-VERSION>1.9.0</SW-VERSION>
+              <USED-CODE-GENERATOR>EB Tresos</USED-CODE-GENERATOR>
+              <VENDOR-ID>44</VENDOR-ID>
+              <AR-RELEASE-VERSION>4.2.1</AR-RELEASE-VERSION>
+              <BEHAVIOR-REF DEST="BSW-INTERNAL-BEHAVIOR">/AUTOSAR/Pwm/BswModuleDescriptions/Pwm/InternalBehaviour_0</BEHAVIOR-REF>
+              <VENDOR-API-INFIX />
+              <VENDOR-SPECIFIC-MODULE-DEF-REFS>
+                <VENDOR-SPECIFIC-MODULE-DEF-REF DEST="ECUC-MODULE-DEF">/TI_TDA3XX/Pwm</VENDOR-SPECIFIC-MODULE-DEF-REF>
+              </VENDOR-SPECIFIC-MODULE-DEF-REFS>
+            </BSW-IMPLEMENTATION>
+          </ELEMENTS>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>

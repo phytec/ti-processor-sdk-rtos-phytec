@@ -1,0 +1,53 @@
+{
+    // For Ubuntu, leave cmake.generator commented out
+    // Windows: If building for host emulation use below cmake.generator
+    //"cmake.generator": "Visual Studio 17 2022",
+    // Windows: If building for target use below cmake.generator
+    //"cmake.generator": "Ninja",
+    "cmake.configureSettings": {
+        "TARGET_PLATFORM": "",
+        "BUILD_TEST": "1",
+        "KERNEL_NAME": "MATHLIB_tan",
+        "SOC": "j721s2",
+        "DEVICE": "C7120",
+        "MATHLIB_DEBUGPRINT": "0",
+        "ALL_TEST_CASES": "1"
+    },
+    // Alternate build examples
+    // "cmake.configureSettings": {
+    //     "TARGET_PLATFORM": "PC",
+    //     "BUILD_TEST": "1",
+    //     "KERNEL_NAME": "MATHLIB_exp",
+    //     "SOC": "j721e",
+    //     "DEVICE": "C7100",
+    //     "MATHLIB_DEBUGPRINT": "0",
+    //     "ALL_TEST_CASES": "1"
+    // },
+    // "cmake.configureSettings": {
+    //     "TARGET_PLATFORM": "PC",
+    //     "BUILD_EXAMPLE": "1",
+    //     "KERNEL_NAME": "MATHLIB_cos",
+    //     "SOC": "AM62A",
+    //     "DEVICE": "C7504",
+    //     "MATHLIB_DEBUGPRINT": "0",
+    //     "ALL_TEST_CASES": "1"
+    // },
+    // Show variable values inline in editor while debugging.
+    "debug.inlineValues": "on",
+    "C_Cpp.errorSquiggles": "disabled",
+    "files.associations": {
+        "type_traits": "cpp",
+        "cstddef": "cpp",
+        "cmath": "cpp",
+        "cstdarg": "cpp",
+        "cstdint": "cpp",
+        "cstdio": "cpp",
+        "cstdlib": "cpp",
+        "exception": "cpp",
+        "limits": "cpp",
+        "new": "cpp",
+        "*.tcc": "cpp",
+        "cinttypes": "cpp",
+        "typeinfo": "cpp"
+    }
+}

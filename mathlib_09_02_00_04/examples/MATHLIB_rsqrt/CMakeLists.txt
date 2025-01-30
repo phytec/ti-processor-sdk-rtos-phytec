@@ -1,0 +1,1 @@
+mathlib_create_binary_for_example_kernel()

@@ -1,0 +1,845 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Resource Management IRQ TISCI Message Description &mdash; TISCI User Guide</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="TISCI User Guide" href="../../index.html"/>
+        <link rel="up" title="Chapter 2: TISCI Message Documentation" href="../index.html"/>
+        <link rel="next" title="Resource Management Proxy TISCI Message Description" href="rm_proxy.html"/>
+        <link rel="prev" title="TISCI PM Low Power Mode API Documentation" href="../pm/lpm.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="../../_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> TISCI
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                09.02.04
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../1_intro/index.html">Chapter 1: Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Chapter 2: TISCI Message Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../general/TISCI_header.html">Texas Instruments System Controller Interface (TISCI)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#general">General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#power-management-pm">Power Management (PM)</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#resource-management-rm">Resource Management (RM)</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Resource Management IRQ TISCI Message Description</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tisci-msg-rm-irq-set-irq-route-set">TISCI_MSG_RM_IRQ_SET - IRQ Route Set</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tisci-msg-rm-irq-release-irq-route-release">TISCI_MSG_RM_IRQ_RELEASE - IRQ Route Release</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="rm_proxy.html">Resource Management Proxy TISCI Message Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rm_ra.html">Resource Management Ring Accelerator TISCI Message Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rm_udmap.html">Resource Management UDMAP TISCI Message Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rm_psil.html">Resource Management PSI-L TISCI Message Description</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#secure-management">Secure Management</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../3_boardcfg/index.html">Chapter 3: Board Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../4_trace/index.html">Chapter 4: Interpreting Trace Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../5_soc_doc/index.html">Chapter 5: SoC Family Specific Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../6_topic_user_guides/index.html">Chapter 6: Topic User Guides</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">TISCI</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Chapter 2: TISCI Message Documentation</a> &raquo;</li>
+      
+    <li>Resource Management IRQ TISCI Message Description</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="resource-management-irq-tisci-message-description">
+<h1>Resource Management IRQ TISCI Message Description<a class="headerlink" href="#resource-management-irq-tisci-message-description" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>This chapter provides information on usage of the RM Interrupt Request (IRQ) management TISCI message API parameters.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="81%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">TISCI Message ID</th>
+<th class="head">Message Name</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0x1000</td>
+<td><a class="reference internal" href="#pub-rm-irq-route-set"><span class="std std-ref">TISCI_MSG_RM_IRQ_SET</span></a></td>
+</tr>
+<tr class="row-odd"><td>N/A</td>
+<td><a class="reference internal" href="#pub-rm-irq-route-set-response"><span class="std std-ref">TISCI_MSG_RM_IRQ_SET Response</span></a></td>
+</tr>
+<tr class="row-even"><td>0x1001</td>
+<td><a class="reference internal" href="#pub-rm-irq-route-release"><span class="std std-ref">TISCI_MSG_RM_IRQ_RELEASE</span></a></td>
+</tr>
+<tr class="row-odd"><td>N/A</td>
+<td><a class="reference internal" href="#pub-rm-irq-route-release-response"><span class="std std-ref">TISCI_MSG_RM_IRQ_RELEASE Response</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="tisci-msg-rm-irq-set-irq-route-set">
+<span id="pub-rm-irq-route-set"></span><h2>TISCI_MSG_RM_IRQ_SET - IRQ Route Set<a class="headerlink" href="#tisci-msg-rm-irq-set-irq-route-set" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>IRQ route set</strong> TISCI message API is used to configure peripherals within
+SoC interrupt architecture.  This includes, SoC dependent, peripheral output
+event steering (OES) registers, interrupt aggregators, and interrupt routers.
+To configure a desired interrupt route between a peripheral and host processor
+the <strong>IRQ route set</strong> API must be called to configure each hop in the route
+between source and destination.  What is configured in each call depends on the
+valid_params bit configuration and the SoC device ID and indexes provided.</p>
+<p>The <strong>IRQ route set</strong> API does not configure destination processor interrupt
+controllers.  This job is left to the HLOS.</p>
+<p>When configuring interrupt aggregator virtual interrupt global event to status
+bit mappings, each time an event is mapped to a VINT status bit the mapping is
+enabled after it is configured. The OS can manipulate the status bit’s
+enable/disable setting on-the-fly via the VINT’s real-time registers.  The host
+is granted access to the virtual interrupt real-time registers via the SoC
+channelized firewalls based on the RM board configuration.  The OS can access
+the virtual interrupt real-time registers directly after interrupt aggregator
+configuration is complete.</p>
+<p><strong>NOTE (Subject to Change):</strong></p>
+<p>Some System Firmware peripheral drivers have not implemented OES register
+management yet. The HLOS must program the global event value into peripheral’s
+OES register. For System Firmware drivers that have implemented internal
+handling of OES registers, the allocated global event is programmed into the
+peripheral element’s OES register internally.  Peripherals implementing OES
+management thus far:</p>
+<ul class="simple">
+<li>Ring Accelerator</li>
+<li>UDMAP</li>
+<li>Proxy</li>
+</ul>
+<div class="section" id="usage">
+<h3>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="75%" />
+<col width="25%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Message Type</strong></td>
+<td>Normal</td>
+</tr>
+<tr class="row-even"><td><strong>Secure Queue Only?</strong></td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="tisci-message-id">
+<h4>TISCI Message ID<a class="headerlink" href="#tisci-message-id" title="Permalink to this headline">¶</a></h4>
+<p><p><code class="docutils literal"><span class="pre">TISCI_MSG_RM_IRQ_SET</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">(0x1000U)</span></code></p>
+<p>RM TISCI message to set an IRQ between a peripheral and host processor</p>
+</p>
+</div>
+</div>
+<div class="section" id="irq-route-set-message-parameters">
+<h3>IRQ Route Set Message Parameters<a class="headerlink" href="#irq-route-set-message-parameters" title="Permalink to this headline">¶</a></h3>
+<p><p><strong>struct tisci_msg_rm_irq_set_req</strong></p>
+<p>Configures peripherals within the interrupt subsystem according to the valid configuration provided.  The following &#64;ref tisci_msg_rm_irq_set_req::valid_params valid bit combinations are allowed: Interrupt Router Mux Configuration - Configures an IR input to output mux connection where the IR input is the src_index and the IR output is the dst_host_irq.  Both the src_id and the dst_id must be the device ID of the IR being configured. &#64;ref tisci_msg_rm_irq_set_req::dst_id valid bit == STRUE &#64;ref tisci_msg_rm_irq_set_req::dst_host_irq valid bit == STRUE &#64;ref tisci_msg_rm_irq_set_req::ia_id valid bit == SFALSE &#64;ref tisci_msg_rm_irq_set_req::vint valid bit == SFALSE &#64;ref tisci_msg_rm_irq_set_req::global_event valid bit == SFALSE &#64;ref tisci_msg_rm_irq_set_req::vint_status_bit_index valid bit == SFALSE Event to VINT Mapping Only - Configure peripheral OES register and add an event mapping to an IA VINT &#64;ref tisci_msg_rm_irq_set_req::dst_id valid bit == SFALSE &#64;ref tisci_msg_rm_irq_set_req::dst_host_irq valid bit == SFALSE &#64;ref tisci_msg_rm_irq_set_req::ia_id valid bit == STRUE &#64;ref tisci_msg_rm_irq_set_req::vint valid bit == STRUE &#64;ref tisci_msg_rm_irq_set_req::global_event valid bit == STRUE &#64;ref tisci_msg_rm_irq_set_req::vint_status_bit_index valid bit == STRUE OES Register Programming Only - Only programs the OES register of the source.  Useful for setting UDMAP trigger events and any other events that are not translated to the interrupt domain: &#64;ref tisci_msg_rm_irq_set_req::dst_id valid bit == SFALSE &#64;ref tisci_msg_rm_irq_set_req::dst_host_irq valid bit == SFALSE &#64;ref tisci_msg_rm_irq_set_req::ia_id valid bit == SFALSE &#64;ref tisci_msg_rm_irq_set_req::vint valid bit == SFALSE &#64;ref tisci_msg_rm_irq_set_req::global_event valid bit == STRUE &#64;ref tisci_msg_rm_irq_set_req::vint_status_bit_index valid bit == SFALSE</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="3%" />
+<col width="3%" />
+<col width="93%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>hdr</td>
+<td>struct tisci_header</td>
+<td>Standard TISCI header</td>
+</tr>
+<tr class="row-odd"><td>valid_params</td>
+<td>u32</td>
+<td>Bitfield defining validity of interrupt route set parameters.  The interrupt route set fields are not valid, and will not be used for route set, if their corresponding valid bit is zero.  Valid bit usage: 0 - Valid bit for &#64;ref tisci_msg_rm_irq_set_req::dst_id 1 - Valid bit for &#64;ref tisci_msg_rm_irq_set_req::dst_host_irq 2 - Valid bit for &#64;ref tisci_msg_rm_irq_set_req::ia_id 3 - Valid bit for &#64;ref tisci_msg_rm_irq_set_req::vint 4 - Valid bit for &#64;ref tisci_msg_rm_irq_set_req::global_event 5 - Valid bit for &#64;ref tisci_msg_rm_irq_set_req::vint_status_bit_index 31 - Valid bit for &#64;ref tisci_msg_rm_irq_set_req::secondary_host</td>
+</tr>
+<tr class="row-even"><td>src_id</td>
+<td>u16</td>
+<td>ID of interrupt source peripheral</td>
+</tr>
+<tr class="row-odd"><td>src_index</td>
+<td>u16</td>
+<td>Interrupt source index within source peripheral</td>
+</tr>
+<tr class="row-even"><td>dst_id</td>
+<td>u16</td>
+<td>SoC IR device ID when the valid_params bits are set to configure an IR mux connection.  This field is only valid if &#64;ref TISCI_MSG_VALUE_RM_DST_ID_VALID is set in &#64;ref tisci_msg_rm_irq_set_req::valid_params.</td>
+</tr>
+<tr class="row-odd"><td>dst_host_irq</td>
+<td>u16</td>
+<td>SoC IR output index when the valid_params are set to configure an IR mux connection.  This field is only valid if &#64;ref TISCI_MSG_VALUE_RM_DST_HOST_IRQ_VALID is set in &#64;ref tisci_msg_rm_irq_set_req::valid_params.</td>
+</tr>
+<tr class="row-even"><td>ia_id</td>
+<td>u16</td>
+<td>Device ID of interrupt aggregator in which the virtual interrupt resides. This field is only valid if &#64;ref TISCI_MSG_VALUE_RM_IA_ID_VALID is set in &#64;ref tisci_msg_rm_irq_set_req::valid_params.</td>
+</tr>
+<tr class="row-odd"><td>vint</td>
+<td>u16</td>
+<td>Virtual interrupt number when configuring an interrupt aggregator.  This field is only valid if &#64;ref TISCI_MSG_VALUE_RM_VINT_VALID is set in &#64;ref tisci_msg_rm_irq_set_req::valid_params.</td>
+</tr>
+<tr class="row-even"><td>global_event</td>
+<td>u16</td>
+<td>Global event mapped to interrupt aggregator virtual interrupt status bit. The event is programmed into the OES register of the interrupt source.  This field is only applicable for interrupt source’s capable of generating global events.  This field is only valid if &#64;ref TISCI_MSG_VALUE_RM_GLOBAL_EVENT_VALID is set in &#64;ref tisci_msg_rm_irq_set_req::valid_params.</td>
+</tr>
+<tr class="row-odd"><td>vint_status_bit_index</td>
+<td>u8</td>
+<td>Virtual interrupt status bit to set if the interrupt route utilizes an interrupt aggregator virtual interrupt.  The host processor uses the status bit value within the interrupt aggregator vint status register to find the source event which triggered the interrupt.  This field is only valid if &#64;ref TISCI_MSG_VALUE_RM_VINT_STATUS_BIT_INDEX_VALID is set in &#64;ref tisci_msg_rm_irq_set_req::valid_params.</td>
+</tr>
+<tr class="row-even"><td>secondary_host</td>
+<td>u8</td>
+<td>The interrupt route destination is the specified secondary host if the secondary_host’s corresponding valid bit is set in &#64;ref tisci_msg_rm_irq_set_req::valid_params.  Otherwise, the host within the TISCI message header is the route destination.</td>
+</tr>
+</tbody>
+</table>
+</p>
+</div>
+<div class="section" id="irq-route-set-valid-parameters">
+<span id="pub-rm-irq-route-set-valid-params"></span><h3>IRQ Route Set Valid Parameters<a class="headerlink" href="#irq-route-set-valid-parameters" title="Permalink to this headline">¶</a></h3>
+<p>The following table describes the valid bit mappings for the IRQ route set
+message optional parameters:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">valid_params Bit</th>
+<th class="head">Corresponding tisci_msg_rm_irq_set_req Optional Parameter</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0</td>
+<td>dst_id</td>
+</tr>
+<tr class="row-odd"><td>1</td>
+<td>dst_host_irq</td>
+</tr>
+<tr class="row-even"><td>2</td>
+<td>ia_id</td>
+</tr>
+<tr class="row-odd"><td>3</td>
+<td>vint</td>
+</tr>
+<tr class="row-even"><td>4</td>
+<td>global_event</td>
+</tr>
+<tr class="row-odd"><td>5</td>
+<td>vint_status_bit_index</td>
+</tr>
+<tr class="row-even"><td>31</td>
+<td>secondary_host</td>
+</tr>
+</tbody>
+</table>
+<p>The following table describes the valid bit combinations used to configure
+the peripherals within the interrupt management architecture</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="7%" />
+<col width="12%" />
+<col width="6%" />
+<col width="5%" />
+<col width="12%" />
+<col width="20%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Configuration</th>
+<th class="head">dst_id</th>
+<th class="head">dst_host_irq</th>
+<th class="head">ia_id</th>
+<th class="head">vint</th>
+<th class="head">global_event</th>
+<th class="head">vint_status_bit_index</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Interrupt
+Router Mux
+Configuration</td>
+<td>X</td>
+<td>X</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>Configures an IR input to
+output mux connection where
+the IR input is the
+src_index and the IR output
+is the dst_host_irq.  Both
+src_id and dst_id must be
+be the device ID of the IR
+being configured.</td>
+</tr>
+<tr class="row-odd"><td>Event to VINT
+Mapping Only</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>Configure peripheral OES
+register and add an event
+mapping to an IA VINT.</td>
+</tr>
+<tr class="row-even"><td>OES Register
+Programming
+Only</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>X</td>
+<td>&#160;</td>
+<td>Only programs the OES
+register of the source.
+Useful for setting UDMAP
+trigger events and any
+other events that are not
+translated to the interrupt
+domain.</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="tisci-msg-rm-irq-set-irq-route-set-response">
+<span id="pub-rm-irq-route-set-response"></span><h4>TISCI_MSG_RM_IRQ_SET - IRQ Route Set Response<a class="headerlink" href="#tisci-msg-rm-irq-set-irq-route-set-response" title="Permalink to this headline">¶</a></h4>
+<p>The <strong>irq_set_response</strong> message returns the result status of the
+processed <strong>irq_set</strong> message.</p>
+</div>
+</div>
+<div class="section" id="irq-route-set-response-message-parameters">
+<h3>IRQ Route Set Response Message Parameters<a class="headerlink" href="#irq-route-set-response-message-parameters" title="Permalink to this headline">¶</a></h3>
+<p><p><strong>struct tisci_msg_rm_irq_set_resp</strong></p>
+<p>Response to setting a peripheral to processor interrupt.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="37%" />
+<col width="40%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>hdr</td>
+<td>struct tisci_header</td>
+<td>Standard TISCI header</td>
+</tr>
+</tbody>
+</table>
+</p>
+</div>
+</div>
+<div class="section" id="tisci-msg-rm-irq-release-irq-route-release">
+<span id="pub-rm-irq-route-release"></span><h2>TISCI_MSG_RM_IRQ_RELEASE - IRQ Route Release<a class="headerlink" href="#tisci-msg-rm-irq-release-irq-route-release" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>IRQ route release</strong> TISCI message API is used to release an IRQ route
+between a device peripheral and a host processor. IRQ routes are released by
+specifying the interrupt source peripheral’s interrupt output index. The IRQ
+destination is mapped to the processor on which the host ID, or secondary host
+ID (if valid), is executing. The IRQ management subsystem will trace the
+interrupt route between the source and destination, freeing any interrupt router
+and interrupt aggregator resources within the route.</p>
+<p>For routes utilizing an IA VINT event to status bit mapping, the status bit is
+disabled when the route is freed. The OS is not required to disable the status
+bit via the VINT’s real-time registers prior to route release</p>
+<p>The <strong>IRQ route release</strong> TISCI message API is used to clear peripherals within
+SoC interrupt architecture.  This includes, SoC dependent, peripheral output
+event steering (OES) registers, interrupt aggregators, and interrupt routers.
+To clear a desired interrupt route between a peripheral and host processor
+the <strong>IRQ route release</strong> API must be called to clear each hop in the route
+between source and destination.  What is cleared in each call depends on the
+valid_params bit configuration and the SoC device ID and indexes provided.</p>
+<p>The <strong>IRQ route release</strong> API does not clear destination processor interrupt
+controllers.  This job is left to the HLOS.</p>
+<p>When clearing interrupt aggregator virtual interrupt global event to status
+bit mappings, the status bit is disabled when the mapping is cleared. The OS is
+not required to disable the status bit via the VINT’s real-time registers prior
+to interrupt aggregator mapping clear.</p>
+<p><strong>NOTE (Subject to Change):</strong></p>
+<p>Some System Firmware peripheral drivers have not implemented OES register
+management yet.  The HLOS must also make sure to clear the peripheral OES
+register programmed with the global event. Peripherals implementing
+OES management thus far:</p>
+<ul class="simple">
+<li>Ring Accelerator</li>
+<li>UDMAP</li>
+<li>Proxy</li>
+</ul>
+<div class="section" id="id1">
+<h3>Usage<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="75%" />
+<col width="25%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Message Type</strong></td>
+<td>Normal</td>
+</tr>
+<tr class="row-even"><td><strong>Secure Queue Only?</strong></td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id2">
+<h4>TISCI Message ID<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<p><p><code class="docutils literal"><span class="pre">TISCI_MSG_RM_IRQ_RELEASE</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">(0x1001U)</span></code></p>
+<p>RM TISCI message to release a configured IRQ</p>
+</p>
+</div>
+</div>
+<div class="section" id="irq-route-release-message-parameters">
+<h3>IRQ Route Release Message Parameters<a class="headerlink" href="#irq-route-release-message-parameters" title="Permalink to this headline">¶</a></h3>
+<p><p><strong>struct tisci_msg_rm_irq_release_req</strong></p>
+<p>Releases interrupt peripheral resources according to the valid configuration provided.  The following &#64;ref tisci_msg_rm_irq_release_req::valid_params valid bit combinations are allowed: Interrupt Router Mux Release - Release an IR input to output mux connection where the IR input is the src_index and the IR output is the dst_host_irq.  Both the src_id and the dst_id must be the device ID of the IR being configured. &#64;ref tisci_msg_rm_irq_release_req::dst_id valid bit == STRUE &#64;ref tisci_msg_rm_irq_release_req::dst_host_irq valid bit == STRUE &#64;ref tisci_msg_rm_irq_release_req::ia_id valid bit == SFALSE &#64;ref tisci_msg_rm_irq_release_req::vint valid bit == SFALSE &#64;ref tisci_msg_rm_irq_release_req::global_event valid bit == SFALSE &#64;ref tisci_msg_rm_irq_release_req::vint_status_bit_index valid bit == SFALSE Event to VINT Unmap Only - Clear only peripheral OES register and event to VINT status bit mapping &#64;ref tisci_msg_rm_irq_release_req::dst_id valid bit == SFALSE &#64;ref tisci_msg_rm_irq_release_req::dst_host_irq valid bit == SFALSE &#64;ref tisci_msg_rm_irq_release_req::ia_id valid bit == STRUE &#64;ref tisci_msg_rm_irq_release_req::vint valid bit == STRUE &#64;ref tisci_msg_rm_irq_release_req::global_event valid bit == STRUE &#64;ref tisci_msg_rm_irq_release_req::vint_status_bit_index valid bit == STRUE OES Register Programming Only - Only clears the OES register of the source.  Useful for clearing UDMAP trigger events and any other events that are not translated to the interrupt domain: &#64;ref tisci_msg_rm_irq_release_req::dst_id valid bit == SFALSE &#64;ref tisci_msg_rm_irq_release_req::dst_host_irq valid bit == SFALSE &#64;ref tisci_msg_rm_irq_release_req::ia_id valid bit == SFALSE &#64;ref tisci_msg_rm_irq_release_req::vint valid bit == SFALSE &#64;ref tisci_msg_rm_irq_release_req::global_event valid bit == STRUE &#64;ref tisci_msg_rm_irq_release_req::vint_status_bit_index valid bit == SFALSE</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="3%" />
+<col width="3%" />
+<col width="94%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>hdr</td>
+<td>struct tisci_header</td>
+<td>Standard TISCI header</td>
+</tr>
+<tr class="row-odd"><td>valid_params</td>
+<td>u32</td>
+<td>Bitfield defining validity of interrupt route release parameters.  The interrupt route release fields are not valid, and will not be used for route release, if their corresponding valid bit is zero.  Valid bit usage: 0 - Valid bit for &#64;ref tisci_msg_rm_irq_release_req::dst_id 1 - Valid bit for &#64;ref tisci_msg_rm_irq_release_req::dst_host_irq 2 - Valid bit for &#64;ref tisci_msg_rm_irq_release_req::ia_id 3 - Valid bit for &#64;ref tisci_msg_rm_irq_release_req::vint 4 - Valid bit for &#64;ref tisci_msg_rm_irq_release_req::global_event 5 - Valid bit for &#64;ref tisci_msg_rm_irq_release_req::vint_status_bit_index 31 - Valid bit for &#64;ref tisci_msg_rm_irq_release_req::secondary_host</td>
+</tr>
+<tr class="row-even"><td>src_id</td>
+<td>u16</td>
+<td>ID of interrupt source peripheral</td>
+</tr>
+<tr class="row-odd"><td>src_index</td>
+<td>u16</td>
+<td>Interrupt source index within source peripheral</td>
+</tr>
+<tr class="row-even"><td>dst_id</td>
+<td>u16</td>
+<td>SoC IR device ID when the valid_params bits are set to release an IR mux connection.  This field is only valid if &#64;ref TISCI_MSG_VALUE_RM_DST_ID_VALID is set in &#64;ref tisci_msg_rm_irq_release_req::valid_params.</td>
+</tr>
+<tr class="row-odd"><td>dst_host_irq</td>
+<td>u16</td>
+<td>SoC IR output index when the valid_params are set to release an IR mux connection.  This field is only valid if &#64;ref TISCI_MSG_VALUE_RM_DST_HOST_IRQ_VALID is set in &#64;ref tisci_msg_rm_irq_release_req::valid_params.</td>
+</tr>
+<tr class="row-even"><td>ia_id</td>
+<td>u16</td>
+<td>Device ID of interrupt aggregator in which the virtual interrupt resides. This field is only valid if &#64;ref TISCI_MSG_VALUE_RM_IA_ID_VALID is set in &#64;ref tisci_msg_rm_irq_release_req::valid_params.</td>
+</tr>
+<tr class="row-odd"><td>vint</td>
+<td>u16</td>
+<td>Virtual interrupt number if the interrupt route is through an interrupt aggregator.  This field is only valid if &#64;ref TISCI_MSG_VALUE_RM_VINT_VALID is set in &#64;ref tisci_msg_rm_irq_release_req::valid_params.</td>
+</tr>
+<tr class="row-even"><td>global_event</td>
+<td>u16</td>
+<td>Global event mapped to interrupt aggregator virtual interrupt status bit. The event is cleared from the OES register of the interrupt source.  This field is only applicable for interrupt source’s capable of generating global events.  This field is only valid if &#64;ref TISCI_MSG_VALUE_RM_GLOBAL_EVENT_VALID is set in &#64;ref tisci_msg_rm_irq_release_req::valid_params.</td>
+</tr>
+<tr class="row-odd"><td>vint_status_bit_index</td>
+<td>u8</td>
+<td>Virtual interrupt status bit to release if the interrupt route utilizes an interrupt aggregator virtual interrupt.  This field is only valid if &#64;ref TISCI_MSG_VALUE_RM_VINT_STATUS_BIT_INDEX_VALID is set in &#64;ref tisci_msg_rm_irq_release_req::valid_params.</td>
+</tr>
+<tr class="row-even"><td>secondary_host</td>
+<td>u8</td>
+<td>The interrupt route destination is the specified secondary host if the secondary_host’s corresponding valid bit is set in &#64;ref tisci_msg_rm_irq_release_req::valid_params.  Otherwise, the host within the TISCI message header is the route destination.</td>
+</tr>
+</tbody>
+</table>
+</p>
+</div>
+<div class="section" id="irq-route-release-valid-parameters">
+<span id="pub-rm-irq-route-release-valid-params"></span><h3>IRQ Route Release Valid Parameters<a class="headerlink" href="#irq-route-release-valid-parameters" title="Permalink to this headline">¶</a></h3>
+<p>The following table describes the valid bit mappings for the IRQ route release
+message optional parameters:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">valid_params Bit</th>
+<th class="head">Corresponding tisci_msg_rm_irq_release_req Optional Parameter</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0</td>
+<td>dst_id</td>
+</tr>
+<tr class="row-odd"><td>1</td>
+<td>dst_host_irq</td>
+</tr>
+<tr class="row-even"><td>2</td>
+<td>ia_id</td>
+</tr>
+<tr class="row-odd"><td>3</td>
+<td>vint</td>
+</tr>
+<tr class="row-even"><td>4</td>
+<td>global_event</td>
+</tr>
+<tr class="row-odd"><td>5</td>
+<td>vint_status_bit_index</td>
+</tr>
+<tr class="row-even"><td>31</td>
+<td>secondary_host</td>
+</tr>
+</tbody>
+</table>
+<p>The following table describes the valid bit combinations used to clear the
+peripherals within the interrupt management architecture</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="7%" />
+<col width="12%" />
+<col width="6%" />
+<col width="5%" />
+<col width="12%" />
+<col width="20%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Configuration</th>
+<th class="head">dst_id</th>
+<th class="head">dst_host_irq</th>
+<th class="head">ia_id</th>
+<th class="head">vint</th>
+<th class="head">global_event</th>
+<th class="head">vint_status_bit_index</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Interrupt
+Router Mux
+Release</td>
+<td>X</td>
+<td>X</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>Releases an IR input to
+output mux connection where
+the IR input is the
+src_index and the IR output
+is the dst_host_irq.  Both
+src_id and dst_id must be
+the device ID of the IR
+being configured.</td>
+</tr>
+<tr class="row-odd"><td>Event to VINT
+Unmap Only</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>Clear only peripheral OES
+register and event to VINT
+status bit mapping.</td>
+</tr>
+<tr class="row-even"><td>OES Register
+Programming
+Only</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>X</td>
+<td>&#160;</td>
+<td>Only clears the OES
+register of the source.
+Useful for clearing UDMAP
+trigger events and any
+other events that are not
+translated to the interrupt
+domain.</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="tisci-msg-rm-irq-release-irq-route-release-response">
+<span id="pub-rm-irq-route-release-response"></span><h4>TISCI_MSG_RM_IRQ_RELEASE - IRQ Route Release Response<a class="headerlink" href="#tisci-msg-rm-irq-release-irq-route-release-response" title="Permalink to this headline">¶</a></h4>
+<p>The <strong>irq_releaes_response</strong> message returns the result status of the
+processed <strong>irq_release</strong> message.</p>
+</div>
+</div>
+<div class="section" id="irq-route-release-response-message-parameters">
+<h3>IRQ Route Release Response Message Parameters<a class="headerlink" href="#irq-route-release-response-message-parameters" title="Permalink to this headline">¶</a></h3>
+<p><p><strong>struct tisci_msg_rm_irq_release_resp</strong></p>
+<p>Response to releasing a peripheral to processor interrupt.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="37%" />
+<col width="40%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>hdr</td>
+<td>struct tisci_header</td>
+<td>Standard TISCI header</td>
+</tr>
+</tbody>
+</table>
+</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="rm_proxy.html" class="btn btn-neutral float-right" title="Resource Management Proxy TISCI Message Description" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../pm/lpm.html" class="btn btn-neutral" title="TISCI PM Low Power Mode API Documentation" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyright 2016-2024</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'09.02.04',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+
+        $('body').on("mousewheel", function () {
+            // Remove default behavior
+            event.preventDefault();
+            // Scroll without smoothing
+            var wheelDelta = event.wheelDelta;
+            var currentScrollPosition = window.pageYOffset;
+            window.scrollTo(0, currentScrollPosition - wheelDelta);
+        });
+      });
+  </script>
+   
+
+</body>
+</html>

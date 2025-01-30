@@ -1,0 +1,206 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Documentation for objdiff.pl</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Documentation for objdiff.pl</span></strong></big>
+</td></tr>
+</table>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#USAGE">USAGE</a></li>
+  <li><a href="#OPTIONS">OPTIONS</a></li>
+  <li><a href="#OFD-OPTIONS">OFD OPTIONS</a>
+    <ul>
+      <li><a href="#Default-objdiff.pl-Options-and-Comparing-.out-Files">Default objdiff.pl Options and Comparing .out Files</a></li>
+      <li><a href="#Default-objdiff.pl-Options-and-Comparing-Libraries">Default objdiff.pl Options and Comparing Libraries</a></li>
+      <li><a href="#Using-the-objdiff.pl---syms-Option-and-Comparing-.out-Files">Using the objdiff.pl --syms Option and Comparing .out Files</a></li>
+      <li><a href="#Using-the-objdiff.pl---syms-Option-and-Comparing-Libraries">Using the objdiff.pl --syms Option and Comparing Libraries</a></li>
+    </ul>
+  </li>
+  <li><a href="#COMPARING-LIBRARIES">COMPARING LIBRARIES</a></li>
+  <li><a href="#COMPARING-SYMBOLIC-INFORMATION">COMPARING SYMBOLIC INFORMATION</a></li>
+  <li><a href="#COMPARING-DWARF-DEBUG-INFORMATION">COMPARING DWARF DEBUG INFORMATION</a></li>
+  <li><a href="#COMPARING-STABS-DEBUG-INFORMATION">COMPARING STABS DEBUG INFORMATION</a></li>
+  <li><a href="#USING-THE-CONFIGURATION-FILE-TO-SKIP-SECTIONS">USING THE CONFIGURATION FILE TO SKIP SECTIONS</a>
+    <ul>
+      <li><a href="#SYNTAX-OF-THE-CONFIGURATION-FILE">SYNTAX OF THE CONFIGURATION FILE</a></li>
+      <li><a href="#CONFIGURATION-FILE-EXAMPLE">CONFIGURATION FILE EXAMPLE</a></li>
+      <li><a href="#LIMITATION-OF-SECTION-SKIPPING">LIMITATION OF SECTION SKIPPING</a></li>
+    </ul>
+  </li>
+  <li><a href="#CANNOT-COMPENSATE-FOR-DIFFERENCES-FOUND">CANNOT COMPENSATE FOR DIFFERENCES FOUND</a></li>
+  <li><a href="#CONFIGURE-FOR-YOUR-SYSTEM">CONFIGURE FOR YOUR SYSTEM</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>objdiff.pl</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<p>Compares two COFF or ELF files or libraries for equality</p>
+
+<h1 id="USAGE">USAGE</h1>
+
+<p>objdiff.pl [options] &lt;file1&gt; &lt;file2&gt; [&lt;OFD cmd&gt;]</p>
+
+<p>OFD cmd stands for Object File Display utility. That is the name of the object file display utility from the toolset used to create the object files. Examples: ofd6x for C6000 or ofd55 for C5500. If given, the script runs the OFD command to create the XML version of the object file. Creating the XML in this manner avoids the need to create the XML files prior to running the script, while keeping the script itself device independent.</p>
+
+<p>Other Perl scripts that work with OFD output typically allow you to directly pipe the output of the the OFD command into the script. This script does not work that way; it requires the OFD output from two files, not just one.</p>
+
+<p>If you do not give an OFD command, then the script presumes the files are already in XML format.</p>
+
+<p>For example ...</p>
+
+<pre><code>   % perl objdiff.pl file1.obj file2.obj ofd6x</code></pre>
+
+<p>Or ...</p>
+
+<pre><code>   % ofd6x -x -o=file1.xml file1.obj
+   % ofd6x -x -o=file2.xml file2.obj
+   % perl objdiff.pl file1.xml file2.xml</code></pre>
+
+<h1 id="OPTIONS">OPTIONS</h1>
+
+<p>All of these options are disabled by default.</p>
+
+<pre><code> --syms             : Compare symbols, relocations, and line number entries
+ --dwarf            : Compare Dwarf debug sections
+ --verbose          : Show raw data bytes that are different (if any)
+ --config_file=file : Name file for specifying which sections to skip
+ --quiet            : Suppress progress messages
+ --cg_xml_version   : Print out the version of the cg_xml package in use</code></pre>
+
+<p>Except for --cg_xml_version, all the options can be abbreviated to a single letter, i.e. -q is equivalent to --quiet.</p>
+
+<h1 id="OFD-OPTIONS">OFD OPTIONS</h1>
+
+<p>Recent releases of OFD support options for filtering the XML output down to what is strictly of interest. Filtering the XML in this way reduces the amount of data processed by this script, thus making it run faster. Sometimes much faster.</p>
+
+<p>The exact OFD options to use with this script vary based on conditions detailed below. Note the fewer --obj_display option settings you use, the larger the XML file becomes, and the slower the script executes.</p>
+
+<p>The options given below can be used when building the XML files as a separate step. You can also use those options on the objdiff.pl invocation line. If you do that, you have to precede the OFD command with &quot;--&quot;. The &quot;--&quot; breaks the command line in half; everything before is script options, everything after is OFD options. For example ...</p>
+
+<pre><code>  perl objdiff.pl file1.out file2.out -- ofd6x --xml_indent=0 --obj_display=norawdata,nosymbols,nostrings,norelocs,nolnnos</code></pre>
+
+<p>Yes, that&#39;s a long command line. But it saves you from having to create 2 XML files in separate steps. Note OFD -x is not needed here, because objdiff.pl always adds it when it invokes OFD. However, using the -x anyway does not cause any problems.</p>
+
+<h2 id="Default-objdiff.pl-Options-and-Comparing-.out-Files">Default objdiff.pl Options and Comparing .out Files</h2>
+
+<pre><code>  -x --xml_indent=0 --obj_display=norawdata,nosymbols,nostrings,norelocs,nolnnos</code></pre>
+
+<p>Note this means the raw data will not appear in the XML. Thus the script opens the two .out files, reads the raw data directly, and then compares. It turns out this method of comparison is much faster than having the raw data encoded in the XML. Note each .out file must be available for access by the script.</p>
+
+<h2 id="Default-objdiff.pl-Options-and-Comparing-Libraries">Default objdiff.pl Options and Comparing Libraries</h2>
+
+<pre><code>  -x --xml_indent=0 --obj_display=nosymbols,nostrings,norelocs,nolnnos</code></pre>
+
+<p>Note the raw data must be kept in the XML in this case. There is no straightforward method for accessing the raw data from inside a library archive file.</p>
+
+<h2 id="Using-the-objdiff.pl---syms-Option-and-Comparing-.out-Files">Using the objdiff.pl --syms Option and Comparing .out Files</h2>
+
+<pre><code>  -x --xml_indent=0 --obj_display=norawdata,nostrings</code></pre>
+
+<p>The symbol table, relocation entries, and line number entries are kept for comparison.</p>
+
+<h2 id="Using-the-objdiff.pl---syms-Option-and-Comparing-Libraries">Using the objdiff.pl --syms Option and Comparing Libraries</h2>
+
+<pre><code>  -x --xml_indent=0 --obj_display=nostrings</code></pre>
+
+<p>The symbol table, relocation entries, and line number entries are kept for comparison.</p>
+
+<h1 id="COMPARING-LIBRARIES">COMPARING LIBRARIES</h1>
+
+<p>The script can automatically detect when libraries are being compared; no option is necessary.</p>
+
+<h1 id="COMPARING-SYMBOLIC-INFORMATION">COMPARING SYMBOLIC INFORMATION</h1>
+
+<p>By default the symbolic information is not compared. This includes the symbol table, the relocations, and the line number entries. Often such information can have slight differences that do not affect the execution of the underlying object code. Whether to compare this information is thus different from user to user.</p>
+
+<p>Only globally defined symbols are compared. Other symbols, which includes function local and file static symbols, are ignored.</p>
+
+<h1 id="COMPARING-DWARF-DEBUG-INFORMATION">COMPARING DWARF DEBUG INFORMATION</h1>
+
+<p>By default, the Dwarf debug information is not compared.</p>
+
+<p>Dwarf information is represented in two forms by the OFD generated XML. It is encoded in the raw data of the Dwarf debug sections (which are named .debug_&lt;something&gt;). And, it can be explicitly represented in the XML if the -g option is used when invoking OFD.</p>
+
+<p>Use the --dwarf flag to compare the raw data in the Dwarf debug sections.</p>
+
+<p>The explicit representation of the Dwarf debug information (possibly present) in the XML is not examined. This is admittedly a crude approach. But it is the best we can do without a much more sophisticated approach. Comparing two Dwarf representations is like comparing two C programs. Even though they may appear quite different, they may represent the same thing.</p>
+
+<h1 id="COMPARING-STABS-DEBUG-INFORMATION">COMPARING STABS DEBUG INFORMATION</h1>
+
+<p>Stabs debug information is encoded as a collection of cleverly arranged symbols in the symbol table, plus line number entries. No Dwarf-like sections contain stabs debug information. Because only globally defined symbols are ever compared, there is no way to compare Stabs debug information.</p>
+
+<h1 id="USING-THE-CONFIGURATION-FILE-TO-SKIP-SECTIONS">USING THE CONFIGURATION FILE TO SKIP SECTIONS</h1>
+
+<p>You can choose to not compare sections either by name, or by section header flags. Write a configuration file to specify which sections to skip, and supply the name of that file with the option --config_file=file_name.</p>
+
+<h2 id="SYNTAX-OF-THE-CONFIGURATION-FILE">SYNTAX OF THE CONFIGURATION FILE</h2>
+
+<pre><code> &lt;property&gt; = &lt;value&gt;</code></pre>
+
+<p>Valid syntax for a property includes: SKIP_BY_NAME, SKIP_BY_FLAG</p>
+
+<p>If the property is SKIP_BY_NAME, the value need only be a string. Note it must match the name of an actual section to have any effect.</p>
+
+<p>If the property is SKIP_BY_FLAG, valid values include: COPY, UDATA, TEXT, DATA, DUMMY, NOLOAD. Note UDATA stands for uninitialized data, i.e. the &quot;bss&quot; flag. Any section which has one of these flags set in the section header is skipped.</p>
+
+<p>You can list multiple SKIP_BY_NAME and SKIP_BY_FLAG entries.</p>
+
+<p>The configuration file may also contain empty space, blank lines, and comments that begin with &#39;#&#39;. Only simple error checking is done when processing the file. Poke holes in it, if you must.</p>
+
+<h2 id="CONFIGURATION-FILE-EXAMPLE">CONFIGURATION FILE EXAMPLE</h2>
+
+<pre><code> #------------------------------------------------------------------------
+ # Configuration File Example
+ #------------------------------------------------------------------------
+ SKIP_BY_NAME = .one      # comments OK here too
+ SKIP_BY_NAME = two       # sections do not have to start with &#39;.&#39;
+ SKIP_BY_FLAG = COPY      # skip all sections that have the COPY flag set
+ </code></pre>
+
+<h2 id="LIMITATION-OF-SECTION-SKIPPING">LIMITATION OF SECTION SKIPPING</h2>
+
+<p>Suppose you want to compare two files, and you know one file has an additional section named &quot;extra&quot; that you want to avoid comparing. So, you use the configuration file entry ...</p>
+
+<pre><code> SKIP_BY_NAME = extra</code></pre>
+
+<p>to skip it. The file comparison will still fail. The <i>file</i> header includes a count of the number of sections in the file. This count is unaffected by which sections are skipped during comparison. Thus, this section count will be different between the files, even though the &quot;extra&quot; section is skipped.</p>
+
+<h1 id="CANNOT-COMPENSATE-FOR-DIFFERENCES-FOUND">CANNOT COMPENSATE FOR DIFFERENCES FOUND</h1>
+
+<p>Text based file comparison utilities like Unix diff can often adjust for differences found and usefully continue the comparison. Such is not the case for objdiff.pl. When a difference is found no attempt is made to somehow compensate for that difference.</p>
+
+<p>For example, when the size of a section changes (presuming this section is loaded to target memory), this causes all sections after it in memory to begin on different addresses. Further, all symbolic references to these sections are different, which can show up as differences in any section.</p>
+
+<h1 id="CONFIGURE-FOR-YOUR-SYSTEM">CONFIGURE FOR YOUR SYSTEM</h1>
+
+<p>Make sure that the OFD command is in your executables path.</p>
+
+<p>This script was written using Perl version 5.8.3. It may not work with earlier revisions of Perl.</p>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Documentation for objdiff.pl</span></strong></big>
+</td></tr>
+</table>
+
+</body>
+
+</html>
+
+

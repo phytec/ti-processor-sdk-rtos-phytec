@@ -1,0 +1,79 @@
+ECC Example Application
+C_Example_init: Init MAIN ESM complete
+
+
+
+SDTF_init: MCU MSMC ECC Init complete
+
+C_Example_init: ECC Callback Init complete for Main ESM
+
+
+
+ ECC Safety Example tests: starting
+
+ MSMC Double bit error inject Example test UC-1: starting
+  ESM Call back function called : instType 0x3, intType 0x1, grpChannel 0x1, index 0x10, intSrc 0x30
+  Take action
+ High Priority Interrupt Executed
+
+  ECC Error Call back function called : eccMemType 92, errorSrc 0x2, ramId 18, bitErrorOffset 0x00000000, bitErrorGroup 1
+
+
+ MSMC Double bit error inject test: Subtype 0x12 test complete
+
+ Waiting for ESM Interrupt
+
+
+
+UC-1: Injected 2-bit error and got ESM Interrupt
+
+
+
+ MSMC Double bit error inject Example test UC-2: starting
+  ESM Call back function called : instType 0x3, intType 0x1, grpChannel 0x1, index 0x10, intSrc 0x30
+  Take action
+ High Priority Interrupt Executed
+
+  ECC Error Call back function called : eccMemType 92, errorSrc 0x2, ramId 19, bitErrorOffset 0x00000000, bitErrorGroup 0
+
+
+ MSMC Double bit error inject test: Subtype 0x13 test complete
+
+ Waiting for ESM Interrupt
+
+
+
+ UC-2: Got High priority ESM Interrupt
+
+
+
+
+
+**** MSMC Memory Parity TEST ****
+
+
+  ESM Call back function called : instType 0x3, intType 0x1, grpChannel 0x1, index 0x10, intSrc 0x30
+  Take action
+ High Priority Interrupt Executed
+
+  ECC Error Call back function called : eccMemType 92, errorSrc 0x2, ramId 37, bitErrorOffset 0x00000000, bitErrorGroup 0
+
+
+ MSMC_BUSECC_RAM Single bit error self test: Subtype 0x25 test complete
+
+ Waiting for ESM Interrupt
+
+
+
+ Memory Parity Error Test Complete
+
+
+
+ ECC Safety Example tests: success
+ ECC UC-1 and UC-2 Test
+All Use_Cases have passed.
+ecc_main.c:254:ECC_Example_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored
+OK

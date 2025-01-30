@@ -1,0 +1,23 @@
+Welcome to minicom 2.7.1                                                                                                                    
+                                                                                                                                            
+OPTIONS: I18n                                                                                                                               
+Compiled on Dec 23 2019, 02:06:26.                                                                                                          
+Port /dev/ttyUSB1, 20:09:20                                                                                                                 
+                                                                                                                                            
+Press CTRL-A Z for help on special keys                                                                                                     
+                                                                                                                                            
+01000000011a00006a3761657000000000000000475020200008010000080100C1.00.10.01 (Jun 29 2023 - 13:38:40)                                        
+Waiting for tifs.bin ...                                                                                                                    
+CCCTIFS  ver: 9.0.6--v09.00.06 (Kool Koala)                                                                                                 
+Waiting for multicore app ...                                                                                                               
+CCCCCCCCCCCCCst Application                                                                                                                 
+Test Name: RTI POSITIVE TEST  PASSED                                                                                                        
+Test Name: RTI NEGATIVE TEST  PASSED                                                                                                        
+                                                                                                                                            
+ All tests have passed.                                                                                                                     
+rti_test_main.c:291:test_sdl_rti_baremetal_test_app:PASS                                                                                    
+                                                                                                                                            
+-----------------------                                                                                                                     
+1 Tests 0 Failures 0 Ignored                                                                                                                
+OK                                                                                                                                          
+      

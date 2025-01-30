@@ -1,0 +1,18 @@
+.. _documentation_tarball:
+
+###############################
+Documentation Tarball
+###############################
+
+Please click the link below to download a snapshot of the entire documentation in HTML format.
+
+|doc_tarball_link|
+
+Unpack the tarball using the command below:
+
+.. parsed-literal::
+
+    tar -xzvf |doc_tarball|
+
+Then, you can open the landing page (|doc_folder|/index.html) in
+a browser to browse the content.

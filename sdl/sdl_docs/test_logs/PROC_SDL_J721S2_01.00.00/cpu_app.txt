@@ -1,0 +1,64 @@
+mcuClkFreq 1000000000
+
+ R5 CPU Application
+
+  ESM Call back function called : instType 0x2, intType 0x1, grpChannel 0x3, index 0x0, intSrc 0x60
+  Take action
+
+ R5F-CPU example application CCM_Test_init: Init MCU ESM complete
+
+R5F-CPU example application CCM_Test_init: Init MAIN ESM complete
+
+ R5F-CPU example application CCM_Test_init: Init WKUP ESM complete
+
+CCM_Test_init: CCM Init complete
+
+R5F-CPU example application CCM_Test_init: CCM Init complete
+
+CCM Functional Test
+
+ R5F-CPU example application CCM_Test_init: Init MCU ESM complete
+
+R5F-CPU example application CCM_Test_init: Init MAIN ESM complete
+
+ R5F-CPU example application CCM_Test_init: Init WKUP ESM complete
+
+CCM_Test_init: CCM Init complete
+
+R5F-CPU example application CCM_Test_init: CCM Init complete
+
+ R5F-CPU example application CCM self test: starting
+ R5F-CPU example application CCM Self Test complete
+ R5F-CPU example application CCM self test with error forcing: starting
+  ESM Call back function called : instType 0x2, intType 0x1, grpChannel 0x3, index 0x0, intSrc 0x60
+  Take action
+
+ R5F-CPU example application CCM Self Test with error forcing complete
+ R5F-CPU example application CCM inject  error: test starting
+  ESM Call back function called : instType 0x2, intType 0x1, grpChannel 0x3, index 0x0, intSrc 0x60
+  Take action
+
+  ESM Call back function called : instType 0x2, intType 0x1, grpChannel 0x3, index 0x1, intSrc 0x61
+  Take action
+
+ R5F-CPU example application CCM inject Test complete
+ R5F-CPU example application MPU self test for Mem Write Access Fault: starting
+ R5F-CPU example application MPU self test for Mem Write Access Fault complete
+ Cycles taken 14418
+ R5F-CPU example application MPU self test for Mem Read Access Fault: starting
+ R5F-CPU example application MPU self test for Mem Read Access Fault complete
+ Cycles taken 3661
+ R5F-CPU example application MPU self test for Mem Write Access Fault (Wait Forever): starting
+ R5F-CPU example application MPU self test for Mem Write Access Fault  (Wait Forever) complete
+ Cycles taken 3139
+ R5F-CPU example application MPU self test for Mem Read Access Fault  (Wait Forever): starting
+ R5F-CPU example application MPU self test for Mem Read Access Fault  (Wait Forever) complete
+ Cycles taken 3152
+ CPU Functionality  Passed.
+
+All tests have passed.
+main.c:239:test_sdl_cpu_test_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored
+OK

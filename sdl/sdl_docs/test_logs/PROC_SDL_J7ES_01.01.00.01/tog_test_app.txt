@@ -1,0 +1,55 @@
+01000000011a00006a3765730000000000000000475020200101010001010100CSBL Revision: 01.00.10.01 (Jun 29 2023 - 15:00:34)
+Waiting for tifs.bin ...
+CCCCTIFS  ver: 9.0.6--v09.00.06 (Kool Koala)
+Waiting for multicore app ...
+CCCCmcuClkFreq 1000000000
+
+TOG Test Applications
+
+ sdlAppEsmSetupCommon...Done
+ sdlAppEsmSetupCommon...Done
+ sdlAppEsmSetup...Done
+ Starting TOG test on MCU INFRA0, index 0...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done
+  Delta TOG prep time in micro secs 27042
+  Delta TOG execution time in micro secs 8
+  Delta TOG restore time in micro secs 27042
+  TOG complete for MCU INFRA0
+
+ Starting TOG test on MCU FW1, index 1...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done
+  Delta TOG prep time in micro secs 27040
+  Delta TOG execution time in micro secs 3
+  Delta TOG restore time in micro secs 28041
+  TOG complete for MCU FW1
+
+ Starting TOG test on MCU 64B2, index 2...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done
+  Delta TOG prep time in micro secs 27039
+  Delta TOG execution time in micro secs 7
+  Delta TOG restore time in micro secs 28041
+  TOG complete for MCU 64B2
+
+ Starting TOG test on WKUP INFRA0, index 3...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done
+  Delta TOG prep time in micro secs 27040
+  Delta TOG execution time in micro secs 3
+  Delta TOG restore time in micro secs 28040
+  TOG complete for WKUP INFRA0
+
+ TOG Functionality Test Functionality test Passed.
+
+ TOG API Module Test API test Passed.
+
+ TOG Error Module Test Error test Passed.
+
+All tests have passed.
+tog_test_main.c:342:test_sdl_tog_test_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored
+OK

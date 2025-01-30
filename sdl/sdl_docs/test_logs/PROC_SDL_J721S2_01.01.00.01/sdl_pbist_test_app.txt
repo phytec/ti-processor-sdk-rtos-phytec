@@ -1,0 +1,308 @@
+01000000011a00006a3761657000000000000000475020200100010001000100CSBL Revision: 01.00.10.01 (Jun 29 2023 - 14:46:48)
+Waiting for tifs.bin ...
+CCTIFS  ver: 9.0.6--v09.00.06 (Kool Koala)
+Waiting for multicore app ...
+CCCmcuClkFreq 1000000000
+
+PBIST Test Application
+
+ Starting PBIST HWPOST test...    HW POST MCU Status : SDL_PBIST_POST_NOT_RUN
+
+ Starting PBIST failure insertion test on VPAC PBIST, index 0...
+  Delta Cores prep time in micro secs 1624
+  Delta PBIST execution time in micro secs 33
+  Delta Cores restore time in micro secs 39
+ PBIST complete VPAC PBIST, test index 0
+
+ Starting PBIST failure insertion test on Main Infra1 PBIST, index 1...
+  Delta Cores prep time in micro secs 62
+  Delta PBIST execution time in micro secs 30
+  Delta Cores restore time in micro secs 58
+ PBIST complete Main Infra1 PBIST, test index 1
+
+ Starting PBIST failure insertion test on DMPAC PBIST, index 2...
+  Delta Cores prep time in micro secs 72
+  Delta PBIST execution time in micro secs 20
+  Delta Cores restore time in micro secs 48
+ PBIST complete DMPAC PBIST, test index 2
+
+ Starting PBIST failure insertion test on Main R5F 0 PBIST, index 3...
+  Delta Cores prep time in micro secs 109
+  Delta PBIST execution time in micro secs 22
+  Delta Cores restore time in micro secs 88
+ PBIST complete Main R5F 0 PBIST, test index 3
+
+ Starting PBIST failure insertion test on Main R5F 1 PBIST, index 4...
+  Delta Cores prep time in micro secs 82
+  Delta PBIST execution time in micro secs 23
+  Delta Cores restore time in micro secs 57
+ PBIST complete Main R5F 1 PBIST, test index 4
+
+ Starting PBIST failure insertion test on Main Infra PBIST, index 5...
+  Delta Cores prep time in micro secs 44
+  Delta PBIST execution time in micro secs 26
+  Delta Cores restore time in micro secs 52
+ PBIST complete Main Infra PBIST, test index 5
+
+ Starting PBIST failure insertion test on HC PBIST, index 6...
+  Delta Cores prep time in micro secs 102
+  Delta PBIST execution time in micro secs 26
+  Delta Cores restore time in micro secs 88
+ PBIST complete HC PBIST, test index 6
+
+ Starting PBIST failure insertion test on NAVSS PBIST, index 7...
+  Delta Cores prep time in micro secs 20
+  Delta PBIST execution time in micro secs 24
+  Delta Cores restore time in micro secs 31
+ PBIST complete NAVSS PBIST, test index 7
+
+ Starting PBIST failure insertion test on Codec PBIST, index 8...
+  Delta Cores prep time in micro secs 51
+  Delta PBIST execution time in micro secs 19
+  Delta Cores restore time in micro secs 24
+ PBIST complete Codec PBIST, test index 8
+
+ Starting PBIST failure insertion test on GPU PBIST, index 9...
+  Delta Cores prep time in micro secs 90
+  Delta PBIST execution time in micro secs 18
+  Delta Cores restore time in micro secs 42
+ PBIST complete GPU PBIST, test index 9
+
+ Starting PBIST failure insertion test on C7X_0 PBIST, index 10...
+  Delta Cores prep time in micro secs 85
+  Delta PBIST execution time in micro secs 33
+  Delta Cores restore time in micro secs 63
+ PBIST complete C7X_0 PBIST, test index 10
+
+ Starting PBIST failure insertion test on C7X_1 PBIST, index 11...
+  Delta Cores prep time in micro secs 104
+  Delta PBIST execution time in micro secs 33
+  Delta Cores restore time in micro secs 64
+ PBIST complete C7X_1 PBIST, test index 11
+
+ Starting PBIST failure insertion test on A72 PBIST, index 12...
+  Delta Cores prep time in micro secs 194
+  Delta PBIST execution time in micro secs 33
+  Delta Cores restore time in micro secs 268
+ PBIST complete A72 PBIST, test index 12
+
+ Starting PBIST failure insertion test on MSMC PBIST, index 13...
+  Delta Cores prep time in micro secs 140
+  Delta PBIST execution time in micro secs 33
+  Delta Cores restore time in micro secs 259
+ PBIST complete MSMC PBIST, test index 13
+
+ Starting PBIST failure insertion test on DSS EDP PBIST, index 17...
+  Delta Cores prep time in micro secs 81
+  Delta PBIST execution time in micro secs 20
+  Delta Cores restore time in micro secs 96
+ PBIST complete DSS EDP PBIST, test index 17
+
+ Starting PBIST test on VPAC PBIST, index 0...
+  Delta Cores prep time in micro secs 55
+  Delta PBIST execution time in micro secs 4366
+  Delta Cores restore time in micro secs 32
+ PBIST complete VPAC PBIST, test index 0
+
+ Starting PBIST test on Main Infra1 PBIST, index 1...
+  Delta Cores prep time in micro secs 99
+  Delta PBIST execution time in micro secs 21655
+  Delta Cores restore time in micro secs 62
+ PBIST complete Main Infra1 PBIST, test index 1
+
+ Starting PBIST test on DMPAC PBIST, index 2...
+  Delta Cores prep time in micro secs 70
+  Delta PBIST execution time in micro secs 2949
+  Delta Cores restore time in micro secs 47
+ PBIST complete DMPAC PBIST, test index 2
+
+ Starting PBIST test on Main R5F 0 PBIST, index 3...
+  Delta Cores prep time in micro secs 107
+  Delta PBIST execution time in micro secs 2282
+  Delta Cores restore time in micro secs 89
+ PBIST complete Main R5F 0 PBIST, test index 3
+
+ Starting PBIST test on Main R5F 1 PBIST, index 4...
+  Delta Cores prep time in micro secs 82
+  Delta PBIST execution time in micro secs 2282
+  Delta Cores restore time in micro secs 58
+ PBIST complete Main R5F 1 PBIST, test index 4
+
+ Starting PBIST test on Main Infra PBIST, index 5...
+  Delta Cores prep time in micro secs 84
+  Delta PBIST execution time in micro secs 11527
+  Delta Cores restore time in micro secs 56
+ PBIST complete Main Infra PBIST, test index 5
+
+ Starting PBIST test on HC PBIST, index 6...
+  Delta Cores prep time in micro secs 137
+  Delta PBIST execution time in micro secs 1915
+  Delta Cores restore time in micro secs 93
+ PBIST complete HC PBIST, test index 6
+
+ Starting PBIST test on NAVSS PBIST, index 7...
+  Delta Cores prep time in micro secs 35
+  Delta PBIST execution time in micro secs 12985
+  Delta Cores restore time in micro secs 30
+ PBIST complete NAVSS PBIST, test index 7
+
+ Starting PBIST test on Codec PBIST, index 8...
+  Delta Cores prep time in micro secs 51
+  Delta PBIST execution time in micro secs 2201
+  Delta Cores restore time in micro secs 23
+ PBIST complete Codec PBIST, test index 8
+
+ Starting PBIST test on GPU PBIST, index 9...
+  Delta Cores prep time in micro secs 89
+  Delta PBIST execution time in micro secs 2374
+  Delta Cores restore time in micro secs 42
+ PBIST complete GPU PBIST, test index 9
+
+ Starting PBIST test on C7X_0 PBIST, index 10...
+  Delta Cores prep time in micro secs 87
+  Delta PBIST execution time in micro secs 3750
+  Delta Cores restore time in micro secs 62
+ PBIST complete C7X_0 PBIST, test index 10
+
+ Starting PBIST test on C7X_1 PBIST, index 11...
+  Delta Cores prep time in micro secs 104
+  Delta PBIST execution time in micro secs 3751
+  Delta Cores restore time in micro secs 63
+ PBIST complete C7X_1 PBIST, test index 11
+
+ Starting PBIST test on A72 PBIST, index 12...
+  Delta Cores prep time in micro secs 192
+  Delta PBIST execution time in micro secs 4674
+  Delta Cores restore time in micro secs 268
+ PBIST complete A72 PBIST, test index 12
+
+ Starting PBIST test on MSMC PBIST, index 13...
+  Delta Cores prep time in micro secs 140
+  Delta PBIST execution time in micro secs 9905
+  Delta Cores restore time in micro secs 259
+ PBIST complete MSMC PBIST, test index 13
+
+ Starting PBIST test on DSS EDP PBIST, index 17...
+  Delta Cores prep time in micro secs 140
+  Delta PBIST execution time in micro secs 9265
+  Delta Cores restore time in micro secs 93
+ PBIST complete DSS EDP PBIST, test index 17
+
+ Starting PBIST ROM test on VPAC PBIST, index 0...
+  Delta Cores prep time in micro secs 56
+  Delta PBIST execution time in micro secs 146
+  Delta Cores restore time in micro secs 34
+ PBIST complete VPAC PBIST, test index 0
+
+ Starting PBIST ROM test on Main Infra1 PBIST, index 1...
+  Delta Cores prep time in micro secs 99
+  Delta PBIST execution time in micro secs 284
+  Delta Cores restore time in micro secs 63
+ PBIST complete Main Infra1 PBIST, test index 1
+
+ Starting PBIST ROM test on DMPAC PBIST, index 2...
+  Delta Cores prep time in micro secs 71
+  Delta PBIST execution time in micro secs 278
+  Delta Cores restore time in micro secs 47
+ PBIST complete DMPAC PBIST, test index 2
+
+ Starting PBIST ROM test on Main R5F 0 PBIST, index 3...
+  Delta Cores prep time in micro secs 107
+  Delta PBIST execution time in micro secs 281
+  Delta Cores restore time in micro secs 88
+ PBIST complete Main R5F 0 PBIST, test index 3
+
+ Starting PBIST ROM test on Main R5F 1 PBIST, index 4...
+  Delta Cores prep time in micro secs 81
+  Delta PBIST execution time in micro secs 281
+  Delta Cores restore time in micro secs 57
+ PBIST complete Main R5F 1 PBIST, test index 4
+
+ Starting PBIST ROM test on Main Infra PBIST, index 5...
+  Delta Cores prep time in micro secs 84
+  Delta PBIST execution time in micro secs 283
+  Delta Cores restore time in micro secs 57
+ PBIST complete Main Infra PBIST, test index 5
+
+ Starting PBIST ROM test on HC PBIST, index 6...
+  Delta Cores prep time in micro secs 136
+  Delta PBIST execution time in micro secs 3
+  Delta Cores restore time in micro secs 92
+ PBIST complete HC PBIST, test index 6
+
+ Starting PBIST ROM test on NAVSS PBIST, index 7...
+  Delta Cores prep time in micro secs 34
+  Delta PBIST execution time in micro secs 282
+  Delta Cores restore time in micro secs 30
+ PBIST complete NAVSS PBIST, test index 7
+
+ Starting PBIST ROM test on Codec PBIST, index 8...
+  Delta Cores prep time in micro secs 52
+  Delta PBIST execution time in micro secs 277
+  Delta Cores restore time in micro secs 23
+ PBIST complete Codec PBIST, test index 8
+
+ Starting PBIST ROM test on GPU PBIST, index 9...
+  Delta Cores prep time in micro secs 89
+  Delta PBIST execution time in micro secs 278
+  Delta Cores restore time in micro secs 41
+ PBIST complete GPU PBIST, test index 9
+
+ Starting PBIST ROM test on C7X_0 PBIST, index 10...
+  Delta Cores prep time in micro secs 86
+  Delta PBIST execution time in micro secs 8
+  Delta Cores restore time in micro secs 62
+ PBIST complete C7X_0 PBIST, test index 10
+
+ Starting PBIST ROM test on C7X_1 PBIST, index 11...
+  Delta Cores prep time in micro secs 103
+  Delta PBIST execution time in micro secs 8
+  Delta Cores restore time in micro secs 64
+ PBIST complete C7X_1 PBIST, test index 11
+
+ Starting PBIST ROM test on A72 PBIST, index 12...
+  Delta Cores prep time in micro secs 191
+  Delta PBIST execution time in micro secs 8
+  Delta Cores restore time in micro secs 266
+ PBIST complete A72 PBIST, test index 12
+
+ Starting PBIST ROM test on MSMC PBIST, index 13...
+  Delta Cores prep time in micro secs 140
+  Delta PBIST execution time in micro secs 92
+  Delta Cores restore time in micro secs 259
+ PBIST complete MSMC PBIST, test index 13
+
+ Starting PBIST ROM test on MCU PULSAR PBIST, index 14...
+  Delta Cores prep time in micro secs 5
+  Delta PBIST execution time in micro secs 401
+  Delta Cores restore time in micro secs 9
+ PBIST complete MCU PULSAR PBIST, test index 14
+
+ Starting PBIST ROM test on MCU PBIST, index 15...
+  Delta Cores prep time in micro secs 5
+  Delta PBIST execution time in micro secs 400
+  Delta Cores restore time in micro secs 8
+ PBIST complete MCU PBIST, test index 15
+
+ Starting PBIST ROM test on MCU 1 PBIST, index 16...
+  Delta Cores prep time in micro secs 5
+  Delta PBIST execution time in micro secs 400
+  Delta Cores restore time in micro secs 10
+ PBIST complete MCU 1 PBIST, test index 16
+
+ Starting PBIST ROM test on DSS EDP PBIST, index 17...
+  Delta Cores prep time in micro secs 138
+  Delta PBIST execution time in micro secs 278
+  Delta Cores restore time in micro secs 92
+ PBIST complete DSS EDP PBIST, test index 17
+
+ PBIST Functionality Test Passed.
+
+ PBIST Error Module Test Passed.
+
+All tests have passed.
+common/pbist_test_main.c:231:test_sdl_pbist_test_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored
+OK

@@ -1,0 +1,178 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1"
+ width="840px" height="330px"
+ viewBox="0 0 840 330"
+ xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges"
+ stroke-width="1" text-rendering="geometricPrecision">
+<polygon fill="white" points="105,7 173,7 173,16 105,16"/>
+<text x="140" y="16" textLength="67" font-family="Helvetica" font-size="12" fill="black" text-anchor="middle">
+
+R5/SBL/SPL
+</text>
+<polygon fill="white" points="387,7 451,7 451,16 387,16"/>
+<text x="420" y="16" textLength="63" font-family="Helvetica" font-size="12" fill="black" text-anchor="middle">
+
+M3/SYSFW
+</text>
+<polygon fill="white" points="683,7 715,7 715,16 683,16"/>
+<text x="700" y="16" textLength="31" font-family="Helvetica" font-size="12" fill="black" text-anchor="middle">
+
+Notes
+</text>
+<line x1="140" y1="22" x2="140" y2="50" stroke="black" stroke-dasharray="2,2"/>
+<line x1="420" y1="22" x2="420" y2="50" stroke="black" stroke-dasharray="2,2"/>
+<line x1="700" y1="22" x2="700" y2="50" stroke="white" stroke-dasharray="2,2"/>
+<polygon fill="white" points="568,22 832,22 832,44 568,44"/>
+<line x1="568" y1="22" x2="832" y2="22" stroke="white"/>
+<line x1="568" y1="44" x2="832" y2="44" stroke="white"/>
+<line x1="568" y1="22" x2="568" y2="44" stroke="white"/>
+<line x1="832" y1="22" x2="832" y2="44" stroke="white"/>
+<polygon fill="white" points="630,29 769,29 769,38 630,38"/>
+<text x="631" y="38" textLength="137" font-family="Helvetica" font-size="12" fill="black">
+Before Security Handover
+</text>
+<line x1="140" y1="50" x2="140" y2="78" stroke="black"/>
+<line x1="420" y1="50" x2="420" y2="78" stroke="black"/>
+<line x1="700" y1="50" x2="700" y2="78" stroke="white"/>
+<line x1="140" y1="61" x2="420" y2="61" stroke="black"/>
+<line x1="420" y1="61" x2="410" y2="67" stroke="black"/>
+<polygon fill="white" points="202,51 357,51 357,60 202,60"/>
+<text x="203" y="60" textLength="153" font-family="Helvetica" font-size="12" fill="black">
+Any Security TISCI Message
+</text>
+<polygon fill="white" points="568,50 832,50 832,72 568,72"/>
+<line x1="568" y1="50" x2="832" y2="50" stroke="white"/>
+<line x1="568" y1="72" x2="832" y2="72" stroke="white"/>
+<line x1="568" y1="50" x2="568" y2="72" stroke="white"/>
+<line x1="832" y1="50" x2="832" y2="72" stroke="white"/>
+<polygon fill="white" points="574,51 824,51 824,60 574,60"/>
+<text x="575" y="60" textLength="248" font-family="Helvetica" font-size="12" fill="black">
+All security TISCI messages can be processed
+</text>
+<polygon fill="white" points="673,62 726,62 726,71 673,71"/>
+<text x="674" y="71" textLength="51" font-family="Helvetica" font-size="12" fill="black">
+by DMSC
+</text>
+<line x1="140" y1="78" x2="140" y2="106" stroke="black"/>
+<line x1="420" y1="78" x2="420" y2="106" stroke="black"/>
+<line x1="700" y1="78" x2="700" y2="106" stroke="white"/>
+<line x1="420" y1="89" x2="140" y2="89" stroke="black"/>
+<line x1="140" y1="89" x2="150" y2="95" stroke="black"/>
+<polygon fill="white" points="266,79 293,79 293,88 266,88"/>
+<text x="267" y="88" textLength="25" font-family="Helvetica" font-size="12" fill="black">
+ACK
+</text>
+<line x1="140" y1="106" x2="140" y2="134" stroke="black"/>
+<line x1="420" y1="106" x2="420" y2="134" stroke="black"/>
+<line x1="700" y1="106" x2="700" y2="134" stroke="white"/>
+<line x1="70" y1="117" x2="770" y2="117" stroke="black" stroke-dasharray="2,2"/>
+<polygon fill="white" points="568,106 832,106 832,128 568,128"/>
+<line x1="568" y1="106" x2="832" y2="106" stroke="white"/>
+<line x1="568" y1="128" x2="832" y2="128" stroke="white"/>
+<line x1="568" y1="106" x2="568" y2="128" stroke="white"/>
+<line x1="832" y1="106" x2="832" y2="128" stroke="white"/>
+<polygon fill="white" points="635,113 764,113 764,122 635,122"/>
+<text x="636" y="122" textLength="127" font-family="Helvetica" font-size="12" fill="black">
+Start Security Handover
+</text>
+<line x1="140" y1="134" x2="140" y2="162" stroke="black"/>
+<line x1="420" y1="134" x2="420" y2="162" stroke="black"/>
+<line x1="700" y1="134" x2="700" y2="162" stroke="white"/>
+<line x1="140" y1="145" x2="420" y2="145" stroke="black"/>
+<line x1="420" y1="145" x2="410" y2="151" stroke="black"/>
+<polygon fill="white" points="221,135 338,135 338,144 221,144"/>
+<text x="222" y="144" textLength="115" font-family="Helvetica" font-size="12" fill="black">
+Do Security handover
+</text>
+<polygon fill="white" points="568,134 832,134 832,156 568,156"/>
+<line x1="568" y1="134" x2="832" y2="134" stroke="white"/>
+<line x1="568" y1="156" x2="832" y2="156" stroke="white"/>
+<line x1="568" y1="134" x2="568" y2="156" stroke="white"/>
+<line x1="832" y1="134" x2="832" y2="156" stroke="white"/>
+<polygon fill="white" points="577,135 822,135 822,144 577,144"/>
+<text x="578" y="144" textLength="243" font-family="Helvetica" font-size="12" fill="black">
+Action triggered by host specified in the board
+</text>
+<polygon fill="white" points="664,146 735,146 735,155 664,155"/>
+<text x="665" y="155" textLength="69" font-family="Helvetica" font-size="12" fill="black">
+configuration
+</text>
+<line x1="140" y1="162" x2="140" y2="190" stroke="black"/>
+<line x1="420" y1="162" x2="420" y2="190" stroke="black"/>
+<line x1="700" y1="162" x2="700" y2="190" stroke="white"/>
+<polygon fill="white" points="288,162 552,162 552,184 288,184"/>
+<line x1="288" y1="162" x2="552" y2="162" stroke="black"/>
+<line x1="288" y1="184" x2="552" y2="184" stroke="black"/>
+<line x1="288" y1="162" x2="288" y2="184" stroke="black"/>
+<line x1="552" y1="162" x2="552" y2="184" stroke="black"/>
+<polygon fill="white" points="300,169 538,169 538,178 300,178"/>
+<text x="301" y="178" textLength="236" font-family="Helvetica" font-size="12" fill="black">
+Lock firewalls protecting secrets in hardware
+</text>
+<line x1="140" y1="190" x2="140" y2="218" stroke="black"/>
+<line x1="420" y1="190" x2="420" y2="218" stroke="black"/>
+<line x1="700" y1="190" x2="700" y2="218" stroke="white"/>
+<polygon fill="white" points="288,190 552,190 552,212 288,212"/>
+<line x1="288" y1="190" x2="552" y2="190" stroke="black"/>
+<line x1="288" y1="212" x2="552" y2="212" stroke="black"/>
+<line x1="288" y1="190" x2="288" y2="212" stroke="black"/>
+<line x1="552" y1="190" x2="552" y2="212" stroke="black"/>
+<polygon fill="white" points="297,191 542,191 542,200 297,200"/>
+<text x="298" y="200" textLength="243" font-family="Helvetica" font-size="12" fill="black">
+Wipe out external memory containing security
+</text>
+<polygon fill="white" points="405,202 433,202 433,211 405,211"/>
+<text x="406" y="211" textLength="26" font-family="Helvetica" font-size="12" fill="black">
+code
+</text>
+<line x1="140" y1="218" x2="140" y2="246" stroke="black"/>
+<line x1="420" y1="218" x2="420" y2="246" stroke="black"/>
+<line x1="700" y1="218" x2="700" y2="246" stroke="white"/>
+<polygon fill="white" points="288,218 552,218 552,240 288,240"/>
+<line x1="288" y1="218" x2="552" y2="218" stroke="black"/>
+<line x1="288" y1="240" x2="552" y2="240" stroke="black"/>
+<line x1="288" y1="218" x2="288" y2="240" stroke="black"/>
+<line x1="552" y1="218" x2="552" y2="240" stroke="black"/>
+<polygon fill="white" points="309,225 530,225 530,234 309,234"/>
+<text x="310" y="234" textLength="219" font-family="Helvetica" font-size="12" fill="black">
+Open firewall protecting external memory
+</text>
+<line x1="140" y1="246" x2="140" y2="274" stroke="black"/>
+<line x1="420" y1="246" x2="420" y2="274" stroke="black"/>
+<line x1="700" y1="246" x2="700" y2="274" stroke="white"/>
+<polygon fill="white" points="288,246 552,246 552,268 288,268"/>
+<line x1="288" y1="246" x2="552" y2="246" stroke="black"/>
+<line x1="288" y1="268" x2="552" y2="268" stroke="black"/>
+<line x1="288" y1="246" x2="288" y2="268" stroke="black"/>
+<line x1="552" y1="246" x2="552" y2="268" stroke="black"/>
+<polygon fill="white" points="299,253 540,253 540,262 299,262"/>
+<text x="300" y="262" textLength="239" font-family="Helvetica" font-size="12" fill="black">
+Open firewall protecting firewall configuration
+</text>
+<line x1="140" y1="274" x2="140" y2="302" stroke="black"/>
+<line x1="420" y1="274" x2="420" y2="302" stroke="black"/>
+<line x1="700" y1="274" x2="700" y2="302" stroke="white"/>
+<line x1="420" y1="285" x2="140" y2="285" stroke="black"/>
+<line x1="140" y1="285" x2="150" y2="291" stroke="black"/>
+<polygon fill="white" points="266,275 293,275 293,284 266,284"/>
+<text x="267" y="284" textLength="25" font-family="Helvetica" font-size="12" fill="black">
+ACK
+</text>
+<line x1="140" y1="302" x2="140" y2="330" stroke="black"/>
+<line x1="420" y1="302" x2="420" y2="330" stroke="black"/>
+<line x1="700" y1="302" x2="700" y2="330" stroke="white"/>
+<line x1="70" y1="313" x2="770" y2="313" stroke="black" stroke-dasharray="2,2"/>
+<polygon fill="white" points="568,302 832,302 832,324 568,324"/>
+<line x1="568" y1="302" x2="832" y2="302" stroke="white"/>
+<line x1="568" y1="324" x2="832" y2="324" stroke="white"/>
+<line x1="568" y1="302" x2="568" y2="324" stroke="white"/>
+<line x1="832" y1="302" x2="832" y2="324" stroke="white"/>
+<polygon fill="white" points="637,309 762,309 762,318 637,318"/>
+<text x="638" y="318" textLength="123" font-family="Helvetica" font-size="12" fill="black">
+End Security Handover
+</text>
+<line x1="140" y1="324" x2="140" y2="330" stroke="black"/>
+<line x1="420" y1="324" x2="420" y2="330" stroke="black"/>
+<line x1="700" y1="324" x2="700" y2="330" stroke="white"/>
+</svg>

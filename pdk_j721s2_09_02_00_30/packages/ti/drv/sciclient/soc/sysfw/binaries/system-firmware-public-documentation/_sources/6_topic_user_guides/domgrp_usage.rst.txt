@@ -1,0 +1,72 @@
+===================
+Domain Group Primer
+===================
+
+This document provides a quick primer on what domain group is
+and provides guidance on usage of domain groups.
+
+Introduction
+============
+
+The SoC is partitioned into different functional domains, each containing
+specific processing cores and peripherals. In the K3 platform SoCs,
+the domains are Wake-up (WKUP), MCU, MAIN. The domain fragmentation
+allows domains to be reset and allows efficient addressing of safety
+requirements.
+
+The focus on the functional domain differentiates domain group from device
+group. The domain group's purpose is to identify the region to be reset.
+The device group may have overlapping definitions with domain group, but device
+group can have devices not meant to be reset. For example, the EARLY_CAN may
+become a device for early CAN response, but it is not meant to be a reset option.
+
+Definition
+==========
+
+Each "Domain Group" or DOMGRP is used to denote the functional domains of the
+SoC. Each domain's reset can be invoked with corresponding reset API call
+:ref:`TISCI_MSG_SYS_RESET <pub_sysreset_tisci>`.
+
+The specific grouping of device instances are documented in the SoC
+specific documentation.
+
+DOMGRP values
+=============
+
+Domain group identification follows a generic bitfield format.
+
+* domgrp_t type is u8 (8 bits)
+* Values for the field is defined as follows:
+
++----------------------+--------+--------------------------------------------------------------------------------------+
+| Device Group         | Value  |                                          Description                                 |
++======================+========+======================================================================================+
+| DOMGRP_COMPATIBILITY | 0      | SoC SYSFW domgrp for backward compatibility. When sysreset did not have domain as    |
+|                      |        | an input parameter, use this value as a replacement.                                 |
++----------------------+--------+--------------------------------------------------------------------------------------+
+| DOMGRP_00            | 1 << 0 | SoC specific domgrp 0.                                                               |
+|                      |        | Please refer to :ref:`SoC information <pub_soc_family_doc>` for the specific SoC.    |
++----------------------+--------+--------------------------------------------------------------------------------------+
+| DOMGRP_01            | 1 << 1 | SoC specific domgrp 1.                                                               |
+|                      |        | Please refer to :ref:`SoC information <pub_soc_family_doc>` for the specific SoC.    |
++----------------------+--------+--------------------------------------------------------------------------------------+
+| DOMGRP_02            | 1 << 2 | SoC specific domgrp 2.                                                               |
+|                      |        | Please refer to :ref:`SoC information <pub_soc_family_doc>` for the specific SoC.    |
++----------------------+--------+--------------------------------------------------------------------------------------+
+| DOMGRP_03            | 1 << 3 | SoC specific domgrp 3.                                                               |
+|                      |        | Please refer to :ref:`SoC information <pub_soc_family_doc>` for the specific SoC.    |
++----------------------+--------+--------------------------------------------------------------------------------------+
+| DOMGRP_04            | 1 << 4 | SoC specific domgrp 4.                                                               |
+|                      |        | Please refer to :ref:`SoC information <pub_soc_family_doc>` for the specific SoC.    |
++----------------------+--------+--------------------------------------------------------------------------------------+
+| DOMGRP_05            | 1 << 5 | SoC specific domgrp 5.                                                               |
+|                      |        | Please refer to :ref:`SoC information <pub_soc_family_doc>` for the specific SoC.    |
++----------------------+--------+--------------------------------------------------------------------------------------+
+| DOMGRP_06            | 1 << 6 | SoC specific domgrp 6.                                                               |
+|                      |        | Please refer to :ref:`SoC information <pub_soc_family_doc>` for the specific SoC.    |
++----------------------+--------+--------------------------------------------------------------------------------------+
+
+.. warning::
+
+   * SoC specific domain grouping is predefined and NOT configurable by user.
+

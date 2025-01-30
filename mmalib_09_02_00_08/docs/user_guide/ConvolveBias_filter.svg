@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns:xl="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2000/svg" viewBox="-82 805 927 214" width="927" height="214">
+  <defs>
+    <font-face font-family="Helvetica Neue" font-size="11" panose-1="2 0 5 3 0 0 0 2 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="951.9958" descent="-212.99744" font-weight="400">
+      <font-face-src>
+        <font-face-name name="HelveticaNeue"/>
+      </font-face-src>
+    </font-face>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -4 10 8" markerWidth="10" markerHeight="8" color="black">
+      <g>
+        <path d="M 8 0 L 0 -3 L 0 3 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker_2" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-9 -4 10 8" markerWidth="10" markerHeight="8" color="black">
+      <g>
+        <path d="M -8 0 L 0 3 L 0 -3 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+  </defs>
+  <metadata> Produced by OmniGraffle 7.13 
+    <dc:date>2022-02-09 17:29:06 +0000</dc:date>
+  </metadata>
+  <g id="coefficients" fill-opacity="1" stroke-opacity="1" stroke-dasharray="none" fill="none" stroke="none">
+    <title>coefficients</title>
+    <rect fill="white" x="-82" y="805" width="927" height="214"/>
+    <g id="coefficients: Layer 1">
+      <title>Layer 1</title>
+      <g id="Group_15">
+        <g id="Graphic_2">
+          <rect x="-35" y="848.5" width="16" height="16" fill="#c0ffff"/>
+          <rect x="-35" y="848.5" width="16" height="16" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_9">
+          <rect x="-43.5" y="855" width="16" height="16" fill="#c0ffff"/>
+          <rect x="-43.5" y="855" width="16" height="16" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_8">
+          <rect x="-51" y="862.5" width="16" height="16" fill="#c0ffff"/>
+          <rect x="-51" y="862.5" width="16" height="16" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_10">
+          <rect x="-58.5" y="870" width="16" height="16" fill="#c0ffff"/>
+          <rect x="-58.5" y="870" width="16" height="16" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+      </g>
+      <g id="Group_16">
+        <g id="Graphic_20">
+          <rect x="-35" y="893" width="16" height="16" fill="#00bfc0"/>
+          <rect x="-35" y="893" width="16" height="16" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_19">
+          <rect x="-43.5" y="899.5" width="16" height="16" fill="#00bfc0"/>
+          <rect x="-43.5" y="899.5" width="16" height="16" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_18">
+          <rect x="-51" y="907" width="16" height="16" fill="#00bfc0"/>
+          <rect x="-51" y="907" width="16" height="16" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_17">
+          <rect x="-58.5" y="914.5" width="16" height="16" fill="#00bfc0"/>
+          <rect x="-58.5" y="914.5" width="16" height="16" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+      </g>
+      <g id="Group_26">
+        <g id="Graphic_21">
+          <rect x="59" y="848.5" width="64" height="16" fill="#c0ffff"/>
+          <rect x="59" y="848.5" width="64" height="16" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_22">
+          <rect x="123" y="848.5" width="64" height="16" fill="#c0ffff"/>
+          <rect x="123" y="848.5" width="64" height="16" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_23">
+          <rect x="187" y="848.5" width="64" height="16" fill="#c0ffff"/>
+          <rect x="187" y="848.5" width="64" height="16" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_24">
+          <rect x="251" y="848.5" width="64" height="16" fill="white"/>
+          <rect x="251" y="848.5" width="64" height="16" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_25">
+          <rect x="315" y="848.5" width="64" height="16" fill="white"/>
+          <rect x="315" y="848.5" width="64" height="16" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+      </g>
+      <g id="Group_33">
+        <g id="Graphic_32">
+          <rect x="59" y="864.5" width="64" height="16" fill="#00bfc0"/>
+          <rect x="59" y="864.5" width="64" height="16" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_31">
+          <rect x="123" y="864.5" width="64" height="16" fill="#00bfc0"/>
+          <rect x="123" y="864.5" width="64" height="16" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_30">
+          <rect x="187" y="864.5" width="64" height="16" fill="#00bfc0"/>
+          <rect x="187" y="864.5" width="64" height="16" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_29">
+          <rect x="251" y="864.5" width="64" height="16" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_28">
+          <rect x="315" y="864.5" width="64" height="16" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+      </g>
+      <g id="Graphic_39">
+        <rect x="59" y="880.5" width="64" height="16" fill="#dadada"/>
+        <rect x="59" y="880.5" width="64" height="16" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_38">
+        <rect x="123" y="880.5" width="64" height="16" fill="#dadada"/>
+        <rect x="123" y="880.5" width="64" height="16" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_37">
+        <rect x="187" y="880.5" width="64" height="16" fill="#dadada"/>
+        <rect x="187" y="880.5" width="64" height="16" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_36">
+        <rect x="251" y="880.5" width="64" height="16" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_35">
+        <rect x="315" y="880.5" width="64" height="16" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_46">
+        <rect x="59" y="896.5" width="64" height="16" fill="#dadada"/>
+        <rect x="59" y="896.5" width="64" height="16" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_45">
+        <rect x="123" y="896.5" width="64" height="16" fill="#dadada"/>
+        <rect x="123" y="896.5" width="64" height="16" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_44">
+        <rect x="187" y="896.5" width="64" height="16" fill="#dadada"/>
+        <rect x="187" y="896.5" width="64" height="16" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_43">
+        <rect x="251" y="896.5" width="64" height="16" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_42">
+        <rect x="315" y="896.5" width="64" height="16" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_52">
+        <rect x="59" y="912.5" width="64" height="16" fill="#dadada"/>
+        <rect x="59" y="912.5" width="64" height="16" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_51">
+        <rect x="123" y="912.5" width="64" height="16" fill="#dadada"/>
+        <rect x="123" y="912.5" width="64" height="16" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_50">
+        <rect x="187" y="912.5" width="64" height="16" fill="#dadada"/>
+        <rect x="187" y="912.5" width="64" height="16" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_49">
+        <rect x="251" y="912.5" width="64" height="16" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_48">
+        <rect x="315" y="912.5" width="64" height="16" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_58">
+        <rect x="59" y="928.5" width="64" height="16" fill="#dadada"/>
+        <rect x="59" y="928.5" width="64" height="16" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_57">
+        <rect x="123" y="928.5" width="64" height="16" fill="#dadada"/>
+        <rect x="123" y="928.5" width="64" height="16" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_56">
+        <rect x="187" y="928.5" width="64" height="16" fill="#dadada"/>
+        <rect x="187" y="928.5" width="64" height="16" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_55">
+        <rect x="251" y="928.5" width="64" height="16" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_54">
+        <rect x="315" y="928.5" width="64" height="16" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_64">
+        <rect x="59" y="944.5" width="64" height="16" fill="#dadada"/>
+        <rect x="59" y="944.5" width="64" height="16" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_63">
+        <rect x="123" y="944.5" width="64" height="16" fill="#dadada"/>
+        <rect x="123" y="944.5" width="64" height="16" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_62">
+        <rect x="187" y="944.5" width="64" height="16" fill="#dadada"/>
+        <rect x="187" y="944.5" width="64" height="16" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_61">
+        <rect x="251" y="944.5" width="64" height="16" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_60">
+        <rect x="315" y="944.5" width="64" height="16" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_70">
+        <rect x="59" y="960.5" width="64" height="16" fill="#dadada"/>
+        <rect x="59" y="960.5" width="64" height="16" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_69">
+        <rect x="123" y="960.5" width="64" height="16" fill="#dadada"/>
+        <rect x="123" y="960.5" width="64" height="16" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_68">
+        <rect x="187" y="960.5" width="64" height="16" fill="#dadada"/>
+        <rect x="187" y="960.5" width="64" height="16" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_67">
+        <rect x="251" y="960.5" width="64" height="16" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_66">
+        <rect x="315" y="960.5" width="64" height="16" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_71">
+        <rect x="-81.5" y="842" width="23" height="22.5" fill="white"/>
+        <text transform="translate(-76.5 847.096)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="11" font-weight="400" fill="black" x="1.308" y="10">Ni</tspan>
+        </text>
+      </g>
+      <g id="Graphic_72">
+        <rect x="-81.5" y="912.5" width="23" height="22.5" fill="white"/>
+        <text transform="translate(-76.5 917.596)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="11" font-weight="400" fill="black" x="1.5115" y="10">Fr</tspan>
+        </text>
+      </g>
+      <g id="Graphic_73">
+        <rect x="-61.5" y="930.5" width="23" height="22.5" fill="white"/>
+        <text transform="translate(-56.5 935.596)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="11" font-weight="400" fill="black" x=".3895" y="10">Fc</tspan>
+        </text>
+      </g>
+      <g id="Graphic_74">
+        <rect x="408.6006" y="930.5" width="28.5" height="22.5" fill="white"/>
+        <text transform="translate(413.6006 935.596)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="11" font-weight="400" fill="black" x="2.122" y="10">No</tspan>
+        </text>
+      </g>
+      <g id="Graphic_75">
+        <rect x="-80.5" y="843" width="23" height="22.5" fill="white"/>
+        <text transform="translate(-75.5 848.096)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="11" font-weight="400" fill="black" x="1.308" y="10">Ni</tspan>
+        </text>
+      </g>
+      <g id="Graphic_76">
+        <rect x="113" y="815" width="96" height="22.5" fill="white"/>
+        <text transform="translate(118 820.096)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="11" font-weight="400" fill="black" x="3.84" y="10">kDim = Ni*Fr*Fc</tspan>
+        </text>
+      </g>
+      <g id="Graphic_77">
+        <rect x="69" y="988" width="54" height="22.5" fill="white"/>
+        <text transform="translate(74 986.942)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="11" font-weight="400" fill="black" x="8.855" y="10">MMA </tspan>
+          <tspan font-family="Helvetica Neue" font-size="11" font-weight="400" fill="black" x="11.6215" y="22.307999">Size</tspan>
+        </text>
+      </g>
+      <g id="Graphic_78">
+        <rect x="325" y="989" width="54" height="22.5" fill="white"/>
+        <text transform="translate(330 994.096)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="11" font-weight="400" fill="black" x="5.907" y="10">PitchA</tspan>
+        </text>
+      </g>
+      <g id="Graphic_79">
+        <rect x="400.0503" y="864.5" width="88.5" height="22.5" fill="white"/>
+        <text transform="translate(405.0503 869.596)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="11" font-weight="400" fill="black" x="2.367" y="10">subMChannels</tspan>
+        </text>
+      </g>
+      <g id="Graphic_81">
+        <rect x="519.5" y="805.75" width="325" height="140" fill="white"/>
+        <text transform="translate(524.5 838.826)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="11" font-weight="400" fill="black" x="0" y="10">Ni - Number of input channels</tspan>
+          <tspan font-family="Helvetica Neue" font-size="11" font-weight="400" fill="black" x="0" y="22.307999">No - Number of output channels</tspan>
+          <tspan font-family="Helvetica Neue" font-size="11" font-weight="400" fill="black" x="0" y="34.615997">Fr - Number of filter coefficient rows</tspan>
+          <tspan font-family="Helvetica Neue" font-size="11" font-weight="400" fill="black" x="0" y="46.923996">Fc - Number of filter coefficient cols</tspan>
+          <tspan font-family="Helvetica Neue" font-size="11" font-weight="400" fill="black" x="0" y="59.231995">pitchA - the buffer itch in bytes</tspan>
+          <tspan font-family="Helvetica Neue" font-size="11" font-weight="400" fill="black" x="0" y="71.53999">subMChannels - Number of output channels for each handle</tspan>
+        </text>
+      </g>
+      <g id="Graphic_82">
+        <rect x="619.1866" y="861.5" width=".23107394" height="1.5" fill="white"/>
+        <rect x="619.1866" y="861.5" width=".23107394" height="1.5" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_89">
+        <line x1="69.399866" y1="836.5516" x2="241.60013" y2="837.4484" marker-end="url(#FilledArrow_Marker)" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_90">
+        <line x1="68.89995" y1="1014.0309" x2="369.10005" y2="1014.9691" marker-end="url(#FilledArrow_Marker)" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_91">
+        <line x1="69.39879" y1="986.1547" x2="113.60121" y2="986.8453" marker-end="url(#FilledArrow_Marker)" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_92">
+        <line x1="399.2635" y1="858.4" x2="399.06817" y2="966.6" marker-end="url(#FilledArrow_Marker)" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_93">
+        <line x1="-67" y1="869.5" x2="-45.26815" y2="846.3009" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_95">
+        <line x1="-5.5" y1="854" x2="29.05221" y2="853.2227" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_96">
+        <line x1="-11.775146" y1="896" x2="33.17812" y2="876.0208" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_97">
+        <line x1="389.69533" y1="858.3999" x2="389.53574" y2="902.6001" marker-end="url(#FilledArrow_Marker)" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+    </g>
+  </g>
+</svg>

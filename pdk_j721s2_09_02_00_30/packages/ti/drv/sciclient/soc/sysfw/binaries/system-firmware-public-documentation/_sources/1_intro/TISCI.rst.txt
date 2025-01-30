@@ -1,0 +1,185 @@
+.. _pub_sysfw_introduction:
+
+Introduction
+============
+
+Traditional Texas Instruments SoCs implement system control functions such as
+power management on each of the processing units (ARM/DSP etc). 
+However, the traditional approach had tremendous challenges
+to ensure system stability. A few of the challenges include:
+
+- Complex interactions between Operating Systems on heterogeneous SoCs for
+  generic features.
+- Lack of centralized knowledge of system state.
+- Complex implementation challenges with regards to implementation of
+  workarounds for system quirks.
+- Equivalent system capability entitlement on all variations of operation
+  conditions.
+
+Keystone 3 (K3) devices introduces the concept of a centralized Power, Resource and Security
+Management to allow mitigating the challenges of the traditional approach to
+system control.
+
+|sysfw| is a collective term used to describe the TI Foundational Security (TIFS)
+and Resource Management (RM)/ Power Management (PM) services.
+
+|sysfw| executes on the Security Manager and Device Manager Core.
+On K3 devices, the DMSC subsystem is the Security Manager Core in the SoC.
+The Device Manager core can be on the DMSC itself or the MCU R5F. 
+The choice of whether this runs on the DMSC or the
+MCU R5F is based on the kind of applications the device is targeting.
+If the device is targetting applications, where there is a need for a dedicated
+Hardware Security Module (HSM), the Device manager core is independent of the DMSC (which is exclusively
+kept for Security functions). For devices which do not have need for a dedicated
+security island or HSM, the device manager runs on the DMSC.
+
+The following table highlights the variations
+of where the RM and PM execute versus the TIFS on the different K3 family of
+devices.
+
+.. _pub_sysfw_map_per_device:
+
+.. table:: TI Foundational Security Software and RM/PM SCI Server Mapping
+
+   +----------------+-------------------------+-------------------------+---------------------+
+   | Device         |  TI Foundation Security | 3rd Party HSM/SHE stack |  RM/PM SCI Server   |
+   +================+=========================+=========================+=====================+
+   | AM65x/ DRA80x, |   DMSC (M3 based)       | NA                      |  DMSC (M3 based)    |
+   | AM64x          |                         |                         |                     |
+   +----------------+-------------------------+-------------------------+---------------------+
+   | DRA82X, TDA4X  |   DMSC (M3 based)       | DMSC (M3 based)         |  Library on MCU R5* |
+   |                |                         |                         |                     |
+   +----------------+-------------------------+-------------------------+---------------------+
+   | TDA4VLX,       |   SMS (M4 based)        |  SMS (M4 based)         |  Library on MCU R5* |
+   | TDA4VHX        |                         |                         |                     |
+   +----------------+-------------------------+-------------------------+---------------------+
+   | AM62X, AM62Ax, |   SMS (M4 based)        |  SMS (M4 based)         |  Library on DM R5*  |
+   | AM62Px, J722S  |                         |                         |                     |
+   +----------------+-------------------------+-------------------------+---------------------+
+
+
+Note, the TI provided software does not allow for a given SoC to support both HSM and non
+HSM applications. To know the mapping refer :ref:`pub_sysfw_map_per_device`.
+
+The purpose of this document is to define the software interface for
+the |sysfw|. The split up of the responsibilities are:
+
+- TIFS:
+    - Responsible for Centralized Foundational Security Management. These
+      include functions like authenticated boot, JTAG unlock etc.
+    - Behaves like a forwarding agent for Resource Management and Power Management
+      requests made by Secure hosts (other CPUs) in the SoC.
+    - Behaves as a forwarding agent for Resource Management and Power Management
+      responses from the device manager to the Secure Hosts.
+    - Firewall Management for resources requested by both secure and non-secure 
+      hosts.
+- Device Manager (DMSC M3 or MCU R5F based on the device)
+    - Responsible for servicing resource management and power management messages
+      from secure and non-secure hosts.
+    - Reponsible for forwarding non-secure host requests to set the processor
+      boot control or firewall configuration for safety applications to the DMSC.
+    - Responsible for forwaring response recieved from the DMSC to non-secure
+      hosts for the above forwarded messages.
+
+Centralized Device Management
+-----------------------------
+
+In the Power management domain, the centralized power management takes into account that every device has:
+
+- Different power and clock domains.
+- Derivatives have slight differences in the clocking architecture based on combination of modules.
+
+It provides an OS agnostic interface for power management allowing peripherals and clocks to be
+handled by multiple processors running different OSes (Linux, RTOS, etc.). The centralized power
+management entity aims to provide the same control for power and clock setting across all OSes.
+
+Centralized Resource management is driven by the centralized DMA architecture. Key components
+of the centralized resource management include:
+
+- Navigator Subsystem: Collection of Data movement components 
+- UDMA (Unified DMA), PKTDMA, BCDMA: DMA engine for standard parallel DMA (CBA) or PSI/stream based IP. 
+- RA (Ring Accelerator): Queue management providing abstract SW view to HW DMA queues
+- Proxy: Allows efficient access to RA queues, also enables address containment/virtualization (access RA via separate MMU page / regions)
+- Interrupt & events handling: Interrupt aggregators and Interrupt routers
+
+Centralized Foundational Security Management
+--------------------------------------------
+
+The DMSC M3 subsystem in the K3 family of devices is responsible to run the software stack for 
+the device foundational security management. This software entity is responsible for:
+
+- Foundational device security in DMSC
+
+   - Secure boot with secure keys/root-of-trust, Security configuration and Debug unlock
+   - RSA or ECC Root Keys, AES symmetric key 
+   - Utilizes PKA, SHA2 and AES Crypto accelerators
+   - Basic security functionality to extend root of trust (optional)
+   - Authenticated Key ring to extend root-of-trust keys
+   - SYSFW and Bootloader Rollback protection via eFuse
+   - Device Unique Key / Key Derivation to support 3P stacks
+
+The centralized power, resource and security management entity is henceforth
+refered to as System Control Entity and System Firmware interchangeably. 
+Any software and hardware entity which communicates with the System Control
+Entity is refered to as "Host".
+The block diagram of the System Controller Entity or System firmware is as below:
+
+.. figure:: ../img/blockDiagram.png
+
+    System Controller Entity interacting with Other Hosts
+
+Architecture Change between SDK 7.0 and SDK 7.1
+-------------------------------------------------
+
+The SDK 7.1 (v2020.08 of |sysfw|) firmware is not compatible with SDK 7.0.
+(v2020.04 of the |sysfw|) and earlier releases in terms of location of the binaries.
+Note the TISCI interface is the same as what is available on earlier releases.
+
+The following figure describes the typical software stack and highlights the 
+difference in the location of execution of centralized services from |sysfw|.
+
+.. figure:: ../img/softwareStack.png
+
+    DMSC Firmware Change | TDA4VM, DRA829, DRA821
+
+Purpose of DMSC firmware change
+
+- Secure HSM functions can run on a DMSC Security Island 
+- Free a main domain R5F for general customer use.
+- Enables MCU Only mode with HSM functions on DMSC
+- Lockstep Safety R5F runs safety critical PM & RM functions.
+
+The Memory / CPU requirement is minimal (< 150 KB, < 10 MHz) so having the RM
+and PM execute on the MCU R5f has minimal impact to user applications.
+
+The SW impact summary for the end users is as given below. Kindly note since the 
+API interface remains the same, the rest of the documentation for |sysfw| is the 
+same between SDK 7.1 and 7.0. Refer to the SDK documentation to know more about
+the changes required for integration of the SCISERVER and RM/PM on the MCU R5F.
+
+.. figure:: ../img/swimpact.png
+
+    SW Impact for end-users between SDK 7.0 and SDK 7.1
+
+Further Reading
+---------------
+
+- In :ref:`pub_tisci_msg_doc`, we describe how one can communicate with the system control entity and the various messages that can be used.
+- In :ref:`pub_boardcfg_messages_index`, we desribe the format and content of the boardcfg messages that does onetime configuration of |sysfw|.
+- In :ref:`pub_interpret_trace`, we define trace data format.
+- In :ref:`pub_soc_family_doc`, we provide information specific to each SOC that is required using the TISCI messages described in :ref:`pub_tisci_msg_doc`.
+- In :ref:`pub_user_guides`, we provide user guides for the more complex scenarios.
+
+Glossary
+--------
+
+The following list defines the different acronyms and terms used in the rest of the document:
+
+- **TIFS** (Texas Instruments Foundational Security): Foundational security software provided from TI.
+- **TISCI** (Texas Instruments System Controller Interface) : API interface to TIFS, RM/PM services.
+- **DM** (Device Manager) : Collective term used to refer to the Resource Management and Power Management Software.
+- **RM** (Resource Management): Term used to refer to the Resource Management Software.
+- **PM** (Power Management): Term used to refer to the Power Management Software.
+- **SYSFW** (System Firmware): Collective term used to refer to the TIFS and RM/PM Software.
+
+

@@ -1,0 +1,579 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Firewall FAQ &mdash; TISCI User Guide</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="TISCI User Guide" href="../index.html"/>
+        <link rel="up" title="Chapter 6: Topic User Guides" href="index.html"/>
+        <link rel="next" title="SAUL Access Outside of SYSFW" href="saul_access.html"/>
+        <link rel="prev" title="Using Derived KEK on HS devices" href="dkek_management.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="../_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> TISCI
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                09.02.04
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../1_intro/index.html">Chapter 1: Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_tisci_msgs/index.html">Chapter 2: TISCI Message Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_boardcfg/index.html">Chapter 3: Board Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_trace/index.html">Chapter 4: Interpreting Trace Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_soc_doc/index.html">Chapter 5: SoC Family Specific Documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Chapter 6: Topic User Guides</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="authentication.html">System Firmware Authentication and Decryption Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devgrp_usage.html">Device Group Primer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domgrp_usage.html">Domain Group Primer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="secure_boot_signing.html">Signing binaries for Secure Boot on HS Devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hs_boardcfg_signing.html">Signing Board Configuration on HS devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openssl_usage.html">Using OpenSSL for certificate creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extended_otp.html">Using Extended OTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dkek_management.html">Using Derived KEK on HS devices</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Firewall FAQ</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#can-i-directly-write-to-firewall-configuration-registers">Can I directly write to firewall configuration registers ?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-do-i-configure-a-firewall">How do I configure a firewall ?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-do-i-specify-which-firewall-to-program">How do I specify which firewall to program ?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-do-i-know-what-permissions-to-program-in-the-firewall">How do I know what permissions to program in the firewall ?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#are-all-firewalls-user-programmable">Are all firewalls user programmable ?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#what-is-firewall-ownership">What is firewall ownership ?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#who-can-update-the-firewall-owner">Who can update the firewall owner ?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#who-can-update-the-start-address-and-end-address">Who can update the start address and end address ?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#is-there-any-relationship-between-ownership-and-firewall-permissions">Is there any relationship between ownership and firewall permissions ?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#is-host-id-the-same-as-priv-id">Is host ID the same as priv ID ?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#is-programming-overlapping-firewalls-supported">Is programming overlapping firewalls supported ?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#what-are-background-and-foreground-regions">What are background and foreground regions ?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-do-i-debug-firewall-issues">How do I debug firewall issues ?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-are-dmsc-managed-resources-firewalled">How are DMSC-managed resources firewalled ?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="saul_access.html">SAUL Access Outside of SYSFW</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security_handover.html">Performing Security Handover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="secure_debug.html">Secure Debug User Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="key_writer.html">Key  Writer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="otp_revision.html">Run time read/write to KEYREV and SWREV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keyring.html">Keyring Management</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">TISCI</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Chapter 6: Topic User Guides</a> &raquo;</li>
+      
+    <li>Firewall FAQ</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="firewall-faq">
+<h1>Firewall FAQ<a class="headerlink" href="#firewall-faq" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#can-i-directly-write-to-firewall-configuration-registers" id="id1">Can I directly write to firewall configuration registers ?</a></li>
+<li><a class="reference internal" href="#how-do-i-configure-a-firewall" id="id2">How do I configure a firewall ?</a></li>
+<li><a class="reference internal" href="#how-do-i-specify-which-firewall-to-program" id="id3">How do I specify which firewall to program ?</a></li>
+<li><a class="reference internal" href="#how-do-i-know-what-permissions-to-program-in-the-firewall" id="id4">How do I know what permissions to program in the firewall ?</a></li>
+<li><a class="reference internal" href="#are-all-firewalls-user-programmable" id="id5">Are all firewalls user programmable ?</a></li>
+<li><a class="reference internal" href="#what-is-firewall-ownership" id="id6">What is firewall ownership ?</a></li>
+<li><a class="reference internal" href="#who-can-update-the-firewall-owner" id="id7">Who can update the firewall owner ?</a></li>
+<li><a class="reference internal" href="#who-can-update-the-start-address-and-end-address" id="id8">Who can update the start address and end address ?</a></li>
+<li><a class="reference internal" href="#is-there-any-relationship-between-ownership-and-firewall-permissions" id="id9">Is there any relationship between ownership and firewall permissions ?</a></li>
+<li><a class="reference internal" href="#is-host-id-the-same-as-priv-id" id="id10">Is host ID the same as priv ID ?</a></li>
+<li><a class="reference internal" href="#is-programming-overlapping-firewalls-supported" id="id11">Is programming overlapping firewalls supported ?</a></li>
+<li><a class="reference internal" href="#what-are-background-and-foreground-regions" id="id12">What are background and foreground regions ?</a></li>
+<li><a class="reference internal" href="#how-do-i-debug-firewall-issues" id="id13">How do I debug firewall issues ?</a></li>
+<li><a class="reference internal" href="#how-are-dmsc-managed-resources-firewalled" id="id14">How are DMSC-managed resources firewalled ?</a></li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">System Firmware supports multiple SOC’s.
+When providing links to SOC-specific documentation, this document provides
+the example of AM65x SR1 SOC.
+Documentation for other SOC’s can be found by traversing similar path from
+the root of <a class="reference internal" href="../5_soc_doc/index.html"><span class="doc">Chapter 5: SoC Family Specific Documentation</span></a>.</p>
+</div>
+<div class="section" id="can-i-directly-write-to-firewall-configuration-registers">
+<h2><a class="toc-backref" href="#id1">Can I directly write to firewall configuration registers ?</a><a class="headerlink" href="#can-i-directly-write-to-firewall-configuration-registers" title="Permalink to this headline">¶</a></h2>
+<p>No. Firewall configuration registers are only writable by System Firmware.
+They cannot be programmed by direct register writes.</p>
+</div>
+<div class="section" id="how-do-i-configure-a-firewall">
+<h2><a class="toc-backref" href="#id2">How do I configure a firewall ?</a><a class="headerlink" href="#how-do-i-configure-a-firewall" title="Permalink to this headline">¶</a></h2>
+<p>Firewalls are configured using the <a class="reference internal" href="../2_tisci_msgs/security/firewall_api.html#set-firewall-region"><span class="std std-ref">TISCI_MSG_SET_FWL_REGION</span></a> TISCI message.</p>
+<p>Disabling a firewall is also done using the same API using the control word.</p>
+<p>All the registers of a firewall can be configured using the above TISCI message.</p>
+</div>
+<div class="section" id="how-do-i-specify-which-firewall-to-program">
+<h2><a class="toc-backref" href="#id3">How do I specify which firewall to program ?</a><a class="headerlink" href="#how-do-i-specify-which-firewall-to-program" title="Permalink to this headline">¶</a></h2>
+<p>Firewalls are identified to System Firmware by their ID.
+The ID of a firewall can be obtained from the Technical Reference Manual(TRM) of the SOC.
+Information on firewalls is provided in the chapter “System Interconnect” and the subsection
+“Interconnect Firewalls”.</p>
+<p><a class="reference internal" href="../2_tisci_msgs/security/firewall_api.html#set-firewall-region"><span class="std std-ref">TISCI_MSG_SET_FWL_REGION</span></a> TISCI message takes firewall id as one of the arguments.</p>
+</div>
+<div class="section" id="how-do-i-know-what-permissions-to-program-in-the-firewall">
+<h2><a class="toc-backref" href="#id4">How do I know what permissions to program in the firewall ?</a><a class="headerlink" href="#how-do-i-know-what-permissions-to-program-in-the-firewall" title="Permalink to this headline">¶</a></h2>
+<p>Privilege ID’s of the various initiators are described in the public SOC documentation
+<a class="reference internal" href="../5_soc_doc/index.html"><span class="doc">Chapter 5: SoC Family Specific Documentation</span></a> under “&lt;SOC&gt; Firewall Descriptions”.
+As an example for AM65X devices, this is listed under
+<a class="reference internal" href="../5_soc_doc/am65x/firewalls.html#soc-doc-am6-public-fwl-desc-priv-id-list"><span class="std std-ref">AM65x List of priv ids</span></a>.</p>
+<p>The values to program in the permission bits and the control registers
+can be found from the below section in the TRM.</p>
+<p>“System Interconnect” -&gt; “System Interconnect Registers” -&gt; “Firewall Region Registers”</p>
+</div>
+<div class="section" id="are-all-firewalls-user-programmable">
+<h2><a class="toc-backref" href="#id5">Are all firewalls user programmable ?</a><a class="headerlink" href="#are-all-firewalls-user-programmable" title="Permalink to this headline">¶</a></h2>
+<p>No. System Firmware maintains ownership of the following categories of firewalls.</p>
+<ol class="arabic simple">
+<li>Firewalls protecting DMSC-owned resources - e.g. secure proxies,
+firewall configuration port etc.
+These firewalls are marked as owned by <code class="docutils literal"><span class="pre">dmsc</span></code> in the firewall SOC data.</li>
+<li>Firewalls protecting DMSC-managed resources i.e. NAVSS resources managed by RM.
+These firewalls are marked as owned by <code class="docutils literal"><span class="pre">rm</span></code> in the firewall SOC data.</li>
+</ol>
+<p>The remaining firewalls are user programmable through the TISCI interface only.</p>
+<p>The list of firewalls owned/initialized by System Firmware are listed for AM65X SR1
+devices at</p>
+<ul class="simple">
+<li><a class="reference internal" href="../5_soc_doc/am65x/firewalls.html#soc-doc-am6-public-fwl-desc-region-fwl-list"><span class="std std-ref">AM65x Standard region-based slave firewall configuration</span></a></li>
+<li><a class="reference internal" href="../5_soc_doc/am65x/firewalls.html#soc-doc-am6-public-fwl-desc-channel-fwl-list"><span class="std std-ref">AM65x Channelized slave firewall configuration</span></a></li>
+</ul>
+</div>
+<div class="section" id="what-is-firewall-ownership">
+<h2><a class="toc-backref" href="#id6">What is firewall ownership ?</a><a class="headerlink" href="#what-is-firewall-ownership" title="Permalink to this headline">¶</a></h2>
+<p>Firewall ownership is a software concept implemented by System Firmware.
+A firewall region can be marked as owned by a specific host.
+This prevents the firewall region from being programmed/reprogrammed
+by another host and helps in firewall overlap checks.</p>
+<p>By default, only firewalls required from System Firmware use are marked as owned by <code class="docutils literal"><span class="pre">dmsc</span></code> or <code class="docutils literal"><span class="pre">rm</span></code>.
+Rest of the firewalls have ownership set to <code class="docutils literal"><span class="pre">none</span></code>.
+Firewalls with owner set as <code class="docutils literal"><span class="pre">none</span></code> can be programmed by any host.</p>
+<p>A host can claim ownership of a firewall region with owner set to <code class="docutils literal"><span class="pre">none</span></code> by using the
+<a class="reference internal" href="../2_tisci_msgs/security/firewall_api.html#change-firewall-owner"><span class="std std-ref">TISCI_MSG_CHANGE_FWL_OWNER</span></a> message. A host
+can use the same message to transfer a firewall region it owns to another host.</p>
+</div>
+<div class="section" id="who-can-update-the-firewall-owner">
+<h2><a class="toc-backref" href="#id7">Who can update the firewall owner ?</a><a class="headerlink" href="#who-can-update-the-firewall-owner" title="Permalink to this headline">¶</a></h2>
+<p>The only one that can update the firewall owner, is the current owner.
+Requests from any other hosts will be rejected.</p>
+</div>
+<div class="section" id="who-can-update-the-start-address-and-end-address">
+<h2><a class="toc-backref" href="#id8">Who can update the start address and end address ?</a><a class="headerlink" href="#who-can-update-the-start-address-and-end-address" title="Permalink to this headline">¶</a></h2>
+<p>The only one that can update the addresses, is the current owner.
+Requests from any other hosts will be rejected.</p>
+</div>
+<div class="section" id="is-there-any-relationship-between-ownership-and-firewall-permissions">
+<h2><a class="toc-backref" href="#id9">Is there any relationship between ownership and firewall permissions ?</a><a class="headerlink" href="#is-there-any-relationship-between-ownership-and-firewall-permissions" title="Permalink to this headline">¶</a></h2>
+<p>The concept of firewall ownership is unrelated to firewall permissions.
+Firewall ownership is a software concept.
+Firewall permissions directly map to the underlying hardware registers.
+The owner of a firewall can configure firewall permissions as desired.
+System Firmware does not perform any checks on the firewall permissions supplied
+in the TISCI message arguments.</p>
+</div>
+<div class="section" id="is-host-id-the-same-as-priv-id">
+<h2><a class="toc-backref" href="#id10">Is host ID the same as priv ID ?</a><a class="headerlink" href="#is-host-id-the-same-as-priv-id" title="Permalink to this headline">¶</a></h2>
+<p>No. Host ID is a software concept introduced by System Firmware to be differentiate
+between different entities on the device.
+Some of the entities can be on the same core.
+e.g. privileged software and unprivileged software running on the same core.
+See <a class="reference internal" href="../5_soc_doc/am65x/hosts.html#soc-doc-am6-public-host-desc-intro"><span class="std std-ref">AM65X Host IDs</span></a>.</p>
+<p>Priv ID is a hardware concept. Every transaction on the interconnect has various
+attributes including but not limited to Priv ID, user/privileged, secure/non
+secure. Each host maps to a Priv ID. See <a class="reference internal" href="../5_soc_doc/am65x/firewalls.html#soc-doc-am6-public-fwl-desc-priv-id-list"><span class="std std-ref">AM65x List of priv ids</span></a> for the mapping.</p>
+</div>
+<div class="section" id="is-programming-overlapping-firewalls-supported">
+<h2><a class="toc-backref" href="#id11">Is programming overlapping firewalls supported ?</a><a class="headerlink" href="#is-programming-overlapping-firewalls-supported" title="Permalink to this headline">¶</a></h2>
+<p>Yes. Programming overlapping firewalls is supported.
+System Firmware performs additional checks when overlapping firewall regions are being programmed.</p>
+<ol class="arabic simple">
+<li>A background region cannot overlap with another background region.</li>
+<li>A foreground region cannot overlap with another foreground region.</li>
+</ol>
+<p>The above two checks are to prevent undefined behaviour as per hardware specification.</p>
+<ol class="arabic simple" start="3">
+<li>Same host must own both the foreground and background region in case of an overlap.
+If any of the overlapping regions is owned by <code class="docutils literal"><span class="pre">none</span></code> (unowned/wildcard region) following rules apply:
+- Unowned foreground region cannot overlap with owned background region.
+- Unowned background region can overlap with foreground region owned by any host.
+These checks prevent one host from using a foreground region to override
+firewall configuration performed by another host</li>
+</ol>
+<p>Before programming overlapping firewall regions, please claim ownership of both the
+regions using the <a class="reference internal" href="../2_tisci_msgs/security/firewall_api.html#change-firewall-owner"><span class="std std-ref">TISCI_MSG_CHANGE_FWL_OWNER</span></a> message.</p>
+</div>
+<div class="section" id="what-are-background-and-foreground-regions">
+<h2><a class="toc-backref" href="#id12">What are background and foreground regions ?</a><a class="headerlink" href="#what-are-background-and-foreground-regions" title="Permalink to this headline">¶</a></h2>
+<p>The firewall IP supports the concept for foreground and background regions.
+The firewall permissions specified in a background region can be overridden
+by using a foreground region.</p>
+<p>A region can be specified as foreground or background using a bit in the control register.
+Please refer to the following section in TRM for more information.</p>
+<p>“System Interconnect” -&gt; “System Interconnect Registers” -&gt; “Firewall Region Registers”</p>
+<p>Following restrictions apply from hardware perspective.</p>
+<ol class="arabic simple">
+<li>A background region cannot overlap with another background region.</li>
+<li>A foreground region cannot overlap with another foreground region.</li>
+<li>A foreground region cannot span two background regions.</li>
+</ol>
+</div>
+<div class="section" id="how-do-i-debug-firewall-issues">
+<h2><a class="toc-backref" href="#id13">How do I debug firewall issues ?</a><a class="headerlink" href="#how-do-i-debug-firewall-issues" title="Permalink to this headline">¶</a></h2>
+<p>The programmed firewall settings can be read back by the owner using
+<a class="reference internal" href="../2_tisci_msgs/security/firewall_api.html#get-firewall-region"><span class="std std-ref">TISCI_MSG_GET_FWL_REGION</span></a>.</p>
+<p>Direct readback of the firewall configuration registers is not currently
+allowed.</p>
+<p>When a firewall exception occurs, the exception data is sent out via the
+enabled trace method.
+The data sent out is the dump of the firewall exception registers as
+defined in below section in the corresponding device TRM.</p>
+<p>“System Interconnect” -&gt; “System Interconnect Registers” -&gt; “Firewall Exception Registers”</p>
+<p>The following is an example of an exception log description that was sent via the enabled traces.</p>
+<div class="code highlight-cpp"><div class="highlight"><pre><span></span><span class="n">FWL</span><span class="w"> </span><span class="n">Bit</span><span class="w"> </span><span class="mh">0x1D</span>
+<span class="n">Exception</span><span class="w"> </span><span class="n">addr</span><span class="w"> </span><span class="mh">0x45B0B800</span>
+<span class="w">  </span><span class="n">FWL</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="mh">0x1129800</span>
+<span class="w">  </span><span class="mh">0x30000</span>
+<span class="w">  </span><span class="mh">0x707FFF20</span>
+<span class="w">  </span><span class="mh">0x0</span>
+<span class="w">  </span><span class="mh">0xFF82360</span>
+<span class="w">  </span><span class="mh">0x8</span>
+</pre></div>
+</div>
+<p>The exception description can be interpreted as follows:</p>
+<ol class="arabic simple">
+<li>Line 1 (FWL Bit …) - This should be ignored.</li>
+<li>Line 2 (Exception addr …) - This is the base address of the exception logging registers.</li>
+<li>Line 3 (FWL Exception …) - Let this number be N, then:</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>N[0-7] - Destination ID</li>
+<li>N[8-23] - Source ID</li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="4">
+<li>Line 4 - Let this number be N, then:</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>N[0-15] - Not relevant for debugging.</li>
+<li>N[16-23] - Represents the exception type. Refer to the table below.</li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="5">
+<li>Line 5 - Lower 32 bits of the transaction address.</li>
+<li>Line 6 - Let this number be N, then:</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>N[0-15] - Upper 16 bits of the transaction address.</li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="7">
+<li>Line 7 - Let this number be N, then:</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>N[0-7] - The PRIV ID of the initiator that caused the illegal transaction.</li>
+<li>N[8] - Represents the security level of the transaction.</li>
+<li>N[9] - Represents the privilege level of the transaction.</li>
+<li>N[10] - When set, it indicates a cacheable transaction.</li>
+<li>N[11] - When set, it indicates a debug transaction.</li>
+<li>N[12] - When set, it indicates a read transaction.</li>
+<li>N[13] - When set, it indicates a write transaction.</li>
+<li>N[16-27] - Route ID</li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="8">
+<li>Line 8 - Let this number be N, then:</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>N[0-9] - Represents the transaction byte count.</li>
+</ul>
+</div></blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="86%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Line4[16-23]</strong></td>
+<td>Exception Type.</td>
+</tr>
+<tr class="row-even"><td>0x00</td>
+<td>Reserved.</td>
+</tr>
+<tr class="row-odd"><td>0x01</td>
+<td>No region enabled but firewall is active. One region must be enabled for whitelist firewall.</td>
+</tr>
+<tr class="row-even"><td>0x02</td>
+<td>Incoming address does not hit any active region.</td>
+</tr>
+<tr class="row-odd"><td>0x03</td>
+<td>Priv-ID not authorized to access incoming address region, or Priv-ID not found in any slot for hit region.</td>
+</tr>
+<tr class="row-even"><td>0x04</td>
+<td>Cacheable error, a cacheable transaction attempting to read/write non-cached marked region.</td>
+</tr>
+<tr class="row-odd"><td>0x05</td>
+<td>Debug error, a debug transaction attempting to read/write a debug not-allowed region.</td>
+</tr>
+<tr class="row-even"><td>0x06</td>
+<td>Read error, a transaction attempting to read from read not-allowed region.</td>
+</tr>
+<tr class="row-odd"><td>0x07</td>
+<td>Write error, a transaction attempting to write a write not-allowed region.</td>
+</tr>
+<tr class="row-even"><td>0x08</td>
+<td>4KB Crossing error, a transaction attempting to cross a 4KB boundary.</td>
+</tr>
+</tbody>
+</table>
+<p>The 6 hex values shown above correspond to the 2 exception header registers and
+4 exception data registers in the order shown in the TRM.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Please note that this format is being deprecated in favour of a binary format
+in conformance with the rest of traces supplied by System Firmware.</p>
+</div>
+</div>
+<div class="section" id="how-are-dmsc-managed-resources-firewalled">
+<h2><a class="toc-backref" href="#id14">How are DMSC-managed resources firewalled ?</a><a class="headerlink" href="#how-are-dmsc-managed-resources-firewalled" title="Permalink to this headline">¶</a></h2>
+<p>NAVSS resources managed by DMSC (UDMA channels, Rings, Proxy channels and IRQ)
+are firewalled automatically when the corresponding RM TISCI messages are sent.</p>
+<p>Accessing these resources before sending the corresponding RM TISCI message
+will result in a firewall exception.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="saul_access.html" class="btn btn-neutral float-right" title="SAUL Access Outside of SYSFW" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="dkek_management.html" class="btn btn-neutral" title="Using Derived KEK on HS devices" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyright 2016-2024</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'09.02.04',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+
+        $('body').on("mousewheel", function () {
+            // Remove default behavior
+            event.preventDefault();
+            // Scroll without smoothing
+            var wheelDelta = event.wheelDelta;
+            var currentScrollPosition = window.pageYOffset;
+            window.scrollTo(0, currentScrollPosition - wheelDelta);
+        });
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+================================================
+Using OpenSSL for certificate creation
+================================================
+
+This document specifies the following:
+
+1. :ref:`cert_with_rsa_pkcs_v1_5`
+2. :ref:`cert_with_rsassa_pss`
+
+.. note::
+    The commands would be helpful for creating firmware/boardconfig/debug-unlock certificates.
+
+This document does not specify the following:
+
+1. The X509 template to be used for certificate creation; the template depends on the application - firmware/board-config/debug-unlock. 
+2. The operations needed before or after the creation of the certificate. See :doc:`secure_boot_signing`.
+
+.. _cert_with_rsa_pkcs_v1_5:
+
+Create a certificate with RSASSA PKCS v1.5 scheme using OpenSSL
+===============================================================
+
+.. code-block :: bash
+
+    openssl req -new -x509 -key [keypath] -nodes -outform DER -out [cert] -config [x509_config] -sha512
+
+1. [keypath]: path to rsa private key
+2. [cert]: path to the output certificate binary
+3. [x509Config]: path to the file containing x509 template
+
+.. _cert_with_rsassa_pss:
+
+Create a certificate with RSASSA PSS scheme using OpenSSL
+==============================================================
+
+.. code-block :: bash
+
+    openssl req -new -x509 -key [keypath] -nodes -outform DER -out [cert] -config [x509_config] -sha512 -sigopt rsa_padding_mode:pss -sigopt rsa_pss_saltlen:64
+
+1. [keypath]: path to rsa private key
+2. [cert]: path to the output certificate binary
+3. [x509Config]: path to the file containing x509 template
+
+.. note::
+    1. Recommended OpenSSL version: OpenSSL 3.0.10 1 Aug 2023 (Library: OpenSSL 3.0.10 1 Aug 2023)
+    2. If signing with RSASSA-PKCS v1.5 scheme, use a PKCS#1 RSA key.
+    3. If signing with RSASSA-PSS scheme, use a PKCS#8 RSA key that was generated for RSASSA-PSS signing scheme.

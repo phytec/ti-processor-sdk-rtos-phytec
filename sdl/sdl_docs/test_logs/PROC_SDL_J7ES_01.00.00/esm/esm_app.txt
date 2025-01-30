@@ -1,0 +1,39 @@
+mcuClkFreq 1000000000
+
+ESM Example Application
+
+ESM_ECC_Example_init: Init MAIN ESM complete
+
+SDTF_init: MCU MSMC ECC Init complete
+
+ESM_ECC_Example_init: ECC Callback Init complete for Main ESM
+
+ ESM Safety Example tests: starting
+ MSMC Double bit error inject Example test UC-6: starting
+  ESM Call back function called : instType 0x3, intType 0x2, grpChannel 0x1, index 0x10, intSrc 0x30
+  Take action
+ Low Priority Interrupt Executed
+
+  ECC Error Call back function called : eccMemType 93, errorSrc 0x2, ramId 107, bitErrorOffset 0x00000000, bitErrorGroup 0
+
+ MSMC Double bit error inject test: Subtype 0x6b test complete
+ UC-6: Got Low priority ESM Interrupt
+
+ MSMC Double bit error inject Example test UC-7: starting
+  ESM Call back function called : instType 0x3, intType 0x1, grpChannel 0x1, index 0x11, intSrc 0x31
+  Take action
+ High Priority Interrupt Executed
+
+  ECC Error Call back function called : eccMemType 93, errorSrc 0x1, ramId 20, bitErrorOffset 0x00000000, bitErrorGroup 0
+
+ MSMC Double bit error inject test: Subtype 0x14 test complete
+ UC-7: Got High priority ESM Interrupt
+
+ ESM Safety Example tests: success
+ ESM UC-6 and UC-7 Test Passed.
+
+All Use_Cases have passed.
+main.c:292:esm_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored

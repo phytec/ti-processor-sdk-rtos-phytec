@@ -1,0 +1,285 @@
+CCCCCCCCCCCCCC
+ MCRC Application
+
+ MCRC FULL CPU mode : starting
+ Full_CPU mode MCRC signature verification done successfully for the instance MCRC_MCU_NAVSS
+
+
+ MCRC FULL CPU mode : starting
+ Full_CPU mode MCRC signature verification done successfully for the instance NAVSS0_MCRC_0.
+
+
+
+MCRC Semi_CPU mode : starting
+
+
+Copied reference data into memory @803f4800.
+Using Pre-Defined Reference MCRC signature Value.
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 256
+
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 256
+
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 256
+
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 256
+
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 256
+
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 256
+
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 256
+
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 256
+
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 256
+
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 256
+
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 256
+
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 256
+
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 256
+
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 256
+
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 256
+
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 256
+
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 256
+
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 256
+
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 256
+
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 256
+
+MCRC signature verification done successfully.
+Processed data of size 200000 Bytes 20 times in 1538 ms.
+MCRC performance: 2 MB/s
+udmaEventCb occured. eventype 2
+.
+Copied reference data into memory @803f4800.
+Using Pre-Defined Reference MCRC signature Value.
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 1
+
+Sector signature does not match.
+Expected MCRC signature value : 0x1863376183a8c73aU
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 1
+
+Sector signature does not match.
+Expected MCRC signature value : 0x1863376183a8c73aU
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 1
+
+Sector signature does not match.
+Expected MCRC signature value : 0x1863376183a8c73aU
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 1
+
+Sector signature does not match.
+Expected MCRC signature value : 0x1863376183a8c73aU
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 1
+
+Sector signature does not match.
+Expected MCRC signature value : 0x1863376183a8c73aU
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 1
+
+Sector signature does not match.
+Expected MCRC signature value : 0x1863376183a8c73aU
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 1
+
+Sector signature does not match.
+Expected MCRC signature value : 0x1863376183a8c73aU
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 1
+
+Sector signature does not match.
+Expected MCRC signature value : 0x1863376183a8c73aU
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 1
+
+Sector signature does not match.
+Expected MCRC signature value : 0x1863376183a8c73aU
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 1
+
+Sector signature does not match.
+Expected MCRC signature value : 0x1863376183a8c73aU
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 1
+
+Sector signature does not match.
+Expected MCRC signature value : 0x1863376183a8c73aU
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 1
+
+Sector signature does not match.
+Expected MCRC signature value : 0x1863376183a8c73aU
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 1
+
+Sector signature does not match.
+Expected MCRC signature value : 0x1863376183a8c73aU
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 1
+
+Sector signature does not match.
+Expected MCRC signature value : 0x1863376183a8c73aU
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 1
+
+Sector signature does not match.
+Expected MCRC signature value : 0x1863376183a8c73aU
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 1
+
+Sector signature does not match.
+Expected MCRC signature value : 0x1863376183a8c73aU
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 1
+
+Sector signature does not match.
+Expected MCRC signature value : 0x1863376183a8c73aU
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 1
+
+Sector signature does not match.
+Expected MCRC signature value : 0x1863376183a8c73aU
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 1
+
+Sector signature does not match.
+Expected MCRC signature value : 0x1863376183a8c73aU
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 1
+
+Sector signature does not match.
+Expected MCRC signature value : 0x1863376183a8c73aU
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+MCRC signature verification done successfully.
+Processed data of size 200000 Bytes 20 times in 4402 ms.
+MCRC performance: 0 MB/s
+udmaEventCb occured. eventype 2
+.
+Copied reference data into memory @803f4800.
+Calculating Reference MCRC signature Value.
+ MCRC signature value : 0xc60b4fb8d98307f6U
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 256
+
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 256
+
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 256
+
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 256
+
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 256
+
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 256
+
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 256
+
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 256
+
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 256
+
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 256
+
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 256
+
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 256
+
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 256
+
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 256
+
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 256
+
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 256
+
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 256
+
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 256
+
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 256
+
+udmaEventCb occured. eventype 1
+.MCRC Semi CPU intrrupt status : 256
+
+MCRC signature verification done successfully.
+Processed data of size 200000 Bytes 20 times in 1538 ms.
+MCRC performance: 2 MB/s
+udmaEventCb occured. eventype 2
+.Applications Name: MCRC_fullCPU_mode  PASSED
+Applications Name: MCRC_semiCPU_mode  PASSED
+
+ All applications have passed.
+main.c:350:test_sdl_mcrc_baremetal_test_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored
+OK

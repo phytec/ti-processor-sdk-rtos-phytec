@@ -1,0 +1,36 @@
+root@j7-evm:/opt/vision_apps# ./vx_app_arm_opengl_mosaic.out 
+APP: Init ... !!!
+MEM: Init ... !!!
+MEM: Initialized DMA HEAP (fd=4) !!!
+MEM: Init ... Done !!!
+IPC: Init ... !!!
+IPC: Init ... Done !!!
+REMOTE_SERVICE: Init ... !!!
+REMOTE_SERVICE: Init ... Done !!!
+APP: Init ... Done !!!
+   406.564787 s:  VX_ZONE_INIT:Enabled
+   406.564825 s:  VX_ZONE_ERROR:Enabled
+   406.564830 s:  VX_ZONE_WARNING:Enabled
+   406.565411 s:  VX_ZONE_INIT:[tivxInit:71] Initialization Done !!!
+   406.565597 s:  VX_ZONE_INIT:[tivxHostInit:48] Initialization Done for HOST !!!
+EGL: version 1.4
+EGL: GL Version = (null)
+EGL: GL Vendor = (null)
+EGL: GL Renderer = (null)
+EGL: GL Extensions = (null)
+app_linux_arm_opengl_mosaic: writing to file [/opt/vision_apps/test_data/output/mosaic_output_file.bin] image of size 1920 x 1080
+app_linux_arm_opengl_mosaic: writing to file [/opt/vision_apps/test_data/output/mosaic_output_file.bin] image of size 1920 x 1080 ... Done !!!
+   406.903031 s:  VX_ZONE_INIT:[tivxHostDeInit:56] De-Initialization Done for HOST !!!
+   406.907387 s:  VX_ZONE_INIT:[tivxDeInit:111] De-Initialization Done !!!
+APP: Deinit ... !!!
+REMOTE_SERVICE: Deinit ... !!!
+REMOTE_SERVICE: Deinit ... Done !!!
+IPC: Deinit ... !!!
+IPC: DeInit ... Done !!!
+MEM: Deinit ... !!!
+MEM: Alloc's: 11 alloc's of 10137652 bytes 
+MEM: Free's : 11 free's  of 10137652 bytes 
+MEM: Open's : 0 allocs  of 0 bytes 
+MEM: Deinit ... Done !!!
+APP: Deinit ... Done !!!
+root@j7-evm:/opt/vision_apps# 

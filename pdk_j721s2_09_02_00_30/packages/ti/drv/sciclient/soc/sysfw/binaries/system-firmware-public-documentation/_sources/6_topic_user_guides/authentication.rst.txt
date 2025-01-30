@@ -1,0 +1,129 @@
+==============================================
+|sysfw| Authentication and Decryption Requests
+==============================================
+
+.. note::
+
+   This document is only applicable to HS devices.
+
+Introduction
+============
+
+|sysfw| provides authentication and decryption services for various binary data
+types using customer root-of-trust keys programmed into the device efuses.
+
+The :ref:`TISCI_MSG_PROC_AUTH_BOOT
+<proc-boot-authenticate-image-and-configure-processor>` API is used to
+authenticate and (optionally) decrypt a binary image according to the needs for
+the secure application. This API serves a dual purpose in the definition from
+|sysfw|:
+
+**Authenticated Processor Boot**
+
+Authentication of binary images which are to be executed in a secure boot flow,
+with chain of trust guaranteed by |sysfw|.
+
+**Generalized Authentication**
+
+Authenticate a generic binary image which contains user IP or data which must be
+guaranteed authenticity by |sysfw|.
+
+Supported Signing Methods
+=========================
+
+|sysfw| supports signature verification using RSASSA-PKCS1-v1_5 as described in
+:ref:`[1]<sysfw_auth_ug_ref>`. Currently only RSA-4K keys are supported.
+
+Certificate Extensions
+======================
+
+The below sections describe which extensions are mandatory and optional in order
+to make authentication requests from |sysfw|
+
+See the description for the :ref:`sysfw_x509_ext_requirements`
+binary type in the |sysfw| X.509 extension reference for full details on
+mandatory and optional extensions for all authenticated binary types.
+
+Mandatory Extensions
+--------------------
+
+At a minimum, all authenticated data must include
+:ref:`sysfw_image_integrity_ext` and :ref:`sysfw_load_ext` to provide integrity
+details on the data payload.
+
+* All integrity checking is performed by checking the SHA2-512 hash of the data
+  payload and no other format is currently supported.
+
+* The load extension indicates whether the data shall be validated in-place or
+  copied to another destination.
+
+The :ref:`sysfw_swrev_ext` is mandatory with suggested minimum value of 1. After
+initial certificate parsing and validation, currently no additional actions are
+taken by the presence of this extension. Its use is reserved for future
+definition TBD.
+
+Optional Extensions
+-------------------
+
+Encryption
+^^^^^^^^^^
+
+The :ref:`sysfw_encryption_ext` optionally allows for AES-256-CBC decryption of
+the data payload. This is applicable to any payload type which requires
+encryption protection, including processor boot or generic data binaries.
+
+Processor Configuration
+^^^^^^^^^^^^^^^^^^^^^^^
+
+:ref:`sysfw_boot_ext` provides means to configure the processor options defined
+in  :ref:`proc_boot_flags`. This guarantees authenticated configuration of the
+processor's boot vector and other processor-specific parameters critical for
+the secure boot operation.
+
+Omission of this extension effectively renders the call to
+``TISCI_MSG_PROC_AUTH_BOOT`` to the generalized authentication request
+mentioned earlier in this document.
+
+Authentication Sequence
+=======================
+
+.. _sysfw_auth_ug_ref:
+
+The following diagram shows the sequence which |sysfw| applies when
+authenticating a binary image.
+
+.. figure:: ../img/sec/authentication/sysfw_authentication_flow.png
+
+The sequence can be described in the following steps upon call of the
+``TISCI_MSG_PROC_AUTH_BOOT``
+
+#. Verify integrity of the public key in certificate, comparing its hash against
+   the hash programmed into the OTP efuse. Values must agree.
+
+#. **Authentication**: Authentication of digital signature in the certificate.
+   Must agree
+
+#. **Image Data Integrity**: Hash of data payload is taken while loaded into the
+   address specified in the load extension. Hash of payload must match integrity
+   value.
+
+#. **IP Confidentiality**: Executable/secret data is optionally decrypted
+
+#. **Authenticated Decryption**: Decrypted results checked for correctness using
+   the magic number in the extension
+
+Only if the above steps are valid will the API continue taking action as
+requested:
+
+* Generic authentication: API will return ACK if above checks are successful
+
+* Processor boot authentication: |sysfw| will now attempt to apply the processor
+  configuration found in the extension, using the same rules as
+  :ref:`proc-boot-set-processor-configuration`. API will return ACK if
+  successful.
+
+References
+==========
+
+1. RFC-8017 | PKCS #1: RSA Cryptography Specifications Version 2.2,
+   https://datatracker.ietf.org/doc/html/rfc8017

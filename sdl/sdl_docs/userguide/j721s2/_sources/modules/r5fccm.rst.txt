@@ -1,0 +1,107 @@
+R5F CCM: CPU Compare Module
+===========================
+
+Introduction
+------------
+
+The Compute Compare Module (CCM) is the R5F sub-system’s implementation for the lockstep error detection logic. The R5F sub-system, when bootstrapped to lockstep mode, has a logic that compares the outputs of the two cores and asserts an interrupt whenever an error is detected. There is also a logic to test the comparison logic.
+
+The CCM performs these main functions:
+
+* CPU output compare
+* Inactivity monitoring
+* VIM compare
+
+The CPU output compare function compares the core compare bus outputs of the two R5F cores. The Inactivity monitoring function detects any transaction initiated by the diagnostic R5F core (the diagnostic core should not initiate any transaction in lockstep mode). The VIM compare function compares the VIM bus outputs of the cores.
+
+For each of the functions, there are four operating modes:
+
+* Compare active block (normal operation, outputs are compared)
+* Self test (block is checked for faults and an error is generated if fault is detected)
+* Error forcing (error is forced to be generated from module)
+* Self test error forcing (self-test error signal is forced to be generated)
+
+The CCM module provides APIs to:
+
+* Initialize the R5F CCM for the operating modes and verify the config
+* Perform Self-test of the supported operating modes (normal and error forcing)
+* Inject an error
+* Read back the static config registers
+* Clear errors that have occurred due to error injection or actual fault
+
+Errors detected by the CCM module during operation in Compare active block mode are reported via ESM error (application will receive via ESM application callback). ESM error generated as part of the self-test are not reported to the application.
+
+Note that currently only the MCU R5F instance is supported by this module.
+ 
+    .. NOTE::
+
+        CCM cannot be used/tested when debugger is connected.
+
+
+Example Usage
+-------------
+
+The following shows an example of SDL R5F CCM API usage by the application.
+
+Initialize the R5F CCM instance
+
+    .. code:: bash
+
+       retVal = SDL_CCM_init(SDL_CCM_MCU_R5F0);
+
+Verify the configuration:
+
+    .. code:: bash
+
+        retVal = SDL_CCM_verifyConfig(SDL_CCM_MCU_R5F0);
+        if (retVal == SDL_PASS)
+        {
+            UART_printf("\n Configurationn verified");
+        }
+
+Perform a self-test:
+
+    .. code:: bash
+
+        retVal = SDL_CCM_selfTest(SDL_CCM_MCU_R5F0,
+                                  SDL_CCM_MONITOR_TYPE_OUTPUT_COMPARE_BLOCK,
+                                  SDL_CCM_SELFTEST_TYPE_NORMAL, 0U,
+                                  10000000);
+
+        if (retVal != SDL_PASS ) {
+            UART_printf("\n CCM self test failed");
+        } else {
+            UART_printf("\n CCM Self Test complete");
+        }
+
+Inject an error:
+
+    .. code:: bash
+
+        retVal = SDL_CCM_injectError(SDL_CCM_MCU_R5F0, SDL_CCM_MONITOR_TYPE_OUTPUT_COMPARE_BLOCK);
+
+        if (retVal != SDL_PASS ) {
+            UART_printf("\n CCM inject failed");
+        }
+
+        /* Wait for error to be returned via ESM application callback */
+
+
+Examples
+--------
+
+Test apps that are meant for verifying the functionality of the module are also provided.
+
++---------------------+--------------------------------------------------------+------------------------------------------+------------------------------------------+
+| Test App Name       | Description                                            | Location                                 | Build Command                            |
++=====================+========================================================+==========================================+==========================================+
+| sdl_ccm_test_app    | - Initializes the CCM and sets to active mode          |                                          |                                          |
+|                     | - Performs self-tests                                  | [sdl_install_dir]/test/ccm/ccm_func_test | make sdl_ccm_test_app PROFILE=release    |
+|                     | - Performs error injection and checks for ESM event    |                                          |                                          |
++---------------------+--------------------------------------------------------+------------------------------------------+------------------------------------------+
+
+
+API
+---
+
+|__R5F_CCM_API_LNK__|

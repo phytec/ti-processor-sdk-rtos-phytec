@@ -1,0 +1,8 @@
+.. _diagnostic_mappings_guide:
+
+Diagnostic Mapping
+==================
+
+The Safety Manual for the device provides a list of diagnostics - some are hardware-based and some require software. The SDL provides a table that shows the mapping of software diagnostics for modules supported in this release to the corresponding SDL software API(s) and any reference example.
+
+The Diagnostic Mapping is provided along with the CSP package. Please contact your TI representative for access to the SDL CSP.

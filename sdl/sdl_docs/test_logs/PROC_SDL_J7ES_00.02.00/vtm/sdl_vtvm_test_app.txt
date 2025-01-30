@@ -1,0 +1,142 @@
+VTM Test Application
+
+VTM_ESM_init: Init WKUP ESM complete
+
+ESM example init complete
+  Any clear of MCU_SAFETY_ERRORn pin will first wait 10 usecs
+  Minimum Time Interval is 99 usecs
+ESM timer initialization complete
+
+Starting Test Case 0
+
+  ESM Call back function called : instType 0x1, intType 0x2, grpChannel 0x0, index 0x8, intSrc 0x8
+  Take action
+  ESM instance #1, ESM interrupt type = Low Priority ESM event
+
+    Got ltThr0 interrupt through ESM module
+
+    System at a temperature below the threshold of lt_thr0
+    System running at a safe temperature
+
+  ESM Call back function called : instType 0x1, intType 0x2, grpChannel 0x0, index 0x9, intSrc 0x9
+  Take action
+  ESM instance #1, ESM interrupt type = Low Priority ESM event
+
+  ESM Call back function called : instType 0x1, intType 0x1, grpChannel 0x0, index 0xa, intSrc 0xa
+  Take action
+  ESM instance #1, ESM interrupt type = High Priority ESM event
+case 0 sucess
+
+Test Case 0 completed: Input Event Trigger = Step completed successfully,
+                       Event Handler Complete = Step completed successfully,
+                       MCU_SAFETY_ERRORn Pin Clear = Step completed successfully
+
+Starting Test Case 1
+
+  ESM Call back function called : instType 0x1, intType 0x2, grpChannel 0x0, index 0x8, intSrc 0x8
+  Take action
+  ESM instance #1, ESM interrupt type = Low Priority ESM event
+
+  ESM Call back function called : instType 0x1, intType 0x1, grpChannel 0x0, index 0xa, intSrc 0xa
+  Take action
+  ESM instance #1, ESM interrupt type = High Priority ESM event
+
+  ESM Call back function called : instType 0x1, intType 0x2, grpChannel 0x0, index 0x8, intSrc 0x8
+  Take action
+  ESM instance #1, ESM interrupt type = Low Priority ESM event
+
+    Got ltThr0 interrupt through ESM module
+
+    System at a temperature below the threshold of lt_thr0
+    System running at a safe temperature
+
+  ESM Call back function called : instType 0x1, intType 0x2, grpChannel 0x0, index 0x9, intSrc 0x9
+  Take action
+  ESM instance #1, ESM interrupt type = Low Priority ESM event
+
+  timerExpPinDisable: before clear, ESM instance 1 view of MCU_SAFETY_ERRORn pin is 0
+case 1 sucess
+
+Test Case 1 completed: Input Event Trigger = Step completed successfully,
+                       Event Handler Complete = Step completed successfully,
+                       MCU_SAFETY_ERRORn Pin Clear = Step completed successfully
+
+Starting Test Case 2
+
+  ESM Call back function called : instType 0x1, intType 0x2, grpChannel 0x0, index 0x8, intSrc 0x8
+  Take action
+  ESM instance #1, ESM interrupt type = Low Priority ESM event
+
+  ESM Call back function called : instType 0x1, intType 0x1, grpChannel 0x0, index 0xa, intSrc 0xa
+  Take action
+  ESM instance #1, ESM interrupt type = High Priority ESM event
+
+  timerExpPinDisable: before clear, ESM instance 1 view of MCU_SAFETY_ERRORn pin is 0
+
+  ESM Call back function called : instType 0x1, intType 0x2, grpChannel 0x0, index 0x8, intSrc 0x8
+  Take action
+  ESM instance #1, ESM interrupt type = Low Priority ESM event
+
+    Got ltThr0 interrupt through ESM module
+
+    System at a temperature below the threshold of lt_thr0
+    System running at a safe temperature
+
+  ESM Call back function called : instType 0x1, intType 0x2, grpChannel 0x0, index 0x9, intSrc 0x9
+  Take action
+  ESM instance #1, ESM interrupt type = Low Priority ESM event
+
+Test Case 2 completed: Input Event Trigger = Step completed successfully,
+                       Event Handler Complete = Step completed successfully,
+                       MCU_SAFETY_ERRORn Pin Clear = Step completed successfully
+
+
+ESM Example Application summary
+-------------------------------
+Completed 3 Test Cases
+Received 3 High Priority Interrupts
+Received 8 Low Priority Interrupts
+
+Test Case Event Log
+------------------
+
+Test Case 0: ESM Call back function called : grpChannel 0x0, index 0x8, intSrc 0x8
+  ESM instance #1, ESM interrupt type = Low Priority ESM event
+
+Test Case 0: ESM Call back function called : grpChannel 0x0, index 0x9, intSrc 0x9
+  ESM instance #1, ESM interrupt type = Low Priority ESM event
+
+Test Case 0: ESM Call back function called : grpChannel 0x0, index 0xa, intSrc 0xa
+  ESM instance #1, ESM interrupt type = High Priority ESM event
+
+Test Case 1: ESM Call back function called : grpChannel 0x0, index 0x8, intSrc 0x8
+  ESM instance #1, ESM interrupt type = Low Priority ESM event
+
+Test Case 1: ESM Call back function called : grpChannel 0x0, index 0xa, intSrc 0xa
+  ESM instance #1, ESM interrupt type = High Priority ESM event
+
+Test Case 1: ESM Call back function called : grpChannel 0x0, index 0x8, intSrc 0x8
+  ESM instance #1, ESM interrupt type = Low Priority ESM event
+
+Test Case 1: ESM Call back function called : grpChannel 0x0, index 0x9, intSrc 0x9
+  ESM instance #1, ESM interrupt type = Low Priority ESM event
+
+Test Case 2: ESM Call back function called : grpChannel 0x0, index 0x8, intSrc 0x8
+  ESM instance #1, ESM interrupt type = Low Priority ESM event
+
+Test Case 2: ESM Call back function called : grpChannel 0x0, index 0xa, intSrc 0xa
+  ESM instance #1, ESM interrupt type = High Priority ESM event
+
+Test Case 2: ESM Call back function called : grpChannel 0x0, index 0x8, intSrc 0x8
+  ESM instance #1, ESM interrupt type = Low Priority ESM event
+
+Test Case 2: ESM Call back function called : grpChannel 0x0, index 0x9, intSrc 0x9
+  ESM instance #1, ESM interrupt type = Low Priority ESM event
+
+ESM Example Application: Complete
+ All tests have passed.
+vtm_main.c:575:vtm_test_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored
+OK

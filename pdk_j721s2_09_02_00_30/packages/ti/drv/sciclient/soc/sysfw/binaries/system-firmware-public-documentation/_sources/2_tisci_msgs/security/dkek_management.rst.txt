@@ -1,0 +1,120 @@
+=============================
+Derived KEK TISCI Description
+=============================
+
+.. _sec_dkek_tisci_desc:
+
+
+This chapter provides information on  |sysfw| API for Derived Key Encryption
+Key(DKEK) management. The available API are listed below.
+
++------------------+-----------------------------------------------------------------------+-----------------+--------------------+
+| TISCI Message ID |                        Message Name                                   | Available in GP | Avialable in HS-FS |
++==================+=======================================================================+=================+====================+
+| 0x9003           | :ref:`TISCI_MSG_SA2UL_SET_DKEK <sec-api-sa2ul-set-dkek>`              | Yes*            | Yes                |
++------------------+-----------------------------------------------------------------------+-----------------+--------------------+
+| 0x9004           | :ref:`TISCI_MSG_SA2UL_RELEASE_DKEK <sec-api-sa2ul-release-dkek>`      | Yes*            | Yes                |
++------------------+-----------------------------------------------------------------------+-----------------+--------------------+
+| 0x9029           | :ref:`TISCI_MSG_SA2UL_GET_DKEK <sec-api-sa2ul-get-dkek>`              | Yes*            | Yes                |
++------------------+-----------------------------------------------------------------------+-----------------+--------------------+
+
+.. note::
+
+   On GP devices, DKEK APIs return unconditional success but do not actually
+   involve any step to derive or program the DKEK values
+
+This document must be read along side
+
+#. :doc:`../../6_topic_user_guides/dkek_management` and
+#. :doc:`../../3_boardcfg/BOARDCFG_SEC`, specifically :ref:`pub_boardcfg_dkek_config`
+
+API Description
+===============
+
+.. _sec-api-sa2ul-set-dkek:
+
+TISCI_MSG_SA2UL_SET_DKEK - Set DKEK
+-----------------------------------
+
+**Usage**:
+
++------------------------+--------+
+| **Message Type**       | Normal |
++------------------------+--------+
+| **Secure Queue Only?** | Yes    |
++------------------------+--------+
+
+TISCI Message ID
+----------------
+
+.. sysfwapimacro:: TISCI_MSG_SA2UL_SET_DKEK
+
+.. sysfwapistruct:: tisci_msg_sa2ul_set_dkek_req
+
+.. sysfwapistruct:: tisci_msg_sa2ul_set_dkek_resp
+
+.. sysfwapimacro:: KDF_LABEL_AND_CONTEXT_LEN_MAX
+
+
+See :ref:`pub_tisci_dkek_notes` below.
+
+.. _sec-api-sa2ul-release-dkek:
+
+TISCI_MSG_SA2UL_RELEASE_DKEK - Release DKEK
+-------------------------------------------
+
+**Usage**:
+
++------------------------+--------+
+| **Message Type**       | Normal |
++------------------------+--------+
+| **Secure Queue Only?** | Yes    |
++------------------------+--------+
+
+TISCI Message ID
+----------------
+
+.. sysfwapimacro:: TISCI_MSG_SA2UL_RELEASE_DKEK
+
+.. sysfwapistruct:: tisci_msg_sa2ul_release_dkek_req
+
+.. sysfwapistruct:: tisci_msg_sa2ul_release_dkek_resp
+
+See :ref:`pub_tisci_dkek_notes` below.
+
+.. _sec-api-sa2ul-get-dkek:
+
+TISCI_MSG_SA2UL_GET_DKEK - Get DKEK
+-----------------------------------
+
+**Usage**:
+
++------------------------+--------+
+| **Message Type**       | Normal |
++------------------------+--------+
+| **Secure Queue Only?** | Yes    |
++------------------------+--------+
+
+TISCI Message ID
+----------------
+
+.. sysfwapimacro:: TISCI_MSG_SA2UL_GET_DKEK
+
+.. sysfwapimacro:: SA2UL_DKEK_KEY_LEN
+
+.. sysfwapistruct:: tisci_msg_sa2ul_get_dkek_req
+
+.. sysfwapistruct:: tisci_msg_sa2ul_get_dkek_resp
+
+
+See :ref:`pub_tisci_dkek_notes` below.
+
+.. _pub_tisci_dkek_notes:
+
+API Notes
+---------
+
+- The total length of the Label and Context fields below is limited by the size
+  of the TISCI messages(see :ref:`pub_secure_msg_header`) to 41 bytes.
+
+- |sysfw| only support ``sa2ul_instance`` value of 0 in the API below.

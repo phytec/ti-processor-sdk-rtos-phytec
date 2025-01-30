@@ -1,0 +1,82 @@
+.. _register_readback_guide:
+
+Readback of Written Config and Periodic Readback of Static Config
+=================================================================
+
+A common software diagnostic is to confirm the validity of hardware registers after programming them and over time. For IPs which are included as part of the SDL (Safety IPs), SDL provides helper APIs to assist in implementation of these diagnostics.
+Each module has a set of APIs with common naming that can be used to accomplish the recommended diagnostics.
+
+Readback of Written Config
+--------------------------
+
+In SDL, the modules typically provide an API that is named as follows:
+
+    .. code:: bash
+        
+        SDL_<module>_verifyConfig(&config)
+
+Where <module> is the SDL module name (i.e. ESM, VTM, etc.).
+The application can use this API after performing initializtion or configuration of the module, to verify the configuration:
+
+    .. code:: bash
+        
+        SDL_<module>_init(&config);
+        ret = SDL_<module>_verifyConfig(&config);
+        if (ret != SDL_PASS)
+        {
+            // verification failed
+        }
+        else
+        {
+            // verification passed
+        }
+
+Readback of Static Config
+-------------------------
+
+In SDL, the modules typically provide an API that is named as follows:
+
+    .. code:: bash
+
+        SDL_<module>_getStaticRegisters(&staticRegs);
+
+The call will return a set of static register values for the module. The application can store these values, and then periodically and compare them against the expected value stored in memory to check for any static register changes.
+
+Note that each time a new configuration is done, the stored values for the static regsiters needs to be updated.
+
+The following pseudo-code provides an example usage:
+
+    .. code:: bash
+
+        /* global reference memory */
+        SDL_<module>_staticRegs gStaticRegs;
+
+        int32_t setup_code(void)
+        {
+            ...
+
+            ret = SDL_<module>_getStaticRegisters(&gStaticRegs);
+
+            ...
+        }
+
+        int32_t periodic_check(void)
+        {
+            SDL_<module>_staticRegs localRegs;
+
+            ...
+
+            ret = SDL_<module>_getStaticRegsiters(&localRegs);
+
+            if (localRegs != gStaticRegs)
+            {
+                // check failed
+            }
+            else
+            {
+                // check passed
+            }
+
+            ...
+        }
+

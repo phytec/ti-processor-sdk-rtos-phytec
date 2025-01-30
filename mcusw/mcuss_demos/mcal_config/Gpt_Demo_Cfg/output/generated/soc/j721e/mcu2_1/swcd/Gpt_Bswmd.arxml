@@ -1,0 +1,1164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://autosar.org/schema/r4.0 autosar_4-3-1.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE UUID="d16e276f-661c-4462-bb99-18308c1c4d41">
+      <SHORT-NAME>AUTOSAR</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE UUID="84565c0e-6e61-40b1-a894-48273a8b37c2">
+          <SHORT-NAME>Gpt</SHORT-NAME>
+          <AR-PACKAGES>
+            <AR-PACKAGE UUID="d6271722-533b-4091-ae00-a905153c45af">
+              <SHORT-NAME>BswModuleDescriptions</SHORT-NAME>
+              <ELEMENTS>
+                <BSW-MODULE-DESCRIPTION UUID="0665aa69-13fa-4416-9a80-9c90dd4c3879">
+                  <SHORT-NAME>Gpt</SHORT-NAME>
+                  <MODULE-ID>100</MODULE-ID>
+                  <PROVIDED-ENTRYS>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Gpt_GetVersionInfo">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_GetVersionInfo</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Gpt_Init">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_Init</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Gpt_DeInit">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_DeInit</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Gpt_GetTimeElapsed">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_GetTimeElapsed</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Gpt_GetTimeRemaining">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_GetTimeRemaining</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Gpt_StartTimer">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_StartTimer</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Gpt_StopTimer">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_StopTimer</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Gpt_EnableNotification">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_EnableNotification</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Gpt_DisableNotification">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_DisableNotification</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Gpt_SetMode">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_SetMode</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Gpt_DisableWakeup">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_DisableWakeup</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Gpt_EnableWakeup">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_EnableWakeup</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Gpt_CheckWakeup">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_CheckWakeup</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Gpt_GetPredefTimerValue">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_GetPredefTimerValue</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Gpt_Ch1Isr">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_Ch1Isr</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Gpt_Ch2Isr">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_Ch2Isr</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Gpt_Ch3Isr">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_Ch3Isr</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Gpt_Ch4Isr">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_Ch4Isr</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Gpt_Ch5Isr">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_Ch5Isr</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Gpt_Ch6Isr">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_Ch6Isr</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Gpt_Ch7Isr">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_Ch7Isr</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Gpt_Ch8Isr">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_Ch8Isr</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Gpt_Ch9Isr">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_Ch9Isr</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Gpt_Ch10Isr">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_Ch10Isr</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Gpt_Ch11Isr">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_Ch11Isr</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Gpt_Ch12Isr">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_Ch12Isr</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Gpt_Ch13Isr">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_Ch13Isr</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Gpt_Ch14Isr">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_Ch14Isr</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Gpt_Ch15Isr">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_Ch15Isr</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Gpt_Ch16Isr">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_Ch16Isr</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                  </PROVIDED-ENTRYS>
+                  <BSW-MODULE-DEPENDENCYS>
+                    <BSW-MODULE-DEPENDENCY UUID="e1e76bcf-fc80-4c5c-bdad-2e73fe3583c7">
+                      <SHORT-NAME>Dem</SHORT-NAME>
+                      <TARGET-MODULE-ID>54</TARGET-MODULE-ID>
+                      <REQUIRED-ENTRYS>
+                        <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                          <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Dem/BswModuleEntries/Dem_ReportErrorStatus</BSW-MODULE-ENTRY-REF>
+                        </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                      </REQUIRED-ENTRYS>
+                    </BSW-MODULE-DEPENDENCY>
+                    <BSW-MODULE-DEPENDENCY UUID="6f944c2e-1246-4b3c-b455-fa778b81f89d">
+                      <SHORT-NAME>Det</SHORT-NAME>
+                      <TARGET-MODULE-ID>15</TARGET-MODULE-ID>
+                      <REQUIRED-ENTRYS>
+                        <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                          <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Det/BswModuleEntries/Det_ReportError</BSW-MODULE-ENTRY-REF>
+                        </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                      </REQUIRED-ENTRYS>
+                    </BSW-MODULE-DEPENDENCY>
+                  </BSW-MODULE-DEPENDENCYS>
+                  <INTERNAL-BEHAVIORS>
+                    <BSW-INTERNAL-BEHAVIOR UUID="03ecedc5-658b-4578-961e-4baef58705c4">
+                      <SHORT-NAME>InternalBehaviour_0</SHORT-NAME>
+                      <EXCLUSIVE-AREAS>
+                        <EXCLUSIVE-AREA UUID="c15ca155-289e-49a3-8fcb-3dd9dc3c5ce6">
+                          <SHORT-NAME>GPT_EXCLUSIVE_AREA_0</SHORT-NAME>
+                          <CATEGORY />
+                        </EXCLUSIVE-AREA>
+                      </EXCLUSIVE-AREAS>
+                      <ENTITYS>
+                        <BSW-CALLED-ENTITY S="" UUID="e559cdb3-011d-4f42-ad23-3ba1e12813b7">
+                          <SHORT-NAME>Gpt_GetVersionInfo</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE_SLOW</SW-ADDR-METHOD-REF>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_GetVersionInfo</IMPLEMENTED-ENTRY-REF>
+                        </BSW-CALLED-ENTITY>
+                        <BSW-CALLED-ENTITY UUID="74d33ed0-d410-4bda-bf38-f79dfb5cc0f5">
+                          <SHORT-NAME>Gpt_Init</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>NON-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE</SW-ADDR-METHOD-REF>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_Init</IMPLEMENTED-ENTRY-REF>
+                        </BSW-CALLED-ENTITY>
+                        <BSW-CALLED-ENTITY UUID="8cdcbcae-1b85-418d-a018-7c2b793a90db">
+                          <SHORT-NAME>Gpt_DeInit</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>NON-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE</SW-ADDR-METHOD-REF>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_DeInit</IMPLEMENTED-ENTRY-REF>
+                        </BSW-CALLED-ENTITY>
+                        <BSW-CALLED-ENTITY UUID="a98dc716-5842-461c-afeb-317961f43c78">
+                          <SHORT-NAME>Gpt_GetTimeElapsed</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE</SW-ADDR-METHOD-REF>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_GetTimeElapsed</IMPLEMENTED-ENTRY-REF>
+                        </BSW-CALLED-ENTITY>
+                        <BSW-CALLED-ENTITY UUID="8d620318-e027-4316-aaf9-54d970ac8a97">
+                          <SHORT-NAME>Gpt_GetTimeRemaining</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE</SW-ADDR-METHOD-REF>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_GetTimeRemaining</IMPLEMENTED-ENTRY-REF>
+                        </BSW-CALLED-ENTITY>
+                        <BSW-CALLED-ENTITY UUID="643acb20-9e6f-4393-b855-ccbaf31fe4df">
+                          <SHORT-NAME>Gpt_StartTimer</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE</SW-ADDR-METHOD-REF>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_StartTimer</IMPLEMENTED-ENTRY-REF>
+                        </BSW-CALLED-ENTITY>
+                        <BSW-CALLED-ENTITY S="" UUID="6ca2c23c-b09f-4fcf-a621-49c554881abe">
+                          <SHORT-NAME>Gpt_StopTimer</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>NON-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE</SW-ADDR-METHOD-REF>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_StopTimer</IMPLEMENTED-ENTRY-REF>
+                        </BSW-CALLED-ENTITY>
+                        <BSW-CALLED-ENTITY S="" UUID="6af9bf68-17a4-421a-9da7-11fd8d71b895">
+                          <SHORT-NAME>Gpt_EnableNotification</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE</SW-ADDR-METHOD-REF>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_EnableNotification</IMPLEMENTED-ENTRY-REF>
+                        </BSW-CALLED-ENTITY>
+                        <BSW-CALLED-ENTITY S="" UUID="1286a8f9-f7ef-4429-a7f5-3ee9d7bc8e48">
+                          <SHORT-NAME>Gpt_DisableNotification</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE</SW-ADDR-METHOD-REF>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_DisableNotification</IMPLEMENTED-ENTRY-REF>
+                        </BSW-CALLED-ENTITY>
+                        <BSW-CALLED-ENTITY S="" UUID="9f35c163-d76e-4c21-a91b-b4cec6ed77c7">
+                          <SHORT-NAME>Gpt_SetMode</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE</SW-ADDR-METHOD-REF>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_SetMode</IMPLEMENTED-ENTRY-REF>
+                        </BSW-CALLED-ENTITY>
+                        <BSW-CALLED-ENTITY S="" UUID="3cdbf31d-be66-4f71-8e5a-216ebbd8bb15">
+                          <SHORT-NAME>Gpt_DisableWakeup</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE</SW-ADDR-METHOD-REF>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_DisableWakeup</IMPLEMENTED-ENTRY-REF>
+                        </BSW-CALLED-ENTITY>
+                        <BSW-CALLED-ENTITY S="" UUID="77689699-efe2-4d64-ae81-3a34ece0b1e3">
+                          <SHORT-NAME>Gpt_EnableWakeup</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE</SW-ADDR-METHOD-REF>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_EnableWakeup</IMPLEMENTED-ENTRY-REF>
+                        </BSW-CALLED-ENTITY>
+                        <BSW-CALLED-ENTITY S="" UUID="8b9ebbb5-8477-48d7-a600-1f2bc2d77ee9">
+                          <SHORT-NAME>Gpt_CheckWakeup</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE</SW-ADDR-METHOD-REF>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_CheckWakeup</IMPLEMENTED-ENTRY-REF>
+                        </BSW-CALLED-ENTITY>
+                        <BSW-CALLED-ENTITY S="" UUID="fc0448d3-234c-4b94-a1b3-4e2b57312022">
+                          <SHORT-NAME>Gpt_GetPredefTimerValue</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE</SW-ADDR-METHOD-REF>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_GetPredefTimerValue</IMPLEMENTED-ENTRY-REF>
+                        </BSW-CALLED-ENTITY>
+                        <BSW-INTERRUPT-ENTITY S="" UUID="2ba769b4-244f-4755-8c06-663738d95d6f">
+                          <SHORT-NAME>Gpt_Ch1Isr</SHORT-NAME>
+                          <CATEGORY />
+                          <REENTRANCY-LEVEL>NON-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE_FAST</SW-ADDR-METHOD-REF>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_Ch1Isr</IMPLEMENTED-ENTRY-REF>
+                          <INTERRUPT-CATEGORY>CAT-1</INTERRUPT-CATEGORY>
+                          <INTERRUPT-SOURCE />
+                        </BSW-INTERRUPT-ENTITY>
+                        <BSW-INTERRUPT-ENTITY UUID="a1922c77-de0a-4b63-9bb4-e5a871b952ad">
+                          <SHORT-NAME>Gpt_Ch2Isr</SHORT-NAME>
+                          <REENTRANCY-LEVEL>NON-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE_FAST</SW-ADDR-METHOD-REF>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_Ch2Isr</IMPLEMENTED-ENTRY-REF>
+                          <INTERRUPT-CATEGORY>CAT-1</INTERRUPT-CATEGORY>
+                        </BSW-INTERRUPT-ENTITY>
+                        <BSW-INTERRUPT-ENTITY S="" UUID="7f718525-2e69-46d1-a5f4-31d0b1c25ece">
+                          <SHORT-NAME>Gpt_Ch3Isr</SHORT-NAME>
+                          <REENTRANCY-LEVEL>NON-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE_FAST</SW-ADDR-METHOD-REF>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_Ch3Isr</IMPLEMENTED-ENTRY-REF>
+                          <INTERRUPT-CATEGORY>CAT-1</INTERRUPT-CATEGORY>
+                        </BSW-INTERRUPT-ENTITY>
+                        <BSW-INTERRUPT-ENTITY UUID="ace27aa6-dcf9-4004-b669-2cbe5d6b1f04">
+                          <SHORT-NAME>Gpt_Ch4Isr</SHORT-NAME>
+                          <CATEGORY />
+                          <REENTRANCY-LEVEL>NON-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE_FAST</SW-ADDR-METHOD-REF>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_Ch4Isr</IMPLEMENTED-ENTRY-REF>
+                          <INTERRUPT-CATEGORY>CAT-1</INTERRUPT-CATEGORY>
+                        </BSW-INTERRUPT-ENTITY>
+                        <BSW-INTERRUPT-ENTITY UUID="3e7986d3-0179-4191-979d-910f658e009e">
+                          <SHORT-NAME>Gpt_Ch5Isr</SHORT-NAME>
+                          <REENTRANCY-LEVEL>NON-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE_FAST</SW-ADDR-METHOD-REF>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_Ch5Isr</IMPLEMENTED-ENTRY-REF>
+                          <INTERRUPT-CATEGORY>CAT-1</INTERRUPT-CATEGORY>
+                        </BSW-INTERRUPT-ENTITY>
+                        <BSW-INTERRUPT-ENTITY UUID="e17333aa-e62f-4dc4-b6ef-bf9298082a84">
+                          <SHORT-NAME>Gpt_Ch6Isr</SHORT-NAME>
+                          <REENTRANCY-LEVEL>NON-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE_FAST</SW-ADDR-METHOD-REF>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_Ch6Isr</IMPLEMENTED-ENTRY-REF>
+                          <INTERRUPT-CATEGORY>CAT-1</INTERRUPT-CATEGORY>
+                          <INTERRUPT-SOURCE />
+                        </BSW-INTERRUPT-ENTITY>
+                        <BSW-INTERRUPT-ENTITY UUID="165cff46-47b7-4f7b-b96f-2eda9cc2c12c">
+                          <SHORT-NAME>Gpt_Ch16Isr</SHORT-NAME>
+                          <REENTRANCY-LEVEL>NON-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE_FAST</SW-ADDR-METHOD-REF>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_Ch16Isr</IMPLEMENTED-ENTRY-REF>
+                          <INTERRUPT-CATEGORY>CAT-1</INTERRUPT-CATEGORY>
+                        </BSW-INTERRUPT-ENTITY>
+                        <BSW-INTERRUPT-ENTITY UUID="fc44b416-a9f5-4621-a979-37c8d23d6828">
+                          <SHORT-NAME>Gpt_Ch7Isr</SHORT-NAME>
+                          <REENTRANCY-LEVEL>NON-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE_FAST</SW-ADDR-METHOD-REF>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_Ch7Isr</IMPLEMENTED-ENTRY-REF>
+                          <INTERRUPT-CATEGORY>CAT-1</INTERRUPT-CATEGORY>
+                          <INTERRUPT-SOURCE />
+                        </BSW-INTERRUPT-ENTITY>
+                        <BSW-INTERRUPT-ENTITY UUID="b77c5f20-6c54-4e27-88d1-0dbc7950d5fe">
+                          <SHORT-NAME>Gpt_Ch8Isr</SHORT-NAME>
+                          <REENTRANCY-LEVEL>NON-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE_FAST</SW-ADDR-METHOD-REF>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_Ch8Isr</IMPLEMENTED-ENTRY-REF>
+                          <INTERRUPT-CATEGORY>CAT-1</INTERRUPT-CATEGORY>
+                          <INTERRUPT-SOURCE />
+                        </BSW-INTERRUPT-ENTITY>
+                        <BSW-INTERRUPT-ENTITY UUID="8288089f-d95f-4d17-9097-a1fc2f7307a9">
+                          <SHORT-NAME>Gpt_Ch9Isr</SHORT-NAME>
+                          <REENTRANCY-LEVEL>NON-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE_FAST</SW-ADDR-METHOD-REF>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_Ch9Isr</IMPLEMENTED-ENTRY-REF>
+                          <INTERRUPT-CATEGORY>CAT-1</INTERRUPT-CATEGORY>
+                          <INTERRUPT-SOURCE />
+                        </BSW-INTERRUPT-ENTITY>
+                        <BSW-INTERRUPT-ENTITY S="" UUID="f8a0ee14-ab0f-49e1-b3fd-2c7c7a605a8f">
+                          <SHORT-NAME>Gpt_Ch10Isr</SHORT-NAME>
+                          <CATEGORY />
+                          <REENTRANCY-LEVEL>NON-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE_FAST</SW-ADDR-METHOD-REF>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_Ch10Isr</IMPLEMENTED-ENTRY-REF>
+                          <INTERRUPT-CATEGORY>CAT-1</INTERRUPT-CATEGORY>
+                        </BSW-INTERRUPT-ENTITY>
+                        <BSW-INTERRUPT-ENTITY UUID="1be2ceef-8dbb-42cf-811a-d5c08d1ab6d0">
+                          <SHORT-NAME>Gpt_Ch11Isr</SHORT-NAME>
+                          <REENTRANCY-LEVEL>NON-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE_FAST</SW-ADDR-METHOD-REF>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_Ch11Isr</IMPLEMENTED-ENTRY-REF>
+                          <INTERRUPT-CATEGORY>CAT-1</INTERRUPT-CATEGORY>
+                          <INTERRUPT-SOURCE />
+                        </BSW-INTERRUPT-ENTITY>
+                        <BSW-INTERRUPT-ENTITY UUID="c7fbb637-befc-4759-bb60-ef3b8492c20c">
+                          <SHORT-NAME>Gpt_Ch12Isr</SHORT-NAME>
+                          <REENTRANCY-LEVEL>NON-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE_FAST</SW-ADDR-METHOD-REF>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_Ch12Isr</IMPLEMENTED-ENTRY-REF>
+                          <INTERRUPT-CATEGORY>CAT-1</INTERRUPT-CATEGORY>
+                        </BSW-INTERRUPT-ENTITY>
+                        <BSW-INTERRUPT-ENTITY UUID="3243d595-dac2-4c65-9969-dabb8279b360">
+                          <SHORT-NAME>Gpt_Ch13Isr</SHORT-NAME>
+                          <REENTRANCY-LEVEL>NON-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE_FAST</SW-ADDR-METHOD-REF>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_Ch13Isr</IMPLEMENTED-ENTRY-REF>
+                          <INTERRUPT-CATEGORY>CAT-1</INTERRUPT-CATEGORY>
+                          <INTERRUPT-SOURCE />
+                        </BSW-INTERRUPT-ENTITY>
+                        <BSW-INTERRUPT-ENTITY UUID="06c9e185-452e-4167-9f54-8bf85b8b0570">
+                          <SHORT-NAME>Gpt_Ch14Isr</SHORT-NAME>
+                          <REENTRANCY-LEVEL>NON-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE_FAST</SW-ADDR-METHOD-REF>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_Ch14Isr</IMPLEMENTED-ENTRY-REF>
+                          <INTERRUPT-CATEGORY>CAT-1</INTERRUPT-CATEGORY>
+                        </BSW-INTERRUPT-ENTITY>
+                        <BSW-INTERRUPT-ENTITY UUID="a6764b05-d0f5-4c02-a5b4-4d4798bfaab3">
+                          <SHORT-NAME>Gpt_Ch15Isr</SHORT-NAME>
+                          <REENTRANCY-LEVEL>NON-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE_FAST</SW-ADDR-METHOD-REF>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Gpt/BswModuleEntries/Gpt_Ch15Isr</IMPLEMENTED-ENTRY-REF>
+                          <INTERRUPT-CATEGORY>CAT-1</INTERRUPT-CATEGORY>
+                        </BSW-INTERRUPT-ENTITY>
+                      </ENTITYS>
+                    </BSW-INTERNAL-BEHAVIOR>
+                  </INTERNAL-BEHAVIORS>
+                </BSW-MODULE-DESCRIPTION>
+              </ELEMENTS>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="14a24593-cf14-4e5c-802e-a2ffcd6a28e2">
+              <SHORT-NAME>BswModuleEntries</SHORT-NAME>
+              <ELEMENTS>
+                <BSW-MODULE-ENTRY UUID="557a114c-97d4-441e-98c8-891b460cbaec">
+                  <SHORT-NAME>Gpt_GetVersionInfo</SHORT-NAME>
+                  <CATEGORY />
+                  <SHORT-NAME-PATTERN />
+                  <SERVICE-ID>0x00</SERVICE-ID>
+                  <ROLE />
+                  <IS-REENTRANT>true</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>TASK</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY S="" UUID="7ad975b2-3db4-4a57-8820-912eb93f2aeb">
+                  <SHORT-NAME>Gpt_Init</SHORT-NAME>
+                  <CATEGORY />
+                  <SERVICE-ID>0x01</SERVICE-ID>
+                  <ROLE />
+                  <IS-REENTRANT>false</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>TASK</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="55cdf2db-ead0-4889-90d7-5166b81b0ed4">
+                  <SHORT-NAME>Gpt_DeInit</SHORT-NAME>
+                  <CATEGORY />
+                  <SHORT-NAME-PATTERN />
+                  <SERVICE-ID>0x02</SERVICE-ID>
+                  <ROLE />
+                  <IS-REENTRANT>false</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>TASK</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="8ccf646e-471d-44ce-88c3-8953d3b43fe9">
+                  <SHORT-NAME>Gpt_GetTimeElapsed</SHORT-NAME>
+                  <CATEGORY />
+                  <SHORT-NAME-PATTERN />
+                  <SERVICE-ID>0x03</SERVICE-ID>
+                  <ROLE />
+                  <IS-REENTRANT>true</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="af9f97f7-1400-4978-a3f5-970514d2b565">
+                  <SHORT-NAME>Gpt_GetTimeRemaining</SHORT-NAME>
+                  <CATEGORY />
+                  <SHORT-NAME-PATTERN />
+                  <SERVICE-ID>0x04</SERVICE-ID>
+                  <ROLE />
+                  <IS-REENTRANT>true</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="edf2f3c4-921c-43d8-b66e-e1fa3c10b781">
+                  <SHORT-NAME>Gpt_StartTimer</SHORT-NAME>
+                  <CATEGORY />
+                  <SHORT-NAME-PATTERN />
+                  <SERVICE-ID>0x05</SERVICE-ID>
+                  <ROLE />
+                  <IS-REENTRANT>true</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="d85d009f-4ea7-49e9-a208-0d4932eb1662">
+                  <SHORT-NAME>Gpt_StopTimer</SHORT-NAME>
+                  <CATEGORY />
+                  <SHORT-NAME-PATTERN />
+                  <SERVICE-ID>0x06</SERVICE-ID>
+                  <ROLE />
+                  <IS-REENTRANT>true</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="7c2497ee-2061-4abb-84b3-f3c1d96ca4d4">
+                  <SHORT-NAME>Gpt_EnableNotification</SHORT-NAME>
+                  <CATEGORY />
+                  <SHORT-NAME-PATTERN />
+                  <SERVICE-ID>0x07</SERVICE-ID>
+                  <ROLE />
+                  <IS-REENTRANT>true</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>TASK</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="7469bc9e-0459-4a28-a40b-8f5ecf15d4e9">
+                  <SHORT-NAME>Gpt_DisableNotification</SHORT-NAME>
+                  <CATEGORY />
+                  <SHORT-NAME-PATTERN />
+                  <SERVICE-ID>0x08</SERVICE-ID>
+                  <ROLE />
+                  <IS-REENTRANT>true</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>TASK</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="ed0463f0-f7c3-4799-bf66-bdb57fa46772">
+                  <SHORT-NAME>Gpt_SetMode</SHORT-NAME>
+                  <CATEGORY />
+                  <SHORT-NAME-PATTERN />
+                  <SERVICE-ID>0x09</SERVICE-ID>
+                  <ROLE />
+                  <IS-REENTRANT>false</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>TASK</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="d5e1ad0f-d46a-4ffb-ad8f-4e5d7b550436">
+                  <SHORT-NAME>Gpt_DisableWakeup</SHORT-NAME>
+                  <CATEGORY />
+                  <SHORT-NAME-PATTERN />
+                  <SERVICE-ID>0x0a</SERVICE-ID>
+                  <ROLE />
+                  <IS-REENTRANT>true</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>TASK</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="f48aa936-c5bd-4f99-a608-3dc9adbec0cd">
+                  <SHORT-NAME>Gpt_EnableWakeup</SHORT-NAME>
+                  <CATEGORY />
+                  <SHORT-NAME-PATTERN />
+                  <SERVICE-ID>0x0b</SERVICE-ID>
+                  <ROLE />
+                  <IS-REENTRANT>true</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>TASK</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="21aac4b1-65b4-4989-86e2-20f2bffc503f">
+                  <SHORT-NAME>Gpt_CheckWakeup</SHORT-NAME>
+                  <CATEGORY />
+                  <SHORT-NAME-PATTERN />
+                  <SERVICE-ID>0x0c</SERVICE-ID>
+                  <ROLE />
+                  <IS-REENTRANT>true</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>TASK</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="df6f523d-f1bd-47ed-82ed-761359998f2c">
+                  <SHORT-NAME>Gpt_GetPredefTimerValue</SHORT-NAME>
+                  <CATEGORY />
+                  <SHORT-NAME-PATTERN />
+                  <SERVICE-ID>0x0d</SERVICE-ID>
+                  <ROLE />
+                  <IS-REENTRANT>true</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>TASK</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY S="" UUID="2f613271-cc56-46fc-a773-ea34bacc83a0">
+                  <SHORT-NAME>Gpt_Ch1Isr</SHORT-NAME>
+                  <CATEGORY />
+                  <ROLE />
+                  <IS-REENTRANT>false</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>INTERRUPT</CALL-TYPE>
+                  <EXECUTION-CONTEXT>INTERRUPT-CAT-1</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY S="" UUID="29246fc4-274b-4714-8ef0-fb6140d67ff4">
+                  <SHORT-NAME>Gpt_Ch2Isr</SHORT-NAME>
+                  <CATEGORY />
+                  <ROLE />
+                  <IS-REENTRANT>false</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>INTERRUPT</CALL-TYPE>
+                  <EXECUTION-CONTEXT>INTERRUPT-CAT-1</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY S="" UUID="ab61e35f-8fcd-425f-aeac-458f5cf471f5">
+                  <SHORT-NAME>Gpt_Ch3Isr</SHORT-NAME>
+                  <CATEGORY />
+                  <ROLE />
+                  <IS-REENTRANT>false</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>INTERRUPT</CALL-TYPE>
+                  <EXECUTION-CONTEXT>INTERRUPT-CAT-1</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY S="" UUID="eb82fd37-e390-4301-be15-8b06a09c486e">
+                  <SHORT-NAME>Gpt_Ch4Isr</SHORT-NAME>
+                  <CATEGORY />
+                  <ROLE />
+                  <IS-REENTRANT>false</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>INTERRUPT</CALL-TYPE>
+                  <EXECUTION-CONTEXT>INTERRUPT-CAT-1</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY S="" UUID="82d184ad-ec0d-40ad-b51b-2a6f973f9c3a">
+                  <SHORT-NAME>Gpt_Ch5Isr</SHORT-NAME>
+                  <CATEGORY />
+                  <ROLE />
+                  <IS-REENTRANT>false</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>INTERRUPT</CALL-TYPE>
+                  <EXECUTION-CONTEXT>INTERRUPT-CAT-1</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY S="" UUID="c35eb9e6-f415-4717-b020-8dfdfc836050">
+                  <SHORT-NAME>Gpt_Ch6Isr</SHORT-NAME>
+                  <CATEGORY />
+                  <ROLE />
+                  <IS-REENTRANT>false</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>INTERRUPT</CALL-TYPE>
+                  <EXECUTION-CONTEXT>INTERRUPT-CAT-1</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY S="" UUID="a6456169-f894-4daf-b2f8-b6f32702363b">
+                  <SHORT-NAME>Gpt_Ch7Isr</SHORT-NAME>
+                  <CATEGORY />
+                  <ROLE />
+                  <IS-REENTRANT>false</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>INTERRUPT</CALL-TYPE>
+                  <EXECUTION-CONTEXT>INTERRUPT-CAT-1</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY S="" UUID="bd50819c-ee48-41b1-976a-1b14cdabada6">
+                  <SHORT-NAME>Gpt_Ch8Isr</SHORT-NAME>
+                  <CATEGORY />
+                  <ROLE />
+                  <IS-REENTRANT>false</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>INTERRUPT</CALL-TYPE>
+                  <EXECUTION-CONTEXT>INTERRUPT-CAT-1</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY S="" UUID="c07b0611-9f89-458c-a03a-5c9d6a4ce988">
+                  <SHORT-NAME>Gpt_Ch9Isr</SHORT-NAME>
+                  <CATEGORY />
+                  <ROLE />
+                  <IS-REENTRANT>false</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>INTERRUPT</CALL-TYPE>
+                  <EXECUTION-CONTEXT>INTERRUPT-CAT-1</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY S="" UUID="228ed95f-76c3-460c-8243-3b9a66de04c8">
+                  <SHORT-NAME>Gpt_Ch10Isr</SHORT-NAME>
+                  <CATEGORY />
+                  <ROLE />
+                  <IS-REENTRANT>false</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>INTERRUPT</CALL-TYPE>
+                  <EXECUTION-CONTEXT>INTERRUPT-CAT-1</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY S="" UUID="4fcc903a-73da-4f6f-a087-257b8f62e87d">
+                  <SHORT-NAME>Gpt_Ch11Isr</SHORT-NAME>
+                  <CATEGORY />
+                  <ROLE />
+                  <IS-REENTRANT>false</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>INTERRUPT</CALL-TYPE>
+                  <EXECUTION-CONTEXT>INTERRUPT-CAT-1</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY S="" UUID="0be95f3c-21a5-4015-9ec5-113f5d01a38f">
+                  <SHORT-NAME>Gpt_Ch12Isr</SHORT-NAME>
+                  <CATEGORY />
+                  <ROLE />
+                  <IS-REENTRANT>false</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>INTERRUPT</CALL-TYPE>
+                  <EXECUTION-CONTEXT>INTERRUPT-CAT-1</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY S="" UUID="6bcc95e3-13c8-4804-942d-16ebdadab361">
+                  <SHORT-NAME>Gpt_Ch13Isr</SHORT-NAME>
+                  <CATEGORY />
+                  <ROLE />
+                  <IS-REENTRANT>false</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>INTERRUPT</CALL-TYPE>
+                  <EXECUTION-CONTEXT>INTERRUPT-CAT-1</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY S="" UUID="7dc6ba58-4cd7-450c-91a3-f41d3e1206d1">
+                  <SHORT-NAME>Gpt_Ch14Isr</SHORT-NAME>
+                  <CATEGORY />
+                  <ROLE />
+                  <IS-REENTRANT>false</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>INTERRUPT</CALL-TYPE>
+                  <EXECUTION-CONTEXT>INTERRUPT-CAT-1</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY S="" UUID="cc3ac0f6-c34b-4ab4-83a8-62701d723acb">
+                  <SHORT-NAME>Gpt_Ch15Isr</SHORT-NAME>
+                  <CATEGORY />
+                  <ROLE />
+                  <IS-REENTRANT>false</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>INTERRUPT</CALL-TYPE>
+                  <EXECUTION-CONTEXT>INTERRUPT-CAT-1</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY S="" UUID="603aa3d2-0ce3-4991-886c-ec953d88d277">
+                  <SHORT-NAME>Gpt_Ch16Isr</SHORT-NAME>
+                  <CATEGORY />
+                  <ROLE />
+                  <IS-REENTRANT>false</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>INTERRUPT</CALL-TYPE>
+                  <EXECUTION-CONTEXT>INTERRUPT-CAT-1</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+              </ELEMENTS>
+            </AR-PACKAGE>
+          </AR-PACKAGES>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+    <AR-PACKAGE UUID="40caad4a-d518-44f7-94a2-18c29480ea44">
+      <SHORT-NAME>TI_TDAXX</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE UUID="89cb1032-0df7-4678-92aa-cbe38a69df2a">
+          <SHORT-NAME>Gpt</SHORT-NAME>
+          <ELEMENTS>
+            <BSW-IMPLEMENTATION UUID="508f2694-7201-4bfa-a767-13d2878aff5e">
+              <SHORT-NAME>TI_TDAXX_Gpt</SHORT-NAME>
+              <CATEGORY />
+              <CODE-DESCRIPTORS>
+                <CODE UUID="fe54ed3a-2a31-4000-9de4-ee06a3b5552c">
+                  <SHORT-NAME>Files</SHORT-NAME>
+                  <ARTIFACT-DESCRIPTORS>
+                    <AUTOSAR-ENGINEERING-OBJECT S="">
+                      <SHORT-LABEL>Gpt.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                      <DOMAIN />
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT S="">
+                      <SHORT-LABEL>Gpt_Irq.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                      <DOMAIN />
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT S="">
+                      <SHORT-LABEL>Gpt_Gptimer.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                      <DOMAIN />
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT S="">
+                      <SHORT-LABEL>Gpt_PBcfg.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                      <DOMAIN />
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                  </ARTIFACT-DESCRIPTORS>
+                </CODE>
+              </CODE-DESCRIPTORS>
+              <COMPILERS>
+                <COMPILER UUID="650ebf80-0a09-47ca-8843-8cbacb8112b3">
+                  <SHORT-NAME>armcl</SHORT-NAME>
+                  <CATEGORY />
+                  <NAME>TI ARM Compiler</NAME>
+                  <OPTIONS>-c -qq --endian=little -mv7M4 --float_support=vfplib --abi=eabi -eo.oem4 -ea.sem4 --symdebug:dwarf --embed_inline_assembly --gcc --emit_warnings_as_errors -g -ms --opt_level=3 -os --optimize_with_debug</OPTIONS>
+                  <VENDOR>Texas Instruments</VENDOR>
+                  <VERSION>5.2.5</VERSION>
+                </COMPILER>
+              </COMPILERS>
+              <LINKERS>
+                <LINKER UUID="d1e6ba62-338f-4b2c-b707-b37eebeec7c7">
+                  <SHORT-NAME>armcl</SHORT-NAME>
+                  <NAME>TI ARM Linker</NAME>
+                  <OPTIONS />
+                  <VENDOR>Texas Instruments</VENDOR>
+                  <VERSION>5.2.5</VERSION>
+                </LINKER>
+              </LINKERS>
+              <PROGRAMMING-LANGUAGE>C</PROGRAMMING-LANGUAGE>
+              <REQUIRED-ARTIFACTS>
+                <DEPENDENCY-ON-ARTIFACT S="" UUID="aa4d1171-b196-48dc-8861-e30cdbb2bc2c">
+                  <SHORT-NAME>ExternalLibs</SHORT-NAME>
+                  <CATEGORY />
+                  <ARTIFACT-DESCRIPTOR S="">
+                    <SHORT-LABEL>libc</SHORT-LABEL>
+                    <CATEGORY>SWLIB</CATEGORY>
+                    <DOMAIN />
+                  </ARTIFACT-DESCRIPTOR>
+                  <USAGES>
+                    <USAGE>LINK</USAGE>
+                    <USAGE>COMPILE</USAGE>
+                  </USAGES>
+                </DEPENDENCY-ON-ARTIFACT>
+              </REQUIRED-ARTIFACTS>
+              <RESOURCE-CONSUMPTION UUID="75978c1c-a9de-4396-bad4-adc6110c25e4">
+                <SHORT-NAME>TI_TDAXX_Gpt_Resources</SHORT-NAME>
+                <CATEGORY />
+                <MEMORY-SECTIONS>
+                  <MEMORY-SECTION S="" UUID="3e53127f-1cd4-481f-a5b8-b18c413daeb9">
+                    <SHORT-NAME>CONFIG_DATA</SHORT-NAME>
+                    <CATEGORY />
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <MEM-CLASS-SYMBOL />
+                    <SIZE>192</SIZE>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CONFIG_DATA</SW-ADDRMETHOD-REF>
+                    <SYMBOL />
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION S="" UUID="239ec8a6-4a11-4bba-92af-5545be532be1">
+                    <SHORT-NAME>CODE</SHORT-NAME>
+                    <CATEGORY />
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <EXECUTABLE-ENTITY-REFS>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_GetVersionInfo</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_Init</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_DeInit</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_GetTimeElapsed</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_GetTimeRemaining</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_StartTimer</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_StopTimer</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_EnableNotification</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_DisableNotification</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_SetMode</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_DisableWakeup</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_EnableWakeup</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_CheckWakeup</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_GetPredefTimerValue</EXECUTABLE-ENTITY-REF>
+                    </EXECUTABLE-ENTITY-REFS>
+                    <MEM-CLASS-SYMBOL />
+                    <SIZE>0x2000</SIZE>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE</SW-ADDRMETHOD-REF>
+                    <SYMBOL />
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION S="" UUID="cb7ffcf2-c9fb-4f99-8278-986cdfb54c96">
+                    <SHORT-NAME>VAR_INIT_UNSPECIFIED</SHORT-NAME>
+                    <CATEGORY />
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <MEM-CLASS-SYMBOL />
+                    <SIZE>32</SIZE>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/VAR</SW-ADDRMETHOD-REF>
+                    <SYMBOL />
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION S="" UUID="6a7162cc-16bc-461e-ac40-706918a6b767">
+                    <SHORT-NAME>VAR_NOINIT_UNSPECIFIED</SHORT-NAME>
+                    <CATEGORY />
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <MEM-CLASS-SYMBOL />
+                    <SIZE>256</SIZE>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/VAR</SW-ADDRMETHOD-REF>
+                    <SYMBOL />
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION S="" UUID="387212a2-05b4-4ecf-8b56-1b21bcd28a89">
+                    <SHORT-NAME>CONST_UNSPECIFIED</SHORT-NAME>
+                    <CATEGORY />
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <MEM-CLASS-SYMBOL />
+                    <SIZE>64</SIZE>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CONST</SW-ADDRMETHOD-REF>
+                    <SYMBOL />
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION S="" UUID="6ab4defe-19e2-4b38-9ed8-a8498b23cb50">
+                    <SHORT-NAME>ISR_CODE</SHORT-NAME>
+                    <CATEGORY />
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <MEM-CLASS-SYMBOL />
+                    <SIZE>1024</SIZE>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE</SW-ADDRMETHOD-REF>
+                    <SYMBOL />
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION S="" UUID="29ec7a91-4949-4383-a7e9-8ecf4b6cd8f2">
+                    <SHORT-NAME>CONST_32</SHORT-NAME>
+                    <CATEGORY />
+                    <ALIGNMENT>32</ALIGNMENT>
+                    <MEM-CLASS-SYMBOL />
+                    <SIZE>32</SIZE>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CONST</SW-ADDRMETHOD-REF>
+                    <SYMBOL />
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION S="" UUID="2ae3ff05-62b8-4d0b-9285-55855a84c0ce">
+                    <SHORT-NAME>CODE_ISR</SHORT-NAME>
+                    <CATEGORY />
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <EXECUTABLE-ENTITY-REFS>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_Ch10Isr</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_Ch11Isr</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_Ch12Isr</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_Ch13Isr</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_Ch14Isr</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_Ch15Isr</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_Ch16Isr</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_Ch1Isr</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_Ch2Isr</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_Ch3Isr</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_Ch4Isr</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_Ch5Isr</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_Ch6Isr</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_Ch7Isr</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_Ch8Isr</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_Ch9Isr</EXECUTABLE-ENTITY-REF>
+                    </EXECUTABLE-ENTITY-REFS>
+                    <MEM-CLASS-SYMBOL />
+                    <SIZE>1024</SIZE>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE_FAST</SW-ADDRMETHOD-REF>
+                    <SYMBOL />
+                  </MEMORY-SECTION>
+                </MEMORY-SECTIONS>
+                <STACK-USAGES>
+                  <MEASURED-STACK-USAGE S="" UUID="363206a4-b8fb-4a1d-a28a-d5739af110b2">
+                    <SHORT-NAME>Gpt_GetVersionInfo_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_GetVersionInfo</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>16</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>16</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>16</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="784c66e2-2f71-45a7-9d4a-dc3ff419f39b">
+                    <SHORT-NAME>Gpt_Init_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_Init</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>120</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>120</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>120</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="5a700562-76dd-4919-a046-516cdb44a8a5">
+                    <SHORT-NAME>Gpt_DeInit_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_DeInit</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>88</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>88</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>88</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="ea6707d2-8c79-4afa-b99e-bdf5f4ba6324">
+                    <SHORT-NAME>Gpt_GetTimeElapsed_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_GetTimeElapsed</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>64</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>64</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>64</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="54662927-3835-4020-83a8-65385a6b837e">
+                    <SHORT-NAME>Gpt_GetTimeRemaining_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_GetTimeRemaining</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>56</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>56</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>56</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="a331943a-bacf-40b8-89c9-751adba3446e">
+                    <SHORT-NAME>Gpt_StartTimer_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_StartTimer</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>88</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>88</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>88</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="1ec86b7c-1af5-451d-b7f4-d173bd891e40">
+                    <SHORT-NAME>Gpt_StopTimer_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_StopTimer</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>56</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>56</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>56</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="49b79091-081d-4c93-a2f3-52d9541658a4">
+                    <SHORT-NAME>Gpt_EnableNotification_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_EnableNotification</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>48</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>48</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>48</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="bce52567-b500-4a0f-ad38-1d9a626055d7">
+                    <SHORT-NAME>Gpt_DisableNotification_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_DisableNotification</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>48</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>48</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>48</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="aed94980-d990-42d1-88dc-4455d77afbc7">
+                    <SHORT-NAME>Gpt_SetMode_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_SetMode</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>80</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>80</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>80</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="05ab59a6-fc9a-4006-834e-da28a2e9d484">
+                    <SHORT-NAME>Gpt_DisableWakeup_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_DisableWakeup</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>56</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>56</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>56</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="e698f194-6fe1-443f-821a-037d521c4657">
+                    <SHORT-NAME>Gpt_EnableWakeup_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_EnableWakeup</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>48</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>48</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>48</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="9d5a8311-a45d-4010-bb26-8ea23d1facef">
+                    <SHORT-NAME>Gpt_CheckWakeup_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_CheckWakeup</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>32</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>32</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>32</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="477d60a4-7a15-4565-a5f6-ed519e748e16">
+                    <SHORT-NAME>Gpt_Ch2Isr_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_Ch2Isr</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>56</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>56</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>56</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="d5f9d185-bc63-4dd7-a5d9-eb629fbb8cac">
+                    <SHORT-NAME>Gpt_Ch1Isr_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_Ch1Isr</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>56</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>56</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>56</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="39ed7257-0bf8-4bf1-930a-2edbc8a8ed3c">
+                    <SHORT-NAME>Gpt_Ch3Isr_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_Ch3Isr</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>56</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>56</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>56</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="b58bd3c0-47fb-41c3-9d22-ff509ae37d32">
+                    <SHORT-NAME>Gpt_Ch4Isr_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_Ch4Isr</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>56</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>56</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>56</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="4c284f08-29f9-498a-b631-7226679a3ba7">
+                    <SHORT-NAME>Gpt_Ch5Isr_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_Ch5Isr</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>56</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>56</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>56</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="13bf5f80-0674-4a82-8a1e-27f172d53ea0">
+                    <SHORT-NAME>Gpt_Ch6Isr_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_Ch6Isr</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>56</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>56</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>56</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="30316ad8-f4a9-4c45-ad89-2410763a4c5d">
+                    <SHORT-NAME>Gpt_Ch7Isr_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_Ch7Isr</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>56</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>56</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>56</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="a512a034-d4ba-45c7-9078-0dceac72b43f">
+                    <SHORT-NAME>Gpt_Ch8Isr_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_Ch8Isr</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>56</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>56</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>56</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="89844147-4e50-49b7-b864-d1b0a0383c31">
+                    <SHORT-NAME>Gpt_Ch9Isr_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_Ch9Isr</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>56</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>56</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>56</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="568d2eb8-da85-4ee0-ba5b-b66b463f1f14">
+                    <SHORT-NAME>Gpt_Ch10Isr_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_Ch10Isr</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>56</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>56</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>56</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="e115523f-f87f-443f-9314-d62a0a81c3eb">
+                    <SHORT-NAME>Gpt_Ch11Isr_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_Ch11Isr</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>56</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>56</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>56</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="8f6cef86-8c48-4575-a6d0-86ded52bc879">
+                    <SHORT-NAME>Gpt_Ch12Isr_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_Ch12Isr</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>56</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>56</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>56</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="65c23420-b74d-43ad-8298-55f16d297f13">
+                    <SHORT-NAME>Gpt_Ch13Isr_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_Ch13Isr</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>56</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>56</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>56</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="3328a342-4ff6-4581-8959-4ba01d35cd36">
+                    <SHORT-NAME>Gpt_Ch14Isr_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_Ch14Isr</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>56</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>56</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>56</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="58c24d8e-d319-45a9-8113-092153d7643e">
+                    <SHORT-NAME>Gpt_Ch15Isr_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_Ch15Isr</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>56</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>56</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>56</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="f5a9d563-1709-4d0c-8052-d72526d4c17a">
+                    <SHORT-NAME>Gpt_Ch16Isr_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Gpt/BswModuleDescriptions/Gpt/InternalBehaviour_0/Gpt_Ch16Isr</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>56</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>56</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>56</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                </STACK-USAGES>
+              </RESOURCE-CONSUMPTION>
+              <SW-VERSION>1.9.0</SW-VERSION>
+              <USED-CODE-GENERATOR />
+              <VENDOR-ID>44</VENDOR-ID>
+              <AR-RELEASE-VERSION>4.2.1</AR-RELEASE-VERSION>
+              <VENDOR-API-INFIX />
+              <VENDOR-SPECIFIC-MODULE-DEF-REFS>
+                <VENDOR-SPECIFIC-MODULE-DEF-REF DEST="ECUC-MODULE-DEF">/TI_TDAXX/GPT</VENDOR-SPECIFIC-MODULE-DEF-REF>
+              </VENDOR-SPECIFIC-MODULE-DEF-REFS>
+            </BSW-IMPLEMENTATION>
+          </ELEMENTS>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>

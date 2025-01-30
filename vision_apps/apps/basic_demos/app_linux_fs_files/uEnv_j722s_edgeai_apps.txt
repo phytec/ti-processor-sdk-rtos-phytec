@@ -1,0 +1,2 @@
+dorprocboot=1
+name_overlays=k3-j722s-edgeai-apps.dtbo

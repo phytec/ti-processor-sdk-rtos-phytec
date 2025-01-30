@@ -1,0 +1,162 @@
+Release Notes - 01_03_00
+========================
+
+Introduction
+------------
+
+This release notes provides important information that will assist you in using the SDL software package for the J721S2 family of devices.
+This document provides the product information and known issues that are specific to the SDL software package.
+
+New features added / supported is listed below and defects fixed are highlighted in **Fixed Issues**. Also please check **Upgrade and Compatibility** for backward compatibility
+
+What's New
+----------
+
+- DED testing added by default to ECC functional test
+- Bug fixes
+
+Supported Modules
+-----------------
+
+SDL support for the following modules are available:
+
+- R5F PMU, MPU, RAT and VIM
+- ESM
+- PBIST
+- LBIST
+- POK
+- VTM
+- TOG
+- ECC
+- RTI
+- R5F CCM
+- DCC
+- MCRC
+- ROM CHECKSUM
+
+Safety Examples for the following modules are provided:
+
+- ESM
+- POK
+- VTM
+- MTOG
+- STOG
+- DCC
+- RTI
+- ECC
+- BIST
+- ROM CHECKSUM
+
+
+Upgrade and Compatibility
+-------------------------
+
+None.
+
+Supported Devices
+-----------------
+
++------------------------+
+| Supported Platform     |
++========================+
+| J721S2                 |
+|                        |
++------------------------+
+
+
+Fixed Defects
+-------------
+
++--------------------------+---------+------------------------------------------+-------------------------------------------------+
+| ID                       | Module  | Summary                                  | Comments                                        |
++==========================+=========+==========================================+=================================================+
+| PROC_SDL-4140            | ECC     | Error Injection fails for ECC Aggregator | None                                            |
+|                          |         | ECC_AGGR5  for certain RAM ID's.         |                                                 |
++--------------------------+---------+------------------------------------------+-------------------------------------------------+
+| PROC_SDL-6924            | MPU     | mpu_test_app fails in release mode       | None                                            |
+|                          |         | when tested in thumb mode.               |                                                 |
+|                          |         |                                          |                                                 |
++--------------------------+---------+------------------------------------------+-------------------------------------------------+
+| PROC_SDL-6925            | MPU     | pmu_test_app fails in release mode       | None                                            |
+|                          |         | when tested in thumb mode.               |                                                 |
+|                          |         |                                          |                                                 |
++--------------------------+---------+------------------------------------------+-------------------------------------------------+
+| PROC_SDL-6929            | MCRC    | MCRC 64 bit atomic write not supported   | None                                            |
+|                          |         | on MCRC Instance in Navigator Sub        |                                                 |
+|                          |         | System(NAVSS) domain                     |                                                 |
++--------------------------+---------+------------------------------------------+-------------------------------------------------+
+| PROC_SDL-7048            | DCC     | DCC: SDL_DCC_getStatus() does not return | None                                            |
+|                          |         | correct status of DONE and ERR pending   |                                                 |
+|                          |         | interrupts.                              |                                                 |
++--------------------------+---------+------------------------------------------+-------------------------------------------------+
+| PROC_SDL-7056            | TOG     | tog_app, tog_test_app fails in release   | None                                            |
+|                          |         | mode when tested in thumb mode.          |                                                 |
++--------------------------+---------+------------------------------------------+-------------------------------------------------+
+| PROC_SDL-7059            | RTI     | Error in RTI Example applications        | None                                            |
+|                          |         | (UC 1-4).                                |                                                 |
++--------------------------+---------+------------------------------------------+-------------------------------------------------+
+| PROC_SDL-7128            | ESM     | Remove ESM Error Pin Counter Value       | None                                            |
+|                          |         | Register from static register read API   |                                                 |
++--------------------------+---------+------------------------------------------+-------------------------------------------------+
+| PROC_SDL-7154            | DCC     | DCC: Remove pointers from inside         | None                                            |
+|                          |         | SDL_DCC_status structure.                |                                                 |
++--------------------------+---------+------------------------------------------+-------------------------------------------------+
+| PROC_SDL-7260            | Build   | Build: TREAT_WARNINGS_AS_ERROR buildflag | None                                            |
+|                          |         | is ignored, overridden in ARM build rule |                                                 |
+|                          |         | files.                                   |                                                 |
++--------------------------+---------+------------------------------------------+-------------------------------------------------+
+| PROC_SDL-7261            | Build   | Build: Do not suppress                   | None                                            |
+|                          |         | gnu-variable-sized-type-not-at-end       |                                                 |
+|                          |         | warning.                                 |                                                 |
++--------------------------+---------+------------------------------------------+-------------------------------------------------+
+
+Open Defects
+------------
+
++--------------------------+---------+------------------------------------------+-------------------------------------------------+
+| ID                       | Module  | Summary                                  | Workaround                                      |
++==========================+=========+==========================================+=================================================+
+| PROC_SDL-6368            | ECC     | Error Injection fails for ECC Aggregator | None - updating of metadata and investigation   |
+|                          |         | ECC_AGGR0 for certain RAM ID's.          | of failues is in progress.                      |
+|                          |         |                                          | Due to this, the ECC error inject functionality |
+|                          |         |                                          | for the mentioned IPs and endpoints is not      |
+|                          |         |                                          | usable in this release.                         |
++--------------------------+---------+------------------------------------------+-------------------------------------------------+
+| PROC_SDL-6357            | ECC     | Error Injection fails for ECC Aggregator | None - updating of metadata and investigation   |
+|                          |         | ECC_AGGR4  for certain RAM ID's.         | of failues is in progress.                      |
+|                          |         |                                          | Due to this, the ECC error inject functionality |
+|                          |         |                                          | for the mentioned IPs and endpoints is not      |
+|                          |         |                                          | usable in this release.                         |
++--------------------------+---------+------------------------------------------+-------------------------------------------------+
+| PROC_SDL-4141            | TOG     | 1 STOG instances error injection test is | None - This issue is under investigation.       |
+|                          |         | failing and are not included in the      |                                                 |
+|                          |         | test application. (STOG17)               |                                                 |
++--------------------------+---------+------------------------------------------+-------------------------------------------------+
+| PROC_SDL-7431            | ECC     | ECC DED test is failing for certain RAM  | None - This issue is under investigation.       |
+|                          |         | ID's for                                 |                                                 |
+|                          |         | SDL_COMPUTE_CLUSTER0_0                   |                                                 |
++--------------------------+---------+------------------------------------------+-------------------------------------------------+
+| PROC_SDL-7432            | ECC     | ECC DED test is failing for certain RAM  | None - This issue is under investigation.       |
+|                          |         | ID's for                                 |                                                 |
+|                          |         | SDL_COMPUTE_CLUSTER0_7                   |                                                 |
++--------------------------+---------+------------------------------------------+-------------------------------------------------+
+| PROC_SDL-7433            | ECC     | ECC DED test is failing for certain RAM  | None - This issue is under investigation.       |
+|                          |         | ID's for                                 |                                                 |
+|                          |         | SDL_COMPUTE_CLUSTER0_8                   |                                                 |
++--------------------------+---------+------------------------------------------+-------------------------------------------------+
+
+Migration Information
+---------------------
+
+Dependency on C7X image is removed for compute cluster instances. PBIST example, pbist_test_app and sdl_pbist_test_app
+can be tested as standalone images.
+
+Tool Chain Information
+----------------------
+
++-----------------------------------+-------------------------------+
+| Component                         | Version                       |
++===================================+===============================+
+| TI ARM R5F Clang Compiler tools   | 3.2.1.LTS                     |
++-----------------------------------+-------------------------------+
+

@@ -1,0 +1,43 @@
+root@j7-evm:/opt/vision_apps# ./run_app_dof.sh
+APP: Init ... !!!
+MEM: Init ... !!!
+MEM: Initialized DMA HEAP (fd=4) !!!
+MEM: Init ... Done !!!
+IPC: Init ... !!!
+IPC: Init ... Done !!!
+REMOTE_SERVICE: Init ... !!!
+REMOTE_SERVICE: Init ... Done !!!
+APP: Init ... Done !!!
+   420.905615 s:  VX_ZONE_INIT:Enabled
+   420.905638 s:  VX_ZONE_ERROR:Enabled
+   420.905643 s:  VX_ZONE_WARNING:Enabled
+   420.908060 s:  VX_ZONE_INIT:[tivxInit:71] Initialization Done !!!
+   420.908283 s:  VX_ZONE_INIT:[tivxHostInit:48] Initialization Done for HOST !!!
+
+
+ =================================
+ Demo : Dense Optical Flow Example 1
+ =================================
+
+ p: Print performance statistics
+
+ e: Export performance statistics
+
+ x: Exit
+
+ Enter Choice: x
+
+   422.463586 s:  VX_ZONE_INIT:[tivxHostDeInit:56] De-Initialization Done for HOST !!!
+   422.467927 s:  VX_ZONE_INIT:[tivxDeInit:111] De-Initialization Done !!!
+APP: Deinit ... !!!
+REMOTE_SERVICE: Deinit ... !!!
+REMOTE_SERVICE: Deinit ... Done !!!
+IPC: Deinit ... !!!
+IPC: DeInit ... Done !!!
+MEM: Deinit ... !!!
+MEM: Alloc's: 34 alloc's of 34859616 bytes 
+MEM: Free's : 34 free's  of 34859616 bytes 
+MEM: Open's : 0 allocs  of 0 bytes 
+MEM: Deinit ... Done !!!
+APP: Deinit ... Done !!!
+root@j7-evm:/opt/vision_apps#

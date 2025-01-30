@@ -1,0 +1,37 @@
+Welcome to minicom 2.7.1                                                                                                                    
+                                                                                                                                            
+OPTIONS: I18n                                                                                                                               
+Compiled on Dec 23 2019, 02:06:26.                                                                                                          
+Port /dev/ttyUSB1, 19:59:20                                                                                                                 
+                                                                                                                                            
+Press CTRL-A Z for help on special keys                                                                                                     
+                                                                                                                                            
+01000000011a00006a3761657000000000000000475020200008010000080100C1.00.10.01 (Jun 29 2023 - 13:38:40)                                        
+Waiting for tifs.bin ...                                                                                                                    
+CCTIFS  ver: 9.0.6--v09.00.06 (Kool Koala)                                                                                                  
+Waiting for multicore app ...                                                                                                               
+CCCCCCCample Test Application                                                                                                               
+                                                                                                                                            
+RTI_Test_init: Init MCU ESM complete                                                                                                        
+                                                                                                                                            
+RTI Example code UC-3 started                                                                                                               
+    DWWD configured to 50 percent window size                                                                                               
+    DWWD is configured for 10000 ms time-out                                                                                                
+                                                                                                                                            
+                                                                                                                                            
+RTI DWWD Ea                                                                                                                                 
+Interrupt is generated to ESM                                                                                                               
+    ESM Call back function called : instType 0x2, intType 0x1, grpChannel 0x3, index 0x8, intSrc 0x68                                       
+  Take action                                                                                                                               
+rly Trigger violation test running.                                                                                                         
+                                                                                                                                            
+                                                                                                                                            
+Servicing before the window open.                                                                                                           
+                                                                                                                                            
+                                                                                                                                            
+RTI DWWD Early Trigger violation test successful.                                                                                           
+                                                                                                                                            
+Test Name: RTI EXAMPLE TEST  PASSED                                                                                                         
+                                                                                                                                            
+ All tests have passed.                                                                                                                     
+                                  

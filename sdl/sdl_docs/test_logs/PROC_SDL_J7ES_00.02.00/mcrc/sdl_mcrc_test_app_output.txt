@@ -1,0 +1,109 @@
+MCRC Test Application
+
+ MCRC FULL CPU mode test: starting
+ Static PCOUNT is : 255
+ Static PCOUNT is : 0
+ Full_CPU mode MCRC signature verification failed for the instance MCRC_MCU_NAVS                                                                                                                     S
+
+
+ MCRC FULL CPU mode test: starting
+ Static PCOUNT is : 255
+ Static PCOUNT is : 0
+ Full_CPU mode MCRC signature verification failed for the instance NAVSS0_MCRC_0                                                                                                                     .
+
+
+
+MCRC Semi_CPU mode test: starting
+
+
+Copied reference data into memory @803f4800.
+Using Pre-Defined Reference MCRC signature Value.
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1
+.
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1
+.
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1
+.
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1
+.
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1
+.
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1
+.
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1
+.
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1
+.
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1
+.
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1
+.
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1
+.
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1
+.
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1
+.
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1
+.
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1
+.
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1
+.
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1
+.
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1
+.
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1
+.
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1
+.
+MCRC signature verification done successfully.
+Processed data of size 200000 Bytes 20 times in 1779 ms.
+MCRC performance: 2 MB/s
+udmaEventCb occured. eventype 2
+.
+Copied reference data into memory @803f4800.
+Using Pre-Defined Reference MCRC signature Value.
+ Static PCOUNT is : 0
+udmaEventCb occured. eventype 1

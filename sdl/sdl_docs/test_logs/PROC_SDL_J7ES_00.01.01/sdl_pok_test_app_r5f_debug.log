@@ -1,0 +1,244 @@
+SBL Revision: 01.00.10.01 (Dec  1 2021 - 08:15:07)
+TIFS  ver: 21.9.1--v2021.09a (Terrific Lla
+
+ POK Test Application
+ Below are the POK ID values 
+  SDL_POK_VDDA_PMIC_IN_ID is:       0 
+  SDL_POK_VDD_CORE_UV_ID is:        1 
+  SDL_POK_VDDSHV_WKUP_GEN_UV_ID is: 2 
+  SDL_POK_VDD_CPU_UV_ID is:         3 
+  SDL_POK_VDDR_MCU_UV_ID is:        4 
+  SDL_POK_VMON_EXT_UV_ID is:        5 
+  SDL_POK_VDD_MCU_OV_ID is:         6 
+  SDL_POK_VDDR_CORE_UV_ID is:       7 
+  SDL_POK_VDDSHV_WKUP_GEN_OV_ID is: 8 
+  SDL_POK_VDD_CORE_OV_ID is:        9 
+  SDL_POK_VDDR_MCU_OV_ID is:        10 
+  SDL_POK_VDD_CPU_OV_ID is:         11 
+  SDL_POK_VDDR_CORE_OV_ID is:       12 
+  SDL_POK_VMON_EXT_OV_ID is:        13 
+
+
+Default test with POK ID = 9 , monitoring set to OV 
+
+
+ static trim value is 20 
+
+
+ static trim value is = 20 
+Waiting for ESM to report the error 
+ Got the ESM Error Interrupt 
+
+
+ static trim value is = 127 
+Waiting for ESM to report the error 
+Error Could not un-register ISR !!!
+Test for instance 1 PASSED
+
+
+ static trim value is 42 
+
+
+ static trim value is = 42 
+Waiting for ESM to report the error 
+ Got the ESM Error Interrupt 
+
+
+ static trim value is = 127 
+Waiting for ESM to report the error 
+Test for instance 2 PASSED
+
+
+ static trim value is 20 
+
+
+ static trim value is = 20 
+Waiting for ESM to report the error 
+ Got the ESM Error Interrupt 
+
+
+ static trim value is = 127 
+Waiting for ESM to report the error 
+Test for instance 3 PASSED
+
+
+ static trim value is 24 
+
+
+ static trim value is = 24 
+Waiting for ESM to report the error 
+ Got the ESM Error Interrupt 
+
+
+ static trim value is = 127 
+Waiting for ESM to report the error 
+Test for instance 4 PASSED
+
+
+ static trim value is 42 
+
+
+ static trim value is = 42 
+Waiting for ESM to report the error 
+ Got the ESM Error Interrupt 
+
+
+ static trim value is = 127 
+Waiting for ESM to report the error 
+Test for instance 5 PASSED
+
+
+ static trim value is 15 
+
+
+ static trim value is = 15 
+Waiting for ESM to report the error 
+ Got the ESM Error Interrupt 
+
+
+ static trim value is = 0 
+Waiting for ESM to report the error 
+Test for instance 6 PASSED
+
+
+ static trim value is 20 
+
+
+ static trim value is = 20 
+Waiting for ESM to report the error 
+ Got the ESM Error Interrupt 
+
+
+ static trim value is = 127 
+Waiting for ESM to report the error 
+Test for instance 7 PASSED
+
+
+ static trim value is 37 
+
+
+ static trim value is = 37 
+Waiting for ESM to report the error 
+ Got the ESM Error Interrupt 
+
+
+ static trim value is = 0 
+Waiting for ESM to report the error 
+Test for instance 8 PASSED
+
+
+ static trim value is 11 
+
+
+ static trim value is = 11 
+Waiting for ESM to report the error 
+ Got the ESM Error Interrupt 
+
+
+ static trim value is = 0 
+Waiting for ESM to report the error 
+Test for instance 9 PASSED
+
+
+ static trim value is 15 
+
+
+ static trim value is = 15 
+Waiting for ESM to report the error 
+ Got the ESM Error Interrupt 
+
+
+ static trim value is = 0 
+Waiting for ESM to report the error 
+Test for instance 10 PASSED
+
+
+ static trim value is 11 
+
+
+ static trim value is = 11 
+Waiting for ESM to report the error 
+ Got the ESM Error Interrupt 
+
+
+ static trim value is = 0 
+Waiting for ESM to report the error 
+Test for instance 11 PASSED
+
+
+ static trim value is 15 
+
+
+ static trim value is = 15 
+Waiting for ESM to report the error 
+ Got the ESM Error Interrupt 
+
+
+ static trim value is = 0 
+Waiting for ESM to report the error 
+Test for instance 12 PASSED
+
+
+ static trim value is 37 
+
+
+ static trim value is = 37 
+Waiting for ESM to report the error 
+ Got the ESM Error Interrupt 
+
+
+ static trim value is = 0 
+Waiting for ESM to report the error 
+Test for instance 13 PASSED
+ Below are the POK In POR ID values for the test
+  SDL_POR_POKHV_UV_ID is:           14 
+  SDL_POR_POKLV_UV_ID is:           15 
+  SDL_POR_POKHV_OV_ID is:           16 
+
+
+Default test loops through POK IDs 
+
+andGap status 1
+
+
+module status 1
+
+
+ static trim value is = 42 
+Waiting for ESM to report the error 
+ Got the ESM Error Interrupt 
+
+
+ static trim value is = 127 
+Waiting for ESM to report the error 
+Test for instance 14 PASSED
+
+
+ static trim value is = 24 
+Waiting for ESM to report the error 
+ Got the ESM Error Interrupt 
+
+
+ static trim value is = 127 
+Waiting for ESM to report the error 
+Test for instance 15 PASSED
+
+
+ static trim value is = 37 
+Waiting for ESM to report the error 
+ Got the ESM Error Interrupt 
+
+
+ static trim value is = 0 
+Waiting for ESM to report the error 
+Test for instance 16 PASSED
+Test Name: POK FUNCTION TEST  PASSED 
+Test Name: POR FUNCTION TEST  PASSED 
+
+ All tests have passed. 
+/home/gtbldadm/nightlybuilds/SDL_NIGHTLY_BUILD/160-2021-11-30_22-53-45/workarea/sdl/test/pok/pokFuncTest/main.c:194:test_sdl_pok_baremetal_test_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored 
+OK
+

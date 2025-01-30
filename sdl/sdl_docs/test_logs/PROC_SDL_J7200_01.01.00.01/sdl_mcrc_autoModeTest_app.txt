@@ -1,0 +1,346 @@
+01000000011a00006a3776636c00000000000000475020200200010002000100CSBL Revision: 01.00.10.01 (Jun 29 2023 - 15:29:32)
+Waiting for tifs.bin ...
+CCCCCTIFS  ver: 9.0.6--v09.00.06 (Kool Koala)
+Waiting for multicore app ...
+CCCC
+ MCRC Test Application
+
+
+MCRC AutoMode mode test: starting
+
+
+ udma EventCb occured
+
+ udma EventCb occured
+
+Interupt status : 0
+Sector signature matched.
+
+ udma EventCb occured
+
+ udma EventCb occured
+
+Interupt status : 0
+Sector signature matched.
+
+ udma EventCb occured
+
+ udma EventCb occured
+
+Interupt status : 0
+Sector signature matched.
+
+ udma EventCb occured
+
+ udma EventCb occured
+
+Interupt status : 0
+Sector signature matched.
+
+ udma EventCb occured
+
+ udma EventCb occured
+
+Interupt status : 0
+Sector signature matched.
+
+ udma EventCb occured
+
+ udma EventCb occured
+
+Interupt status : 0
+Sector signature matched.
+
+ udma EventCb occured
+
+ udma EventCb occured
+
+Interupt status : 0
+Sector signature matched.
+
+ udma EventCb occured
+
+ udma EventCb occured
+
+Interupt status : 0
+Sector signature matched.
+
+ udma EventCb occured
+
+ udma EventCb occured
+
+Interupt status : 0
+Sector signature matched.
+
+ udma EventCb occured
+
+ udma EventCb occured
+
+Interupt status : 0
+Sector signature matched.
+
+ udma EventCb occured
+
+ udma EventCb occured
+
+Interupt status : 0
+Sector signature matched.
+
+ udma EventCb occured
+
+ udma EventCb occured
+
+Interupt status : 0
+Sector signature matched.
+
+ udma EventCb occured
+
+ udma EventCb occured
+
+Interupt status : 0
+Sector signature matched.
+
+ udma EventCb occured
+
+ udma EventCb occured
+
+Interupt status : 0
+Sector signature matched.
+
+ udma EventCb occured
+
+ udma EventCb occured
+
+Interupt status : 0
+Sector signature matched.
+
+ udma EventCb occured
+
+ udma EventCb occured
+
+Interupt status : 0
+Sector signature matched.
+
+ udma EventCb occured
+
+ udma EventCb occured
+
+Interupt status : 0
+Sector signature matched.
+
+ udma EventCb occured
+
+ udma EventCb occured
+
+Interupt status : 0
+Sector signature matched.
+
+ udma EventCb occured
+
+ udma EventCb occured
+
+Interupt status : 0
+Sector signature matched.
+
+ udma EventCb occured
+
+ udma EventCb occured
+
+Interupt status : 0
+Sector signature matched.
+
+ teardown callback occured
+
+ teardown callback occured
+
+ udma EventCb occured
+
+ udma EventCb occured
+
+Interupt status : 2
+Sector signature does not match.
+Expected MCRC signature value : 0xa7856ed8d36901f6U
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+ Got the interrupt.
+ udma EventCb occured
+
+ udma EventCb occured
+
+Interupt status : 2
+Sector signature does not match.
+Expected MCRC signature value : 0xa7856ed8d36901f6U
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+ Got the interrupt.
+ udma EventCb occured
+
+ udma EventCb occured
+
+Interupt status : 2
+Sector signature does not match.
+Expected MCRC signature value : 0xa7856ed8d36901f6U
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+ Got the interrupt.
+ udma EventCb occured
+
+ udma EventCb occured
+
+Interupt status : 2
+Sector signature does not match.
+Expected MCRC signature value : 0xa7856ed8d36901f6U
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+ Got the interrupt.
+ udma EventCb occured
+
+ udma EventCb occured
+
+Interupt status : 2
+Sector signature does not match.
+Expected MCRC signature value : 0xa7856ed8d36901f6U
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+ Got the interrupt.
+ udma EventCb occured
+
+ udma EventCb occured
+
+Interupt status : 2
+Sector signature does not match.
+Expected MCRC signature value : 0xa7856ed8d36901f6U
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+ Got the interrupt.
+ udma EventCb occured
+
+ udma EventCb occured
+
+Interupt status : 2
+Sector signature does not match.
+Expected MCRC signature value : 0xa7856ed8d36901f6U
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+ Got the interrupt.
+ udma EventCb occured
+
+ udma EventCb occured
+
+Interupt status : 2
+Sector signature does not match.
+Expected MCRC signature value : 0xa7856ed8d36901f6U
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+ Got the interrupt.
+ udma EventCb occured
+
+ udma EventCb occured
+
+Interupt status : 2
+Sector signature does not match.
+Expected MCRC signature value : 0xa7856ed8d36901f6U
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+ Got the interrupt.
+ udma EventCb occured
+
+ udma EventCb occured
+
+Interupt status : 2
+Sector signature does not match.
+Expected MCRC signature value : 0xa7856ed8d36901f6U
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+ Got the interrupt.
+ udma EventCb occured
+
+ udma EventCb occured
+
+Interupt status : 2
+Sector signature does not match.
+Expected MCRC signature value : 0xa7856ed8d36901f6U
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+ Got the interrupt.
+ udma EventCb occured
+
+ udma EventCb occured
+
+Interupt status : 2
+Sector signature does not match.
+Expected MCRC signature value : 0xa7856ed8d36901f6U
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+ Got the interrupt.
+ udma EventCb occured
+
+ udma EventCb occured
+
+Interupt status : 2
+Sector signature does not match.
+Expected MCRC signature value : 0xa7856ed8d36901f6U
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+ Got the interrupt.
+ udma EventCb occured
+
+ udma EventCb occured
+
+Interupt status : 2
+Sector signature does not match.
+Expected MCRC signature value : 0xa7856ed8d36901f6U
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+ Got the interrupt.
+ udma EventCb occured
+
+ udma EventCb occured
+
+Interupt status : 2
+Sector signature does not match.
+Expected MCRC signature value : 0xa7856ed8d36901f6U
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+ Got the interrupt.
+ udma EventCb occured
+
+ udma EventCb occured
+
+Interupt status : 2
+Sector signature does not match.
+Expected MCRC signature value : 0xa7856ed8d36901f6U
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+ Got the interrupt.
+ udma EventCb occured
+
+ udma EventCb occured
+
+Interupt status : 2
+Sector signature does not match.
+Expected MCRC signature value : 0xa7856ed8d36901f6U
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+ Got the interrupt.
+ udma EventCb occured
+
+ udma EventCb occured
+
+Interupt status : 2
+Sector signature does not match.
+Expected MCRC signature value : 0xa7856ed8d36901f6U
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+ Got the interrupt.
+ udma EventCb occured
+
+ udma EventCb occured
+
+Interupt status : 2
+Sector signature does not match.
+Expected MCRC signature value : 0xa7856ed8d36901f6U
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+ Got the interrupt.
+ udma EventCb occured
+
+ udma EventCb occured
+
+Interupt status : 2
+Sector signature does not match.
+Expected MCRC signature value : 0xa7856ed8d36901f6U
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+ Got the interrupt.
+ teardown callback occured
+
+ teardown callback occured
+Test Name: MCRC_AutoMode_funcTest  PASSED
+
+ All tests have passed.
+/home/gtbldadm/nightlybuilds/SDL_J7200_BUILD/292-2023-07-06_05-42-04/workarea/sdl/test/mcrc/mcrcAutoModeTest/main.c:236:test_sdl_mcrc_baremetal_test_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored
+OK

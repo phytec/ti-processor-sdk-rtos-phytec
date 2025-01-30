@@ -1,0 +1,49 @@
+VIM Test Application
+
+VIM_ECC_Test_init: UART ready to print, proceeding with ECC_Test init
+
+VIM_ECC_Test_init: Profile init complete
+
+VIM_ECC_Test_init: Copy Reset vector complete
+
+VIM_ECC_Test_init: Exception init complete
+
+VIM_ECC_Test_init: register VIM DED Handler complete
+
+VIM_ECC_Test_init: Init MCU ESM complete
+
+VIM_ECC_Test_init: Init WKUP ESM complete
+
+VIM_ECC_Test_init: Init MAIN ESM complete
+
+VIM_ECC_Test_init: R5F Core ECC Init complete
+
+VIM_ECC_Test_init: R5F Memtype Register Readback successful
+
+VIM_ECC_Test_init: ECC Callback Init complete for MCU ESM
+
+VIM_ECC_Test_init: ECC Callback Init complete for Main ESM
+
+VIM_ECC_Test_init: ECC Callback Init complete for WKUP ESM
+
+VIM_ECC_Test_init: ECC Memory init complete
+
+VIM_ECC_Test_init: ECC Memory init complete
+
+VIM_ECC_Test_init: ECC Memory init complete
+
+ VIM SDL API tests: starting
+ VIM RAM Double bit error inject: starting
+ VIM RAM Double bit error inject: pErrMem 0x40f82098 fixed location once test complete
+ waiting for DED Vector Trigger
+ DED Vector Trigger: Fail
+ VIM_Test_runECC2BitVIMRAMDEDvector has failed...
+ VIM SDL API tests: failed
+ VIM Functionality Test Failed.
+
+Some tests have failed.
+common/vim_test_main.c:295:test_sdl_vim_test_app:FAIL
+
+-----------------------
+1 Tests 1 Failures 0 Ignored
+FAIL

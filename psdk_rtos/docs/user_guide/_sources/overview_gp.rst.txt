@@ -1,0 +1,36 @@
+
+
+Overview
+^^^^^^^^
+
+Introduction
+============
+
+**Firmware builder** (part of **Processor SDK RTOS** package) and **Processor SDK Linux (PSDK LINUX)** together form
+a multi-processor software development kit for the |platform| platform.
+The SDK provides a comprehensive set of software tools and components to
+help users develop and deploy their applications on supported SoCs.
+
+
+Both Firmware builder and PSDK Linux can be used together to implement various use cases in robotics, factory and
+building automation systems.
+
+.. NOTE::
+
+   Refer :ref:`sdk_components` for more information about each individual component.
+
+Licenses
+========
+
+The licensing information of this SDK, as well as any third-party components included which are
+made available under a number of other open-source licenses are enumerated as part of the manifest.
+A complete manifest along with export control information is detailed here [|psdkra_manifest|].
+
+Technical Support
+=================
+
+For technical support and additional assistance, post a question on https://e2e.ti.com/support/processors/ or contact your local TI Field Application Engineer
+
+
+
+

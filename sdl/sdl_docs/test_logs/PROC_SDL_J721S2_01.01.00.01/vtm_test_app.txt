@@ -1,0 +1,15 @@
+01000000011a00006a3761657000000000000000475020200100010001000100CSBL Revision: 01.00.10.01 (Jun 29 2023 - 14:46:48)
+Waiting for tifs.bin ...
+CCCCCCTIFS  ver: 9.0.6--v09.00.06 (Kool Koala)
+Waiting for multicore app ...
+CCCCCC
+ VTM Unit Test Application
+Test Name: VTM API TEST  PASSED
+Test Name: VTM Negative TEST  PASSED
+
+ All tests have passed
+vtm_test_main.c:174:test_sdl_vtm_baremetal_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored
+OK

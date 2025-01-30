@@ -1,0 +1,96 @@
+01000000011a00006a3776636c00000000000000475020200200010002000100CCCCCCSBL Revision: 01.00.10.01 (Jun 29 2023 - 15:29:32)
+Waiting for tifs.bin ...
+CCCCCTIFS  ver: 9.0.6--v09.00.06 (Kool Koala)
+Waiting for multicore app ...
+CCCCCCCCmcuClkFreq 1000000000
+
+BIST Example Application
+
+ Starting PBIST failure insertion test on PBIST HWPOST MCU, index 0...
+
+ Starting PBIST failure insertion test on Main Infra PBIST, index 3...
+
+ Starting PBIST failure insertion test on Main Infra 2 PBIST, index 4...
+
+ Starting PBIST failure insertion test on MSMC PBIST, index 5...
+
+ Starting PBIST test on PBIST HWPOST MCU, index 0...
+    HW POST MCU Status : SDL_PBIST_POST_NOT_RUN
+
+ Starting PBIST test on Main Infra PBIST, index 3...
+
+ Starting PBIST test on Main Infra 2 PBIST, index 4...
+
+ Starting PBIST test on MSMC PBIST, index 5...
+
+ Starting PBIST Test Of ROM on PBIST HWPOST MCU, index 0...
+
+ Starting PBIST Test Of ROM on Main Infra PBIST, index 3...
+
+ Starting PBIST Test Of ROM on Main Infra 2 PBIST, index 4...
+
+ Starting PBIST Test Of ROM on MSMC PBIST, index 5...
+    HW POST MCU Status : SDL_LBIST_POST_NOT_RUN
+    HW POST DMSC Status : SDL_LBIST_POST_NOT_RUN
+    HW POST MCU Status : SDL_LBIST_POST_NOT_RUN
+    HW POST DMSC Status : SDL_LBIST_POST_NOT_RUN
+
+ Starting PBIST failure insertion test on Main R5F 0 PBIST, index 1...
+
+ Starting PBIST test on Main R5F 0 PBIST, index 1...
+
+ Starting PBIST Test Of ROM on Main R5F 0 PBIST, index 1...
+
+ *** Boot stage 0 is complete, cores for this stage may now be loaded ***
+
+
+ Starting PBIST failure insertion test on A72 PBIST, index 2...
+
+ Starting PBIST test on A72 PBIST, index 2...
+
+ Starting PBIST Test Of ROM on A72 PBIST, index 2...
+
+ *** Boot stage 1 is complete, cores for this stage may now be loaded ***
+
+==========================
+BIST: Example App Summary:
+==========================
+BIST: Pre-boot Stage - Ran negative PBIST ID - PBIST_HWPOST_MCU_INDEX, Result = PASS
+BIST: Pre-boot Stage - Ran negative PBIST ID - PBIST_INSTANCE_MAIN_INFRA_1, Result = PASS
+BIST: Pre-boot Stage - Ran negative PBIST ID - PBIST_INSTANCE_MAIN_INFRA_2, Result = PASS
+BIST: Pre-boot Stage - Ran negative PBIST ID - PBIST_INSTANCE_MSMC, Result = PASS
+Pre-boot stage - Ran 4 negative PBIST total sections
+BIST: Pre-boot Stage - Ran ROM Test PBIST ID - PBIST_HWPOST_MCU_INDEX, Result = PASS
+BIST: Pre-boot Stage - Ran ROM Test PBIST ID - PBIST_INSTANCE_MAIN_INFRA_1, Result = PASS
+BIST: Pre-boot Stage - Ran ROM Test PBIST ID - PBIST_INSTANCE_MAIN_INFRA_2, Result = PASS
+BIST: Pre-boot Stage - Ran ROM Test PBIST ID - PBIST_INSTANCE_MSMC, Result = FAIL or NOT RUN
+Pre-boot stage - Ran 4 ROM Test of  PBIST total sections
+BIST: Pre-boot Stage - Ran PBIST ID - PBIST_HWPOST_MCU_INDEX, Result = PASS
+BIST: Pre-boot Stage - Ran PBIST ID - PBIST_INSTANCE_MAIN_INFRA_1, Result = PASS
+BIST: Pre-boot Stage - Ran PBIST ID - PBIST_INSTANCE_MAIN_INFRA_2, Result = PASS
+BIST: Pre-boot Stage - Ran PBIST ID - PBIST_INSTANCE_MSMC, Result = PASS
+Pre-boot stage - Ran 4 PBIST total sections
+BIST: Pre-boot Stage - Ran LBIST ID - LBIST_HWPOST_MCU_INDEX, Result = LBIST_POST_COMPLETED_SUCCESS
+BIST: Pre-boot Stage - Ran LBIST ID - LBIST_HWPOST_MCU_INDEX, Result = LBIST_POST_COMPLETED_SUCCESS
+Pre-boot stage - Ran 2 LBIST total sections
+BIST: Stage 0 - Ran negative PBIST ID - PBIST_INSTANCE_MAIN_PULSAR_0, Result = PASS
+BIST: Stage 0 - Ran 1 negative PBIST total sections
+BIST: Stage 0 - Ran ROM Test PBIST ID - PBIST_INSTANCE_MAIN_PULSAR_0, Result = PASS
+BIST: Stage 0 - Ran 1 ROM Test PBIST total sections
+BIST: Stage 0 - Ran PBIST ID - PBIST_INSTANCE_MAIN_PULSAR_0, Result = PASS
+BIST: Stage 0 - Ran 1 PBIST total sections
+BIST: Stage 0 - Ran LBIST ID - LBIST_MAIN_MCU0_INDEX, Result = PASS
+BIST: Stage 0 - Ran 1 LBIST sections
+BIST: Stage 1 - Ran negative PBIST ID - PBIST_INSTANCE_A72, Result = PASS
+BIST: Stage 1 - Ran 1 negative PBIST total sections
+BIST: Stage 1 - Ran ROM Test PBIST ID - PBIST_INSTANCE_A72, Result = PASS
+BIST: Stage 1 - Ran 1 ROM Test PBIST total sections
+BIST: Stage 1 - Ran PBIST ID - PBIST_INSTANCE_A72, Result = PASS
+BIST: Stage 1 - Ran 1 PBIST total sections
+BIST: Stage 1 - Ran LBIST ID - LBIST_A72_CORE_INDEX, Result = PASS
+BIST: Stage 1 - Ran 1 LBIST sections
+main.c:200:bist_example_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored
+OK

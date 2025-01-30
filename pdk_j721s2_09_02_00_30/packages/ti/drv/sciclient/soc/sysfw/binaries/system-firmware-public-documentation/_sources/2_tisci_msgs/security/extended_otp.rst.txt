@@ -1,0 +1,163 @@
+================================
+ Extended OTP TISCI Description
+================================
+
+.. _sec_api_ext_otp_tisci_dec:
+
+This chapter provides information on available TISCI messages for managing
+the extended one time programmable (OTP) efuse array on K3 devices.
+
+For K3 devices except AM64x, AM62x and AM62Ax:
+
++------------------+---------------------------------------------------------------------------+-----------------+--------------------+
+| TISCI Message ID |                        Message Name                                       | Available in GP | Avialable in HS-FS |
++==================+===========================================================================+=================+====================+
+| 0x9022           | :ref:`TISCI_MSG_READ_OTP_MMR <sec-api-ext-otp-read-otp-mmr>`              | No              | No                 |
++------------------+---------------------------------------------------------------------------+-----------------+--------------------+
+| 0x9023           | :ref:`TISCI_MSG_WRITE_OTP_ROW <write-otp-row>`                            | No              | No                 |
++------------------+---------------------------------------------------------------------------+-----------------+--------------------+
+| 0x9024           | :ref:`TISCI_MSG_LOCK_OTP_ROW <lock-otp-row>`                              | No              | No                 |
++------------------+---------------------------------------------------------------------------+-----------------+--------------------+
+| 0x9025           | :ref:`TISCI_MSG_SOFT_LOCK_OTP_WRITE_GLOBAL <soft-lock-otp-write-global>`  | No              | No                 |
++------------------+---------------------------------------------------------------------------+-----------------+--------------------+
+| 0x9026           | :ref:`TISCI_MSG_GET_OTP_ROW_LOCK_STATUS <get-otp-row-lock-status>`        | No              | No                 |
++------------------+---------------------------------------------------------------------------+-----------------+--------------------+
+
+For AM64x, AM62x and AM62Ax:
+
++------------------+---------------------------------------------------------------------------+-----------------+--------------------+
+| TISCI Message ID |                        Message Name                                       | Available in GP | Avialable in HS-FS |
++==================+===========================================================================+=================+====================+
+| 0x9022           | :ref:`TISCI_MSG_READ_OTP_MMR <sec-api-ext-otp-read-otp-mmr>`              | Yes             | Yes                |
++------------------+---------------------------------------------------------------------------+-----------------+--------------------+
+| 0x9023           | :ref:`TISCI_MSG_WRITE_OTP_ROW <write-otp-row>`                            | Yes             | Yes                |
++------------------+---------------------------------------------------------------------------+-----------------+--------------------+
+| 0x9024           | :ref:`TISCI_MSG_LOCK_OTP_ROW <lock-otp-row>`                              | Yes             | Yes                |
++------------------+---------------------------------------------------------------------------+-----------------+--------------------+
+| 0x9025           | :ref:`TISCI_MSG_SOFT_LOCK_OTP_WRITE_GLOBAL <soft-lock-otp-write-global>`  | Yes             | Yes                |
++------------------+---------------------------------------------------------------------------+-----------------+--------------------+
+| 0x9026           | :ref:`TISCI_MSG_GET_OTP_ROW_LOCK_STATUS <get-otp-row-lock-status>`        | Yes             | Yes                |
++------------------+---------------------------------------------------------------------------+-----------------+--------------------+
+
+This document must be read alongside
+
+1. :doc:`../../6_topic_user_guides/extended_otp` and
+2. :doc:`../../3_boardcfg/BOARDCFG_SEC`, specifically :ref:`pub_boardcfg_ext_otp_config`
+
+API Description
+===============
+
+.. _sec-api-ext-otp-read-otp-mmr:
+
+TISCI_MSG_READ_OTP_MMR - Read OTP MMR
+-------------------------------------
+
+Usage
+^^^^^
+
++------------------------+--------+
+| **Message Type**       | Secure |
++------------------------+--------+
+| **Secure Queue Only?** | Yes    |
++------------------------+--------+
+
+TISCI Message ID
+^^^^^^^^^^^^^^^^
+
+.. sysfwapimacro:: TISCI_MSG_READ_OTP_MMR
+
+.. sysfwapistruct:: tisci_msg_read_otp_mmr_req
+
+.. sysfwapistruct:: tisci_msg_read_otp_mmr_resp
+
+.. _write-otp-row:
+
+TISCI_MSG_WRITE_OTP_ROW - Write OTP ROW
+---------------------------------------
+
+Usage
+^^^^^
+
++------------------------+--------+
+| **Message Type**       | Secure |
++------------------------+--------+
+| **Secure Queue Only?** | Yes    |
++------------------------+--------+
+
+TISCI Message ID
+^^^^^^^^^^^^^^^^
+
+.. sysfwapimacro:: TISCI_MSG_WRITE_OTP_ROW
+
+.. sysfwapistruct:: tisci_msg_write_otp_row_req
+
+.. sysfwapistruct:: tisci_msg_write_otp_row_resp
+
+.. _lock-otp-row:
+
+TISCI_MSG_LOCK_OTP_ROW - Lock OTP ROW
+-------------------------------------
+
+Usage
+^^^^^
+
++------------------------+--------+
+| **Message Type**       | Secure |
++------------------------+--------+
+| **Secure Queue Only?** | Yes    |
++------------------------+--------+
+
+TISCI Message ID
+^^^^^^^^^^^^^^^^
+
+.. sysfwapimacro:: TISCI_MSG_LOCK_OTP_ROW
+
+.. sysfwapistruct:: tisci_msg_lock_otp_row_req
+
+.. sysfwapistruct:: tisci_msg_lock_otp_row_resp
+
+.. _soft-lock-otp-write-global:
+
+TISCI_MSG_SOFT_LOCK_OTP_WRITE_GLOBAL - Soft Lock OTP Write Globally
+-------------------------------------------------------------------
+
+Usage
+^^^^^
+
++------------------------+--------+
+| **Message Type**       | Secure |
++------------------------+--------+
+| **Secure Queue Only?** | Yes    |
++------------------------+--------+
+
+TISCI Message ID
+^^^^^^^^^^^^^^^^
+
+.. sysfwapimacro:: TISCI_MSG_SOFT_LOCK_OTP_WRITE_GLOBAL
+
+.. sysfwapistruct:: tisci_msg_soft_lock_otp_write_global_req
+
+.. sysfwapistruct:: tisci_msg_soft_lock_otp_write_global_resp
+
+.. _get-otp-row-lock-status:
+
+TISCI_MSG_GET_OTP_ROW_LOCK_STATUS - Get OTP ROW Lock Status
+-----------------------------------------------------------
+
+Usage
+^^^^^
+
++------------------------+--------+
+| **Message Type**       | Secure |
++------------------------+--------+
+| **Secure Queue Only?** | Yes    |
++------------------------+--------+
+
+TISCI Message ID
+^^^^^^^^^^^^^^^^
+
+.. sysfwapimacro:: TISCI_MSG_GET_OTP_ROW_LOCK_STATUS
+
+.. sysfwapistruct:: tisci_msg_get_otp_row_lock_status_req
+
+.. sysfwapistruct:: tisci_msg_get_otp_row_lock_status_resp

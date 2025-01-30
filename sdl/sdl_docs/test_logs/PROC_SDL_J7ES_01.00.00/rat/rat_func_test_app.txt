@@ -1,0 +1,12 @@
+RAT Test Application
+
+ RAT Test: starting
+ pStaticRegs RAT_EXCEPTION_ENABLE_SET value -1115585423
+ pStaticRegs RAT_EXCEPTION_ENABLE_SET value -1115585423Test Name: RAT FUNCTION TEST  PASSED
+
+ All tests have passed.
+/home/gtbldadm/nightlybuilds/SDL_NIGHTLY_BUILD/275-2022-03-21_11-58-47/workarea/sdl/test/rat/func_test/main.c:197:test_sdl_rat_baremetal_test_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored
+OK

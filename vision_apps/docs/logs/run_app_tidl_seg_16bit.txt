@@ -1,0 +1,43 @@
+root@j7-evm:/opt/vision_apps# ./run_app_tidl_seg_16bit.sh 
+APP: Init ... !!!
+MEM: Init ... !!!
+MEM: Initialized DMA HEAP (fd=4) !!!
+MEM: Init ... Done !!!
+IPC: Init ... !!!
+IPC: Init ... Done !!!
+REMOTE_SERVICE: Init ... !!!
+REMOTE_SERVICE: Init ... Done !!!
+APP: Init ... Done !!!
+   585.301988 s:  VX_ZONE_INIT:Enabled
+   585.302003 s:  VX_ZONE_ERROR:Enabled
+   585.302008 s:  VX_ZONE_WARNING:Enabled
+   585.305624 s:  VX_ZONE_INIT:[tivxInit:71] Initialization Done !!!
+   585.305841 s:  VX_ZONE_INIT:[tivxHostInit:48] Initialization Done for HOST !!!
+Computing checksum at 0x0000FFFF7CD99680, size = 386312
+[C7x_1 ]    585.523564 s:  VX_ZONE_WARNING:[tivxKernelTIDLCreate:615] All Interrupts DISABLED during TIDL process
+
+
+ =========================
+ TIDL Demo - Semantic Segmentation
+ =========================
+
+ p: Print performance statistics
+
+ x: Exit
+
+ Enter Choice: x
+
+   587.958810 s:  VX_ZONE_INIT:[tivxHostDeInit:56] De-Initialization Done for HOST !!!
+   587.963157 s:  VX_ZONE_INIT:[tivxDeInit:111] De-Initialization Done !!!
+APP: Deinit ... !!!
+REMOTE_SERVICE: Deinit ... !!!
+REMOTE_SERVICE: Deinit ... Done !!!
+IPC: Deinit ... !!!
+IPC: DeInit ... Done !!!
+MEM: Deinit ... !!!
+MEM: Alloc's: 51 alloc's of 32790184 bytes 
+MEM: Free's : 51 free's  of 32790184 bytes 
+MEM: Open's : 0 allocs  of 0 bytes 
+MEM: Deinit ... Done !!!
+APP: Deinit ... Done !!!
+root@j7-evm:/opt/vision_apps# 

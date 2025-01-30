@@ -1,0 +1,312 @@
+#!/bin/bash
+#--------------------------------------------------------------------------- 
+# tiobj2bin - Converts TI object file from COFF or ELF to binary
+#     dump format.  Intended for use as a post-build step in CCS.
+#
+# This code released under a license detailed at the end of this file.
+#
+# Invoke: tiobj2bin file.out file.bin [ofd] [hex] [mkhex]
+#
+# file.out - The TI .out file to convert to binary.  Can be COFF or ELF.
+# file.bin - Name the binary output file
+# ofd      - The object file display (ofd) utility command to invoke, with
+#            path info as needed.  If not given, defaults to ofd470.
+# hex      - The hex utility command to invoke, with path info as needed.
+#            If not given, defaults to hex470.
+# mkhex    - A custom utility which takes XML from OFD and outputs the hex
+#            command file needed for the hex utility.  Path info is given
+#            as needed.  If not given, defaults to mkhex4bin.  
+#
+# You may need to put "quotes" around the parameters.
+#
+# Here is an example of how this file is invoked as a post-build step in
+# CCSv7
+#
+# "${CCS_INSTALL_ROOT}/utils/tiobj2bin/tiobj2bin" "${BuildArtifactFileName}" "${BuildArtifactFileBaseName}.bin" "${CG_TOOL_ROOT}/bin/ofd2000" "${CG_TOOL_ROOT}/bin/hex2000" "${CCS_INSTALL_ROOT}/utils/tiobj2bin/mkhex4bin"
+#
+# Be sure to replace ofd2000 and hex2000 with the respective binaries for
+# your device, for example, ofd6x and hex6x(for c6000) or armofd and armhex 
+# (for ARM).
+#--------------------------------------------------------------------------- 
+
+#--------------------------------------------------------------------------- 
+# Presumptions: 
+# - Unless directory path info is provided as part of the parameter name, 
+#   ofd470 and friends are in the system path
+#--------------------------------------------------------------------------- 
+
+#=========================================================================== 
+#=========================================================================== 
+# FUNCTION: make_exe_work
+# If ofd470 is requested, but armofd is what is available, then change it.
+# Also works for hex470/armhex.  Works the other way too, i.e. armofd
+# to ofd470.
+# $1 Original command that may be changed
+# $2 The old command name, i.e. ofd470 or hex470
+# $3 The new command name, i.e. armofd or armhex
+# Result is assigned to $final_cmd
+#=========================================================================== 
+#=========================================================================== 
+make_exe_work()
+{
+    orig_cmd=$1
+    oldname=$2
+    newname=$3
+
+    orig_cmd_path=`dirname $1`
+    orig_cmd_name=`basename $1`
+
+    final_cmd=$orig_cmd
+
+    #----------------------------------------------------------------------- 
+    # If the command is not ofd470, hex470, armofd, armhex then quit
+    #----------------------------------------------------------------------- 
+    if [ "$orig_cmd_name" != "$oldname" ]
+    then
+        if [ "$orig_cmd_name" != "$newname" ]
+        then
+            return
+        fi
+    fi
+
+    #----------------------------------------------------------------------- 
+    # If the command works now, we're done.  First, see if the file exists.
+    # Second, see if the command is on the system path.
+    #----------------------------------------------------------------------- 
+    if [ -e $final_cmd ]
+    then
+        return
+    fi
+
+    which $final_cmd > /dev/null 2>&1
+    if [ $? -eq 0 ]
+    then
+        return
+    fi
+
+    #----------------------------------------------------------------------- 
+    # Change the base cmd name from old to new, or vice versa
+    #----------------------------------------------------------------------- 
+    if [ "$orig_cmd_name" == "$oldname" ]
+    then
+        final_cmd_name=$newname
+    else
+        final_cmd_name=$oldname
+    fi
+
+    #----------------------------------------------------------------------- 
+    # If the cmd path is the same as the current directory, then no path
+    # info was given.  The final cmd is the same as the base cmd.
+    # Otherwise, concatenate the original path with the new base cmd name.
+    #----------------------------------------------------------------------- 
+    if [ $orig_cmd_path == `dirname $0` ]
+    then
+        final_cmd=$final_cmd_name
+    else
+        final_cmd=${orig_cmd_path}/${final_cmd_name}
+    fi
+
+    #----------------------------------------------------------------------- 
+    # Test final_cmd again.  If it doesn't work now, issue an error message.
+    #----------------------------------------------------------------------- 
+    if [ -e $final_cmd ]
+    then
+        return
+    fi
+
+    which $final_cmd > /dev/null 2>&1
+    if [ $? -eq 0 ]
+    then
+        return
+    fi
+
+    #-----------------------------------------------------------------------
+    # If we get here, there is an error
+    #-----------------------------------------------------------------------
+    echo "tiobj2bin failed on $orig_cmd"
+    echo 'Please see http://processors.wiki.ti.com/index.php/Tiobj2bin_Failed'
+
+    exit 1
+}
+
+#--------------------------------------------------------------------------- 
+# Uncomment for testing
+#--------------------------------------------------------------------------- 
+# set -x
+
+#--------------------------------------------------------------------------- 
+# Handle command line args
+#--------------------------------------------------------------------------- 
+if [ "$1" = "" ]
+then
+    echo "Usage: $0 file.out file.bin [ofd] [hex] [mkhex]"
+    exit 1
+fi
+outfile=$1
+
+if [ "$2" = "" ]
+then
+    echo "Usage: $0 file.out file.bin [ofd] [hex] [mkhex]"
+    exit 1
+fi
+binfile=$2
+
+ofdcmd=ofd470
+if [ "$3" != "" ]
+then
+    ofdcmd=$3
+fi
+
+hexcmd=hex470
+if [ "$4" != "" ]
+then
+    hexcmd=$4
+fi
+
+mkhexcmd=mkhex4bin
+if [ "$5" != "" ]
+then
+    mkhexcmd=$5
+fi
+
+#--------------------------------------------------------------------------- 
+# Binary files are impractical for device architectures that do not have
+# one linear range of memory.  At this time these are: PRU, C5500, C5400.
+#--------------------------------------------------------------------------- 
+if [ `basename $ofdcmd` == 'ofdpru' ]
+then
+   echo 'Binary files do not work for PRU'
+   exit 1
+fi
+
+if [ `basename $ofdcmd` == 'ofd55' ]
+then
+   echo 'Binary files do not work for C5500'
+   exit 1
+fi
+
+if [ `basename $ofdcmd` == 'ofd500' ]
+then
+   echo 'Binary files do not work for C5400'
+   exit 1
+fi
+
+#--------------------------------------------------------------------------- 
+# Try objcopy in total silent mode.  If it works, exit successfully.
+#--------------------------------------------------------------------------- 
+objcopy -I elf32-little -O binary ${outfile} ${binfile} > /dev/null 2>&1
+if [ $? -eq 0 ]
+then
+   exit 0
+fi
+
+#--------------------------------------------------------------------------- 
+# This big comment explains details of the objcopy command ...
+#
+# Why total silent mode ... If the command is not in the path, or fails for 
+# any reason, it doesn't matter.  The rest of this script does the same thing.
+# But the rest of the script is less robust.
+#
+# Why objcopy -I elf32-little is used ...  This specifies the format of the
+# input file.  It isn't always elf32-little.  Sometimes it is elf32-big.  But,
+# for binary output, getting this wrong doesn't matter.  It just copies out the
+# raw binary bits regardless of this setting.  It does affect, however, how the
+# file headers and such are interpreted.  And those are little endian on every
+# host machine currently supported by TI tools.  In the very unlikely event we
+# ever supply tools on some big endian host machine, this will break.
+#
+# Another benefit ... objcopy is much faster, especially when creating very
+# large (1 GB or more) binary files.
+#--------------------------------------------------------------------------- 
+
+#--------------------------------------------------------------------------- 
+# Cygwin not supported.  You have to make sure the Windows executables see
+# Windows format directory paths to filenames.  It is a real pain, and no one
+# cares.  But just in case someone really does care, this check will let them
+#  know it doesn't work.
+#--------------------------------------------------------------------------- 
+case $OSTYPE in
+   cygwin | Cygwin | CYGWIN)        # Guess at all likely spellings
+      echo 'Cygwin not supported.  Giving up.'
+      exit 1
+      ;;
+esac
+
+#--------------------------------------------------------------------------- 
+# Possibly change the OFD and HEX commands.  See make_exe_work for details.
+#--------------------------------------------------------------------------- 
+make_exe_work $ofdcmd ofd470 armofd
+ofdcmd=$final_cmd
+make_exe_work $hexcmd hex470 armhex
+hexcmd=$final_cmd
+
+#--------------------------------------------------------------------------- 
+# Create temp file to use as hex command file
+#--------------------------------------------------------------------------- 
+hextmp=`mktemp -t tmp.XXXXXXXX`
+if [ $? -ne 0 ]
+then
+    echo 'Failed to create temporary hex command file. Giving up.'
+    exit 1
+fi
+
+#--------------------------------------------------------------------------- 
+# 1. Create the XML from the .out file, pipe that into the utility that
+#    creates the temporary hex command file
+# 2. Create the binary from the .out file and temp hex command file
+#--------------------------------------------------------------------------- 
+$ofdcmd -x --xml_indent=0 --obj_display=none,sections,header,segments $outfile | $mkhexcmd > $hextmp 2> /dev/null
+if [ $? -ne 0 ]
+then
+    echo 'mkhex4bin failure occurred. Giving up.'
+    exit 1
+fi
+
+$hexcmd -q -b -image -o $binfile $hextmp $outfile
+
+#--------------------------------------------------------------------------- 
+# Uncomment to debug
+#--------------------------------------------------------------------------- 
+# cat $hextmp
+
+#--------------------------------------------------------------------------- 
+# Remove temporary hex command file
+#--------------------------------------------------------------------------- 
+rm -rf $hextmp
+
+exit 0
+
+# /*
+# *
+# * Copyright (C) 2011-2014 Texas Instruments Incorporated - http://www.ti.com/ 
+# * 
+# * 
+# *  Redistribution and use in source and binary forms, with or without 
+# *  modification, are permitted provided that the following conditions 
+# *  are met:
+# *
+# *    Redistributions of source code must retain the above copyright 
+# *    notice, this list of conditions and the following disclaimer.
+# *
+# *    Redistributions in binary form must reproduce the above copyright
+# *    notice, this list of conditions and the following disclaimer in the 
+# *    documentation and/or other materials provided with the   
+# *    distribution.
+# *
+# *    Neither the name of Texas Instruments Incorporated nor the names of
+# *    its contributors may be used to endorse or promote products derived
+# *    from this software without specific prior written permission.
+# *
+# *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 
+# *  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT 
+# *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+# *  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT 
+# *  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
+# *  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT 
+# *  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+# *  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+# *  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT 
+# *  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
+# *  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+# *
+# */

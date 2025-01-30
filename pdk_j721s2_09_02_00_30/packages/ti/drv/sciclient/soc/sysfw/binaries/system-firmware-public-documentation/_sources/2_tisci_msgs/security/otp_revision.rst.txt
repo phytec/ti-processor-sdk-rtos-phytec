@@ -1,0 +1,126 @@
+===========================================
+OTP Revision Read/Write Message Description
+===========================================
+
+.. _sec_otp_rev_rd_wr_message_desc:
+
+This chapter provides information on |sysfw| APIs for reading and writing 
+Software Revision and Key Revision to/from eFuses.
+
+The available APIs are listed below.
+
++------------------+-----------------------------------------------------------------------+-----------------+--------------------+
+| TISCI Message ID |                        Message Name                                   | Available in GP | Avialable in HS-FS |
++==================+=======================================================================+=================+====================+
+| 0x9032           | :ref:`TISCI_MSG_WRITE_SWREV          <sec-api-wr-swrev-otp>`          | No              | No                 |
++------------------+-----------------------------------------------------------------------+-----------------+--------------------+
+| 0x9033           | :ref:`TISCI_MSG_READ_SWREV           <sec-api-rd-swrev-otp>`          | No              | No                 |
++------------------+-----------------------------------------------------------------------+-----------------+--------------------+
+| 0x9034           | :ref:`TISCI_MSG_READ_KEYCNT_KEYREV   <sec-api-rd-keycnt-keyrev-otp>`  | No              | No                 |
++------------------+-----------------------------------------------------------------------+-----------------+--------------------+
+| 0x9035           | :ref:`TISCI_MSG_WRITE_KEYREV         <sec-api-wr-keyrev-otp>`         | No              | No                 |
++------------------+-----------------------------------------------------------------------+-----------------+--------------------+
+
+API Description
+===============
+
+.. _sec-api-wr-swrev-otp:
+
+TISCI_MSG_WRITE_SWREV - Write Software Revision
+-----------------------------------------------
+
+**Usage**:
+
++------------------------+--------+
+| **Message Type**       | Normal |
++------------------------+--------+
+| **Secure Queue Only?** | Yes    |
++------------------------+--------+
+
+TISCI Message ID
+----------------
+
+.. sysfwapimacro:: TISCI_MSG_WRITE_SWREV
+
+.. sysfwapistruct:: tisci_msg_set_swrev_req
+
+.. sysfwapistruct:: tisci_msg_set_swrev_resp
+
+.. _sec-api-rd-swrev-otp:
+
+TISCI_MSG_READ_SWREV - Read Software Revision
+---------------------------------------------
+
+.. important::
+    
+    |sysfw| currently supports reading only SWREV Secure Board Config with 
+    this message
+
+**Usage**:
+
++------------------------+--------+
+| **Message Type**       | Normal |
++------------------------+--------+
+| **Secure Queue Only?** | Yes    |
++------------------------+--------+
+
+TISCI Message ID
+----------------
+
+.. sysfwapimacro:: TISCI_MSG_READ_SWREV
+
+.. sysfwapistruct:: tisci_msg_get_swrev_req
+
+.. sysfwapistruct:: tisci_msg_get_swrev_resp
+
+.. _sec-api-rd-keycnt-keyrev-otp:
+
+TISCI_MSG_READ_KEYCNT_KEYREV - Read Key Count and Key Revision
+--------------------------------------------------------------
+
+**Usage**:
+
++------------------------+--------+
+| **Message Type**       | Normal |
++------------------------+--------+
+| **Secure Queue Only?** | Yes    |
++------------------------+--------+
+
+TISCI Message ID
+----------------
+
+.. sysfwapimacro:: TISCI_MSG_READ_KEYCNT_KEYREV
+
+.. sysfwapistruct:: tisci_msg_get_keycnt_keyrev_req
+
+.. sysfwapistruct:: tisci_msg_get_keycnt_keyrev_resp
+
+.. _sec-api-wr-keyrev-otp:
+
+TISCI_MSG_WRITE_KEYREV - Write Key Revision
+-------------------------------------------
+
+**Usage**:
+
++------------------------+--------+
+| **Message Type**       | Normal |
++------------------------+--------+
+| **Secure Queue Only?** | Yes    |
++------------------------+--------+
+
+TISCI Message ID
+----------------
+
+.. sysfwapimacro:: TISCI_MSG_WRITE_KEYREV
+
+.. sysfwapistruct:: tisci_msg_set_keyrev_req
+
+.. sysfwapistruct:: tisci_msg_set_keyrev_resp
+
+OTP Revision Identifier
+-----------------------
+
+This enumeration is used in :ref:`TISCI_MSG_WRITE_SWREV <sec-api-wr-swrev-otp>` 
+and :ref:`TISCI_MSG_READ_SWREV <sec-api-rd-swrev-otp>`
+
+.. sysfwapienum:: tisci_otp_revision_identifier

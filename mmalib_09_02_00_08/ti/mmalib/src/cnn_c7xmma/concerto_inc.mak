@@ -1,0 +1,4 @@
+LIBLIST += cnn_c7xmma/MMALIB_CNN_convolve_row_ixX_ixX_oxX \
+cnn_c7xmma/MMALIB_CNN_convolve_col_smallNo_highPrecision_pointwisePost \
+cnn_c7xmma/MMALIB_CNN_convolve_col_smallNo_ixX_ixX_oxX \
+cnn_c7xmma/MMALIB_CNN_fullyConnected_ixX_ixX_oxX

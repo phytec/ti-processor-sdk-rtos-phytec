@@ -1,0 +1,38 @@
+Welcome to minicom 2.7.1                                                                                                                    
+                                                                                                                                            
+OPTIONS: I18n                                                                                                                               
+Compiled on Dec 23 2019, 02:06:26.                                                                                                          
+Port /dev/ttyUSB1, 17:12:40                                                                                                                 
+                                                                                                                                            
+Press CTRL-A Z for help on special keys                                                                                                     
+                                                                                                                                            
+01000000011a00006a3761657000000000000000475020200008010000080100C1.00.10.01 (Jun 29 2023 - 13:38:40)                                        
+Waiting for tifs.bin ...                                                                                                                    
+CCTIFS  ver: 9.0.6--v09.00.06 (Kool Koala)                                                                                                  
+Waiting for multicore app ...                                                                                                               
+CCCample Test Application                                                                                                                   
+                                                                                                                                            
+DCC_Test_init: Init MCU ESM complete                                                                                                        
+                                                                                                                                            
+                                                                                                                                            
+INSTANCE: MCU_DCC0                                                                                                                          
+Source clock: HFOSC0                                                                                                                        
+Test clock: MCAN                                                                                                                            
+                                                                                                                                            
+                                                                                                                                            
+SDL DCC EXAMPLE TEST: Start UC-3                                                                                                            
+SDL DCC EXAMPLE TEST: Seed values calculation done.                                                                                         
+SDL DCC EXAMPLE TEST: Changing the clock ratios                                                                                             
+SDL DCC EXAMPLE TEST: Seed values calculation done.                                                                                         
+SDL DCC EXAMPLE TEST: Enabling DCC and waiting for Error interrupt                                                                          
+                                                                                                                                            
+Interrupt is generated to ESM                                                                                                               
+    ESM Call back function called : instType 0x2, intType 0x1, grpChannel 0x2, index 0x16, intSrc 0x56                                      
+    Take action                                                                                                                             
+                                                                                                                                            
+SDL DCC EXAMPLE TEST: DCC Generated Error interrupt                                                                                         
+SDL DCC EXAMPLE TEST: Indicating clock drift/change                                                                                         
+Test Name: DCC EXAMPLE TEST  PASSED                                                                                                         
+                                                                                                                                            
+ All tests have passed.                                                                                                                     
+  

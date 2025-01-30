@@ -1,0 +1,573 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>6. CCS Setup for J721S2 &mdash; Processor SDK RTOS J721S2</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Processor SDK RTOS J721S2" href="index.html"/>
+        <link rel="next" title="7. Data Sheet" href="datasheet_sdk_j721s2_gp.html"/>
+        <link rel="prev" title="5. EVM Setup for J721S2" href="evm_setup_j721s2.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Processor SDK RTOS J721S2
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                09_02_00
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview_gp.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_j721s2_gp.html">2. Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sdk_components_j721s2_gp.html">3. SDK Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes_gp.html">4. Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evm_setup_j721s2.html">5. EVM Setup for J721S2</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">6. CCS Setup for J721S2</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#cpu-names-used-in-psdk-rtos-vs-ccs">6.1. CPU names used in PSDK RTOS vs CCS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-1-install-ccs">6.2. Step 1: Install CCS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#debugging-without-hlos-running-on-a72-rtos-only-baremetal">6.3. Debugging without HLOS running on A72 (RTOS-only / baremetal)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#step-2-setup-ccs-target-configuration-and-gels-files">6.3.1. Step 2: Setup CCS target configuration and GELs files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-3-load-rtos-baremetal-application-binaries-thru-ccs">6.3.2. Step 3: Load RTOS/baremetal application binaries thru CCS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#debugging-with-hlos-running-on-a72-linux-qnx">6.4. Debugging with HLOS running on A72 (Linux / QNX)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#step-4-setup-ccs-target-configuration">6.4.1. Step 4: Setup CCS target configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-5-load-rtos-core-firmware-symbols-thru-ccs">6.4.2. Step 5: Load RTOS core firmware symbols thru CCS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="datasheet_sdk_j721s2_gp.html">7. Data Sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer_notes.html">8. Developer Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="documentation_tarball.html">9. Documentation Tarball</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Processor SDK RTOS J721S2</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li><span class="section-number">6. </span>CCS Setup for J721S2</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="ccs-setup-for-platform">
+<span id="ccs-setup-j721s2"></span><h1><span class="section-number">6. </span>CCS Setup for J721S2<a class="headerlink" href="#ccs-setup-for-platform" title="Permalink to this headline">¶</a></h1>
+<p>Code Composer Studio is an integrated development environment (IDE) that supports
+TI’s Micro controller and Embedded Processors portfolio. It provides useful tools
+to develop and debug embedded applications.</p>
+<p>Please visit Code Composer Studio product (<a class="reference external" href="https://www.ti.com/tool/ccstudio">https://www.ti.com/tool/ccstudio</a>)
+for more information.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ul class="simple">
+<li><p>Below screen shots and examples show paths and instructions for Linux. The same applies for Windows except use Windows file/folder paths instead.</p></li>
+<li><p>In Linux+RTOS mode, SPL/uboot bootloader loads the R5F, C7x, A72 binaries</p>
+<ul>
+<li><p>CCS is needed to debug the software on R5F, C7x (and A72 when in RTOS mode).</p></li>
+</ul>
+</li>
+<li><p>In RTOS only mode, CCS is needed to load and run the binaries on different CPU cores in the SoC.</p></li>
+<li><p>The CCS emulation pack and CSP (Chip Support Package) needs to be downloaded separately.</p></li>
+</ul>
+</aside>
+<section id="cpu-names-used-in-psdk-rtos-vs-ccs">
+<h2><span class="section-number">6.1. </span>CPU names used in PSDK RTOS vs CCS<a class="headerlink" href="#cpu-names-used-in-psdk-rtos-vs-ccs" title="Permalink to this headline">¶</a></h2>
+<p>Below table shows the mapping of names in PSDK RTOS and CCS</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>CPU name in PSDK RTOS</p></th>
+<th class="head"><p>CPU name in CCS</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>mcu1_0 / mcu1_1</p></td>
+<td><p>MCU_Cortex_R5_0 / MCU_Cortex_R5_1</p></td>
+</tr>
+<tr class="row-odd"><td><p>mcu2_0 / mcu2_1</p></td>
+<td><p>MAIN_Cortex_R5_0_0 / MAIN_Cortex_R5_0_1</p></td>
+</tr>
+<tr class="row-even"><td><p>mcu3_0 / mcu3_1</p></td>
+<td><p>MAIN_Cortex_R5_1_0 / MAIN_Cortex_R5_1_1</p></td>
+</tr>
+<tr class="row-odd"><td><p>mpu1</p></td>
+<td><p>CortexA72_0_0</p></td>
+</tr>
+<tr class="row-even"><td><p>c7x_1</p></td>
+<td><p>C71x_0</p></td>
+</tr>
+<tr class="row-odd"><td><p>c7x_2</p></td>
+<td><p>C71x_1</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="step-1-install-ccs">
+<span id="install-ccs"></span><h2><span class="section-number">6.2. </span>Step 1: Install CCS<a class="headerlink" href="#step-1-install-ccs" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p>Install CCS v12.4 :
+CCS can be downloaded from <a class="reference external" href="https://www.ti.com/tool/download/CCSTUDIO/12.4.0">https://www.ti.com/tool/download/CCSTUDIO/12.4.0</a></p></li>
+<li><p>CCS installation details are available on <a class="reference external" href="https://dr-download.ti.com/software-development/ide-configuration-compiler-or-debugger/MD-J1VdearkvK/12.4.0/CCS_12.4.0_ReleaseNotes.htm">https://dr-download.ti.com/software-development/ide-configuration-compiler-or-debugger/MD-J1VdearkvK/12.4.0/CCS_12.4.0_ReleaseNotes.htm</a></p></li>
+<li><p>This release is tested on below CCS version 12.4.0.00007</p>
+<figure class="align-default" id="figure-1">
+<img alt="_images/ccs_version.png" src="_images/ccs_version.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6.1 </span><span class="caption-text">CCS: IDE version</span><a class="headerlink" href="#figure-1" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>During installation, there is a ‘Setup’ step where you can select components.  Be sure to select: “TDAx Driver Assistance SoCs &amp; Jacinto DRAx Infotainment SoCs” as shown below:</p>
+<figure class="align-default" id="figure-2">
+<a class="reference internal image-reference" href="_images/ccs_setup.png"><img alt="_images/ccs_setup.png" src="_images/ccs_setup.png" style="width: 801.5px; height: 631.0px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.2 </span><span class="caption-text">CCS: Download Components</span><a class="headerlink" href="#figure-2" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Here after we’ll be referring to the CCS installation directory as <strong>${CCS_INSTALL_PATH}</strong></p>
+<p>In Linux, this will be</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/ti/ccsv1240/ccs
+</pre></div>
+</div>
+<p>In Windows, this will be</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>C:<span class="se">\\</span>ti<span class="se">\\</span>ccsv1240<span class="se">\\</span>ccs<span class="se">\</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="debugging-without-hlos-running-on-a72-rtos-only-baremetal">
+<span id="ccs-a72-rtos"></span><h2><span class="section-number">6.3. </span>Debugging without HLOS running on A72 (RTOS-only / baremetal)<a class="headerlink" href="#debugging-without-hlos-running-on-a72-rtos-only-baremetal" title="Permalink to this headline">¶</a></h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ul class="simple">
+<li><p>This section is applicable only if you are loading an RTOS only application. To debug using CCS when Linux/QNX runs A72,
+refer section <a class="reference internal" href="#ccs-a72-linux"><span class="std std-ref">Debugging with HLOS running on A72 (Linux / QNX)</span></a>.</p></li>
+</ul>
+</aside>
+<section id="step-2-setup-ccs-target-configuration-and-gels-files">
+<h3><span class="section-number">6.3.1. </span>Step 2: Setup CCS target configuration and GELs files<a class="headerlink" href="#step-2-setup-ccs-target-configuration-and-gels-files" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p>Create a CCS target config, you can name it J721S2_EVM.ccxml.</p>
+<ul>
+<li><p>In Code Composer Studio, go to the <strong>File</strong> menu and select <strong>New</strong> -&gt; <strong>Target Configuration File</strong></p></li>
+<li><p>Name the Target Configuration file as <strong>J721S2_EVM.ccxml</strong> and click <strong>Finish</strong></p></li>
+<li><p>Select Connection as <strong>Texas Instruments XDS110 USB Debug Probe</strong>, if you are using on board debugger (J3 usb connector)</p></li>
+<li><p>Select Connection as <strong>Spectrum Digital XDS560V2 STM USB Emulator</strong>, if you are using Spectrum digital XDS560 USB debugger connected
+to JTAG Mipi connector (J16)</p></li>
+<li><p>Select the Board as <strong>J721S2_TDA4VL</strong> shown below</p>
+<figure class="align-default" id="figure-3">
+<img alt="_images/ccs_target_config_j721s2.png" src="_images/ccs_target_config_j721s2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6.3 </span><span class="caption-text">CCS: Target Configuration</span><a class="headerlink" href="#figure-3" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</li>
+</ul>
+</li>
+<li><p>Load the initialization script of the Cortex_M4F_0 core with the J7AEP Gels as shown below.</p>
+<blockquote>
+<div><ul>
+<li><p>Open the Advanced tab of the target configuration file J721S2_EVM.ccxml</p></li>
+<li><p>Go to CORTEX_M4F_0 under SMS_TIFSM</p></li>
+<li><p>Set the initialization script</p></li>
+<li><p>Gel files can be found at below path</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="o">**</span><span class="n">$</span><span class="p">{</span><span class="n">CCS_INSTALL_PATH</span><span class="p">}</span><span class="o">/</span><span class="n">ccs_base</span><span class="o">/</span><span class="n">emulation</span><span class="o">/</span><span class="n">gel</span><span class="o">/</span><span class="n">J721S2_TDA4VL</span><span class="o">/</span><span class="n">J7AEP_SI</span><span class="p">.</span><span class="n">gel</span>
+</pre></div>
+</div>
+<figure class="align-default" id="figure-4">
+<img alt="_images/ccs_target_config_init_script_j721s2.png" src="_images/ccs_target_config_init_script_j721s2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6.4 </span><span class="caption-text">CCS: Target Configuration Initialization Script</span><a class="headerlink" href="#figure-4" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+</section>
+<section id="step-3-load-rtos-baremetal-application-binaries-thru-ccs">
+<h3><span class="section-number">6.3.2. </span>Step 3: Load RTOS/baremetal application binaries thru CCS<a class="headerlink" href="#step-3-load-rtos-baremetal-application-binaries-thru-ccs" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>When using CCS boot flow, please configure EVM in NOBOOT mode ( see <a class="reference internal" href="evm_setup_j721s2.html#j721s2-no-boot-mode"><span class="std std-ref">No Boot Mode</span></a> ) for connecting and loading binaries via CCS.</p></li>
+<li><p>NO BOOT Mode Switch Settings:-</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>SW8[1-8] = 1000 1000</p></li>
+<li><p>SW9[1-8] = 0111 0000</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>The launch.js file below is responsible to load and run the DMSC. It is also responsible to set the board configuration
+input for the DMSC. The board configuration is passed by the PDK example
+<cite>${PSDK_RTOS_PATH}/pdk_j721s2_{version}/packages/ti/drv/sciclient/examples/sciclient_ccs_init</cite> executing on the MCU R5F core. The default board
+configuration is available for reference at <cite>${PSDK_RTOS_PATH}/pdk_j721s2_{version}/packages/ti/drv/sciclient/soc/V1/sciclient_defaultBoardcfg.c</cite></p></li>
+<li><p>All PDK and SDK examples require the DMSC firmware to be executed.</p></li>
+<li><p>launch.js file is also responsible to load the <cite>${PSDK_RTOS_PATH}/pdk_j721s2_{version}/packages/ti/drv/sciclient/examples/sciserver_testapp</cite>
+which is used to service the RM and PM services on MCU1_0. Refer
+<a class="reference internal" href="developer_notes_mcu1_0_sysfw.html#mcu1-0-app-with-sysfw"><span class="std std-ref">MCU1_0 Application Development with SYSFW</span></a> for details. The sciserver_testapp is a simple RTOS based application which runs the Sciserver
+used to service RM and PM requests from cores other than MCU1_0.</p></li>
+<li><p>For applications developed and debugged on MCU1_0 application one can disable loading the Sciserver_testapp by setting the <cite>loadSciserverFlag</cite> to 0.
+Please do go through the <a class="reference internal" href="developer_notes_mcu1_0_sysfw.html#mcu1-0-app-with-sysfw"><span class="std std-ref">MCU1_0 Application Development with SYSFW</span></a> page for details on what libraries should be linked on the MCU1_0 application to run RM and PM services.</p></li>
+</ul>
+</aside>
+<ol class="arabic">
+<li><p>GEL initialization</p>
+<blockquote>
+<div><ul>
+<li><p>Open the launch.js script in an editor. Script is present in below path:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="p">{</span><span class="n">PSDK_RTOS_PATH</span><span class="p">}</span><span class="o">/</span><span class="n">pdk_j721s2_</span><span class="p">{</span><span class="n">version</span><span class="p">}</span><span class="o">/</span><span class="n">packages</span><span class="o">/</span><span class="n">ti</span><span class="o">/</span><span class="n">drv</span><span class="o">/</span><span class="n">sciclient</span><span class="o">/</span><span class="n">tools</span><span class="o">/</span><span class="n">ccsLoadDmsc</span><span class="o">/</span><span class="n">j721s2</span><span class="o">/</span><span class="n">launch</span><span class="p">.</span><span class="n">js</span>
+</pre></div>
+</div>
+</li>
+<li><p>${PSDK_RTOS_PATH} is the path to your PSDK RTOS installation, for example:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">ti</span><span class="o">/</span><span class="n">ti</span><span class="o">-</span><span class="n">processor</span><span class="o">-</span><span class="n">sdk</span><span class="o">-</span><span class="n">rtos</span><span class="o">-</span><span class="n">j721s2</span><span class="o">-</span><span class="n">evm</span><span class="o">-</span><span class="n">xx_xx_xx_xx</span>
+</pre></div>
+</div>
+</li>
+<li><p>Edit the variable “pdkPath” with the absolute path of the pdk package, i.e ${PSDK_RTOS_PATH}/pdk_j721s2_{version}/packages</p></li>
+<li><p>Open Code Composer Studio and launch the Target Configuration previously setup</p>
+<figure class="align-default" id="figure-5">
+<img alt="_images/ccs_launch_ccxml_j721s2.png" src="_images/ccs_launch_ccxml_j721s2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6.5 </span><span class="caption-text">CCS: Launch CCS Target Configuration</span><a class="headerlink" href="#figure-5" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Go to the <strong>View</strong> Target configurations and launch a target configuration is done
+by right clicking on it.</p></li>
+<li><p>Open the scripting console in CCS - Go to the <strong>View</strong> menu and then select <strong>Scripting Console</strong></p></li>
+<li><p>Load the launch.js script as shown below.</p>
+<figure class="align-default" id="figure-6">
+<img alt="_images/ccs_launch_script_j721s2.png" src="_images/ccs_launch_script_j721s2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6.6 </span><span class="caption-text">CCS: Launch script</span><a class="headerlink" href="#figure-6" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Wait till the script finishes. This step can take considerable time as it configures PLL etc. in the SOC via GEL files and configures DDR.
+This will connect to the MCU_Cortex_R5_0 core.</p>
+<figure class="align-default" id="figure-7">
+<img alt="_images/ccs_launch_script1_j721s2.png" src="_images/ccs_launch_script1_j721s2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6.7 </span><span class="caption-text">CCS: Scripting Console Output</span><a class="headerlink" href="#figure-7" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="figure-8">
+<img alt="_images/ccs_launch_script2_j721s2.png" src="_images/ccs_launch_script2_j721s2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6.8 </span><span class="caption-text">CCS: Console Output</span><a class="headerlink" href="#figure-8" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>After script completes execution you should see below in Debug window</p>
+<figure class="align-default" id="figure-9">
+<img alt="_images/launch_dss_script_complete.png" src="_images/launch_dss_script_complete.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6.9 </span><span class="caption-text">CCS: Launch script Complete</span><a class="headerlink" href="#figure-9" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Load and run the binaries in CCS. Debug as usual using CCS.</p>
+<blockquote>
+<div><ul>
+<li><p>Now you can connect to any core and load the corresponding application binaries.</p>
+<figure class="align-default" id="figure-10">
+<img alt="_images/ccs_connect_target.png" src="_images/ccs_connect_target.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6.10 </span><span class="caption-text">CCS: Loading the demo application binary</span><a class="headerlink" href="#figure-10" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Go to the <strong>Run</strong> menu and then select <strong>Load</strong> -&gt; <strong>Select Program to Load</strong></p></li>
+<li><p>In the <strong>Load Program</strong> window, browse to application binary you want to load.</p>
+<figure class="align-default" id="figure-11">
+<img alt="_images/ccs_load_binary.png" src="_images/ccs_load_binary.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6.11 </span><span class="caption-text">CCS: Loading the demo application binary</span><a class="headerlink" href="#figure-11" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Go to the <strong>Run</strong> menu and then select <strong>Resume</strong> to start executing demo binary.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+</section>
+</section>
+<section id="debugging-with-hlos-running-on-a72-linux-qnx">
+<span id="ccs-a72-linux"></span><h2><span class="section-number">6.4. </span>Debugging with HLOS running on A72 (Linux / QNX)<a class="headerlink" href="#debugging-with-hlos-running-on-a72-linux-qnx" title="Permalink to this headline">¶</a></h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ul class="simple">
+<li><p>This section is applicable only if you are loading a HLOS (Linux or QNX) application. To debug RTOS cores using CCS when not running Linux or QNX on A72,
+refer section <a class="reference internal" href="#ccs-a72-rtos"><span class="std std-ref">Debugging without HLOS running on A72 (RTOS-only / baremetal)</span></a>.</p></li>
+<li><p>CCS cannot be used to debug applications on the A72.  For Linux, it is recommended to use gdb which comes preinstalled on the filesystem.  For QNX, it is
+recommended to use QNX Momentics.</p></li>
+</ul>
+</aside>
+<section id="step-4-setup-ccs-target-configuration">
+<h3><span class="section-number">6.4.1. </span>Step 4: Setup CCS target configuration<a class="headerlink" href="#step-4-setup-ccs-target-configuration" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p>Install CCS, CCS emulation packs and the CSP as per <a class="reference internal" href="#install-ccs"><span class="std std-ref">Step 1: Install CCS</span></a>.</p></li>
+<li><p>Create a CCS target config, you can name it “J721S2_EVM_NO_GEL.ccxml”.</p>
+<ul>
+<li><p>Select Connection as <strong>Texas Instruments XDS110 USB Debug Probe</strong>, if you are using on board debugger (J3 usb connector)</p></li>
+<li><p>Select Connection as <strong>Spectrum Digital XDS560V2 STM USB Emulator</strong>, if you are using Spectrum digital XDS560 USB debugger connected
+to JTAG Mipi connector (J16)</p></li>
+<li><p>Select the Board as <strong>J721S2_TDA4VL</strong> shown below</p>
+<figure class="align-default" id="figure-12">
+<img alt="_images/ccs_target_config_j721s2.png" src="_images/ccs_target_config_j721s2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6.12 </span><span class="caption-text">CCS: Target Configuration</span><a class="headerlink" href="#figure-12" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Remove the gel file path (....emulationgelJ721S2_TDA4VLgelJ721S2.gel) from CORTEX_M4F_0 under SMS_TIFSM</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="step-5-load-rtos-core-firmware-symbols-thru-ccs">
+<h3><span class="section-number">6.4.2. </span>Step 5: Load RTOS core firmware symbols thru CCS<a class="headerlink" href="#step-5-load-rtos-core-firmware-symbols-thru-ccs" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p>Load the debug version of the firmware binaries on the HLOS file system, and boot device.</p></li>
+<li><p>Launch the target config file created</p>
+<blockquote>
+<div><figure class="align-default" id="figure-13">
+<img alt="_images/ccs_target_config_launched_j721s2.png" src="_images/ccs_target_config_launched_j721s2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6.13 </span><span class="caption-text">CCS: Target Configuration launched</span><a class="headerlink" href="#figure-13" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</div></blockquote>
+</li>
+<li><p>Now you can connect to the required non-A72 core (i.e R5, C7x_0 etc) and load the symbols of the application binary.</p>
+<blockquote>
+<div><figure class="align-default" id="figure-14">
+<img alt="_images/ccs_target_config_load_symbols.png" src="_images/ccs_target_config_load_symbols.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6.14 </span><span class="caption-text">CCS: Load symbols in the connected non-A72 core</span><a class="headerlink" href="#figure-14" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</div></blockquote>
+</li>
+<li><p>Now you can put breakpoints wherever required and debug as usual.</p></li>
+</ol>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="datasheet_sdk_j721s2_gp.html" class="btn btn-neutral float-right" title="7. Data Sheet" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="evm_setup_j721s2.html" class="btn btn-neutral" title="5. EVM Setup for J721S2" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyright 1995-2022</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+      });
+  </script>
+   
+
+</body>
+</html>

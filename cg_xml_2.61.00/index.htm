@@ -1,0 +1,68 @@
+<title>cg_xml Documentation</title>
+<h1>cg_xml Documentation</h1>
+
+<h2>Introduction</h2>
+<p>
+This is a package of Perl scripts used to process the XML files that come
+from the TI code generation tools.  Use it to do things like build a
+spreadsheet that details the size of all the sections, or figure out how much
+of the memory map is taken up by specific libraries.
+</p>
+
+<p>
+The documentation seen here presumes you run the scripts the usual Perl way.
+If instead you use the standalone executables, then a minor change is needed.
+Any example that looks like ...
+</p>
+<pre>
+   ofd6x -x file.out | perl sectti.pl
+</pre>
+<p>
+... needs to be executed ...
+</p>
+<pre>
+   ofd6x -x file.out | sectti.exe
+</pre>
+<p>
+Note how "perl sectti.pl" changes to "sectti.exe".
+</p>
+
+<ul>
+<li>
+First time users please <a href=getting_started.txt>start here (.txt)</a>
+</li>
+<li>
+Release specific information is <a href=readme.txt>here (.txt)</a>
+</li>
+</ul>
+<hr> 
+<h2>map Scripts</h2> 
+<ul> 
+<li><a href=docs/map/dump_map.htm>dump_map.pl</a></li> 
+<li><a href=docs/map/find_dup_syms.htm>find_dup_syms.pl</a></li> 
+<li><a href=docs/map/gen_shm_cmd.htm>gen_shm_cmd.pl</a></li> 
+<li><a href=docs/map/get_rom_sects.htm>get_rom_sects.pl</a></li> 
+<li><a href=docs/map/get_rom_symbols.htm>get_rom_symbols.pl</a></li> 
+<li><a href=docs/map/lib_footprint.htm>lib_footprint.pl</a></li> 
+<li><a href=docs/map/XML_TI_MAP.htm>XML_TI_MAP.pm</a></li> 
+</ul> 
+<hr> 
+<h2>ofd Scripts</h2> 
+<ul> 
+<li><a href=docs/ofd/bootimage.htm>bootimage.pl</a></li> 
+<li><a href=docs/ofd/call_graph.htm>call_graph.pl</a></li> 
+<li><a href=docs/ofd/coffdiff.htm>coffdiff.pl</a></li> 
+<li><a href=docs/ofd/coff_header_data.htm>coff_header_data.pl</a></li> 
+<li><a href=docs/ofd/dump_ofd.htm>dump_ofd.pl</a></li> 
+<li><a href=docs/ofd/extract_sections.htm>extract_sections.pl</a></li> 
+<li><a href=docs/ofd/func_info.htm>func_info.pl</a></li> 
+<li><a href=docs/ofd/global_types_gen.htm>global_types_gen.pl</a></li> 
+<li><a href=docs/ofd/hide_syms.htm>hide_syms.pl</a></li> 
+<li><a href=docs/ofd/lib_versions.htm>lib_versions.pl</a></li> 
+<li><a href=docs/ofd/list_interrupt.htm>list_interrupt.pl</a></li> 
+<li><a href=docs/ofd/load_bps.htm>load_bps.pl</a></li> 
+<li><a href=docs/ofd/mkhex4bin.htm>mkhex4bin.pl</a></li> 
+<li><a href=docs/ofd/objdiff.htm>objdiff.pl</a></li> 
+<li><a href=docs/ofd/sectti.htm>sectti.pl</a></li> 
+<li><a href=docs/ofd/XML_TI_OFD.htm>XML_TI_OFD.pm</a></li> 
+</ul> 

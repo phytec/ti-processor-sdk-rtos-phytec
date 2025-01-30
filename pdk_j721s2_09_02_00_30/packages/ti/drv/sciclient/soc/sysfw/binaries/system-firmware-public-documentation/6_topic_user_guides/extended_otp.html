@@ -1,0 +1,492 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Using Extended OTP &mdash; TISCI User Guide</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="TISCI User Guide" href="../index.html"/>
+        <link rel="up" title="Chapter 6: Topic User Guides" href="index.html"/>
+        <link rel="next" title="Using Derived KEK on HS devices" href="dkek_management.html"/>
+        <link rel="prev" title="Using OpenSSL for certificate creation" href="openssl_usage.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="../_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> TISCI
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                09.02.04
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../1_intro/index.html">Chapter 1: Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_tisci_msgs/index.html">Chapter 2: TISCI Message Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_boardcfg/index.html">Chapter 3: Board Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_trace/index.html">Chapter 4: Interpreting Trace Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_soc_doc/index.html">Chapter 5: SoC Family Specific Documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Chapter 6: Topic User Guides</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="authentication.html">System Firmware Authentication and Decryption Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devgrp_usage.html">Device Group Primer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domgrp_usage.html">Domain Group Primer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="secure_boot_signing.html">Signing binaries for Secure Boot on HS Devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hs_boardcfg_signing.html">Signing Board Configuration on HS devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openssl_usage.html">Using OpenSSL for certificate creation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Using Extended OTP</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#hardware-configuration">Hardware Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#programming-the-extended-otp">Programming the extended OTP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#extended-otp-read-api">Extended OTP Read API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#extended-otp-write-api">Extended OTP Write API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dkek_management.html">Using Derived KEK on HS devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firewall_faq.html">Firewall FAQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="saul_access.html">SAUL Access Outside of SYSFW</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security_handover.html">Performing Security Handover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="secure_debug.html">Secure Debug User Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="key_writer.html">Key  Writer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="otp_revision.html">Run time read/write to KEYREV and SWREV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keyring.html">Keyring Management</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">TISCI</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Chapter 6: Topic User Guides</a> &raquo;</li>
+      
+    <li>Using Extended OTP</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="using-extended-otp">
+<h1>Using Extended OTP<a class="headerlink" href="#using-extended-otp" title="Permalink to this headline">¶</a></h1>
+<p>K3 family of devices have a set of one-time programmable(OTP) efuses to carry
+root of trust keys and other information used during device boot. The purpose of
+these efuses is fixed. K3 family of devices have another set of OTP efuses for
+general purpose use by the customer. We refer to these efuses as extended OTP.
+In this document, we describe how the extended OTP can be accessed through TISCI
+API. This document must be read along side</p>
+<ol class="arabic simple">
+<li><a class="reference internal" href="../2_tisci_msgs/security/extended_otp.html"><span class="doc">Extended OTP TISCI Description</span></a> and</li>
+<li><a class="reference internal" href="../3_boardcfg/BOARDCFG_SEC.html"><span class="doc">Security Board Configuration</span></a>, specifically <a class="reference internal" href="../3_boardcfg/BOARDCFG_SEC.html#pub-boardcfg-ext-otp-config"><span class="std std-ref">Extended OTP array configuration</span></a></li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The API in this document deal only with the extended OTP area.
+They do not access the predefined key area containing
+the root of trust keys.</p>
+</div>
+<div class="section" id="hardware-configuration">
+<h2>Hardware Configuration<a class="headerlink" href="#hardware-configuration" title="Permalink to this headline">¶</a></h2>
+<p>The extended OTP area can have a maximum of 1024 bits. The extended OTP area is
+organized into rows of bits. The width of each row can vary based on the device.
+Please refer to the table below for SOC specific details of hardware rows:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="24%" />
+<col width="20%" />
+<col width="14%" />
+<col width="14%" />
+<col width="16%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">SoC</th>
+<th class="head">Number of bits in
+Extended OTP area</th>
+<th class="head">Number of bits
+per OTP row</th>
+<th class="head">Number of
+OTP rows</th>
+<th class="head">Number of
+OTP MMRs</th>
+<th class="head">Initial bit
+offset</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>AM65x</td>
+<td>1024</td>
+<td>32</td>
+<td>32</td>
+<td>32</td>
+<td>0</td>
+</tr>
+<tr class="row-odd"><td>J721e</td>
+<td>1024</td>
+<td>25</td>
+<td>41</td>
+<td>32</td>
+<td>0</td>
+</tr>
+<tr class="row-even"><td>AM64x</td>
+<td>384</td>
+<td>25</td>
+<td>15</td>
+<td>12</td>
+<td>0</td>
+</tr>
+<tr class="row-odd"><td>J7200</td>
+<td>1024</td>
+<td>25</td>
+<td>41</td>
+<td>32</td>
+<td>0</td>
+</tr>
+<tr class="row-even"><td>AM62x</td>
+<td>1024</td>
+<td>25</td>
+<td>42</td>
+<td>32</td>
+<td>2</td>
+</tr>
+<tr class="row-odd"><td>AM62Ax</td>
+<td>1024</td>
+<td>25</td>
+<td>42</td>
+<td>32</td>
+<td>2</td>
+</tr>
+<tr class="row-even"><td>J721S2</td>
+<td>1024</td>
+<td>25</td>
+<td>42</td>
+<td>32</td>
+<td>2</td>
+</tr>
+<tr class="row-odd"><td>J784S4</td>
+<td>1024</td>
+<td>25</td>
+<td>42</td>
+<td>32</td>
+<td>2</td>
+</tr>
+<tr class="row-even"><td>AM62Px</td>
+<td>1024</td>
+<td>25</td>
+<td>42</td>
+<td>32</td>
+<td>2</td>
+</tr>
+<tr class="row-odd"><td>J722S</td>
+<td>1024</td>
+<td>25</td>
+<td>42</td>
+<td>32</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>On device boot, the data in the OTP area is read into a set of 32 bit memory
+mapped registers(MMRs). There are 32 such registers to accommodate the maximum
+number of OTP bits. The width of these registers is always 32 bits irrespective
+of width of the underlying hardware OTP rows. These registers are only refreshed
+on a POR of the device and not on a warm reset.</p>
+<p>The hardware allows each individual OTP row (not MMR) to be locked to prevent
+modification. Once the OTP row is locked, any bit in the row can never be
+modified.</p>
+</div>
+<div class="section" id="programming-the-extended-otp">
+<h2>Programming the extended OTP<a class="headerlink" href="#programming-the-extended-otp" title="Permalink to this headline">¶</a></h2>
+<p>TI provides two pieces of software to program the extended OTP area.</p>
+<ol class="arabic simple">
+<li>Key Writer - Key Writer is used in the factory for programming the customer
+root of trust keys, key revision and key count on a HS Field Securable(FS)
+Device. It can be used to program the extended OTP area at the same time.
+Once the key revision and key count are programmed a HS FS device becomes HS
+Security Enforced(SE) device. Key Writer does not run on a HS SE device.</li>
+<li>System Firmware - System Firmware provides API that can be used to access and
+modify the extended OTP area on a HS SE device for all SoCs. It provides these
+APIs on HS FS and GP device also for AM64x, AM62x, AM62Ax and AM62Px SoCs. System
+Firmware is not a standalone executable and must be used along with software
+running on another core to access or modify the extended OTP area.</li>
+</ol>
+<p>In this document, we describe how to use System Firmware to access/modify the extended
+OTP area.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Key Writer and System Firmware are independent software deliveries. Please contact TI
+Support for information on the Key Writer.</p>
+</div>
+<p>The System Firmware TISCI messages for OTP access are in two categories due to the
+granularity at which they work.</p>
+<ol class="arabic simple">
+<li>Read - Works on MMR granularity (32 bit)</li>
+<li>Write/Lock - Works on row granularity (hardware dependent)</li>
+</ol>
+<p>The reasons for the different granularity are</p>
+<ol class="arabic simple">
+<li>System Firmware does not maintain state across device reboots. Any write protection
+performed must be tied to the hardware. Hardware provides write protection at
+row granularity. Therefore, the write/lock API must operate at hardware row
+granularity.</li>
+<li>We expect the OTP read operation to be performed more often compared to the
+OTP write operation. We expect most data stored in the OTP area to be a
+multiple of 32 bit width. If it is smaller, it could be easily extracted from
+32 bit data with bit operations. So System Firmware offers a read API with 32 bit
+granularity instead of the underlying row width.</li>
+</ol>
+</div>
+<div class="section" id="extended-otp-read-api">
+<h2>Extended OTP Read API<a class="headerlink" href="#extended-otp-read-api" title="Permalink to this headline">¶</a></h2>
+<p>System Firmware allows specifying access permissions for each 32 bit MMR through the
+security board configuration. Each row can be assigned a host ID as an owner and be specified as
+secure or non-secure. See <a class="reference internal" href="../3_boardcfg/BOARDCFG_SEC.html#pub-boardcfg-otp-entry"><span class="std std-ref">Extended OTP Row Entry</span></a>.</p>
+<p><strong>Secure vs. non-secure</strong> - Marking a row as non-secure implies that System Firmware can
+provide the value of the 32-bit MMR as a response to the TISCI read message. If
+a row is marked secure, the 32-bit MMR value will not be returned in the TISCI
+response message. The MMR value can only be used to setup encryption or
+decryption contexts for processing data.</p>
+<p>If a row is assigned to a single host, the MMR can be read only by that host. To
+allow multiple hosts to read the MMR, the host ID must be set to 128. If the MMR
+must not be accessible to any host, the host ID must be set to 0.</p>
+<p>If a row is marked as non-secure, the owning host can read the MMR by using the
+<a class="reference internal" href="../2_tisci_msgs/security/extended_otp.html#sec-api-ext-otp-read-otp-mmr"><span class="std std-ref">TISCI_MSG_READ_OTP_MMR</span></a> message.</p>
+</div>
+<div class="section" id="extended-otp-write-api">
+<span id="id1"></span><h2>Extended OTP Write API<a class="headerlink" href="#extended-otp-write-api" title="Permalink to this headline">¶</a></h2>
+<p>System Firmware allows for only one host in the system to have write access to the
+extended OTP region. This host is specified in the security board configuration
+<a class="reference internal" href="../3_boardcfg/BOARDCFG_SEC.html#pub-boardcfg-ext-otp-config"><span class="std std-ref">Extended OTP array configuration</span></a> using the <code class="docutils literal"><span class="pre">write_host</span></code> field.</p>
+<p>The write host can write to any row that has not been locked using the
+<a class="reference internal" href="../2_tisci_msgs/security/extended_otp.html#write-otp-row"><span class="std std-ref">TISCI_MSG_WRITE_OTP_ROW</span></a> message. The API takes a bit mask
+in addition to the value to be written. This allows single bits to modified if
+necessary.</p>
+<p>The write host can perform a soft write lock using the
+<a class="reference internal" href="../2_tisci_msgs/security/extended_otp.html#soft-lock-otp-write-global"><span class="std std-ref">TISCI_MSG_SOFT_LOCK_OTP_WRITE_GLOBAL</span></a> message to prevent
+further writes to OTP until a warm/cold reset of the device. A soft write lock prevents
+even the write host from performing further writes until the next reset.</p>
+<p>The write host can also lock a row permanently using the
+<a class="reference internal" href="../2_tisci_msgs/security/extended_otp.html#lock-otp-row"><span class="std std-ref">TISCI_MSG_LOCK_OTP_ROW</span></a> message. This prevents any further modifications
+to the row even after a device cold/warm reset.</p>
+<p>The lock status of a row can be queried using the
+<a class="reference internal" href="../2_tisci_msgs/security/extended_otp.html#get-otp-row-lock-status"><span class="std std-ref">TISCI_MSG_GET_OTP_ROW_LOCK_STATUS</span></a> message.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="dkek_management.html" class="btn btn-neutral float-right" title="Using Derived KEK on HS devices" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="openssl_usage.html" class="btn btn-neutral" title="Using OpenSSL for certificate creation" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyright 2016-2024</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'09.02.04',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+
+        $('body').on("mousewheel", function () {
+            // Remove default behavior
+            event.preventDefault();
+            // Scroll without smoothing
+            var wheelDelta = event.wheelDelta;
+            var currentScrollPosition = window.pageYOffset;
+            window.scrollTo(0, currentScrollPosition - wheelDelta);
+        });
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+
+
+Welcome to minicom 2.7.1                                                                                                                    
+                                                                                                                                            
+OPTIONS: I18n                                                                                                                               
+Compiled on Dec 23 2019, 02:06:26.                                                                                                          
+Port /dev/ttyUSB1, 17:07:44                                                                                                                 
+                                                                                                                                            
+Press CTRL-A Z for help on special keys                                                                                                     
+                                                                                                                                            
+01000000011a00006a3761657000000000000000475020200008010000080100C1.00.10.01 (Jun 29 2023 - 13:38:40)                                        
+Waiting for tifs.bin ...                                                                                                                    
+CCCCTIFS  ver: 9.0.6--v09.00.06 (Kool Koala)                                                                                                
+Waiting for multicore app ...                                                                                                               
+CCCreq 1000000000                                                                                                                           
+                                                                                                                                            
+ R5 CPU Application                                                                                                                         
+                                                                                                                                            
+ R5F-CPU example application CCM_Test_init: Init MCU ESM complete                                                                           
+                                                                                                                                            
+R5F-CPU example application CCM_Test_init: Init MAIN ESM complete                                                                           
+                                                                                                                                            
+ R5F-CPU example application CCM_Test_init: Init WKUP ESM complete                                                                          
+                                                                                                                                            
+CCM_Test_init: CCM Init complete                                                                                                            
+                                                                                                                                            
+R5F-CPU example application CCM_Test_init: CCM Init complete                                                                                
+                                                                                                                                            
+CCM Functional Test                                                                                                                         
+                                                                                                                                            
+ R5F-CPU example application CCM_Test_init: Init MCU ESM complete                                                                           
+                                                                                                                                            
+R5F-CPU example application CCM_Test_init: Init MAIN ESM complete                                                                           
+                                                                                                                                            
+ R5F-CPU example application CCM_Test_init: Init WKUP ESM complete                                                                          
+                                                                                                                                            
+CCM_Test_init: CCM Init complete                                                                                                            
+                                                                                                                                            
+R5F-CPU example application CCM_Test_init: CCM Init complete                                                                                
+                                                                                                                                            
+ R5F-CPU example application CCM self test: starting                                                                                        
+ R5F-CPU example application CCM Self Test complete                                                                                         
+ R5F-CPU example application CCM self test with error forcing: starting                                                                     
+  ESM Call back function called : instType 0x2, intType 0x1, grpChannel 0x3, index 0x0, intSrc 0x60                                         
+  Take action                                                                                                                               
+                                                                                                                                            
+ R5F-CPU example application CCM Self Test with error forcing complete                                                                      
+ R5F-CPU example application CCM inject  error: test starting                                                                               
+  ESM Call back function called : instType 0x2, intType 0x1, grpChannel 0x3, index 0x0, intSrc 0x60                                         
+  Take action                                                                                                                               
+                                                                                                                                            
+  ESM Call back function called : instType 0x2, intType 0x1, grpChannel 0x3, index 0x1, intSrc 0x61                                         
+  Take action 
+                                                                                                                                            
+ R5F-CPU example application CCM inject Test complete
+ R5F-CPU example application MPU self test for Mem Write Access Fault: starting
+ R5F-CPU example application MPU self test for Mem Write Access Fault complete
+ Cycles taken 13071
+ R5F-CPU example application MPU self test for Mem Read Access Fault: starting
+ R5F-CPU example application MPU self test for Mem Read Access Fault complete
+ Cycles taken 3135
+ R5F-CPU example application MPU self test for Mem Write Access Fault (Wait Forever): starting
+ R5F-CPU example application MPU self test for Mem Write Access Fault  (Wait Forever) complete
+ Cycles taken 3228
+ R5F-CPU example application MPU self test for Mem Read Access Fault  (Wait Forever): starting
+ R5F-CPU example application MPU self test for Mem Read Access Fault  (Wait Forever) complete
+ Cycles taken 3133
+ CPU Functionality  Passed.
+
+All tests have passed. 
+main.c:239:test_sdl_cpu_test_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored 
+OK
+
+

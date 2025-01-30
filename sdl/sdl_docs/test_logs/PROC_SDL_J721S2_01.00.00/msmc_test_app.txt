@@ -1,0 +1,8 @@
+MSMC Test Application
+
+All tests have passed.
+msmc_test_main.c:182:test_sdl_msmc_test_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored
+OK

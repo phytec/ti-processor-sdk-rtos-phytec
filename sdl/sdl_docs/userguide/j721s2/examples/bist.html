@@ -1,0 +1,550 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>3.8. BIST Safety Example &mdash; Software Diagnostics Library (SDL) - J721S2 User Guide</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Software Diagnostics Library (SDL) - J721S2 User Guide" href="../index.html"/>
+        <link rel="up" title="3. Safety Examples" href="../family_cfg/j721s2/index_examples_j721s2.html"/>
+        <link rel="next" title="3.9. CPU Safety Example" href="cpu.html"/>
+        <link rel="prev" title="3.7. RTI Safety Example" href="rti.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="../_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index_j721s2.html" class="icon icon-home"> Software Diagnostics Library (SDL) - J721S2 User Guide
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                01_03_00
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/j721s2/index_release_notes_j721s2.html">1. Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">2. Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/j721s2/index_modules_j721s2.html">2. Modules</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../family_cfg/j721s2/index_examples_j721s2.html">3. Safety Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="esm.html">3.1. ESM Safety Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vtm.html">3.2. VTM Safety Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pok.html">3.3. POK Safety Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tog.html">3.4. TOG Safety Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dcc.html">3.5. DCC Safety Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ecc.html">3.6. ECC Safety Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rti.html">3.7. RTI Safety Example</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3.8. BIST Safety Example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">3.8.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-details">3.8.2. Example Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#expected-output">3.8.3. Expected Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reference">3.8.4. Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cpu.html">3.9. CPU Safety Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mcrc.html">3.10. MCRC Safety Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mtog.html">3.11. MTOG Safety Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rom_checksum.html">3.12. ROM_Checksum Safety Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../diagnostic_mappings.html">3. Diagnostic Mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/j721s2/index_application_notes_j721s2.html">4. Developer Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index_j721s2.html">Software Diagnostics Library (SDL) - J721S2 User Guide</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index_j721s2.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../family_cfg/j721s2/index_examples_j721s2.html"><span class="section-number">3. </span>Safety Examples</a> &raquo;</li>
+      
+    <li><span class="section-number">3.8. </span>BIST Safety Example</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="bist-safety-example">
+<h1><span class="section-number">3.8. </span>BIST Safety Example<a class="headerlink" href="#bist-safety-example" title="Permalink to this headline">¶</a></h1>
+<section id="introduction">
+<h2><span class="section-number">3.8.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>This example demonstrates usage of the SDL PBIST and LBIST APIs to check the status of the Power-On Self Test (POST), as well as to perform software-initiated PBIST and LBIST tests for the varoius controllers on the device.
+The example shows performing the BIST checks in stages, similar to how a boot application might perform PBIST and LBIST while booting the cores at startup. The test is executed from the MCU R5F core and does not use an OS.</p>
+<p>The following controllers are tested in the associated phases.</p>
+<p>Pre-stage:</p>
+<ul class="simple">
+<li><p>HWPOST results are checked and reported</p></li>
+<li><p>PBIST Negative and positive tests for Main Infra and MSMC are executed</p></li>
+</ul>
+<p>Phase #0:</p>
+<ul class="simple">
+<li><p>PBIST Negative and positive tests for Main Pulsar 0</p></li>
+<li><p>LBIST test for Main Pulsar 0</p></li>
+</ul>
+<p>Phase #1:</p>
+<ul class="simple">
+<li><p>PBIST Negative and positive tests for Main Pulsar 1, C7x, C66x, VPAC and DMPAC</p></li>
+<li><p>LBIST test for Main Pulsar 1, C7x, VPAC, DMPAC</p></li>
+</ul>
+<p>Phase #2:</p>
+<ul class="simple">
+<li><p>PBIST Negative and positive tests for A72, HC, Encoder and Decoder</p></li>
+<li><p>LBIST test for A72</p></li>
+</ul>
+<p>When executing PBIST in the example application, the test-for-diagnostic (negative test) is executed first, followed by the PBIST test itself. At the end of the test, the result for each test is printed.</p>
+</section>
+<section id="example-details">
+<h2><span class="section-number">3.8.2. </span>Example Details<a class="headerlink" href="#example-details" title="Permalink to this headline">¶</a></h2>
+<p>The example should be loaded to the hardware using the Secondary Boot Loader (SBL) from the SDK.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Example Name</p></th>
+<th class="head"><p>Location</p></th>
+<th class="head"><p>Build Command</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>bist_example</p></td>
+<td><p>[sdl_install_dir]/examples/bist/</p></td>
+<td><p>make bist_example PROFILE=release</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="expected-output">
+<h2><span class="section-number">3.8.3. </span>Expected Output<a class="headerlink" href="#expected-output" title="Permalink to this headline">¶</a></h2>
+<p>bist_example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>BIST<span class="w"> </span>Example<span class="w"> </span>Application
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span>failure<span class="w"> </span>insertion<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>PBIST<span class="w"> </span>HWPOST<span class="w"> </span>MCU,<span class="w"> </span>index<span class="w"> </span><span class="m">0</span>...
+
+<span class="w"> </span>Starting<span class="w"> </span>PBIST<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>MSMC<span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">13</span>...
+<span class="w">    </span>HW<span class="w"> </span>POST<span class="w"> </span>MCU<span class="w"> </span>Status<span class="w"> </span>:<span class="w"> </span>SDL_PBIST_POST_COMPLETED_SUCCESS
+<span class="w">    </span>HW<span class="w"> </span>POST<span class="w"> </span>MCU<span class="w"> </span>Status<span class="w"> </span>:<span class="w"> </span>SDL_LBIST_POST_NOT_RUN
+<span class="w">    </span>HW<span class="w"> </span>POST<span class="w"> </span>DMSC<span class="w"> </span>Status<span class="w"> </span>:<span class="w"> </span>SDL_LBIST_POST_NOT_RUN
+<span class="w">    </span>HW<span class="w"> </span>POST<span class="w"> </span>MCU<span class="w"> </span>Status<span class="w"> </span>:<span class="w"> </span>SDL_LBIST_POST_NOT_RUN
+<span class="w">    </span>HW<span class="w"> </span>POST<span class="w"> </span>DMSC<span class="w"> </span>Status<span class="w"> </span>:<span class="w"> </span>SDL_LBIST_POST_NOT_RUN
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span>failure<span class="w"> </span>insertion<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>Main<span class="w"> </span>R5F<span class="w"> </span><span class="m">0</span><span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">1</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span>failure<span class="w"> </span>insertion<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>Codec<span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">2</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span>failure<span class="w"> </span>insertion<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>Main<span class="w"> </span>Infra1<span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">3</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span>failure<span class="w"> </span>insertion<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>VPAC<span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">4</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span>failure<span class="w"> </span>insertion<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>DSS<span class="w"> </span>EDP<span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">5</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span>failure<span class="w"> </span>insertion<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>DMPAC<span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">6</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span>failure<span class="w"> </span>insertion<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>NAVSS<span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">7</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span>failure<span class="w"> </span>insertion<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>Main<span class="w"> </span>Infra1<span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">8</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span>failure<span class="w"> </span>insertion<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>GPU<span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">9</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span>failure<span class="w"> </span>insertion<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>HC<span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">10</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span>failure<span class="w"> </span>insertion<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>VPAC_1<span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">11</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span>failure<span class="w"> </span>insertion<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>Main<span class="w"> </span>R5F<span class="w"> </span><span class="m">2</span><span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">12</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span>failure<span class="w"> </span>insertion<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>Codec<span class="w"> </span><span class="m">1</span><span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">13</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span>failure<span class="w"> </span>insertion<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>A72_0_0<span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">14</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span>failure<span class="w"> </span>insertion<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>A72_0_1<span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">15</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span>failure<span class="w"> </span>insertion<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>A72_1_0<span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">16</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span>failure<span class="w"> </span>insertion<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>A72_1_1<span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">17</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span>failure<span class="w"> </span>insertion<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>C7X_0<span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">18</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span>failure<span class="w"> </span>insertion<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>C7X_1<span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">19</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span>failure<span class="w"> </span>insertion<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>C7X_2<span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">20</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span>failure<span class="w"> </span>insertion<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>C7X_3<span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">21</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span>failure<span class="w"> </span>insertion<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>ANA_0<span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">22</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span>failure<span class="w"> </span>insertion<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>ANA_1<span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">23</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span>failure<span class="w"> </span>insertion<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>ANA_2<span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">24</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span>failure<span class="w"> </span>insertion<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>ANA_3<span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">25</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span>failure<span class="w"> </span>insertion<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>MSMC<span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">26</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>Main<span class="w"> </span>R5F<span class="w"> </span><span class="m">0</span><span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">1</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>Codec<span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">2</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>Main<span class="w"> </span>Infra1<span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">3</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>VPAC<span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">4</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>DSS<span class="w"> </span>EDP<span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">5</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>DMPAC<span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">6</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>NAVSS<span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">7</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>Main<span class="w"> </span>Infra1<span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">8</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>GPU<span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">9</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>HC<span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">10</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>VPAC_1<span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">11</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>Main<span class="w"> </span>R5F<span class="w"> </span><span class="m">2</span><span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">12</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>Codec<span class="w"> </span><span class="m">1</span><span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">13</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>A72_0_0<span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">14</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>A72_0_1<span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">15</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>A72_1_0<span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">16</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>A72_1_1<span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">17</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>C7X_0<span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">18</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>C7X_1<span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">19</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>C7X_2<span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">20</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>C7X_3<span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">21</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>ANA_0<span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">22</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>ANA_1<span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">23</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>ANA_2<span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">24</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>ANA_3<span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">25</span>...
+
+Starting<span class="w"> </span>PBIST<span class="w"> </span><span class="nb">test</span><span class="w"> </span>on<span class="w"> </span>MSMC<span class="w"> </span>PBIST,<span class="w"> </span>index<span class="w"> </span><span class="m">26</span>...
+
+***<span class="w"> </span>Boot<span class="w"> </span>stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>is<span class="w"> </span>complete,<span class="w"> </span>cores<span class="w"> </span><span class="k">for</span><span class="w"> </span>this<span class="w"> </span>stage<span class="w"> </span>may<span class="w"> </span>now<span class="w"> </span>be<span class="w"> </span>loaded<span class="w"> </span>***
+
+***<span class="w"> </span>Boot<span class="w"> </span>stage<span class="w"> </span><span class="m">1</span><span class="w"> </span>is<span class="w"> </span>complete,<span class="w"> </span>cores<span class="w"> </span><span class="k">for</span><span class="w"> </span>this<span class="w"> </span>stage<span class="w"> </span>may<span class="w"> </span>now<span class="w"> </span>be<span class="w"> </span>loaded<span class="w"> </span>***
+
+***<span class="w"> </span>Boot<span class="w"> </span>stage<span class="w"> </span><span class="m">2</span><span class="w"> </span>is<span class="w"> </span>complete,<span class="w"> </span>cores<span class="w"> </span><span class="k">for</span><span class="w"> </span>this<span class="w"> </span>stage<span class="w"> </span>may<span class="w"> </span>now<span class="w"> </span>be<span class="w"> </span>loaded<span class="w"> </span>***
+
+<span class="o">==========================</span>
+BIST:<span class="w"> </span>Example<span class="w"> </span>App<span class="w"> </span>Summary:
+<span class="o">==========================</span>
+BIST:<span class="w"> </span>Pre-boot<span class="w"> </span>Stage<span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>negative<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_HWPOST_MCU_INDEX,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+Pre-boot<span class="w"> </span>stage<span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span><span class="m">1</span><span class="w"> </span>negative<span class="w"> </span>PBIST<span class="w"> </span>total<span class="w"> </span>sections
+BIST:<span class="w"> </span>Pre-boot<span class="w"> </span>Stage<span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_HWPOST_MCU_INDEX,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+Pre-boot<span class="w"> </span>stage<span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span><span class="m">1</span><span class="w"> </span>PBIST<span class="w"> </span>total<span class="w"> </span>sections
+BIST:<span class="w"> </span>Pre-boot<span class="w"> </span>Stage<span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>LBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>LBIST_HWPOST_INST_SMS_INDEX,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>LBIST_POST_COMPLETED_SUCCESS
+BIST:<span class="w"> </span>Pre-boot<span class="w"> </span>Stage<span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>LBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>LBIST_HWPOST_INST_MCU_INDEX,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>LBIST_POST_COMPLETED_SUCCESS
+Pre-boot<span class="w"> </span>stage<span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span><span class="m">2</span><span class="w"> </span>LBIST<span class="w"> </span>total<span class="w"> </span>sections
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>negative<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_MAINR5F0,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>negative<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_CODEC,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>negative<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_MAININFRA_1,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>negative<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_VPAC_0,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>negative<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_DSS,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>negative<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_DMPAC,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>negative<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_NAVSS,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>negative<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_MAININFRA_0,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>negative<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_GPU,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>negative<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_HC,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>negative<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_VPAC_1,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>negative<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_MAINR5F2,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>negative<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_CODEC_1,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>negative<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_A72_0_0,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>negative<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_A72_0_1,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>negative<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_A72_1_0,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>negative<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_A72_1_1,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>negative<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_C7X_0,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>negative<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_C7X_1,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>negative<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_C7X_2,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>negative<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_C7X_3,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>negative<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_ANA_0,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>negative<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_ANA_1,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>negative<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_ANA_2,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>negative<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_ANA_3,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>negative<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_MSMC,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span><span class="m">26</span><span class="w"> </span>negative<span class="w"> </span>PBIST<span class="w"> </span>total<span class="w"> </span>sections
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_MAINR5F0,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_CODEC,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_MAININFRA_1,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_VPAC_0,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_DSS,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_DMPAC,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_NAVSS,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_MAININFRA_0,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_GPU,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_HC,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_VPAC_1,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_MAINR5F2,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_CODEC_1,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_A72_0_0,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_A72_0_1,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_A72_1_0,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_A72_1_1,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_C7X_0,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_C7X_1,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_C7X_2,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_C7X_3,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_ANA_0,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_ANA_1,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_ANA_2,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_ANA_3,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>PBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>PBIST_INSTANCE_MSMC,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span><span class="m">26</span><span class="w"> </span>PBIST<span class="w"> </span>total<span class="w"> </span>sections
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>LBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>LBIST_INST_MAINR5F0_INDEX,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>LBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>LBIST_INST_MAINR5F2_INDEX,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span><span class="m">2</span><span class="w"> </span>LBIST<span class="w"> </span>sections
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">1</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span><span class="m">0</span><span class="w"> </span>negative<span class="w"> </span>PBIST<span class="w"> </span>total<span class="w"> </span>sections
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">1</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span><span class="m">0</span><span class="w"> </span>PBIST<span class="w"> </span>total<span class="w"> </span>sections
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">1</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>LBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>LBIST_INST_MAINR5F1_INDEX,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">1</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>LBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>LBIST_INST_C7X0_INDEX,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">1</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>LBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>LBIST_INST_C7X1_INDEX,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">1</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>LBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>LBIST_INST_C7X2_INDEX,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">1</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>LBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>LBIST_INST_C7X3_INDEX,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">1</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>LBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>LBIST_INST_VPAC0_INDEX,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">1</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>LBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>LBIST_INST_DMPAC_INDEX,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">1</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>LBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>LBIST_INST_A72_0_INDEX,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">1</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>LBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>LBIST_INST_A72_1_INDEX,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">1</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span><span class="m">9</span><span class="w"> </span>LBIST<span class="w"> </span>sections
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">2</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span><span class="m">0</span><span class="w"> </span>negative<span class="w"> </span>PBIST<span class="w"> </span>total<span class="w"> </span>sections
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">2</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span><span class="m">0</span><span class="w"> </span>PBIST<span class="w"> </span>total<span class="w"> </span>sections
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">2</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>LBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>LBIST_INST_A72SS0_CORE0_INDEX,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">2</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>LBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>LBIST_INST_A72SS0_CORE1_INDEX,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">2</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>LBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>LBIST_INST_A72SS0_CORE2_INDEX,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">2</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>LBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>LBIST_INST_A72SS0_CORE3_INDEX,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">2</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>LBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>LBIST_INST_A72SS1_CORE0_INDEX,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">2</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>LBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>LBIST_INST_A72SS1_CORE1_INDEX,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">2</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>LBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>LBIST_INST_A72SS1_CORE2_INDEX,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">2</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span>LBIST<span class="w"> </span>ID<span class="w"> </span>-<span class="w"> </span>LBIST_INST_A72SS1_CORE3_INDEX,<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PASS
+BIST:<span class="w"> </span>Stage<span class="w"> </span><span class="m">2</span><span class="w"> </span>-<span class="w"> </span>Ran<span class="w"> </span><span class="m">8</span><span class="w"> </span>LBIST<span class="w"> </span>sections
+main.c:200:bist_example_app:PASS
+
+-----------------------
+<span class="m">1</span><span class="w"> </span>Tests<span class="w"> </span><span class="m">0</span><span class="w"> </span>Failures<span class="w"> </span><span class="m">0</span><span class="w"> </span>Ignored
+OK
+</pre></div>
+</div>
+</section>
+<section id="reference">
+<h2><span class="section-number">3.8.4. </span>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="../modules/lbist.html">LBIST User Guide</a></p>
+<p><a class="reference external" href="../modules/pbist.html">PBIST User Guide</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="cpu.html" class="btn btn-neutral float-right" title="3.9. CPU Safety Example" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="rti.html" class="btn btn-neutral" title="3.7. RTI Safety Example" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyright 1995-2021</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'01_03_00',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+      });
+  </script>
+   
+
+</body>
+</html>

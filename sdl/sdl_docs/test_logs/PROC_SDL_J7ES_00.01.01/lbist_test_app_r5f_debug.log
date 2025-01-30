@@ -1,0 +1,69 @@
+SBL Revision: 01.00.10.01 (Dec  1 2021 - 08:15:07)
+TIFS  ver: 21.9.1--v2021.09a (Terrific Lla
+mcuClkFreq 1000000000
+
+LBIST Test Applications
+
+ Starting LBIST test on HWPOST - DMSC, index 0...
+   HW POST: LBIST MISR matched 
+   HW POST core: HWPOST - DMSC: HW POST was run successfully on this device
+  LBIST complete for HWPOST - DMSC 
+
+ Starting LBIST test on HWPOST - MCU, index 1...
+   HW POST: LBIST MISR matched 
+   HW POST core: HWPOST - MCU: HW POST was run successfully on this device
+  LBIST complete for HWPOST - MCU 
+
+ Starting LBIST test on Main R5F0-0, index 2...
+   LBIST MISR matched 
+  Delta Cores prep time in micro secs 3746 
+  Delta LBIST execution time in micro secs 17552 
+  Delta Cores restore time in micro secs 265 
+  LBIST complete for Main R5F0-0 
+
+ Starting LBIST test on Main R5F1-0, index 3...
+   LBIST MISR matched 
+  Delta Cores prep time in micro secs 216 
+  Delta LBIST execution time in micro secs 17547 
+  Delta Cores restore time in micro secs 252 
+  LBIST complete for Main R5F1-0 
+
+ Starting LBIST test on C7x , index 4...
+   LBIST MISR matched 
+  Delta Cores prep time in micro secs 162 
+  Delta LBIST execution time in micro secs 3503 
+  Delta Cores restore time in micro secs 171 
+  LBIST complete for C7x  
+
+ Starting LBIST test on VPAC, index 5...
+   LBIST MISR matched 
+  Delta Cores prep time in micro secs 88 
+  Delta LBIST execution time in micro secs 6969 
+  Delta Cores restore time in micro secs 103 
+  LBIST complete for VPAC 
+
+ Starting LBIST test on DMPAC, index 6...
+   LBIST MISR matched 
+  Delta Cores prep time in micro secs 85 
+  Delta LBIST execution time in micro secs 7262 
+  Delta Cores restore time in micro secs 111 
+  LBIST complete for DMPAC 
+
+ Starting LBIST test on A72 core 0, index 7...
+   LBIST MISR matched 
+  Delta Cores prep time in micro secs 276 
+  Delta LBIST execution time in micro secs 17366 
+  Delta Cores restore time in micro secs 321 
+  LBIST complete for A72 core 0 
+
+ LBIST Functionality Test Passed.
+
+ LBIST Error Module Test Passed.
+
+All tests have passed. 
+common/lbist_test_main.c:250:test_sdl_lbist_test_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored 
+OK
+

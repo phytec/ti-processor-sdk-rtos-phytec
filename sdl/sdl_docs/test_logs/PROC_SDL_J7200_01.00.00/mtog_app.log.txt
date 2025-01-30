@@ -1,0 +1,21 @@
+CCCCmcuClkFreq 1000000000
+
+MTOG Safety Example
+
+ sdlAppEsmSetupCommon...Done
+ sdlAppEsmSetupCommon...Done
+ sdlAppEsmSetup...Done
+ Starting MTOG test on MAIN MTOG0, index 0...
+ sdlAppEsmConfig...Done
+ MTOG Reset done
+ sdlAppEsmDisable...Done  Delta MTOG prep time in micro secs 26066
+  Delta MTOG execution time in micro secs 18043
+  Delta MTOG restore time in micro secs 27053
+  MTOG complete for MAIN MTOG0
+
+ MTOG Saftey Example passed.
+mtog_main.c:190:test_sdl_mtog_test_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored
+OK

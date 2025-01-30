@@ -1,0 +1,49 @@
+root@j7-evm:/opt/vision_apps# ./run_app_tidl_avp3.sh 
+APP: Init ... !!!
+MEM: Init ... !!!
+MEM: Initialized DMA HEAP (fd=4) !!!
+MEM: Init ... Done !!!
+IPC: Init ... !!!
+IPC: Init ... Done !!!
+REMOTE_SERVICE: Init ... !!!
+REMOTE_SERVICE: Init ... Done !!!
+APP: Init ... Done !!!
+   134.524540 s:  VX_ZONE_INIT:Enabled
+   134.524565 s:  VX_ZONE_ERROR:Enabled
+   134.524569 s:  VX_ZONE_WARNING:Enabled
+   134.525110 s:  VX_ZONE_INIT:[tivxInit:71] Initialization Done !!!
+   134.525284 s:  VX_ZONE_INIT:[tivxHostInit:48] Initialization Done for HOST !!!
+Computing checksum at 0x0000FFFF7D36AD40, size = 262136
+Computing checksum at 0x0000FFFF7CDBFB80, size = 615560
+[C7x_1 ]    134.933304 s:  VX_ZONE_WARNING:[tivxKernelTIDLCreate:615] All Interrupts DISABLED during TIDL process
+[C7x_1 ]    134.961957 s:  VX_ZONE_WARNING:[tivxKernelTIDLCreate:615] All Interrupts DISABLED during TIDL process
+[C7x_1 ]    134.990244 s:  VX_ZONE_WARNING:[tivxKernelTIDLCreate:615] All Interrupts DISABLED during TIDL process
+[C7x_1 ]    135.081725 s:  VX_ZONE_WARNING:[tivxKernelTIDLCreate:615] All Interrupts DISABLED during TIDL process
+[C7x_1 ]    135.147266 s:  VX_ZONE_WARNING:[tivxKernelTIDLCreate:615] All Interrupts DISABLED during TIDL process
+[C7x_1 ]    135.213736 s:  VX_ZONE_WARNING:[tivxKernelTIDLCreate:615] All Interrupts DISABLED during TIDL process
+
+
+ =========================
+ Demo : TIDL AVP Demo 3
+ =========================
+
+ p: Print performance statistics
+
+ x: Exit
+
+ Enter Choice: x
+
+   137.808863 s:  VX_ZONE_INIT:[tivxHostDeInit:56] De-Initialization Done for HOST !!!
+   137.812256 s:  VX_ZONE_INIT:[tivxDeInit:111] De-Initialization Done !!!
+APP: Deinit ... !!!
+REMOTE_SERVICE: Deinit ... !!!
+REMOTE_SERVICE: Deinit ... Done !!!
+IPC: Deinit ... !!!
+IPC: DeInit ... Done !!!
+MEM: Deinit ... !!!
+MEM: Alloc's: 329 alloc's of 104939821 bytes 
+MEM: Free's : 329 free's  of 104939821 bytes 
+MEM: Open's : 0 allocs  of 0 bytes 
+MEM: Deinit ... Done !!!
+APP: Deinit ... Done !!!
+root@j7-evm:/opt/vision_apps#

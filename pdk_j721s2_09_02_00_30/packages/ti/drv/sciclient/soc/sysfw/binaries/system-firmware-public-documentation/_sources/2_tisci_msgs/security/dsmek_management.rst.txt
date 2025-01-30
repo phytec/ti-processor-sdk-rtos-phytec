@@ -1,0 +1,118 @@
+==============================
+Derived SMEK TISCI Description
+==============================
+
+.. _sec_dsmek_tisci_desc:
+
+.. note::
+
+	This feature is only supported in j721S2 and j784S4 devices
+
+This chapter provides information on  |sysfw| API for Derived Symmetric Encryption
+key (dsmek) management. The available API are listed below.
+
++------------------+-----------------------------------------------------------------------+-----------------+--------------------+
+| TISCI Message ID |                        Message Name                                   | Available in GP | Available in HS-FS |
++==================+=======================================================================+=================+====================+
+| 0x9036           | :ref:`TISCI_MSG_SA2UL_GET_DSMEK <sec-api-sa2ul-get-dsmek>`            | Yes*            | Yes*               |
++------------------+-----------------------------------------------------------------------+-----------------+--------------------+
+| 0x9037           | :ref:`TISCI_MSG_SA2UL_SET_DSMEK <sec-api-sa2ul-set-dsmek>`            | Yes*            | Yes*               |
++------------------+-----------------------------------------------------------------------+-----------------+--------------------+
+| 0x9038           | :ref:`TISCI_MSG_SA2UL_RELEASE_DSMEK <sec-api-sa2ul-release-dsmek>`    | Yes*            | Yes*               |
++------------------+-----------------------------------------------------------------------+-----------------+--------------------+
+
+.. note::
+
+   On GP and HS-FS devices, DSMEK APIs return unconditional success but do not actually
+   involve any step to derive or program the dsmek values
+
+API Description
+===============
+
+.. _sec-api-sa2ul-set-dsmek:
+
+TISCI_MSG_SA2UL_SET_DSMEK - Set DSMEK
+-------------------------------------
+
+**Usage**:
+
++------------------------+--------+
+| **Message Type**       | Normal |
++------------------------+--------+
+| **Secure Queue Only?** | Yes    |
++------------------------+--------+
+
+TISCI Message ID
+----------------
+
+.. sysfwapimacro:: TISCI_MSG_SA2UL_SET_DSMEK
+
+.. sysfwapistruct:: tisci_msg_sa2ul_set_dsmek_req
+
+.. sysfwapistruct:: tisci_msg_sa2ul_set_dsmek_resp
+
+.. sysfwapimacro:: KDF_LABEL_AND_CONTEXT_LEN_MAX
+
+
+See :ref:`pub_tisci_dsmek_notes` below.
+
+.. _sec-api-sa2ul-release-dsmek:
+
+TISCI_MSG_SA2UL_RELEASE_DSMEK - Release DSMEK
+---------------------------------------------
+
+**Usage**:
+
++------------------------+--------+
+| **Message Type**       | Normal |
++------------------------+--------+
+| **Secure Queue Only?** | Yes    |
++------------------------+--------+
+
+TISCI Message ID
+----------------
+
+.. sysfwapimacro:: TISCI_MSG_SA2UL_RELEASE_DSMEK
+
+.. sysfwapistruct:: tisci_msg_sa2ul_release_dsmek_req
+
+.. sysfwapistruct:: tisci_msg_sa2ul_release_dsmek_resp
+
+See :ref:`pub_tisci_dsmek_notes` below.
+
+.. _sec-api-sa2ul-get-dsmek:
+
+TISCI_MSG_SA2UL_GET_DSMEK - Get DSMEK
+-------------------------------------
+
+**Usage**:
+
++------------------------+--------+
+| **Message Type**       | Normal |
++------------------------+--------+
+| **Secure Queue Only?** | Yes    |
++------------------------+--------+
+
+TISCI Message ID
+----------------
+
+.. sysfwapimacro:: TISCI_MSG_SA2UL_GET_DSMEK
+
+.. sysfwapimacro:: SA2UL_DSMEK_KEY_LEN
+
+.. sysfwapistruct:: tisci_msg_sa2ul_get_dsmek_req
+
+.. sysfwapistruct:: tisci_msg_sa2ul_get_dsmek_resp
+
+
+See :ref:`pub_tisci_dsmek_notes` below.
+
+.. _pub_tisci_dsmek_notes:
+
+API Notes
+---------
+
+- The total length of the Label and Context fields below is limited by the size
+  of the TISCI messages(see :ref:`pub_secure_msg_header`) to 41 bytes.
+
+- |sysfw| only support ``sa2ul_instance`` value of 0 in the API below.

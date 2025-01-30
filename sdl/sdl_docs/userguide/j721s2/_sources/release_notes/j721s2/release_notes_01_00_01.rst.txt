@@ -1,0 +1,124 @@
+Release Notes - 01_00_01
+========================
+
+Introduction
+------------
+
+This release notes provides important information that will assist you in using the SDL software package for the J721S2 family of devices.
+This document provides the product information and known issues that are specific to the SDL software package.
+
+New features added / supported is listed below and defects fixed are highlighted in **Fixed Issues**. Also please check **Upgrade and Compatibility** for backward compatibility
+
+What's New
+----------
+
+Update SDL to support PDK 8.6.0.
+
+SDL support for the following modules are available:
+
+* R5F PMU, MPU, RAT and VIM
+* ESM
+* PBIST
+* LBIST
+* POK
+* VTM
+* TOG
+* ECC
+* RTI
+* R5F CCM
+* DCC
+* MCRC
+
+Safety Examples for the following modules are provided:
+
+* ESM
+* POK
+* VTM
+* MTOG
+* STOG
+* DCC
+* RTI
+* ECC
+* BIST
+
+
+Upgrade and Compatibility
+-------------------------
+
+None.
+
+Supported Devices
+-----------------
+
++------------------------+
+| Supported Platform     |
++========================+
+| J721S2                 |
+|                        |
++------------------------+
+
+
+Fixed Issues
+------------
+
+None.
+
+Known Issues and Limitations
+----------------------------
+
++--------------------------+---------+------------------------------------------+-------------------------------------------------+
+| Issue Id                 | Module  | Description                              | Workaround                                      |
++==========================+=========+==========================================+=================================================+
+| PROC_SDL-3350            | RAT     | Illegal boundary crossing test for       | None - This issue is under investigation.       |
+|                          |         | R5F RAT module fails.                    |                                                 |
++--------------------------+---------+------------------------------------------+-------------------------------------------------+
+| PROC_SDL-4140            | ECC     | Some ECC aggregator error tests failing. | None - updating of metadata and investigation   |
+|                          |         | Metadata is incorrect and needs to be    | of failues is in progress.                      |
+|                          |         | updated for the following:               |                                                 |
+|                          |         | SOC aggregators AGGR5 (HC CBASS),        | Due to this, the ECC error inject functionality |
+|                          |         | MSMC aggregator 0 (endpoint 85 only)     | for the mentioned IPs and endpoints is not      |
+|                          |         |                                          | usable in this release.                         |
+|                          |         | The following aggregators have failures  |                                                 |
+|                          |         | for certain endpoint error testing and   |                                                 |
+|                          |         | the failures are under debug:            |                                                 |
+|                          |         | PSRAM2KECC0.                             |                                                 |
++--------------------------+---------+------------------------------------------+-------------------------------------------------+
+| PROC_SDL-4141            | TOG     | 1 STOG instances error injection test is | None - This issue is under investigation.       |
+|                          |         | failing and are not included in the      |                                                 |
+|                          |         | test application. (STOG17)               |                                                 |
++--------------------------+---------+------------------------------------------+-------------------------------------------------+
+| PROC_SDL-4720            | PBIST   | PBIST test case for DSS/EDP/DSI fails    | None - This issue is under investigation.       |
+|                          |         |                                          | Root cause may be hardware configuration and/or |
+|                          |         |                                          | pre-test sequence in the application.           |
++--------------------------+---------+------------------------------------------+-------------------------------------------------+
+| PROC_SDL-4142            | PBIST   | MAINR5F1 PBIST test fails in back-to-back| None - This issue is under investigation. It    |
+|                          |         | runs.                                    | could be due to power/reset sequence in the     |
+|                          |         |                                          | test application.                               |
++--------------------------+---------+------------------------------------------+-------------------------------------------------+
+| PROC_SDL-5685            | ESM     | esm_wkup_mcu_app and vtm_app tests fail. | None - This issue is under investigation.       |
++--------------------------+---------+------------------------------------------+-------------------------------------------------+
+| PROC_SDL-5682            | ECC     | sdl_ecc_test_app fails for VIM module.   | None - This issue is under investigation.       |
+|                          |         |                                          | this issue is because timer0 needs to be enabled|
+|                          |         |                                          | to generate the interrupt for VIM DED test.     |
+|                          |         |                                          | This is a test application issue due to change  |
+|                          |         |                                          | in PDK osal module.                             |
++--------------------------+---------+------------------------------------------+-------------------------------------------------+
+| PROC_SDL-5689            | PBIST   | bist_example failing in Main Infra1      | Use pbist_test_app or sdl_pbist_test_app.       |
+|                          |         | and Main R5F 1 PBIST instances.          |                                                 |
++--------------------------+---------+------------------------------------------+-------------------------------------------------+
+
+
+Migration Information
+---------------------
+
+None
+
+Tool Chain Information
+----------------------
+
++-----------------------------------+-------------------------------+
+| Component                         | Version                       |
++===================================+===============================+
+| TI ARM R5F Clang Compiler tools   | 1.3.0.LTS                     |
++-----------------------------------+-------------------------------+
+

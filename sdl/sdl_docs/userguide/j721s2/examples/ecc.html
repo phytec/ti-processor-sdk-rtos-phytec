@@ -1,0 +1,436 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>3.6. ECC Safety Example &mdash; Software Diagnostics Library (SDL) - J721S2 User Guide</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Software Diagnostics Library (SDL) - J721S2 User Guide" href="../index.html"/>
+        <link rel="up" title="3. Safety Examples" href="../family_cfg/j721s2/index_examples_j721s2.html"/>
+        <link rel="next" title="3.7. RTI Safety Example" href="rti.html"/>
+        <link rel="prev" title="3.5. DCC Safety Example" href="dcc.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="../_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index_j721s2.html" class="icon icon-home"> Software Diagnostics Library (SDL) - J721S2 User Guide
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                01_03_00
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/j721s2/index_release_notes_j721s2.html">1. Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">2. Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/j721s2/index_modules_j721s2.html">2. Modules</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../family_cfg/j721s2/index_examples_j721s2.html">3. Safety Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="esm.html">3.1. ESM Safety Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vtm.html">3.2. VTM Safety Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pok.html">3.3. POK Safety Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tog.html">3.4. TOG Safety Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dcc.html">3.5. DCC Safety Example</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3.6. ECC Safety Example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">3.6.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#use-cases">3.6.2. Use Cases</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-details">3.6.3. Example Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#expected-output">3.6.4. Expected Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reference">3.6.5. Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rti.html">3.7. RTI Safety Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bist.html">3.8. BIST Safety Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpu.html">3.9. CPU Safety Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mcrc.html">3.10. MCRC Safety Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mtog.html">3.11. MTOG Safety Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rom_checksum.html">3.12. ROM_Checksum Safety Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../diagnostic_mappings.html">3. Diagnostic Mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/j721s2/index_application_notes_j721s2.html">4. Developer Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index_j721s2.html">Software Diagnostics Library (SDL) - J721S2 User Guide</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index_j721s2.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../family_cfg/j721s2/index_examples_j721s2.html"><span class="section-number">3. </span>Safety Examples</a> &raquo;</li>
+      
+    <li><span class="section-number">3.6. </span>ECC Safety Example</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="ecc-safety-example">
+<h1><span class="section-number">3.6. </span>ECC Safety Example<a class="headerlink" href="#ecc-safety-example" title="Permalink to this headline">¶</a></h1>
+<section id="introduction">
+<h2><span class="section-number">3.6.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>This example shows setup and usage of some ECC Aggregators for a few events in the Main domain.  It shows the following:</p>
+<ul class="simple">
+<li><p>Setup of an ESM application callback to receive Single Error Correction (SEC) and Double Error Detection (DED) events and setup of ECC Aggregators in general</p></li>
+<li><p>Triggering of ECC events for a small number of RAM IDs, including Interconnect type and Wrapper type</p></li>
+<li><p>Printing out error information within the ECC callback upon reception of ECC events</p></li>
+</ul>
+<p>This ECC example application shows basic examples of receiving interrupts from Main ESM, as well as gathering more details about these ECC events.</p>
+<p>The following use cases are implemented in this example:</p>
+</section>
+<section id="use-cases">
+<h2><span class="section-number">3.6.2. </span>Use Cases<a class="headerlink" href="#use-cases" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Use Case</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>ESM</p></th>
+<th class="head"><p>ECC Aggregator</p></th>
+<th class="head"><p>ECC RAM ID</p></th>
+<th class="head"><p>RAM ID Type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>UC-1</p></td>
+<td><p>Single DED error on Main ESM for
+wrapper RAM ID type</p></td>
+<td><p>ESM0</p></td>
+<td><p>SDL_ECC_MEMTYPE_MAIN_MSMC_AGGR0</p></td>
+<td><p>SDL_COMPUTE_CLUSTER0_MSMC_ECC_AGGR0_CLEC_J7ES_CLEC_EDC_CTRL_BUSECC_RAM_ID</p></td>
+<td><p>Wrapper</p></td>
+</tr>
+<tr class="row-odd"><td><p>UC-2</p></td>
+<td><p>Single SEC error on Main ESM for
+wrapper RAM ID type</p></td>
+<td><p>ESM0</p></td>
+<td><p>SDL_ECC_MEMTYPE_MAIN_MSMC_AGGR0</p></td>
+<td><p>SDL_COMPUTE_CLUSTER0_MSMC_ECC_AGGR0_MSMC_MMR_BUSECC_RAM_ID</p></td>
+<td><p>Wrapper</p></td>
+</tr>
+<tr class="row-even"><td><p>UC-3</p></td>
+<td><p>Parity error injection on Main ESM
+for interconnect RAM ID type</p></td>
+<td><p>ESM0</p></td>
+<td><p>SDL_ECC_MEMTYPE_MAIN_MSMC_AGGR0</p></td>
+<td><p>SDL_COMPUTE_CLUSTER0_MSMC_ECC_AGGR0_VBUSP_CFG_DSP4_P2P_DST_BUSECC_RAM_ID</p></td>
+<td><p>Interconnect</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</section>
+<section id="example-details">
+<h2><span class="section-number">3.6.3. </span>Example Details<a class="headerlink" href="#example-details" title="Permalink to this headline">¶</a></h2>
+<p>The example should be loaded to the hardware using the Secondary Boot Loader (SBL) from the SDK.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Example Name</p></th>
+<th class="head"><p>Location</p></th>
+<th class="head"><p>Build Command</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ecc_app</p></td>
+<td><p>[sdl_install_dir]/examples/ecc/</p></td>
+<td><p>make ecc_app PROFILE=release</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="expected-output">
+<h2><span class="section-number">3.6.4. </span>Expected Output<a class="headerlink" href="#expected-output" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ECC<span class="w"> </span>Example<span class="w"> </span>Application
+ECCC_Example_init:<span class="w"> </span>Init<span class="w"> </span>MAIN<span class="w"> </span>ESM<span class="w"> </span><span class="nb">complete</span>
+
+SDTF_init:<span class="w"> </span>MCU<span class="w"> </span>MSMC<span class="w"> </span>ECC<span class="w"> </span>Init<span class="w"> </span><span class="nb">complete</span>
+
+ECC_Example_init:<span class="w"> </span>ECC<span class="w"> </span>Callback<span class="w"> </span>Init<span class="w"> </span><span class="nb">complete</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>Main<span class="w"> </span>ESM
+
+
+
+ESM<span class="w"> </span>Safety<span class="w"> </span>Example<span class="w"> </span>tests:<span class="w"> </span>starting
+
+<span class="w"> </span>MSMC<span class="w"> </span>Double<span class="w"> </span>bit<span class="w"> </span>error<span class="w"> </span>inject<span class="w"> </span>Example<span class="w"> </span><span class="nb">test</span><span class="w"> </span>UC-1:<span class="w"> </span>starting
+<span class="w">  </span>ESM<span class="w"> </span>Call<span class="w"> </span>back<span class="w"> </span><span class="k">function</span><span class="w"> </span>called<span class="w"> </span>:<span class="w"> </span>instType<span class="w"> </span>0x3,<span class="w"> </span>intType<span class="w"> </span>0x2,<span class="w"> </span>grpChannel<span class="w"> </span>0x1,<span class="w"> </span>index<span class="w"> </span>0x10,<span class="w"> </span>intSrc<span class="w"> </span>0x30
+<span class="w">  </span>Take<span class="w"> </span>action
+<span class="w"> </span>Low<span class="w"> </span>Priority<span class="w"> </span>Interrupt<span class="w"> </span>Executed
+
+<span class="w">  </span>ECC<span class="w"> </span>Error<span class="w"> </span>Call<span class="w"> </span>back<span class="w"> </span><span class="k">function</span><span class="w"> </span>called<span class="w"> </span>:<span class="w"> </span>eccMemType<span class="w"> </span><span class="m">93</span>,<span class="w"> </span>errorSrc<span class="w"> </span>0x2,<span class="w"> </span>ramId<span class="w"> </span><span class="m">107</span>,<span class="w"> </span>bitErrorOffset<span class="w"> </span>0x00000000,<span class="w"> </span>bitErrorGroup<span class="w"> </span><span class="m">0</span>
+
+
+<span class="w"> </span>MSMC<span class="w"> </span>Double<span class="w"> </span>bit<span class="w"> </span>error<span class="w"> </span>inject<span class="w"> </span>test:<span class="w"> </span>Subtype<span class="w"> </span>0x6b<span class="w"> </span><span class="nb">test</span><span class="w"> </span><span class="nb">complete</span>
+
+<span class="w"> </span>Waiting<span class="w"> </span><span class="k">for</span><span class="w"> </span>ESM<span class="w"> </span>Interrupt
+
+
+
+UC-1:<span class="w"> </span>Got<span class="w"> </span>Low<span class="w"> </span>priority<span class="w"> </span>ESM<span class="w"> </span>Interrupt
+
+
+
+<span class="w"> </span>MSMC<span class="w"> </span>Double<span class="w"> </span>bit<span class="w"> </span>error<span class="w"> </span>inject<span class="w"> </span>Example<span class="w"> </span><span class="nb">test</span><span class="w"> </span>UC-2:<span class="w"> </span>starting
+<span class="w">  </span>ESM<span class="w"> </span>Call<span class="w"> </span>back<span class="w"> </span><span class="k">function</span><span class="w"> </span>called<span class="w"> </span>:<span class="w"> </span>instType<span class="w"> </span>0x3,<span class="w"> </span>intType<span class="w"> </span>0x1,<span class="w"> </span>grpChannel<span class="w"> </span>0x1,<span class="w"> </span>index<span class="w"> </span>0x11,<span class="w"> </span>intSrc<span class="w"> </span>0x31
+<span class="w">  </span>Take<span class="w"> </span>action
+<span class="w"> </span>High<span class="w"> </span>Priority<span class="w"> </span>Interrupt<span class="w"> </span>Executed
+
+<span class="w">  </span>ECC<span class="w"> </span>Error<span class="w"> </span>Call<span class="w"> </span>back<span class="w"> </span><span class="k">function</span><span class="w"> </span>called<span class="w"> </span>:<span class="w"> </span>eccMemType<span class="w"> </span><span class="m">93</span>,<span class="w"> </span>errorSrc<span class="w"> </span>0x1,<span class="w"> </span>ramId<span class="w"> </span><span class="m">20</span>,<span class="w"> </span>bitErrorOffset<span class="w"> </span>0x00000000,<span class="w"> </span>bitErrorGroup<span class="w"> </span><span class="m">0</span>
+
+
+<span class="w"> </span>MSMC<span class="w"> </span>Double<span class="w"> </span>bit<span class="w"> </span>error<span class="w"> </span>inject<span class="w"> </span>test:<span class="w"> </span>Subtype<span class="w"> </span>0x14<span class="w"> </span><span class="nb">test</span><span class="w"> </span><span class="nb">complete</span>
+
+<span class="w"> </span>Waiting<span class="w"> </span><span class="k">for</span><span class="w"> </span>ESM<span class="w"> </span>Interrupt
+
+
+
+<span class="w"> </span>UC-2:<span class="w"> </span>Got<span class="w"> </span>High<span class="w"> </span>priority<span class="w"> </span>ESM<span class="w"> </span>Interrupt
+
+
+
+
+
+****<span class="w"> </span>MSMC<span class="w"> </span>Memory<span class="w"> </span>Parity<span class="w"> </span>TEST<span class="w"> </span>****
+
+
+<span class="w">  </span>ESM<span class="w"> </span>Call<span class="w"> </span>back<span class="w"> </span><span class="k">function</span><span class="w"> </span>called<span class="w"> </span>:<span class="w"> </span>instType<span class="w"> </span>0x3,<span class="w"> </span>intType<span class="w"> </span>0x2,<span class="w"> </span>grpChannel<span class="w"> </span>0x1,<span class="w"> </span>index<span class="w"> </span>0x10,<span class="w"> </span>intSrc<span class="w"> </span>0x30
+<span class="w">  </span>Take<span class="w"> </span>action
+<span class="w"> </span>Low<span class="w"> </span>Priority<span class="w"> </span>Interrupt<span class="w"> </span>Executed
+
+<span class="w">  </span>ECC<span class="w"> </span>Error<span class="w"> </span>Call<span class="w"> </span>back<span class="w"> </span><span class="k">function</span><span class="w"> </span>called<span class="w"> </span>:<span class="w"> </span>eccMemType<span class="w"> </span><span class="m">93</span>,<span class="w"> </span>errorSrc<span class="w"> </span>0x2,<span class="w"> </span>ramId<span class="w"> </span><span class="m">105</span>,<span class="w"> </span>bitErrorOffset<span class="w"> </span>0x00000000,<span class="w"> </span>bitErrorGroup<span class="w"> </span><span class="m">3</span>
+
+
+<span class="w"> </span>MSMC_BUSECC_RAM<span class="w"> </span>Single<span class="w"> </span>bit<span class="w"> </span>error<span class="w"> </span>self<span class="w"> </span>test:<span class="w"> </span>Subtype<span class="w"> </span>0x69<span class="w"> </span><span class="nb">test</span><span class="w"> </span><span class="nb">complete</span>
+
+<span class="w"> </span>Waiting<span class="w"> </span><span class="k">for</span><span class="w"> </span>ESM<span class="w"> </span>Interrupt
+
+
+
+<span class="w"> </span>Memory<span class="w"> </span>Parity<span class="w"> </span>Error<span class="w"> </span>Test<span class="w"> </span>Complete
+
+
+
+<span class="w"> </span>ECC<span class="w"> </span>Safety<span class="w"> </span>Example<span class="w"> </span>tests:<span class="w"> </span>success
+<span class="w"> </span>ECC<span class="w"> </span>UC-1<span class="w"> </span>and<span class="w"> </span>UC-2<span class="w"> </span>Test
+All<span class="w"> </span>Use_Cases<span class="w"> </span>have<span class="w"> </span>passed.
+ecc_main.c:254:ECC_Example_app:PASS
+
+-----------------------
+<span class="m">1</span><span class="w"> </span>Tests<span class="w"> </span><span class="m">0</span><span class="w"> </span>Failures<span class="w"> </span><span class="m">0</span><span class="w"> </span>Ignored
+OK
+</pre></div>
+</div>
+</section>
+<section id="reference">
+<h2><span class="section-number">3.6.5. </span>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="../modules/ecc.html">ECC User Guide</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="rti.html" class="btn btn-neutral float-right" title="3.7. RTI Safety Example" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="dcc.html" class="btn btn-neutral" title="3.5. DCC Safety Example" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyright 1995-2021</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'01_03_00',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+      });
+  </script>
+   
+
+</body>
+</html>

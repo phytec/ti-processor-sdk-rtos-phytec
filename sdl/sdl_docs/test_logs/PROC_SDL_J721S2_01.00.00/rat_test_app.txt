@@ -1,0 +1,10 @@
+ RAT UNIT Test Application
+Test Name: RAT POSITIVE TEST  PASSED
+Test Name: RAT NEGATIVE TEST  PASSED
+
+ All tests have passed.
+rat_test_main.c:197:test_sdl_rat_baremetal_test_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored
+OK

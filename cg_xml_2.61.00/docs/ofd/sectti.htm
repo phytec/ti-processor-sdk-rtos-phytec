@@ -1,0 +1,131 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Documentation for sectti.pl</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Documentation for sectti.pl</span></strong></big>
+</td></tr>
+</table>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#USAGE">USAGE</a></li>
+  <li><a href="#OPTIONS">OPTIONS</a></li>
+  <li><a href="#CREATING-XML-INPUT">CREATING XML INPUT</a></li>
+  <li><a href="#OFD-OPTIONS">OFD OPTIONS</a></li>
+  <li><a href="#SIZING-UNITS">SIZING UNITS</a></li>
+  <li><a href="#CSV-FORMAT">CSV FORMAT</a>
+    <ul>
+      <li><a href="#CSV-FORMAT-FIELDS">CSV FORMAT FIELDS</a></li>
+      <li><a href="#CSV-HEADER-ROW">CSV HEADER ROW</a></li>
+    </ul>
+  </li>
+  <li><a href="#PERL-VERSION-DETAILS">PERL VERSION DETAILS</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>sectti.pl</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<p>Prints the name, size, and base address of each section in an object (.obj), executable (.out), or library (.lib) file. Any section not loaded or used on the target is ignored.</p>
+
+<h1 id="USAGE">USAGE</h1>
+
+<p>sectti.pl [options] <i>xml file</i></p>
+
+<pre><code>   ... OR ...</code></pre>
+
+<p>ofdXX -x <i>obj, out, or lib file</i> | perl sectti.pl [options]</p>
+
+<h1 id="OPTIONS">OPTIONS</h1>
+
+<pre><code> -h               : Output usage and quit
+ --csv            : CSV format
+ --no_header      : Disable writing out header row in CSV format
+ --cg_xml_version : Print out the version of the cg_xml package in use</code></pre>
+
+<h1 id="CREATING-XML-INPUT">CREATING XML INPUT</h1>
+
+<p>OFD stands for Object File Display utility. Examples include ofd6x for C6000 and ofd55 for C5500.</p>
+
+<p>Use the -x option of OFD to create the XML file. Example ...</p>
+
+<pre><code>      ofd6x -x -o=file.xml file.out</code></pre>
+
+<p>Alternatively, pipe the output from OFD into the script ...</p>
+
+<pre><code>      ofd6x -x file.out | perl sectti.pl</code></pre>
+
+<h1 id="OFD-OPTIONS">OFD OPTIONS</h1>
+
+<p>Recent releases of OFD support options for filtering the XML output down to what is strictly of interest. The best options to use in combination with this script are:</p>
+
+<pre><code>  -x --xml_indent=0 --obj_display=none,sections,header,segments</code></pre>
+
+<p>Filtering the XML in this way reduces the amount of data processed by this script, thus making it run faster.</p>
+
+<p>If you are using an older version of OFD which does not support all those options, try:</p>
+
+<pre><code>  -x --xml_indent=0 --obj_display=none,sections,header</code></pre>
+
+<p>That will work fine, so long as you are not working with ELF object files.</p>
+
+<p>If you are working with ELF object files, and you have an older version of OFD, then try:</p>
+
+<pre><code>  -x --xml_indent=0 --obj_display=norawdata,nosymbols</code></pre>
+
+<p>These options are less than ideal, but still helpful.</p>
+
+<h1 id="SIZING-UNITS">SIZING UNITS</h1>
+
+<p>Sizes are always reported as the number of 8-bit bytes. On targets that can address 8-bit bytes, this is not an issue. For other targets, this may be an issue. On C5400, for example, which can only address 16-bit words, to compute the number of target words used by a section, divide the size reported by sectti.pl by 2 i.e. 124 bytes == 62 words.</p>
+
+<h1 id="CSV-FORMAT">CSV FORMAT</h1>
+
+<p>CSV stands for Comma Separated Values. It is a text-based file format that can be loaded into many useful utilities, most notably MS-Excel. Get the data in CSV format with the option --csv.</p>
+
+<h2 id="CSV-FORMAT-FIELDS">CSV FORMAT FIELDS</h2>
+
+<p>The fields you get vary with whether the input file is a library, and whether it executable.</p>
+
+<p>If the file is a library, the library name is output at the beginning of each line. Otherwise, no library name is output.</p>
+
+<p>If the file is not a library and is executable (as indicated by the file header flags), the load and run address of each section is at the end of each line. Otherwise, addresses are not output.</p>
+
+<p>Fields always output are file name, section name, section type (CODE, DATA, UDATA == Uninitialized Data), and section size.</p>
+
+<h2 id="CSV-HEADER-ROW">CSV HEADER ROW</h2>
+
+<p>By default, an appropriate CSV header row is output. Disable with the option --no_header. Use this option to accumulate data across multiple files ...</p>
+
+<pre><code>   ofd6x -x first.lib  | perl sectti.pl --csv &gt; results.csv
+   ofd6x -x second.lib | perl sectti.pl --csv --no_header &gt;&gt; results.csv
+   ...</code></pre>
+
+<h1 id="PERL-VERSION-DETAILS">PERL VERSION DETAILS</h1>
+
+<p>This script was written using Perl version 5.8.3. It may not work with earlier revisions of Perl.</p>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Documentation for sectti.pl</span></strong></big>
+</td></tr>
+</table>
+
+</body>
+
+</html>
+
+

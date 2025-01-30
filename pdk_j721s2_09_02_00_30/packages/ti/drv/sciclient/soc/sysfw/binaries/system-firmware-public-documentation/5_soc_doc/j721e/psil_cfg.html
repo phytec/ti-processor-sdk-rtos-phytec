@@ -1,0 +1,552 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>J721E PSI-L Device Descriptions &mdash; TISCI User Guide</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="TISCI User Guide" href="../../index.html"/>
+        <link rel="up" title="Chapter 5: SoC Family Specific Documentation" href="../index.html"/>
+        <link rel="next" title="J721E Proxy Device Descriptions" href="proxy_cfg.html"/>
+        <link rel="prev" title="J721E DMA Device Descriptions" href="dma_cfg.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="../../_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> TISCI
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                09.02.04
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../1_intro/index.html">Chapter 1: Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../2_tisci_msgs/index.html">Chapter 2: TISCI Message Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../3_boardcfg/index.html">Chapter 3: Board Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../4_trace/index.html">Chapter 4: Interpreting Trace Data</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Chapter 5: SoC Family Specific Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#am65x-sr1">AM65x SR1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#am65x-sr2">AM65x SR2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#am64x">AM64x</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#am62x">AM62x</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#am62ax">AM62Ax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#am62px">AM62Px</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#j721e">J721E</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="hosts.html">J721E Host Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="devices.html">J721E Devices Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="clocks.html">J721E Clock Identifiers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pll_data.html">J721E PLL Defaults</a></li>
+<li class="toctree-l3"><a class="reference internal" href="resasg_types.html">J721E Board Configuration Resource Assignment Type Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interrupt_cfg.html">J721E Interrupt Management Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ra_cfg.html">J721E Ring Accelerator Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dma_cfg.html">J721E DMA Device Descriptions</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">J721E PSI-L Device Descriptions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#psi-l-proxy-device-ids">PSI-L Proxy Device IDs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#psi-l-source-and-destination-thread-ids">PSI-L Source and Destination Thread IDs</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="proxy_cfg.html">J721E Proxy Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sec_proxy.html">J721E Secure Proxy Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="processors.html">J721E Processor Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="firewalls.html">J721E Firewall Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="soc_devgrps.html">J721E Device Group descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="soc_domgrps.html">J721E Domain Group descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#j7200">J7200</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#j721s2">J721S2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#j722s">J722S</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#j784s4">J784S4</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../6_topic_user_guides/index.html">Chapter 6: Topic User Guides</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">TISCI</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Chapter 5: SoC Family Specific Documentation</a> &raquo;</li>
+      
+    <li>J721E PSI-L Device Descriptions</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="j721e-psi-l-device-descriptions">
+<h1>J721E PSI-L Device Descriptions<a class="headerlink" href="#j721e-psi-l-device-descriptions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>This chapter provides information on the PSI-L devices in the J721E SoC.  Some
+System Firmware TISCI messages take device specific inputs. This chapter
+provides information on the valid values for PSI-L TISCI message parameters.</p>
+</div>
+<div class="section" id="psi-l-proxy-device-ids">
+<span id="pub-soc-j721e-psil-proxy-device-ids"></span><h2>PSI-L Proxy Device IDs<a class="headerlink" href="#psi-l-proxy-device-ids" title="Permalink to this headline">¶</a></h2>
+<p>Some System Firmware TISCI message APIs require the PSI-L Proxy device ID be
+provided as part of the request. Based on <a class="reference internal" href="devices.html"><span class="doc">J721E Device IDs</span></a>
+these are the valid PSI-L Proxy device IDs.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="52%" />
+<col width="48%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">PSI-L Proxy Device Name</th>
+<th class="head">PSI-L Proxy Device ID</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>J721E_DEV_NAVSS0</td>
+<td>199</td>
+</tr>
+<tr class="row-odd"><td>J721E_DEV_MCU_NAVSS0</td>
+<td>232</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="psi-l-source-and-destination-thread-ids">
+<span id="pub-soc-j721e-psil-thread-ids"></span><h2>PSI-L Source and Destination Thread IDs<a class="headerlink" href="#psi-l-source-and-destination-thread-ids" title="Permalink to this headline">¶</a></h2>
+<p>This section describes valid PSI-L source and destination thread IDs for each
+thread type. The thread IDs are used in the PSI-L based TISCI messages.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">PSI-L threads marked as reserved for use by DMSC <strong>cannot</strong> be linked to
+another thread.</p>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="68%" />
+<col width="32%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Thread Type</th>
+<th class="head">Thread Range</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>udmap0_trstrm_tx</td>
+<td>0x8 to 0x8</td>
+</tr>
+<tr class="row-odd"><td>udmap0_cfgstrm_tx</td>
+<td>0x20 to 0x20</td>
+</tr>
+<tr class="row-even"><td>navss_main_udmap0_tx</td>
+<td>0x1000 to 0x108b</td>
+</tr>
+<tr class="row-odd"><td>navss_main_saul0_rx</td>
+<td>0x4000 to 0x4003</td>
+</tr>
+<tr class="row-even"><td>navss_main_icssg0_rx</td>
+<td>0x4100 to 0x4104</td>
+</tr>
+<tr class="row-odd"><td>navss_main_icssg1_rx</td>
+<td>0x4200 to 0x4204</td>
+</tr>
+<tr class="row-even"><td>navss_main_pdma_main_debug_ccmcu_rx</td>
+<td>0x4300 to 0x4302</td>
+</tr>
+<tr class="row-odd"><td>navss_main_pdma_main_debug_mainc66_rx</td>
+<td>0x4304 to 0x4305</td>
+</tr>
+<tr class="row-even"><td>navss_main_pdma_main_mcasp_g0_rx</td>
+<td>0x4400 to 0x4402</td>
+</tr>
+<tr class="row-odd"><td>navss_main_pdma_main_aasrc_rx</td>
+<td>0x4404 to 0x440b</td>
+</tr>
+<tr class="row-even"><td>navss_main_pdma_main_mcasp_g1_rx</td>
+<td>0x4500 to 0x4508</td>
+</tr>
+<tr class="row-odd"><td>navss_main_pdma_main_misc_g0_rx</td>
+<td>0x4600 to 0x460a</td>
+</tr>
+<tr class="row-even"><td>navss_main_pdma_main_misc_g1_rx</td>
+<td>0x460c to 0x4616</td>
+</tr>
+<tr class="row-odd"><td>navss_main_pdma_main_misc_g2_rx</td>
+<td>0x4618 to 0x4622</td>
+</tr>
+<tr class="row-even"><td>navss_main_pdma_main_misc_g3_rx</td>
+<td>0x4624 to 0x462e</td>
+</tr>
+<tr class="row-odd"><td>navss_main_pdma_main_usart_g0_rx</td>
+<td>0x4700 to 0x4701</td>
+</tr>
+<tr class="row-even"><td>navss_main_pdma_main_usart_g1_rx</td>
+<td>0x4702 to 0x4703</td>
+</tr>
+<tr class="row-odd"><td>navss_main_pdma_main_usart_g2_rx</td>
+<td>0x4704 to 0x4709</td>
+</tr>
+<tr class="row-even"><td>navss_main_pdma_main_mcan_rx</td>
+<td>0x470c to 0x4729</td>
+</tr>
+<tr class="row-odd"><td>navss_main_msmc0_rx</td>
+<td>0x4800 to 0x481f</td>
+</tr>
+<tr class="row-even"><td>navss_main_vpac_tc0_cc_rx</td>
+<td>0x4820 to 0x483f</td>
+</tr>
+<tr class="row-odd"><td>navss_main_vpac_tc1_cc_rx</td>
+<td>0x4840 to 0x487f</td>
+</tr>
+<tr class="row-even"><td>navss_main_dmpac_tc0_cc_rx</td>
+<td>0x4880 to 0x489f</td>
+</tr>
+<tr class="row-odd"><td>navss_main_csi_rx</td>
+<td>0x4900 to 0x49ff</td>
+</tr>
+<tr class="row-even"><td>navss_main_cpsw9_rx</td>
+<td>0x4a00 to 0x4a00</td>
+</tr>
+<tr class="row-odd"><td>navss_mcu_udmap0_tx</td>
+<td>0x6000 to 0x602d</td>
+</tr>
+<tr class="row-even"><td>navss_mcu_udmap0_tx
+(<strong>Reserved by System Firmware</strong>)</td>
+<td>0x602e to 0x602f</td>
+</tr>
+<tr class="row-odd"><td>navss_mcu_pdma_cpsw0_rx</td>
+<td>0x7000 to 0x7000</td>
+</tr>
+<tr class="row-even"><td>navss_mcu_pdma_mcu0_rx</td>
+<td>0x7100 to 0x7106</td>
+</tr>
+<tr class="row-odd"><td>navss_mcu_pdma_mcu1_rx</td>
+<td>0x7200 to 0x7207</td>
+</tr>
+<tr class="row-even"><td>navss_mcu_pdma_mcu2_rx</td>
+<td>0x7300 to 0x7303</td>
+</tr>
+<tr class="row-odd"><td>navss_mcu_pdma_adc_rx</td>
+<td>0x7400 to 0x7403</td>
+</tr>
+<tr class="row-even"><td>navss_mcu_saul0_rx
+(<strong>Reserved by System Firmware</strong>)</td>
+<td>0x7500 to 0x7501</td>
+</tr>
+<tr class="row-odd"><td>navss_mcu_saul0_rx</td>
+<td>0x7502 to 0x7503</td>
+</tr>
+<tr class="row-even"><td>navss_main_udmap0_rx</td>
+<td>0x9000 to 0x908b</td>
+</tr>
+<tr class="row-odd"><td>navss_main_saul0_tx</td>
+<td>0xc000 to 0xc001</td>
+</tr>
+<tr class="row-even"><td>navss_main_icssg0_tx</td>
+<td>0xc100 to 0xc108</td>
+</tr>
+<tr class="row-odd"><td>navss_main_icssg1_tx</td>
+<td>0xc200 to 0xc208</td>
+</tr>
+<tr class="row-even"><td>navss_main_pdma_main_mcasp_g0_tx</td>
+<td>0xc400 to 0xc402</td>
+</tr>
+<tr class="row-odd"><td>navss_main_pdma_main_aasrc_tx</td>
+<td>0xc404 to 0xc40b</td>
+</tr>
+<tr class="row-even"><td>navss_main_pdma_main_mcasp_g1_tx</td>
+<td>0xc500 to 0xc508</td>
+</tr>
+<tr class="row-odd"><td>navss_main_pdma_main_misc_g0_tx</td>
+<td>0xc600 to 0xc60a</td>
+</tr>
+<tr class="row-even"><td>navss_main_pdma_main_misc_g1_tx</td>
+<td>0xc60c to 0xc616</td>
+</tr>
+<tr class="row-odd"><td>navss_main_pdma_main_misc_g2_tx</td>
+<td>0xc618 to 0xc622</td>
+</tr>
+<tr class="row-even"><td>navss_main_pdma_main_misc_g3_tx</td>
+<td>0xc624 to 0xc62e</td>
+</tr>
+<tr class="row-odd"><td>navss_main_pdma_main_usart_g0_tx</td>
+<td>0xc700 to 0xc701</td>
+</tr>
+<tr class="row-even"><td>navss_main_pdma_main_usart_g1_tx</td>
+<td>0xc702 to 0xc703</td>
+</tr>
+<tr class="row-odd"><td>navss_main_pdma_main_usart_g2_tx</td>
+<td>0xc704 to 0xc709</td>
+</tr>
+<tr class="row-even"><td>navss_main_pdma_main_mcan_tx</td>
+<td>0xc70c to 0xc729</td>
+</tr>
+<tr class="row-odd"><td>navss_main_msmc0_tx</td>
+<td>0xc800 to 0xc81f</td>
+</tr>
+<tr class="row-even"><td>navss_main_vpac_tc0_cc_tx</td>
+<td>0xc820 to 0xc83f</td>
+</tr>
+<tr class="row-odd"><td>navss_main_vpac_tc1_cc_tx</td>
+<td>0xc840 to 0xc87f</td>
+</tr>
+<tr class="row-even"><td>navss_main_dmpac_tc0_cc_tx</td>
+<td>0xc880 to 0xc89f</td>
+</tr>
+<tr class="row-odd"><td>navss_main_csi_tx</td>
+<td>0xc900 to 0xc9ff</td>
+</tr>
+<tr class="row-even"><td>navss_main_cpsw9_tx</td>
+<td>0xca00 to 0xca07</td>
+</tr>
+<tr class="row-odd"><td>navss_mcu_udmap0_rx</td>
+<td>0xe000 to 0xe02c</td>
+</tr>
+<tr class="row-even"><td>navss_mcu_udmap0_rx
+(<strong>Reserved by System Firmware</strong>)</td>
+<td>0xe02d to 0xe02f</td>
+</tr>
+<tr class="row-odd"><td>navss_mcu_pdma_cpsw0_tx</td>
+<td>0xf000 to 0xf007</td>
+</tr>
+<tr class="row-even"><td>navss_mcu_pdma_mcu0_tx</td>
+<td>0xf100 to 0xf106</td>
+</tr>
+<tr class="row-odd"><td>navss_mcu_pdma_mcu1_tx</td>
+<td>0xf200 to 0xf207</td>
+</tr>
+<tr class="row-even"><td>navss_mcu_pdma_mcu2_tx</td>
+<td>0xf300 to 0xf303</td>
+</tr>
+<tr class="row-odd"><td>navss_mcu_pdma_adc_tx</td>
+<td>0xf400 to 0xf3ff</td>
+</tr>
+<tr class="row-even"><td>navss_mcu_saul0_tx
+(<strong>Reserved by System Firmware</strong>)</td>
+<td>0xf500 to 0xf500</td>
+</tr>
+<tr class="row-odd"><td>navss_mcu_saul0_tx</td>
+<td>0xf501 to 0xf501</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="proxy_cfg.html" class="btn btn-neutral float-right" title="J721E Proxy Device Descriptions" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="dma_cfg.html" class="btn btn-neutral" title="J721E DMA Device Descriptions" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyright 2016-2024</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'09.02.04',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+
+        $('body').on("mousewheel", function () {
+            // Remove default behavior
+            event.preventDefault();
+            // Scroll without smoothing
+            var wheelDelta = event.wheelDelta;
+            var currentScrollPosition = window.pageYOffset;
+            window.scrollTo(0, currentScrollPosition - wheelDelta);
+        });
+      });
+  </script>
+   
+
+</body>
+</html>

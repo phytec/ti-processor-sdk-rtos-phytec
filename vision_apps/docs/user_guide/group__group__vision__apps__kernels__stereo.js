@@ -1,0 +1,57 @@
+var group__group__vision__apps__kernels__stereo =
+[
+    [ "tivx_stereo_cam_params_t", "structtivx__stereo__cam__params__t.html", [
+      [ "baseline", "structtivx__stereo__cam__params__t.html#a2ca0a7d1b8a05d9e0f0d158a7ed0a501", null ],
+      [ "scale_x", "structtivx__stereo__cam__params__t.html#a6fddfc58fe2cf4f70cad4b0de839dfc1", null ],
+      [ "scale_y", "structtivx__stereo__cam__params__t.html#a5e92269148385881740e53ece3dcdde3", null ],
+      [ "focal_length", "structtivx__stereo__cam__params__t.html#a2a50f8117313bf7d72032580be76047f", null ],
+      [ "dist_center_x", "structtivx__stereo__cam__params__t.html#aac12e196056005b45c2140beb788d22d", null ],
+      [ "dist_center_y", "structtivx__stereo__cam__params__t.html#aa073a1a3902ab7654497aa863cfae064", null ]
+    ] ],
+    [ "tivx_stereo_pointcloud_params_t", "structtivx__stereo__pointcloud__params__t.html", [
+      [ "usePCConfig", "structtivx__stereo__pointcloud__params__t.html#a671b5c50dbffef5fdef853c2399ed1f3", null ],
+      [ "subSampleRatio", "structtivx__stereo__pointcloud__params__t.html#a3226d5e656dc02e2fba74c583a2b2af7", null ],
+      [ "thConfidence", "structtivx__stereo__pointcloud__params__t.html#ada19ef068aa312a64d9a3cd4e66db8a4", null ],
+      [ "lowLimitX", "structtivx__stereo__pointcloud__params__t.html#a6f62c2b3736c22a76483104a5a976eae", null ],
+      [ "highLimitX", "structtivx__stereo__pointcloud__params__t.html#a9a1a1d2db8a20a1d21b0b40b0bde8203", null ],
+      [ "lowLimitY", "structtivx__stereo__pointcloud__params__t.html#ac1247d02fd4a15dd9e99db5800661469", null ],
+      [ "highLimitY", "structtivx__stereo__pointcloud__params__t.html#abd92d4d84914cf6482a1e3726877c92e", null ],
+      [ "lowLimitZ", "structtivx__stereo__pointcloud__params__t.html#a7658a7386002ec84c828e63df4d15bb4", null ],
+      [ "highLimitZ", "structtivx__stereo__pointcloud__params__t.html#ae86c95624444680426978d6bc60a65d5", null ]
+    ] ],
+    [ "tivx_sde_disparity_vis_params_t", "structtivx__sde__disparity__vis__params__t.html", [
+      [ "disparity_min", "structtivx__sde__disparity__vis__params__t.html#a134343b973dc62ae9573a375f103d170", null ],
+      [ "disparity_max", "structtivx__sde__disparity__vis__params__t.html#af9c4505498356d94f91c62c9c51aa708", null ],
+      [ "disparity_only", "structtivx__sde__disparity__vis__params__t.html#a511736c5582eae2ea6516a2b5316624a", null ],
+      [ "vis_confidence", "structtivx__sde__disparity__vis__params__t.html#a200bb64c7426a9c1f7a0d342294136ef", null ]
+    ] ],
+    [ "TIVX_MODULE_NAME_STEREO", "group__group__vision__apps__kernels__stereo.html#ga9c3171e75824ec0e03cbd14d20645f2c", null ],
+    [ "TIVX_KERNEL_SDE_HISTOGRAM_VISUALIZE_NAME", "group__group__vision__apps__kernels__stereo.html#ga22c7cfc92f34af26c5eadfbe3cb828fd", null ],
+    [ "TIVX_KERNEL_SDE_TRIANGULATION_NAME", "group__group__vision__apps__kernels__stereo.html#ga27f6048818a46a50b1b664c74a552af8", null ],
+    [ "tivx_obstacle_detection_params_t", "group__group__vision__apps__kernels__stereo.html#ga98af46489d2e5681e448f6edce298c20", null ],
+    [ "tivx_ground_estimation_params_t", "group__group__vision__apps__kernels__stereo.html#gadac1b5808dfd293db977b87e6345add6", null ],
+    [ "tivx_hole_filling_params_t", "group__group__vision__apps__kernels__stereo.html#gac408b4827b01d29764c232a582424159", null ],
+    [ "tivx_median_filter_params_t", "group__group__vision__apps__kernels__stereo.html#gaaecc86e93644e2bb7e53352e73bc7952", null ],
+    [ "tivx_disparity_merge_params_t", "group__group__vision__apps__kernels__stereo.html#gaa112c39ed27d0ed48988040f73261912", null ],
+    [ "tivx_ground_model_params_t", "group__group__vision__apps__kernels__stereo.html#ga7906c29e84a6ae5cc201f2a318e68bab", null ],
+    [ "tivx_obstacle_pos_t", "group__group__vision__apps__kernels__stereo.html#gaa4c11846daad69b34d5fb2341c5798a0", null ],
+    [ "tivx_drivable_space_t", "group__group__vision__apps__kernels__stereo.html#gabf5467266d72275afbb7c00450abc723", null ],
+    [ "tivx_ss_sde_point_cloud_params_t", "group__group__vision__apps__kernels__stereo.html#gac9192d361cf674ac11ebceea5d1bc70a", null ],
+    [ "tivx_ss_sde_og_detection_params_t", "group__group__vision__apps__kernels__stereo.html#ga2eb4af3c70b47c2a7c557d200aba2c43", null ],
+    [ "tivx_ss_sde_obs_3d_bound_box_t", "group__group__vision__apps__kernels__stereo.html#ga70237ec53d50f6dbd3e8d75e6bcb14ee", null ],
+    [ "tivxStereoLoadKernels", "group__group__vision__apps__kernels__stereo.html#ga41c87005e600d3cba2009b81d1f896a0", null ],
+    [ "tivxStereoUnLoadKernels", "group__group__vision__apps__kernels__stereo.html#gafa51e5bc96ff246a1f83ed49de57ea95", null ],
+    [ "tivxRegisterStereoTargetArmKernels", "group__group__vision__apps__kernels__stereo.html#ga3d80f91572e923434fc2ca123f80c47f", null ],
+    [ "tivxUnRegisterStereoTargetArmKernels", "group__group__vision__apps__kernels__stereo.html#ga369a304bceb479def39c6376bf35ca83", null ],
+    [ "tivxPointCloudCreationNode", "group__group__vision__apps__kernels__stereo.html#ga6d05f64789cd282fe12161ddcb2fe7c4", null ],
+    [ "tivxOccupancyGridDetectionNode", "group__group__vision__apps__kernels__stereo.html#gae63de980f3676a91907c99e789fbf906", null ],
+    [ "tivxSdeHistogramVisualizeNode", "group__group__vision__apps__kernels__stereo.html#ga5d9445c38390b00d2d5822daa528fdeb", null ],
+    [ "tivxSdeTriangulationNode", "group__group__vision__apps__kernels__stereo.html#gab5b1eabc6170e1718b40b63bdf8bb479", null ],
+    [ "tivxDisparityMergeNode", "group__group__vision__apps__kernels__stereo.html#gab3998ea5a0362e502eb1f5ccbd4244ef", null ],
+    [ "tivxMedianFilterNode", "group__group__vision__apps__kernels__stereo.html#ga5e04e3f0d7729b23e77613698da628c2", null ],
+    [ "tivxHoleFillingNode", "group__group__vision__apps__kernels__stereo.html#gaf1e55d32f8f4eb07668a80116bd793a6", null ],
+    [ "tivxExtractDisparityConfidenceNode", "group__group__vision__apps__kernels__stereo.html#ga4a83d871af5415284ac26ef7219f444d", null ],
+    [ "tivxGroundEstimationNode", "group__group__vision__apps__kernels__stereo.html#ga6f592225bf4a5cc4014ba52a29f63555", null ],
+    [ "tivxObstacleDetectionNode", "group__group__vision__apps__kernels__stereo.html#ga2347a4a3fda0080a1ed9388abd19a8f3", null ],
+    [ "tivxSdeDisparityVisualizeNode", "group__group__vision__apps__kernels__stereo.html#ga453af7e078c2807a7d4a64e2c4e85aa3", null ]
+];
