@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<data xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+	<x4nconf-server xmlns="http://excelfore.com/ns/excelfore-netconf-server">
+		<transport>
+			<tls>
+				<port></port>
+				<server-cert/>
+				<server-key/>
+				<capath/>
+				<cert-to-name>
+					<id/>
+					<fingerprint/>
+					<map-type/>
+					<name/>
+				</cert-to-name>
+			</tls>
+			<ssh>
+				<port></port>
+				<use-unix-domain-socket></use-unix-domain-socket>
+				<sub-ipc-port></sub-ipc-port>
+				<sub-socket-name></sub-socket-name>
+			</ssh>
+		</transport>
+	</x4nconf-server>
+</data>

@@ -1,0 +1,107 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Documentation for list_interrupt.pl</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Documentation for list_interrupt.pl</span></strong></big>
+</td></tr>
+</table>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#USAGE">USAGE</a></li>
+  <li><a href="#OPTIONS">OPTIONS</a></li>
+  <li><a href="#DEPENDENCIES">DEPENDENCIES</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#OFD-OPTIONS">OFD OPTIONS</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>list_interrupt.pl</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<p>Prints out the list of functions that use the interrupt keyword in a BIOS application.</p>
+
+<p>A sample output might be: -</p>
+
+<pre><code> =============================================================
+ Interrupt keyword detector utility
+ =============================================================
+
+ Scanning foo.out
+
+ List of functions that uses the interrupt keyword:
+
+ Function: foo
+ File: foo.c
+ Line: 30
+
+ Function: foo1
+ File: foo1.c
+ Line: 9
+ </code></pre>
+
+<h1 id="USAGE">USAGE</h1>
+
+<pre><code> list_interrupt &lt;filename.xml&gt; 
+
+ Example (from a DOS prompt): -
+
+    [&gt;] &lt;ccstudiodir&gt;\dosrun.bat
+    [&gt;] ofd6x -xg -o=app.xml app.out
+    [&gt;] perl list_interrupt.pl app.xml</code></pre>
+
+<p>... OR ...</p>
+
+<pre><code>    [&gt;] ofdXX -xg &lt;out file&gt; | perl list_interrupt.pl </code></pre>
+
+<h1 id="OPTIONS">OPTIONS</h1>
+
+<pre><code> -h               : show usage
+ --cg_xml_version : Print out the versio of the cg_xml package in use</code></pre>
+
+<h1 id="DEPENDENCIES">DEPENDENCIES</h1>
+
+<p>The script will only work on executable files built with code generation tools &gt;= v5.1.6 for c6000, v3.2.3 for C55, v4.1.1 for C54, v4.1.2 for C2000</p>
+
+<p>The script could take awhile to run depending on the size of the binary. It takes time to process the xml output from the ofd utility, which typically can get as large as tens of megabytes.</p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>The script prints out the list of functions that use the interrupt keyword in a given application. C functions that use HWI_enter/HWI_exit macro pairs or that are plugged into the HWI dispatcher should not use the interrupt keyword, hence this script helps track down the culprits. Moreover, CLK functions should similarly not use the interrupt keyword. See the DSP/BIOS user guide&#39;s chapter on hardware interrupts and the HWI module documentation in the DSP/BIOS API guide for more details.</p>
+
+<p>For execution on Unix, the first line must be modified to point to the directory where Perl is installed.</p>
+
+<p>This script was written using Perl version 5.8.3. It may not work with earlier revisions of Perl.</p>
+
+<h1 id="OFD-OPTIONS">OFD OPTIONS</h1>
+
+<p>Recent releases of OFD support options for filtering the XML output down to what is strictly of interest. The best options to use in combination with this script are:</p>
+
+<pre><code>   -xg --xml_indent=0 --obj_display=none --dwarf_display=none,dinfo</code></pre>
+
+<p>Filtering the XML in this way reduces the amount of data processed by this script, thus making it run faster.</p>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Documentation for list_interrupt.pl</span></strong></big>
+</td></tr>
+</table>
+
+</body>
+
+</html>
+
+

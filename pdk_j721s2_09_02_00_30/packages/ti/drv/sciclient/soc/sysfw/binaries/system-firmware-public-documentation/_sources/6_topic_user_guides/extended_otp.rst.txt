@@ -1,0 +1,152 @@
+====================
+ Using Extended OTP
+====================
+
+K3 family of devices have a set of one-time programmable(OTP) efuses to carry
+root of trust keys and other information used during device boot. The purpose of
+these efuses is fixed. K3 family of devices have another set of OTP efuses for
+general purpose use by the customer. We refer to these efuses as extended OTP.
+In this document, we describe how the extended OTP can be accessed through TISCI
+API. This document must be read along side
+
+1. :doc:`../2_tisci_msgs/security/extended_otp` and
+2. :doc:`../3_boardcfg/BOARDCFG_SEC`, specifically :ref:`pub_boardcfg_ext_otp_config`
+
+.. note::
+
+   The API in this document deal only with the extended OTP area.
+   They do not access the predefined key area containing
+   the root of trust keys.
+
+Hardware Configuration
+========================
+
+The extended OTP area can have a maximum of 1024 bits. The extended OTP area is
+organized into rows of bits. The width of each row can vary based on the device.
+Please refer to the table below for SOC specific details of hardware rows:
+
++---------+------------------+---------------+----------+----------+------------+
+| SoC     | Number of bits in| Number of bits| Number of| Number of| Initial bit|  
+|         | Extended OTP area| per OTP row   | OTP rows | OTP MMRs | offset     |  
++=========+==================+===============+==========+==========+============+
+| AM65x   | 1024             | 32            | 32       | 32       | 0          |
++---------+------------------+---------------+----------+----------+------------+
+| J721e   | 1024             | 25            | 41       | 32       | 0          | 
++---------+------------------+---------------+----------+----------+------------+
+| AM64x   | 384              | 25            | 15       | 12       | 0          |
++---------+------------------+---------------+----------+----------+------------+
+| J7200   | 1024             | 25            | 41       | 32       | 0          |
++---------+------------------+---------------+----------+----------+------------+
+| AM62x   | 1024             | 25            | 42       | 32       | 2          |
++---------+------------------+---------------+----------+----------+------------+
+| AM62Ax  | 1024             | 25            | 42       | 32       | 2          |
++---------+------------------+---------------+----------+----------+------------+
+| J721S2  | 1024             | 25            | 42       | 32       | 2          |
++---------+------------------+---------------+----------+----------+------------+
+| J784S4  | 1024             | 25            | 42       | 32       | 2          |
++---------+------------------+---------------+----------+----------+------------+
+| AM62Px  | 1024             | 25            | 42       | 32       | 2          |
++---------+------------------+---------------+----------+----------+------------+
+| J722S   | 1024             | 25            | 42       | 32       | 2          |
++---------+------------------+---------------+----------+----------+------------+
+
+On device boot, the data in the OTP area is read into a set of 32 bit memory
+mapped registers(MMRs). There are 32 such registers to accommodate the maximum
+number of OTP bits. The width of these registers is always 32 bits irrespective
+of width of the underlying hardware OTP rows. These registers are only refreshed
+on a POR of the device and not on a warm reset.
+
+The hardware allows each individual OTP row (not MMR) to be locked to prevent
+modification. Once the OTP row is locked, any bit in the row can never be
+modified.
+
+Programming the extended OTP
+============================
+
+TI provides two pieces of software to program the extended OTP area.
+
+1. Key Writer - Key Writer is used in the factory for programming the customer
+   root of trust keys, key revision and key count on a HS Field Securable(FS)
+   Device. It can be used to program the extended OTP area at the same time.
+   Once the key revision and key count are programmed a HS FS device becomes HS
+   Security Enforced(SE) device. Key Writer does not run on a HS SE device.
+
+2. System Firmware - System Firmware provides API that can be used to access and
+   modify the extended OTP area on a HS SE device for all SoCs. It provides these
+   APIs on HS FS and GP device also for AM64x, AM62x, AM62Ax and AM62Px SoCs. System 
+   Firmware is not a standalone executable and must be used along with software 
+   running on another core to access or modify the extended OTP area.
+
+In this document, we describe how to use |sysfw| to access/modify the extended
+OTP area.
+
+.. note::
+
+   Key Writer and |sysfw| are independent software deliveries. Please contact TI
+   Support for information on the Key Writer.
+
+The |sysfw| TISCI messages for OTP access are in two categories due to the
+granularity at which they work.
+
+1. Read - Works on MMR granularity (32 bit)
+2. Write/Lock - Works on row granularity (hardware dependent)
+
+The reasons for the different granularity are
+
+1. |sysfw| does not maintain state across device reboots. Any write protection
+   performed must be tied to the hardware. Hardware provides write protection at
+   row granularity. Therefore, the write/lock API must operate at hardware row 
+   granularity.
+
+2. We expect the OTP read operation to be performed more often compared to the
+   OTP write operation. We expect most data stored in the OTP area to be a
+   multiple of 32 bit width. If it is smaller, it could be easily extracted from
+   32 bit data with bit operations. So |sysfw| offers a read API with 32 bit
+   granularity instead of the underlying row width.
+
+
+Extended OTP Read API
+=====================
+
+|sysfw| allows specifying access permissions for each 32 bit MMR through the
+|sec_bcfg|. Each row can be assigned a host ID as an owner and be specified as
+secure or non-secure. See :ref:`pub_boardcfg_otp_entry`.
+
+**Secure vs. non-secure** - Marking a row as non-secure implies that |sysfw| can
+provide the value of the 32-bit MMR as a response to the TISCI read message. If
+a row is marked secure, the 32-bit MMR value will not be returned in the TISCI
+response message. The MMR value can only be used to setup encryption or
+decryption contexts for processing data.
+
+If a row is assigned to a single host, the MMR can be read only by that host. To
+allow multiple hosts to read the MMR, the host ID must be set to 128. If the MMR
+must not be accessible to any host, the host ID must be set to 0.
+
+If a row is marked as non-secure, the owning host can read the MMR by using the
+:ref:`TISCI_MSG_READ_OTP_MMR <sec-api-ext-otp-read-otp-mmr>` message.
+
+.. _extended-otp-write-api:
+
+Extended OTP Write API
+======================
+
+|sysfw| allows for only one host in the system to have write access to the
+extended OTP region. This host is specified in the security board configuration
+:ref:`pub_boardcfg_ext_otp_config` using the ``write_host`` field.
+
+The write host can write to any row that has not been locked using the
+:ref:`TISCI_MSG_WRITE_OTP_ROW <write-otp-row>` message. The API takes a bit mask
+in addition to the value to be written. This allows single bits to modified if
+necessary.
+
+The write host can perform a soft write lock using the 
+:ref:`TISCI_MSG_SOFT_LOCK_OTP_WRITE_GLOBAL <soft-lock-otp-write-global>` message to prevent
+further writes to OTP until a warm/cold reset of the device. A soft write lock prevents
+even the write host from performing further writes until the next reset.
+
+The write host can also lock a row permanently using the 
+:ref:`TISCI_MSG_LOCK_OTP_ROW <lock-otp-row>` message. This prevents any further modifications
+to the row even after a device cold/warm reset.
+
+The lock status of a row can be queried using the
+:ref:`TISCI_MSG_GET_OTP_ROW_LOCK_STATUS <get-otp-row-lock-status>` message.

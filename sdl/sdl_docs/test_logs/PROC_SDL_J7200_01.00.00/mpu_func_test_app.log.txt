@@ -1,0 +1,17 @@
+ MPU Test Application
+
+ MPU self test for Mem Write Access Fault: starting
+ MPU self test for Mem Write Access Fault complete
+ MPU self test for Mem Read Access Fault: starting
+ MPU self test for Mem Read Access Fault complete
+ MPU self test for Mem Write Access Fault (Wait Forever): starting
+ MPU self test for Mem Write Access Fault  (Wait Forever) complete
+ MPU self test for Mem Read Access Fault  (Wait Forever): starting
+ MPU self test for Mem Read Access Fault  (Wait Forever) completeTest Name: MPU FUNCTION TEST  PASSED
+
+ All tests have passed.
+main.c:195:test_sdl_mpu_baremetal_test_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored
+OK

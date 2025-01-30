@@ -1,0 +1,69 @@
+01000000011a00006a3776636c00000000000000475020200200010002000100CSBL Revision: 01.00.10.01 (Jun 29 2023 - 15:29:32)
+Waiting for tifs.bin ...
+CCCCTIFS  ver: 9.0.6--v09.00.06 (Kool Koala)
+Waiting for multicore app ...
+CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCmcuClkFreq 1000000000
+
+ECC Test Application
+
+ECC_Test_init: UART ready to print, proceeding with ECC_Test init
+
+ECC_Test_init: Profile init complete
+
+ECC_Test_init: Copy Reset vector complete
+
+ECC_Test_init: Exception init complete
+
+ECC_Test_init: register VIM DED Handler complete
+
+ECC_Test_init: Init MCU ESM complete
+
+ECC_Test_init: Init WKUP ESM complete
+
+ECC_Test_init: Init MAIN ESM complete
+
+ECC_Test_init: R5F Core ECC Init complete
+
+ECC_Test_init: R5F Memtype Register Readback successful
+
+ECC_Test_init: MCU_NAVSS0 ECC Init complete
+
+ECC_Test_init: MAIN ECC_COMPUTE_CLUSTER0_2 ECC Init complete
+
+ECC_Test_init: MCU_NAVSS0 ECC Init complete
+
+ECC_Test_init: MCU_NAVSS0 Memtype Register Readback successful
+
+ECC_Test_init: MAIN_MSMC ECC Init complete
+
+ECC_Test_init: MAIN_MSMC Memtype Register Readback successful
+
+ECC_Test_init: ECC Callback Init complete for MCU ESM
+
+ECC_Test_init: ECC Callback Init complete for Main ESM
+
+ECC_Test_init: ECC Callback Init complete for WKUP ESM
+
+ECC_Test_init: ECC Memory init complete
+
+ECC_Test_init: ECC Memory init complete
+
+ECC_Test_init: ECC Memory init complete
+
+ ECC SDL API tests: starting
+ ATCM Single bit error inject: test starting
+ ATCM Single bit error inject at pErrMem 0x0: test complete
+ ATCM Double bit error inject: starting
+ ATCM Double bit error inject: pErrMem 0x200 fixed location once test complete
+ ATCM Single bit error self test: starting
+ ATCM Single bit error self test at pErrMem 0x100 test failed
+ ECC_Test_runECC1BitSelfTest has failed...
+ ECC SDL API tests: failed
+ ECC Functionality Test Failed.
+
+Some tests have failed.
+common/ecc_test_main.c:282:test_sdl_ecc_test_app:FAIL
+
+-----------------------
+1 Tests 1 Failures 0 Ignored
+FAIL

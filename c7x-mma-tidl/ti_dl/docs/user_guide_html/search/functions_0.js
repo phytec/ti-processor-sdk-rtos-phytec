@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['tidl_5fcreateparamsinit',['TIDL_createParamsInit',['../itidl__ti_8h.html#a51281038250fcf591957c9b3cec9a69d',1,'itidl_ti.h']]],
+  ['tidl_5fdataflowinit',['TIDL_DataflowInit',['../tidl__dataflow_8h.html#ae135aca0bc890e46921aed2c92d2acdd',1,'tidl_dataflow.h']]],
+  ['tidl_5fdataflowprocess',['TIDL_DataflowProcess',['../tidl__dataflow_8h.html#a0f89a6f1da5a6019be95f5e73d4dd1af',1,'tidl_dataflow.h']]],
+  ['tidl_5fgetobjdetectionformatstate',['TIDL_GetObjDetectionFormatState',['../itidl__ti_8h.html#a083c1c259f66cfa238e2922e05bd4eca',1,'itidl_ti.h']]],
+  ['tidl_5fgetworstcasedelayforpreemption',['TIDL_getWorstcaseDelayForPreemption',['../itidl__ti_8h.html#afa1078184ef5e5acde6bc02f4926a521',1,'itidl_ti.h']]],
+  ['tidl_5fispadotf',['TIDL_isPadOTF',['../tidl__deviceInfo_8h.html#ad13539b4038deb06bf03d333676285a6',1,'tidl_deviceInfo.h']]],
+  ['tidl_5fsetobjdetectionformat',['TIDL_SetObjDetectionFormat',['../itidl__ti_8h.html#aae937c64dd6ba25bfe7ac8d3462866bf',1,'itidl_ti.h']]],
+  ['tidlrt_5fallocsharedmem',['TIDLRT_allocSharedMem',['../itidl__rt_8h.html#a5190df13eadd48d6a5013b9a22583577',1,'itidl_rt.h']]],
+  ['tidlrt_5fcreate',['TIDLRT_create',['../itidl__rt_8h.html#a01ddf622c14323e937fcd10b4a123b0d',1,'itidl_rt.h']]],
+  ['tidlrt_5fdeactivate',['TIDLRT_deactivate',['../itidl__rt_8h.html#a24332bb79856bcd151c787ba9fc132a1',1,'itidl_rt.h']]],
+  ['tidlrt_5fdelete',['TIDLRT_delete',['../itidl__rt_8h.html#a665ac55a46408caf2c76753942d47021',1,'itidl_rt.h']]],
+  ['tidlrt_5ffreesharedmem',['TIDLRT_freeSharedMem',['../itidl__rt_8h.html#a6bcb2d8504e655f2720f2e592e94af74',1,'itidl_rt.h']]],
+  ['tidlrt_5fgetddrstats',['TIDLRT_getDdrStats',['../itidl__rt_8h.html#ab560057220a5019fa75cc45bbf21e81b',1,'itidl_rt.h']]],
+  ['tidlrt_5finvoke',['TIDLRT_invoke',['../itidl__rt_8h.html#ab974892019bf215752dce7fad1f3298c',1,'itidl_rt.h']]],
+  ['tidlrt_5fissharedmem',['TIDLRT_isSharedMem',['../itidl__rt_8h.html#a9554191b87a8344e45aec12bbda0ac21',1,'itidl_rt.h']]],
+  ['tidlrt_5fsetparamsdefault',['TIDLRT_setParamsDefault',['../itidl__rt_8h.html#aa5c709a7f7c6269f3e6a04f97f04c24b',1,'itidl_rt.h']]],
+  ['tidlrt_5fsettensordefault',['TIDLRT_setTensorDefault',['../itidl__rt_8h.html#a9dc093256dc9464cd0d3b52197236e8f',1,'itidl_rt.h']]],
+  ['tvmrt_5fcreate',['TVMRT_create',['../itvm__rt_8h.html#a65e206b6da9890d5519fc26dc328baa3',1,'itvm_rt.h']]],
+  ['tvmrt_5fdeactivate',['TVMRT_deactivate',['../itvm__rt_8h.html#afbe85eb3fcd0b8f71a91de28f9e43f8c',1,'itvm_rt.h']]],
+  ['tvmrt_5fdelete',['TVMRT_delete',['../itvm__rt_8h.html#a08ad9911eadf1e852cb4b3492268ac05',1,'itvm_rt.h']]],
+  ['tvmrt_5finvoke',['TVMRT_invoke',['../itvm__rt_8h.html#a9a5ec66d7faebd2acdd1801fb5309096',1,'itvm_rt.h']]],
+  ['tvmrt_5fsetparamsdefault',['TVMRT_setParamsDefault',['../itvm__rt_8h.html#a01d8349a89ecce9e1dbb41064c88db4c',1,'itvm_rt.h']]]
+];

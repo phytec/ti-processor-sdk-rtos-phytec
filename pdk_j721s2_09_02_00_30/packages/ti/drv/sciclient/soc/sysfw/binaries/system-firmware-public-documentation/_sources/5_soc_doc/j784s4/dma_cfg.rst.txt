@@ -1,0 +1,151 @@
+==============================
+J784S4 DMA Device Descriptions
+==============================
+
+Introduction
+============
+
+This chapter provides information on the DMA devices in the J784S4 SoC.  Some
+System Firmware TISCI messages take device specific inputs. This chapter
+provides information on the valid values for DMA TISCI message parameters.
+
+.. _pub_soc_j784s4_dma_device_ids:
+
+DMA Device IDs
+==============
+
+Some System Firmware TISCI message APIs require the DMA device ID be provided as
+part of the request. Based on :doc:`J784S4 Device IDs <devices>` these are the
+valid DMA device IDs.
+
++-------------------------------+-----------------+
+| DMA Device Name               |   DMA Device ID |
++===============================+=================+
+| J784S4_DEV_NAVSS0_BCDMA_0     |             281 |
++-------------------------------+-----------------+
+| J784S4_DEV_NAVSS0_UDMAP_0     |             319 |
++-------------------------------+-----------------+
+| J784S4_DEV_MCU_NAVSS0_UDMAP_0 |             329 |
++-------------------------------+-----------------+
+
+.. _pub_soc_j784s4_dma_channels_and_flows:
+
+DMA Channel and Flow Indices
+============================
+
+This section describes valid DMA channel indexes for each DMA channel type.
+Receive flow index range type information is also described if applicable to the
+DMA being described.
+
+
+.. warning::
+
+    Resources marked as reserved for use by TIFS **cannot** be assigned to a
+    host within the RM Board Configuration resource assignment array.  The RM
+    Board Configuration is rejected if an overlap with a reserved resource is
+    detected.
+
+
+**NAVSS0_BCDMA_0**
+
++-------------------+--------------------------+
+| Tx Channel Type   | Tx Channel Index Range   |
++===================+==========================+
+| SPLIT_TR_TX_CHAN  | 0 to 15                  |
++-------------------+--------------------------+
+
++-------------------+--------------------------+
+| Rx Channel Type   | Rx Channel Index Range   |
++===================+==========================+
+| SPLIT_TR_RX_CHAN  | 0 to 31                  |
++-------------------+--------------------------+
+
++------------------+-----------------------+
+| Rx Flow Type     | Rx Flow Index Range   |
++==================+=======================+
+| SPLIT_TR_TX_CHAN | 0 to 15               |
++------------------+-----------------------+
+| SPLIT_TR_RX_CHAN | 16 to 47              |
++------------------+-----------------------+
+
+
+**NAVSS0_UDMAP_0**
+
++-------------------+--------------------------+
+| Tx Channel Type   | Tx Channel Index Range   |
++===================+==========================+
+| TX_UHCHAN         | 0 to 1                   |
++-------------------+--------------------------+
+| TX_HCHAN          | 2 to 3                   |
++-------------------+--------------------------+
+| TX_CHAN           | 4 to 84                  |
++-------------------+--------------------------+
+| TX_ECHAN          | 85 to 340                |
++-------------------+--------------------------+
+
++-------------------+--------------------------+
+| Rx Channel Type   | Rx Channel Index Range   |
++===================+==========================+
+| RX_UHCHAN         | 0 to 1                   |
++-------------------+--------------------------+
+| RX_HCHAN          | 2 to 3                   |
++-------------------+--------------------------+
+| RX_CHAN           | 4 to 81                  |
++-------------------+--------------------------+
+
+
+**NOTE**: The host that owns configurable, also known as common or shared, flows
+is able to delegate them to another host for configuration in order to aid some
+use case configurations.  The configurable flows can be delegated using
+:ref:`TISCI_MSG_RM_UDMAP_FLOW_DELEGATE <pub_rm_public_udmap_flow_delegate>`
+
++----------------+-----------------------+
+| Rx Flow Type   | Rx Flow Index Range   |
++================+=======================+
+| DEFAULT        | 0 to 81               |
++----------------+-----------------------+
+| CONFIGURABLE   | 82 to 223             |
++----------------+-----------------------+
+
+
+**MCU_NAVSS0_UDMAP_0**
+
++-----------------------------------+--------------------------+
+| Tx Channel Type                   | Tx Channel Index Range   |
++===================================+==========================+
+| TX_HCHAN                          | 0 to 1                   |
++-----------------------------------+--------------------------+
+| TX_CHAN                           | 2 to 45                  |
++-----------------------------------+--------------------------+
+| TX_CHAN                           | 46 to 47                 |
+| (**RESERVED BY SYSTEM FIRMWARE**) |                          |
++-----------------------------------+--------------------------+
+
++-----------------------------------+--------------------------+
+| Rx Channel Type                   | Rx Channel Index Range   |
++===================================+==========================+
+| RX_HCHAN                          | 0 to 1                   |
++-----------------------------------+--------------------------+
+| RX_CHAN                           | 2 to 44                  |
++-----------------------------------+--------------------------+
+| RX_CHAN                           | 45 to 47                 |
+| (**RESERVED BY SYSTEM FIRMWARE**) |                          |
++-----------------------------------+--------------------------+
+
+
+**NOTE**: The host that owns configurable, also known as common or shared, flows
+is able to delegate them to another host for configuration in order to aid some
+use case configurations.  The configurable flows can be delegated using
+:ref:`TISCI_MSG_RM_UDMAP_FLOW_DELEGATE <pub_rm_public_udmap_flow_delegate>`
+
++-----------------------------------+-----------------------+
+| Rx Flow Type                      | Rx Flow Index Range   |
++===================================+=======================+
+| DEFAULT                           | 0 to 44               |
++-----------------------------------+-----------------------+
+| DEFAULT                           | 45 to 47              |
+| (**RESERVED BY SYSTEM FIRMWARE**) |                       |
++-----------------------------------+-----------------------+
+| CONFIGURABLE                      | 48 to 95              |
++-----------------------------------+-----------------------+
+

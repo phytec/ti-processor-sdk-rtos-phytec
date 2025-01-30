@@ -1,0 +1,2 @@
+set(extObjNames "FFTLIB_LINALG_matrixMatrixMultiply_ixX_ixX_oxX_obj")
+fftlib_create_binary_for_kernel_testing()

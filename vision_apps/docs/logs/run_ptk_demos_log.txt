@@ -1,0 +1,332 @@
+root@j7-evm:/opt/vision_apps# ./run_ptk_demo.sh
+#######   ###           ######  ####### #    #          ######  ####### #     # #######  #####
+   #       #            #     #    #    #   #           #     # #       ##   ## #     # #     #
+   #       #            #     #    #    #  #            #     # #       # # # # #     # #
+   #       #            ######     #    ###             #     # #####   #  #  # #     #  #####
+   #       #            #          #    #  #            #     # #       #     # #     #       #
+   #       #            #          #    #   #           #     # #       #     # #     # #     #
+   #      ###           #          #    #    #          ######  ####### #     # #######  #####
+
+Please choose a demo from the following:
+===========================================================
+PTK Demo 1: Surround Radar based Occupancy Grid Map
+PTK Demo 2: Surround Radar based Dempster-Shafer Occupancy Grid Map
+PTK Demo 3: Lidar based Occupancy Grid Map
+PTK Demo 4: Lidar based Dempster-Shafer Occupancy Grid Map
+PTK Demo 5: SFM based Occupancy Grid Map
+PTK Demo 6: Multi-sensor fusion based Valet Parking
+PTK Demo 7: Multi-sensor fusion based Valet Parking with Dempster-Shafer Occupancy Grid Mapping
+=====================================================
+
+Enter a Demo # in the range [1..7]: 1
+
+Running Surround Radar based Occupancy Grid Map demo
+APP: Init ... !!!
+APP_LOG: Mapping 0xb8000000 ...
+APP_LOG: Mapped 0xb8000000 -> 0xffff86e10000 of size 262144 bytes
+MEM: Init ION ... !!!
+MEM: Initialized ION (fd=4) !!!
+MEM: Init ION ... Done !!!
+IPC: Init ... !!!
+APP_LOG: Mapping 0xb8040000 ...
+APP_LOG: Mapped 0xb8040000 -> 0xffff84e50000 of size 33292288 bytes
+APP_LOG: Mapping 0x30e00000 ...
+APP_LOG: Mapped 0x30e00000 -> 0xffff877d0000 of size 3072 bytes
+IPC: Init ... Done !!!
+REMOTE_SERVICE: Init ... !!!
+REMOTE_SERVICE: Init ... Done !!!
+APP: Init ... Done !!!
+     0.000284 s:  VX_ZONE_INIT:Enabled
+     0.000291 s:  VX_ZONE_ERROR:Enabled
+     0.000295 s:  VX_ZONE_WARNING:Enabled
+     0.000625 s:  VX_ZONE_INIT:[tivxInit:64] Initialization Done !!!
+     0.000790 s:  VX_ZONE_INIT:[tivxHostInit:35] Initialization Done for HOST !!!
+Created wl egl window
+[renderer_thread] Waiting for output to render...
+Number of RADAR frames processed = 4313
+Press ENTER key to exit.
+
+[renderer_thread] Exiting...
+    16.790758 s:  VX_ZONE_INIT:[tivxHostDeInit:40] De-Initialization Done for HOST !!!
+    16.791882 s:  VX_ZONE_INIT:[tivxDeInit:100] De-Initialization Done !!!
+APP: Deinit ... !!!
+REMOTE_SERVICE: Deinit ... !!!
+REMOTE_SERVICE: Deinit ... Done !!!
+IPC: Deinit ... !!!
+IPC: DeInit ... Done !!!
+MEM: Deinit ION ... !!!
+MEM: Alloc's: 10 alloc's of 5749936 bytes
+MEM: Free's : 10 free's  of 5749936 bytes
+MEM: Open's : 0 allocs  of 0 bytes
+MEM: Deinit ION ... Done !!!
+APP: Deinit ... Done !!!
+[cleanupHdlr] Clean-up complete.
+root@j7-evm:/opt/vision_apps# ./run_ptk_demo.sh
+#######   ###           ######  ####### #    #          ######  ####### #     # #######  #####
+   #       #            #     #    #    #   #           #     # #       ##   ## #     # #     #
+   #       #            #     #    #    #  #            #     # #       # # # # #     # #
+   #       #            ######     #    ###             #     # #####   #  #  # #     #  #####
+   #       #            #          #    #  #            #     # #       #     # #     #       #
+   #       #            #          #    #   #           #     # #       #     # #     # #     #
+   #      ###           #          #    #    #          ######  ####### #     # #######  #####
+
+Please choose a demo from the following:
+===========================================================
+PTK Demo 1: Surround Radar based Occupancy Grid Map
+PTK Demo 2: Surround Radar based Dempster-Shafer Occupancy Grid Map
+PTK Demo 3: Lidar based Occupancy Grid Map
+PTK Demo 4: Lidar based Dempster-Shafer Occupancy Grid Map
+PTK Demo 5: SFM based Occupancy Grid Map
+PTK Demo 6: Multi-sensor fusion based Valet Parking
+PTK Demo 7: Multi-sensor fusion based Valet Parking with Dempster-Shafer Occupancy Grid Mapping
+=====================================================
+
+Enter a Demo # in the range [1..7]: 2
+
+Running Surround Radar based Dempster-Shafer Occupancy Grid Map demo
+APP: Init ... !!!
+APP_LOG: Mapping 0xb8000000 ...
+APP_LOG: Mapped 0xb8000000 -> 0xffffa31e0000 of size 262144 bytes
+MEM: Init ION ... !!!
+MEM: Initialized ION (fd=4) !!!
+MEM: Init ION ... Done !!!
+IPC: Init ... !!!
+APP_LOG: Mapping 0xb8040000 ...
+APP_LOG: Mapped 0xb8040000 -> 0xffffa1220000 of size 33292288 bytes
+APP_LOG: Mapping 0x30e00000 ...
+APP_LOG: Mapped 0x30e00000 -> 0xffffa3ba0000 of size 3072 bytes
+IPC: Init ... Done !!!
+REMOTE_SERVICE: Init ... !!!
+REMOTE_SERVICE: Init ... Done !!!
+APP: Init ... Done !!!
+     0.000368 s:  VX_ZONE_INIT:Enabled
+     0.000382 s:  VX_ZONE_ERROR:Enabled
+     0.000386 s:  VX_ZONE_WARNING:Enabled
+     0.000640 s:  VX_ZONE_INIT:[tivxInit:64] Initialization Done !!!
+     0.001010 s:  VX_ZONE_INIT:[tivxHostInit:35] Initialization Done for HOST !!!
+Created wl egl window
+[renderer_thread] Waiting for output to render...
+Number of RADAR frames processed = 4313
+Press ENTER key to exit.
+
+[renderer_thread] Exiting...
+    61.054190 s:  VX_ZONE_INIT:[tivxHostDeInit:40] De-Initialization Done for HOST !!!
+    61.055430 s:  VX_ZONE_INIT:[tivxDeInit:100] De-Initialization Done !!!
+APP: Deinit ... !!!
+REMOTE_SERVICE: Deinit ... !!!
+REMOTE_SERVICE: Deinit ... Done !!!
+IPC: Deinit ... !!!
+IPC: DeInit ... Done !!!
+MEM: Deinit ION ... !!!
+MEM: Alloc's: 10 alloc's of 25350008 bytes
+MEM: Free's : 10 free's  of 25350008 bytes
+MEM: Open's : 0 allocs  of 0 bytes
+MEM: Deinit ION ... Done !!!
+APP: Deinit ... Done !!!
+[cleanupHdlr] Clean-up complete.
+root@j7-evm:/opt/vision_apps# ./run_ptk_demo.sh
+#######   ###           ######  ####### #    #          ######  ####### #     # #######  #####
+   #       #            #     #    #    #   #           #     # #       ##   ## #     # #     #
+   #       #            #     #    #    #  #            #     # #       # # # # #     # #
+   #       #            ######     #    ###             #     # #####   #  #  # #     #  #####
+   #       #            #          #    #  #            #     # #       #     # #     #       #
+   #       #            #          #    #   #           #     # #       #     # #     # #     #
+   #      ###           #          #    #    #          ######  ####### #     # #######  #####
+
+Please choose a demo from the following:
+===========================================================
+PTK Demo 1: Surround Radar based Occupancy Grid Map
+PTK Demo 2: Surround Radar based Dempster-Shafer Occupancy Grid Map
+PTK Demo 3: Lidar based Occupancy Grid Map
+PTK Demo 4: Lidar based Dempster-Shafer Occupancy Grid Map
+PTK Demo 5: SFM based Occupancy Grid Map
+PTK Demo 6: Multi-sensor fusion based Valet Parking
+PTK Demo 7: Multi-sensor fusion based Valet Parking with Dempster-Shafer Occupancy Grid Mapping
+=====================================================
+
+Enter a Demo # in the range [1..7]: 3
+
+Running Lidar based Occupancy Grid Map demo
+Unrecognized option verbose skipped
+APP: Init ... !!!
+APP_LOG: Mapping 0xb8000000 ...
+APP_LOG: Mapped 0xb8000000 -> 0xffff9eff0000 of size 262144 bytes
+MEM: Init ION ... !!!
+MEM: Initialized ION (fd=4) !!!
+MEM: Init ION ... Done !!!
+IPC: Init ... !!!
+APP_LOG: Mapping 0xb8040000 ...
+APP_LOG: Mapped 0xb8040000 -> 0xffff9d030000 of size 33292288 bytes
+APP_LOG: Mapping 0x30e00000 ...
+APP_LOG: Mapped 0x30e00000 -> 0xffff9f9b0000 of size 3072 bytes
+IPC: Init ... Done !!!
+REMOTE_SERVICE: Init ... !!!
+REMOTE_SERVICE: Init ... Done !!!
+APP: Init ... Done !!!
+     0.003949 s:  VX_ZONE_INIT:Enabled
+     0.003981 s:  VX_ZONE_ERROR:Enabled
+     0.003986 s:  VX_ZONE_WARNING:Enabled
+     0.004211 s:  VX_ZONE_INIT:[tivxInit:64] Initialization Done !!!
+     0.004392 s:  VX_ZONE_INIT:[tivxHostInit:35] Initialization Done for HOST !!!
+Created wl egl window
+[renderer_thread] Waiting for output to render...
+
+Done.
+Processed 539 Lidar records.
+Press ENTER key to exit.
+
+[renderer_thread] Exiting...
+    73.711211 s:  VX_ZONE_INIT:[tivxHostDeInit:40] De-Initialization Done for HOST !!!
+    73.712469 s:  VX_ZONE_INIT:[tivxDeInit:100] De-Initialization Done !!!
+APP: Deinit ... !!!
+REMOTE_SERVICE: Deinit ... !!!
+REMOTE_SERVICE: Deinit ... Done !!!
+IPC: Deinit ... !!!
+IPC: DeInit ... Done !!!
+MEM: Deinit ION ... !!!
+MEM: Alloc's: 16 alloc's of 71234144 bytes
+MEM: Free's : 16 free's  of 71234144 bytes
+MEM: Open's : 0 allocs  of 0 bytes
+MEM: Deinit ION ... Done !!!
+APP: Deinit ... Done !!!
+[cleanupHdlr] Clean-up complete.
+
+root@j7-evm:/opt/vision_apps# ./run_ptk_demo.sh
+#######   ###           ######  ####### #    #          ######  ####### #     # #######  #####
+   #       #            #     #    #    #   #           #     # #       ##   ## #     # #     #
+   #       #            #     #    #    #  #            #     # #       # # # # #     # #
+   #       #            ######     #    ###             #     # #####   #  #  # #     #  #####
+   #       #            #          #    #  #            #     # #       #     # #     #       #
+   #       #            #          #    #   #           #     # #       #     # #     # #     #
+   #      ###           #          #    #    #          ######  ####### #     # #######  #####
+
+Please choose a demo from the following:
+===========================================================
+PTK Demo 1: Surround Radar based Occupancy Grid Map
+PTK Demo 2: Surround Radar based Dempster-Shafer Occupancy Grid Map
+PTK Demo 3: Lidar based Occupancy Grid Map
+PTK Demo 4: Lidar based Dempster-Shafer Occupancy Grid Map
+PTK Demo 5: SFM based Occupancy Grid Map
+PTK Demo 6: Multi-sensor fusion based Valet Parking
+PTK Demo 7: Multi-sensor fusion based Valet Parking with Dempster-Shafer Occupancy Grid Mapping
+=====================================================
+
+Enter a Demo # in the range [1..7]: 4
+
+Running Lidar based Dempster-Shafer Occupancy Grid Map demo
+Unrecognized option verbose skipped
+APP: Init ... !!!
+APP_LOG: Mapping 0xb8000000 ...
+APP_LOG: Mapped 0xb8000000 -> 0xffff82390000 of size 262144 bytes
+MEM: Init ION ... !!!
+MEM: Initialized ION (fd=4) !!!
+MEM: Init ION ... Done !!!
+IPC: Init ... !!!
+APP_LOG: Mapping 0xb8040000 ...
+APP_LOG: Mapped 0xb8040000 -> 0xffff803d0000 of size 33292288 bytes
+APP_LOG: Mapping 0x30e00000 ...
+APP_LOG: Mapped 0x30e00000 -> 0xffff82d50000 of size 3072 bytes
+IPC: Init ... Done !!!
+REMOTE_SERVICE: Init ... !!!
+REMOTE_SERVICE: Init ... Done !!!
+APP: Init ... Done !!!
+     0.000221 s:  VX_ZONE_INIT:Enabled
+     0.000230 s:  VX_ZONE_ERROR:Enabled
+     0.000234 s:  VX_ZONE_WARNING:Enabled
+     0.000454 s:  VX_ZONE_INIT:[tivxInit:64] Initialization Done !!!
+     0.000628 s:  VX_ZONE_INIT:[tivxHostInit:35] Initialization Done for HOST !!!
+Created wl egl window
+[renderer_thread] Waiting for output to render...
+
+Done.
+Processed 539 Lidar records.
+Press ENTER key to exit.
+
+[renderer_thread] Exiting...
+    52.709472 s:  VX_ZONE_INIT:[tivxHostDeInit:40] De-Initialization Done for HOST !!!
+    52.710646 s:  VX_ZONE_INIT:[tivxDeInit:100] De-Initialization Done !!!
+APP: Deinit ... !!!
+REMOTE_SERVICE: Deinit ... !!!
+REMOTE_SERVICE: Deinit ... Done !!!
+IPC: Deinit ... !!!
+IPC: DeInit ... Done !!!
+MEM: Deinit ION ... !!!
+MEM: Alloc's: 16 alloc's of 71234144 bytes
+MEM: Free's : 16 free's  of 71234144 bytes
+MEM: Open's : 0 allocs  of 0 bytes
+MEM: Deinit ION ... Done !!!
+APP: Deinit ... Done !!!
+[cleanupHdlr] Clean-up complete.
+root@j7-evm:/opt/vision_apps#
+
+#######   ###           ######  ####### #    #          ######  ####### #     # #######  #####
+   #       #            #     #    #    #   #           #     # #       ##   ## #     # #     #
+   #       #            #     #    #    #  #            #     # #       # # # # #     # #
+   #       #            ######     #    ###             #     # #####   #  #  # #     #  #####
+   #       #            #          #    #  #            #     # #       #     # #     #       #
+   #       #            #          #    #   #           #     # #       #     # #     # #     #
+   #      ###           #          #    #    #          ######  ####### #     # #######  #####
+
+Please choose a demo from the following:
+===========================================================
+PTK Demo 1: Surround Radar based Occupancy Grid Map
+PTK Demo 2: Surround Radar based Dempster-Shafer Occupancy Grid Map
+PTK Demo 3: Lidar based Occupancy Grid Map
+PTK Demo 4: Lidar based Dempster-Shafer Occupancy Grid Map
+PTK Demo 5: SFM based Occupancy Grid Map
+PTK Demo 6: Multi-sensor fusion based Valet Parking
+PTK Demo 7: Multi-sensor fusion based Valet Parking with Dempster-Shafer Occupancy Grid Mapping
+=====================================================
+
+Enter a Demo # in the range [1..7]: 5
+
+SFM based Occupancy Grid Map demo
+APP DOF_SFM_FISHEYE STARTED!...
+
+APP: Init ... !!!
+APP_LOG: Mapping 0xb8000000 ...
+APP_LOG: Mapped 0xb8000000 -> 0xffff92730000 of size 262144 bytes
+MEM: Init ION ... !!!
+MEM: Initialized ION (fd=4) !!!
+MEM: Init ION ... Done !!!
+IPC: Init ... !!!
+APP_LOG: Mapping 0xb8040000 ...
+APP_LOG: Mapped 0xb8040000 -> 0xffff90770000 of size 33292288 bytes
+APP_LOG: Mapping 0x30e00000 ...
+APP_LOG: Mapped 0x30e00000 -> 0xffff930f0000 of size 3072 bytes
+IPC: Init ... Done !!!
+REMOTE_SERVICE: Init ... !!!
+REMOTE_SERVICE: Init ... Done !!!
+APP: Init ... Done !!!
+     0.012317 s:  VX_ZONE_INIT:Enabled
+     0.012332 s:  VX_ZONE_ERROR:Enabled
+     0.012337 s:  VX_ZONE_WARNING:Enabled
+     0.012516 s:  VX_ZONE_INIT:[tivxInit:64] Initialization Done !!!
+     0.012671 s:  VX_ZONE_INIT:[tivxHostInit:35] Initialization Done for HOST !!!
+
+Created wl egl window
+[   69.823747] PVR_K:  999: GPU TQ_3D command buffer usage high (91). This is not an error but the application may not run optimally.
+Setting world reference frame...
+WARNING: PTK INS return code (3) NOT OK (getIMUPosesFromVelAndAtt at timestamp 41367636139)
+[  131.392292] NET: Registered protocol family 15
+[  131.441633] Initializing XFRM netlink socket
+WARNING: PTK INS return code (1) NOT OK (getIMUPosesFromVelAndAtt at timestamp 41421589553)
+Press ENTER key to exit.
+
+[ 1415.024045] ion_buffer_destroy: buffer still mapped in the kernel
+  1345.357802 s:  VX_ZONE_INIT:[tivxHostDeInit:40] De-Initialization Done for HOST !!!
+  1345.359033 s:  VX_ZONE_INIT:[tivxDeInit:100] De-Initialization Done !!!
+APP: Deinit ... !!!
+REMOTE_SERVICE: Deinit ... !!!
+REMOTE_SERVICE: Deinit ... Done !!!
+IPC: Deinit ... !!!
+IPC: DeInit ... Done !!!
+MEM: Deinit ION ... !!!
+MEM: Alloc's: 9754 alloc's of 2693151302 bytes
+MEM: Free's : 9754 free's  of 2693151302 bytes
+MEM: Open's : 0 allocs  of 0 bytes
+MEM: Deinit ION ... Done !!!
+APP: Deinit ... Done !!!
+
+
+DEMO FINISHED!

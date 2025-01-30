@@ -1,0 +1,109 @@
+/******************************************************************************
+ * Copyright (C) 2023 Texas Instruments Incorporated - http://www.ti.com/
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ *    Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ *
+ *    Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the
+ *    distribution.
+ *
+ *    Neither the name of Texas Instruments Incorporated nor the names of
+ *    its contributors may be used to endorse or promote products derived
+ *    from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+ * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ ******************************************************************************/
+
+#ifndef MATHLIB_POW_H_
+#define MATHLIB_POW_H_
+
+/******************************************************************************/
+/*                                                                            */
+/* Includes                                                                   */
+/*                                                                            */
+/******************************************************************************/
+
+#include "../common/MATHLIB_types.h"
+
+/******************************************************************************/
+/*                                                                            */
+/* Function prototypes                                                        */
+/*                                                                            */
+/******************************************************************************/
+
+/**
+ * \ingroup MATHLIB_KERNELS
+ */
+
+/**
+ * \defgroup MATHLIB_POW MATHLIB_pow
+ * \brief Kernel for elementwise power of a base and an exponent vector.
+ *        Supports float datatype.
+ */
+
+/**@{*/
+
+/**
+ * @brief Performs the elementwise power of input vectors. Function can
+ *        be overloaded with float pointers, and the appropriate
+ *        precision is employed to compute elementwise power of the input vectors.
+ *
+ * @tparam       T      : implementation datatype
+ * @param  [in]  length : length of input vector
+ * @param  [in]  pSrc0   : pointer to buffer holding input vector 0, the base
+ * @param  [in]  pSrc1   : pointer to buffer holding input vector 1, the exponent
+ * @param  [out] pDst   : pointer to buffer holding result vector
+ *
+ *
+ * @return  Status of success.
+ *
+ * @remarks None
+ */
+
+template <typename T> MATHLIB_STATUS MATHLIB_pow(size_t length, T* pSrc0, T* pSrc1, T* pDst);
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+/**
+ * @brief This function is the C interface for @ref MATHLIB_pow.
+ *        Function accepts float pointers.
+ *
+ * @tparam      T      : implementation datatype
+ * @param [in]  length : length of input vector
+ * @param [in]  pSrc0   : pointer to buffer holding input vector 0, the base
+ * @param [in]  pSrc1   : pointer to buffer holding input vector 1, the exponent
+ * @param [out] pDst   : pointer to buffer holding result vector
+ *
+ * @return  Status of success.
+ *
+ * @remarks None
+ */
+
+MATHLIB_STATUS
+MATHLIB_pow_sp(size_t length, float* pSrc0, float* pSrc1, float* pDst);
+/**@}*/
+
+#ifdef __cplusplus
+}
+
+#endif
+#endif // MATHLIB_POW_H_

@@ -1,0 +1,11 @@
+/*
+ *  Sends the test parameter structure and number of tests
+ */
+void VXLIB_dilate_getTestParams (
+    VXLIB_dilate_testParams_t **params,
+    int32_t *                                 numTests)
+{
+   *params = testParams;
+   *numTests =
+       sizeof (testParams) / sizeof (VXLIB_dilate_testParams_t);
+}

@@ -1,0 +1,195 @@
+******************************************************************************
+cg_xml - Code Generation Tools XML Processing Scripts
+getting_started.txt
+******************************************************************************
+
+------------------------------------------------------------------------------
+Introduction
+------------------------------------------------------------------------------
+This is a package of Perl scripts used to process the XML files that come
+from the TI code generation tools.  Use it to do things like build a
+spreadsheet that details the size of all the sections, or figure out how much
+of the memory map is taken up by specific libraries.
+
+This file contains information for first time users.  Details on specific
+releases of the package are in the file readme.txt.
+
+Each script directory contains a readme.txt that summarizes its contents.
+Each script is listed, along with a one line summary of what it does.
+
+Table of Contents
+-----------------
+1. First Steps
+2. File Listing
+3. Execute the Scripts
+4. Standalone Executables Use the System Temporary Directory
+5. Control How Standalone Executables use Temporary Directories and Files
+6. Keep the Files Together
+
+------------------------------------------------------------------------------
+1. First Steps
+------------------------------------------------------------------------------
+- Review the slides in overview.ppt. 
+- To run the executable versions of the Perl scripts (available starting
+  with release 1.20.00), nothing further needs to be installed.  Typically,
+  the bin directory of this package is added to the system path.  To run the
+  Perl scripts directly from Perl, or to develop scripts of your own, these
+  further steps are required.
+- Install Perl version 5.8.3 or higher.  For PC users, we recommend
+  Activestate Perl: http://www.activestate.com/Products/ActivePerl/
+- Install the Perl module XML::Simple version 2.12 or higher.  If you
+  install ActiveState Perl version 5.8.4 or higher, this will be done
+  for you.
+- To see the documentation on any script or module, run the command ...
+
+   C:\>perldoc <name of file>
+
+- Documentation is also available in HTML form.  Point your web browser at
+  the file index.htm in the root directory of the package.
+
+------------------------------------------------------------------------------
+2. File Listing
+------------------------------------------------------------------------------
+Dir or File            Contains
+-----------            --------
+readme.txt             Release specific information
+getting_started.txt    This file
+overview.ppt           PowerPoint slides that introduce XML, the XML output
+                          available from the linker and OFD, and examples of
+                          scripts that use the XML to do cool things
+index.htm              Documentation in HTML form
+map\*                  Files for working with linker map files in XML
+ofd\*                  Files for working with OFD created XML files
+docs\*                 HTML documentation
+bin\*                  Binary executable versions of the scripts
+utils\*                Latest version OFD that has XML filtering options
+cg_xml_<version>_Manifest.pdf  Software manifest, including the license.  By
+                          convention, the version number is included in the
+			  file name.
+
+Each script directory contains a readme.txt that summarizes its contents.
+Each script is listed, along with a one line summary of what it does.
+
+XML - eXtensible Markup Language
+OFD - Object File Display Utility
+
+
+------------------------------------------------------------------------------
+3. Executing the Scripts
+------------------------------------------------------------------------------
+This section is written for those who want to execute the Perl scripts
+directly from Perl.  If you only run the standalone executable versions
+of the scripts, you can ignore this section.
+
+As of release 0.70, the scripts can be viewed as yet another group of
+executables.  Modify the executables path to refer to the cg_xml\ofd and
+cg_xml\map directories in this package, and the scripts can be run from any
+directory.  For example ...
+
+   c:\some\where\else>perl -S sectti.pl file.xml
+
+The perl -S option says to look for the script among the directories listed in
+the executables path.  Another advantage to adding the cg_xml directories to 
+the path is that the "perldoc" command will work regardless of the current
+directory.
+
+If you do not want to modify your executables path, specifying the complete
+path to the script will work as well.  For example ...
+
+   C:\some\where\else>perl \cg_xml\ofd\sectti.pl file.xml
+
+
+Supplying XML via Pipes
+-----------------------
+The XML from the object file display utility (OFD) can be supplied via
+pipes.  For example ...
+
+   C:\>ofd6x -x file.out | perl -S sectti.pl
+
+Supplying the XML via pipes can be slow on Windows systems.  It is sometimes
+faster (occasionally much faster) to use separate commands ...
+
+   C:\>ofd6x -x -o=file.xml file.out
+   C:\>perl -S sectti.pl file.xml
+
+On Unix systems, using pipes does not cause a speed issue.
+
+Most OFD scripts can read XML supplied via pipes, though not all of them.
+Run perldoc on the script to be sure.
+
+The MAP scripts, which read XML files created by the linker, cannot read
+an XML file supplied via pipes.  There is no need for it, because the linker
+can only output the XML to a named file, and not a script.
+
+
+Execution on Unix Systems
+-------------------------
+This section presumes the cg_xml directories have been added to the 
+executables path and all the scripts have execute permission set.
+
+This method of executing a script will always work ...
+
+   % perl -S sectti.pl file.xml
+
+Executing a script directly ...
+
+   % sectti.pl file.xml
+
+works fine on some Unix systems, including Cygwin.  Other Unix systems,
+such a Solaris SunOS, require the script have Unix text line endings,
+not Windows text line endings.  The scripts are maintained on a Windows
+system, and thus are supplied with Windows text line endings.  A number of
+solutions exist for converting Windows text files to Unix text files.
+
+Once a script can be executed directly, the Windows pipe example given above
+may be shortened further to ...
+
+   % ofd6x -x file.out | sectti.pl
+
+
+------------------------------------------------------------------------------
+4. Standalone Executables Use the System Temporary Directory
+------------------------------------------------------------------------------
+A standalone Perl executable version of a script, such as sectti.exe, uses
+several files in a directory under the system temporary directory.  On
+Windows systems the temporary directory is typically:
+
+   C:\Users\<username>\AppData\Local\Temp
+
+On Unix systems the temporary directory is typically /tmp.  
+
+The first time an executable runs it installs those files and then uses
+them to execute.  On subsequent runs the installation step is not required,
+and thus the executable starts up much faster.
+
+Please insure the system temporary directory has permissions that allow
+any user to add directories.  On Unix systems, this typically requires
+that /tmp have all permissions set.  
+
+
+------------------------------------------------------------------------------
+5. Control How Standalone Executables use Temporary Directories and Files
+------------------------------------------------------------------------------
+To explicitly set the temporary directory where the standalone executables
+store temporary files, add the environment variable setting:
+
+   PAR_GLOBAL_TMPDIR=<your directory path here>
+
+If you want the files in the temporary directory to be deleted each time a
+standalone executable completes execution, add the environment variable
+setting:
+
+   PAR_GLOBAL_CLEAN=1
+
+Note such deletion of the temporary files will slow the startup of the
+standalone executables.
+
+
+------------------------------------------------------------------------------
+6. Keep the Files Together
+------------------------------------------------------------------------------
+Each of the scripts presumes a Perl module file that it uses is in the same
+directory.  OFD scripts use XML_TI_OFD.pm and linker map file scripts
+use XML_TI_MAP.pm.  Thus, do not copy a single script file to a different
+location and expect it to work.  The corresponding .pm file must be copied
+with it.

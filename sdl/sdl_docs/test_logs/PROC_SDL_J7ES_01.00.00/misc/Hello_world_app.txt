@@ -1,0 +1,4 @@
+Sciclient_ccs_init Passed.
+SCISERVER Board Configuration header population... PASSED
+Hello World
+Hello World

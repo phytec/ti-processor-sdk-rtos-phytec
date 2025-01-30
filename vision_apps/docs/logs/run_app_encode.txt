@@ -1,0 +1,749 @@
+root@j7-evm:/opt/vision_apps# ./run_app_encode.sh 
+APP: Init ... !!!
+MEM: Init ... !!!
+MEM: Initialized DMA HEAP (fd=4) !!!
+MEM: Init ... Done !!!
+IPC: Init ... !!!
+IPC: Init ... Done !!!
+REMOTE_SERVICE: Init ... !!!
+REMOTE_SERVICE: Init ... Done !!!
+APP: Init ... Done !!!
+   281.344743 s:  VX_ZONE_INIT:Enabled
+   281.344783 s:  VX_ZONE_ERROR:Enabled
+   281.344789 s:  VX_ZONE_WARNING:Enabled
+   281.345491 s:  VX_ZONE_INIT:[tivxInit:71] Initialization Done !!!
+   281.345671 s:  VX_ZONE_INIT:[tivxHostInit:48] Initialization Done for HOST !!!
+   281.347905 s: ISS: Enumerating sensors ... !!!
+   281.348647 s: ISS: Enumerating sensors ... found 0 : IMX390-UB953_D3
+   281.348666 s: ISS: Enumerating sensors ... found 1 : AR0233-UB953_MARS
+   281.348674 s: ISS: Enumerating sensors ... found 2 : AR0820-UB953_LI
+   281.348679 s: ISS: Enumerating sensors ... found 3 : UB9xxx_RAW12_TESTPATTERN
+   281.348684 s: ISS: Enumerating sensors ... found 4 : UB96x_UYVY_TESTPATTERN
+   281.348688 s: ISS: Enumerating sensors ... found 5 : GW_AR0233_UYVY
+Sensor selected : IMX390-UB953_D3
+Querying IMX390-UB953_D3 
+   281.348699 s: ISS: Querying sensor [IMX390-UB953_D3] ... !!!
+   281.349170 s: ISS: Querying sensor [IMX390-UB953_D3] ... Done !!!
+   281.349915 s: ISS: Initializing sensor [IMX390-UB953_D3], doing IM_SENSOR_CMD_PWRON ... !!!
+[MCU2_0]    281.348035 s: ImageSensor_RemoteServiceHandler: IM_SENSOR_CMD_CREATE 
+[MCU2_0]    281.348124 s: Sensor at index 0 = IMX390-UB953_D3 
+[MCU2_0]    281.348155 s: Sensor at index 1 = AR0233-UB953_MARS 
+[MCU2_0]    281.348182 s: Sensor at index 2 = AR0820-UB953_LI 
+[MCU2_0]    281.348205 s: Sensor at index 3 = UB9xxx_RAW12_TESTPATTERN 
+[MCU2_0]    281.348234 s: Sensor at index 4 = UB96x_UYVY_TESTPATTERN 
+[MCU2_0]    281.348259 s: Sensor at index 5 = GW_AR0233_UYVY 
+[MCU2_0]    281.348785 s: ImageSensor_RemoteServiceHandler: IM_SENSOR_CMD_QUERY 
+[MCU2_0]    281.348863 s: Received Query for IMX390-UB953_D3 
+[MCU2_0]    281.350001 s: ImageSensor_RemoteServiceHandler: IM_SENSOR_CMD_PWRON 
+[MCU2_0]    281.350089 s: IM_SENSOR_CMD_PWRON : channel_mask = 0x1 
+[MCU2_0]    281.350145 s: IMX390_PowerOn : chMask = 0x1 
+[MCU2_0]    281.350184 s: ub960_cfgScript : ub960I2cAddr = 0x3d 
+[MCU2_0]    281.350210 s: UB960 config start 
+   281.550206 s: ISS: Initializing sensor [IMX390-UB953_D3], doing IM_SENSOR_CMD_CONFIG ... !!!
+[MCU2_0]    281.550062 s:  End of UB960 config 
+[MCU2_0]    281.550326 s: ImageSensor_RemoteServiceHandler: IM_SENSOR_CMD_CONFIG 
+[MCU2_0]    281.550376 s: Application requested features = 0x158 
+[MCU2_0]  
+[MCU2_0]    281.550459 s: ub960_cfgScript : ub960I2cAddr = 0x3d 
+[MCU2_0]    281.550494 s: UB960 config start 
+[MCU2_0]    281.805895 s:  End of UB960 config 
+[MCU2_0]    281.805991 s: ub960_cfgScript : ub960I2cAddr = 0x36 
+[MCU2_0]    281.806024 s: UB960 config start 
+[MCU2_0]    282.061891 s:  End of UB960 config 
+[MCU2_0]    282.061954 s: Configuring camera # 0 
+[MCU2_0]    282.061983 s: ub953 config start : slaveAddr = 0x74 
+[MCU2_0]    282.251897 s:  End of UB953 config 
+[MCU2_0]    282.252004 s:  Configuring IMX390 imager 0x40.. Please wait till it finishes 
+   284.339020 s: ISS: Initializing sensor [IMX390-UB953_D3] ... Done !!!
+[MCU2_0]    284.338828 s:  IMX390 config done
+[MCU2_0]    284.338892 s: IM_SENSOR_CMD_CONFIG returning status = 0 
+   284.775824 s: ISS: Starting sensor [IMX390-UB953_D3] ... !!!
+[MCU2_0]    284.776112 s: ImageSensor_RemoteServiceHandler: IM_SENSOR_CMD_STREAM_ON 
+[MCU2_0]    284.776180 s: IM_SENSOR_CMD_STREAM_ON:  channel_mask = 0x1
+[MCU2_0]    284.776256 s: ub960_cfgScript : ub960I2cAddr = 0x3d 
+[MCU2_0]    284.776291 s: UB960 config start 
+[MCU2_0]    285.031894 s:  End of UB960 config 
+[MCU2_0]    285.031999 s: ub960_cfgScript : ub960I2cAddr = 0x36 
+[MCU2_0]    285.032032 s: UB960 config start 
+[MCU2_0]    285.287897 s:  End of UB960 config 
+[MCU2_0]    285.287965 s: Starting camera # 0 
+[MCU2_0]    285.288015 s: Entering IssSensor_Start 
+[MCU2_0]    285.297838 s: enableUB960Streaming ub960InstanceId = 0
+[MCU2_0]    285.298038 s: ub960_cfgScript : ub960I2cAddr = 0x3d 
+[MCU2_0]    285.298072 s: UB960 config start 
+   285.330033 s: ISS: Starting sensor [IMX390-UB953_D3] ... !!!
+frame_id: 0, num_frames_to_run: 600
+frame_id: 1, num_frames_to_run: 600
+frame_id: 2, num_frames_to_run: 600
+frame_id: 3, num_frames_to_run: 600
+
+
+ =========================
+ Demo : Camera Demo
+ =========================
+
+ s: Save CSIx, VISS and LDC outputs
+
+ p: Print performance statistics
+
+ x: Exit
+
+ Enter Choice: [MCU2_0]    285.329900 s:  End of UB960 config 
+frame_id: 4, num_frames_to_run: 600
+[MCU2_1]    286.680825 s: TIMEOUT: topazdd_wait_on_sync timed out waiting for writeback 0x05a80000.
+frame_id: 5, num_frames_to_run: 600
+frame_id: 6, num_frames_to_run: 600
+frame_id: 7, num_frames_to_run: 600
+frame_id: 8, num_frames_to_run: 600
+frame_id: 9, num_frames_to_run: 600
+frame_id: 10, num_frames_to_run: 600
+frame_id: 11, num_frames_to_run: 600
+frame_id: 12, num_frames_to_run: 600
+frame_id: 13, num_frames_to_run: 600
+frame_id: 14, num_frames_to_run: 600
+frame_id: 15, num_frames_to_run: 600
+frame_id: 16, num_frames_to_run: 600
+frame_id: 17, num_frames_to_run: 600
+frame_id: 18, num_frames_to_run: 600
+frame_id: 19, num_frames_to_run: 600
+frame_id: 20, num_frames_to_run: 600
+frame_id: 21, num_frames_to_run: 600
+frame_id: 22, num_frames_to_run: 600
+frame_id: 23, num_frames_to_run: 600
+frame_id: 24, num_frames_to_run: 600
+frame_id: 25, num_frames_to_run: 600
+frame_id: 26, num_frames_to_run: 600
+frame_id: 27, num_frames_to_run: 600
+frame_id: 28, num_frames_to_run: 600
+frame_id: 29, num_frames_to_run: 600
+frame_id: 30, num_frames_to_run: 600
+frame_id: 31, num_frames_to_run: 600
+frame_id: 32, num_frames_to_run: 600
+frame_id: 33, num_frames_to_run: 600
+frame_id: 34, num_frames_to_run: 600
+frame_id: 35, num_frames_to_run: 600
+frame_id: 36, num_frames_to_run: 600
+frame_id: 37, num_frames_to_run: 600
+frame_id: 38, num_frames_to_run: 600
+frame_id: 39, num_frames_to_run: 600
+frame_id: 40, num_frames_to_run: 600
+frame_id: 41, num_frames_to_run: 600
+frame_id: 42, num_frames_to_run: 600
+frame_id: 43, num_frames_to_run: 600
+frame_id: 44, num_frames_to_run: 600
+frame_id: 45, num_frames_to_run: 600
+frame_id: 46, num_frames_to_run: 600
+frame_id: 47, num_frames_to_run: 600
+frame_id: 48, num_frames_to_run: 600
+frame_id: 49, num_frames_to_run: 600
+frame_id: 50, num_frames_to_run: 600
+frame_id: 51, num_frames_to_run: 600
+frame_id: 52, num_frames_to_run: 600
+frame_id: 53, num_frames_to_run: 600
+frame_id: 54, num_frames_to_run: 600
+frame_id: 55, num_frames_to_run: 600
+frame_id: 56, num_frames_to_run: 600
+frame_id: 57, num_frames_to_run: 600
+frame_id: 58, num_frames_to_run: 600
+frame_id: 59, num_frames_to_run: 600
+frame_id: 60, num_frames_to_run: 600
+frame_id: 61, num_frames_to_run: 600
+frame_id: 62, num_frames_to_run: 600
+frame_id: 63, num_frames_to_run: 600
+frame_id: 64, num_frames_to_run: 600
+frame_id: 65, num_frames_to_run: 600
+frame_id: 66, num_frames_to_run: 600
+frame_id: 67, num_frames_to_run: 600
+frame_id: 68, num_frames_to_run: 600
+frame_id: 69, num_frames_to_run: 600
+frame_id: 70, num_frames_to_run: 600
+frame_id: 71, num_frames_to_run: 600
+frame_id: 72, num_frames_to_run: 600
+frame_id: 73, num_frames_to_run: 600
+frame_id: 74, num_frames_to_run: 600
+frame_id: 75, num_frames_to_run: 600
+frame_id: 76, num_frames_to_run: 600
+frame_id: 77, num_frames_to_run: 600
+frame_id: 78, num_frames_to_run: 600
+frame_id: 79, num_frames_to_run: 600
+frame_id: 80, num_frames_to_run: 600
+frame_id: 81, num_frames_to_run: 600
+frame_id: 82, num_frames_to_run: 600
+frame_id: 83, num_frames_to_run: 600
+frame_id: 84, num_frames_to_run: 600
+frame_id: 85, num_frames_to_run: 600
+frame_id: 86, num_frames_to_run: 600
+frame_id: 87, num_frames_to_run: 600
+frame_id: 88, num_frames_to_run: 600
+frame_id: 89, num_frames_to_run: 600
+frame_id: 90, num_frames_to_run: 600
+frame_id: 91, num_frames_to_run: 600
+frame_id: 92, num_frames_to_run: 600
+frame_id: 93, num_frames_to_run: 600
+frame_id: 94, num_frames_to_run: 600
+frame_id: 95, num_frames_to_run: 600
+frame_id: 96, num_frames_to_run: 600
+frame_id: 97, num_frames_to_run: 600
+frame_id: 98, num_frames_to_run: 600
+frame_id: 99, num_frames_to_run: 600
+frame_id: 100, num_frames_to_run: 600
+frame_id: 101, num_frames_to_run: 600
+frame_id: 102, num_frames_to_run: 600
+frame_id: 103, num_frames_to_run: 600
+frame_id: 104, num_frames_to_run: 600
+frame_id: 105, num_frames_to_run: 600
+frame_id: 106, num_frames_to_run: 600
+frame_id: 107, num_frames_to_run: 600
+frame_id: 108, num_frames_to_run: 600
+frame_id: 109, num_frames_to_run: 600
+frame_id: 110, num_frames_to_run: 600
+frame_id: 111, num_frames_to_run: 600
+frame_id: 112, num_frames_to_run: 600
+frame_id: 113, num_frames_to_run: 600
+frame_id: 114, num_frames_to_run: 600
+frame_id: 115, num_frames_to_run: 600
+frame_id: 116, num_frames_to_run: 600
+frame_id: 117, num_frames_to_run: 600
+frame_id: 118, num_frames_to_run: 600
+frame_id: 119, num_frames_to_run: 600
+frame_id: 120, num_frames_to_run: 600
+frame_id: 121, num_frames_to_run: 600
+frame_id: 122, num_frames_to_run: 600
+frame_id: 123, num_frames_to_run: 600
+frame_id: 124, num_frames_to_run: 600
+frame_id: 125, num_frames_to_run: 600
+frame_id: 126, num_frames_to_run: 600
+frame_id: 127, num_frames_to_run: 600
+frame_id: 128, num_frames_to_run: 600
+frame_id: 129, num_frames_to_run: 600
+frame_id: 130, num_frames_to_run: 600
+frame_id: 131, num_frames_to_run: 600
+frame_id: 132, num_frames_to_run: 600
+frame_id: 133, num_frames_to_run: 600
+frame_id: 134, num_frames_to_run: 600
+frame_id: 135, num_frames_to_run: 600
+frame_id: 136, num_frames_to_run: 600
+frame_id: 137, num_frames_to_run: 600
+frame_id: 138, num_frames_to_run: 600
+frame_id: 139, num_frames_to_run: 600
+frame_id: 140, num_frames_to_run: 600
+frame_id: 141, num_frames_to_run: 600
+frame_id: 142, num_frames_to_run: 600
+frame_id: 143, num_frames_to_run: 600
+frame_id: 144, num_frames_to_run: 600
+frame_id: 145, num_frames_to_run: 600
+frame_id: 146, num_frames_to_run: 600
+frame_id: 147, num_frames_to_run: 600
+frame_id: 148, num_frames_to_run: 600
+frame_id: 149, num_frames_to_run: 600
+frame_id: 150, num_frames_to_run: 600
+frame_id: 151, num_frames_to_run: 600
+frame_id: 152, num_frames_to_run: 600
+frame_id: 153, num_frames_to_run: 600
+frame_id: 154, num_frames_to_run: 600
+frame_id: 155, num_frames_to_run: 600
+frame_id: 156, num_frames_to_run: 600
+frame_id: 157, num_frames_to_run: 600
+frame_id: 158, num_frames_to_run: 600
+frame_id: 159, num_frames_to_run: 600
+frame_id: 160, num_frames_to_run: 600
+frame_id: 161, num_frames_to_run: 600
+frame_id: 162, num_frames_to_run: 600
+frame_id: 163, num_frames_to_run: 600
+frame_id: 164, num_frames_to_run: 600
+frame_id: 165, num_frames_to_run: 600
+frame_id: 166, num_frames_to_run: 600
+frame_id: 167, num_frames_to_run: 600
+frame_id: 168, num_frames_to_run: 600
+frame_id: 169, num_frames_to_run: 600
+frame_id: 170, num_frames_to_run: 600
+frame_id: 171, num_frames_to_run: 600
+frame_id: 172, num_frames_to_run: 600
+frame_id: 173, num_frames_to_run: 600
+frame_id: 174, num_frames_to_run: 600
+frame_id: 175, num_frames_to_run: 600
+frame_id: 176, num_frames_to_run: 600
+frame_id: 177, num_frames_to_run: 600
+frame_id: 178, num_frames_to_run: 600
+frame_id: 179, num_frames_to_run: 600
+frame_id: 180, num_frames_to_run: 600
+frame_id: 181, num_frames_to_run: 600
+frame_id: 182, num_frames_to_run: 600
+frame_id: 183, num_frames_to_run: 600
+frame_id: 184, num_frames_to_run: 600
+frame_id: 185, num_frames_to_run: 600
+frame_id: 186, num_frames_to_run: 600
+frame_id: 187, num_frames_to_run: 600
+frame_id: 188, num_frames_to_run: 600
+frame_id: 189, num_frames_to_run: 600
+frame_id: 190, num_frames_to_run: 600
+frame_id: 191, num_frames_to_run: 600
+frame_id: 192, num_frames_to_run: 600
+frame_id: 193, num_frames_to_run: 600
+frame_id: 194, num_frames_to_run: 600
+frame_id: 195, num_frames_to_run: 600
+frame_id: 196, num_frames_to_run: 600
+frame_id: 197, num_frames_to_run: 600
+frame_id: 198, num_frames_to_run: 600
+frame_id: 199, num_frames_to_run: 600
+frame_id: 200, num_frames_to_run: 600
+frame_id: 201, num_frames_to_run: 600
+frame_id: 202, num_frames_to_run: 600
+frame_id: 203, num_frames_to_run: 600
+frame_id: 204, num_frames_to_run: 600
+frame_id: 205, num_frames_to_run: 600
+frame_id: 206, num_frames_to_run: 600
+frame_id: 207, num_frames_to_run: 600
+frame_id: 208, num_frames_to_run: 600
+frame_id: 209, num_frames_to_run: 600
+frame_id: 210, num_frames_to_run: 600
+frame_id: 211, num_frames_to_run: 600
+frame_id: 212, num_frames_to_run: 600
+frame_id: 213, num_frames_to_run: 600
+frame_id: 214, num_frames_to_run: 600
+frame_id: 215, num_frames_to_run: 600
+frame_id: 216, num_frames_to_run: 600
+frame_id: 217, num_frames_to_run: 600
+frame_id: 218, num_frames_to_run: 600
+frame_id: 219, num_frames_to_run: 600
+frame_id: 220, num_frames_to_run: 600
+frame_id: 221, num_frames_to_run: 600
+frame_id: 222, num_frames_to_run: 600
+frame_id: 223, num_frames_to_run: 600
+frame_id: 224, num_frames_to_run: 600
+frame_id: 225, num_frames_to_run: 600
+frame_id: 226, num_frames_to_run: 600
+frame_id: 227, num_frames_to_run: 600
+frame_id: 228, num_frames_to_run: 600
+frame_id: 229, num_frames_to_run: 600
+frame_id: 230, num_frames_to_run: 600
+frame_id: 231, num_frames_to_run: 600
+frame_id: 232, num_frames_to_run: 600
+frame_id: 233, num_frames_to_run: 600
+frame_id: 234, num_frames_to_run: 600
+frame_id: 235, num_frames_to_run: 600
+frame_id: 236, num_frames_to_run: 600
+frame_id: 237, num_frames_to_run: 600
+frame_id: 238, num_frames_to_run: 600
+frame_id: 239, num_frames_to_run: 600
+frame_id: 240, num_frames_to_run: 600
+frame_id: 241, num_frames_to_run: 600
+frame_id: 242, num_frames_to_run: 600
+frame_id: 243, num_frames_to_run: 600
+frame_id: 244, num_frames_to_run: 600
+frame_id: 245, num_frames_to_run: 600
+frame_id: 246, num_frames_to_run: 600
+frame_id: 247, num_frames_to_run: 600
+frame_id: 248, num_frames_to_run: 600
+frame_id: 249, num_frames_to_run: 600
+frame_id: 250, num_frames_to_run: 600
+frame_id: 251, num_frames_to_run: 600
+frame_id: 252, num_frames_to_run: 600
+frame_id: 253, num_frames_to_run: 600
+frame_id: 254, num_frames_to_run: 600
+frame_id: 255, num_frames_to_run: 600
+frame_id: 256, num_frames_to_run: 600
+frame_id: 257, num_frames_to_run: 600
+frame_id: 258, num_frames_to_run: 600
+frame_id: 259, num_frames_to_run: 600
+frame_id: 260, num_frames_to_run: 600
+frame_id: 261, num_frames_to_run: 600
+frame_id: 262, num_frames_to_run: 600
+frame_id: 263, num_frames_to_run: 600
+frame_id: 264, num_frames_to_run: 600
+frame_id: 265, num_frames_to_run: 600
+frame_id: 266, num_frames_to_run: 600
+frame_id: 267, num_frames_to_run: 600
+frame_id: 268, num_frames_to_run: 600
+frame_id: 269, num_frames_to_run: 600
+frame_id: 270, num_frames_to_run: 600
+frame_id: 271, num_frames_to_run: 600
+frame_id: 272, num_frames_to_run: 600
+frame_id: 273, num_frames_to_run: 600
+frame_id: 274, num_frames_to_run: 600
+frame_id: 275, num_frames_to_run: 600
+frame_id: 276, num_frames_to_run: 600
+frame_id: 277, num_frames_to_run: 600
+frame_id: 278, num_frames_to_run: 600
+frame_id: 279, num_frames_to_run: 600
+frame_id: 280, num_frames_to_run: 600
+frame_id: 281, num_frames_to_run: 600
+frame_id: 282, num_frames_to_run: 600
+frame_id: 283, num_frames_to_run: 600
+frame_id: 284, num_frames_to_run: 600
+frame_id: 285, num_frames_to_run: 600
+frame_id: 286, num_frames_to_run: 600
+frame_id: 287, num_frames_to_run: 600
+frame_id: 288, num_frames_to_run: 600
+frame_id: 289, num_frames_to_run: 600
+frame_id: 290, num_frames_to_run: 600
+frame_id: 291, num_frames_to_run: 600
+frame_id: 292, num_frames_to_run: 600
+frame_id: 293, num_frames_to_run: 600
+frame_id: 294, num_frames_to_run: 600
+frame_id: 295, num_frames_to_run: 600
+frame_id: 296, num_frames_to_run: 600
+frame_id: 297, num_frames_to_run: 600
+frame_id: 298, num_frames_to_run: 600
+frame_id: 299, num_frames_to_run: 600
+frame_id: 300, num_frames_to_run: 600
+frame_id: 301, num_frames_to_run: 600
+frame_id: 302, num_frames_to_run: 600
+frame_id: 303, num_frames_to_run: 600
+frame_id: 304, num_frames_to_run: 600
+frame_id: 305, num_frames_to_run: 600
+frame_id: 306, num_frames_to_run: 600
+frame_id: 307, num_frames_to_run: 600
+frame_id: 308, num_frames_to_run: 600
+frame_id: 309, num_frames_to_run: 600
+frame_id: 310, num_frames_to_run: 600
+frame_id: 311, num_frames_to_run: 600
+frame_id: 312, num_frames_to_run: 600
+frame_id: 313, num_frames_to_run: 600
+frame_id: 314, num_frames_to_run: 600
+frame_id: 315, num_frames_to_run: 600
+frame_id: 316, num_frames_to_run: 600
+frame_id: 317, num_frames_to_run: 600
+frame_id: 318, num_frames_to_run: 600
+frame_id: 319, num_frames_to_run: 600
+frame_id: 320, num_frames_to_run: 600
+frame_id: 321, num_frames_to_run: 600
+frame_id: 322, num_frames_to_run: 600
+frame_id: 323, num_frames_to_run: 600
+frame_id: 324, num_frames_to_run: 600
+frame_id: 325, num_frames_to_run: 600
+frame_id: 326, num_frames_to_run: 600
+frame_id: 327, num_frames_to_run: 600
+frame_id: 328, num_frames_to_run: 600
+frame_id: 329, num_frames_to_run: 600
+frame_id: 330, num_frames_to_run: 600
+frame_id: 331, num_frames_to_run: 600
+frame_id: 332, num_frames_to_run: 600
+frame_id: 333, num_frames_to_run: 600
+frame_id: 334, num_frames_to_run: 600
+frame_id: 335, num_frames_to_run: 600
+frame_id: 336, num_frames_to_run: 600
+frame_id: 337, num_frames_to_run: 600
+frame_id: 338, num_frames_to_run: 600
+frame_id: 339, num_frames_to_run: 600
+frame_id: 340, num_frames_to_run: 600
+frame_id: 341, num_frames_to_run: 600
+frame_id: 342, num_frames_to_run: 600
+frame_id: 343, num_frames_to_run: 600
+frame_id: 344, num_frames_to_run: 600
+frame_id: 345, num_frames_to_run: 600
+frame_id: 346, num_frames_to_run: 600
+frame_id: 347, num_frames_to_run: 600
+frame_id: 348, num_frames_to_run: 600
+frame_id: 349, num_frames_to_run: 600
+frame_id: 350, num_frames_to_run: 600
+frame_id: 351, num_frames_to_run: 600
+frame_id: 352, num_frames_to_run: 600
+frame_id: 353, num_frames_to_run: 600
+frame_id: 354, num_frames_to_run: 600
+frame_id: 355, num_frames_to_run: 600
+frame_id: 356, num_frames_to_run: 600
+frame_id: 357, num_frames_to_run: 600
+frame_id: 358, num_frames_to_run: 600
+frame_id: 359, num_frames_to_run: 600
+frame_id: 360, num_frames_to_run: 600
+frame_id: 361, num_frames_to_run: 600
+frame_id: 362, num_frames_to_run: 600
+frame_id: 363, num_frames_to_run: 600
+frame_id: 364, num_frames_to_run: 600
+frame_id: 365, num_frames_to_run: 600
+frame_id: 366, num_frames_to_run: 600
+frame_id: 367, num_frames_to_run: 600
+frame_id: 368, num_frames_to_run: 600
+frame_id: 369, num_frames_to_run: 600
+frame_id: 370, num_frames_to_run: 600
+frame_id: 371, num_frames_to_run: 600
+frame_id: 372, num_frames_to_run: 600
+frame_id: 373, num_frames_to_run: 600
+frame_id: 374, num_frames_to_run: 600
+frame_id: 375, num_frames_to_run: 600
+frame_id: 376, num_frames_to_run: 600
+frame_id: 377, num_frames_to_run: 600
+frame_id: 378, num_frames_to_run: 600
+frame_id: 379, num_frames_to_run: 600
+frame_id: 380, num_frames_to_run: 600
+frame_id: 381, num_frames_to_run: 600
+frame_id: 382, num_frames_to_run: 600
+frame_id: 383, num_frames_to_run: 600
+frame_id: 384, num_frames_to_run: 600
+frame_id: 385, num_frames_to_run: 600
+frame_id: 386, num_frames_to_run: 600
+frame_id: 387, num_frames_to_run: 600
+frame_id: 388, num_frames_to_run: 600
+frame_id: 389, num_frames_to_run: 600
+frame_id: 390, num_frames_to_run: 600
+frame_id: 391, num_frames_to_run: 600
+frame_id: 392, num_frames_to_run: 600
+frame_id: 393, num_frames_to_run: 600
+frame_id: 394, num_frames_to_run: 600
+frame_id: 395, num_frames_to_run: 600
+frame_id: 396, num_frames_to_run: 600
+frame_id: 397, num_frames_to_run: 600
+frame_id: 398, num_frames_to_run: 600
+frame_id: 399, num_frames_to_run: 600
+frame_id: 400, num_frames_to_run: 600
+frame_id: 401, num_frames_to_run: 600
+frame_id: 402, num_frames_to_run: 600
+frame_id: 403, num_frames_to_run: 600
+frame_id: 404, num_frames_to_run: 600
+frame_id: 405, num_frames_to_run: 600
+frame_id: 406, num_frames_to_run: 600
+frame_id: 407, num_frames_to_run: 600
+frame_id: 408, num_frames_to_run: 600
+frame_id: 409, num_frames_to_run: 600
+frame_id: 410, num_frames_to_run: 600
+frame_id: 411, num_frames_to_run: 600
+frame_id: 412, num_frames_to_run: 600
+frame_id: 413, num_frames_to_run: 600
+frame_id: 414, num_frames_to_run: 600
+frame_id: 415, num_frames_to_run: 600
+frame_id: 416, num_frames_to_run: 600
+frame_id: 417, num_frames_to_run: 600
+frame_id: 418, num_frames_to_run: 600
+frame_id: 419, num_frames_to_run: 600
+frame_id: 420, num_frames_to_run: 600
+frame_id: 421, num_frames_to_run: 600
+frame_id: 422, num_frames_to_run: 600
+frame_id: 423, num_frames_to_run: 600
+frame_id: 424, num_frames_to_run: 600
+frame_id: 425, num_frames_to_run: 600
+frame_id: 426, num_frames_to_run: 600
+frame_id: 427, num_frames_to_run: 600
+frame_id: 428, num_frames_to_run: 600
+frame_id: 429, num_frames_to_run: 600
+frame_id: 430, num_frames_to_run: 600
+frame_id: 431, num_frames_to_run: 600
+frame_id: 432, num_frames_to_run: 600
+frame_id: 433, num_frames_to_run: 600
+frame_id: 434, num_frames_to_run: 600
+frame_id: 435, num_frames_to_run: 600
+frame_id: 436, num_frames_to_run: 600
+frame_id: 437, num_frames_to_run: 600
+frame_id: 438, num_frames_to_run: 600
+frame_id: 439, num_frames_to_run: 600
+frame_id: 440, num_frames_to_run: 600
+frame_id: 441, num_frames_to_run: 600
+frame_id: 442, num_frames_to_run: 600
+frame_id: 443, num_frames_to_run: 600
+frame_id: 444, num_frames_to_run: 600
+frame_id: 445, num_frames_to_run: 600
+frame_id: 446, num_frames_to_run: 600
+frame_id: 447, num_frames_to_run: 600
+frame_id: 448, num_frames_to_run: 600
+frame_id: 449, num_frames_to_run: 600
+frame_id: 450, num_frames_to_run: 600
+frame_id: 451, num_frames_to_run: 600
+frame_id: 452, num_frames_to_run: 600
+frame_id: 453, num_frames_to_run: 600
+frame_id: 454, num_frames_to_run: 600
+frame_id: 455, num_frames_to_run: 600
+frame_id: 456, num_frames_to_run: 600
+frame_id: 457, num_frames_to_run: 600
+frame_id: 458, num_frames_to_run: 600
+frame_id: 459, num_frames_to_run: 600
+frame_id: 460, num_frames_to_run: 600
+frame_id: 461, num_frames_to_run: 600
+frame_id: 462, num_frames_to_run: 600
+frame_id: 463, num_frames_to_run: 600
+frame_id: 464, num_frames_to_run: 600
+frame_id: 465, num_frames_to_run: 600
+frame_id: 466, num_frames_to_run: 600
+frame_id: 467, num_frames_to_run: 600
+frame_id: 468, num_frames_to_run: 600
+frame_id: 469, num_frames_to_run: 600
+frame_id: 470, num_frames_to_run: 600
+frame_id: 471, num_frames_to_run: 600
+frame_id: 472, num_frames_to_run: 600
+frame_id: 473, num_frames_to_run: 600
+frame_id: 474, num_frames_to_run: 600
+frame_id: 475, num_frames_to_run: 600
+frame_id: 476, num_frames_to_run: 600
+frame_id: 477, num_frames_to_run: 600
+frame_id: 478, num_frames_to_run: 600
+frame_id: 479, num_frames_to_run: 600
+frame_id: 480, num_frames_to_run: 600
+frame_id: 481, num_frames_to_run: 600
+frame_id: 482, num_frames_to_run: 600
+frame_id: 483, num_frames_to_run: 600
+frame_id: 484, num_frames_to_run: 600
+frame_id: 485, num_frames_to_run: 600
+frame_id: 486, num_frames_to_run: 600
+frame_id: 487, num_frames_to_run: 600
+frame_id: 488, num_frames_to_run: 600
+frame_id: 489, num_frames_to_run: 600
+frame_id: 490, num_frames_to_run: 600
+frame_id: 491, num_frames_to_run: 600
+frame_id: 492, num_frames_to_run: 600
+frame_id: 493, num_frames_to_run: 600
+frame_id: 494, num_frames_to_run: 600
+frame_id: 495, num_frames_to_run: 600
+frame_id: 496, num_frames_to_run: 600
+frame_id: 497, num_frames_to_run: 600
+frame_id: 498, num_frames_to_run: 600
+frame_id: 499, num_frames_to_run: 600
+frame_id: 500, num_frames_to_run: 600
+frame_id: 501, num_frames_to_run: 600
+frame_id: 502, num_frames_to_run: 600
+frame_id: 503, num_frames_to_run: 600
+frame_id: 504, num_frames_to_run: 600
+frame_id: 505, num_frames_to_run: 600
+frame_id: 506, num_frames_to_run: 600
+frame_id: 507, num_frames_to_run: 600
+frame_id: 508, num_frames_to_run: 600
+frame_id: 509, num_frames_to_run: 600
+frame_id: 510, num_frames_to_run: 600
+frame_id: 511, num_frames_to_run: 600
+frame_id: 512, num_frames_to_run: 600
+frame_id: 513, num_frames_to_run: 600
+frame_id: 514, num_frames_to_run: 600
+frame_id: 515, num_frames_to_run: 600
+frame_id: 516, num_frames_to_run: 600
+frame_id: 517, num_frames_to_run: 600
+frame_id: 518, num_frames_to_run: 600
+frame_id: 519, num_frames_to_run: 600
+frame_id: 520, num_frames_to_run: 600
+frame_id: 521, num_frames_to_run: 600
+frame_id: 522, num_frames_to_run: 600
+frame_id: 523, num_frames_to_run: 600
+frame_id: 524, num_frames_to_run: 600
+frame_id: 525, num_frames_to_run: 600
+frame_id: 526, num_frames_to_run: 600
+frame_id: 527, num_frames_to_run: 600
+frame_id: 528, num_frames_to_run: 600
+frame_id: 529, num_frames_to_run: 600
+frame_id: 530, num_frames_to_run: 600
+frame_id: 531, num_frames_to_run: 600
+frame_id: 532, num_frames_to_run: 600
+frame_id: 533, num_frames_to_run: 600
+frame_id: 534, num_frames_to_run: 600
+frame_id: 535, num_frames_to_run: 600
+frame_id: 536, num_frames_to_run: 600
+frame_id: 537, num_frames_to_run: 600
+frame_id: 538, num_frames_to_run: 600
+frame_id: 539, num_frames_to_run: 600
+frame_id: 540, num_frames_to_run: 600
+frame_id: 541, num_frames_to_run: 600
+frame_id: 542, num_frames_to_run: 600
+frame_id: 543, num_frames_to_run: 600
+frame_id: 544, num_frames_to_run: 600
+frame_id: 545, num_frames_to_run: 600
+frame_id: 546, num_frames_to_run: 600
+frame_id: 547, num_frames_to_run: 600
+frame_id: 548, num_frames_to_run: 600
+frame_id: 549, num_frames_to_run: 600
+frame_id: 550, num_frames_to_run: 600
+frame_id: 551, num_frames_to_run: 600
+frame_id: 552, num_frames_to_run: 600
+frame_id: 553, num_frames_to_run: 600
+frame_id: 554, num_frames_to_run: 600
+frame_id: 555, num_frames_to_run: 600
+frame_id: 556, num_frames_to_run: 600
+frame_id: 557, num_frames_to_run: 600
+frame_id: 558, num_frames_to_run: 600
+frame_id: 559, num_frames_to_run: 600
+frame_id: 560, num_frames_to_run: 600
+frame_id: 561, num_frames_to_run: 600
+frame_id: 562, num_frames_to_run: 600
+frame_id: 563, num_frames_to_run: 600
+frame_id: 564, num_frames_to_run: 600
+frame_id: 565, num_frames_to_run: 600
+frame_id: 566, num_frames_to_run: 600
+frame_id: 567, num_frames_to_run: 600
+frame_id: 568, num_frames_to_run: 600
+frame_id: 569, num_frames_to_run: 600
+frame_id: 570, num_frames_to_run: 600
+frame_id: 571, num_frames_to_run: 600
+frame_id: 572, num_frames_to_run: 600
+frame_id: 573, num_frames_to_run: 600
+frame_id: 574, num_frames_to_run: 600
+frame_id: 575, num_frames_to_run: 600
+frame_id: 576, num_frames_to_run: 600
+frame_id: 577, num_frames_to_run: 600
+frame_id: 578, num_frames_to_run: 600
+frame_id: 579, num_frames_to_run: 600
+frame_id: 580, num_frames_to_run: 600
+frame_id: 581, num_frames_to_run: 600
+frame_id: 582, num_frames_to_run: 600
+frame_id: 583, num_frames_to_run: 600
+frame_id: 584, num_frames_to_run: 600
+frame_id: 585, num_frames_to_run: 600
+frame_id: 586, num_frames_to_run: 600
+frame_id: 587, num_frames_to_run: 600
+frame_id: 588, num_frames_to_run: 600
+frame_id: 589, num_frames_to_run: 600
+frame_id: 590, num_frames_to_run: 600
+frame_id: 591, num_frames_to_run: 600
+frame_id: 592, num_frames_to_run: 600
+frame_id: 593, num_frames_to_run: 600
+frame_id: 594, num_frames_to_run: 600
+frame_id: 595, num_frames_to_run: 600
+frame_id: 596, num_frames_to_run: 600
+frame_id: 597, num_frames_to_run: 600
+frame_id: 598, num_frames_to_run: 600
+frame_id: 599, num_frames_to_run: 600
+   306.644107 s: ISS: Stopping sensor [IMX390-UB953_D3] ... !!!
+[MCU2_0]    306.644207 s: ImageSensor_RemoteServiceHandler: IM_SENSOR_CMD_STREAM_OFF 
+[MCU2_0]    306.644285 s: IM_SENSOR_CMD_STREAM_ON:  channel_mask = 0x1
+[MCU2_0]    306.644319 s: Stopping camera # 0 
+[MCU2_0]    306.644366 s: Entering IssSensor_Stop 
+[MCU2_0]    306.654856 s: ub960_cfgScript : ub960I2cAddr = 0x3d 
+[MCU2_0]    306.654899 s: UB960 config start 
+   306.686998 s: ISS: Stopping sensor [IMX390-UB953_D3] ... Done !!!
+[MCU2_0]    306.686895 s:  End of UB960 config 
+
+
+
+
+ =========================
+ Demo : Camera Demo
+ =========================
+
+ s: Save CSIx, VISS and LDC outputs
+
+ p: Print performance statistics
+
+ x: Exit
+
+ Enter Choice: x
+
+[MCU2_0]    309.826032 s: ==========================================================
+[MCU2_0]    309.826121 s:  Capture Status: Instance|0
+[MCU2_0]    309.826165 s: ==========================================================
+[MCU2_0]    309.826202 s:  overflowCount: 0
+[MCU2_0]    309.826229 s:  spuriousUdmaIntrCount: 0
+[MCU2_0]    309.826277 s:  frontFIFOOvflCount: 0
+[MCU2_0]    309.826308 s:  crcCount: 1
+[MCU2_0]    309.826328 s:  eccCount: 0
+[MCU2_0]    309.826352 s:  correctedEccCount: 0
+[MCU2_0]    309.826378 s:  dataIdErrorCount: 0
+[MCU2_0]    309.826404 s:  invalidAccessCount: 0
+[MCU2_0]    309.826428 s:  invalidSpCount: 0
+[MCU2_0]    309.826453 s:  strmFIFOOvflCount[0]: 3
+[MCU2_0]    309.826480 s:  strmFIFOOvflCount[1]: 0
+[MCU2_0]    309.826507 s:  strmFIFOOvflCount[2]: 83
+[MCU2_0]    309.826534 s:  strmFIFOOvflCount[3]: 18
+[MCU2_0]    309.826577 s:  Channel Num | Frame Queue Count | Frame De-queue Count | Frame Drop Count | Error Frame Count |
+[MCU2_0]    309.826632 s:            0 |               763 |                  763 |               48 |                 0 |
+   309.858881 s: ISS: De-initializing sensor [IMX390-UB953_D3] ... !!!
+   309.859004 s: ISS: De-initializing sensor [IMX390-UB953_D3] ... Done !!!
+   309.859129 s:  VX_ZONE_ERROR:[ownReleaseReferenceInt:307] Invalid reference
+   309.859327 s:  VX_ZONE_ERROR:[ownReleaseReferenceInt:307] Invalid reference
+   309.893086 s:  VX_ZONE_INIT:[tivxHostDeInit:56] De-Initialization Done for HOST !!!
+   309.897463 s:  VX_ZONE_INIT:[tivxDeInit:111] De-Initialization Done !!!
+APP: Deinit ... !!!
+REMOTE_SERVICE: Deinit ... !!!
+REMOTE_SERVICE: Deinit ... Done !!!
+IPC: Deinit ... !!!
+IPC: DeInit ... Done !!!
+MEM: Deinit ... !!!
+MEM: Alloc's: 37 alloc's of 46159295 bytes 
+MEM: Free's : 37 free's  of 46159295 bytes 
+MEM: Open's : 0 allocs  of 0 bytes 
+MEM: Deinit ... Done !!!
+APP: Deinit ... Done !!!
+root@j7-evm:/opt/vision_apps# 

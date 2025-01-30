@@ -1,0 +1,175 @@
+============================
+Performing Security Handover
+============================
+
+.. note::
+
+  This document is only applicable to devices AM64.
+
+
+AM64 SOC is targeted towards usecases with limited runtime security
+operations in steady state operation. When runtime security operations
+are complete, it supports releasing the security resources to a host
+designated via board configuration. This feature is called security
+handover.
+
+On AM64 device, security code uses the last 128 KB of MCUSRAM Bank 7 along with
+some portion of DMSC internal memory. Security code also maintains control of
+the security configuration region on the device from 0x45000000 to 0x45FFFFFF.
+After the system initialization and all runtime security operations are
+complete, a designated host on the system can trigger security handover
+operation. After the security handover is complete, the part of memory used by security
+code in MCUSRAM bank 7 is wiped and released to the system and part of memory 
+is retained for the firmware (Refer :ref:`mcusram_resource_usage`). 
+Of all security functionality, only processor boot control functionality is left running 
+out of DMSC IRAM. Control of system firewalls not protecting any secrets is handed over 
+to a designated host.
+
+This document describes the steps that need to be performed for security handover.
+This document must be read along side
+
+#. :doc:`../2_tisci_msgs/security/security_handover` and
+#. :doc:`../3_boardcfg/BOARDCFG_SEC`, specifically :ref:`pub_boardcfg_security_handover`
+
+Board configuration
+===================
+
+Security handover is controlled by board configuration
+:doc:`../3_boardcfg/BOARDCFG_SEC`, specifically
+:ref:`pub_boardcfg_security_handover`.
+
+There are two entries that the user needs to compulsorily specify.
+
+1. ID of the host who will trigger the security handover.
+2. ID of the host who will take control of a portion of the system firewalls.
+
+If the security handover functionality is not desired, both the above fields must be set to 0.
+0 corresponds to the DMSC host ID.
+Both these host ID's are validated during security board configuration processing.
+Please ensure that these fields are initialized correctly.
+
+.. figure:: ../img/sec/sec-handover/sec_handover_boardcfg.svg
+
+
+Normal runtime operation
+========================
+
+During normal runtime operation, |sysfw| processes all runtime security messages as described in
+the TISCI documentation. Once all the runtime security operations are complete, the host described
+in board configuration can trigger security handover.
+
+Triggering security handover
+============================
+
+.. figure:: ../img/sec/sec-handover/sec_handover_during.svg
+
+Security handover is triggered by :ref:`TISCI_MSG_SEC_HANDOVER <sec-api-sec-handover>`.
+This TISCI message can only sent by the host specified in the board configuration.
+The TISCI message request and response take no additional arguments as the
+required information is included in the board configuration.
+
+The above diagram shows the sequence of operation in M3 when the security handover
+TISCI message is received. In the diagram, we are assuming that R5 has been specified
+as the sender of the handover message.
+
+In the last step in the diagram labelled as "Open firewall protecting the
+firewall configuration", the firewall is programmed to only allow the host
+specified in the security board configuration ``handover_to_host_id``.
+
+Post Security handover
+======================
+
+.. figure:: ../img/sec/sec-handover/sec_handover_after.svg
+
+As most of the security functionality is removed to free up memory, processor
+control functionality is the only security feature available after handover. In
+processor control, secure boot API is not available. Any security TISCI messages
+other than processor control functionality are NACKED.
+
+Below is the list of supported processor control API.
+
++------------------+----------------------------------------------------------------------------------------+
+| TISCI Message ID |                          Message Name                                                  |
++==================+========================================================================================+
+| 0xC000           | :ref:`TISCI_MSG_PROC_REQUEST <proc-boot-request-processor>`.                           |
++------------------+----------------------------------------------------------------------------------------+
+| 0xC001           | :ref:`TISCI_MSG_PROC_RELEASE <proc-boot-release-processor>`.                           |
++------------------+----------------------------------------------------------------------------------------+
+| 0xC005           | :ref:`TISCI_MSG_PROC_HANDOVER <proc-boot-handover-processor>`.                         |
++------------------+----------------------------------------------------------------------------------------+
+| 0xC100           | :ref:`TISCI_MSG_PROC_SET_CONFIG <proc-boot-set-processor-configuration>`               |
++------------------+----------------------------------------------------------------------------------------+
+| 0xC101           | :ref:`TISCI_MSG_PROC_SET_CONTROL <proc-boot-set-processor-control>`                    |
++------------------+----------------------------------------------------------------------------------------+
+| 0xC400           | :ref:`TISCI_MSG_PROC_GET_STATUS <proc_boot_get_processor_status>`                      |
++------------------+----------------------------------------------------------------------------------------+
+| 0xC401           | :ref:`TISCI_MSG_PROC_WAIT_STATUS <proc_boot_wait_processor_status>`                    |
++------------------+----------------------------------------------------------------------------------------+
+
+The below processor control feature is not supported.
+
++------------------+----------------------------------------------------------------------------------------+
+| TISCI Message ID |                                      Message Name                                      |
++==================+========================================================================================+
+| 0xC120           | :ref:`TISCI_MSG_PROC_AUTH_BOOT <proc-boot-authenticate-image-and-configure-processor>` |
++------------------+----------------------------------------------------------------------------------------+
+
+|sysfw| continues to process and clear firewall exceptions to avoid distributing
+this functionality among multiple cores.
+
+On HS devices, |sysfw| firewalls the SA2UL for use during secure boot. This
+firewall is not opened by |sysfw| during security handover. However the host
+specified in the security board configuration can open the SA2UL firewalls as
+required.
+
+Any resource management ring configuration API are also unavailable after security
+handover as they internally invoke ISC configuration API.
+
+.. warning::
+
+  Any resource management ring configuration API are also unavailable after
+  security handover as they internally invoke ISC configuration API.
+
+.. _mcusram_resource_usage:
+
+MCUSRAM Bank 7 Resource usage after security handover 
+=====================================================
+
+Post security handover, firmware uses last 48KB memory of MCUSRAM Bank 7. The rest of 
+the MCUSRAM bank 7 memory will be available for application use. MCUSRAM bank 7 is 
+protected by regions of firewall ID 24, and the below table shows firewall 24 reserved/locked 
+regions for |sysfw| after security handover. 
+
++---------------+--------------------+-----------------+---------------+
+|   Firewall ID | Region             | Start Address   | End Address   |
++===============+====================+=================+===============+
+|            24 |        1           | 0x44077000      | 0x44079FFF    |  
++---------------+--------------------+-----------------+---------------+
+|            24 |        2           | 0x44074000      | 0x44076FFF    |
++---------------+--------------------+-----------------+---------------+
+|            24 |        6           | 0x4407C000      | 0x4407FFFF    |
++---------------+--------------------+-----------------+---------------+
+|            24 |        7           | 0x701FC000      | 0x701FFFFF    |
++---------------+--------------------+-----------------+---------------+
+
+The below table shows which firewall 24 regions are open to all users 
+after security handover and can be reconfigured by application as necessary. 
+
++---------------+--------------------+-----------------+---------------+
+|   Firewall ID | Region             | Start Address   | End Address   |
++===============+====================+=================+===============+
+|            24 |        0           | 0x701E0000      | 0x701FCFFF    |
++---------------+--------------------+-----------------+---------------+
+|            24 |        3           | 0x44060000      | 0x44073FFF    |
++---------------+--------------------+-----------------+---------------+
+|            24 |        5           | 0x701C0000      | 0x701DFFFF    |
++---------------+--------------------+-----------------+---------------+
+
+- Region 4 is disabled and can be configured by the application. 
+
+- The last 48KB of MCUSRAM Bank 7 is unavailable for application use.
+  
+- Regions 0,3,4,5 of Firewall 24 can be reconfigured by the application as needed. 
+
+
+

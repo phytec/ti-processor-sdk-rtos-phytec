@@ -1,0 +1,49 @@
+SBL Revision: 01.00.10.01 (Dec  1 2021 - 08:15:07)
+TIFS  ver: 21.9.1--v2021.09a (Terrific Lla
+mcuClkFreq 1000000000
+
+LBIST Test Applications
+
+ Starting LBIST HWPOST test...    HW POST MCU Status : SDL_LBIST_POST_COMPLETED_SUCCESS
+    HW POST DMSC Status : SDL_LBIST_POST_COMPLETED_SUCCESS
+
+ Starting LBIST test on Main R5F0-0, index 0...  Delta Cores prep time in micro secs 3849 
+  Delta LBIST execution time in micro secs 17587 
+  Delta Cores restore time in micro secs 330 
+  LBIST complete for Main R5F0-0 
+
+ Starting LBIST test on Main R5F1-0, index 1...  Delta Cores prep time in micro secs 212 
+  Delta LBIST execution time in micro secs 17576 
+  Delta Cores restore time in micro secs 307 
+  LBIST complete for Main R5F1-0 
+
+ Starting LBIST test on C7x , index 2...  Delta Cores prep time in micro secs 141 
+  Delta LBIST execution time in micro secs 3536 
+  Delta Cores restore time in micro secs 215 
+  LBIST complete for C7x  
+
+ Starting LBIST test on VPAC, index 3...  Delta Cores prep time in micro secs 79 
+  Delta LBIST execution time in micro secs 6997 
+  Delta Cores restore time in micro secs 159 
+  LBIST complete for VPAC 
+
+ Starting LBIST test on DMPAC, index 4...  Delta Cores prep time in micro secs 79 
+  Delta LBIST execution time in micro secs 7288 
+  Delta Cores restore time in micro secs 147 
+  LBIST complete for DMPAC 
+
+ Starting LBIST test on A72 core 0, index 5...  Delta Cores prep time in micro secs 274 
+  Delta LBIST execution time in micro secs 17394 
+  Delta Cores restore time in micro secs 392 
+  LBIST complete for A72 core 0 
+
+ LBIST Functionality Test Passed.
+
+ LBIST Error Module Test Passed.
+
+All tests have passed. 
+common/lbist_test_main.c:250:test_sdl_lbist_test_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored 
+OK

@@ -1,0 +1,667 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Key Writer &mdash; TISCI User Guide</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="TISCI User Guide" href="../index.html"/>
+        <link rel="up" title="Chapter 6: Topic User Guides" href="index.html"/>
+        <link rel="next" title="Run time read/write to KEYREV and SWREV" href="otp_revision.html"/>
+        <link rel="prev" title="Secure Debug User Guide" href="secure_debug.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="../_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> TISCI
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                09.02.04
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../1_intro/index.html">Chapter 1: Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_tisci_msgs/index.html">Chapter 2: TISCI Message Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_boardcfg/index.html">Chapter 3: Board Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_trace/index.html">Chapter 4: Interpreting Trace Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_soc_doc/index.html">Chapter 5: SoC Family Specific Documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Chapter 6: Topic User Guides</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="authentication.html">System Firmware Authentication and Decryption Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devgrp_usage.html">Device Group Primer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domgrp_usage.html">Domain Group Primer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="secure_boot_signing.html">Signing binaries for Secure Boot on HS Devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hs_boardcfg_signing.html">Signing Board Configuration on HS devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openssl_usage.html">Using OpenSSL for certificate creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extended_otp.html">Using Extended OTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dkek_management.html">Using Derived KEK on HS devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firewall_faq.html">Firewall FAQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="saul_access.html">SAUL Access Outside of SYSFW</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security_handover.html">Performing Security Handover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="secure_debug.html">Secure Debug User Guide</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Key  Writer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#high-security-hs-device-sub-types">High Security (HS) Device Sub-types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hs-fs-to-hs-se-conversion">HS-FS to HS-SE Conversion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#procedure">Procedure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#supported-fields">Supported fields</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#mpk-mek-options">MPK/MEK Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#msv">MSV</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bch-code">BCH code</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#swrev">SWREV</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#extended-otp">Extended OTP</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#x509-configuration-template">X509 Configuration Template</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="otp_revision.html">Run time read/write to KEYREV and SWREV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keyring.html">Keyring Management</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">TISCI</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Chapter 6: Topic User Guides</a> &raquo;</li>
+      
+    <li>Key  Writer</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="key-writer">
+<h1>Key  Writer<a class="headerlink" href="#key-writer" title="Permalink to this headline">¶</a></h1>
+<p>This guide describes the procedure and <a class="reference internal" href="#sysfw-pub-keywr-cert-format"><span class="std std-ref">format</span></a> to
+be followed to populate customer keys in eFuses of the SoC.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This document must be read along side <a class="reference internal" href="../2_tisci_msgs/security/keywriter.html"><span class="doc">OTP Keywriter TISCI Description</span></a></p>
+</div>
+<div class="section" id="high-security-hs-device-sub-types">
+<h2>High Security (HS) Device Sub-types<a class="headerlink" href="#high-security-hs-device-sub-types" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first"><strong>HS-FS (High Security - Field Securable)</strong>:
+Device type before customer keys are programmed (the state in which the device
+leaves TI factory). In this state, device protects the ROM code, TI keys and certain
+security peripherals. HS-FS devices do not enforce secure boot process.</p>
+<blockquote>
+<div><ul class="simple">
+<li>M3 JTAG port is closed, R5 JTAG port is open</li>
+<li>DMSC Firewalls are closed, SOC Firewalls are open</li>
+<li>Board configuration need not be signed</li>
+<li>ROM Boot expects a TI signed binary (encryption is optional)</li>
+<li>System Firmware binary is signed by the TI Private key (TI MPK).
+(Refer <a class="reference internal" href="secure_boot_signing.html#pub-sign-unencrypted-mpk"><span class="std std-ref">Signing an unencrypted binary for secure boot</span></a> for more details)</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>HS-SE (High Security – Security Enforced)</strong>:
+Device type after customer keys are programmed. HS-SE devices enforce secure boot.</p>
+<blockquote>
+<div><ul class="simple">
+<li>M3, R5 JTAG ports are both closed</li>
+<li>DMSC, SOC Firewalls are both closed</li>
+<li>Board configuration needs to be signed with active customer private key (SMPK/BMPK)</li>
+<li>ROM Boot expects a dual signed, encrypted system firmware binary</li>
+<li>System Firmware binary is encrypted by the TI Encryption key (TI MEK), and signed by the
+TI Private key (TI MPK). Customer has to dual sign it with their private key (SMPK/BMPK).
+(Refer <a class="reference internal" href="secure_boot_signing.html#pub-sign-encrypted-mek"><span class="std std-ref">Signing an encrypted binary for secure boot</span></a>)</li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="hs-fs-to-hs-se-conversion">
+<h2>HS-FS to HS-SE Conversion<a class="headerlink" href="#hs-fs-to-hs-se-conversion" title="Permalink to this headline">¶</a></h2>
+<p>In order to convert a HS-FS device to HS-SE device, one has to program the customer root
+key set (optionally backup key set) on the target device, using OTP Keywriter.</p>
+<p>Customer key information is encrypted into x509 certificate extension fields. A list of
+fields that OTP keywriter supports, can be found <a class="reference internal" href="#keywriter-supported-fields"><span class="std std-ref">here</span></a>.</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../_images/hsfs_to_hsse_conversion.png"><img alt="../_images/hsfs_to_hsse_conversion.png" src="../_images/hsfs_to_hsse_conversion.png" style="width: 100%;" /></a>
+</div>
+</div>
+<div class="section" id="procedure">
+<span id="keywriter-cert-gen-procedure"></span><h2>Procedure<a class="headerlink" href="#procedure" title="Permalink to this headline">¶</a></h2>
+<p>The following figure illustrates the procedure to be followed to generate the required x509 certifcate for key writing.</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../_images/key_writer_procedure.png"><img alt="../_images/key_writer_procedure.png" src="../_images/key_writer_procedure.png" style="width: 100%;" /></a>
+</div>
+<ol class="arabic simple">
+<li>OEM generates a random 256-bit number to be used as an AES encryption key for
+protecting the OTP extension data.</li>
+<li>The AES-256 key from step 1 is used to encrypt all X509 extension fields,
+which require encryption protection.</li>
+<li>The following X509 extensions are created, using the AES key encrypted with the TI FEK (public key):<ul>
+<li>Encrypting the AES-256 key with TI FEK</li>
+<li>Signing the AES-256 key with the SMPK, and encrypting that with the TI FEK</li>
+<li>(optionally, refer step 6) signing the AES-256 key with the BMPK, and encrypting
+that with the TI FEK</li>
+</ul>
+</li>
+<li>All of the extensions from steps 1-3 are combined into a X.509 configuration which
+is used to generate and sign a certificate with the SMPK.</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The SMPK Hash and the BMPK Hash are computed using SHA-512 Algorithm to hash the corresponding
+Public keys in DER format.</p>
+</div>
+<ol class="arabic simple">
+<li>This X509 config is sigend using SMPK (private).</li>
+<li>(Optional) If the OEM chooses to write BMPK/BMEK fields, the X509 config from step 5
+needs to be signed using BMPK (private).</li>
+</ol>
+</div>
+<div class="section" id="supported-fields">
+<span id="keywriter-supported-fields"></span><h2>Supported fields<a class="headerlink" href="#supported-fields" title="Permalink to this headline">¶</a></h2>
+<p>Following fields are supported by the Key writer.</p>
+<table border="1" class="colwidths-given docutils" id="id1">
+<caption><span class="caption-number">Table 5 </span><span class="caption-text">Supported OTP keys</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="20%" />
+<col width="35%" />
+<col width="45%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Description</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>BMEK</td>
+<td>Backup Manufacturer Encryption Key</td>
+<td>256-bit Customer encryption key for encrypted boot</td>
+</tr>
+<tr class="row-odd"><td>BMPKH</td>
+<td>Backup Manufacturer Public Key Hash</td>
+<td>BMPK is 4096-bit customer RSA signing key</td>
+</tr>
+<tr class="row-even"><td>EXTENDED OTP</td>
+<td>Extended OTP array</td>
+<td>1024 bit extended otp array</td>
+</tr>
+<tr class="row-odd"><td>KEYCNT</td>
+<td>Key count</td>
+<td>2 if BMPK, SMPK are used, 1 if SMPK is used, 0 if none</td>
+</tr>
+<tr class="row-even"><td>KEYREV</td>
+<td>Key revision</td>
+<td>Can have a maximum value = key count</td>
+</tr>
+<tr class="row-odd"><td>MEK Options</td>
+<td>SMEK/BMEK options</td>
+<td>(Reserved for future use) 5 bit value</td>
+</tr>
+<tr class="row-even"><td>MPK Options</td>
+<td>SMPK/BMPK options</td>
+<td>(Reserved for future use) 10 bit value (split into 2 parts)</td>
+</tr>
+<tr class="row-odd"><td>MSV</td>
+<td>Model specific value</td>
+<td>20 bit value with 12 bit BCH code</td>
+</tr>
+<tr class="row-even"><td>SMEK</td>
+<td>Secondary Manufacturer Encryption Key</td>
+<td>256-bit Customer encryption key for encrypted boot</td>
+</tr>
+<tr class="row-odd"><td>SMPKH</td>
+<td>Secondary Manufacturer Public Key Hash</td>
+<td>SMPK is 4096-bit customer RSA signing key</td>
+</tr>
+<tr class="row-even"><td>SWREV-BOARDCONFIG</td>
+<td>Secure Board Configuration software revision</td>
+<td>128 bit value (64 without double redundancy)</td>
+</tr>
+<tr class="row-odd"><td>SWREV-SBL</td>
+<td>SBL software revision</td>
+<td>96 bit value (48 without double redundancy)</td>
+</tr>
+<tr class="row-even"><td>SWREV-SYSFW</td>
+<td>Firmware software revision</td>
+<td>96 bit value (48 without double redundancy)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">The current version of the OTP Keywriter only supports 4096 bit RSA format for SMPK and BMPK.
+Support for ECDSA and different key lengths will be available in subsequent versions.</p>
+</div>
+<div class="section" id="mpk-mek-options">
+<h3>MPK/MEK Options<a class="headerlink" href="#mpk-mek-options" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">These are currently not supported, and reserved for future use.</p>
+</div>
+<p>MPK (SMPKH/BMPKH) options is a 10 bit value, split into two 5 bit values, to be programmed
+contiguous to MPK part 1 and part 2. MEK options is a 5 bit value, programmed
+contiguous to MEK.</p>
+<p>Secure ROM uses MPK options bit index 0 for RMA process.
+On a HS-SE device, if this bit is set, <code class="docutils literal"><span class="pre">tiMpk</span></code> will be used as root of trust
+instead of SMPKH/BMPKH.</p>
+</div>
+<div class="section" id="msv">
+<h3>MSV<a class="headerlink" href="#msv" title="Permalink to this headline">¶</a></h3>
+<p>Model Specific Value is a 20 bit value.</p>
+</div>
+<div class="section" id="bch-code">
+<h3>BCH code<a class="headerlink" href="#bch-code" title="Permalink to this headline">¶</a></h3>
+<p>BCH code is used for error correction.</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/BCH_code">BCH algorithm</a>
+(288, 261, 7) is used for SMPKH(BMPKH), SMEK(BMEK).</p>
+<p>Out of 261 bits, 256 correspond to SMPKH(BMPKH) part1/2 or SMEK(BMEK) and the
+remaining 5 bits are the MPK/MEK options. If no options are specified, they are set to 0.</p>
+<p>BCH algorithm (32, 20, 5) is used for MSV (20 bit value, and 12 bit BCH code).</p>
+<p>BCH codes are computed at time of fuse programming by OTP Keywriter firmware
+based on plaintext key values.</p>
+</div>
+<div class="section" id="swrev">
+<h3>SWREV<a class="headerlink" href="#swrev" title="Permalink to this headline">¶</a></h3>
+<p>eFuse values of SWREV-SBL, SWREV-SYSFW, SWREV-BOARDCONFIG, use double redundancy
+to reduce the chance of data corruption. Refer
+<a class="reference internal" href="otp_revision.html#sysfw-pub-swrev-decode-logic"><span class="std std-ref">SWREV decode logic</span></a> for more details.</p>
+<p>Use of SWREV is optional. However, if SWREV is used, an initial non-zero value
+is required to enforce revision checks. Thus, SWREV values are programmed to an
+initial value of ‘1’ for all fields at TI factory. Thus, individual SWREV
+fields typically are not required to be programmed.</p>
+</div>
+<div class="section" id="extended-otp">
+<h3>Extended OTP<a class="headerlink" href="#extended-otp" title="Permalink to this headline">¶</a></h3>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">The index and size of ext_otp in the x509 certificate extension
+<a class="reference internal" href="../2_tisci_msgs/security/sec_cert_format.html#keywr-aes-enc-ext-otp"><span class="std std-ref">Keywriter: AES Encrypted extended OTP</span></a> should be multiples of 8</p>
+</div>
+<p>1024 bits are provided as input, out of which <code class="docutils literal"><span class="pre">size</span></code> number of bits starting from
+<code class="docutils literal"><span class="pre">index</span></code> are programmed into efuses. Following figure illustrates the bit mapping
+from byte array (input) to efuse array (efuse rows).</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../_images/efuse_32_to_25_example.png"><img alt="../_images/efuse_32_to_25_example.png" src="../_images/efuse_32_to_25_example.png" style="width: 100%;" /></a>
+</div>
+<div class="admonition-example admonition">
+<p class="first admonition-title">Example</p>
+<p>If only byte array indexes 2 and 3 were to be programmed (0xCC, 0xDD respectively)
+from the above figure, we can see that efuse rows 0 and 1 would be programmed
+as (0x01CC0000) and (0x0000006E) with masks (0x01FF0000) and (0x0000007F)
+respectively.</p>
+<p>If they were to be write protected, we have to write protect both row 0 and
+row 1.</p>
+<p>So, we need to set <code class="docutils literal"><span class="pre">wprp</span></code> to <code class="docutils literal"><span class="pre">0000000000000003</span> <span class="pre">0000000000000000</span></code>
+The MSB 16 octets are for wp, LSB 16 octets are for rp.
+bits 0 and 1 are set in wp, to write protect efuse row 0 and row 1.</p>
+<p class="last">Please note that this would cause the remaining bits of row 0 and row 1
+also to be write protected.</p>
+</div>
+</div>
+</div>
+<div class="section" id="x509-configuration-template">
+<span id="sysfw-pub-keywr-cert-format"></span><h2>X509 Configuration Template<a class="headerlink" href="#x509-configuration-template" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">[</span><span class="w"> </span>req<span class="w"> </span><span class="o">]</span>
+<span class="nv">distinguished_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>req_distinguished_name
+<span class="nv">x509_extensions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>v3_ca
+<span class="nv">prompt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>no
+<span class="nv">dirstring_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>nobmp
+
+<span class="c1"># This information will be filled by the end user.</span>
+<span class="c1"># The current data is only a place holder.</span>
+<span class="c1"># System firmware does not make decisions based</span>
+<span class="c1"># on the contents of this distinguished name block.</span>
+<span class="o">[</span><span class="w"> </span>req_distinguished_name<span class="w"> </span><span class="o">]</span>
+<span class="nv">C</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>oR
+<span class="nv">ST</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>rx
+<span class="nv">L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>gQE843yQV0sag
+<span class="nv">O</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>dqhGYAQ2Y4gFfCq0t1yABCYxex9eAxt71f
+<span class="nv">OU</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>a87RB35W
+<span class="nv">CN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>x0FSqGTPWbGpuiV
+<span class="nv">emailAddress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>kFp5uGcgWXxcfxi@vsHs9C9qQWGrBs.com
+
+<span class="o">[</span><span class="w"> </span>v3_ca<span class="w"> </span><span class="o">]</span>
+<span class="nv">basicConstraints</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>CA:true
+<span class="m">1</span>.3.6.1.4.1.294.1.64<span class="w"> </span><span class="o">=</span><span class="w"> </span>ASN1:SEQUENCE:enc_aes_key
+<span class="m">1</span>.3.6.1.4.1.294.1.65<span class="w"> </span><span class="o">=</span><span class="w"> </span>ASN1:SEQUENCE:enc_smpk_signed_aes_key
+<span class="m">1</span>.3.6.1.4.1.294.1.66<span class="w"> </span><span class="o">=</span><span class="w"> </span>ASN1:SEQUENCE:enc_bmpk_signed_aes_key
+<span class="m">1</span>.3.6.1.4.1.294.1.67<span class="w"> </span><span class="o">=</span><span class="w"> </span>ASN1:SEQUENCE:aesenc_smpkh
+<span class="m">1</span>.3.6.1.4.1.294.1.68<span class="w"> </span><span class="o">=</span><span class="w"> </span>ASN1:SEQUENCE:aesenc_smek
+<span class="m">1</span>.3.6.1.4.1.294.1.69<span class="w"> </span><span class="o">=</span><span class="w"> </span>ASN1:SEQUENCE:plain_mpk_options
+<span class="m">1</span>.3.6.1.4.1.294.1.70<span class="w"> </span><span class="o">=</span><span class="w"> </span>ASN1:SEQUENCE:aesenc_bmpkh
+<span class="m">1</span>.3.6.1.4.1.294.1.71<span class="w"> </span><span class="o">=</span><span class="w"> </span>ASN1:SEQUENCE:aesenc_bmek
+<span class="m">1</span>.3.6.1.4.1.294.1.72<span class="w"> </span><span class="o">=</span><span class="w"> </span>ASN1:SEQUENCE:plain_mek_options
+<span class="m">1</span>.3.6.1.4.1.294.1.73<span class="w"> </span><span class="o">=</span><span class="w"> </span>ASN1:SEQUENCE:aesenc_ext_otp
+<span class="m">1</span>.3.6.1.4.1.294.1.74<span class="w"> </span><span class="o">=</span><span class="w"> </span>ASN1:SEQUENCE:plain_key_rev
+<span class="m">1</span>.3.6.1.4.1.294.1.76<span class="w"> </span><span class="o">=</span><span class="w"> </span>ASN1:SEQUENCE:plain_msv
+<span class="m">1</span>.3.6.1.4.1.294.1.77<span class="w"> </span><span class="o">=</span><span class="w"> </span>ASN1:SEQUENCE:plain_key_cnt
+<span class="m">1</span>.3.6.1.4.1.294.1.78<span class="w"> </span><span class="o">=</span><span class="w"> </span>ASN1:SEQUENCE:plain_swrev_sysfw
+<span class="m">1</span>.3.6.1.4.1.294.1.79<span class="w"> </span><span class="o">=</span><span class="w"> </span>ASN1:SEQUENCE:plain_swrev_sbl
+<span class="m">1</span>.3.6.1.4.1.294.1.80<span class="w"> </span><span class="o">=</span><span class="w"> </span>ASN1:SEQUENCE:plain_swrev_sec_brdcfg
+<span class="m">1</span>.3.6.1.4.1.294.1.81<span class="w"> </span><span class="o">=</span><span class="w"> </span>ASN1:SEQUENCE:plain_keywr_min_version
+
+<span class="o">[</span><span class="w"> </span>enc_aes_key<span class="w"> </span><span class="o">]</span>
+<span class="c1"># Replace PUT-ENC-AES-KEY with acutal Encrypted AES Key</span>
+<span class="nv">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_ENC_AES_KEY
+<span class="nv">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:PUT_SIZE_ENC_AES
+
+<span class="o">[</span><span class="w"> </span>enc_bmpk_signed_aes_key<span class="w"> </span><span class="o">]</span>
+<span class="c1"># Replace PUT-ENC-BMPK-SIGNED-AES-KEY with acutal Encrypted BMPK signed AES Key</span>
+<span class="nv">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_ENC_BMPK_SIGNED_AES_KEY
+<span class="nv">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:PUT_SIZE_ENC_BMPK_SIGNED_AES
+
+<span class="o">[</span><span class="w"> </span>enc_smpk_signed_aes_key<span class="w"> </span><span class="o">]</span>
+<span class="c1"># Replace PUT-ENC-SMPK-SIGNED-AES-KEY with acutal Encrypted SMPK signed AES Key</span>
+<span class="nv">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_ENC_SMPK_SIGNED_AES_KEY
+<span class="nv">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:PUT_SIZE_ENC_SMPK_SIGNED_AES
+
+<span class="o">[</span><span class="w"> </span>aesenc_smpkh<span class="w"> </span><span class="o">]</span>
+<span class="c1"># Replace PUT-AESENC-SPMKH with acutal Encrypted AES Key</span>
+<span class="nv">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_AESENC_SMPKH
+<span class="nv">iv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_IV_AESENC_SMPKH
+<span class="nv">rs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_RS_AESENC_SMPKH
+<span class="nv">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:PUT_SIZE_AESENC_SMPKH
+<span class="nv">action_flags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:PUT_ACTFLAG_AESENC_SMPKH
+
+<span class="o">[</span><span class="w"> </span>aesenc_smek<span class="w"> </span><span class="o">]</span>
+<span class="c1"># Replace PUT-AESENC-SMEK with acutal Encrypted AES Key</span>
+<span class="nv">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_AESENC_SMEK
+<span class="nv">iv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_IV_AESENC_SMEK
+<span class="nv">rs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_RS_AESENC_SMEK
+<span class="nv">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:PUT_SIZE_AESENC_SMEK
+<span class="nv">action_flags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:PUT_ACTFLAG_AESENC_SMEK
+
+<span class="o">[</span><span class="w"> </span>aesenc_bmpkh<span class="w"> </span><span class="o">]</span>
+<span class="c1"># Replace PUT-AESENC-BMPKH with acutal Encrypted BMPKH</span>
+<span class="nv">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_AESENC_BMPKH
+<span class="nv">iv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_IV_AESENC_BMPKH
+<span class="nv">rs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_RS_AESENC_BMPKH
+<span class="nv">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:PUT_SIZE_AESENC_BMPKH
+<span class="nv">action_flags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:PUT_ACTFLAG_AESENC_BMPKH
+
+<span class="o">[</span><span class="w"> </span>aesenc_bmek<span class="w"> </span><span class="o">]</span>
+<span class="c1"># Replace PUT-AESENC-BMEK with acutal Encrypted BMEK</span>
+<span class="nv">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_AESENC_BMEK
+<span class="nv">iv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_IV_AESENC_BMEK
+<span class="nv">rs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_RS_AESENC_BMEK
+<span class="nv">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:PUT_SIZE_AESENC_BMEK
+<span class="nv">action_flags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:PUT_ACTFLAG_AESENC_BMEK
+
+<span class="o">[</span><span class="w"> </span>plain_msv<span class="w"> </span><span class="o">]</span>
+<span class="c1"># Replace PUT-PLAIN-MSV with actual MSV value</span>
+<span class="nv">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_PLAIN_MSV
+<span class="nv">action_flags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:PUT_ACTFLAG_PLAIN_MSV
+
+<span class="o">[</span><span class="w"> </span>plain_mpk_options<span class="w"> </span><span class="o">]</span>
+<span class="c1"># Replace PUT-PLAIN-MPK-OPT with actual MPK OPT value</span>
+<span class="nv">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_PLAIN_MPK_OPT
+<span class="nv">action_flags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:PUT_ACTFLAG_PLAIN_MPK_OPT
+
+<span class="o">[</span><span class="w"> </span>plain_mek_options<span class="w"> </span><span class="o">]</span>
+<span class="c1"># Replace PUT-PLAIN-MEK-OPT with actual MEK OPT value</span>
+<span class="nv">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_PLAIN_MEK_OPT
+<span class="nv">action_flags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:PUT_ACTFLAG_PLAIN_MEK_OPT
+
+<span class="o">[</span><span class="w"> </span>plain_key_rev<span class="w"> </span><span class="o">]</span>
+<span class="c1"># Replace PUT-PLAIN-KEY-REV with actual Key Rev value</span>
+<span class="nv">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_PLAIN_KEY_REV
+<span class="nv">action_flags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:PUT_ACTFLAG_PLAIN_KEY_REV
+
+<span class="o">[</span><span class="w"> </span>plain_key_cnt<span class="w"> </span><span class="o">]</span>
+<span class="c1"># Replace PUT-PLAIN-KEY-CNT with actual Key Count value</span>
+<span class="nv">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_PLAIN_KEY_CNT
+<span class="nv">action_flags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:PUT_ACTFLAG_PLAIN_KEY_CNT
+
+<span class="o">[</span><span class="w"> </span>plain_swrev_sysfw<span class="w"> </span><span class="o">]</span>
+<span class="c1"># Replace PUT-PLAIN-SWREV-SYSFW with actual SWREV SYSFW value</span>
+<span class="nv">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_PLAIN_SWREV_SYSFW
+<span class="nv">action_flags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:PUT_ACTFLAG_PLAIN_SWREV_SYSFW
+
+<span class="o">[</span><span class="w"> </span>plain_swrev_sbl<span class="w"> </span><span class="o">]</span>
+<span class="c1"># Replace PUT-PLAIN-SWREV-SBL with actual SWREV SBL value</span>
+<span class="nv">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_PLAIN_SWREV_SBL
+<span class="nv">action_flags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:PUT_ACTFLAG_PLAIN_SWREV_SBL
+
+<span class="o">[</span><span class="w"> </span>plain_swrev_sec_brdcfg<span class="w"> </span><span class="o">]</span>
+<span class="c1"># Replace PUT-PLAIN-SWREV-SEC-BRDCFG with actual SWREV SEC BRDCFG value</span>
+<span class="nv">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_PLAIN_SWREV_SEC_BRDCFG
+<span class="nv">action_flags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:PUT_ACTFLAG_PLAIN_SWREV_SEC_BRDCFG
+
+<span class="o">[</span>plain_keywr_min_version<span class="w"> </span><span class="o">]</span><span class="w"> </span>
+<span class="c1"># Replace PUT-PLAIN-KEYWR-MIN-VER with actual KEYWR-MIN-VER value</span>
+<span class="nv">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_PLAIN_KEYWR_MIN_VER
+
+<span class="o">[</span><span class="w"> </span>aesenc_ext_otp<span class="w"> </span><span class="o">]</span>
+<span class="c1"># Replace PUT-AESENC-EXT-OTP with actual Encrypted OTP</span>
+<span class="nv">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_AESENC_EXT_OTP
+<span class="nv">iv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_IV_AESENC_EXT_OTP
+<span class="nv">rs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_RS_AESENC_EXT_OTP
+<span class="nv">wprp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_WPRP_AESENC_EXT_OTP
+<span class="nv">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:PUT_INDX_AESENC_EXT_OTP
+<span class="nv">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:PUT_SIZE_AESENC_EXT_OTP
+<span class="nv">action_flags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:PUT_ACTFLAG_AESENC_EXT_OTP
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="otp_revision.html" class="btn btn-neutral float-right" title="Run time read/write to KEYREV and SWREV" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="secure_debug.html" class="btn btn-neutral" title="Secure Debug User Guide" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyright 2016-2024</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'09.02.04',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+
+        $('body').on("mousewheel", function () {
+            // Remove default behavior
+            event.preventDefault();
+            // Scroll without smoothing
+            var wheelDelta = event.wheelDelta;
+            var currentScrollPosition = window.pageYOffset;
+            window.scrollTo(0, currentScrollPosition - wheelDelta);
+        });
+      });
+  </script>
+   
+
+</body>
+</html>

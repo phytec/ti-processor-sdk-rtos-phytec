@@ -1,0 +1,11 @@
+/*
+ *  Sends the test parameter structure and number of tests
+ */
+void MATHLIB_cosh_getTestParams (
+    MATHLIB_cosh_testParams_t **params,
+    int32_t *                                 numTests)
+{
+   *params = testParams;
+   *numTests =
+       sizeof (testParams) / sizeof (MATHLIB_cosh_testParams_t);
+}

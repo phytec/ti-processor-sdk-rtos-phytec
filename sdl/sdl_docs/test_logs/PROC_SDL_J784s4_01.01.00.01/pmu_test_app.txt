@@ -1,0 +1,46 @@
+Welcome to minicom 2.7.1                                                                                                                    
+                                                                                                                                            
+OPTIONS: I18n                                                                                                                               
+Compiled on Dec 23 2019, 02:06:26.                                                                                                          
+Port /dev/ttyUSB1, 19:32:05                                                                                                                 
+                                                                                                                                            
+Press CTRL-A Z for help on special keys                                                                                                     
+                                                                                                                                            
+01000000011a00006a3761657000000000000000475020200008010000080100C1.00.10.01 (Jun 29 2023 - 13:38:40)                                        
+Waiting for tifs.bin ...                                                                                                                    
+CCCCCCCCTIFS  ver: 9.0.6--v09.00.06 (Kool Koala)                                                                                            
+Waiting for multicore app ...                                                                                                               
+CCCst Application                                                                                                                           
+Number of PMU counters implemented is: 0x3                                                                                                  
+                                                                                                                                            
+  readStatic register successful                                                                                                            
+                                                                                                                                            
+static config exportsEvents value is: 0x0                                                                                                   
+                                                                                                                                            
+ static config cycleCntDiv value is: 0x0                                                                                                    
+                                                                                                                                            
+ iCacheMissCnt is: 0x18                                                                                                                     
+                                                                                                                                            
+ dCacheMissCnt is: 0x0                                                                                                                      
+                                                                                                                                            
+ branchCnt is: 0x4c52f0                                                                                                                     
+                                                                                                                                            
+ cycleCnt is: 0x2fc1f15                                                                                                                     
+                                                                                                                                            
+ Setting all PMU counters to new values:                                                                                                    
+ New iCacheMissCnt is: 0x2                                                                                                                  
+                                                                                                                                            
+ New dCacheMissCnt is: 0x2                                                                                                                  
+                                                                                                                                            
+ New branchCnt is: 0x10                                                                                                                     
+                                                                                                                                            
+ New cycleCnt is: 0x350b                                                                                                                    
+                                                                                                                                            
+ Test Name: sdl_core_r5_pmuTest  PASSED                                                                                                     
+                                                                                                                                            
+ All tests have passed.                                                                                                                     
+main.c:190:test_sdl_pmu_baremetal_test_app:PASS                                                                                             
+                                                                                                                                            
+-----------------------                                                                                                                     
+1 Tests 0 Failures 0 Ignored                                                                                                                
+OK 

@@ -1,0 +1,324 @@
+root@j7-evm:/opt/vision_apps# [MCU2_0]      4.454941 s: ### CPU Frequency <ORG = 1000000000 Hz>, <NEW = 1000000000 Hz>
+[MCU2_0]      4.454983 s: APP: Init ... !!!
+[MCU2_0]      4.455004 s: SCICLIENT: Init ... !!!
+[MCU2_0]      4.456148 s: SCICLIENT: DMSC FW version [20.8.5--v2020.08b (Terrific Lla]
+[MCU2_0]      4.456190 s: SCICLIENT: DMSC FW revision 0x14  
+[MCU2_0]      4.456212 s: SCICLIENT: DMSC FW ABI revision 3.1
+[MCU2_0]      4.456236 s: SCICLIENT: Init ... Done !!!
+[MCU2_0]      4.456255 s: UDMA: Init ... !!!
+[MCU2_0]      4.466024 s: UDMA: Init ... Done !!!
+[MCU2_0]      4.466073 s: MEM: Init ... !!!
+[MCU2_0]      4.466108 s: MEM: Created heap (DDR_SHARED_MEM, id=0, flags=0x00000004) @ d2400000 of size 8388608 bytes !!!
+[MCU2_0]      4.466162 s: MEM: Created heap (L3_MEM, id=1, flags=0x00000000) @ 3600000 of size 131072 bytes !!!
+[MCU2_0]      4.466208 s: MEM: Created heap (DDR_NON_CACHE_ME, id=5, flags=0x00000000) @ ce000000 of size 65536 bytes !!!
+[MCU2_0]      4.466250 s: MEM: Init ... Done !!!
+[MCU2_0]      4.466268 s: IPC: Init ... !!!
+[MCU2_0]      4.466298 s: IPC: 6 CPUs participating in IPC !!!
+[MCU2_0]      4.466335 s: IPC: Waiting for HLOS to be ready ... !!!
+[MCU2_0]     20.501510 s: IPC: HLOS is ready !!!
+[MCU2_0]     20.512816 s: IPC: Init ... Done !!!
+[MCU2_0]     20.512877 s: APP: Syncing with 5 CPUs ... !!!
+[MCU2_0]     20.521050 s: APP: Syncing with 5 CPUs ... Done !!!
+[MCU2_0]     20.521096 s: REMOTE_SERVICE: Init ... !!!
+[MCU2_0]     20.522889 s: REMOTE_SERVICE: Init ... Done !!!
+[MCU2_0]     20.522958 s: ETHFW: Init ... !!!
+[MCU2_0]     20.557975 s: CPSW_9G Test on MAIN NAVSS
+[MCU2_0]     20.581474 s: ETHFW: Version   : 0.01.01
+[MCU2_0]     20.581555 s: ETHFW: Build Date: Jan 27, 2021
+[MCU2_0]     20.581584 s: ETHFW: Build Time: 09:36:13
+[MCU2_0]     20.581612 s: ETHFW: Commit SHA: 49465570
+[MCU2_0]     20.581641 s: ETHFW: Init ... DONE !!!
+[MCU2_0]     20.581666 s: ETHFW: Remove server Init ... !!!
+[MCU2_0]     20.583210 s: Remote demo device (core : mcu2_0) .....
+[MCU2_0]     20.583276 s: ETHFW: Remove server Init ... DONE !!!
+[MCU2_0]     20.610301 s: Host MAC address: 70:ff:76:1d:92:c2
+[MCU2_0]     20.639456 s: FVID2: Init ... !!!
+[MCU2_0]     20.639561 s: FVID2: Init ... Done !!!
+[MCU2_0]     20.639608 s: DSS: Init ... !!!
+[MCU2_0]     20.639628 s: DSS: Display type is eDP !!!
+[MCU2_0]     20.639648 s: DSS: SoC init ... !!!
+[MCU2_0]     20.639667 s: SCICLIENT: Sciclient_pmSetModuleState module=152 state=2
+[MCU2_0]     20.640932 s: SCICLIENT: Sciclient_pmSetModuleState success
+[MCU2_0]     20.640968 s: SCICLIENT: Sciclient_pmSetModuleState module=297 state=2
+[MCU2_0]     20.643100 s: SCICLIENT: Sciclient_pmSetModuleState success
+[MCU2_0]     20.643130 s: SCICLIENT: Sciclient_pmSetModuleState module=151 state=2
+[MCU2_0]     20.644527 s: SCICLIENT: Sciclient_pmSetModuleState success
+[MCU2_0]     20.644556 s: SCICLIENT: Sciclient_pmSetModuleClkParent module=152 clk=9 parent=11
+[MCU2_0]     20.645070 s: SCICLIENT: Sciclient_pmSetModuleClkParent success
+[MCU2_0]     20.645104 s: SCICLIENT: Sciclient_pmSetModuleClkParent module=152 clk=13 parent=18
+[MCU2_0]     20.645675 s: SCICLIENT: Sciclient_pmSetModuleClkParent success
+[MCU2_0]     20.645711 s: SCICLIENT: Sciclient_pmSetModuleClkParent module=152 clk=1 parent=2
+[MCU2_0]     20.646180 s: SCICLIENT: Sciclient_pmSetModuleClkParent success
+[MCU2_0]     20.646210 s: SCICLIENT: Sciclient_pmSetModuleClkFreq module=152 clk=1 freq=148500000
+[MCU2_0]     20.665300 s: SCICLIENT: Sciclient_pmSetModuleClkFreq success
+[MCU2_0]     20.665328 s: SCICLIENT: Sciclient_pmModuleClkRequest module=152 clk=1 state=2 flag=0
+[MCU2_0]     20.666506 s: SCICLIENT: Sciclient_pmModuleClkRequest success
+[MCU2_0]     20.666536 s: DSS: SoC init ... Done !!!
+[MCU2_0]     20.666557 s: DSS: Board init ... !!!
+[MCU2_0]     20.666577 s: DSS: Turning on DP_PWR pin for eDP adapters ... !!!
+[MCU2_0]     20.712468 s: DSS: Turning on DP_PWR pin for eDP adapters ... Done!!!
+[MCU2_0]     20.712533 s: DSS: Board init ... Done !!!
+[MCU2_0]     20.735304 s: DSS: Init ... Done !!!
+[MCU2_0]     20.735378 s: VHWA: VPAC Init ... !!!
+[MCU2_0]     20.735403 s: SCICLIENT: Sciclient_pmSetModuleState module=290 state=2
+[MCU2_0]     20.736266 s: SCICLIENT: Sciclient_pmSetModuleState success
+[MCU2_0]     20.736302 s: VHWA: LDC Init ... !!!
+[MCU2_0]     20.749806 s: VHWA: LDC Init ... Done !!!
+[MCU2_0]     20.749860 s: VHWA: MSC Init ... !!!
+[MCU2_0]     20.791926 s: VHWA: MSC Init ... Done !!!
+[MCU2_0]     20.791977 s: VHWA: NF Init ... !!!
+[MCU2_0]     20.799777 s: VHWA: NF Init ... Done !!!
+[MCU2_0]     20.799821 s: VHWA: VISS Init ... !!!
+[MCU2_0]     20.829250 s: VHWA: VISS Init ... Done !!!
+[MCU2_0]     20.829298 s: VHWA: VPAC Init ... Done !!!
+[MCU2_0]     20.829334 s:  VX_ZONE_INIT:Enabled
+[MCU2_0]     20.829365 s:  VX_ZONE_ERROR:Enabled
+[MCU2_0]     20.829388 s:  VX_ZONE_WARNING:Enabled
+[MCU2_0]     20.830566 s:  VX_ZONE_INIT:[tivxPlatformCreateTargetId:55] Added target MCU2-0 
+[MCU2_0]     20.830860 s:  VX_ZONE_INIT:[tivxPlatformCreateTargetId:55] Added target VPAC_NF 
+[MCU2_0]     20.831125 s:  VX_ZONE_INIT:[tivxPlatformCreateTargetId:55] Added target VPAC_LDC1 
+[MCU2_0]     20.831367 s:  VX_ZONE_INIT:[tivxPlatformCreateTargetId:55] Added target VPAC_MSC1 
+[MCU2_0]     20.831671 s:  VX_ZONE_INIT:[tivxPlatformCreateTargetId:55] Added target VPAC_MSC2 
+[MCU2_0]     20.831973 s:  VX_ZONE_INIT:[tivxPlatformCreateTargetId:55] Added target VPAC_VISS1 
+[MCU2_0]     20.832265 s:  VX_ZONE_INIT:[tivxPlatformCreateTargetId:55] Added target CAPTURE1 
+[MCU2_0]     20.832601 s:  VX_ZONE_INIT:[tivxPlatformCreateTargetId:55] Added target CAPTURE2 
+[MCU2_0]     20.832899 s:  VX_ZONE_INIT:[tivxPlatformCreateTargetId:55] Added target DISPLAY1 
+[MCU2_0]     20.833220 s:  VX_ZONE_INIT:[tivxPlatformCreateTargetId:55] Added target DISPLAY2 
+[MCU2_0]     20.833592 s:  VX_ZONE_INIT:[tivxPlatformCreateTargetId:55] Added target CSITX 
+[MCU2_0]     20.833938 s:  VX_ZONE_INIT:[tivxPlatformCreateTargetId:55] Added target CAPTURE3 
+[MCU2_0]     20.834260 s:  VX_ZONE_INIT:[tivxPlatformCreateTargetId:55] Added target CAPTURE4 
+[MCU2_0]     20.834640 s:  VX_ZONE_INIT:[tivxPlatformCreateTargetId:55] Added target CAPTURE5 
+[MCU2_0]     20.834986 s:  VX_ZONE_INIT:[tivxPlatformCreateTargetId:55] Added target CAPTURE6 
+[MCU2_0]     20.835275 s:  VX_ZONE_INIT:[tivxPlatformCreateTargetId:55] Added target CAPTURE7 
+[MCU2_0]     20.835616 s:  VX_ZONE_INIT:[tivxPlatformCreateTargetId:55] Added target CAPTURE8 
+[MCU2_0]     20.835671 s:  VX_ZONE_INIT:[tivxInit:71] Initialization Done !!!
+[MCU2_0]     20.835701 s: APP: OpenVX Target kernel init ... !!!
+[MCU2_0]     20.847935 s: APP: OpenVX Target kernel init ... Done !!!
+[MCU2_0]     20.847988 s: CSI2RX: Init ... !!!
+[MCU2_0]     20.848006 s: SCICLIENT: Sciclient_pmSetModuleState module=25 state=2
+[MCU2_0]     20.848427 s: SCICLIENT: Sciclient_pmSetModuleState success
+[MCU2_0]     20.848484 s: SCICLIENT: Sciclient_pmSetModuleState module=26 state=2
+[MCU2_0]     20.849337 s: SCICLIENT: Sciclient_pmSetModuleState success
+[MCU2_0]     20.849363 s: SCICLIENT: Sciclient_pmSetModuleState module=27 state=2
+[MCU2_0]     20.850202 s: SCICLIENT: Sciclient_pmSetModuleState success
+[MCU2_0]     20.850231 s: SCICLIENT: Sciclient_pmSetModuleState module=147 state=2
+[MCU2_0]     20.850769 s: SCICLIENT: Sciclient_pmSetModuleState success
+[MCU2_0]     20.850795 s: SCICLIENT: Sciclient_pmSetModuleState module=148 state=2
+[MCU2_0]     20.851283 s: SCICLIENT: Sciclient_pmSetModuleState success
+[MCU2_0]     20.854221 s: CSI2RX: Init ... Done !!!
+[MCU2_0]     20.854270 s: CSI2TX: Init ... !!!
+[MCU2_0]     20.854291 s: SCICLIENT: Sciclient_pmSetModuleState module=25 state=2
+[MCU2_0]     20.854781 s: SCICLIENT: Sciclient_pmSetModuleState success
+[MCU2_0]     20.854812 s: SCICLIENT: Sciclient_pmSetModuleState module=28 state=2
+[MCU2_0]     20.855682 s: SCICLIENT: Sciclient_pmSetModuleState success
+[MCU2_0]     20.855708 s: SCICLIENT: Sciclient_pmSetModuleState module=296 state=2
+[MCU2_0]     20.856361 s: SCICLIENT: Sciclient_pmSetModuleState success
+[MCU2_0]     20.859509 s: CSI2TX: Init ... Done !!!
+[MCU2_0]     20.859555 s: ISS: Init ... !!!
+[MCU2_0]     20.859628 s: Found sensor IMX390-UB953_D3 at location 0 
+[MCU2_0]     20.859684 s: Found sensor AR0233-UB953_MARS at location 1 
+[MCU2_0]     20.859733 s: Found sensor AR0820-UB953_LI at location 2 
+[MCU2_0]     20.859778 s: Found sensor UB9xxx_RAW12_TESTPATTERN at location 3 
+[MCU2_0]     20.859823 s: Found sensor UB96x_UYVY_TESTPATTERN at location 4 
+[MCU2_0]     20.859863 s: Found sensor GW_AR0233_UYVY at location 5 
+[MCU2_0]     20.859889 s: IssSensor_Init ... Done !!!
+[MCU2_0]     20.859967 s: vissRemoteServer_Init ... Done !!!
+[MCU2_0]     20.860024 s: IttRemoteServer_Init ... Done !!!
+[MCU2_0]     20.860054 s: UDMA Copy: Init ... !!!
+[MCU2_0]     20.867401 s: UDMA Copy: Init ... Done !!!
+[MCU2_0]     20.867469 s: APP: Init ... Done !!!
+[MCU2_0]     20.867498 s: APP: Run ... !!!
+[MCU2_0]     20.867516 s: IPC: Starting echo test ...
+[MCU2_0]     20.870176 s: APP: Run ... Done !!!
+[MCU2_0]     20.871941 s: IPC: Echo status: mpu1_0[x] mcu2_0[s] mcu2_1[.] C66X_1[P] C66X_2[.] C7X_1[.] 
+[MCU2_0]     20.872102 s: IPC: Echo status: mpu1_0[x] mcu2_0[s] mcu2_1[.] C66X_1[P] C66X_2[P] C7X_1[.] 
+[MCU2_0]     20.872215 s: IPC: Echo status: mpu1_0[x] mcu2_0[s] mcu2_1[P] C66X_1[P] C66X_2[P] C7X_1[.] 
+[MCU2_0]     20.872322 s: IPC: Echo status: mpu1_0[x] mcu2_0[s] mcu2_1[P] C66X_1[P] C66X_2[P] C7X_1[P] 
+[MCU2_0]     21.050387 s: Function:CpswProxyServer_attachExtHandlerCb,HostId:0,CpswType:6
+[MCU2_0]     23.921387 s: Function:CpswProxyServer_registerMacHandlerCb,HostId:0,Handle:a21d09fc,CoreKey:38acb7e6, MacAddress:70:ff:76:1d:92:c1, FlowIdx:172, FlowIdxOffset:0
+[MCU2_0]     23.924465 s: Cpsw_ioctlInternal: CPSW: Registered MAC address.ALE entry:11, Policer Entry:0
+[MCU2_1]      4.519366 s: CIO: Init ... Done !!!
+[MCU2_1]      4.519441 s: ### CPU Frequency <ORG = 1000000000 Hz>, <NEW = 1000000000 Hz>
+[MCU2_1]      4.519485 s: APP: Init ... !!!
+[MCU2_1]      4.519511 s: SCICLIENT: Init ... !!!
+[MCU2_1]      4.520680 s: SCICLIENT: DMSC FW version [20.8.5--v2020.08b (Terrific Lla]
+[MCU2_1]      4.520730 s: SCICLIENT: DMSC FW revision 0x14  
+[MCU2_1]      4.520758 s: SCICLIENT: DMSC FW ABI revision 3.1
+[MCU2_1]      4.520788 s: SCICLIENT: Init ... Done !!!
+[MCU2_1]      4.520811 s: UDMA: Init ... !!!
+[MCU2_1]      4.532133 s: UDMA: Init ... Done !!!
+[MCU2_1]      4.532185 s: MEM: Init ... !!!
+[MCU2_1]      4.532226 s: MEM: Created heap (DDR_SHARED_MEM, id=0, flags=0x00000004) @ d2c00000 of size 16777216 bytes !!!
+[MCU2_1]      4.532286 s: MEM: Created heap (L3_MEM, id=1, flags=0x00000001) @ 3620000 of size 131072 bytes !!!
+[MCU2_1]      4.532343 s: MEM: Created heap (DDR_NON_CACHE_ME, id=5, flags=0x00000000) @ ce010000 of size 67043328 bytes !!!
+[MCU2_1]      4.532392 s: MEM: Init ... Done !!!
+[MCU2_1]      4.532418 s: IPC: Init ... !!!
+[MCU2_1]      4.532473 s: IPC: 6 CPUs participating in IPC !!!
+[MCU2_1]      4.532517 s: IPC: Waiting for HLOS to be ready ... !!!
+[MCU2_1]     20.509544 s: IPC: HLOS is ready !!!
+[MCU2_1]     20.520942 s: IPC: Init ... Done !!!
+[MCU2_1]     20.521005 s: APP: Syncing with 5 CPUs ... !!!
+[MCU2_1]     20.521047 s: APP: Syncing with 5 CPUs ... Done !!!
+[MCU2_1]     20.521081 s: REMOTE_SERVICE: Init ... !!!
+[MCU2_1]     20.522815 s: REMOTE_SERVICE: Init ... Done !!!
+[MCU2_1]     20.522883 s: FVID2: Init ... !!!
+[MCU2_1]     20.522972 s: FVID2: Init ... Done !!!
+[MCU2_1]     20.523004 s: VHWA: DMPAC: Init ... !!!
+[MCU2_1]     20.523028 s: SCICLIENT: Sciclient_pmSetModuleState module=48 state=2
+[MCU2_1]     20.524232 s: SCICLIENT: Sciclient_pmSetModuleState success
+[MCU2_1]     20.524268 s: SCICLIENT: Sciclient_pmSetModuleState module=305 state=2
+[MCU2_1]     20.527064 s: SCICLIENT: Sciclient_pmSetModuleState success
+[MCU2_1]     20.527095 s: VHWA: DOF Init ... !!!
+[MCU2_1]     20.580305 s: VHWA: DOF Init ... Done !!!
+[MCU2_1]     20.580373 s: VHWA: SDE Init ... !!!
+[MCU2_1]     20.596219 s: VHWA: SDE Init ... Done !!!
+[MCU2_1]     20.596274 s: VHWA: DMPAC: Init ... Done !!!
+[MCU2_1]     20.596306 s: VHWA: Codec: Init ... !!!
+[MCU2_1]     20.596329 s: VHWA: VDEC Init ... !!!
+[MCU2_1]     20.611342 s: VHWA: VDEC Init ... Done !!!
+[MCU2_1]     20.611395 s: VHWA: VENC Init ... !!!
+[MCU2_1]     20.612297 s: MM_ENC_Init: No OCM RAM pool available, fallback to DDR mode for above mp params
+[MCU2_1]     20.655636 s: VHWA: VENC Init ... Done !!!
+[MCU2_1]     20.655691 s: VHWA: Init ... Done !!!
+[MCU2_1]     20.655734 s:  VX_ZONE_INIT:Enabled
+[MCU2_1]     20.655760 s:  VX_ZONE_ERROR:Enabled
+[MCU2_1]     20.655785 s:  VX_ZONE_WARNING:Enabled
+[MCU2_1]     20.656814 s:  VX_ZONE_INIT:[tivxPlatformCreateTargetId:55] Added target DMPAC_SDE 
+[MCU2_1]     20.657052 s:  VX_ZONE_INIT:[tivxPlatformCreateTargetId:55] Added target DMPAC_DOF 
+[MCU2_1]     20.657272 s:  VX_ZONE_INIT:[tivxPlatformCreateTargetId:55] Added target VDEC1 
+[MCU2_1]     20.657526 s:  VX_ZONE_INIT:[tivxPlatformCreateTargetId:55] Added target VDEC2 
+[MCU2_1]     20.657781 s:  VX_ZONE_INIT:[tivxPlatformCreateTargetId:55] Added target VENC1 
+[MCU2_1]     20.657999 s:  VX_ZONE_INIT:[tivxPlatformCreateTargetId:55] Added target VENC2 
+[MCU2_1]     20.658053 s:  VX_ZONE_INIT:[tivxInit:71] Initialization Done !!!
+[MCU2_1]     20.658085 s: APP: OpenVX Target kernel init ... !!!
+[MCU2_1]     20.658393 s: APP: OpenVX Target kernel init ... Done !!!
+[MCU2_1]     20.658430 s: UDMA Copy: Init ... !!!
+[MCU2_1]     20.672550 s: UDMA Copy: Init ... Done !!!
+[MCU2_1]     20.672606 s: APP: Init ... Done !!!
+[MCU2_1]     20.672635 s: APP: Run ... !!!
+[MCU2_1]     20.672658 s: IPC: Starting echo test ...
+[MCU2_1]     20.674808 s: APP: Run ... Done !!!
+[MCU2_1]     20.676011 s: IPC: Echo status: mpu1_0[x] mcu2_0[x] mcu2_1[s] C66X_1[P] C66X_2[.] C7X_1[.] 
+[MCU2_1]     20.676108 s: IPC: Echo status: mpu1_0[x] mcu2_0[x] mcu2_1[s] C66X_1[P] C66X_2[P] C7X_1[.] 
+[MCU2_1]     20.676188 s: IPC: Echo status: mpu1_0[x] mcu2_0[x] mcu2_1[s] C66X_1[P] C66X_2[P] C7X_1[P] 
+[MCU2_1]     20.871769 s: IPC: Echo status: mpu1_0[x] mcu2_0[P] mcu2_1[s] C66X_1[P] C66X_2[P] C7X_1[P] 
+[C6x_1 ]      4.603177 s: CIO: Init ... Done !!!
+[C6x_1 ]      4.603212 s: ### CPU Frequency <ORG = 1350000000 Hz>, <NEW = 1350000000 Hz>
+[C6x_1 ]      4.603226 s: APP: Init ... !!!
+[C6x_1 ]      4.603234 s: SCICLIENT: Init ... !!!
+[C6x_1 ]      4.604366 s: SCICLIENT: DMSC FW version [20.8.5--v2020.08b (Terrific Lla]
+[C6x_1 ]      4.604378 s: SCICLIENT: DMSC FW revision 0x14  
+[C6x_1 ]      4.604388 s: SCICLIENT: DMSC FW ABI revision 3.1
+[C6x_1 ]      4.604398 s: SCICLIENT: Init ... Done !!!
+[C6x_1 ]      4.604407 s: UDMA: Init ... !!!
+[C6x_1 ]      4.618381 s: UDMA: Init ... Done !!!
+[C6x_1 ]      4.618404 s: MEM: Init ... !!!
+[C6x_1 ]      4.618416 s: MEM: Created heap (DDR_SHARED_MEM, id=0, flags=0x00000004) @ d4000000 of size 16777216 bytes !!!
+[C6x_1 ]      4.618435 s: MEM: Created heap (L2_MEM, id=2, flags=0x00000001) @ 800000 of size 229376 bytes !!!
+[C6x_1 ]      4.618451 s: MEM: Created heap (DDR_SCRATCH_MEM, id=4, flags=0x00000001) @ d5000000 of size 50331648 bytes !!!
+[C6x_1 ]      4.618467 s: MEM: Init ... Done !!!
+[C6x_1 ]      4.618476 s: IPC: Init ... !!!
+[C6x_1 ]      4.618490 s: IPC: 6 CPUs participating in IPC !!!
+[C6x_1 ]      4.618504 s: IPC: Waiting for HLOS to be ready ... !!!
+[C6x_1 ]     18.634171 s: IPC: HLOS is ready !!!
+[C6x_1 ]     18.658489 s: IPC: Init ... Done !!!
+[C6x_1 ]     18.658529 s: APP: Syncing with 5 CPUs ... !!!
+[C6x_1 ]     20.521047 s: APP: Syncing with 5 CPUs ... Done !!!
+[C6x_1 ]     20.521064 s: REMOTE_SERVICE: Init ... !!!
+[C6x_1 ]     20.521820 s: REMOTE_SERVICE: Init ... Done !!!
+[C6x_1 ]     20.521871 s:  VX_ZONE_INIT:Enabled
+[C6x_1 ]     20.521884 s:  VX_ZONE_ERROR:Enabled
+[C6x_1 ]     20.521894 s:  VX_ZONE_WARNING:Enabled
+[C6x_1 ]     20.522916 s:  VX_ZONE_INIT:[tivxInit:71] Initialization Done !!!
+[C6x_1 ]     20.522934 s: APP: OpenVX Target kernel init ... !!!
+[C6x_1 ]     20.523231 s: APP: OpenVX Target kernel init ... Done !!!
+[C6x_1 ]     20.523252 s: UDMA Copy: Init ... !!!
+[C6x_1 ]     20.544790 s: UDMA Copy: Init ... Done !!!
+[C6x_1 ]     20.544810 s: APP: Init ... Done !!!
+[C6x_1 ]     20.553836 s: APP: Run ... !!!
+[C6x_1 ]     20.553855 s: IPC: Starting echo test ...
+[C6x_1 ]     20.555078 s: APP: Run ... Done !!!
+[C6x_1 ]     20.555464 s: IPC: Echo status: mpu1_0[x] mcu2_0[x] mcu2_1[x] C66X_1[s] C66X_2[x] C7X_1[P] 
+[C6x_1 ]     20.556632 s: IPC: Echo status: mpu1_0[x] mcu2_0[x] mcu2_1[x] C66X_1[s] C66X_2[P] C7X_1[P] 
+[C6x_1 ]     20.675774 s: IPC: Echo status: mpu1_0[x] mcu2_0[x] mcu2_1[P] C66X_1[s] C66X_2[P] C7X_1[P] 
+[C6x_1 ]     20.871622 s: IPC: Echo status: mpu1_0[x] mcu2_0[P] mcu2_1[P] C66X_1[s] C66X_2[P] C7X_1[P] 
+[C6x_2 ]      4.658168 s: CIO: Init ... Done !!!
+[C6x_2 ]      4.658205 s: ### CPU Frequency <ORG = 1350000000 Hz>, <NEW = 1350000000 Hz>
+[C6x_2 ]      4.658219 s: APP: Init ... !!!
+[C6x_2 ]      4.658228 s: SCICLIENT: Init ... !!!
+[C6x_2 ]      4.659364 s: SCICLIENT: DMSC FW version [20.8.5--v2020.08b (Terrific Lla]
+[C6x_2 ]      4.659377 s: SCICLIENT: DMSC FW revision 0x14  
+[C6x_2 ]      4.659387 s: SCICLIENT: DMSC FW ABI revision 3.1
+[C6x_2 ]      4.659398 s: SCICLIENT: Init ... Done !!!
+[C6x_2 ]      4.659407 s: UDMA: Init ... !!!
+[C6x_2 ]      4.673911 s: UDMA: Init ... Done !!!
+[C6x_2 ]      4.673934 s: MEM: Init ... !!!
+[C6x_2 ]      4.673948 s: MEM: Created heap (DDR_SHARED_MEM, id=0, flags=0x00000004) @ d8000000 of size 16777216 bytes !!!
+[C6x_2 ]      4.673967 s: MEM: Created heap (L2_MEM, id=2, flags=0x00000001) @ 800000 of size 229376 bytes !!!
+[C6x_2 ]      4.673983 s: MEM: Created heap (DDR_SCRATCH_MEM, id=4, flags=0x00000001) @ d9000000 of size 50331648 bytes !!!
+[C6x_2 ]      4.674000 s: MEM: Init ... Done !!!
+[C6x_2 ]      4.674009 s: IPC: Init ... !!!
+[C6x_2 ]      4.674024 s: IPC: 6 CPUs participating in IPC !!!
+[C6x_2 ]      4.674038 s: IPC: Waiting for HLOS to be ready ... !!!
+[C6x_2 ]     19.357994 s: IPC: HLOS is ready !!!
+[C6x_2 ]     19.381964 s: IPC: Init ... Done !!!
+[C6x_2 ]     19.382003 s: APP: Syncing with 5 CPUs ... !!!
+[C6x_2 ]     20.521048 s: APP: Syncing with 5 CPUs ... Done !!!
+[C6x_2 ]     20.521064 s: REMOTE_SERVICE: Init ... !!!
+[C6x_2 ]     20.521826 s: REMOTE_SERVICE: Init ... Done !!!
+[C6x_2 ]     20.521877 s:  VX_ZONE_INIT:Enabled
+[C6x_2 ]     20.521890 s:  VX_ZONE_ERROR:Enabled
+[C6x_2 ]     20.521899 s:  VX_ZONE_WARNING:Enabled
+[C6x_2 ]     20.522911 s:  VX_ZONE_INIT:[tivxInit:71] Initialization Done !!!
+[C6x_2 ]     20.522930 s: APP: OpenVX Target kernel init ... !!!
+[C6x_2 ]     20.523235 s: APP: OpenVX Target kernel init ... Done !!!
+[C6x_2 ]     20.523257 s: UDMA Copy: Init ... !!!
+[C6x_2 ]     20.545715 s: UDMA Copy: Init ... Done !!!
+[C6x_2 ]     20.545734 s: APP: Init ... Done !!!
+[C6x_2 ]     20.554731 s: APP: Run ... !!!
+[C6x_2 ]     20.554740 s: IPC: Starting echo test ...
+[C6x_2 ]     20.556161 s: APP: Run ... Done !!!
+[C6x_2 ]     20.556617 s: IPC: Echo status: mpu1_0[x] mcu2_0[x] mcu2_1[x] C66X_1[P] C66X_2[s] C7X_1[.] 
+[C6x_2 ]     20.556666 s: IPC: Echo status: mpu1_0[x] mcu2_0[x] mcu2_1[x] C66X_1[P] C66X_2[s] C7X_1[P] 
+[C6x_2 ]     20.675812 s: IPC: Echo status: mpu1_0[x] mcu2_0[x] mcu2_1[P] C66X_1[P] C66X_2[s] C7X_1[P] 
+[C6x_2 ]     20.871638 s: IPC: Echo status: mpu1_0[x] mcu2_0[P] mcu2_1[P] C66X_1[P] C66X_2[s] C7X_1[P] 
+[C7x_1 ]      4.770372 s: CIO: Init ... Done !!!
+[C7x_1 ]      4.770396 s: ### CPU Frequency <ORG = 1000000000 Hz>, <NEW = 1000000000 Hz>
+[C7x_1 ]      4.770411 s: APP: Init ... !!!
+[C7x_1 ]      4.770418 s: SCICLIENT: Init ... !!!
+[C7x_1 ]      4.771651 s: SCICLIENT: DMSC FW version [20.8.5--v2020.08b (Terrific Lla]
+[C7x_1 ]      4.771666 s: SCICLIENT: DMSC FW revision 0x14  
+[C7x_1 ]      4.771676 s: SCICLIENT: DMSC FW ABI revision 3.1
+[C7x_1 ]      4.771686 s: SCICLIENT: Init ... Done !!!
+[C7x_1 ]      4.771695 s: UDMA: Init ... !!!
+[C7x_1 ]      4.780964 s: UDMA: Init ... Done !!!
+[C7x_1 ]      4.780976 s: MEM: Init ... !!!
+[C7x_1 ]      4.780987 s: MEM: Created heap (DDR_SHARED_MEM, id=0, flags=0x00000004) @ dc000000 of size 268435456 bytes !!!
+[C7x_1 ]      4.781007 s: MEM: Created heap (L3_MEM, id=1, flags=0x00000001) @ 70020000 of size 8159232 bytes !!!
+[C7x_1 ]      4.781025 s: MEM: Created heap (L2_MEM, id=2, flags=0x00000001) @ 64800000 of size 491520 bytes !!!
+[C7x_1 ]      4.781043 s: MEM: Created heap (L1_MEM, id=3, flags=0x00000001) @ 64e00000 of size 16384 bytes !!!
+[C7x_1 ]      4.781059 s: MEM: Created heap (DDR_SCRATCH_MEM, id=4, flags=0x00000001) @ ec000000 of size 234881024 bytes !!!
+[C7x_1 ]      4.781077 s: MEM: Init ... Done !!!
+[C7x_1 ]      4.781085 s: IPC: Init ... !!!
+[C7x_1 ]      4.781095 s: IPC: 6 CPUs participating in IPC !!!
+[C7x_1 ]      4.781107 s: IPC: Waiting for HLOS to be ready ... !!!
+[C7x_1 ]     20.213985 s: IPC: HLOS is ready !!!
+[C7x_1 ]     20.223715 s: IPC: Init ... Done !!!
+[C7x_1 ]     20.223732 s: APP: Syncing with 5 CPUs ... !!!
+[C7x_1 ]     20.521049 s: APP: Syncing with 5 CPUs ... Done !!!
+[C7x_1 ]     20.521065 s: REMOTE_SERVICE: Init ... !!!
+[C7x_1 ]     20.521329 s: REMOTE_SERVICE: Init ... Done !!!
+[C7x_1 ]     20.521351 s:  VX_ZONE_INIT:Enabled
+[C7x_1 ]     20.521362 s:  VX_ZONE_ERROR:Enabled
+[C7x_1 ]     20.521371 s:  VX_ZONE_WARNING:Enabled
+[C7x_1 ]     20.521689 s:  VX_ZONE_INIT:[tivxInit:71] Initialization Done !!!
+[C7x_1 ]     20.521704 s: APP: OpenVX Target kernel init ... !!!
+[C7x_1 ]     20.521783 s: APP: OpenVX Target kernel init ... Done !!!
+[C7x_1 ]     20.521798 s: APP: Init ... Done !!!
+[C7x_1 ]     20.521808 s: APP: Run ... !!!
+[C7x_1 ]     20.521816 s: IPC: Starting echo test ...
+[C7x_1 ]     20.522301 s: APP: Run ... Done !!!
+[C7x_1 ]     20.555478 s: IPC: Echo status: mpu1_0[x] mcu2_0[x] mcu2_1[x] C66X_1[P] C66X_2[x] C7X_1[s] 
+[C7x_1 ]     20.556614 s: IPC: Echo status: mpu1_0[x] mcu2_0[x] mcu2_1[x] C66X_1[P] C66X_2[P] C7X_1[s] 
+[C7x_1 ]     20.675832 s: IPC: Echo status: mpu1_0[x] mcu2_0[x] mcu2_1[P] C66X_1[P] C66X_2[P] C7X_1[s] 
+[C7x_1 ]     20.871687 s: IPC: Echo status: mpu1_0[x] mcu2_0[P] mcu2_1[P] C66X_1[P] C66X_2[P] C7X_1[s]

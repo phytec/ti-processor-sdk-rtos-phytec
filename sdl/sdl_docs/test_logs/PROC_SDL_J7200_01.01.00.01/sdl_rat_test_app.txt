@@ -1,0 +1,17 @@
+C01000000011a00006a3776636c00000000000000475020200200010002000100CSBL Revision: 01.00.10.01 (Jun 29 2023 - 15:29:32)
+Waiting for tifs.bin ...
+CCTIFS  ver: 9.0.6--v09.00.06 (Kool Koala)
+Waiting for multicore app ...
+CCC
+ RAT Test Application
+
+ RAT Memory test: starting
+ RAT memory Single bit Repeat error inject: test starting
+ RAT memory  Single bit Repeat error inject at pErrMem 0x0: test completeTest Name: RAT_Memory Test  PASSED
+
+ All tests have passed.
+/home/gtbldadm/nightlybuilds/SDL_J7200_BUILD/292-2023-07-06_05-42-04/workarea/sdl/test/rat/ratIntTest/rat_main.c:278:test_sdl_rat_baremetal_test_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored
+OK

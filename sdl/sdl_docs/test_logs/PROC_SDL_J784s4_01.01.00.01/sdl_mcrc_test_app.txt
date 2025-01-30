@@ -1,0 +1,277 @@
+
+Welcome to minicom 2.7.1                                                                                                                    
+                                                                                                                                            
+OPTIONS: I18n                                                                                                                               
+Compiled on Dec 23 2019, 02:06:26.                                                                                                          
+Port /dev/ttyUSB1, 20:30:32                                                                                                                 
+                                                                                                                                            
+Press CTRL-A Z for help on special keys                                                                                                     
+                                                                                                                                            
+01000000011a00006a3761657000000000000000475020200008010000080100C1.00.10.01 (Jun 29 2023 - 13:38:40)                                        
+Waiting for tifs.bin ...                                                                                                                    
+CCCTIFS  ver: 9.0.6--v09.00.06 (Kool Koala)                                                                                                 
+Waiting for multicore app ...                                                                                                               
+CC Test Application                                                                                                                         
+                                                                                                                                            
+ MCRC FULL CPU mode test: starting                                                                                                          
+ Static PCOUNT is : 0                                                                                                                       
+ Configurationn verified                                                                                                                    
+ Static PCOUNT is : 0                                                                                                                       
+ Full_CPU mode MCRC signature verification done successfully for the instance MCRC_MCU_NAVSS                                                
+                                                                                                                                            
+                                                                                                                                            
+ MCRC FULL CPU mode test: starting                                                                                                          
+ Static PCOUNT is : 0                                                                                                                       
+ Configurationn verified                                                                                                                    
+ Static PCOUNT is : 0                                                                                                                       
+ Full_CPU mode MCRC signature verification failed for the instance NAVSS0_MCRC_0.                                                           
+                                                                                                                                            
+                                                                                                                                            
+                                                                                                                                            
+MCRC Semi_CPU mode test: starting                                                                                                           
+                                                                                                                                            
+                                                                                                                                            
+Copied reference data into memory @803f4800.                                                                                                
+Using Pre-Defined Reference MCRC signature Value.                                                                                           
+ Static PCOUNT is : 0                                                                                                                       
+ Configurationn verified                                                                                                                    
+udmaEventCb occured. eventype 1                                                                                                             
+.                                                                                                                                           
+ Static PCOUNT is : 0                                                                                                                       
+ Configurationn verified                                                                                                                    
+udmaEventCb occured. eventype 1                                                                                                             
+.                                                                                                                                           
+ Static PCOUNT is : 0                                                                                                                       
+ Configurationn verified                                                                                                                    
+udmaEventCb occured. eventype 1                                                                                                             
+.                                                                                                                                           
+ Static PCOUNT is : 0                                                                                                                       
+ Configurationn verified                                                                                                                    
+udmaEventCb occured. eventype 1                                                                                                             
+.                                                                                                                                           
+ Static PCOUNT is : 0
+ Configurationn verified                                                                                                                    
+udmaEventCb occured. eventype 1 
+.
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1 
+.
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1 
+.
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1 
+.
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1 
+.
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1 
+.
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1 
+.
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1 
+.
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1 
+.
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1 
+.
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1 
+.
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1 
+.
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1 
+.
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1 
+.
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1 
+.
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1 
+.
+MCRC signature verification done successfully.
+Processed data of size 200000 Bytes 20 times in 1795 ms.
+MCRC performance: 2 MB/s
+udmaEventCb occured. eventype 2 
+.
+Copied reference data into memory @803f4800.
+Using Pre-Defined Reference MCRC signature Value.
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1 
+.
+Sector signature does not match.
+Expected MCRC signature value : 0x1863376183a8c73aU
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1 
+.
+Sector signature does not match.
+Expected MCRC signature value : 0x1863376183a8c73aU
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1 
+.
+Sector signature does not match.
+Expected MCRC signature value : 0x1863376183a8c73aU
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1 
+.
+Sector signature does not match.
+Expected MCRC signature value : 0x1863376183a8c73aU
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1 
+.
+Sector signature does not match.
+Expected MCRC signature value : 0x1863376183a8c73aU
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1 
+.
+Sector signature does not match.
+Expected MCRC signature value : 0x1863376183a8c73aU
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1 
+.
+Sector signature does not match.
+Expected MCRC signature value : 0x1863376183a8c73aU
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1 
+.
+Sector signature does not match.
+Expected MCRC signature value : 0x1863376183a8c73aU
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1 
+.
+Sector signature does not match.
+Expected MCRC signature value : 0x1863376183a8c73aU
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1 
+.
+Sector signature does not match.
+Expected MCRC signature value : 0x1863376183a8c73aU
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1 
+.
+Sector signature does not match.
+Expected MCRC signature value : 0x1863376183a8c73aU
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1 
+.
+Sector signature does not match.
+Expected MCRC signature value : 0x1863376183a8c73aU
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1 
+.
+Sector signature does not match.
+Expected MCRC signature value : 0x1863376183a8c73aU
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1 
+.
+Sector signature does not match.
+Expected MCRC signature value : 0x1863376183a8c73aU
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1 
+.
+Sector signature does not match.
+Expected MCRC signature value : 0x1863376183a8c73aU
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1 
+.
+Sector signature does not match.
+Expected MCRC signature value : 0x1863376183a8c73aU
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1 
+.
+Sector signature does not match.
+Expected MCRC signature value : 0x1863376183a8c73aU
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1 
+.
+Sector signature does not match.
+Expected MCRC signature value : 0x1863376183a8c73aU
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1 
+.
+Sector signature does not match.
+Expected MCRC signature value : 0x1863376183a8c73aU
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+ Static PCOUNT is : 0
+ Configurationn verified
+udmaEventCb occured. eventype 1 
+.
+Sector signature does not match.
+Expected MCRC signature value : 0x1863376183a8c73aU
+Calculated MCRC signature value : 0xc60b4fb8d98307f6U
+MCRC signature verification done successfully.
+Processed data of size 200000 Bytes 20 times in 4696 ms.
+MCRC performance: 0 MB/s
+udmaEventCb occured. eventype 2 
+.Test Name: MCRC_fullCPU_funcTest  PASSED 
+Test Name: MCRC_semiCPU_funcTest  PASSED 
+
+ All tests have passed. 
+/home/gtbldadm/nightlybuilds/SDL_J784S4_BUILD/328-2023-07-06_05-27-05/workarea/sdl/test/mcrc/mcrcFuncTest/main.c:239:test_sdl_mcrc_baremetal_test_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored 
+OK
+
+

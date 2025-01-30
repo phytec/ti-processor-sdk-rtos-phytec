@@ -1,0 +1,130 @@
+
+Getting Started
+^^^^^^^^^^^^^^^
+
+Dependencies
+============
+The following are required to build and use the SDL Project:
+
+Code Generation Tools (CGT)
+---------------------------
+CGT is available with the Processor SDK |__PART_FAMILY_NAME__| SDK. Alternatively, it can also be downloaded from `here <https://www.ti.com/tool/ARM-CGT>`__, and is also
+available with Code Composer Studio. SDL supports compilation with the TI ARM Clang Compiler Tools.
+
+Processor SDK RTOS |__PART_FAMILY_NAME__|
+-----------------------------------------
+The SDL tests and examples depend on some modules from the SDK to build and run on the target. For |__PART_FAMILY_NAME__| SDK, the tests/examples depend on modules from the PDK.
+The PDK is available in the Processor SDK release.
+
+Code Composer Studio (CCS)
+--------------------------
+CCS is not required to load the application and test executables onto the target SoC, but it can be used for application debugging purposes.
+Find the latest download here: https://software-dl.ti.com/ccs/esd/documents/ccs\_downloads.html
+
+Building the SDL
+================
+
+The SDL includes a top-level makefile at **SDL_INSTALL_DIR/** that is used to build the SDL libraries, tests, and examples.
+Before building, the user needs to install the correct tool chains and update the paths in the SDL Rules.make file
+located at **SDL_INSTALL_DIR/**.
+
+The path for the PDK and the CGT must be updated in the Rules.make file prior to building.
+
+Usage
+-----
+Use the following make command for instructions on building a module, example or test in this project:
+
+    .. code:: bash
+
+        cd SDL_INSTALL_DIR
+        make help
+
+The following table lists some of the available build commands along with a description.
+
+    +-------------------------------+--------------------------------------------------------------+
+    | Build Command                 | Description                                                  |
+    +===============================+==============================================================+
+    | make all PROFILE=release      | Builds all libraries, tests and examples in release mode     |
+    +-------------------------------+--------------------------------------------------------------+
+    | make sdl_libs PROFILE=release | Builds the SDL core libraries                                |
+    +-------------------------------+--------------------------------------------------------------+
+    | make test PROFILE=release     | Builds the SDL unit tests                                    |
+    +-------------------------------+--------------------------------------------------------------+
+    | make examples PROFILE=release | Builds the SDL Safety Examples                               |
+    +-------------------------------+--------------------------------------------------------------+
+    | make allclean                 | Clean all libraries and executables                          |
+    +-------------------------------+--------------------------------------------------------------+
+
+Additional build options which can be used.
+
+    +-------------------------------+--------------------------------------------------------------+
+    | PROFILE                       | | Options: debug, release                                    |
+    |                               | | Default: debug                                             |
+    +-------------------------------+--------------------------------------------------------------+
+    | BUILD_OS_TYPE                 | | Options: baremetal, freertos, safertos                     |
+    |                               | | Default: baremetal                                         |
+    |                               | | Note: Not all examples and tests support freertos and      |
+    |                               | | safertos build                                             |
+    +-------------------------------+--------------------------------------------------------------+
+
+Individual examples can also be built using the example name. More information is given in the Safety Examples section.
+
+Libraries
+---------
+
+The following table lists the libraries that are built and their function
+
+    +----------------+--------------------------------------------------------------------------------------+
+    | Build Command  | Description                                                                          |
+    +================+======================================================================================+
+    | sdl_ip         | Library providing the IP-level support for SDL. It is needed by sdl_api library.     |
+    +----------------+--------------------------------------------------------------------------------------+
+    | sdl_api        | Library providing the SDL API interface                                              |
+    +----------------+--------------------------------------------------------------------------------------+
+    | sdl_osal       | Library providing the OSAL interface. It is needed by sdl_api library.               |
+    +----------------+--------------------------------------------------------------------------------------+
+    | r5f_core       | Library providing the core r5f functionalities needed to execute on R5F              |
+    +----------------+--------------------------------------------------------------------------------------+
+
+Supported Boards/SOCs
+=====================
+This release supports execution on MCU R5F core only.
+
+Loading and Running Examples
+============================
+The provided tests and examples can be executed on the target using Secondary Bootloader (SBL) that is provided with PDK.
+The SDL applications need to first be converted into the appropriate format. This can be done using tools available in PDK.
+The following section gives an overview of how to convert an SDL test application into an "appimage" and load it to the
+target. Detailed information regarding the various supported bootmodes for the device is provided along with the PDK SBL documentation.
+
+After building the executable (.xer5f file), the following commands can be run to create the .appimage file.
+
+    .. code:: bash
+
+        cd SDL_INSTALL_DIR
+        mono PDK_INSTALL_DIR/packages/ti/boot/sbl/tools/out2rprc/bin/out2rprc.exe test_app.xer5f MY_OUTPUT_DIR/test_app.rprc
+        PDK_INSTALL_DIR/packages/ti/boot/sbl/tools/multicoreImageGen/bin/MulticoreImageGen LE 55 MY_OUTPUT_DIR/test_app.appimage 4 MY_OUTPUT_DIR/test_app.rprc
+
+Once the .appimage is created, it can be used along with Secondary Bootloader (SBL) to execute the application on the target.
+
+.. NOTE::
+    
+    For Linux machine, make can be used. In all below commands "gmake" can be replaced with "make" for Linux machine build.
+    Also makefile internally uses some binaries like rm, mkdir echo from Cygwin.
+
+
+.. NOTE::
+
+    To build different profiles, provide variable PROFILE=<release/debug> while invoking above commands
+
+.. NOTE::
+
+    The executable will be generated under SDL_INSTALL_DIR/binary/<test/example> folder.
+
+.. NOTE::
+
+    The library will be generated under SDL_INSTALL_DIR/binary/<path_to_source>/lib/<soc>/<core>/<debug/release>/ folder.
+
+.. NOTE::
+
+    For Windows machine, in the file Rules.make, change OS to Windows_NT.

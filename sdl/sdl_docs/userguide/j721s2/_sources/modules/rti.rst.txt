@@ -1,0 +1,155 @@
+RTI : RTI/WWDT Windowed Watchdog Timer
+======================================
+
+Introduction
+------------
+
+The Windowed Watchdog Timer (WWDT) generates reset after a programmable period, if not serviced within that period. This time-out boundary is configurable, and the windowed feature allows the start time boundary to be configurable. The WWDT can generate an Interrupt, if not serviced within window (Open Window) defined by start time and time-out boundary. Also the WWDT can generate an Interrupt if serviced outside Open Window (within Closed Window). Generation of Interrupt depends on the WWDT Reaction configuration.
+SDL supports configuration of the watchdog timers. It also supports notification of the error via ESM interrupt. Additionally, APIs for checking the status of the watchdog timer is provided.
+
+The module provides the following functionality 
+
+* Ability to to initialize the RTI -DWWD module 
+* Ability to configure RTI -DWWD module
+* Ability to service an RTI instance
+* Ability to read Status of the configuration
+* Ability to read back static register
+
+.. ifconfig:: CONFIG_family in ('j721e')
+
+    There are 12 RTI Modules in the device – 2 in the MCU domain and 10 in the Main domain.
+    Note that each instance of RTI is intended to function as a watchdog for the associated CPU core. For example, RTI0 is dedicated to the first A72 CPU core in the A72 cluster. The details of the timers and associated cores are given in the |__PART_SOC_TRM__|.
+
+    Instances in the MCU domain:
+
+    • MCU_RTI0 is dedicated to the MCU cluster (MCU_R5FSS0) in lockstep and when unlocked serves as a Windowed Watchdog for the first R5F CPU core in the MCU domain (MCU_R5FSS0_CORE0).
+    • MCU_RTI1 is dedicated to the second R5F CPU core of the MCU cluster (MCU_R5FSS0_CORE1) when unlocked.
+
+    Instances in the MAIN domain: They are intended to function as a Digital Windowed Watchdog for the CPU core that they are associated with, that is:
+
+    • RTI0 is dedicated to the first A72 CPU core in the A72 cluster (A72SS0_CORE0)
+    • RTI1 is dedicated to the second A72 CPU core in the A72 cluster (A72SS0_CORE1)
+    • RTI15 is dedicated to the GPU
+    • RTI16 is dedicated to the C7x DSP
+    • RTI24 is dedicated to the first C66x DSP core (C66SS0_CORE0)
+    • RTI25 is dedicated to the second C66x DSP core (C66SS1_CORE0)
+    • RTI28 is dedicated to the first R5F CPU core in the Main domain (R5FSS0_CORE0)
+    • RTI29 is dedicated to the second R5F CPU core in the Main domain (R5FSS0_CORE1)
+    • RTI30 is dedicated to the third R5F CPU core in the Main domain (R5FSS1_CORE0)
+    • RTI31 is dedicated to the fourth R5F CPU core in the Main domain (R5FSS1_CORE1)
+	
+.. ifconfig:: CONFIG_family in ('j7200')
+
+    There are 6 RTI Modules in the device – 2 in the MCU domain and 4 in the Main domain.
+    Note that each instance of RTI is intended to function as a watchdog for the associated CPU core. For example, RTI0 is dedicated to the first A72 CPU core in the A72 cluster. The details of the timers and associated cores are given in the |__PART_SOC_TRM__|.
+
+    Instances in the MCU domain:
+
+    • MCU_RTI0 is dedicated to the MCU cluster (MCU_R5FSS0) in lockstep and when unlocked serves as a Windowed Watchdog for the first R5F CPU core in the MCU domain (MCU_R5FSS0_CORE0).
+    • MCU_RTI1 is dedicated to the second R5F CPU core of the MCU cluster (MCU_R5FSS0_CORE1) when unlocked.
+
+    Instances in the MAIN domain: They are intended to function as a Digital Windowed Watchdog for the CPU core that they are associated with, that is:
+
+    • RTI0 is dedicated to the first A72 CPU core in the A72 cluster (A72SS0_CORE0)
+    • RTI1 is dedicated to the second A72 CPU core in the A72 cluster (A72SS0_CORE1)
+    • RTI28 is dedicated to the first R5F CPU core in the Main domain (R5FSS0_CORE0)
+    • RTI29 is dedicated to the second R5F CPU core in the Main domain (R5FSS0_CORE1)
+
+.. ifconfig:: CONFIG_family in ('j721s2')
+
+    There are 11 RTI Modules in the device – 2 in the MCU domain and 9 in the Main domain.
+    Note that each instance of RTI is intended to function as a watchdog for the associated CPU core. For example, RTI0 is dedicated to the first A72 CPU core in the A72 cluster. The details of the timers and associated cores are given in the |__PART_SOC_TRM__|.
+
+    Instances in the MCU domain:
+
+    • MCU_RTI0 is dedicated to the MCU cluster (MCU_R5FSS0) in lockstep and when unlocked serves as a Windowed Watchdog for the first R5F CPU core in the MCU domain (MCU_R5FSS0_CORE0).
+    • MCU_RTI1 is dedicated to the second R5F CPU core of the MCU cluster (MCU_R5FSS0_CORE1) when unlocked.
+
+    Instances in the MAIN domain: They are intended to function as a Digital Windowed Watchdog for the CPU core that they are associated with, that is:
+
+    • RTI0 is dedicated to the first A72 CPU core in the Compute cluster (A72SS0_CORE0)
+    • RTI1 is dedicated to the second A72 CPU core in the Compute cluster (A72SS0_CORE1)
+    • RTI15 is dedicated to the sixth A72 CPU core in the Compute cluster (A72SS1_CORE1)
+    • RTI16 is dedicated to the C71SS0_CORE0
+    • RTI17 is dedicated to the C71SS1_CORE0
+    • RTI28 is dedicated to the first R5F CPU core in the Main domain (R5FSS0_CORE0)
+    • RTI29 is dedicated to the second R5F CPU core in the Main domain (R5FSS0_CORE1)
+    • RTI30 is dedicated to the third R5F CPU core in the Main domain (R5FSS1_CORE0)
+    • RTI31 is dedicated to the fourth R5F CPU core in the Main domain (R5FSS1_CORE1)
+
+Example Usage
+-------------
+
+The following shows an example of SDL RTI API usage by the application to set up the RTI as a watchdog and usage of the various APIs. Events can be monitored by enabling the events in the associated ESM instance.
+
+Config an RTI Instance
+
+    .. code:: bash
+
+        SDL_RTI_configParms pConfig;
+
+        /* Configure RTI parameters for preload, window and reaction*/
+        pConfig.SDL_RTI_dwwdPreloadVal = RTIGetPreloadValue(RTI_CLOCK_SOURCE_32KHZ, RTI_WDT_TIMEOUT);
+        pConfig.SDL_RTI_dwwdWindowSize = RTI_DWWD_WINDOWSIZE_100_PERCENT;
+        pConfig.SDL_RTI_dwwdReaction   = RTI_DWWD_REACTION_GENERATE_NMI;
+
+        retVal = SDL_RTI_config(SDL_INSTANCE_MCU_RTI0_CFG, &pConfig);
+
+        if (retVal == SDL_EFAIL)
+        {
+            UART_printf("Error during Window configuration.\n");
+        }
+
+Verify the config
+
+    .. code:: bash
+
+        /* Verify the config */
+        retVal = SDL_RTI_verifyConfig(SDL_INSTANCE_MCU_RTI0_CFG, &pConfig);
+        
+        if (retVal == SDL_EFAIL)
+        {
+            UART_printf("Error during Window Verify configuration.\n");
+        }
+
+Read the static registers
+
+    .. code:: bash
+
+        SDL_RTI_staticRegs pStaticRegs;
+
+        retVal = SDL_RTI_readStaticRegs(SDL_INSTANCE_MCU_RTI0_CFG, &pStaticRegs);
+
+Start an RTI Instance
+
+    .. code:: bash
+
+        SDL_RTI_start(SDL_INSTANCE_MCU_RTI0_CFG);
+
+Service an RTI Instance
+
+    .. code:: bash
+
+        /* Servicing of the watchdog is done by the core that is being monitored with the watchdg */
+        SDL_RTI_service(SDL_INSTANCE_MCU_RTI0_CFG);
+
+
+
+Examples
+--------
+
+Test apps that are meant for verifying the functionality of the module are also provided.
+
++---------------------+--------------------------------------------------------+--------------------------------------+------------------------------------------+
+| Test App Name       | Description                                            | Location                             | Build Command                            |
++=====================+========================================================+======================================+==========================================+
+| rti_func_test_app   | - Configures the RTI for MCU R5F                       |                                      |                                          |
+|                     | - Triggers an error by not servicing the timer         | [sdl_install_dir]/test/rti/rti_func  | make rti_func_test_app PROFILE=release   |
+|                     | - Checks for error response                            |                                      |                                          |
++---------------------+--------------------------------------------------------+--------------------------------------+------------------------------------------+
+
+
+API
+---
+
+|__RTI_API_LNK__|

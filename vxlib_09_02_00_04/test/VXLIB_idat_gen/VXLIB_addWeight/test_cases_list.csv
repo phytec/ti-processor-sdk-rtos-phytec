@@ -1,0 +1,15 @@
+ID,dTypeIn0,dTypeIn1,dTypeOut,dTypeAlpha,width,height,strideIn0,strideIn1,strideOut,testType,outputDataLocation,numReps,demoCase
+1,uint8_t,uint8_t,uint8_t,float,256,256,256,256,256,STATIC,VXLIB_TEST_OUTPUT_MSMC,1,false
+2,uint8_t,uint8_t,uint8_t,float,128,128,128,128,128,STATIC,VXLIB_TEST_OUTPUT_MSMC,1,false
+3,uint8_t,uint8_t,uint8_t,float,64,64,64,64,64,STATIC,VXLIB_TEST_OUTPUT_MSMC,1,false
+4,uint8_t,uint8_t,uint8_t,float,32,32,32,32,32,STATIC,VXLIB_TEST_OUTPUT_MSMC,1,false
+5,uint8_t,uint8_t,uint8_t,float,16,16,16,16,16,STATIC,VXLIB_TEST_OUTPUT_MSMC,1,false
+6,uint8_t,uint8_t,uint8_t,float,8,8,8,8,8,STATIC,VXLIB_TEST_OUTPUT_MSMC,1,false
+7,uint8_t,uint8_t,uint8_t,float,128,32,160,160,160,STATIC,VXLIB_TEST_OUTPUT_MSMC,1,false
+8,uint8_t,uint8_t,uint8_t,float,130,32,178,178,178,STATIC,VXLIB_TEST_OUTPUT_MSMC,1,false
+9,uint8_t,uint8_t,uint8_t,float,78,32,78,78,100,STATIC,VXLIB_TEST_OUTPUT_MSMC,1,false
+10,uint8_t,uint8_t,uint8_t,float,128,64,160,130,178,STATIC,VXLIB_TEST_OUTPUT_MSMC,1,false
+11,uint8_t,uint8_t,uint8_t,float,78,32,83,96,100,STATIC,VXLIB_TEST_OUTPUT_MSMC,1,false
+12,uint8_t,uint8_t,uint8_t,float,1,2,1,1,1,STATIC,VXLIB_TEST_OUTPUT_MSMC,1,false
+13,uint8_t,uint8_t,uint8_t,float,1,1,32,64,128,STATIC,VXLIB_TEST_OUTPUT_MSMC,1,false
+14,uint8_t,uint8_t,uint8_t,float,3,3,64,32,16,STATIC,VXLIB_TEST_OUTPUT_MSMC,1,false

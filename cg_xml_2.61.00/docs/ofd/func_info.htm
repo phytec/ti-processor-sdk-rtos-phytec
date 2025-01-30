@@ -1,0 +1,108 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Documentation for func_info.pl</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Documentation for func_info.pl</span></strong></big>
+</td></tr>
+</table>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#LIMITATIONS">LIMITATIONS</a></li>
+  <li><a href="#USAGE">USAGE</a></li>
+  <li><a href="#OPTIONS">OPTIONS</a></li>
+  <li><a href="#CREATING-XML-INPUT">CREATING XML INPUT</a></li>
+  <li><a href="#OFD-OPTIONS">OFD OPTIONS</a></li>
+  <li><a href="#PERL-VERSION-DETAILS">PERL VERSION DETAILS</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>func_info.pl</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<p>It produces a listing of all functions ranges and sizes in CSV format e.g.</p>
+
+<pre><code>    HOSTclose, trgdrv.c, 0x000070e0, 0x0000719c, 188
+    HOSTlseek, trgdrv.c, 0x00005ec0, 0x00005fd8, 280</code></pre>
+
+<p>Basically it shows each function, the C/asm file it came from, its function range (ie start -&gt; end PC), and its size (end - start)</p>
+
+<p>Works on executables, object files &amp; libraries. However, the Low &amp; High PC are basically meaningless on libraries. Only on out files (ie after linker placement) do these make sense. We keep Low &amp; High PC in the output for libraries simply to aid programmers who want to write 1 script to post-parse the CSV produced from this perl script.</p>
+
+<p>Works for any ISA.</p>
+
+<p>Should be fairly fast since we strip out unneeded elements of the large XML file before we process it. In Windows, works fastest when run on an existing XML file as compared to piping (ofdNN -xg a.out | perl b.pl). In Linux/Solaris, piping is just as fast (and avoids storing big XML files)</p>
+
+<h1 id="LIMITATIONS">LIMITATIONS</h1>
+
+<ul>
+
+<li><p>Requires code be built with a CGT that produces DWARF debug e.g c6x CGT &gt;= 5.0</p>
+
+</li>
+</ul>
+
+<h1 id="USAGE">USAGE</h1>
+
+<p>func_info.pl [options] <i>xml_file</i></p>
+
+<pre><code>   ... OR ...</code></pre>
+
+<p>ofdXX -g -x <i>out_file</i> | perl func_info.pl [options]</p>
+
+<h1 id="OPTIONS">OPTIONS</h1>
+
+<pre><code> -h                 : Dump usage and quit
+ --no_header        : Disable writing out header row in CSV format
+ --sorted           : Print in func name sorted order (handy for diff&#39;s)
+ --cg_xml_version   : Print out the version of the cg_xml package in use</code></pre>
+
+<h1 id="CREATING-XML-INPUT">CREATING XML INPUT</h1>
+
+<p>OFD stands for Object File Display utility. Examples include ofd6x for C6000 and ofd55 for C5500.</p>
+
+<p>Use the -x and -g options of OFD to create the XML file. Example ...</p>
+
+<pre><code>      ofd6x -x -g -o=file.xml file.out</code></pre>
+
+<p>Alternatively, pipe the output from OFD into the script ...</p>
+
+<pre><code>      ofd6x -x -g file.out | perl func_info.pl
+   ...</code></pre>
+
+<h1 id="OFD-OPTIONS">OFD OPTIONS</h1>
+
+<p>Recent releases of OFD support options for filtering the XML output down to what is strictly of interest. The best options to use in combination with this script are:</p>
+
+<pre><code>   -xg --xml_indent=0 --obj_display=none --dwarf_display=none,dinfo</code></pre>
+
+<p>Filtering the XML in this way reduces the amount of data processed by this script, thus making it run faster.</p>
+
+<h1 id="PERL-VERSION-DETAILS">PERL VERSION DETAILS</h1>
+
+<p>This script was written using Perl version 5.8.3. It may not work with earlier revisions of Perl.</p>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Documentation for func_info.pl</span></strong></big>
+</td></tr>
+</table>
+
+</body>
+
+</html>
+
+

@@ -1,0 +1,55 @@
+01000000011a00006a3761657000000000000000475020200008010000080100CSBL Revision: 01.00.10.01 (Feb 22 2023 - 13:03:23)
+Waiting for tifs.bin ...
+CCTIFS  ver: 8.6.3--v08.06.03 (Chill Capybar
+Waiting for multicore app ...
+CCCCCC
+ RAT Test Application
+
+ RAT Test: starting
+ pStaticRegs RAT_EXCEPTION_ENABLE_SET value 1103352024
+
+ TEST for error injecting when illegal boundary transaction occurs.
+
+        Enabling the Exception Log
+        Configuring the RAT region
+        Writing 0xaaaa5555 to RAT region to cross the boundaryTest Name: RAT FUNCTION TEST  FAILED
+
+ Few/all tests Failed
+/home/gtbldadm/nightlybuilds/SDL_NIGHTLY_BUILD_J7200/435-2023-03-10_12-55-57/workarea/sdl/test/rat/func_test/main.c:184:test_sdl_rat_baremetal_test_app:FAIL: Expected 0 Was -1
+
+-----------------------
+1 Tests 1 Failures 0 Ignored
+FAIL
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

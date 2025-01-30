@@ -1,0 +1,133 @@
+01000000011a00006a3765730000000000000000475020200101010001010100CSBL Revision: 01.00.10.01 (Jun 29 2023 - 15:00:34)
+Waiting for tifs.bin ...
+CCTIFS  ver: 9.0.6--v09.00.06 (Kool Koala)
+Waiting for multicore app ...
+CCmcuClkFreq 1000000000
+
+BIST Example Application
+
+ Starting PBIST failure insertion test on PBIST HWPOST MCU, index 0...
+
+ Starting PBIST failure insertion test on Main Infra PBIST, index 12...
+
+ Starting PBIST failure insertion test on MSMC PBIST, index 13...
+
+ Starting PBIST test on PBIST HWPOST MCU, index 0...
+    HW POST MCU Status : SDL_PBIST_POST_COMPLETED_SUCCESS
+
+ Starting PBIST test on Main Infra PBIST, index 12...
+
+ Starting PBIST test on MSMC PBIST, index 13...
+    HW POST MCU Status : SDL_LBIST_POST_TIMEOUT
+    HW POST DMSC Status : SDL_LBIST_POST_TIMEOUT
+    HW POST MCU Status : SDL_LBIST_POST_TIMEOUT
+    HW POST DMSC Status : SDL_LBIST_POST_TIMEOUT
+
+ Starting PBIST failure insertion test on Main R5F 0 PBIST, index 2...
+
+ Starting PBIST test on Main R5F 0 PBIST, index 2...
+
+ *** Boot stage 0 is complete, cores for this stage may now be loaded ***
+
+
+ Starting PBIST failure insertion test on Main R5F 1 PBIST, index 3...
+
+ Starting PBIST failure insertion test on C7X PBIST, index 4...
+
+ Starting PBIST failure insertion test on C6x core 0 PBIST, index 10...
+
+ Starting PBIST failure insertion test on C6x core 1 PBIST, index 11...
+
+ Starting PBIST failure insertion test on VPAC PBIST, index 6...
+
+ Starting PBIST failure insertion test on DMPAC PBIST, index 7...
+
+ Starting PBIST failure insertion test on A72 PBIST, index 5...
+
+ Starting PBIST failure insertion test on HC PBIST, index 9...
+
+ Starting PBIST failure insertion test on Encoder PBIST, index 14...
+
+ Starting PBIST failure insertion test on Decoder PBIST, index 15...
+
+ Starting PBIST test on Main R5F 1 PBIST, index 3...
+
+ Starting PBIST test on C7X PBIST, index 4...
+
+ Starting PBIST test on C6x core 0 PBIST, index 10...
+
+ Starting PBIST test on C6x core 1 PBIST, index 11...
+
+ Starting PBIST test on VPAC PBIST, index 6...
+
+ Starting PBIST test on DMPAC PBIST, index 7...
+
+ Starting PBIST test on A72 PBIST, index 5...
+
+ Starting PBIST test on HC PBIST, index 9...
+
+ Starting PBIST test on Encoder PBIST, index 14...
+
+ Starting PBIST test on Decoder PBIST, index 15...
+
+ *** Boot stage 1 is complete, cores for this stage may now be loaded ***
+
+
+ *** Boot stage 2 is complete, cores for this stage may now be loaded ***
+
+==========================
+BIST: Example App Summary:
+==========================
+BIST: Pre-boot Stage - Ran negative PBIST ID - PBIST_HWPOST_MCU_INDEX, Result = PASS
+BIST: Pre-boot Stage - Ran negative PBIST ID - PBIST_INSTANCE_MAIN_INFRA, Result = PASS
+BIST: Pre-boot Stage - Ran negative PBIST ID - PBIST_INSTANCE_MSMC, Result = PASS
+Pre-boot stage - Ran 3 negative PBIST total sections
+BIST: Pre-boot Stage - Ran PBIST ID - PBIST_HWPOST_MCU_INDEX, Result = PASS
+BIST: Pre-boot Stage - Ran PBIST ID - PBIST_INSTANCE_MAIN_INFRA, Result = PASS
+BIST: Pre-boot Stage - Ran PBIST ID - PBIST_INSTANCE_MSMC, Result = PASS
+Pre-boot stage - Ran 3 PBIST total sections
+BIST: Pre-boot Stage - Ran LBIST ID - LBIST_HWPOST_DMSC_INDEX, Result = LBIST_POST_COMPLETED_SUCCESS
+BIST: Pre-boot Stage - Ran LBIST ID - LBIST_HWPOST_MCU_INDEX, Result = LBIST_POST_COMPLETED_SUCCESS
+Pre-boot stage - Ran 2 LBIST total sections
+BIST: Stage 0 - Ran negative PBIST ID - PBIST_INSTANCE_MAIN_PULSAR_0, Result = PASS
+BIST: Stage 0 - Ran 1 negative PBIST total sections
+BIST: Stage 0 - Ran PBIST ID - PBIST_INSTANCE_MAIN_PULSAR_0, Result = PASS
+BIST: Stage 0 - Ran 1 PBIST total sections
+BIST: Stage 0 - Ran LBIST ID - LBIST_MAIN_MCU0_INDEX, Result = PASS
+BIST: Stage 0 - Ran 1 LBIST sections
+BIST: Stage 1 - Ran negative PBIST ID - PBIST_INSTANCE_MAIN_PULSAR_1, Result = PASS
+BIST: Stage 1 - Ran negative PBIST ID - PBIST_INSTANCE_C7X, Result = PASS
+BIST: Stage 1 - Ran negative PBIST ID - PBIST_INSTANCE_C66X_0, Result = PASS
+BIST: Stage 1 - Ran negative PBIST ID - PBIST_INSTANCE_C66X_1, Result = PASS
+BIST: Stage 1 - Ran negative PBIST ID - PBIST_INSTANCE_VPAC, Result = PASS
+BIST: Stage 1 - Ran negative PBIST ID - PBIST_INSTANCE_DMPAC, Result = PASS
+BIST: Stage 1 - Ran negative PBIST ID - PBIST_INSTANCE_A72, Result = PASS
+BIST: Stage 1 - Ran negative PBIST ID - PBIST_INSTANCE_HC, Result = PASS
+BIST: Stage 1 - Ran negative PBIST ID - PBIST_INSTANCE_ENCODER, Result = PASS
+BIST: Stage 1 - Ran negative PBIST ID - PBIST_INSTANCE_DECODER, Result = PASS
+BIST: Stage 1 - Ran 10 negative PBIST total sections
+BIST: Stage 1 - Ran PBIST ID - PBIST_INSTANCE_MAIN_PULSAR_1, Result = PASS
+BIST: Stage 1 - Ran PBIST ID - PBIST_INSTANCE_C7X, Result = PASS
+BIST: Stage 1 - Ran PBIST ID - PBIST_INSTANCE_C66X_0, Result = PASS
+BIST: Stage 1 - Ran PBIST ID - PBIST_INSTANCE_C66X_1, Result = PASS
+BIST: Stage 1 - Ran PBIST ID - PBIST_INSTANCE_VPAC, Result = PASS
+BIST: Stage 1 - Ran PBIST ID - PBIST_INSTANCE_DMPAC, Result = PASS
+BIST: Stage 1 - Ran PBIST ID - PBIST_INSTANCE_A72, Result = PASS
+BIST: Stage 1 - Ran PBIST ID - PBIST_INSTANCE_HC, Result = PASS
+BIST: Stage 1 - Ran PBIST ID - PBIST_INSTANCE_ENCODER, Result = PASS
+BIST: Stage 1 - Ran PBIST ID - PBIST_INSTANCE_DECODER, Result = PASS
+BIST: Stage 1 - Ran 10 PBIST total sections
+BIST: Stage 1 - Ran LBIST ID - LBIST_MAIN_MCU1_INDEX, Result = PASS
+BIST: Stage 1 - Ran LBIST ID - LBIST_C7X_CORE_INDEX, Result = PASS
+BIST: Stage 1 - Ran LBIST ID - LBIST_VPAC_INDEX, Result = PASS
+BIST: Stage 1 - Ran LBIST ID - LBIST_DMPAC_INDEX, Result = PASS
+BIST: Stage 1 - Ran 4 LBIST sections
+BIST: Stage 2 - Ran 0 negative PBIST total sections
+BIST: Stage 2 - Ran 0 PBIST total sections
+BIST: Stage 2 - Ran LBIST ID - LBIST_A72_CORE_INDEX, Result = PASS
+BIST: Stage 2 - Ran 1 LBIST sections
+main.c:200:bist_example_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored
+OK

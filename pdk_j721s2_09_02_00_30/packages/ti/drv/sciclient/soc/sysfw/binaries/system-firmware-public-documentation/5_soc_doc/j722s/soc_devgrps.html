@@ -1,0 +1,1058 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>J722S Device Group descriptions &mdash; TISCI User Guide</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="TISCI User Guide" href="../../index.html"/>
+        <link rel="up" title="Chapter 5: SoC Family Specific Documentation" href="../index.html"/>
+        <link rel="next" title="J784S4 Host Descriptions" href="../j784s4/hosts.html"/>
+        <link rel="prev" title="J722S Firewall Descriptions" href="firewalls.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="../../_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> TISCI
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                09.02.04
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../1_intro/index.html">Chapter 1: Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../2_tisci_msgs/index.html">Chapter 2: TISCI Message Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../3_boardcfg/index.html">Chapter 3: Board Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../4_trace/index.html">Chapter 4: Interpreting Trace Data</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Chapter 5: SoC Family Specific Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#am65x-sr1">AM65x SR1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#am65x-sr2">AM65x SR2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#am64x">AM64x</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#am62x">AM62x</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#am62ax">AM62Ax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#am62px">AM62Px</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#j721e">J721E</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#j7200">J7200</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#j721s2">J721S2</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#j722s">J722S</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="hosts.html">J722S Host Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="devices.html">J722S Devices Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="clocks.html">J722S Clock Identifiers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pll_data.html">J722S PLL Defaults</a></li>
+<li class="toctree-l3"><a class="reference internal" href="resasg_types.html">J722S Board Configuration Resource Assignment Type Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interrupt_cfg.html">J722S Interrupt Management Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ra_cfg.html">J722S Ring Accelerator Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dma_cfg.html">J722S DMA Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="psil_cfg.html">J722S PSI-L Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="proxy_cfg.html">J722S Proxy Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sec_proxy.html">J722S Secure Proxy Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="processors.html">J722S Processor Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="firewalls.html">J722S Firewall Descriptions</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">J722S Device Group descriptions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enumeration-of-device-group-ids">Enumeration of Device group IDs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enumeration-devices-accessible-in-devgrp-mcu-wakeup">Enumeration Devices accessible in devgrp “MCU_WAKEUP”</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enumeration-devices-accessible-in-devgrp-main">Enumeration Devices accessible in devgrp “MAIN”</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#j784s4">J784S4</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../6_topic_user_guides/index.html">Chapter 6: Topic User Guides</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">TISCI</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Chapter 5: SoC Family Specific Documentation</a> &raquo;</li>
+      
+    <li>J722S Device Group descriptions</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="j722s-device-group-descriptions">
+<h1>J722S Device Group descriptions<a class="headerlink" href="#j722s-device-group-descriptions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<span id="soc-doc-j722s-public-devgrp-desc-intro"></span><h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>This chapter provides information of specific device groups(DEVGRP)
+that are permitted in the J722S SoC. These device groups are more specific
+grouping of devices and resources used optionally to have staged init
+sequence control of the SoC.</p>
+</div>
+<div class="section" id="enumeration-of-device-group-ids">
+<span id="soc-doc-j722s-public-devgrp-desc-devgrp-list"></span><h2>Enumeration of Device group IDs<a class="headerlink" href="#enumeration-of-device-group-ids" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="16%" />
+<col width="11%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">SoC Devgrp ID</th>
+<th class="head">Generic Devgrp ID</th>
+<th class="head">Flag Value</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>MCU_WAKEUP</td>
+<td>DEVGRP_01</td>
+<td>0x1U &lt;&lt;  1U</td>
+<td>Set of MCU domain peripherals to initialize at boot and use during runtime.</td>
+</tr>
+<tr class="row-odd"><td>MAIN</td>
+<td>DEVGRP_00</td>
+<td>0x1U &lt;&lt;  0U</td>
+<td>Set of Main domain peripherals to initialize at boot and use during runtime.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="enumeration-devices-accessible-in-devgrp-mcu-wakeup">
+<span id="soc-doc-j722s-public-devgrp-desc-mcu-wakeup-ip-list"></span><h2>Enumeration Devices accessible in devgrp “MCU_WAKEUP”<a class="headerlink" href="#enumeration-devices-accessible-in-devgrp-mcu-wakeup" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="75%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Device ID</th>
+<th class="head">Device Name</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>5</td>
+<td>J722S_DEV_WKUP_MCU_GPIOMUX_INTROUTER0</td>
+</tr>
+<tr class="row-odd"><td>23</td>
+<td>J722S_DEV_MCU_DCC0</td>
+</tr>
+<tr class="row-even"><td>35</td>
+<td>J722S_DEV_MCU_TIMER0</td>
+</tr>
+<tr class="row-odd"><td>48</td>
+<td>J722S_DEV_MCU_TIMER1</td>
+</tr>
+<tr class="row-even"><td>49</td>
+<td>J722S_DEV_MCU_TIMER2</td>
+</tr>
+<tr class="row-odd"><td>50</td>
+<td>J722S_DEV_MCU_TIMER3</td>
+</tr>
+<tr class="row-even"><td>64</td>
+<td>J722S_DEV_WKUP_ESM0</td>
+</tr>
+<tr class="row-odd"><td>79</td>
+<td>J722S_DEV_MCU_GPIO0</td>
+</tr>
+<tr class="row-even"><td>100</td>
+<td>J722S_DEV_MCU_MCRC64_0</td>
+</tr>
+<tr class="row-odd"><td>106</td>
+<td>J722S_DEV_MCU_I2C0</td>
+</tr>
+<tr class="row-even"><td>107</td>
+<td>J722S_DEV_WKUP_I2C0</td>
+</tr>
+<tr class="row-odd"><td>110</td>
+<td>J722S_DEV_WKUP_TIMER0</td>
+</tr>
+<tr class="row-even"><td>111</td>
+<td>J722S_DEV_WKUP_TIMER1</td>
+</tr>
+<tr class="row-odd"><td>114</td>
+<td>J722S_DEV_WKUP_UART0</td>
+</tr>
+<tr class="row-even"><td>132</td>
+<td>J722S_DEV_WKUP_RTI0</td>
+</tr>
+<tr class="row-odd"><td>140</td>
+<td>J722S_DEV_WKUP_PSC0</td>
+</tr>
+<tr class="row-even"><td>147</td>
+<td>J722S_DEV_MCU_MCSPI0</td>
+</tr>
+<tr class="row-odd"><td>148</td>
+<td>J722S_DEV_MCU_MCSPI1</td>
+</tr>
+<tr class="row-even"><td>149</td>
+<td>J722S_DEV_MCU_UART0</td>
+</tr>
+<tr class="row-odd"><td>188</td>
+<td>J722S_DEV_MCU_MCAN0</td>
+</tr>
+<tr class="row-even"><td>189</td>
+<td>J722S_DEV_MCU_MCAN1</td>
+</tr>
+<tr class="row-odd"><td>193</td>
+<td>J722S_DEV_CLK_32K_RC_SEL_DEV_VD</td>
+</tr>
+<tr class="row-even"><td>226</td>
+<td>J722S_DEV_WKUP_CLKOUT_SEL_DEV_VD</td>
+</tr>
+<tr class="row-odd"><td>227</td>
+<td>J722S_DEV_MCU_OBSCLK_MUX_SEL_DEV_VD</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="enumeration-devices-accessible-in-devgrp-main">
+<span id="soc-doc-j722s-public-devgrp-desc-main-ip-list"></span><h2>Enumeration Devices accessible in devgrp “MAIN”<a class="headerlink" href="#enumeration-devices-accessible-in-devgrp-main" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Device ID</th>
+<th class="head">Device Name</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>2</td>
+<td>J722S_DEV_DBGSUSPENDROUTER0</td>
+</tr>
+<tr class="row-odd"><td>3</td>
+<td>J722S_DEV_MAIN_GPIOMUX_INTROUTER0</td>
+</tr>
+<tr class="row-even"><td>6</td>
+<td>J722S_DEV_TIMESYNC_EVENT_INTROUTER0</td>
+</tr>
+<tr class="row-odd"><td>7</td>
+<td>J722S_DEV_MCU_R5FSS0</td>
+</tr>
+<tr class="row-even"><td>9</td>
+<td>J722S_DEV_MCU_R5FSS0_CORE0</td>
+</tr>
+<tr class="row-odd"><td>13</td>
+<td>J722S_DEV_CPSW0</td>
+</tr>
+<tr class="row-even"><td>15</td>
+<td>J722S_DEV_STM0</td>
+</tr>
+<tr class="row-odd"><td>16</td>
+<td>J722S_DEV_DCC0</td>
+</tr>
+<tr class="row-even"><td>17</td>
+<td>J722S_DEV_DCC1</td>
+</tr>
+<tr class="row-odd"><td>18</td>
+<td>J722S_DEV_DCC2</td>
+</tr>
+<tr class="row-even"><td>19</td>
+<td>J722S_DEV_DCC3</td>
+</tr>
+<tr class="row-odd"><td>20</td>
+<td>J722S_DEV_DCC4</td>
+</tr>
+<tr class="row-even"><td>21</td>
+<td>J722S_DEV_DCC5</td>
+</tr>
+<tr class="row-odd"><td>22</td>
+<td>J722S_DEV_SMS0</td>
+</tr>
+<tr class="row-even"><td>24</td>
+<td>J722S_DEV_DEBUGSS_WRAP0</td>
+</tr>
+<tr class="row-odd"><td>25</td>
+<td>J722S_DEV_DMASS0</td>
+</tr>
+<tr class="row-even"><td>26</td>
+<td>J722S_DEV_DMASS0_BCDMA_0</td>
+</tr>
+<tr class="row-odd"><td>27</td>
+<td>J722S_DEV_DMASS0_CBASS_0</td>
+</tr>
+<tr class="row-even"><td>28</td>
+<td>J722S_DEV_DMASS0_INTAGGR_0</td>
+</tr>
+<tr class="row-odd"><td>29</td>
+<td>J722S_DEV_DMASS0_IPCSS_0</td>
+</tr>
+<tr class="row-even"><td>30</td>
+<td>J722S_DEV_DMASS0_PKTDMA_0</td>
+</tr>
+<tr class="row-odd"><td>36</td>
+<td>J722S_DEV_TIMER0</td>
+</tr>
+<tr class="row-even"><td>37</td>
+<td>J722S_DEV_TIMER1</td>
+</tr>
+<tr class="row-odd"><td>38</td>
+<td>J722S_DEV_TIMER2</td>
+</tr>
+<tr class="row-even"><td>39</td>
+<td>J722S_DEV_TIMER3</td>
+</tr>
+<tr class="row-odd"><td>40</td>
+<td>J722S_DEV_TIMER4</td>
+</tr>
+<tr class="row-even"><td>41</td>
+<td>J722S_DEV_TIMER5</td>
+</tr>
+<tr class="row-odd"><td>42</td>
+<td>J722S_DEV_TIMER6</td>
+</tr>
+<tr class="row-even"><td>43</td>
+<td>J722S_DEV_TIMER7</td>
+</tr>
+<tr class="row-odd"><td>51</td>
+<td>J722S_DEV_ECAP0</td>
+</tr>
+<tr class="row-even"><td>52</td>
+<td>J722S_DEV_ECAP1</td>
+</tr>
+<tr class="row-odd"><td>53</td>
+<td>J722S_DEV_ECAP2</td>
+</tr>
+<tr class="row-even"><td>54</td>
+<td>J722S_DEV_ELM0</td>
+</tr>
+<tr class="row-odd"><td>55</td>
+<td>J722S_DEV_MAIN_EMIF_DATA_ISO_VD</td>
+</tr>
+<tr class="row-even"><td>57</td>
+<td>J722S_DEV_MMCSD0</td>
+</tr>
+<tr class="row-odd"><td>58</td>
+<td>J722S_DEV_MMCSD1</td>
+</tr>
+<tr class="row-even"><td>59</td>
+<td>J722S_DEV_EQEP0</td>
+</tr>
+<tr class="row-odd"><td>60</td>
+<td>J722S_DEV_EQEP1</td>
+</tr>
+<tr class="row-even"><td>61</td>
+<td>J722S_DEV_WKUP_GTC0</td>
+</tr>
+<tr class="row-odd"><td>62</td>
+<td>J722S_DEV_EQEP2</td>
+</tr>
+<tr class="row-even"><td>63</td>
+<td>J722S_DEV_ESM0</td>
+</tr>
+<tr class="row-odd"><td>73</td>
+<td>J722S_DEV_FSS0</td>
+</tr>
+<tr class="row-even"><td>74</td>
+<td>J722S_DEV_FSS0_FSAS_0</td>
+</tr>
+<tr class="row-odd"><td>75</td>
+<td>J722S_DEV_FSS0_OSPI_0</td>
+</tr>
+<tr class="row-even"><td>76</td>
+<td>J722S_DEV_GICSS0</td>
+</tr>
+<tr class="row-odd"><td>77</td>
+<td>J722S_DEV_GPIO0</td>
+</tr>
+<tr class="row-even"><td>78</td>
+<td>J722S_DEV_GPIO1</td>
+</tr>
+<tr class="row-odd"><td>80</td>
+<td>J722S_DEV_GPMC0</td>
+</tr>
+<tr class="row-even"><td>83</td>
+<td>J722S_DEV_LED0</td>
+</tr>
+<tr class="row-odd"><td>85</td>
+<td>J722S_DEV_DDPA0</td>
+</tr>
+<tr class="row-even"><td>86</td>
+<td>J722S_DEV_EPWM0</td>
+</tr>
+<tr class="row-odd"><td>87</td>
+<td>J722S_DEV_EPWM1</td>
+</tr>
+<tr class="row-even"><td>88</td>
+<td>J722S_DEV_EPWM2</td>
+</tr>
+<tr class="row-odd"><td>95</td>
+<td>J722S_DEV_WKUP_VTM0</td>
+</tr>
+<tr class="row-even"><td>96</td>
+<td>J722S_DEV_MAILBOX0</td>
+</tr>
+<tr class="row-odd"><td>97</td>
+<td>J722S_DEV_MAIN2MCU_VD</td>
+</tr>
+<tr class="row-even"><td>98</td>
+<td>J722S_DEV_MCAN0</td>
+</tr>
+<tr class="row-odd"><td>99</td>
+<td>J722S_DEV_MCAN1</td>
+</tr>
+<tr class="row-even"><td>102</td>
+<td>J722S_DEV_I2C0</td>
+</tr>
+<tr class="row-odd"><td>103</td>
+<td>J722S_DEV_I2C1</td>
+</tr>
+<tr class="row-even"><td>104</td>
+<td>J722S_DEV_I2C2</td>
+</tr>
+<tr class="row-odd"><td>105</td>
+<td>J722S_DEV_I2C3</td>
+</tr>
+<tr class="row-even"><td>116</td>
+<td>J722S_DEV_MCRC64_0</td>
+</tr>
+<tr class="row-odd"><td>117</td>
+<td>J722S_DEV_WKUP_RTCSS0</td>
+</tr>
+<tr class="row-even"><td>118</td>
+<td>J722S_DEV_WKUP_R5FSS0_SS0</td>
+</tr>
+<tr class="row-odd"><td>119</td>
+<td>J722S_DEV_WKUP_R5FSS0</td>
+</tr>
+<tr class="row-even"><td>121</td>
+<td>J722S_DEV_WKUP_R5FSS0_CORE0</td>
+</tr>
+<tr class="row-odd"><td>125</td>
+<td>J722S_DEV_RTI0</td>
+</tr>
+<tr class="row-even"><td>126</td>
+<td>J722S_DEV_RTI1</td>
+</tr>
+<tr class="row-odd"><td>127</td>
+<td>J722S_DEV_RTI2</td>
+</tr>
+<tr class="row-even"><td>128</td>
+<td>J722S_DEV_RTI3</td>
+</tr>
+<tr class="row-odd"><td>130</td>
+<td>J722S_DEV_RTI15</td>
+</tr>
+<tr class="row-even"><td>131</td>
+<td>J722S_DEV_MCU_RTI0</td>
+</tr>
+<tr class="row-odd"><td>134</td>
+<td>J722S_DEV_COMPUTE_CLUSTER0</td>
+</tr>
+<tr class="row-even"><td>135</td>
+<td>J722S_DEV_A53SS0_CORE_0</td>
+</tr>
+<tr class="row-odd"><td>136</td>
+<td>J722S_DEV_A53SS0_CORE_1</td>
+</tr>
+<tr class="row-even"><td>137</td>
+<td>J722S_DEV_A53SS0_CORE_2</td>
+</tr>
+<tr class="row-odd"><td>138</td>
+<td>J722S_DEV_A53SS0_CORE_3</td>
+</tr>
+<tr class="row-even"><td>139</td>
+<td>J722S_DEV_PSCSS0</td>
+</tr>
+<tr class="row-odd"><td>141</td>
+<td>J722S_DEV_MCSPI0</td>
+</tr>
+<tr class="row-even"><td>142</td>
+<td>J722S_DEV_MCSPI1</td>
+</tr>
+<tr class="row-odd"><td>143</td>
+<td>J722S_DEV_MCSPI2</td>
+</tr>
+<tr class="row-even"><td>146</td>
+<td>J722S_DEV_UART0</td>
+</tr>
+<tr class="row-odd"><td>150</td>
+<td>J722S_DEV_SPINLOCK0</td>
+</tr>
+<tr class="row-even"><td>152</td>
+<td>J722S_DEV_UART1</td>
+</tr>
+<tr class="row-odd"><td>153</td>
+<td>J722S_DEV_UART2</td>
+</tr>
+<tr class="row-even"><td>154</td>
+<td>J722S_DEV_UART3</td>
+</tr>
+<tr class="row-odd"><td>155</td>
+<td>J722S_DEV_UART4</td>
+</tr>
+<tr class="row-even"><td>156</td>
+<td>J722S_DEV_UART5</td>
+</tr>
+<tr class="row-odd"><td>157</td>
+<td>J722S_DEV_BOARD0</td>
+</tr>
+<tr class="row-even"><td>158</td>
+<td>J722S_DEV_UART6</td>
+</tr>
+<tr class="row-odd"><td>161</td>
+<td>J722S_DEV_USB0</td>
+</tr>
+<tr class="row-even"><td>163</td>
+<td>J722S_DEV_PBIST0</td>
+</tr>
+<tr class="row-odd"><td>165</td>
+<td>J722S_DEV_WKUP_PBIST0</td>
+</tr>
+<tr class="row-even"><td>166</td>
+<td>J722S_DEV_A53SS0</td>
+</tr>
+<tr class="row-odd"><td>167</td>
+<td>J722S_DEV_COMPUTE_CLUSTER0_PBIST_0</td>
+</tr>
+<tr class="row-even"><td>168</td>
+<td>J722S_DEV_PSC0_FW_0</td>
+</tr>
+<tr class="row-odd"><td>169</td>
+<td>J722S_DEV_PSC0</td>
+</tr>
+<tr class="row-even"><td>170</td>
+<td>J722S_DEV_DDR32SS0</td>
+</tr>
+<tr class="row-odd"><td>171</td>
+<td>J722S_DEV_DEBUGSS0</td>
+</tr>
+<tr class="row-even"><td>172</td>
+<td>J722S_DEV_A53_RS_BW_LIMITER0</td>
+</tr>
+<tr class="row-odd"><td>173</td>
+<td>J722S_DEV_A53_WS_BW_LIMITER1</td>
+</tr>
+<tr class="row-even"><td>174</td>
+<td>J722S_DEV_GPU_RS_BW_LIMITER9</td>
+</tr>
+<tr class="row-odd"><td>175</td>
+<td>J722S_DEV_GPU_WS_BW_LIMITER10</td>
+</tr>
+<tr class="row-even"><td>176</td>
+<td>J722S_DEV_WKUP_DEEPSLEEP_SOURCES0</td>
+</tr>
+<tr class="row-odd"><td>177</td>
+<td>J722S_DEV_MAIN_EMIF_CFG_ISO_VD</td>
+</tr>
+<tr class="row-even"><td>178</td>
+<td>J722S_DEV_MAIN_USB0_ISO_VD</td>
+</tr>
+<tr class="row-odd"><td>179</td>
+<td>J722S_DEV_MAIN_USB2_ISO_VD</td>
+</tr>
+<tr class="row-even"><td>180</td>
+<td>J722S_DEV_MCU_MCU_16FF0</td>
+</tr>
+<tr class="row-odd"><td>182</td>
+<td>J722S_DEV_CSI_RX_IF0</td>
+</tr>
+<tr class="row-even"><td>183</td>
+<td>J722S_DEV_DCC6</td>
+</tr>
+<tr class="row-odd"><td>184</td>
+<td>J722S_DEV_MMCSD2</td>
+</tr>
+<tr class="row-even"><td>185</td>
+<td>J722S_DEV_DPHY_RX0</td>
+</tr>
+<tr class="row-odd"><td>186</td>
+<td>J722S_DEV_DSS0</td>
+</tr>
+<tr class="row-even"><td>190</td>
+<td>J722S_DEV_MCASP0</td>
+</tr>
+<tr class="row-odd"><td>191</td>
+<td>J722S_DEV_MCASP1</td>
+</tr>
+<tr class="row-even"><td>192</td>
+<td>J722S_DEV_MCASP2</td>
+</tr>
+<tr class="row-odd"><td>194</td>
+<td>J722S_DEV_CPT2_AGGR1</td>
+</tr>
+<tr class="row-even"><td>195</td>
+<td>J722S_DEV_CPT2_AGGR0</td>
+</tr>
+<tr class="row-odd"><td>196</td>
+<td>J722S_DEV_MCU_CPT2_AGGR0</td>
+</tr>
+<tr class="row-even"><td>197</td>
+<td>J722S_DEV_MCU_DCC1</td>
+</tr>
+<tr class="row-odd"><td>198</td>
+<td>J722S_DEV_DMASS1</td>
+</tr>
+<tr class="row-even"><td>199</td>
+<td>J722S_DEV_DMASS1_BCDMA_0</td>
+</tr>
+<tr class="row-odd"><td>200</td>
+<td>J722S_DEV_DMASS1_INTAGGR_0</td>
+</tr>
+<tr class="row-even"><td>201</td>
+<td>J722S_DEV_JPGENC0</td>
+</tr>
+<tr class="row-odd"><td>202</td>
+<td>J722S_DEV_WKUP_PBIST1</td>
+</tr>
+<tr class="row-even"><td>203</td>
+<td>J722S_DEV_MCU_PBIST0</td>
+</tr>
+<tr class="row-odd"><td>204</td>
+<td>J722S_DEV_CODEC0</td>
+</tr>
+<tr class="row-even"><td>205</td>
+<td>J722S_DEV_RTI4</td>
+</tr>
+<tr class="row-odd"><td>206</td>
+<td>J722S_DEV_C7XV_RSWS_BS_LIMITER6</td>
+</tr>
+<tr class="row-even"><td>207</td>
+<td>J722S_DEV_C7X256V0</td>
+</tr>
+<tr class="row-odd"><td>208</td>
+<td>J722S_DEV_C7X256V0_C7XV_CORE_0</td>
+</tr>
+<tr class="row-even"><td>209</td>
+<td>J722S_DEV_C7X256V0_CORE0</td>
+</tr>
+<tr class="row-odd"><td>210</td>
+<td>J722S_DEV_C7X256V0_CLEC</td>
+</tr>
+<tr class="row-even"><td>211</td>
+<td>J722S_DEV_C7X256V0_CLK</td>
+</tr>
+<tr class="row-odd"><td>212</td>
+<td>J722S_DEV_C7X256V0_DEBUG</td>
+</tr>
+<tr class="row-even"><td>213</td>
+<td>J722S_DEV_C7X256V0_GICSS</td>
+</tr>
+<tr class="row-odd"><td>214</td>
+<td>J722S_DEV_C7X256V0_PBIST</td>
+</tr>
+<tr class="row-even"><td>215</td>
+<td>J722S_DEV_JPGENC_RS_BW_LIMITER4</td>
+</tr>
+<tr class="row-odd"><td>216</td>
+<td>J722S_DEV_JPGENC_WS_BW_LIMITER5</td>
+</tr>
+<tr class="row-even"><td>217</td>
+<td>J722S_DEV_VPAC_RSWS_BW_LIMITER8</td>
+</tr>
+<tr class="row-odd"><td>218</td>
+<td>J722S_DEV_VPAC_RSWS_BW_LIMITER7</td>
+</tr>
+<tr class="row-even"><td>219</td>
+<td>J722S_DEV_VPAC0</td>
+</tr>
+<tr class="row-odd"><td>220</td>
+<td>J722S_DEV_PBIST3</td>
+</tr>
+<tr class="row-even"><td>221</td>
+<td>J722S_DEV_CODEC_RS_BW_LIMITER2</td>
+</tr>
+<tr class="row-odd"><td>222</td>
+<td>J722S_DEV_CODEC_WS_BW_LIMITER3</td>
+</tr>
+<tr class="row-even"><td>225</td>
+<td>J722S_DEV_HSM0</td>
+</tr>
+<tr class="row-odd"><td>228</td>
+<td>J722S_DEV_OBSCLK0_MUX_SEL_DEV_VD</td>
+</tr>
+<tr class="row-even"><td>229</td>
+<td>J722S_DEV_DCC7</td>
+</tr>
+<tr class="row-odd"><td>230</td>
+<td>J722S_DEV_DCC8</td>
+</tr>
+<tr class="row-even"><td>231</td>
+<td>J722S_DEV_DSS_DSI0</td>
+</tr>
+<tr class="row-odd"><td>232</td>
+<td>J722S_DEV_DSS1</td>
+</tr>
+<tr class="row-even"><td>233</td>
+<td>J722S_DEV_PBIST1</td>
+</tr>
+<tr class="row-odd"><td>234</td>
+<td>J722S_DEV_OLDI_TX_CORE0</td>
+</tr>
+<tr class="row-even"><td>235</td>
+<td>J722S_DEV_OLDI_TX_CORE1</td>
+</tr>
+<tr class="row-odd"><td>237</td>
+<td>J722S_DEV_GPU0</td>
+</tr>
+<tr class="row-even"><td>238</td>
+<td>J722S_DEV_DPHY_TX0</td>
+</tr>
+<tr class="row-odd"><td>240</td>
+<td>J722S_DEV_DSS1_DPI1_PLLSEL_DEV_VD</td>
+</tr>
+<tr class="row-even"><td>241</td>
+<td>J722S_DEV_DSS1_DPI0_PLLSEL_DEV_VD</td>
+</tr>
+<tr class="row-odd"><td>242</td>
+<td>J722S_DEV_GPU0_CORE_VD</td>
+</tr>
+<tr class="row-even"><td>243</td>
+<td>J722S_DEV_OLDI0_VD</td>
+</tr>
+<tr class="row-odd"><td>244</td>
+<td>J722S_DEV_OLDI1_VD</td>
+</tr>
+<tr class="row-even"><td>245</td>
+<td>J722S_DEV_DPI0_OUT_SEL_DEV_VD</td>
+</tr>
+<tr class="row-odd"><td>246</td>
+<td>J722S_DEV_ATL0</td>
+</tr>
+<tr class="row-even"><td>247</td>
+<td>J722S_DEV_CSI_RX_IF1</td>
+</tr>
+<tr class="row-odd"><td>248</td>
+<td>J722S_DEV_CSI_RX_IF2</td>
+</tr>
+<tr class="row-even"><td>249</td>
+<td>J722S_DEV_CSI_RX_IF3</td>
+</tr>
+<tr class="row-odd"><td>250</td>
+<td>J722S_DEV_CSI_TX_IF0</td>
+</tr>
+<tr class="row-even"><td>251</td>
+<td>J722S_DEV_DPHY_RX1</td>
+</tr>
+<tr class="row-odd"><td>252</td>
+<td>J722S_DEV_DPHY_RX2</td>
+</tr>
+<tr class="row-even"><td>253</td>
+<td>J722S_DEV_DPHY_RX3</td>
+</tr>
+<tr class="row-odd"><td>254</td>
+<td>J722S_DEV_PBIST2</td>
+</tr>
+<tr class="row-even"><td>255</td>
+<td>J722S_DEV_MCASP3</td>
+</tr>
+<tr class="row-odd"><td>256</td>
+<td>J722S_DEV_MCASP4</td>
+</tr>
+<tr class="row-even"><td>257</td>
+<td>J722S_DEV_I2C4</td>
+</tr>
+<tr class="row-odd"><td>258</td>
+<td>J722S_DEV_MSRAM8KX256E0</td>
+</tr>
+<tr class="row-even"><td>259</td>
+<td>J722S_DEV_PCIE0</td>
+</tr>
+<tr class="row-odd"><td>260</td>
+<td>J722S_DEV_R5FSS0_SS0</td>
+</tr>
+<tr class="row-even"><td>261</td>
+<td>J722S_DEV_R5FSS0</td>
+</tr>
+<tr class="row-odd"><td>262</td>
+<td>J722S_DEV_R5FSS0_CORE0</td>
+</tr>
+<tr class="row-even"><td>263</td>
+<td>J722S_DEV_RTI5</td>
+</tr>
+<tr class="row-odd"><td>264</td>
+<td>J722S_DEV_RTI8</td>
+</tr>
+<tr class="row-even"><td>265</td>
+<td>J722S_DEV_COMPUTE_CLUSTER0_CLKDIV_0</td>
+</tr>
+<tr class="row-odd"><td>266</td>
+<td>J722S_DEV_C7XV_RSWS_BS_LIMITER11</td>
+</tr>
+<tr class="row-even"><td>267</td>
+<td>J722S_DEV_C7X256V1</td>
+</tr>
+<tr class="row-odd"><td>268</td>
+<td>J722S_DEV_C7X256V1_C7XV_CORE_0</td>
+</tr>
+<tr class="row-even"><td>269</td>
+<td>J722S_DEV_C7X256V1_CORE0</td>
+</tr>
+<tr class="row-odd"><td>270</td>
+<td>J722S_DEV_C7X256V1_CLEC</td>
+</tr>
+<tr class="row-even"><td>271</td>
+<td>J722S_DEV_C7X256V1_CLK</td>
+</tr>
+<tr class="row-odd"><td>272</td>
+<td>J722S_DEV_C7X256V1_DEBUG</td>
+</tr>
+<tr class="row-even"><td>273</td>
+<td>J722S_DEV_C7X256V1_GICSS</td>
+</tr>
+<tr class="row-odd"><td>274</td>
+<td>J722S_DEV_C7X256V1_PBIST</td>
+</tr>
+<tr class="row-even"><td>275</td>
+<td>J722S_DEV_CTI0</td>
+</tr>
+<tr class="row-odd"><td>276</td>
+<td>J722S_DEV_CTI1</td>
+</tr>
+<tr class="row-even"><td>277</td>
+<td>J722S_DEV_DMPAC0</td>
+</tr>
+<tr class="row-odd"><td>278</td>
+<td>J722S_DEV_USB1</td>
+</tr>
+<tr class="row-even"><td>279</td>
+<td>J722S_DEV_SERDES_10G0</td>
+</tr>
+<tr class="row-odd"><td>280</td>
+<td>J722S_DEV_SERDES_10G1</td>
+</tr>
+<tr class="row-even"><td>281</td>
+<td>J722S_DEV_WKUP_TIMER1_CLKSEL_VD</td>
+</tr>
+<tr class="row-odd"><td>282</td>
+<td>J722S_DEV_MCU_TIMER1_CLKSEL_VD</td>
+</tr>
+<tr class="row-even"><td>283</td>
+<td>J722S_DEV_MCU_TIMER3_CLKSEL_VD</td>
+</tr>
+<tr class="row-odd"><td>284</td>
+<td>J722S_DEV_TIMER1_CLKSEL_VD</td>
+</tr>
+<tr class="row-even"><td>285</td>
+<td>J722S_DEV_TIMER3_CLKSEL_VD</td>
+</tr>
+<tr class="row-odd"><td>286</td>
+<td>J722S_DEV_TIMER5_CLKSEL_VD</td>
+</tr>
+<tr class="row-even"><td>287</td>
+<td>J722S_DEV_TIMER7_CLKSEL_VD</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../j784s4/hosts.html" class="btn btn-neutral float-right" title="J784S4 Host Descriptions" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="firewalls.html" class="btn btn-neutral" title="J722S Firewall Descriptions" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyright 2016-2024</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'09.02.04',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+
+        $('body').on("mousewheel", function () {
+            // Remove default behavior
+            event.preventDefault();
+            // Scroll without smoothing
+            var wheelDelta = event.wheelDelta;
+            var currentScrollPosition = window.pageYOffset;
+            window.scrollTo(0, currentScrollPosition - wheelDelta);
+        });
+      });
+  </script>
+   
+
+</body>
+</html>

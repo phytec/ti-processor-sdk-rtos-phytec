@@ -1,0 +1,515 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>2.3. PBIST : Memory Built-In Self-Test &mdash; Software Diagnostics Library (SDL) - J721S2 User Guide</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Software Diagnostics Library (SDL) - J721S2 User Guide" href="../index.html"/>
+        <link rel="up" title="2. Modules" href="../family_cfg/j721s2/index_modules_j721s2.html"/>
+        <link rel="next" title="2.4. LBIST : Logic Built-In Self-Test" href="lbist.html"/>
+        <link rel="prev" title="2.2. ECC : Error Correcting Code" href="ecc.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="../_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index_j721s2.html" class="icon icon-home"> Software Diagnostics Library (SDL) - J721S2 User Guide
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                01_03_00
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/j721s2/index_release_notes_j721s2.html">1. Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">2. Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../family_cfg/j721s2/index_modules_j721s2.html">2. Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="esm.html">2.1. ESM : Error Signalling Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ecc.html">2.2. ECC : Error Correcting Code</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.3. PBIST : Memory Built-In Self-Test</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">2.3.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#application-integration">2.3.2. Application Integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-usage">2.3.3. Example Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#examples">2.3.4. Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#api">2.3.5. API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lbist.html">2.4. LBIST : Logic Built-In Self-Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vtm.html">2.5. VTM : Voltage and Thermal Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rti.html">2.6. RTI : RTI/WWDT Windowed Watchdog Timer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pok.html">2.7. POK: Power OK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tog.html">2.8. TOG : Time-Out Gasket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mtog.html">2.9. MTOG : Master Time-Out Gasket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dcc.html">2.10. DCC : Dual Clock Comparator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mcrc.html">2.11. MCRC : Cyclic Redundancy Check</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r5fccm.html">2.12. R5F CCM: CPU Compare Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="osal.html">2.13. OSAL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r5.html">2.14. R5 Core Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rom_checksum.html">2.15. ROM_CHECKSUM: ROM Checksum Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/j721s2/index_examples_j721s2.html">3. Safety Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diagnostic_mappings.html">3. Diagnostic Mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/j721s2/index_application_notes_j721s2.html">4. Developer Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index_j721s2.html">Software Diagnostics Library (SDL) - J721S2 User Guide</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index_j721s2.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../family_cfg/j721s2/index_modules_j721s2.html"><span class="section-number">2. </span>Modules</a> &raquo;</li>
+      
+    <li><span class="section-number">2.3. </span>PBIST : Memory Built-In Self-Test</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="pbist-memory-built-in-self-test">
+<h1><span class="section-number">2.3. </span>PBIST : Memory Built-In Self-Test<a class="headerlink" href="#pbist-memory-built-in-self-test" title="Permalink to this headline">¶</a></h1>
+<section id="introduction">
+<h2><span class="section-number">2.3.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Built-in Self-test (BIST) is a feature that allows self testing of the memory areas and logic circuitry in an Integrated Circuit (IC) without any external test equipment. In an embedded system, these tests are typically used during boot time or shutdown of the system to check the health of an SoC.</p>
+<p>PBIST is used to test the memory regions in the SoC and provides detection for permanent faults. The primary use case for PBIST is when it is invoked at start-up providing valuable information on any stuck-at bits in the memory.</p>
+<p>There can be multiple instances of PBIST in the SoC, and each has a number of memory regions associated with it. SDL provides support for PBIST features such as execution of PBIST test-for-diagnostic to test the PBIST logic and execution of PBIST. The same API is used with different configuration parameters to execute each instance. Checking of the status of HW POST PBIST execution is also supported.</p>
+<p>Some things to note:</p>
+<ul class="simple">
+<li><p>PBIST is expected to be run at boot-time or once per drive cycle.</p></li>
+<li><p>PBIST must be run from a different core than is being tested. This is because the test is destructive in nature. For this reason also, after BIST test it is necessary to reset the module.</p></li>
+<li><p>BIST is executed by hardware for MCU automatically at boot up as part of HW POST.</p></li>
+</ul>
+<p>Jacinto devices support a software-initiated PBIST that can run tests on different memory sections at runtime. Note, however, that PBIST is destructive to the core/IP on which it is run. If it is executed after the IP under test is already in use in the system, it is the application’s responsibility to perform any necessary context save/restore necessary for the core/IP.</p>
+<p>The PBIST Module of the SDL supports execution of the software-initiated PBIST for the various supported instances. It provides the following services:</p>
+<ul class="simple">
+<li><p>Execution of the PBIST test for a specified instance</p></li>
+<li><p>Configuration of the PBIST test for an instance</p></li>
+<li><p>Start of the PBIST test</p></li>
+<li><p>Checking of the PBIST results</p></li>
+<li><p>Restore core to system control (PBIST reset and release test mode)</p></li>
+<li><p>Return the status of the test</p></li>
+</ul>
+<p>For each PBIST Instance, the SDL PBIST module has a set of golden values for configuring the test, and these are used as the defaults.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Execution of the PBIST tests requires preparation of the IPs under test by bringing them to a certain power and reset state before executing the test. It will be required that the application bring the cores/IPs to the proper state before executing the PBIST. Additionally, there is an “exit sequence” that is required to bring the cores/IPs back to the system control after the PBIST test is executed. This will also be the responsibility of the application. The PBIST examples provided with SDL will give the necessary sequences, which can be used by the application for implementing the sequence.</p>
+</aside>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The PBIST test for the MSMC and A72 instances require the PBIST registers to be mapped to a 32-bit address space for access from MCU R5F. For this reason the PBIST module request address translation when performing PBIST tests for these intances. The application must provide the SDL_OSAL_addrTranslate interface through SDL_OSAL_init so that these tests can be run. The application can perform a RAT mapping to allow access to these memories. After the test is completed, the application may remove the mapping.</p>
+</aside>
+<p>There are 18 PBIST instances in the SoC</p>
+</section>
+<section id="application-integration">
+<h2><span class="section-number">2.3.2. </span>Application Integration<a class="headerlink" href="#application-integration" title="Permalink to this headline">¶</a></h2>
+<p>Some instances on the J7 devices require a CLEC event to register for the PBIST test completion interrupt. To give flexibility to the application to decide which CLEC event SDL PBIST will use, the SDL PBIST calls the SDL_OSAL_getClecOutputEvent API to request the event from the application. When done with the event, SDL PBIST will call SDL_OSAL_releaseClecOutputEvent.</p>
+<p>Application must provide these two APIs in order to support CLEC usage, even if CLEC is not used on the device (for example J7200). Application can define these in the test application. This is needed when running C7x or A72 PBIST tests on the J721E device. Example implementations that the application can provide are given below:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>int32_t<span class="w"> </span>SDL_OSAL_getClecOutputEvent<span class="o">(</span>uint32_t<span class="w"> </span>*clecOutputEvt<span class="o">)</span>
+<span class="o">{</span>
+<span class="w">    </span>*clecOutputEvt<span class="w"> </span><span class="o">=</span><span class="w"> </span>CSLR_COMPUTE_CLUSTER0_CLEC_MSMC_EVENT_IN_COMPUTE_CLUSTER0_CORE_CORE_MSMC_INTR_12<span class="p">;</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span>SDL_PASS<span class="p">;</span>
+<span class="o">}</span>
+
+int32_t<span class="w"> </span>SDL_OSAL_releaseClecOutputEvent<span class="o">(</span>uint32_t<span class="w"> </span>clecOutputEvt<span class="o">)</span>
+<span class="o">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span>SDL_PASS<span class="p">;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="example-usage">
+<h2><span class="section-number">2.3.3. </span>Example Usage<a class="headerlink" href="#example-usage" title="Permalink to this headline">¶</a></h2>
+<p>The following shows an example of SDL PBIST API usage by the application to check the HW POST results, and execute the PBIST test and test-for-diagnostic.</p>
+<p>Initialize the SDL OSAL (refer to OSAL section for further information on initializing the SDL OSAL interface):</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/*<span class="w"> </span>Define<span class="w"> </span>all<span class="w"> </span>the<span class="w"> </span>SDL<span class="w"> </span>OSAL<span class="w"> </span>interfaces.<span class="w"> </span>Here<span class="w"> </span>only<span class="w"> </span>some<span class="w"> </span>are<span class="w"> </span>shown<span class="w"> </span>as<span class="w"> </span>example.<span class="w"> </span>*/
+pSDL_OSAL_hwipHandle<span class="w"> </span>SDL_TEST_registerInterrupt<span class="o">(</span>SDL_OSAL_hwipParams<span class="w"> </span>*pParams<span class="o">)</span>
+<span class="o">{</span>
+<span class="w">    </span>HwiP_Params<span class="w"> </span>hwipParams<span class="p">;</span>
+<span class="w">    </span>HwiP_Params_init<span class="o">(</span><span class="p">&amp;</span>hwipParams<span class="o">)</span><span class="p">;</span>
+
+<span class="w">    </span>hwipParams.arg<span class="w"> </span><span class="o">=</span><span class="w"> </span>pParams-&gt;callbackArg<span class="p">;</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span>HwiP_create<span class="o">(</span>pParams-&gt;intNum,<span class="w"> </span>pParams-&gt;callback,<span class="w"> </span><span class="p">&amp;</span>hwipParams<span class="o">)</span><span class="p">;</span>
+<span class="o">}</span>
+
+int32_t<span class="w"> </span>SDL_TEST_enableInterrupt<span class="o">(</span>uint32_t<span class="w"> </span>intNum<span class="o">)</span>
+<span class="o">{</span>
+<span class="w">    </span>HwiP_enableInterrupt<span class="o">(</span>intNum<span class="o">)</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span>SDL_PASS<span class="p">;</span>
+<span class="o">}</span>
+
+int32_t<span class="w"> </span>SDL_TEST_disableInterrupt<span class="o">(</span>uint32_t<span class="w"> </span>intNum<span class="o">)</span>
+<span class="o">{</span>
+<span class="w">    </span>HwiP_disableInterrupt<span class="o">(</span>intNum<span class="o">)</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span>SDL_PASS<span class="p">;</span>
+<span class="o">}</span>
+
+int32_t<span class="w"> </span>SDL_TEST_globalDisableInterrupts<span class="o">(</span>uintptr_t<span class="w"> </span>*key<span class="o">)</span>
+<span class="o">{</span>
+<span class="w">    </span>*key<span class="w"> </span><span class="o">=</span><span class="w"> </span>HwiP_disable<span class="o">()</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span>SDL_PASS<span class="p">;</span>
+<span class="o">}</span>
+
+int32_t<span class="w"> </span>SDL_TEST_globalRestoreInterrupts<span class="o">(</span>uintptr_t<span class="w"> </span>key<span class="o">)</span>
+<span class="o">{</span>
+<span class="w">    </span>HwiP_restore<span class="o">(</span>key<span class="o">)</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span>SDL_PASS<span class="p">;</span>
+<span class="o">}</span>
+
+void*<span class="w"> </span>SDL_TEST_addrTranslate<span class="o">(</span>uint64_t<span class="w"> </span>addr,<span class="w"> </span>uint32_t<span class="w"> </span>size<span class="o">)</span>
+<span class="o">{</span>
+<span class="w">    </span>void<span class="w"> </span>*<span class="w"> </span><span class="nv">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">(</span>void<span class="w"> </span>*<span class="o">)(</span>-1<span class="o">)</span><span class="p">;</span>
+<span class="w">    </span>CSL_RatTranslationCfgInfo<span class="w"> </span>translationCfg<span class="p">;</span>
+<span class="w">    </span>uint32_t<span class="w"> </span><span class="nv">transAddr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">(</span>uint32_t<span class="o">)(</span>-1<span class="o">)</span><span class="p">;</span>
+<span class="w">    </span>uint32_t<span class="w"> </span><span class="nv">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">;</span>
+<span class="w">    </span>bool<span class="w"> </span>result<span class="p">;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">((</span><span class="nv">addr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span>SDL_COMPUTE_CLUSTER0_C71SS0_PBIST_BASE<span class="o">)</span><span class="w"> </span><span class="o">||</span>
+<span class="w">        </span><span class="o">(</span><span class="nv">addr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span>SDL_COMPUTE_CLUSTER0_A72SS0_PBIST0_BASE<span class="o">)</span><span class="w"> </span><span class="o">||</span>
+<span class="w">        </span><span class="o">(</span><span class="nv">addr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span>SDL_C66SS0_VBUSP_CFG_PBISTCFG_BASE<span class="o">)</span><span class="w"> </span><span class="o">||</span>
+<span class="w">        </span><span class="o">(</span><span class="nv">addr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span>SDL_C66SS1_VBUSP_CFG_PBISTCFG_BASE<span class="o">)</span><span class="w"> </span><span class="o">||</span>
+<span class="w">        </span><span class="o">(</span><span class="nv">addr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span>SDL_COMPUTE_CLUSTER0_MSMC_PBIST_BASE<span class="o">)</span><span class="w"> </span><span class="o">||</span>
+<span class="w">        </span><span class="o">(</span><span class="nv">addr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span>SDL_COMPUTE_CLUSTER0_MSMC_PBIST_BASE<span class="o">))</span>
+<span class="w">    </span><span class="o">{</span>
+<span class="w">        </span>/*<span class="w"> </span>Disable<span class="w"> </span>RAT<span class="w"> </span>translation<span class="w"> </span>*/
+<span class="w">        </span><span class="nv">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>CSL_ratDisableRegionTranslation<span class="o">((</span>CSL_ratRegs<span class="w"> </span>*<span class="o">)</span>PBIST_RAT_CFG_BASE,
+<span class="w">                                                 </span>PBIST_RAT_REGION_INDEX<span class="o">)</span><span class="p">;</span>
+<span class="w">        </span><span class="nv">transAddr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">(</span>uint32_t<span class="o">)</span>0x60000000<span class="p">;</span><span class="w"> </span>//<span class="w"> </span><span class="nb">set</span><span class="w"> </span>the<span class="w"> </span>desired<span class="w"> </span>translated<span class="w"> </span>address
+<span class="w">        </span><span class="nv">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>PBIST_RAT_REGION_INDEX<span class="p">;</span>
+<span class="w">    </span><span class="o">}</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">(</span>transAddr<span class="w"> </span>!<span class="o">=</span><span class="w"> </span><span class="o">(</span>uint32_t<span class="o">)(</span>-1<span class="o">))</span>
+<span class="w">    </span><span class="o">{</span>
+<span class="w">        </span>/*<span class="w"> </span>Add<span class="w"> </span>RAT<span class="w"> </span>configuration<span class="w"> </span>to<span class="w"> </span>access<span class="w"> </span>address<span class="w"> </span>&gt;<span class="w"> </span>32bit<span class="w"> </span>address<span class="w"> </span>range<span class="w"> </span>*/
+<span class="w">        </span>translationCfg.translatedAddress<span class="w"> </span><span class="o">=</span><span class="w"> </span>addr<span class="p">;</span>
+<span class="w">        </span>translationCfg.sizeInBytes<span class="w"> </span><span class="o">=</span><span class="w"> </span>size<span class="p">;</span>
+<span class="w">        </span>translationCfg.baseAddress<span class="w"> </span><span class="o">=</span><span class="w"> </span>transAddr<span class="p">;</span>
+
+<span class="w">        </span>/*<span class="w"> </span>Set<span class="w"> </span>up<span class="w"> </span>RAT<span class="w"> </span>translation<span class="w"> </span>*/
+<span class="w">        </span><span class="nv">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>CSL_ratConfigRegionTranslation<span class="o">((</span>CSL_ratRegs<span class="w"> </span>*<span class="o">)</span>PBIST_RAT_CFG_BASE,
+<span class="w">                                                </span>index,<span class="w"> </span><span class="p">&amp;</span>translationCfg<span class="o">)</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="o">(</span><span class="nv">result</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="o">(</span>bool<span class="o">)</span><span class="nb">true</span><span class="w"> </span><span class="o">)</span><span class="w"> </span><span class="o">{</span>
+<span class="w">            </span><span class="nv">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">(</span>void<span class="w"> </span>*<span class="o">)</span>transAddr<span class="p">;</span>
+<span class="w">        </span><span class="o">}</span>
+<span class="w">    </span><span class="o">}</span>
+<span class="o">}</span>
+
+
+SDL_OSAL_Interface<span class="w"> </span><span class="nv">osal_interface</span><span class="w"> </span><span class="o">=</span>
+<span class="o">{</span>
+<span class="w">    </span>.enableInterrupt<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">(</span>pSDL_OSAL_interruptFunction<span class="o">)</span><span class="w"> </span>SDL_TEST_enableInterrupt,
+<span class="w">    </span>.disableInterrupt<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">(</span>pSDL_OSAL_interruptFunction<span class="o">)</span><span class="w"> </span>SDL_TEST_disableInterrupt,
+<span class="w">    </span>.registerInterrupt<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">(</span>pSDL_OSAL_registerFunction<span class="o">)</span><span class="w"> </span>SDL_TEST_registerInterrupt,
+<span class="w">    </span>.deregisterInterrupt<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">(</span>pSDL_OSAL_deregisterFunction<span class="o">)</span><span class="w"> </span>HwiP_delete,
+<span class="w">    </span>.globalDisableInterrupts<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">(</span>pSDL_OSAL_globalDisableInterruptsFunction<span class="o">)</span><span class="w"> </span>SDL_TEST_globalDisableInterrupts,
+<span class="w">    </span>.globalRestoreInterrupts<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">(</span>pSDL_OSAL_globalRestoreInterruptsFunction<span class="o">)</span><span class="w"> </span>SDL_TEST_globalRestoreInterrupts,
+<span class="w">    </span>.printFxn<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">(</span>pSDL_OSAL_printFunction<span class="o">)</span><span class="w"> </span>UART_printf,
+<span class="w">    </span>.delay<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">(</span>pSDL_OSAL_delayFunction<span class="o">)</span><span class="w"> </span>Osal_delay,
+<span class="w">    </span>.addrTranslate<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">(</span>pSDL_OSAL_addrTranslateFunction<span class="o">)</span><span class="w"> </span>SDL_TEST_addrTranslate
+<span class="o">}</span><span class="p">;</span>
+
+SDL_ErrType_t<span class="w"> </span><span class="nv">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>SDL_PASS<span class="p">;</span>
+
+<span class="nv">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>SDL_OSAL_init<span class="o">(</span><span class="p">&amp;</span>osal_interface<span class="o">)</span><span class="p">;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Check the HW POST result (if supported on device):</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>int32_t<span class="w"> </span><span class="nv">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>SDL_PASS<span class="p">;</span>
+SDL_PBIST_postResult<span class="w"> </span>result<span class="p">;</span>
+
+<span class="nv">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>SDL_PBIST_getPOSTStatus<span class="o">(</span><span class="p">&amp;</span>result<span class="o">)</span><span class="p">;</span>
+
+/*<span class="w"> </span>Check<span class="w"> </span>the<span class="w"> </span>result,<span class="w"> </span>which<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>one<span class="w"> </span>of<span class="w"> </span>SDL_PBIST_postResult<span class="w"> </span>*/
+<span class="k">if</span><span class="w"> </span><span class="o">(</span>result.mcuPostStatus<span class="w"> </span><span class="o">==</span><span class="w"> </span>SDL_PBIST_POST_NOT_RUN<span class="o">)</span>
+<span class="o">{</span>
+<span class="w">    </span>//<span class="w"> </span>PBIST<span class="w"> </span>did<span class="w"> </span>not<span class="w"> </span>run
+<span class="o">}</span>
+<span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="o">(</span>result.mcuPostStatus<span class="w"> </span><span class="o">==</span><span class="w"> </span>SDL_PBIST_POST_TIMEOUT<span class="o">)</span>
+<span class="o">{</span>
+<span class="w">    </span>//<span class="w"> </span>PBIST<span class="w"> </span><span class="nb">test</span><span class="w"> </span>timed<span class="w"> </span>out
+<span class="o">}</span>
+<span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="o">(</span>result.mcuPostStatus<span class="w"> </span><span class="o">==</span><span class="w"> </span>SDL_PBIST_POST_COMPLETED_FAILURE<span class="o">)</span>
+<span class="o">{</span>
+<span class="w">    </span>//<span class="w"> </span>PBIST<span class="w"> </span>failed
+<span class="o">}</span>
+<span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="o">(</span>result.mcuPostStatus<span class="w"> </span><span class="o">==</span><span class="w"> </span>SDL_PBIST_POST_COMPLETED_SUCCESS<span class="o">)</span>
+<span class="o">{</span>
+<span class="w">    </span>//<span class="w"> </span>PBIST<span class="w"> </span>passed
+<span class="o">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Before executing the following PBIST tests, the IP under test must be brought to a certain power and reset state. The included PBIST example shows the sequence needed for each of the PBIST instances.</p>
+<p>Once the core(s) are brought to the required state, the following APIs can be run.</p>
+<p>Run the PBIST test-for-diagnostic:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bool<span class="w"> </span>PBISTResult<span class="p">;</span>
+
+<span class="nv">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>SDL_PBIST_selfTest<span class="o">(</span>SDL_PBIST_INST_MAINR5F0,<span class="w"> </span>SDL_PBIST_NEG_TEST,<span class="w"> </span>NULL,<span class="w"> </span><span class="p">&amp;</span>PBISTResult<span class="o">)</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="o">((</span>status<span class="w"> </span>!<span class="o">=</span><span class="w"> </span>SDL_PASS<span class="o">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">(</span><span class="nv">PBISTResult</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">false</span><span class="o">))</span>
+<span class="o">{</span>
+<span class="w">    </span>//<span class="w"> </span><span class="nb">test</span><span class="w"> </span>failed
+<span class="o">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Perform the PBIST test with the default config</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bool<span class="w"> </span>PBISTResult<span class="p">;</span>
+
+<span class="nv">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>SDL_PBIST_selfTest<span class="o">(</span>SDL_PBIST_INST_MAINR5F0,<span class="w"> </span>SDL_PBIST_TEST,<span class="w"> </span>NULL,<span class="w"> </span><span class="p">&amp;</span>PBISTResult<span class="o">)</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="o">((</span>status<span class="w"> </span>!<span class="o">=</span><span class="w"> </span>SDL_PASS<span class="o">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">(</span><span class="nv">PBISTResult</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">false</span><span class="o">))</span>
+<span class="o">{</span>
+<span class="w">    </span>//<span class="w"> </span><span class="nb">test</span><span class="w"> </span>failed
+<span class="o">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="examples">
+<h2><span class="section-number">2.3.4. </span>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<p>The PBIST module provides a test app that demonstrate the PBIST functionality. Details of the test app name, location and build instructions are given in the table below.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Test App Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Location</p></th>
+<th class="head"><p>Build Command</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>sdl_pbist_test_app</p></td>
+<td><ul class="simple">
+<li><p>Checks the Status of HW POST</p></li>
+<li><p>Executes PBIST_NEG_TEST for all supported instances</p></li>
+<li><p>Executes PBIST_TEST for all supported instances</p></li>
+</ul>
+</td>
+<td><p>[sdl_install_dir]/test/pbist/</p></td>
+<td><p>make sdl_pbist_test_app PROFILE=release</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="api">
+<h2><span class="section-number">2.3.5. </span>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="../../../apiguide/j721s2/html/group__SDL__PBIST__API.html">PBIST API Guide</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lbist.html" class="btn btn-neutral float-right" title="2.4. LBIST : Logic Built-In Self-Test" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ecc.html" class="btn btn-neutral" title="2.2. ECC : Error Correcting Code" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyright 1995-2021</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'01_03_00',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+      });
+  </script>
+   
+
+</body>
+</html>

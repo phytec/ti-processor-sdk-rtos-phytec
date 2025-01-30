@@ -1,0 +1,3 @@
+[submodule "scripts/scar"]
+	path = scripts/scar
+	url = ssh://git@bitbucket.itg.ti.com/tiswr/scar.git

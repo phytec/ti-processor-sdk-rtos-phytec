@@ -1,0 +1,8 @@
+var group__SDL__ARM__R5__PMU__MACROS =
+[
+    [ "SDL_ARM_R5_PMU_CYCLE_COUNTER_NUM", "group__SDL__ARM__R5__PMU__MACROS.html#gafdf73598de8867a88b28afa1b108df64", null ],
+    [ "SDL_ARM_R5_PMU_CFG_CNTR_EVENT_TYPE_MASK", "group__SDL__ARM__R5__PMU__MACROS.html#ga00e2bba286d4567aa2805df9c54337fe", null ],
+    [ "SDL_ARM_R5_PMU_CFG_CNTR_EVENT_TYPE_SHIFT", "group__SDL__ARM__R5__PMU__MACROS.html#gaad64cdf344416b11a809b1e6207f6622", null ],
+    [ "SDL_ARM_R5_PMU_CFG_CNTR_EVENT_TYPE_RESETVAL", "group__SDL__ARM__R5__PMU__MACROS.html#ga2a43a87b5fff001b7e31906fd0a3d47d", null ],
+    [ "SDL_ARM_R5_PMU_CFG_CNTR_EVENT_TYPE_MAX", "group__SDL__ARM__R5__PMU__MACROS.html#gab543c04e77dd2ae1a402e44df689c5f8", null ]
+];

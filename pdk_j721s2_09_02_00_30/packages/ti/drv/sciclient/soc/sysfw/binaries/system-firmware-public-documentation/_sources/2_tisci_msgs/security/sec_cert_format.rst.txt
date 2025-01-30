@@ -1,0 +1,1576 @@
+=======================================
+Security X509 Certificate Documentation
+=======================================
+
+.. _sysfw_x509_ext_doc:
+
+Introduction
+============
+
+This document describes the X509 extensions supported by the X509 parser in System Firmware.
+
+.. note::
+
+   This document is only applicable to HS devices. |sysfw| does not include a
+   X509 parser on GP devices.
+
+References
+==========
+
+1. ISO 8824-1 | ITU-T X.680 (08/2015): Information technology - Abstract Syntax
+   Notation One (ASN.1): Specification of basic notation,
+   http://handle.itu.int/11.1002/1000/12479
+2. ISO 8825-1 | ITU-T X.690 (09/2015): Information technology - ASN.1 encoding
+   rules: Specification of Basic Encoding Rules (BER), Canonical Encoding Rules
+   (CER) and Distinguished Encoding Rules (DER)
+   http://handle.itu.int/11.1002/1000/12483
+3. ISO/IEC 9594-8 | ITU-T X.509 (10/2016): Information technology - Open Systems
+   Interconnection - The Directory: Public-key and attribute certificate
+   frameworks
+   http://handle.itu.int/11.1002/1000/13031
+4. :doc:`PROC_BOOT`
+
+
+.. _sysfw_x509_ext_summary:
+
+|sysfw| Extensions
+==================
+
+The following X509 extensions are supported by |sysfw|.
+
++--------------------------------------+----------------------------------------------------+-------------------------+
+| Extension Name                       |     Purpose                                        | Object Identifier (OID) |
++======================================+====================================================+=========================+
+| ROM Boot Information [#f1]_          | ROM extension required for all ROM-bootable images | 1.3.6.1.4.1.294.1.1     |
++--------------------------------------+----------------------------------------------------+-------------------------+
+| ROM Image Intregity [#f1]_           | ROM extension required for all ROM-bootable images | 1.3.6.1.4.1.294.1.2     |
++--------------------------------------+----------------------------------------------------+-------------------------+
+| :ref:`sysfw_swrev_ext`               | Revision of binary for anti-rollback               | 1.3.6.1.4.1.294.1.3     |
++--------------------------------------+----------------------------------------------------+-------------------------+
+| :ref:`sysfw_encryption_ext`          | Encryption extension                               | 1.3.6.1.4.1.294.1.4     |
++--------------------------------------+----------------------------------------------------+-------------------------+
+| :ref:`sysfw_debug_ext`               | To unlock debug port                               | 1.3.6.1.4.1.294.1.8     |
++--------------------------------------+----------------------------------------------------+-------------------------+
+| :ref:`sysfw_boot_ext`                | Provide boot information                           | 1.3.6.1.4.1.294.1.33    |
++--------------------------------------+----------------------------------------------------+-------------------------+
+| :ref:`sysfw_image_integrity_ext`     | Image hash and length                              | 1.3.6.1.4.1.294.1.34    |
++--------------------------------------+----------------------------------------------------+-------------------------+
+| :ref:`sysfw_load_ext`                | Provide load information                           | 1.3.6.1.4.1.294.1.35    |
++--------------------------------------+----------------------------------------------------+-------------------------+
+| :ref:`sysfw_hs_bcfg_ext`             | HS Boardcfg extension                              | 1.3.6.1.4.1.294.1.36    |
++--------------------------------------+----------------------------------------------------+-------------------------+
+| :ref:`sysfw_fwl_ext`                 | Firewall configuration extension                   | 1.3.6.1.4.1.294.1.37    |
++--------------------------------------+----------------------------------------------------+-------------------------+
+| :ref:`sysfw_key_info_ext`            | Keyring configuration extension                    | 1.3.6.1.4.1.294.1.38    |
++--------------------------------------+----------------------------------------------------+-------------------------+
+| :ref:`sysfw_keyring_info_ext`        | Keyring Info extension                             | 1.3.6.1.4.1.294.1.39    |
++--------------------------------------+----------------------------------------------------+-------------------------+
+| :ref:`sysfw_encryption_extended_ext` | Extended Encryption extension                      | 1.3.6.1.4.1.294.1.40    |
++--------------------------------------+----------------------------------------------------+-------------------------+
+
+Specific extensions are required for particular image types. The below table
+summarizes which extensions are mandatory (**M**) for a particular image type, which
+are optional (**O**) to take any additional specific actions, and which are ignored
+or not applicable (**.**).
+
+.. _sysfw_x509_ext_requirements:
+
+.. list-table:: Applicability of certificate extensions to image types
+   :align: center
+   :header-rows: 1
+
+   * - Certificate Extension
+     - tiboot3.bin [#tiboot3_footnote]_
+     - TIFS/SYSFW Outer certificate
+     - Boardcfg
+     - Processor Boot
+     - Debug
+     - Generic Data [#data_auth_footnote]_
+     - Keyring
+
+   * - ROM Boot [#f1]_
+     - **M**
+     - **M**
+     - .
+     - .
+     - .
+     - .
+     - .
+
+   * - ROM Image Integrity [#f1]_
+     - **M**
+     - **M**
+     - .
+     - .
+     - .
+     - .
+     - .
+
+   * - :ref:`SWREV<sysfw_swrev_ext>` [#swrev_footnote]_
+     - **M**
+     - **M**
+     - **M** 
+     - **M**
+     - **M**
+     - **M**
+     - **M**
+
+   * - :ref:`Boot<sysfw_boot_ext>`
+     - .
+     - .
+     - .
+     - **M**
+     - .
+     - .
+     - .
+
+   * - :ref:`Integrity<sysfw_image_integrity_ext>`
+     - .
+     - .
+     - **M**
+     - **M**
+     - .
+     - **M**
+     - **M**
+
+   * - :ref:`Load<sysfw_load_ext>`
+     - .
+     - .
+     - .
+     - **M**
+     - .
+     - **M**
+     - **M**
+
+   * - :ref:`Debug<sysfw_debug_ext>`
+     - O
+     - .
+     - .
+     - .
+     - **M**
+     - .
+     - .
+
+   * - :ref:`Encryption<sysfw_encryption_ext>`
+     - O
+     - .
+     - .
+     - O
+     - .
+     - O
+     - O
+
+   * - :ref:`HS Boardcfg<sysfw_hs_bcfg_ext>`
+     - .
+     - O [#opt_boardcfg_footnote]_
+     - .
+     - .
+     - .
+     - .
+     - .
+   
+   * - :ref:`Firewall Config<sysfw_fwl_ext>`
+     - .
+     - .
+     - .
+     - O
+     - .
+     - .
+     - .
+
+   * - :ref:`Extended Encryption<sysfw_encryption_extended_ext>`
+     - . 
+     - .
+     - .
+     - O
+     - .
+     - .
+     - .
+
+   * - :ref:`Key info Config<sysfw_key_info_ext>` [#key_info_footnote]_
+     - . 
+     - .
+     - O
+     - O
+     - O
+     - O
+     - .
+
+   * - :ref:`Keyring info<sysfw_keyring_info_ext>`
+     - . 
+     - .
+     - .
+     - .
+     - .
+     - .
+     - **M**
+
+.. [#f1] See device Technical Reference Manual for details on these extensions
+
+.. [#tiboot3_footnote] tiboot3.bin is the boot image supplied for ROM boot flow. 
+                       It includes SBL/SPL and optionally SYSFW and boardcfg
+                       data based on the boot method used.
+
+.. [#data_auth_footnote] Generic data can be authenticated and optionally
+                         decrypted using the :ref:`TISCI_MSG_PROC_AUTH_BOOT
+                         <proc-boot-authenticate-image-and-configure-processor>`
+                         API and supplying the relevant subset of extensions
+
+.. [#swrev_footnote] SWREV extension is used for various purposes:
+
+                     * tiboot3.bin: ROM will check against the current SWREV
+                       value programmed for bootloaders in the device efuses and
+                       reject if certificate value is lower than the efuse
+                       value.
+
+                     * Board configuration: SYSFW will check against the current
+                       configuration SWREV value programmed in the device efuses
+                       and reject if certificate value is lower than the efuse
+                       value.
+
+                     * Debug: SYSFW will check against the value specified in
+                       the :ref:`Secure Debug
+                       Configuration<pub_boardcfg_secure_debug_unlock>` in the
+                       security boardcfg and reject if certificate value is
+                       lower than the boardcfg value.
+
+                     * For other certificate types, this is reserved for future
+                       use and is mandatory to protect for compatibility.
+
+.. [#opt_boardcfg_footnote] This is only used for outer certificate to enable
+                            optimized boot. See :ref:`sysfw_pub_hs_bcfg_in_cert`
+
+.. [#key_info_footnote] This is only used if the data blob is signed with a key from 
+                        a keyring. 
+
+Keywriter extensions
+====================
+
+The following X509 extensions are supported by Keywriter.
+
++--------------------------------------+-------------------------------------------------+-----------------------+
+| Extension Name                       |     Purpose                                     |     OID               |
++======================================+=================================================+=======================+
+| :ref:`keywr_enc_aes_ext`             | Keywriter Encrypted AES extension               | 1.3.6.1.4.1.294.1.64  |
++--------------------------------------+-------------------------------------------------+-----------------------+
+| :ref:`keywr_enc_smpk_sign_aes_ext`   | Keywriter Encrypted SMPK Signed AES extension   | 1.3.6.1.4.1.294.1.65  |
++--------------------------------------+-------------------------------------------------+-----------------------+
+| :ref:`keywr_enc_bmpk_sign_aes_ext`   | Keywriter Encrypted BMPK Signed AES extension   | 1.3.6.1.4.1.294.1.66  |
++--------------------------------------+-------------------------------------------------+-----------------------+
+| :ref:`keywr_aes_enc_smpkh`           | Keywriter AES Encrypted SMPKH                   | 1.3.6.1.4.1.294.1.67  |
++--------------------------------------+-------------------------------------------------+-----------------------+
+| :ref:`keywr_aes_enc_smek`            | Keywriter AES Encrypted SMEK                    | 1.3.6.1.4.1.294.1.68  |
++--------------------------------------+-------------------------------------------------+-----------------------+
+| :ref:`keywr_mpk_opt`                 | Keywriter MPK Options                           | 1.3.6.1.4.1.294.1.69  |
++--------------------------------------+-------------------------------------------------+-----------------------+
+| :ref:`keywr_aes_enc_bmpkh`           | Keywriter AES Encrypted BMPKH                   | 1.3.6.1.4.1.294.1.70  |
++--------------------------------------+-------------------------------------------------+-----------------------+
+| :ref:`keywr_aes_enc_bmek`            | Keywriter AES Encrypted BMEK                    | 1.3.6.1.4.1.294.1.71  |
++--------------------------------------+-------------------------------------------------+-----------------------+
+| :ref:`keywr_mek_opt`                 | Keywriter MEK Options                           | 1.3.6.1.4.1.294.1.72  |
++--------------------------------------+-------------------------------------------------+-----------------------+
+| :ref:`keywr_aes_enc_ext_otp`         | Keywriter AES Encrypted extended OTP            | 1.3.6.1.4.1.294.1.73  |
++--------------------------------------+-------------------------------------------------+-----------------------+
+| :ref:`keywr_keyrev`                  | Keywriter key revision                          | 1.3.6.1.4.1.294.1.74  |
++--------------------------------------+-------------------------------------------------+-----------------------+
+| :ref:`keywr_msv`                     | Keywriter MSV                                   | 1.3.6.1.4.1.294.1.76  |
++--------------------------------------+-------------------------------------------------+-----------------------+
+| :ref:`keywr_keycnt`                  | Keywriter key count                             | 1.3.6.1.4.1.294.1.77  |
++--------------------------------------+-------------------------------------------------+-----------------------+
+| :ref:`keywr_swrev_sysfw`             | Keywriter software revision SYSFW               | 1.3.6.1.4.1.294.1.78  |
++--------------------------------------+-------------------------------------------------+-----------------------+
+| :ref:`keywr_swrev_sbl`               | Keywriter software revision SBL                 | 1.3.6.1.4.1.294.1.79  |
++--------------------------------------+-------------------------------------------------+-----------------------+
+| :ref:`keywr_swrev_sec_bcfg`          | Keywriter software revision SEC BCFG            | 1.3.6.1.4.1.294.1.80  |
++--------------------------------------+-------------------------------------------------+-----------------------+
+| :ref:`keywr_version`                 | Keywriter version                               | 1.3.6.1.4.1.294.1.81  |
++--------------------------------------+-------------------------------------------------+-----------------------+
+
+.. _sysfw_boot_ext:
+
+|sysfw| Boot Extension
+----------------------
+
+This extension adds support for booting various cores on a K3 SOC. It is
+identified by the OID **1.3.6.1.4.1.294.1.33**. The structure of the field is
+shown below in ASN.1 notation.
+
+::
+
+    SYSFW-Boot := SEQUENCE
+    {
+        bootCore INTEGER, -- indicates the core in the device that needs to be booted
+                          -- with the image accompanying this certificate.
+        configFlags_set INTEGER, -- Configuration options for the core being booted.
+                                 -- flags to set
+        configFlags_clr INTEGER, -- Configuration options for the core being booted
+                                 -- flags to clear
+        resetVec OCTET STRING, -- Location of reset vector for the core.
+
+        fieldValid INTEGER -- indicates which of the reserved fields in the extension are
+                           -- valid
+        rsvd1     INTEGER, -- reserved field for future use 
+        rsvd2     INTEGER, -- reserved field for future use 
+        rsvd3     INTEGER, -- reserved field for future use 
+    }
+
+The boot extension is decoded into the below structure.
+
+::
+
+    struct sec_boot_ctrl {
+        u32 bootCore;
+        u32 configFlags_set;
+        u32 configFlags_clr;
+        u64 resetVec;
+    }
+
+The reserved fields are for future use and are not decoded currently.
+
+
+Populating the certificate fields
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For an example, please refer to the section ``[ sysfw_boot_seq ]`` in :ref:`sysfw_x509_template_example`.
+
+1. ``bootCore`` should be initialized to the Core ID of the targeted core.
+   Core ID should be obtained from the SOC data. e.g. For booting a
+   core with ID ``0x20``, the relevant line in the X509 template is
+
+   ::
+
+        [ boot_seq ]
+        bootCore = INTEGER:0x20
+
+
+.. note::
+
+    ``bootCore`` can be picked up from 
+    :doc:`SOC Family Specific Documentation <../../5_soc_doc/index>` > SOC Processor Descriptions > 
+    Enumeration of Processor IDs
+
+2. ``configFlags_set``
+
+  - This is a 32 bit field that indicates core specific flags that need
+    to be set before booting the core. The representation is big endian.
+
+3. ``configFlags_clr``
+
+  - This is a 32 bit field that indicates core specific flags that need
+    to be cleared before booting core. The representation is big endian.
+
+   Please refer to the SOC and core specific documentation on the supported
+   flags. The flags are passed to
+   :ref:`set_processor_config <proc-boot-set-processor-configuration>` API as
+   is. Please ensure that the flags set or cleared are valid according to the
+   API.
+
+4. ``resetVec``
+
+  - This is a 64 bit field indicating the address of the reset vector
+    that needs to be programmed. The representation is big endian.
+
+.. _sysfw_image_integrity_ext:
+
+|sysfw| Image Integrity Extension
+---------------------------------
+
+This extension adds support for specifying a hash and size of the accompanying
+payload. It is identified by the OID **1.3.6.1.4.1.294.1.34**. The structure of
+the field is shown below in ASN.1 notation.
+
+::
+
+   SYSFW-INTEGRITY := SEQUENCE
+   {
+      shaType OID, -- indicates OID of the hash used. Must always be set to SHA2-512
+                   -- OID:2.16.840.1.101.3.4.2.3
+      shaValue OCTET STRING, -- SHA2-512 value of the payload
+      imageSize INTEGER, -- Size of the image in bytes. This will be amount of data
+                         -- used when checking the image integrity, copying the image
+                         -- to its destination or when decrypting the image.
+   }
+
+
+.. _sysfw_swrev_ext:
+
+|sysfw| Software Revision Extension
+-----------------------------------
+
+|sysfw| reuses the Software Revision extension/OID as defined by ROM as no
+additional information is required. This is identified by OID
+**1.3.6.1.4.1.294.1.3**.
+
+::
+
+   SYSFW-SWREV:= SEQUENCE
+   {
+      swrev INTEGER -- 32 bit value indicating the revision of the binary
+   }
+
+
+.. _sysfw_load_ext:
+
+|sysfw| Load Extension
+----------------------
+
+|sysfw| uses the Load extension to determine where the image is loaded
+as part of authentication. The load extension is identified by OID **1.3.6.1.4.1.294.1.35**. This is a new extension defined by |sysfw|.
+
+::
+
+   SYSFW-LOAD := SEQUENCE
+   {
+        destAddr OCTET STRING, -- Address to which the image accompanying this certificate
+                               -- needs to be copied.
+        auth_type INTEGER      -- Serves two purposes : 
+                               -- Controls if/how the authenticated binary is copied to a different
+                               -- location. See below for more information.
+                               -- Contains the Host ID of the destination core 
+   }
+
+The load extension is decoded into the below structure.
+
+::
+
+   struct ti_load_info {
+    u64 destAddr;
+    u8  auth_in_place;
+    u8  copy_as_host;
+   };
+
+Populating the certificate fields
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. ``destAddr``
+
+   - This is a 64 bit field indicating the address to which the data
+     needs to be copied. The representation is big endian.
+
+2. ``auth_type``
+
+   - This is an integer field that contains two pieces of information:
+     * The lower byte indicate whether the binary should be copied to the specified load address during authentication.
+     * The upper byte represent the host ID of the destination core.
+     * The upper 2 bytes are reserved.
+
+     The valid values for least significant byte and their interpretation are described below.
+
+     +----------+-----------------------------------------------------------------+
+     | Value    | Action                                                          |
+     +==========+=================================================================+
+     | 0        | Normal operation. Binary is copied to load address.             |
+     |          | Value[15:8] would be used to get host id for copying certificate|
+     |          | since host id 0 is reserved for TIFS, we wont support this      |
+     |          | value. If host id is 0, the caller's host ID will be used for   |
+     |          | the transfer.                                                   |
+     +----------+-----------------------------------------------------------------+
+     | 1        | In place operation. Binary is not moved.                        |
+     |          | Value[15:8] would be used to get host id for copying certificate|
+     |          | since host id 0 is reserved for TIFS, we wont support this      |
+     |          | value. If host id is 0, the caller's host ID will be used for   |
+     |          | the transfer.                                                   |
+     +----------+-----------------------------------------------------------------+
+     | 2        | In place operation variant. Binary is moved to the beginning of |
+     |          | the buffer i.e. binary now starts at the location where the     |
+     |          | certificate started                                             |
+     |          | Value[15:8] would be used to get host id for copying certificate|
+     |          | since host id 0 is reserved for TIFS, we wont support this      |
+     |          | value. If host id is 0, the caller's host ID will be used for   |
+     |          | the transfer.                                                   |
+     +----------+-----------------------------------------------------------------+
+     | Any      | invalid operation                                               |
+     | other    |                                                                 |
+     | value    |                                                                 |
+     +----------+-----------------------------------------------------------------+
+
+.. _sysfw_encryption_ext:
+
+|sysfw| Encryption Extension
+----------------------------
+
+|sysfw| reuses the Encryption extension/OID as defined by ROM as no
+additional information is required. This is identified by OID
+**1.3.6.1.4.1.294.1.4**.
+
+::
+
+   SYSFW-ENCRYPT := SEQUENCE
+   {
+      initalVector OCTET STRING,
+      randomString OCTET STRING,
+      iterationCnt INTEGER,
+      salt OCTET STRING
+   }
+
+The encryption extension is decoded into the following data structure.
+
+.. code-block:: c
+
+   struct ti_enc_info {
+    u8 initialVector[16];
+    u8 randomString[32];
+    u8 iterationCnt;
+    u8 salt[32];
+   };
+
+Populating the certificate fields
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. ``initialVector``
+
+   - This is the 16 byte initialization vector to be used in AES-CBC
+     decryption.
+
+2. ``randomString``
+
+   - This field indicates the random 32 byte string that was appended to the
+     binary before encrypting the combined binary. |sysfw| will compare the last
+     32 bytes of the decryption output against the ``randomString`` field from
+     the X509 certificate to verify the success of decryption operation.
+
+3. ``iterationCnt``
+
+   - This field is reserved and must be initialized to zero.
+
+4. ``salt``
+
+   - This field is 32 bytes long. It is reserved and must be initialized to zero.
+
+.. note::
+
+   |sysfw| always loads the binary to the location specified by :ref:`sysfw_load_ext`
+   before performing in-place decryption at the loaded location.
+
+.. _sysfw_fwl_ext:
+
+|sysfw| Firewall Extension
+--------------------------
+
+This extension allows author to request firewall configuration through 
+:ref:`TISCI_MSG_PROC_AUTH_BOOT <proc-boot-authenticate-image-and-configure-processor>`.
+This is not a mandatory extension and must be included only when firewalls are to be configured
+through :ref:`TISCI_MSG_PROC_AUTH_BOOT <proc-boot-authenticate-image-and-configure-processor>`.
+It is identified by the OID **1.3.6.1.4.1.294.1.37**. 
+The structure of the field is shown below in ASN.1 notation.
+
+::
+
+   SYSFW-FIREWALL := SEQUENCE
+   {
+      numConfigs INTEGER,
+      fwlID0 INTEGER,
+      control0 INTEGER,
+      numPermissions0 INTEGER,
+      permission00 INTEGER,
+      permission01 INTEGER,
+      permission02 INTEGER,
+      startAddress0 OCTET STRING,
+      endAddress0 OCTET STRING,
+   }
+
+The certificate author may want to configure multiple firewall regions.
+Every region configuration requires a group of fields; these are fwlID,
+region, control, numPermissions, 'numPermissions' permission values, startAddress 
+and endAddress. To configure multiple regions, author has to include an 
+equal number of groups in the extension, one for each configuration. The field values
+are same as those provided to the :ref:`TISCI_MSG_SET_FWL_REGION <set-firewall-region>`
+(refer to :ref:`TISCI_MSG_SET_FWL_REGION <set-firewall-region>` for more information.)
+Every region configuration group is decoded into a structure shown below.
+
+::
+
+   struct fwl_region_info {
+      u16		fwl_id;
+      u16		region;
+      u32		control;
+      u32		n_permission_regs;
+      u32		permissions[FWL_MAX_PRIVID_SLOTS];
+      u64      start_address;
+      u64      end_address;
+   }
+
+Populating the certificate fields
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For an example, please refer to the section ``[ sysfw_fwl_ext ]`` in :ref:`sysfw_x509_template_example`.
+The examples demonstrates requesting two region configurations through the certificate.
+
+1. ``fwlID`` ID of the firewall to which the region belongs.
+
+2. ``region`` The region number.
+
+3. ``control`` The control value. This is a 32 bit field that represents the control register value for the
+   region being configured.
+
+4. ``numPermissions`` The number of permissions to be configured.
+
+5. ``permission`` The actual permission value. There should same number of instances
+   of this field as the value of numPermissions, for each configuration group.
+
+6. ``startAddress`` The soc level start address.
+
+7. ``endAddress`` The soc level end address.
+
+Author will also have to provide a host ID as specified in :ref:`sysfw_load_ext`
+(refer to :ref:`TISCI_MSG_PROC_AUTH_BOOT <proc-boot-authenticate-image-and-configure-processor>` for more information.)
+Adding firewall extension without a host ID would lead to API failure.
+
+.. _sysfw_key_info_ext:
+
+|sysfw| Key Info Configuration Extension
+----------------------------------------
+
+|sysfw| This is identified by OID **1.3.6.1.4.1.294.1.38**.
+
+::
+
+   SYSFW-KEYRING := SEQUENCE
+   {
+      AUTH_KEYRING_ID INTEGER,
+      ENC_KEYRING_ID  INTEGER,
+   }
+
+The encryption extension is decoded into the following data structure.
+
+.. code-block:: c
+
+    struct ti_kr_config {
+        u8 auth_key_id;
+        u8 enc_key_id;
+    };
+
+Populating the certificate fields
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. ``auth_key_id``
+
+   - Keyid for authentication using asymmetric keys.
+
+2. ``enc_key_id``
+
+   - Keyid for decryption using symmetric keys.
+
+.. _sysfw_keyring_info_ext:
+
+|sysfw| Keyring info Extension
+------------------------------
+
+|sysfw| This is identified by OID **1.3.6.1.4.1.294.1.39**.
+
+::
+
+   SYSFW-KEYRING-INFO := SEQUENCE
+   {
+      NUM_ASYMM INTEGER,
+      NUM_SYMM  INTEGER,
+   }
+
+The encryption extension is decoded into the following data structure.
+
+.. code-block:: c
+
+    struct ti_num_keys_config {
+      u8  num_asymm_keys;
+      u8  num_symm_keys;
+    };
+
+Populating the certificate fields
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. ``num_symm_keys``
+
+   - Number of symmetric keys in the keyring.
+
+2. ``num_asymm_keys``
+
+   - Number of asymmetric keys in the keyring.
+   
+.. _sysfw_encryption_extended_ext:
+
+|sysfw| Extended Encryption Extension
+-------------------------------------
+
+|sysfw| This is identified by OID **1.3.6.1.4.1.294.1.40**.
+
+::
+
+   SYSFW-ENCRYPT := SEQUENCE
+   {
+      nPaddingBytes INTEGER,
+      Rsvd0 INTEGER,
+      Rsvd1 INTEGER,
+   }
+
+The encryption extension is decoded into the following data structure.
+
+.. code-block:: c
+
+   struct ti_enc_info {
+    u8 nPaddingBytes;
+   };
+
+Populating the certificate fields
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. ``nPaddingBytes``
+
+   - This is number of bytes appended to the payload binary before encrypting it.
+
+2. ``Rsvd0``
+
+   - Reserved for future use, must be initialized to zero.
+
+3. ``Rsvd1``
+
+   - Reserved for future use, must be initialized to zero.
+
+.. note::
+
+   |sysfw| The reserved fields must be included in the extension.
+
+
+.. _sysfw_debug_ext:
+
+|sysfw| Debug Extension
+-----------------------
+
+.. note::
+
+   This extension is not yet finalized.
+
+The custom extension field used for debug control is identified by the OID
+**1.3.6.1.4.1.294.1.8**. The structure of the field is shown below in
+ASN.1 notation.
+
+::
+
+    UID-Debug ::= SEQUENCE
+    {
+        uid OCTET STRING, -- unique ID of the device for which this certificate applies
+        debugCtrl INTEGER, -- debug control information
+        coreDbgEn INTEGER, -- Core IDs for which debug must be enabled
+        coreDbgSecEn INTEGER, -- Core IDs for which secure debug must be enabled
+    }
+
+The debug control data is decoded as a structure below:
+
+::
+
+    struct sdbg_debug_ctrl {
+        u16 debug_priv_level;
+        u16 reserved;
+        u8 debug_core_sel[MAX_CPU_CORES];
+        u8 sec_debug_core_sel[MAX_CPU_CORES];
+    }
+
+The table below shows the way **UID-Debug** fields are decoded into **struct sdbg_debug_ctrl**.
+
++------------------------+----------------------------------------------------------+
+| sdbg_debug_ctrl member |         X.509 certificate debug extension field          |
++========================+==========================================================+
+| debug_priv_level       |debugCtrl field is decoded as a u32 value and the lower 16|
+|                        |bit value is picked up                                    |
++------------------------+----------------------------------------------------------+
+| reserved               |debugCtrl field is decoded as a u32 value and the upper 16|
+|                        |bit value is picked up                                    |
++------------------------+----------------------------------------------------------+
+| debug_core_sel         |coreDbgEn field is decoded as an array of u8 values of    |
+|                        |processor IDs for which non-secure debug should be        |
+|                        |enabled                                                   |
++------------------------+----------------------------------------------------------+
+| sec_debug_core_sel     |coreDbgSecEn field is decoded as an array of u8 values of |
+|                        |processor IDs for which secure debug should be enabled    |
++------------------------+----------------------------------------------------------+
+
+
+.. _sysfw_x509_ext_doc_debug_levels_table:
+
+The following table shows the enumeration of values for **debug_priv_level**:
+
++-------------------+-------+-------------------------------------------------------+
+| Enumeration name  | Value |                                  Meaning              |
++===================+=======+=======================================================+
+| DEBUG_DISABLE     | 0     | Disable debug                                         |
++-------------------+-------+-------------------------------------------------------+
+| DEBUG_PRESERVE    | 1     | Preserve current setting by locking registers         |
++-------------------+-------+-------------------------------------------------------+
+| DEBUG_PUBLIC      | 2     | Enable debug at public (non-secure) user and          |
+|                   |       | privileged level                                      |
++-------------------+-------+-------------------------------------------------------+
+| DEBUG_PUBLIC_USER | 3     | Enable debug at public (non-secure) user level only   |
++-------------------+-------+-------------------------------------------------------+
+| DEBUG_FULL        | 4     | Enable full debug (both secure and non-secure         |
+|                   |       | privileged and user levels)                           |
++-------------------+-------+-------------------------------------------------------+
+| DEBUG_SECURE_USER | 5     | Enable debug for both secure and non-secure at user   |
+|                   |       | level only                                            |
++-------------------+-------+-------------------------------------------------------+
+
+.. note::
+
+    * In case of ``DEBUG_DISABLE`` and ``DEBUG_PRESERVE``, ``debug_core_sel`` and
+      ``sec_debug_core_sel`` won't have any relevance.
+
+    * The SoC reset enables both invasive and non-invasive debug for all
+      non secure cores, so the non secure cores not listed in ``debug_core_sel``
+      also will be open for debug, in a case where ``debug_priv_level`` is set
+      as one of ``DEBUG_PUBLIC``, ``DEBUG_PUBLIC_USER``, ``DEBUG_FULL``, or
+      ``DEBUG_SECURE_USER``.
+
+For an example, please refer to the section ``[ debug ]`` in :ref:`sysfw_x509_template_example`.
+
+.. _sysfw_hs_bcfg_ext:
+
+|sysfw| HS Board Configuration Extension
+-------------------------------------------------
+
+|sysfw| extends the Encryption extension/OID as defined by ROM for the purpose
+of authenticating the board configurations on HS devices. The hashes of the 4
+board configuration blobs
+
+1. Core board configuration
+2. PM board configurations
+3. RM board configuration
+4. Encrypted Security board configuration
+
+and the encryption parameters of the security board configuration are encoded in
+the board configuration extension of the |sysfw| outer certificate . This
+extension is identified by OID **1.3.6.1.4.1.294.1.36**.
+
+::
+
+   SYSFW-HS-BCFG:= SEQUENCE
+   {
+      initalVector OCTET STRING,
+      randomString OCTET STRING,
+      iterationCnt INTEGER,
+      salt OCTET STRING,
+      secBoardCfgHash OCTET STRING,
+      secBoardCfgVer INTEGER,
+      pmBoardCfgHash OCTET STRING,
+      rmBoardCfgHash OCTET STRING
+      boardCfgHash OCTET STRING
+   }
+
+The extension is decoded into the following data structure.
+
+.. code-block:: c
+
+   struct ti_bcfg_info {
+    u8 initialVector[16];
+    u8 randomString[32];
+    u8 iterationCnt;
+    u8 salt[32];
+    u8 secBoardCfgHash[64];
+    u8 secBoardCfgVer;
+    u8 pmBoardCfgHash[64];
+    u8 rmBoardCfgHash[64];
+    u8 boardCfgHash[64];
+   };
+
+Populating the certificate fields
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. ``initialVector``
+
+   - This is the 16 byte initialization vector to be used in AES-CBC
+     decryption.
+
+2. ``randomString``
+
+   - This field indicates the random 32 byte string that was appended to the
+     board configuration binary before encrypting the combined binary. |sysfw|
+     will compare the last 32 bytes of the decryption output against the
+     ``randomString`` field from the X509 certificate to verify the success of
+     decryption operation.
+
+3. ``iterationCnt``
+
+   - This field is reserved and must be initialized to zero.
+
+4. ``salt``
+
+   - This field is 32 bytes long. It is reserved and must be initialized to
+     zero.
+
+5. ``secBoardCfgHash``
+
+   - This is a 64 byte field containing the SHA2-512 hash of the encrypted |sec_bcfg|. 
+
+6. ``secBoardCfgVer``
+
+   - This field indicates the version of security board configuration and must be initialized
+     to zero.
+
+7. ``pmBoardCfgHash``
+
+   - This is a 64 byte field containing the SHA2-512 hash of the PM board configuration.
+
+8. ``rmBoardCfgHash``
+
+   - This is a 64 byte field containing the SHA2-512 hash of the RM board configuration.
+
+8. ``boardCfgHash``
+
+   - This is a 64 byte field containing the SHA2-512 hash of the main board configuration
+     structure.
+
+
+.. _keywr_enc_aes_ext:
+
+Keywriter: Encrypted AES extension
+-------------------------------------------------
+
+This extension contains information about the TIFEK(public) encrypted AES-256 key (random key,
+chosen by customer for keywriter). It is identified by the OID **1.3.6.1.4.1.294.1.64**. 
+The structure of the fields is shown below in ASN.1 notation.
+
+::
+
+   KEYWR-ENC-AES := SEQUENCE
+   {
+      val OCTET STRING,     -- TIFEK(pub) encrypted AES-256 key chosen by the user.
+      size INTEGER          -- size 
+   }
+
+
+.. code-block:: c
+
+   struct keywr_enc_aes {
+      u8 val[512];
+      u32 size;
+   };
+
+.. _keywr_enc_smpk_sign_aes_ext:
+
+Keywriter: Encrypted SMPK Signed AES extension  
+-------------------------------------------------------
+
+This extension contains information about the TIFEK(public) encrypted, SMPK(priv) signed 
+AES-256 key (random key, chosen by customer for keywriter). It is identified by the 
+OID **1.3.6.1.4.1.294.1.65**. The structure of the fields is shown below in ASN.1 notation.
+
+::
+
+   KEYWR-ENC-SMPK-SIGN-AES := SEQUENCE
+   {
+      val OCTET STRING,     -- TIFEK(pub) encrypted, SMPK(priv) signed AES-256 key chosen by the user.
+      size INTEGER          -- size 
+   }
+
+.. code-block:: c
+
+   struct keywr_enc_smpk_sign_aes {
+      u8 val[512];
+      u32 size;
+   };
+
+
+.. _keywr_enc_bmpk_sign_aes_ext:
+
+Keywriter: Encrypted BMPK Signed AES extension   
+------------------------------------------------------
+
+This extension contains information about the TIFEK(public) encrypted, BMPK(priv) signed AES-256 key (random key,
+chosen by customer for keywriter). It is identified by the OID **1.3.6.1.4.1.294.1.66**. 
+The structure of the fields is shown below in ASN.1 notation.
+
+::
+
+   KEYWR-ENC-BMPK-SIGN-AES := SEQUENCE
+   {
+      val OCTET STRING,     -- TIFEK(pub) encrypted, BMPK(priv) signed AES-256 key chosen by the user.
+      size INTEGER          -- size 
+   }
+
+.. code-block:: c
+
+   struct keywr_enc_bmpk_sign_aes {
+      u8 val[512];
+      u32 size;
+   };
+
+
+.. _keywr_aes_enc_smpkh:
+
+Keywriter: AES Encrypted SMPKH                   
+------------------------------------------------------
+
+This extension contains information about the AES-256 key encrypted SMPKH (SHA-512 hashed SMPK Public key). 
+It is identified by the OID **1.3.6.1.4.1.294.1.67**
+The structure of the fields is shown below in ASN.1 notation.
+
+::
+
+   KEYWR-AES-ENC-SMPKH := SEQUENCE
+   {
+      val OCTET STRING,     -- AES-256 key encrypted SMPKH (SHA-512 used for hashing)
+      iv  OCTET STRING,     -- Intitial Value used in AES-256-CBC encryption, 128 bits
+      rs  OCTET STRING,     -- Random String used in AES-256-CBC encryption, 256 bits
+      size INTEGER,         -- size 
+      action_flags INTEGER  -- WP | RP | OVRD | ACTIVE
+   }
+
+.. code-block:: c
+
+   struct keywr_aes_enc_smpkh {
+      u8 val[64];
+      u8 iv[16];
+      u8 rs[32];
+      u32 size;
+      u32 action_flags;
+   };
+
+.. _keywr_action_flags:
+
+Keywriter: Action Flags
+^^^^^^^^^^^^^^^^^^^^^^^
+
+These are ``YES/NO`` flags which are set for each keywriter extension.
+
+.. list-table:: 
+    :header-rows: 1
+    :widths: 10 10 80
+
+    * - Flag
+      - Description
+      - Details
+    * - WP
+      - Write Protect  
+      - Uses TIFS fault tolerant value ``0x5A`` to enable, ``0xA5`` to disable.
+        When enabled, OTP keywriter will write protect the key
+    * - RP
+      - Read Protect  
+      - Uses TIFS fault tolerant value ``0x5A`` to enable, ``0xA5`` to disable.
+        When enabled, OTP keywriter will read protect the key
+    * - OVRD
+      - Override
+      - Uses TIFS fault tolerant value ``0x5A`` to enable, ``0xA5`` to disable.
+        If the efuse rows corresponding to the key are not WP, then enabling the
+        OVRD flag would attempt to program the efuse rows. 
+        Depending on the value, efuse programming may succeed or fail.
+
+        Ex: efuse row has data 0x11 (no WP), and OVRD is enabled. If the new 
+        value is 0x33, then it will be programmed.
+        In case the new value is 0x22, it will fail since there would be an 
+        attempt to reset the bits at index 0 and 8.
+    * - ACTIVE
+      - Active/Inactive flag
+      - Uses TIFS fault tolerant value ``0x5A`` to enable, ``0xA5`` to disable.
+        When enabled, OTP keywriter will program the key value, else would skip
+        programming the key
+
+.. note::
+
+    WP, RP, OVRD are invalid in case of :ref:`keywr_aes_enc_ext_otp`, 
+    a special ``wprp`` field is used to write protect/read protect each ext otp
+    row.
+
+.. note::
+    
+    In case of :ref:`keywr_swrev_sysfw` and :ref:`keywr_swrev_sysfw` WP, RP, 
+    OVRD should be same, since these two swrev fields are clubbed together.
+
+    Refer :ref:`sysfw_pub_swrev_decode_logic`.
+
+.. _keywr_aes_enc_smek:
+
+Keywriter: AES Encrypted SMEK                    
+------------------------------------------------------
+
+This extension contains information about the AES-256 key encrypted SMEK.
+It is identified by the OID **1.3.6.1.4.1.294.1.68**
+The structure of the fields is shown below in ASN.1 notation.
+
+::
+
+   KEYWR-AES-ENC-SMEK := SEQUENCE
+   {
+      val OCTET STRING,     -- AES-256 key encrypted SMEK
+      iv  OCTET STRING,     -- Intitial Value used in AES-256-CBC encryption, 128 bits
+      rs  OCTET STRING,     -- Random String used in AES-256-CBC encryption, 256 bits
+      size INTEGER,         -- size 
+      action_flags INTEGER  -- WP | RP | OVRD | ACTIVE
+   }
+
+.. code-block:: c
+
+   struct keywr_aes_enc_smek {
+      u8 val[64];
+      u8 iv[16];
+      u8 rs[32];
+      u32 size;
+      u32 action_flags;
+   };
+
+
+.. _keywr_mpk_opt:
+
+Keywriter: MPK Options            
+-----------------------------
+
+.. note::
+
+    This extension is currently not supported, and reserved for future.
+
+This extension contains information about the MPK Options
+It is identified by the OID **1.3.6.1.4.1.294.1.69**
+The structure of the fields is shown below in ASN.1 notation.
+
+::
+
+   KEYWR-MPK-OPT := SEQUENCE
+   {
+      val OCTET STRING,     -- MPK Options
+      action_flags INTEGER  -- WP | RP | OVRD | ACTIVE
+   }
+
+.. code-block:: c
+
+   struct keywr_mpk_opt {
+      u8 val[64];
+      u32 action_flags;
+   };
+
+.. _keywr_aes_enc_bmpkh:
+
+Keywriter: AES Encrypted BMPKH                   
+------------------------------------------------------
+
+This extension contains information about AES-256 key encrypted BMPKH (SHA-512 hashed BMPK Public key). 
+It is identified by the OID **1.3.6.1.4.1.294.1.70**
+The structure of the fields is shown below in ASN.1 notation.
+
+::
+
+   KEYWR-AES-ENC-BMPKH := SEQUENCE
+   {
+      val OCTET STRING,     -- AES-256 key encrypted BMPKH (SHA-512 used for hashing)
+      iv  OCTET STRING,     -- Intitial Value used in AES-256-CBC encryption, 128 bits
+      rs  OCTET STRING,     -- Random String used in AES-256-CBC encryption, 256 bits
+      size INTEGER,         -- size 
+      action_flags INTEGER  -- WP | RP | OVRD | ACTIVE
+   }
+
+.. code-block:: c
+
+   struct keywr_aes_enc_bmpkh {
+      u8 val[64];
+      u8 iv[16];
+      u8 rs[32];
+      u32 size;
+      u32 action_flags;
+   };
+
+
+.. _keywr_aes_enc_bmek:
+
+Keywriter: AES Encrypted BMEK                    
+------------------------------------------------------
+
+This extension contains information about the AES-256 key encrypted BMEK. 
+It is identified by the OID **1.3.6.1.4.1.294.1.71**
+The structure of the fields is shown below in ASN.1 notation.
+
+::
+
+   KEYWR-AES-ENC-BMEK := SEQUENCE
+   {
+      val OCTET STRING,     -- AES-256 key encrypted BMEK
+      iv  OCTET STRING,     -- Intitial Value used in AES-256-CBC encryption, 128 bits
+      rs  OCTET STRING,     -- Random String used in AES-256-CBC encryption, 256 bits
+      size INTEGER,         -- size 
+      action_flags INTEGER  -- WP | RP | OVRD | ACTIVE
+   }
+
+.. code-block:: c
+
+   struct keywr_aes_enc_bmek {
+      u8 val[64];
+      u8 iv[16];
+      u8 rs[32];
+      u32 size;
+      u32 action_flags;
+   };
+
+
+.. _keywr_mek_opt:
+
+Keywriter: MEK Options            
+------------------------------------------------------
+
+.. note::
+
+    This extension is currently not supported, and reserved for future.
+
+This extension contains information about the MEK Options,
+it is identified by the OID **1.3.6.1.4.1.294.1.72**
+The structure of the fields is shown below in ASN.1 notation.
+
+::
+
+   KEYWR-MEK-OPT := SEQUENCE
+   {
+      val OCTET STRING,     -- MEK Options
+      action_flags INTEGER  -- WP | RP | OVRD | ACTIVE
+   }
+
+.. code-block:: c
+
+   struct keywr_mek_opt {
+      u8 val[64];
+      u32 action_flags;
+   };
+
+
+.. _keywr_aes_enc_ext_otp:
+
+Keywriter: AES Encrypted extended OTP                
+------------------------------------------------------
+
+.. note::
+
+    This extension is currently not supported, and reserved for future.
+
+This extension contains information about the AES-256 key encrypted extended OTP values.
+It is identified by the OID **1.3.6.1.4.1.294.1.73**
+The structure of the fields is shown below in ASN.1 notation.
+
+::
+
+   KEYWR-AES-ENC-EXT-OTP := SEQUENCE
+   {
+      val OCTET STRING,     -- Extended OTP in octet string format
+      iv  OCTET STRING,     -- Intitial Value used in AES-256-CBC encryption, 128 bits
+      rs  OCTET STRING,     -- Random String used in AES-256-CBC encryption, 256 bits
+      wprp OCTET STRING,    -- Write Protect(64 bits) | Read Protect(64 bits) each bit
+                               represents each efuse row.
+      index INTEGER,        -- Starting index to write ext otp value
+      size INTEGER,         -- size of ext_otp value 
+      action_flags INTEGER  -- ~ | ~ | ~ | ACTIVE
+   }
+
+.. code-block:: c
+
+   struct keywr_aes_enc_ext_otp {
+      u8 val[64];
+      u8 iv[16];
+      u8 rs[32];
+      u8 wprp[16];
+      u32 index;
+      u32 size;
+      u32 action_flags;
+   };
+
+
+.. _keywr_keyrev:
+
+Keywriter: key revision            
+------------------------------
+
+This extension contains information about the Keyrevision field.
+By default, keyrevision should be set to 1. If it is set to 2, BMPK and BMEK will be used 
+instead of SMPK and SMEK. It is identified by the OID **1.3.6.1.4.1.294.1.74**. 
+The structure of the fields is shown below in ASN.1 notation.
+
+::
+
+   KEYWR-KEYREV := SEQUENCE
+   {
+      val OCTET STRING,     -- Keyrev
+      action_flags INTEGER  -- WP | RP | OVRD | ACTIVE
+   }
+
+.. code-block:: c
+
+   struct keywr_keyrev {
+      u8 val[64];
+      u32 action_flags;
+   };
+
+.. _keywr_msv:
+
+Keywriter: MSV                     
+------------------------------------------------------
+
+This extension contains information about the MSV.
+It is identified by the OID **1.3.6.1.4.1.294.1.76**
+The structure of the fields is shown below in ASN.1 notation.
+
+::
+
+   KEYWR-MSV := SEQUENCE
+   {
+      val OCTET STRING,     -- MSV
+      action_flags INTEGER  -- WP | RP | OVRD | ACTIVE
+   }
+
+.. code-block:: c
+
+   struct keywr_msv {
+      u8 val[64];
+      u32 action_flags;
+   };
+
+.. _keywr_keycnt:
+
+Keywriter: key count          
+------------------------------
+
+This extension contains information about the Key count field.
+It is identified by the OID **1.3.6.1.4.1.294.1.77**. 
+The structure of the fields is shown below in ASN.1 notation.
+
+::
+
+   KEYWR-KEYCNT := SEQUENCE
+   {
+      val OCTET STRING,     -- Key count
+      action_flags INTEGER  -- WP | RP | OVRD | ACTIVE
+   }
+
+.. code-block:: c
+
+   struct keywr_keycnt {
+      u8 val[64];
+      u32 action_flags;
+   };
+
+
+.. _keywr_swrev_sysfw:
+
+Keywriter: software revision SYSFW
+------------------------------------------------------
+
+This extension contains information about the Software revision value for SYSFW.
+It is identified by the OID **1.3.6.1.4.1.294.1.78**
+The structure of the fields is shown below in ASN.1 notation.
+
+::
+
+   KEYWR-SWREV-SYSFW := SEQUENCE
+   {
+      val OCTET STRING,     -- SWREV SYSFW
+      action_flags INTEGER  -- WP | RP | OVRD | ACTIVE
+   }
+
+.. code-block:: c
+
+   struct keywr_swrev_sysfw {
+      u8 val[64];
+      u32 action_flags;
+   };
+
+.. _keywr_swrev_sbl:
+
+Keywriter: software revision SBL     
+------------------------------------------------------
+
+This extension contains information about the Software revision value for SBL.
+It is identified by the OID **1.3.6.1.4.1.294.1.79**
+The structure of the fields is shown below in ASN.1 notation.
+
+::
+
+   KEYWR-SWREV-SBL := SEQUENCE
+   {
+      val OCTET STRING,     -- SWREV SBL
+      action_flags INTEGER  -- WP | RP | OVRD | ACTIVE
+   }
+
+.. code-block:: c
+
+   struct keywr_swrev_sbl {
+      u8 val[64];
+      u32 action_flags;
+   };
+
+.. _keywr_swrev_sec_bcfg:
+
+Keywriter: software revision sec boardconfig   
+------------------------------------------------------
+
+This extension contains information about the Software revision value for the Secure Boardconfig.
+It is identified by the OID **1.3.6.1.4.1.294.1.80**
+The structure of the fields is shown below in ASN.1 notation.
+
+::
+
+   KEYWR-SWREV-SEC-BCFG := SEQUENCE
+   {
+      val OCTET STRING,     -- SWREV SEC BCFG
+      action_flags INTEGER  -- WP | RP | OVRD | ACTIVE
+   }
+
+.. code-block:: c
+
+   struct keywr_swrev_sec_bcfg {
+      u8 val[64];
+      u32 action_flags;
+   };
+
+.. _keywr_version:
+
+Keywriter: version   
+------------------------------------------------------
+
+This extension contains information about the Keywriter version.
+It is identified by the OID **1.3.6.1.4.1.294.1.81**
+The structure of the fields is shown below in ASN.1 notation.
+
+::
+
+   KEYWR-VERSION := SEQUENCE
+   {
+      val OCTET STRING,     -- SWREV SEC BCFG
+   }
+
+.. code-block:: c
+
+   struct keywr_version {
+      u8 val[64];
+   };
+
+.. _sysfw_x509_template_example:
+
+Sample x509 template
+---------------------
+
+.. note::
+
+   The template below shows all the X509 extensions supported by the |sysfw|
+   ASN1 parser. Depending on the usecase, the certificate may contain only a few
+   of these extensions.
+
+   - For performing JTAG unlock, only Software revision (``swrv``) and
+     Debug(``debug``) extensions are required.
+   - For authenticating a binary, only the Load (``sysfw_image_load``) and
+     Image integrity (``sysfw_image_integrity``) extensions are required.
+
+.. note::
+
+   The data in the ``req_distinguished_name`` section is random to indicates
+
+   1. |sysfw| does not process the information in the section.
+   2. This needs to be updated by the user to reflect his information.
+
+
+.. code-block :: bash
+
+    [ req ]
+    distinguished_name = req_distinguished_name
+    x509_extensions = v3_ca
+    prompt = no
+
+    dirstring_type = nobmp
+
+    # This information will be filled by the end user.
+    # The current data is only a place holder.
+    # System firmware does not make decisions based
+    # on the contents of this distinguished name block.
+    [ req_distinguished_name ]
+    C = oR
+    ST = rx
+    L = gQE843yQV0sag
+    O = dqhGYAQ2Y4gFfCq0t1yABCYxex9eAxt71f
+    OU = a87RB35W
+    CN = x0FSqGTPWbGpuiV
+    emailAddress = kFp5uGcgWXxcfxi@vsHs9C9qQWGrBs.com
+
+    [ v3_ca ]
+    basicConstraints = CA:true
+    1.3.6.1.4.1.294.1.3=ASN1:SEQUENCE:swrv
+    1.3.6.1.4.1.294.1.4=ASN1:SEQUENCE:encryption
+    1.3.6.1.4.1.294.1.8=ASN1:SEQUENCE:debug
+    1.3.6.1.4.1.294.1.36=ASN1:SEQUENCE:sysfw_hs_boardcfg
+    1.3.6.1.4.1.294.1.33=ASN1:SEQUENCE:sysfw_boot_seq
+    1.3.6.1.4.1.294.1.34=ASN1:SEQUENCE:sysfw_image_integrity
+    1.3.6.1.4.1.294.1.35=ASN1:SEQUENCE:sysfw_image_load
+    1.3.6.1.4.1.294.1.36=ASN1:SEQUENCE:sysfw_hs_boardcfg
+    1.3.6.1.4.1.294.1.37=ASN1:SEQUENCE:sysfw_fwl_ext
+    1.3.6.1.4.1.294.1.40=ASN1:SEQUENCE:encryption_extended
+
+    [ sysfw_boot_seq ]
+    bootCore = INTEGER:0x20
+    bootCoreOpts_set = INTEGER:0x00000000
+    bootCoreOpts_clr = INTEGER:0x00000000
+    resetVec = FORMAT:HEX,OCT:41c02100
+    flagsValid = FORMAT:HEX,OCT:00000000
+    rsvd1 = INTEGER:0x00
+    rsdv2 = INTEGER:0x00
+    rsdv3 = INTEGER:0x00
+
+    [ sysfw_image_integrity ]
+    shaType = OID:2.16.840.1.101.3.4.2.3
+    shaValue = FORMAT:HEX,OCT:TEST_IMAGE_SHA512
+    # Replace TEST_IMAGE_LENGTH with actual image length
+    imageSize = INTEGER:TEST_IMAGE_LENGTH
+
+    [ sysfw_image_load ]
+    destAddr = FORMAT:HEX,OCT:41c02100
+    authInPlace = INTEGER:0
+
+    [ swrv ]
+    swrv = INTEGER:0
+
+    [ sysfw_fwl_ext ]
+    numConfig = INTEGER:2
+    fwlID0 = INTEGER:64
+    region0 = INTEGER:0
+    control0 = INTEGER:266
+    numPermissions0 = INTEGER:3
+    permission00 = INTEGER:12845055
+    permission01 = INTEGER:0
+    permission02 = INTEGER:0
+    startAddress0 = FORMAT:HEX,OCT:70000000
+    endAddress0 = FORMAT:HEX,OCT:7000ffff
+    fwlID1 = INTEGER:64
+    region1 = INTEGER:1
+    control1 = INTEGER:10
+    numPermissions1 = INTEGER:1
+    permission10 = INTEGER:131071
+    startAddress1 = FORMAT:HEX,OCT:70000000
+    endAddress1 = FORMAT:HEX,OCT:70000fff
+
+    [ debug ]
+    debugUID = FORMAT:HEX,OCT:0000000000000000000000000000000000000000000000000000000000000000
+    debugCtrl = INTEGER:0x00000004
+    coreDbgEn = INTEGER:0x20210102
+    coreDbgSecEn = INTEGER:0x2223
+
+    [ encryption ]
+    initalVector =  FORMAT:HEX,OCT:TEST_IMAGE_ENC_IV
+    randomString =  FORMAT:HEX,OCT:TEST_IMAGE_ENC_RS
+    iterationCnt =  INTEGER:TEST_IMAGE_KEY_DERIVE_INDEX
+    salt         =  FORMAT:HEX,OCT:TEST_IMAGE_KEY_DERIVE_SALT
+
+    [ encryption_extended ]
+    nPaddingBytes = INTEGER:0
+    rsvd0         = INTEGER:0
+    rsvd1         = INTEGER:0
+
+    [ sysfw_hs_boardcfg ]
+    initalVector    =  FORMAT:HEX,OCT:SEC_BCFG_ENC_IV
+    randomString    =  FORMAT:HEX,OCT:SEC_BCFG_ENC_RS
+    iterationCnt    =  INTEGER:SEC_BCFG_KEY_DERIVE_INDEX
+    salt            =  FORMAT:HEX,OCT:SEC_BCFG_KEY_DERIVE_SALT
+    secBoardcfgHash =  FORMAT:HEX,OCT:SEC_BCFG_HASH
+    secBoardcfgVer  =  INTEGER:SEC_BCFG_VER
+    pmBoardcfgHash  =  FORMAT:HEX,OCT:PM_BCFG_HASH
+    rmBoardcfgHash  =  FORMAT:HEX,OCT:RM_BCFG_HASH
+    boardcfgHash    =  FORMAT:HEX,OCT:BCFG_HASH
+
+    [ keyring ]
+    auth_key_id =  INTEGER:AUTH_KEYRING_ID
+    enc_key_id  =  INTEGER:ENC_KEYRING_ID
+
+    [ num_of_keys ]
+    num_of_asymm_keys =  INTEGER:NUM_ASYMM
+    num_of_symm_keys =  INTEGER:NUM_SYMM
+
+
+Keywriter: Sample x509 template
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The OTP Keywriter x509 template can be found :ref:`here <sysfw_pub_keywr_cert_format>`.

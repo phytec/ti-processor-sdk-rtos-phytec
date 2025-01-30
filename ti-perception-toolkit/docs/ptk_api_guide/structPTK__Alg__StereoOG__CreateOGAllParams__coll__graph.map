@@ -1,0 +1,6 @@
+<map id="PTK_Alg_StereoOG_CreateOGAllParams" name="PTK_Alg_StereoOG_CreateOGAllParams">
+<area shape="rect" id="node2" href="$structPTK__Alg__StereoOG__CreateOGParams.html" title="Stereo OG Map creation process &#45; OG Parameters. " alt="" coords="289,435,551,513"/>
+<area shape="rect" id="node5" href="$structPTK__Alg__StereoOG__CreateOGCamParams.html" title="Stereo algorithm &#45; camera Parameters. " alt="" coords="21,428,265,520"/>
+<area shape="rect" id="node8" href="$structPTK__Alg__StereoOG__CreateOGConfigParams.html" title="Stereo OG Map creation process &#45; config Parameters. " alt="" coords="575,428,830,520"/>
+<area shape="rect" id="node7" href="$structPTK__3D__Matrix.html" title="Definition of a 3x3 matrix. " alt="" coords="106,165,227,243"/>
+</map>

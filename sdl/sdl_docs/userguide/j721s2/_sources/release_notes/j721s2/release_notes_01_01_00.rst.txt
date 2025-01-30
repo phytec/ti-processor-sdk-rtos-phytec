@@ -1,0 +1,123 @@
+Release Notes - 01_01_00
+========================
+
+Introduction
+------------
+
+This release notes provides important information that will assist you in using the SDL software package for the J721S2 family of devices.
+This document provides the product information and known issues that are specific to the SDL software package.
+
+New features added / supported is listed below and defects fixed are highlighted in **Fixed Issues**. Also please check **Upgrade and Compatibility** for backward compatibility
+
+What's New
+----------
+* ROM CHECKSUM
+* PBIST check of ROM
+
+SDL support for the following modules are available:
+
+* R5F PMU, MPU, RAT and VIM
+* ESM
+* PBIST
+* LBIST
+* POK
+* VTM
+* TOG
+* ECC
+* RTI
+* R5F CCM
+* DCC
+* MCRC
+* ROM CHECKSUM
+
+Safety Examples for the following modules are provided:
+
+* ESM
+* POK
+* VTM
+* MTOG
+* STOG
+* DCC
+* RTI
+* ECC
+* BIST
+* ROM CHECKSUM
+
+
+Upgrade and Compatibility
+-------------------------
+
+None.
+
+Supported Devices
+-----------------
+
++------------------------+
+| Supported Platform     |
++========================+
+| J721S2                 |
+|                        |
++------------------------+
+
+
+Fixed Issues
+------------
+
++--------------------------+---------+------------------------------------------+-------------------------------------------------+
+| Issue Id                 | Module  | Description                              | Comments                                        |
++==========================+=========+==========================================+=================================================+
+| PROC_SDL-3350            | RAT     | Illegal boundary crossing test for       | None                                            |
+|                          |         | R5F RAT module fails.                    |                                                 |
++--------------------------+---------+------------------------------------------+-------------------------------------------------+
+| PROC_SDL-4142            | PBIST   | MAINR5F1 PBIST test fails in back-to-back| None                                            |
+|                          |         | runs.                                    |                                                 |
++--------------------------+---------+------------------------------------------+-------------------------------------------------+
+| PROC_SDL-5685            | ESM     | esm_wkup_mcu_app and vtm_app tests fail. | None                                            |
++--------------------------+---------+------------------------------------------+-------------------------------------------------+
+| PROC_SDL-5682            | ECC     | sdl_ecc_test_app fails for VIM module.   | None                                            |
++--------------------------+---------+------------------------------------------+-------------------------------------------------+
+| PROC_SDL-5689            | PBIST   | bist_example failing in Main Infra1      | None                                            |
+|                          |         | and Main R5F 1 PBIST instances.          |                                                 |
++--------------------------+---------+------------------------------------------+-------------------------------------------------+
+
+Known Issues and Limitations
+----------------------------
+
++--------------------------+---------+------------------------------------------+-------------------------------------------------+
+| Issue Id                 | Module  | Description                              | Workaround                                      |
++==========================+=========+==========================================+=================================================+
+| PROC_SDL-4140            | ECC     | Some ECC aggregator error tests failing. | None - updating of metadata and investigation   |
+|                          |         | Metadata is incorrect and needs to be    | of failues is in progress.                      |
+|                          |         | updated for the following:               |                                                 |
+|                          |         | ECC_AGGR5 - Ram ID 18(7-16 checker),     | Due to this, the ECC error inject functionality |
+|                          |         | ECC_AGGR4 - Ram ID 76(0,1 checker),      | for the mentioned IPs and endpoints is not      |
+|                          |         | ECC_AGGR0 - Ram ID 42(4 checker)         | usable in this release.                         |
++--------------------------+---------+------------------------------------------+-------------------------------------------------+
+| PROC_SDL-4141            | TOG     | 1 STOG instances error injection test is | None - This issue is under investigation.       |
+|                          |         | failing and are not included in the      |                                                 |
+|                          |         | test application. (STOG17)               |                                                 |
++--------------------------+---------+------------------------------------------+-------------------------------------------------+
+| PROC_SDL-4720            | PBIST   | PBIST test case for DSS/EDP/DSI fails    | None - This issue is under investigation.       |
+|                          |         |                                          | Root cause may be hardware configuration and/or |
+|                          |         |                                          | pre-test sequence in the application.           |
++--------------------------+---------+------------------------------------------+-------------------------------------------------+
+| PROC_SDL-6174            | MCRC    | In sdl_mcrc_test_app, return value gets  | Use mcrc_app.                                   |
+|                          |         | overwritten in sdl_mcrcSemiCPU_udmaCrc.  |                                                 |
+|                          |         |                                          |                                                 |
++--------------------------+---------+------------------------------------------+-------------------------------------------------+
+
+Migration Information
+---------------------
+
+PBIST tests for compute cluster instances need the C7X image. This is due to change of MCU R5F core booting in non-secure mode, since this is a change between SDK 8.5 and SDK 8.6.
+PBIST example, pbist_test_app and sdl_pbist_test_app generate the multicore image by default.
+
+Tool Chain Information
+----------------------
+
++-----------------------------------+-------------------------------+
+| Component                         | Version                       |
++===================================+===============================+
+| TI ARM R5F Clang Compiler tools   | 2.1.3.LTS                     |
++-----------------------------------+-------------------------------+
+

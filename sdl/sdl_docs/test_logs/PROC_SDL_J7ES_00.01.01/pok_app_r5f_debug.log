@@ -1,0 +1,57 @@
+SBL Revision: 01.00.10.01 (Dec  1 2021 - 08:15:07)
+TIFS  ver: 21.9.1--v2021.09a (Terrific Lla
+
+ POK Test Application
+
+sdlEsmSetupForPOK init: Init WKUP ESM complete 
+ 
+ 
+ Below are the POK ID values 
+  SDL_POK_VDDA_PMIC_IN_ID is:       0 
+  SDL_POK_VDD_CORE_UV_ID is:        1 
+  SDL_POK_VDDSHV_WKUP_GEN_UV_ID is: 2 
+  SDL_POK_VDD_CPU_UV_ID is:         3 
+  SDL_POK_VDDR_MCU_UV_ID is:        4 
+  SDL_POK_VMON_EXT_UV_ID is:        5 
+  SDL_POK_VDD_MCU_OV_ID is:         6 
+  SDL_POK_VDDR_CORE_UV_ID is:       7 
+  SDL_POK_VDDSHV_WKUP_GEN_OV_ID is: 8 
+  SDL_POK_VDD_CORE_OV_ID is:        9 
+  SDL_POK_VDDR_MCU_OV_ID is:        10 
+  SDL_POK_VDD_CPU_OV_ID is:         11 
+  SDL_POK_VDDR_CORE_OV_ID is:       12 
+  SDL_POK_VMON_EXT_OV_ID is:        13 
+
+
+
+ POK ID = 1 , monitoring set to UV 
+Waiting for ESM to report the error 
+
+  ESM Call back function called : instType 0x1, intType 0x1, grpChannel 0x2, index 0x13, intSrc 0x53 
+  Take action 
+ Got the ESM Error Interrupt 
+Action taken 
+Safety software Example UC-1 pok for instance 1 PASSED
+ 
+
+ Below are the POK In POR ID values for the example
+  SDL_POR_POKHV_UV_ID is:           14 
+  SDL_POR_POKLV_UV_ID is:           15 
+  SDL_POR_POKHV_OV_ID is:           16 
+
+
+ POK ID = 16 , monitoring set to OV 
+W
+  ESM Call back function called : instType 0x1, intType 0x1, grpChannel 0x2, index 0x7, intSrc 0x47 
+  Take action 
+aiting for ESM to report the error 
+ Got the ESM Error Interrupt 
+Action taken 
+Safety software Example UC-2 pok for instance  16 PASSED
+Test Name: POK EXAMPLE UC-1  PASSED 
+Test Name: POR EXAMPLE UC-2  PASSED 
+
+ All tests have passed. 
+
+CTRL-A Z for help | 115200 8N1 | NOR | Minicom 2.7.1 | VT102 | Offline | ttyUSB1                                                                                                                           
+

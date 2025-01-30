@@ -1,0 +1,15 @@
+ EXCEPTION UNIT Test Application
+
+ Undefined Instruction exception
+ Software interrupt exception
+ Prefetch Abort exception
+ Data Abort exception
+ Irq exception
+ Fiq exceptionTest Name: EXCEPTION POSITIVE TEST  PASSED
+
+ All tests have passed.
+exception_test_main.c:194:test_sdl_exception_baremetal_test_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored
+OK

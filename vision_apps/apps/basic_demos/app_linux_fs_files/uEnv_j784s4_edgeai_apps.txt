@@ -1,0 +1,25 @@
+# This uEnv.txt file can contain additional environment settings that you
+# want to set in U-Boot at boot time.  This can be simple variables such
+# as the serverip or custom variables.  The format of this file is:
+#    variable=value
+# NOTE: This file will be evaluated after the bootcmd is run and the
+#       bootcmd must be set to load this file if it exists (this is the
+#       default on all newer U-Boot images.  This also means that some
+#       variables such as bootdelay cannot be changed by this file since
+#       it is not evaluated until the bootcmd is run.
+psdk_setup_file=.psdk_setup
+check_psdk_setup=load mmc 1:1 ${loadaddr} ${psdk_setup_file}
+
+# Reset to the default environment
+do_psdk_setup=env default -f -a; saveenv
+
+# Update the Linux hostname based on board_name
+# The SK also requires an additional dtbo to boot. Prepend it to name_overlays depending on board_name
+uenvcmd=if test ${boot_fit} -eq 1; then  setenv name_overlays $name_overlays_fit; fi; if test "$board_name" = "am69-sk"; then ; setenv args_all $args_all systemd.hostname=am69a-sk ; if test ${boot_fit} -eq 1; then setenv name_overlays ti/k3-am69-sk-ddr-mem-carveout.dtbo $name_overlays; else; setenv name_overlays k3-am69-sk-ddr-mem-carveout.dtbo $name_overlays ; fi; fi
+
+# Setting the right U-Boot environment variables
+dorprocboot=1
+name_overlays=k3-j784s4-edgeai-apps.dtbo
+
+# Name overlays when booting from fit image
+name_overlays_fit=ti/k3-j784s4-edgeai-apps.dtbo

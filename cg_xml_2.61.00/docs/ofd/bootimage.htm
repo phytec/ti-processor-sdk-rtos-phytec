@@ -1,0 +1,101 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Documentation for bootimage.pl</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Documentation for bootimage.pl</span></strong></big>
+</td></tr>
+</table>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#USAGE">USAGE</a></li>
+  <li><a href="#OPTIONS">OPTIONS</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#OFD-OPTIONS">OFD OPTIONS</a></li>
+  <li><a href="#OUTPUT-FILES">OUTPUT FILES</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>bootimage.pl</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<p>Converts a TI executable file (.out) into hexadecimal data contained in arrays written in C. The executable can be in COFF or ELF format.</p>
+
+<h1 id="USAGE">USAGE</h1>
+
+<p>bootimage.pl [-h] <i>xml file</i></p>
+
+<pre><code>   ... OR ...</code></pre>
+
+<p>ofdXX -x <i>out file</i> | perl bootimage.pl</p>
+
+<h1 id="OPTIONS">OPTIONS</h1>
+
+<pre><code> -h               : Output usage and quit
+ --section=name   : Only process named sections
+ --pragma=name    : Use a DATA_SECTION pragma to allow placing the section
+ --cg_xml_version : Print out the version of the cg_xml package in use</code></pre>
+
+<p>If --section is not used, all initialized sections are processed. If --pragma is used, then the number of --pragma options must equal the number of --section options. The Nth section is affected by the Nth pragma.</p>
+
+<p>Short options are also accepted, e.g. -s for --section. Except --cg_xml_version can never be abbreviated.</p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>OFD stands for Object File Display utility. Examples include ofd6x for C6000 and ofd55 for C5500.</p>
+
+<p>Use the -x option of OFD to create the XML file. Example ...</p>
+
+<pre><code>      ofd6x -x -o=file.xml file.out</code></pre>
+
+<p>You can avoid creating the XML file by piping the output from OFD into the script ...</p>
+
+<pre><code>      ofd6x -x file.out | perl bootimage.pl</code></pre>
+
+<p>On Unix systems, piping the output from OFD works just fine. On Windows systems, however, the pipe method can be much slower.</p>
+
+<h1 id="OFD-OPTIONS">OFD OPTIONS</h1>
+
+<p>Recent releases of OFD support options for filtering the XML output down to what is strictly of interest. The best options to use in combination with this script are:</p>
+
+<pre><code>  -x --xml_indent=0 --obj_display=none,sections</code></pre>
+
+<p>Filtering the XML in this way reduces the amount of data processed by this script, thus making it run faster.</p>
+
+<h1 id="OUTPUT-FILES">OUTPUT FILES</h1>
+
+<p>There are two output files: a C file contains the arrays and a header file contains extern declarations of those arrays. The output file names are formed by appending &#39;.c&#39; and &#39;.h&#39;, respectively, to the name of the .out file. For example ...</p>
+
+<pre><code>      ofd6x -x -o=file.xml file.out
+      bootimage.pl file.xml</code></pre>
+
+<p>creates &#39;file.out.c&#39; and &#39;file.out.h&#39;. If you pipe the the XML in ...</p>
+
+<pre><code>     ofd6x -x file.out | perl bootimage.pl</code></pre>
+
+<p>the output files are the same: &#39;file.out.c&#39; and &#39;file.out.h&#39;. Note the name of the of the .out file is one of the data items pulled from the XML information.</p>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Documentation for bootimage.pl</span></strong></big>
+</td></tr>
+</table>
+
+</body>
+
+</html>
+
+

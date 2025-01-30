@@ -1,0 +1,151 @@
+==================
+Keyring Management 
+==================
+
+.. contents:: Table of Contents
+   :depth: 2
+   :local:
+
+.. _dref_sec_keyring_int:
+
+Introduction
+============
+
+The extended keyring enables the generic data blob to be signed/verified with user’s
+ auxiliary key other than the root key (i.e. SMPK/BMPK).
+
+.. _dref_sec_keyring_background:
+
+Background on Use-cases
+=======================
+
+The following describes the use-cases which substantiate the need for 
+keyring within SMS and drive the design decisions described later in this
+document.
+
+* Import auxiliary public keys' hash presented in the form of a signed x509 certificate
+  after validation.
+* The imported keys' hash can be used to authenticate the signed firmware or data blobs
+  presented to |sysfw|.
+
+.. _dref_sec_keyring_func-goals:
+
+Functional Goals
+================
+
+Keyring provides the following functionality:
+
+1.  APIs to import the entire keyring in to TIFS internal memory.
+2. |sysfw| can use the keys imported from the extended key ring,
+	during the signed firmware or data blob authentication.
+
+.. _dref_sec_keyring_design:
+
+Design
+======
+
+Keyring design is described in the following sections
+
+.. _dref_sec_keyring_storage:
+
+Key Data Storage
+----------------
+
+The keyring exists in a carved out section of SMS internal memory with
+a build-time configurable size. The keyring memory contains following 
+information:
+
+* Internal state of the keyring. This is only initialized and transitioned
+  inside |sysfw|.  It is meaningless from the host perspective and should be
+  treated as reserved.  
+
+* Array of metadata descriptors for the keys in the keyring.
+  The descriptors for the key slots specify:
+
+.. list-table:: Parameters of public keys
+   :align: center
+   :header-rows: 1
+
+   * - Keyring parameters
+     - Description 
+
+   * - key_type
+     - flag to indicate if key is symmetric or asymmetric
+   
+   * - keyid
+     - keyid of the key
+   
+   * - imageauth
+     - flag to indicate if key can be used for firmware image authentication
+   
+   * - debugauth
+     - flag to indicate if key can be used for debug certificate authentication
+   
+   * - reserved
+     - for internal use   
+
+   * - esmpkh  
+     - esmpk hash for authentication  
+
+.. _dref_keyring_data_structure:
+
+The above information is placed at the base of the keyring memory. This can be
+more concisely represented by the C-code definition of the keyring structure for 
+asymmetric keys:
+
+.. code-block:: c
+
+  struct keyring_asymm {
+        struct aux_pk {
+          uint8_t key_type;
+          uint8_t key_id;				
+          uint8_t imageauth;
+          uint8_t debugauth;
+          uint8_t reserved[4];
+        } aux_pk;
+        uint8_t   esmpkh[64];
+    } 
+
+.. _dref_sec_keyring_provision:
+
+Keyring Import
+--------------
+
+Early in the lifecycle of the HS device, the customer will use the keywriter to
+blow the eFuse with Secondary MPKH and MEK (among other contents) and
+transition the device from HS-FS state to HS-SE. At this point, the keyring 
+contents have not yet been populated and it is up to the system software owner
+to provision an initial set of keys.  This is achieved through a bulk import of
+the keyring contents which have been appended to an x509 certificate signed with the 
+active customer MPK, similar to how one signs an encrypted binary for secure boot. 
+Validation of the certificate ensures that the keyring contents are trustworthy and 
+can hence be stored into the reserved memory. If the certificate check fails then
+provisioning will not be successful and the keyring will remain unitialized.
+
+The host is responsibile for ensuring that the keyring data is properly
+formatted when creating the payload for the keyring import API. If not, the data
+will be interpreted differently between the host and |sysfw| which can cause
+unpredictable values for the various fields in the structure. The data
+corruption may cause following failures in subsequent key operations:
+
+* Key type is not correct, so operations checking for the key type will fail.
+* The key id of each key must be between and including values 1-254, else the keyring import
+  will fail.
+* Usage flags are not correct, so usage permissions checks will fail.
+
+Keyring import operation requires following constraints:
+
+* The number of keys in the certificate extension must match the number of keys
+  present in the keyring.
+* Without a certificate extension, keyring import will fail. 
+* The number of asymmetric keys should be between and including values 1-6.
+* Keyring can only be imported once, and any further attempts will fail. 
+
+.. _dref_sec_keyring_ref:
+
+References
+==========
+
+1. https://en.wikipedia.org/wiki/Public_key_infrastructure
+2. Internet X.509 Public Key Infrastructure Certificate and Certificate
+   Revocation List (CRL) Profile https://tools.ietf.org/html/rfc5280

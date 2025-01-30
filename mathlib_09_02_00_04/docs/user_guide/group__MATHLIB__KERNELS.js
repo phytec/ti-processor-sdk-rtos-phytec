@@ -1,0 +1,26 @@
+var group__MATHLIB__KERNELS =
+[
+    [ "MATHLIB_acos", "group__MATHLIB__ACOS.html", "group__MATHLIB__ACOS" ],
+    [ "MATHLIB_acosh", "group__MATHLIB__ACOSH.html", "group__MATHLIB__ACOSH" ],
+    [ "MATHLIB_asin", "group__MATHLIB__ASIN.html", "group__MATHLIB__ASIN" ],
+    [ "MATHLIB_asinh", "group__MATHLIB__ASINH.html", "group__MATHLIB__ASINH" ],
+    [ "MATHLIB_atan", "group__MATHLIB__ATAN.html", "group__MATHLIB__ATAN" ],
+    [ "MATHLIB_atan2", "group__MATHLIB__ATAN2.html", "group__MATHLIB__ATAN2" ],
+    [ "MATHLIB_atanh", "group__MATHLIB__ATANH.html", "group__MATHLIB__ATANH" ],
+    [ "MATHLIB_cos", "group__MATHLIB__COS.html", "group__MATHLIB__COS" ],
+    [ "MATHLIB_cosh", "group__MATHLIB__COSH.html", "group__MATHLIB__COSH" ],
+    [ "MATHLIB_div", "group__MATHLIB__DIV.html", "group__MATHLIB__DIV" ],
+    [ "MATHLIB_exp", "group__MATHLIB__EXP.html", "group__MATHLIB__EXP" ],
+    [ "MATHLIB_exp10", "group__MATHLIB__EXP10.html", "group__MATHLIB__EXP10" ],
+    [ "MATHLIB_exp2", "group__MATHLIB__EXP2.html", "group__MATHLIB__EXP2" ],
+    [ "MATHLIB_log", "group__MATHLIB__LOG.html", "group__MATHLIB__LOG" ],
+    [ "MATHLIB_log10", "group__MATHLIB__LOG10.html", "group__MATHLIB__LOG10" ],
+    [ "MATHLIB_log2", "group__MATHLIB__LOG2.html", "group__MATHLIB__LOG2" ],
+    [ "MATHLIB_pow", "group__MATHLIB__POW.html", "group__MATHLIB__POW" ],
+    [ "MATHLIB_rsqrt", "group__MATHLIB__RSQRT.html", "group__MATHLIB__RSQRT" ],
+    [ "MATHLIB_sin", "group__MATHLIB__SIN.html", "group__MATHLIB__SIN" ],
+    [ "MATHLIB_sinh", "group__MATHLIB__SINH.html", "group__MATHLIB__SINH" ],
+    [ "MATHLIB_sqrt", "group__MATHLIB__SQRT.html", "group__MATHLIB__SQRT" ],
+    [ "MATHLIB_tan", "group__MATHLIB__TAN.html", "group__MATHLIB__TAN" ],
+    [ "MATHLIB_tanh", "group__MATHLIB__TANH.html", "group__MATHLIB__TANH" ]
+];

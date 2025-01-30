@@ -1,0 +1,43 @@
+ROM_Checksum Safety Example
+===========================
+
+Introduction
+------------
+
+This example demonstrates usage of the SDL ROM Checksum.
+This example is used to check the integrity of the data. 
+Its work is to take a set of data associated with the memory regions of ROM and perform checksum on that data and then compare that resultant data value against a pre-determined golden vector value (golden vector has the expected value which should come as a result of 512-bit of hash message, 
+golden vector is already defined and it has fixed address in ROM region). 
+
+Example Details
+---------------
+
+The example should be loaded to the hardware using the Secondary Boot Loader (SBL) from the SDK.
+
++-----------------------+--------------------------------------------------+--------------------------------------------+
+| Example Name          | Location                                         | Build Command                              |
++=======================+==================================================+============================================+
+| rom_checksum_example  | [sdl_install_dir]/examples/rom_checksum/         | make rom_checksum_example PROFILE=release  |     
++-----------------------+--------------------------------------------------+--------------------------------------------+
+
+Expected Output
+---------------
+
+rom_checksum_example:
+
+.. code:: bash
+
+    ROM Checksum Example Application
+    Compute ROM-Checksum Data integrity passed
+    All tests have passed. 
+    rom_checksum_main.c:208:test_sdl_rom_checksum_compute:PASS
+
+    -----------------------
+    1 Tests 0 Failures 0 Ignored 
+    OK
+
+
+Reference
+---------
+
+`ROM_Checksum User Guide <../modules/rom_checksum.html>`_

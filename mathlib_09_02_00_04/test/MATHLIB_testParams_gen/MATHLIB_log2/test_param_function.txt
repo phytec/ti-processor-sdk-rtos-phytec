@@ -1,0 +1,11 @@
+/*
+ *  Sends the test parameter structure and number of tests
+ */
+void MATHLIB_log2_getTestParams (
+    MATHLIB_log2_testParams_t **params,
+    int32_t *                                 numTests)
+{
+   *params = testParams;
+   *numTests =
+       sizeof (testParams) / sizeof (MATHLIB_log2_testParams_t);
+}

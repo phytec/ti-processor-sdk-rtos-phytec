@@ -1,0 +1,19 @@
+var searchData=
+[
+  ['obj_5fldc',['obj_ldc',['../structITTServerEdgeAIObj.html#a3a8b68d5bfeb31b192a4d97565fa5a13',1,'ITTServerEdgeAIObj']]],
+  ['obj_5fviss',['obj_viss',['../structITTServerEdgeAIObj.html#a3f1181d1d181411906c3f0c5edf5ba4e',1,'ITTServerEdgeAIObj']]],
+  ['offset_5fx',['offset_x',['../structtivx__vpac__msc__output__params__t.html#af2a4aa95bcaf4725db58c74fe63555ba',1,'tivx_vpac_msc_output_params_t']]],
+  ['offset_5fy',['offset_y',['../structtivx__vpac__msc__output__params__t.html#a3076d70628d4885c0694c75f14903966',1,'tivx_vpac_msc_output_params_t']]],
+  ['out_5fblock_5fheight',['out_block_height',['../structtivx__vpac__ldc__region__params__t.html#a415d1a03a49c064ba2df32f32367ac84',1,'tivx_vpac_ldc_region_params_t']]],
+  ['out_5fblock_5fwidth',['out_block_width',['../structtivx__vpac__ldc__region__params__t.html#a61e7a52ad6e6477bfe62600c3fed4e6d',1,'tivx_vpac_ldc_region_params_t']]],
+  ['output_5falign_5f12bit',['output_align_12bit',['../structtivx__vpac__msc__output__params__t.html#a6633b4c30290900a1c5c56402d2d0c40',1,'tivx_vpac_msc_output_params_t']]],
+  ['output_5fbits',['output_bits',['../structtivx__vpac__ldc__bit__depth__conv__lut__params__t.html#aae7a5aa2b0a99f7d7e0b5bf3b56f97e1',1,'tivx_vpac_ldc_bit_depth_conv_lut_params_t']]],
+  ['output_5fdownshift',['output_downshift',['../structtivx__vpac__nf__common__params__t.html#aca95f83543d849f49433243c0bc90eb3',1,'tivx_vpac_nf_common_params_t']]],
+  ['output_5ffcp_5fmapping',['output_fcp_mapping',['../structtivx__vpac__viss__params__t.html#af8a6f04632705c3b6d6d361b1d444a8d',1,'tivx_vpac_viss_params_t']]],
+  ['output_5foffset',['output_offset',['../structtivx__vpac__nf__common__params__t.html#a26e6d6742a8f9e24513aa673188bcdb9',1,'tivx_vpac_nf_common_params_t']]],
+  ['output_5fpixel_5fskip',['output_pixel_skip',['../structtivx__vpac__nf__common__params__t.html#a6da9172e5dca7650dce0404fd8763344',1,'tivx_vpac_nf_common_params_t']]],
+  ['output_5fpixel_5fskip_5fodd',['output_pixel_skip_odd',['../structtivx__vpac__nf__common__params__t.html#afea5f587ef528ce088698fd2db639ebd',1,'tivx_vpac_nf_common_params_t']]],
+  ['ov2775_5fcfg',['ov2775_cfg',['../ov2775__cfg_8h.html#a54e2b76d58761de8265b4d7d7221d1f2',1,'ov2775_cfg.h']]],
+  ['ov2775_5fub953_5fcfg',['ov2775_ub953_cfg',['../ov2775__cfg_8h.html#adb69c2628ef554a42a809d01a548fd77',1,'ov2775_cfg.h']]],
+  ['ov2775_5fub960_5fcfg',['ov2775_ub960_cfg',['../ov2775__cfg_8h.html#a71b35d615b92983f0805ccb23ec04a3e',1,'ov2775_cfg.h']]]
+];

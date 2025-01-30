@@ -1,0 +1,10 @@
+RTI Test Application
+Test Name: RTI POSITIVE TEST  PASSED
+Test Name: RTI NEGATIVE TEST  PASSED
+
+ All tests have passed.
+rti_test_main.c:253:test_sdl_rti_baremetal_test_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored
+OK

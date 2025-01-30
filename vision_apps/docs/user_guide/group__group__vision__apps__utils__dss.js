@@ -1,0 +1,35 @@
+var group__group__vision__apps__utils__dss =
+[
+    [ "app_dss_init_params_t", "structapp__dss__init__params__t.html", [
+      [ "isPipeAvailable", "structapp__dss__init__params__t.html#a2d191c19c2129081a4a55925671ef472", null ],
+      [ "isOverlayAvailable", "structapp__dss__init__params__t.html#a83a87ade7bf35a3565169e298e47efad", null ],
+      [ "isPortAvailable", "structapp__dss__init__params__t.html#ae38c1eead69ae4c47c4daa48f54995cc", null ],
+      [ "isDpAvailable", "structapp__dss__init__params__t.html#afc3cd47878322e08f769d5115bf445a4", null ],
+      [ "isDsiAvailable", "structapp__dss__init__params__t.html#adf5311bbba76b3877cf76dbcac4c8597", null ]
+    ] ],
+    [ "APP_DSS_COMM_REG_ID_0", "group__group__vision__apps__utils__dss.html#ga76d759894320987a6fb34cee5d02fd6d", null ],
+    [ "APP_DSS_COMM_REG_ID_1", "group__group__vision__apps__utils__dss.html#ga88d32e81891d7019fc0b95487ab37b99", null ],
+    [ "APP_DSS_COMM_REG_ID_2", "group__group__vision__apps__utils__dss.html#ga0ec4b697e56e3c9c331cc64333f5de87", null ],
+    [ "APP_DSS_COMM_REG_ID_3", "group__group__vision__apps__utils__dss.html#ga02c2ba5597ad7a605bb748aab53e78b0", null ],
+    [ "APP_DSS_COMM_REG_ID_MAX", "group__group__vision__apps__utils__dss.html#ga5da791f436ab2636e1a75090bebaa834", null ],
+    [ "APP_DSS_VID_PIPE_ID_VID1", "group__group__vision__apps__utils__dss.html#gacab392acede96b0fb8e1e14e378d6ea3", null ],
+    [ "APP_DSS_VID_PIPE_ID_VIDL1", "group__group__vision__apps__utils__dss.html#ga36da83644de3d9116fbc5578048a3351", null ],
+    [ "APP_DSS_VID_PIPE_ID_VID2", "group__group__vision__apps__utils__dss.html#ga21143278836eeaa87e39f9d41d2a8156", null ],
+    [ "APP_DSS_VID_PIPE_ID_VIDL2", "group__group__vision__apps__utils__dss.html#gad8405e436458ab431d20760fb791148f", null ],
+    [ "APP_DSS_VID_PIPE_ID_MAX", "group__group__vision__apps__utils__dss.html#ga17e5b3e1e2062e977b3ab9db5cccff52", null ],
+    [ "APP_DSS_OVERLAY_ID_1", "group__group__vision__apps__utils__dss.html#gadaddb7f39b35ffddb35eeea11c28398f", null ],
+    [ "APP_DSS_OVERLAY_ID_2", "group__group__vision__apps__utils__dss.html#gacca2107904e6172590a833e285a2ff5b", null ],
+    [ "APP_DSS_OVERLAY_ID_3", "group__group__vision__apps__utils__dss.html#gad5c7df0c242ab4e0705f59b1669f5e2c", null ],
+    [ "APP_DSS_OVERLAY_ID_4", "group__group__vision__apps__utils__dss.html#gaceaeaa56b1a025c2872f38d66fcc5778", null ],
+    [ "APP_DSS_OVERLAY_ID_MAX", "group__group__vision__apps__utils__dss.html#gae84e832168cafa1efca8d59e89d8cb4c", null ],
+    [ "APP_DSS_VP_ID_1", "group__group__vision__apps__utils__dss.html#ga2bb5374cc35aee945aa7d8c930b9f048", null ],
+    [ "APP_DSS_VP_ID_2", "group__group__vision__apps__utils__dss.html#ga8a2bd155e6ccece28885dbed2eec698a", null ],
+    [ "APP_DSS_VP_ID_3", "group__group__vision__apps__utils__dss.html#gab70de31a49be4022dcf4f2c50471683e", null ],
+    [ "APP_DSS_VP_ID_4", "group__group__vision__apps__utils__dss.html#ga2ef899e8108ce7f75a8fcf2b8ca0c72f", null ],
+    [ "APP_DSS_VP_ID_MAX", "group__group__vision__apps__utils__dss.html#gab84bc347269673dc1f459aed5fab0ab7", null ],
+    [ "APP_DSS_CSC_RANGE_LIMITED", "group__group__vision__apps__utils__dss.html#ga846a2fadd8d2b563339bab625d34941f", null ],
+    [ "APP_DSS_CSC_RANGE_FULL", "group__group__vision__apps__utils__dss.html#gaa074cf6a3f2fd884cc1c1bbf1436472b", null ],
+    [ "appDssInitParamsInit", "group__group__vision__apps__utils__dss.html#gafd79faa23a6460b471f8999a7087c05d", null ],
+    [ "appDssInit", "group__group__vision__apps__utils__dss.html#ga3f19fe75e299c61410ad8ca35ff67217", null ],
+    [ "appDssDeInit", "group__group__vision__apps__utils__dss.html#ga2b05ad1cf66ffebd15b99068c79446ec", null ]
+];

@@ -1,0 +1,11 @@
+/*
+ *  Sends the test parameter structure and number of tests
+ */
+void MATHLIB_acosh_getTestParams (
+    MATHLIB_acosh_testParams_t **params,
+    int32_t *                                 numTests)
+{
+   *params = testParams;
+   *numTests =
+       sizeof (testParams) / sizeof (MATHLIB_acosh_testParams_t);
+}

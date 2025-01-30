@@ -1,0 +1,182 @@
+root@j7-evm:/opt/vision_apps# ./run_app_tidl_od_cam.sh 
+APP: Init ... !!!
+MEM: Init ... !!!
+MEM: Initialized DMA HEAP (fd=4) !!!
+MEM: Init ... Done !!!
+IPC: Init ... !!!
+IPC: Init ... Done !!!
+REMOTE_SERVICE: Init ... !!!
+REMOTE_SERVICE: Init ... Done !!!
+APP: Init ... Done !!!
+   476.895654 s:  VX_ZONE_INIT:Enabled
+   476.895671 s:  VX_ZONE_ERROR:Enabled
+   476.895685 s:  VX_ZONE_WARNING:Enabled
+   476.896111 s:  VX_ZONE_INIT:[tivxInit:71] Initialization Done !!!
+   476.896293 s:  VX_ZONE_INIT:[tivxHostInit:48] Initialization Done for HOST !!!
+   476.896864 s: ISS: Enumerating sensors ... !!!
+   476.897251 s: ISS: Enumerating sensors ... found 0 : IMX390-UB953_D3
+   476.897258 s: ISS: Enumerating sensors ... found 1 : AR0233-UB953_MARS
+   476.897262 s: ISS: Enumerating sensors ... found 2 : AR0820-UB953_LI
+   476.897267 s: ISS: Enumerating sensors ... found 3 : UB9xxx_RAW12_TESTPATTERN
+   476.897271 s: ISS: Enumerating sensors ... found 4 : UB96x_UYVY_TESTPATTERN
+   476.897275 s: ISS: Enumerating sensors ... found 5 : GW_AR0233_UYVY
+6 sensor(s) found 
+Supported sensor list: 
+a : IMX390-UB953_D3 
+b : AR0233-UB953_MARS 
+c : AR0820-UB953_LI 
+d : UB9xxx_RAW12_TESTPATTERN 
+e : UB96x_UYVY_TESTPATTERN 
+f : GW_AR0233_UYVY 
+Select a sensor 
+[MCU2_0]    476.896975 s: ImageSensor_RemoteServiceHandler: IM_SENSOR_CMD_CREATE 
+[MCU2_0]    476.897042 s: Sensor at index 0 = IMX390-UB953_D3 
+[MCU2_0]    476.897072 s: Sensor at index 1 = AR0233-UB953_MARS 
+[MCU2_0]    476.897097 s: Sensor at index 2 = AR0820-UB953_LI 
+[MCU2_0]    476.897121 s: Sensor at index 3 = UB9xxx_RAW12_TESTPATTERN 
+[MCU2_0]    476.897147 s: Sensor at index 4 = UB96x_UYVY_TESTPATTERN 
+[MCU2_0]    476.897172 s: Sensor at index 5 = GW_AR0233_UYVY 
+a
+
+Sensor selected : IMX390-UB953_D3
+Querying IMX390-UB953_D3 
+   478.118983 s: ISS: Querying sensor [IMX390-UB953_D3] ... !!!
+   478.119237 s: ISS: Querying sensor [IMX390-UB953_D3] ... Done !!!
+LDC Selection Yes(1)/No(0)
+Invalid selection 
+. Try again 
+LDC Selection Yes(1)/No(0)
+[MCU2_0]    478.119087 s: ImageSensor_RemoteServiceHandler: IM_SENSOR_CMD_QUERY 
+[MCU2_0]    478.119154 s: Received Query for IMX390-UB953_D3 
+1
+Max number of cameras supported by sensor IMX390-UB953_D3 = 8 
+Please enter number of cameras to be enabled 
+Invalid selection 
+. Try again 
+Max number of cameras supported by sensor IMX390-UB953_D3 = 8 
+Please enter number of cameras to be enabled 
+1
+   482.358781 s: ISS: Initializing sensor [IMX390-UB953_D3], doing IM_SENSOR_CMD_PWRON ... !!!
+[MCU2_0]    482.358909 s: ImageSensor_RemoteServiceHandler: IM_SENSOR_CMD_PWRON 
+[MCU2_0]    482.359012 s: IM_SENSOR_CMD_PWRON : channel_mask = 0x1 
+[MCU2_0]    482.359071 s: IMX390_PowerOn : chMask = 0x1 
+[MCU2_0]    482.359113 s: ub960_cfgScript : ub960I2cAddr = 0x3d 
+[MCU2_0]    482.359136 s: UB960 config start 
+   482.559182 s: ISS: Initializing sensor [IMX390-UB953_D3], doing IM_SENSOR_CMD_CONFIG ... !!!
+[MCU2_0]    482.559049 s:  End of UB960 config 
+[MCU2_0]    482.559271 s: ImageSensor_RemoteServiceHandler: IM_SENSOR_CMD_CONFIG 
+[MCU2_0]    482.559326 s: Application requested features = 0x158 
+[MCU2_0]  
+[MCU2_0]    482.559394 s: ub960_cfgScript : ub960I2cAddr = 0x3d 
+[MCU2_0]    482.559428 s: UB960 config start 
+[MCU2_0]    482.814875 s:  End of UB960 config 
+[MCU2_0]    482.814972 s: ub960_cfgScript : ub960I2cAddr = 0x36 
+[MCU2_0]    482.815005 s: UB960 config start 
+[MCU2_0]    483.070875 s:  End of UB960 config 
+[MCU2_0]    483.070938 s: Configuring camera # 0 
+[MCU2_0]    483.070970 s: ub953 config start : slaveAddr = 0x74 
+[MCU2_0]    483.260885 s:  End of UB953 config 
+[MCU2_0]    483.260981 s:  Configuring IMX390 imager 0x40.. Please wait till it finishes 
+   485.347998 s: ISS: Initializing sensor [IMX390-UB953_D3] ... Done !!!
+[MCU2_0]    485.347812 s:  IMX390 config done
+[MCU2_0]    485.347875 s: IM_SENSOR_CMD_CONFIG returning status = 0 
+Scaler output1 width   = 1024
+Scaler output1 height  = 512
+Scaler output2 width   = 1024
+Scaler output2 height  = 512
+Computing checksum at 0x0000FFFF8FB45CC0, size = 887792
+[C7x_1 ]    485.668365 s:  VX_ZONE_WARNING:[tivxKernelTIDLCreate:615] All Interrupts DISABLED during TIDL process
+   485.797631 s: ISS: Starting sensor [IMX390-UB953_D3] ... !!!
+[MCU2_0]    485.797977 s: ImageSensor_RemoteServiceHandler: IM_SENSOR_CMD_STREAM_ON 
+[MCU2_0]    485.798046 s: IM_SENSOR_CMD_STREAM_ON:  channel_mask = 0x1
+[MCU2_0]    485.798118 s: ub960_cfgScript : ub960I2cAddr = 0x3d 
+[MCU2_0]    485.798150 s: UB960 config start 
+[MCU2_0]    486.053881 s:  End of UB960 config 
+[MCU2_0]    486.053986 s: ub960_cfgScript : ub960I2cAddr = 0x36 
+[MCU2_0]    486.054021 s: UB960 config start 
+[MCU2_0]    486.309882 s:  End of UB960 config 
+[MCU2_0]    486.309943 s: Starting camera # 0 
+[MCU2_0]    486.309993 s: Entering IssSensor_Start 
+[MCU2_0]    486.319822 s: enableUB960Streaming ub960InstanceId = 0
+[MCU2_0]    486.320028 s: ub960_cfgScript : ub960I2cAddr = 0x3d 
+[MCU2_0]    486.320060 s: UB960 config start 
+   486.352016 s: ISS: Starting sensor [IMX390-UB953_D3] ... !!!
+
+
+ ==========================================
+ TIDL Demo - Camera based Object Detection
+ ==========================================
+
+ p: Print performance statistics
+
+ x: Exit
+
+ Enter Choice: 
+
+
+ ==========================================
+ TIDL Demo - Camera based Object Detection
+ ==========================================
+
+ p: Print performance statistics
+
+ x: Exit
+
+ Enter Choice: [MCU2_0]    486.351876 s:  End of UB960 config 
+
+
+
+
+ ==========================================
+ TIDL Demo - Camera based Object Detection
+ ==========================================
+
+ p: Print performance statistics
+
+ x: Exit
+
+ Enter Choice: x
+
+   487.875118 s: ISS: Stopping sensor [IMX390-UB953_D3] ... !!!
+[MCU2_0]    487.875235 s: ImageSensor_RemoteServiceHandler: IM_SENSOR_CMD_STREAM_OFF 
+[MCU2_0]    487.875308 s: IM_SENSOR_CMD_STREAM_ON:  channel_mask = 0x1
+[MCU2_0]    487.875341 s: Stopping camera # 0 
+[MCU2_0]    487.875385 s: Entering IssSensor_Stop 
+[MCU2_0]    487.885833 s: ub960_cfgScript : ub960I2cAddr = 0x3d 
+[MCU2_0]    487.885876 s: UB960 config start 
+   487.917988 s: ISS: Stopping sensor [IMX390-UB953_D3] ... Done !!!
+[MCU2_0]    487.917878 s:  End of UB960 config 
+[MCU2_0]    487.964392 s: ==========================================================
+[MCU2_0]    487.964480 s:  Capture Status: Instance|0
+[MCU2_0]    487.964523 s: ==========================================================
+[MCU2_0]    487.964562 s:  overflowCount: 0
+[MCU2_0]    487.964588 s:  spuriousUdmaIntrCount: 0
+[MCU2_0]    487.964614 s:  frontFIFOOvflCount: 0
+[MCU2_0]    487.964638 s:  crcCount: 2
+[MCU2_0]    487.964659 s:  eccCount: 0
+[MCU2_0]    487.964682 s:  correctedEccCount: 0
+[MCU2_0]    487.964708 s:  dataIdErrorCount: 0
+[MCU2_0]    487.964734 s:  invalidAccessCount: 0
+[MCU2_0]    487.964760 s:  invalidSpCount: 0
+[MCU2_0]    487.964830 s:  strmFIFOOvflCount[0]: 1
+[MCU2_0]    487.964862 s:  strmFIFOOvflCount[1]: 0
+[MCU2_0]    487.964889 s:  strmFIFOOvflCount[2]: 83
+[MCU2_0]    487.964918 s:  strmFIFOOvflCount[3]: 18
+[MCU2_0]    487.964961 s:  Channel Num | Frame Queue Count | Frame De-queue Count | Frame Drop Count | Error Frame Count |
+[MCU2_0]    487.965018 s:            0 |               986 |                  986 |              443 |                 0 |
+   487.976736 s: ISS: De-initializing sensor [IMX390-UB953_D3] ... !!!
+   487.976878 s: ISS: De-initializing sensor [IMX390-UB953_D3] ... Done !!!
+   488.475583 s:  VX_ZONE_INIT:[tivxHostDeInit:56] De-Initialization Done for HOST !!!
+   488.479935 s:  VX_ZONE_INIT:[tivxDeInit:111] De-Initialization Done !!!
+APP: Deinit ... !!!
+REMOTE_SERVICE: Deinit ... !!!
+REMOTE_SERVICE: Deinit ... Done !!!
+IPC: Deinit ... !!!
+IPC: DeInit ... Done !!!
+MEM: Deinit ... !!!
+MEM: Alloc's: 101 alloc's of 85951811 bytes 
+MEM: Free's : 101 free's  of 85951811 bytes 
+MEM: Open's : 0 allocs  of 0 bytes 
+MEM: Deinit ... Done !!!
+APP: Deinit ... Done !!!
+root@j7-evm:/opt/vision_apps# 

@@ -1,0 +1,6 @@
+<map id="PTK_GridIter_PhysBox" name="PTK_GridIter_PhysBox">
+<area shape="rect" id="node2" href="$structPTK__Grid.html" title="Grid definition. " alt="" coords="404,432,485,509"/>
+<area shape="rect" id="node3" href="$structPTK__GridMetaData.html" title="Grid Meta Data. " alt="" coords="61,219,206,296"/>
+<area shape="rect" id="node6" href="$structPTK__GridConfig.html" title="Grid configuration. " alt="" coords="383,219,506,296"/>
+<area shape="rect" id="node9" href="$structPTK__GridRoi.html" title="Defines a rectangle in a target coordinate system. In local coordinate system, the vertices are (0|0)..." alt="" coords="762,325,865,403"/>
+</map>

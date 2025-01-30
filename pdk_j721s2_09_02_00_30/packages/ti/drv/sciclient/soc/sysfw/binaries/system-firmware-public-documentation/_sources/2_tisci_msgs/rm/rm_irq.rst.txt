@@ -1,0 +1,274 @@
+=================================================
+Resource Management IRQ TISCI Message Description
+=================================================
+
+Introduction
+============
+
+This chapter provides information on usage of the RM Interrupt Request (IRQ) management TISCI message API parameters.
+
++------------------+------------------------------------------------------------------------------+
+| TISCI Message ID |                        Message Name                                          |
++==================+==============================================================================+
+| 0x1000           | :ref:`TISCI_MSG_RM_IRQ_SET <pub_rm_irq_route_set>`                           |
++------------------+------------------------------------------------------------------------------+
+| N/A              | :ref:`TISCI_MSG_RM_IRQ_SET Response <pub_rm_irq_route_set_response>`         |
++------------------+------------------------------------------------------------------------------+
+| 0x1001           | :ref:`TISCI_MSG_RM_IRQ_RELEASE <pub_rm_irq_route_release>`                   |
++------------------+------------------------------------------------------------------------------+
+| N/A              | :ref:`TISCI_MSG_RM_IRQ_RELEASE Response <pub_rm_irq_route_release_response>` |
++------------------+------------------------------------------------------------------------------+
+
+.. _pub_rm_irq_route_set:
+
+TISCI_MSG_RM_IRQ_SET - IRQ Route Set
+====================================
+
+The **IRQ route set** TISCI message API is used to configure peripherals within
+SoC interrupt architecture.  This includes, SoC dependent, peripheral output
+event steering (OES) registers, interrupt aggregators, and interrupt routers.
+To configure a desired interrupt route between a peripheral and host processor
+the **IRQ route set** API must be called to configure each hop in the route
+between source and destination.  What is configured in each call depends on the
+valid_params bit configuration and the SoC device ID and indexes provided.
+
+The **IRQ route set** API does not configure destination processor interrupt
+controllers.  This job is left to the HLOS.
+
+When configuring interrupt aggregator virtual interrupt global event to status
+bit mappings, each time an event is mapped to a VINT status bit the mapping is
+enabled after it is configured. The OS can manipulate the status bit's
+enable/disable setting on-the-fly via the VINT's real-time registers.  The host
+is granted access to the virtual interrupt real-time registers via the SoC
+channelized firewalls based on the RM board configuration.  The OS can access
+the virtual interrupt real-time registers directly after interrupt aggregator
+configuration is complete.
+
+**NOTE (Subject to Change):**
+
+Some System Firmware peripheral drivers have not implemented OES register
+management yet. The HLOS must program the global event value into peripheral's
+OES register. For System Firmware drivers that have implemented internal
+handling of OES registers, the allocated global event is programmed into the
+peripheral element's OES register internally.  Peripherals implementing OES
+management thus far:
+
+* Ring Accelerator
+* UDMAP
+* Proxy
+
+Usage
+^^^^^
+
++------------------------+--------+
+| **Message Type**       | Normal |
++------------------------+--------+
+| **Secure Queue Only?** | No     |
++------------------------+--------+
+
+TISCI Message ID
+----------------
+
+.. sysfwapimacro:: TISCI_MSG_RM_IRQ_SET
+
+IRQ Route Set Message Parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. sysfwapistruct:: tisci_msg_rm_irq_set_req
+
+.. _pub_rm_irq_route_set_valid_params:
+
+IRQ Route Set Valid Parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The following table describes the valid bit mappings for the IRQ route set
+message optional parameters:
+
++------------------+-----------------------------------------------------------+
+| valid_params Bit | Corresponding tisci_msg_rm_irq_set_req Optional Parameter |
++==================+===========================================================+
+|  0               | dst_id                                                    |
++------------------+-----------------------------------------------------------+
+|  1               | dst_host_irq                                              |
++------------------+-----------------------------------------------------------+
+|  2               | ia_id                                                     |
++------------------+-----------------------------------------------------------+
+|  3               | vint                                                      |
++------------------+-----------------------------------------------------------+
+|  4               | global_event                                              |
++------------------+-----------------------------------------------------------+
+|  5               | vint_status_bit_index                                     |
++------------------+-----------------------------------------------------------+
+| 31               | secondary_host                                            |
++------------------+-----------------------------------------------------------+
+
+The following table describes the valid bit combinations used to configure
+the peripherals within the interrupt management architecture
+
++---------------+--------+--------------+-------+------+--------------+-----------------------+-----------------------------+
+| Configuration | dst_id | dst_host_irq | ia_id | vint | global_event | vint_status_bit_index | Description                 |
++===============+========+==============+=======+======+==============+=======================+=============================+
+| Interrupt     | X      | X            |       |      |              |                       | Configures an IR input to   |
+| Router Mux    |        |              |       |      |              |                       | output mux connection where |
+| Configuration |        |              |       |      |              |                       | the IR input is the         |
+|               |        |              |       |      |              |                       | src_index and the IR output |
+|               |        |              |       |      |              |                       | is the dst_host_irq.  Both  |
+|               |        |              |       |      |              |                       | src_id and dst_id must be   |
+|               |        |              |       |      |              |                       | be the device ID of the IR  |
+|               |        |              |       |      |              |                       | being configured.           |
++---------------+--------+--------------+-------+------+--------------+-----------------------+-----------------------------+
+| Event to VINT |        |              | X     | X    | X            | X                     | Configure peripheral OES    |
+| Mapping Only  |        |              |       |      |              |                       | register and add an event   |
+|               |        |              |       |      |              |                       | mapping to an IA VINT.      |
++---------------+--------+--------------+-------+------+--------------+-----------------------+-----------------------------+
+| OES Register  |        |              |       |      | X            |                       | Only programs the OES       |
+| Programming   |        |              |       |      |              |                       | register of the source.     |
+| Only          |        |              |       |      |              |                       | Useful for setting UDMAP    |
+|               |        |              |       |      |              |                       | trigger events and any      |
+|               |        |              |       |      |              |                       | other events that are not   |
+|               |        |              |       |      |              |                       | translated to the interrupt |
+|               |        |              |       |      |              |                       | domain.                     |
++---------------+--------+--------------+-------+------+--------------+-----------------------+-----------------------------+
+
+.. _pub_rm_irq_route_set_response:
+
+TISCI_MSG_RM_IRQ_SET - IRQ Route Set Response
+---------------------------------------------
+
+The **irq_set_response** message returns the result status of the
+processed **irq_set** message.
+
+IRQ Route Set Response Message Parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. sysfwapistruct:: tisci_msg_rm_irq_set_resp
+
+.. _pub_rm_irq_route_release:
+
+TISCI_MSG_RM_IRQ_RELEASE - IRQ Route Release
+============================================
+
+The **IRQ route release** TISCI message API is used to release an IRQ route
+between a device peripheral and a host processor. IRQ routes are released by
+specifying the interrupt source peripheral's interrupt output index. The IRQ
+destination is mapped to the processor on which the host ID, or secondary host
+ID (if valid), is executing. The IRQ management subsystem will trace the
+interrupt route between the source and destination, freeing any interrupt router
+and interrupt aggregator resources within the route.
+
+For routes utilizing an IA VINT event to status bit mapping, the status bit is
+disabled when the route is freed. The OS is not required to disable the status
+bit via the VINT's real-time registers prior to route release
+
+The **IRQ route release** TISCI message API is used to clear peripherals within
+SoC interrupt architecture.  This includes, SoC dependent, peripheral output
+event steering (OES) registers, interrupt aggregators, and interrupt routers.
+To clear a desired interrupt route between a peripheral and host processor
+the **IRQ route release** API must be called to clear each hop in the route
+between source and destination.  What is cleared in each call depends on the
+valid_params bit configuration and the SoC device ID and indexes provided.
+
+The **IRQ route release** API does not clear destination processor interrupt
+controllers.  This job is left to the HLOS.
+
+When clearing interrupt aggregator virtual interrupt global event to status
+bit mappings, the status bit is disabled when the mapping is cleared. The OS is
+not required to disable the status bit via the VINT's real-time registers prior
+to interrupt aggregator mapping clear.
+
+**NOTE (Subject to Change):**
+
+Some System Firmware peripheral drivers have not implemented OES register
+management yet.  The HLOS must also make sure to clear the peripheral OES
+register programmed with the global event. Peripherals implementing
+OES management thus far:
+
+* Ring Accelerator
+* UDMAP
+* Proxy
+
+Usage
+^^^^^
+
++------------------------+--------+
+| **Message Type**       | Normal |
++------------------------+--------+
+| **Secure Queue Only?** | No     |
++------------------------+--------+
+
+TISCI Message ID
+----------------
+
+.. sysfwapimacro:: TISCI_MSG_RM_IRQ_RELEASE
+
+IRQ Route Release Message Parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. sysfwapistruct:: tisci_msg_rm_irq_release_req
+
+.. _pub_rm_irq_route_release_valid_params:
+
+IRQ Route Release Valid Parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The following table describes the valid bit mappings for the IRQ route release
+message optional parameters:
+
++------------------+---------------------------------------------------------------+
+| valid_params Bit | Corresponding tisci_msg_rm_irq_release_req Optional Parameter |
++==================+===============================================================+
+|  0               | dst_id                                                        |
++------------------+---------------------------------------------------------------+
+|  1               | dst_host_irq                                                  |
++------------------+---------------------------------------------------------------+
+|  2               | ia_id                                                         |
++------------------+---------------------------------------------------------------+
+|  3               | vint                                                          |
++------------------+---------------------------------------------------------------+
+|  4               | global_event                                                  |
++------------------+---------------------------------------------------------------+
+|  5               | vint_status_bit_index                                         |
++------------------+---------------------------------------------------------------+
+| 31               | secondary_host                                                |
++------------------+---------------------------------------------------------------+
+
+The following table describes the valid bit combinations used to clear the
+peripherals within the interrupt management architecture
+
++---------------+--------+--------------+-------+------+--------------+-----------------------+-----------------------------+
+| Configuration | dst_id | dst_host_irq | ia_id | vint | global_event | vint_status_bit_index | Description                 |
++===============+========+==============+=======+======+==============+=======================+=============================+
+| Interrupt     | X      | X            |       |      |              |                       | Releases an IR input to     |
+| Router Mux    |        |              |       |      |              |                       | output mux connection where |
+| Release       |        |              |       |      |              |                       | the IR input is the         |
+|               |        |              |       |      |              |                       | src_index and the IR output |
+|               |        |              |       |      |              |                       | is the dst_host_irq.  Both  |
+|               |        |              |       |      |              |                       | src_id and dst_id must be   |
+|               |        |              |       |      |              |                       | the device ID of the IR     |
+|               |        |              |       |      |              |                       | being configured.           |
++---------------+--------+--------------+-------+------+--------------+-----------------------+-----------------------------+
+| Event to VINT |        |              | X     | X    | X            | X                     | Clear only peripheral OES   |
+| Unmap Only    |        |              |       |      |              |                       | register and event to VINT  |
+|               |        |              |       |      |              |                       | status bit mapping.         |
++---------------+--------+--------------+-------+------+--------------+-----------------------+-----------------------------+
+| OES Register  |        |              |       |      | X            |                       | Only clears the OES         |
+| Programming   |        |              |       |      |              |                       | register of the source.     |
+| Only          |        |              |       |      |              |                       | Useful for clearing UDMAP   |
+|               |        |              |       |      |              |                       | trigger events and any      |
+|               |        |              |       |      |              |                       | other events that are not   |
+|               |        |              |       |      |              |                       | translated to the interrupt |
+|               |        |              |       |      |              |                       | domain.                     |
++---------------+--------+--------------+-------+------+--------------+-----------------------+-----------------------------+
+
+.. _pub_rm_irq_route_release_response:
+
+TISCI_MSG_RM_IRQ_RELEASE - IRQ Route Release Response
+-----------------------------------------------------
+
+The **irq_releaes_response** message returns the result status of the
+processed **irq_release** message.
+
+IRQ Route Release Response Message Parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. sysfwapistruct:: tisci_msg_rm_irq_release_resp

@@ -1,0 +1,36 @@
+Welcome to minicom 2.7.1                                                                                                                    
+                                                                                                                                            
+OPTIONS: I18n                                                                                                                               
+Compiled on Dec 23 2019, 02:06:26.                                                                                                          
+Port /dev/ttyUSB1, 20:46:40                                                                                                                 
+                                                                                                                                            
+Press CTRL-A Z for help on special keys                                                                                                     
+                                                                                                                                            
+01000000011a00006a3761657000000000000000475020200008010000080100C1.00.10.01 (Jun 29 2023 - 13:38:40)                                        
+Waiting for tifs.bin ...                                                                                                                    
+CCTIFS  ver: 9.0.6--v09.00.06 (Kool Koala)                                                                                                  
+Waiting for multicore app ...                                                                                                               
+CCCple Example                                                                                                                              
+                                                                                                                                            
+ Demo for minimum value timeout                                                                                                             
+                                                                                                                                            
+ECC_Test_init: Init MCU ESM complete                                                                                                        
+                                                                                                                                            
+SDL_TOG_setIntrEnable complete                                                                                                              
+                                                                                                                                            
+SDL_TOG_init.timeout complete                                                                                                               
+                                                                                                                                            
+SDL_TOG_start complete                                                                                                                      
+                                                                                                                                            
+  TOG_eventHandler                                                                                                                          
+                                                                                                                                            
+  ESM Call back function called : instType 0x2, intType 0x1, grpChannel 0x2, index 0xd, intSrc 0x4d                                         
+  Take action                                                                                                                               
+                                                                                                                                            
+SDL_TOG_stop complete                                                                                                                       
+tog_main.c:187:tog_example_app:PASS                                                                                                         
+                                                                                                                                            
+-----------------------                                                                                                                     
+1 Tests 0 Failures 0 Ignored                                                                                                                
+OK                                                                                                                                          
+   

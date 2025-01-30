@@ -1,0 +1,55 @@
+Welcome to minicom 2.7.1                                                                                                                    
+                                                                                                                                            
+OPTIONS: I18n                                                                                                                               
+Compiled on Dec 23 2019, 02:06:26.                                                                                                          
+Port /dev/ttyUSB1, 20:19:44                                                                                                                 
+                                                                                                                                            
+Press CTRL-A Z for help on special keys                                                                                                     
+                                                                                                                                            
+01000000011a00006a3761657000000000000000475020200008010000080100C1.00.10.01 (Jun 29 2023 - 13:38:40)                                        
+Waiting for tifs.bin ...                                                                                                                    
+CCCCCCCCCCCCCCCCTIFS  ver: 9.0.6--v09.00.06 (Kool Koala)                                                                                    
+Waiting for multicore app ...                                                                                                               
+CCCCCK Function Test Application                                                                                                            
+                                                                                                                                            
+                                                                                                                                            
+J7_CLOCK_Test_init: Init WKUP ESM complete                                                                                                  
+                                                                                                                                            
+                                                                                                                                            
+J7_CLOCK_Test_init: Init MCU ESM complete                                                                                                   
+                                                                                                                                            
+                                                                                                                                            
+                                                                                                                                            
+ Starting Application...                                                                                                                    
+                                                                                                                                            
+***** WKUP R5F Interrupt + J7 Clock loss Testing *****                                                                                      
+    Intentionally setting the ESM error for Clock loss interrupt.                                                                           
+                                                                                                                                            
+Interrupt is generated to ESM                                                                                                               
+    ESM Call back function called : instType 0x1, intType 0x1, grpChannel 0x0, index 0xd, intSrc 0xd                                        
+    Take action                                                                                                                             
+                                                                                                                                            
+ESM has received the error.                                                                                                                 
+                                                                                                                                            
+                                                                                                                                            
+***** MCU R5F Interrupt + PLL event Testing *****                                                                                           
+    Intentionally setting the ESM error for PLL event interrupt.                                                                            
+                                                                                                                                            
+Interrupt is generated to ESM                                                                                                               
+    ESM Call back function called : instType 0x2, intType 0x1, grpChannel 0x0, index 0x0, intSrc 0x0                                        
+    Take action                                                                                                                             
+                                                                                                                                            
+ESM has received the error.                                                                                                                 
+                                                                                                                                            
+All tests have passed.                                                                                                                      
+                                                                                                                                            
+Test Name: J7_CLOCK_test  PASSED                                                                                                            
+                                                                                                                                            
+ All tests have passed.                                                                                                                     
+main.c:261:test_sdl_j7_clock_baremetal_test_app:PASS                                                                                        
+                                                                                                                                            
+-----------------------
+1 Tests 0 Failures 0 Ignored                                                                                                                
+OK
+
+

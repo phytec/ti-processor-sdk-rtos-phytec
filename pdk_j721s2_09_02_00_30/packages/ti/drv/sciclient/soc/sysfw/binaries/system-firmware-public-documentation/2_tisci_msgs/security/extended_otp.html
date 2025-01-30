@@ -1,0 +1,799 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Extended OTP TISCI Description &mdash; TISCI User Guide</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="TISCI User Guide" href="../../index.html"/>
+        <link rel="up" title="Chapter 2: TISCI Message Documentation" href="../index.html"/>
+        <link rel="next" title="Derived KEK TISCI Description" href="dkek_management.html"/>
+        <link rel="prev" title="Runtime Debug TISCI Description" href="runtime_debug.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="../../_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> TISCI
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                09.02.04
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../1_intro/index.html">Chapter 1: Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Chapter 2: TISCI Message Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../general/TISCI_header.html">Texas Instruments System Controller Interface (TISCI)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#general">General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#power-management-pm">Power Management (PM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#resource-management-rm">Resource Management (RM)</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#secure-management">Secure Management</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="sec_cert_format.html">Security X509 Certificate Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PROC_BOOT.html">Processor Boot Management TISCI Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="firewall_api.html">Firewall TISCI Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sec_ap_data_transfer.html">Secure AP Command Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="runtime_debug.html">Runtime Debug TISCI Description</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Extended OTP TISCI Description</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#api-description">API Description</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dkek_management.html">Derived KEK TISCI Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dsmek_management.html">Derived SMEK TISCI Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="security_handover.html">Security Handover Message Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="keywriter.html">OTP Keywriter TISCI Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="otp_revision.html">OTP Revision Read/Write Message Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="keyring.html">KEYRING TISCI Description</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../3_boardcfg/index.html">Chapter 3: Board Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../4_trace/index.html">Chapter 4: Interpreting Trace Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../5_soc_doc/index.html">Chapter 5: SoC Family Specific Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../6_topic_user_guides/index.html">Chapter 6: Topic User Guides</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">TISCI</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Chapter 2: TISCI Message Documentation</a> &raquo;</li>
+      
+    <li>Extended OTP TISCI Description</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="extended-otp-tisci-description">
+<h1>Extended OTP TISCI Description<a class="headerlink" href="#extended-otp-tisci-description" title="Permalink to this headline">¶</a></h1>
+<p id="sec-api-ext-otp-tisci-dec">This chapter provides information on available TISCI messages for managing
+the extended one time programmable (OTP) efuse array on K3 devices.</p>
+<p>For K3 devices except AM64x, AM62x and AM62Ax:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="58%" />
+<col width="13%" />
+<col width="15%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">TISCI Message ID</th>
+<th class="head">Message Name</th>
+<th class="head">Available in GP</th>
+<th class="head">Avialable in HS-FS</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0x9022</td>
+<td><a class="reference internal" href="#sec-api-ext-otp-read-otp-mmr"><span class="std std-ref">TISCI_MSG_READ_OTP_MMR</span></a></td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>0x9023</td>
+<td><a class="reference internal" href="#write-otp-row"><span class="std std-ref">TISCI_MSG_WRITE_OTP_ROW</span></a></td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>0x9024</td>
+<td><a class="reference internal" href="#lock-otp-row"><span class="std std-ref">TISCI_MSG_LOCK_OTP_ROW</span></a></td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>0x9025</td>
+<td><a class="reference internal" href="#soft-lock-otp-write-global"><span class="std std-ref">TISCI_MSG_SOFT_LOCK_OTP_WRITE_GLOBAL</span></a></td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>0x9026</td>
+<td><a class="reference internal" href="#get-otp-row-lock-status"><span class="std std-ref">TISCI_MSG_GET_OTP_ROW_LOCK_STATUS</span></a></td>
+<td>No</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p>For AM64x, AM62x and AM62Ax:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="58%" />
+<col width="13%" />
+<col width="15%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">TISCI Message ID</th>
+<th class="head">Message Name</th>
+<th class="head">Available in GP</th>
+<th class="head">Avialable in HS-FS</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0x9022</td>
+<td><a class="reference internal" href="#sec-api-ext-otp-read-otp-mmr"><span class="std std-ref">TISCI_MSG_READ_OTP_MMR</span></a></td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr class="row-odd"><td>0x9023</td>
+<td><a class="reference internal" href="#write-otp-row"><span class="std std-ref">TISCI_MSG_WRITE_OTP_ROW</span></a></td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr class="row-even"><td>0x9024</td>
+<td><a class="reference internal" href="#lock-otp-row"><span class="std std-ref">TISCI_MSG_LOCK_OTP_ROW</span></a></td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr class="row-odd"><td>0x9025</td>
+<td><a class="reference internal" href="#soft-lock-otp-write-global"><span class="std std-ref">TISCI_MSG_SOFT_LOCK_OTP_WRITE_GLOBAL</span></a></td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr class="row-even"><td>0x9026</td>
+<td><a class="reference internal" href="#get-otp-row-lock-status"><span class="std std-ref">TISCI_MSG_GET_OTP_ROW_LOCK_STATUS</span></a></td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p>This document must be read alongside</p>
+<ol class="arabic simple">
+<li><a class="reference internal" href="../../6_topic_user_guides/extended_otp.html"><span class="doc">Using Extended OTP</span></a> and</li>
+<li><a class="reference internal" href="../../3_boardcfg/BOARDCFG_SEC.html"><span class="doc">Security Board Configuration</span></a>, specifically <a class="reference internal" href="../../3_boardcfg/BOARDCFG_SEC.html#pub-boardcfg-ext-otp-config"><span class="std std-ref">Extended OTP array configuration</span></a></li>
+</ol>
+<div class="section" id="api-description">
+<h2>API Description<a class="headerlink" href="#api-description" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="tisci-msg-read-otp-mmr-read-otp-mmr">
+<span id="sec-api-ext-otp-read-otp-mmr"></span><h3>TISCI_MSG_READ_OTP_MMR - Read OTP MMR<a class="headerlink" href="#tisci-msg-read-otp-mmr-read-otp-mmr" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="usage">
+<h4>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="75%" />
+<col width="25%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Message Type</strong></td>
+<td>Secure</td>
+</tr>
+<tr class="row-even"><td><strong>Secure Queue Only?</strong></td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="tisci-message-id">
+<h4>TISCI Message ID<a class="headerlink" href="#tisci-message-id" title="Permalink to this headline">¶</a></h4>
+<p><p><code class="docutils literal"><span class="pre">TISCI_MSG_READ_OTP_MMR</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">(0x9022U)</span></code></p>
+<p>Message to read 32 bit OTP MMR by register number</p>
+</p>
+<p><p><strong>struct tisci_msg_read_otp_mmr_req</strong></p>
+<p>Request message for reading OTP MMR</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="22%" />
+<col width="64%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>hdr</td>
+<td>struct tisci_header</td>
+<td>Common TI-SCI header</td>
+</tr>
+<tr class="row-odd"><td>mmr_idx</td>
+<td>u8</td>
+<td>Index of the 32-bit MMR to be read. Index starts from zero.</td>
+</tr>
+</tbody>
+</table>
+</p>
+<p><p><strong>struct tisci_msg_read_otp_mmr_resp</strong></p>
+<p>Respone message for reading OTP MMR</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="30%" />
+<col width="51%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>hdr</td>
+<td>struct tisci_header</td>
+<td>Common TI-SCI header</td>
+</tr>
+<tr class="row-odd"><td>mmr_val</td>
+<td>u32</td>
+<td>Value of the requested 32-bit MMR</td>
+</tr>
+</tbody>
+</table>
+</p>
+</div>
+</div>
+<div class="section" id="tisci-msg-write-otp-row-write-otp-row">
+<span id="write-otp-row"></span><h3>TISCI_MSG_WRITE_OTP_ROW - Write OTP ROW<a class="headerlink" href="#tisci-msg-write-otp-row-write-otp-row" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id1">
+<h4>Usage<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="75%" />
+<col width="25%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Message Type</strong></td>
+<td>Secure</td>
+</tr>
+<tr class="row-even"><td><strong>Secure Queue Only?</strong></td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id2">
+<h4>TISCI Message ID<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<p><p><code class="docutils literal"><span class="pre">TISCI_MSG_WRITE_OTP_ROW</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">(0x9023U)</span></code></p>
+<p>Message to write to non-secure OTP Row</p>
+</p>
+<p><p><strong>struct tisci_msg_write_otp_row_req</strong></p>
+<p>Request message for writing to an OTP row</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="22%" />
+<col width="64%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>hdr</td>
+<td>struct tisci_header</td>
+<td>Common TI-SCI header</td>
+</tr>
+<tr class="row-odd"><td>row_idx</td>
+<td>u8</td>
+<td>Index of the otp row to be written. Index starts from zero.</td>
+</tr>
+<tr class="row-even"><td>row_val</td>
+<td>u32</td>
+<td>value to be written to the otp row</td>
+</tr>
+<tr class="row-odd"><td>row_mask</td>
+<td>u32</td>
+<td>mask specifying the bits in row_val to be written</td>
+</tr>
+</tbody>
+</table>
+</p>
+<p><p><strong>struct tisci_msg_write_otp_row_resp</strong></p>
+<p>Respone message for writing to an OTP row</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="23%" />
+<col width="63%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>hdr</td>
+<td>struct tisci_header</td>
+<td>Common TI-SCI header</td>
+</tr>
+<tr class="row-odd"><td>row_val</td>
+<td>u32</td>
+<td>value read back from the row after the write operation.</td>
+</tr>
+</tbody>
+</table>
+</p>
+</div>
+</div>
+<div class="section" id="tisci-msg-lock-otp-row-lock-otp-row">
+<span id="lock-otp-row"></span><h3>TISCI_MSG_LOCK_OTP_ROW - Lock OTP ROW<a class="headerlink" href="#tisci-msg-lock-otp-row-lock-otp-row" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id3">
+<h4>Usage<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="75%" />
+<col width="25%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Message Type</strong></td>
+<td>Secure</td>
+</tr>
+<tr class="row-even"><td><strong>Secure Queue Only?</strong></td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id4">
+<h4>TISCI Message ID<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<p><p><code class="docutils literal"><span class="pre">TISCI_MSG_LOCK_OTP_ROW</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">(0x9024U)</span></code></p>
+<p>Message to lock OTP Row</p>
+</p>
+<p><p><strong>struct tisci_msg_lock_otp_row_req</strong></p>
+<p>Request message for hardware locking an OTP row</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="16%" />
+<col width="73%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>hdr</td>
+<td>struct tisci_header</td>
+<td>Common TI-SCI header</td>
+</tr>
+<tr class="row-odd"><td>row_idx</td>
+<td>u8</td>
+<td>Index of the otp row to be written. Index starts from zero.</td>
+</tr>
+<tr class="row-even"><td>hw_write_lock</td>
+<td>u8</td>
+<td>indicates if write lock has to be applied in HW on the current row. Set to 0x5A for write lock.</td>
+</tr>
+<tr class="row-odd"><td>hw_read_lock</td>
+<td>u8</td>
+<td>indicates if read lock has to be applied in HW on the current row. Set to 0x5A for read lock.</td>
+</tr>
+<tr class="row-even"><td>row_soft_lock</td>
+<td>u8</td>
+<td>indicates if soft lock has to be enabled on current row preventing writes. (ignored for now)</td>
+</tr>
+</tbody>
+</table>
+<p>In all cases 0x5A indicates true and 0xA5 indicates false. All other values are invalid.</p>
+</p>
+<p><p><strong>struct tisci_msg_lock_otp_row_resp</strong></p>
+<p>Respone message for hardware lock OTP row</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="38%" />
+<col width="39%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>hdr</td>
+<td>struct tisci_header</td>
+<td>Common TI-SCI header</td>
+</tr>
+</tbody>
+</table>
+</p>
+</div>
+</div>
+<div class="section" id="tisci-msg-soft-lock-otp-write-global-soft-lock-otp-write-globally">
+<span id="soft-lock-otp-write-global"></span><h3>TISCI_MSG_SOFT_LOCK_OTP_WRITE_GLOBAL - Soft Lock OTP Write Globally<a class="headerlink" href="#tisci-msg-soft-lock-otp-write-global-soft-lock-otp-write-globally" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id5">
+<h4>Usage<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="75%" />
+<col width="25%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Message Type</strong></td>
+<td>Secure</td>
+</tr>
+<tr class="row-even"><td><strong>Secure Queue Only?</strong></td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id6">
+<h4>TISCI Message ID<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<p><p><code class="docutils literal"><span class="pre">TISCI_MSG_SOFT_LOCK_OTP_WRITE_GLOBAL</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">(0x9025U)</span></code></p>
+<p>Message to perform a global lock on OTP writes</p>
+</p>
+<p><p><strong>struct tisci_msg_soft_lock_otp_write_global_req</strong></p>
+<p>Request message for performing a global soft write lock on OTP rows</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="38%" />
+<col width="39%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>hdr</td>
+<td>struct tisci_header</td>
+<td>Common TI-SCI header</td>
+</tr>
+</tbody>
+</table>
+</p>
+<p><p><strong>struct tisci_msg_soft_lock_otp_write_global_resp</strong></p>
+<p>Respone message for global soft write lock on OTP rows</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="38%" />
+<col width="39%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>hdr</td>
+<td>struct tisci_header</td>
+<td>Common TI-SCI header</td>
+</tr>
+</tbody>
+</table>
+</p>
+</div>
+</div>
+<div class="section" id="tisci-msg-get-otp-row-lock-status-get-otp-row-lock-status">
+<span id="get-otp-row-lock-status"></span><h3>TISCI_MSG_GET_OTP_ROW_LOCK_STATUS - Get OTP ROW Lock Status<a class="headerlink" href="#tisci-msg-get-otp-row-lock-status-get-otp-row-lock-status" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id7">
+<h4>Usage<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="75%" />
+<col width="25%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Message Type</strong></td>
+<td>Secure</td>
+</tr>
+<tr class="row-even"><td><strong>Secure Queue Only?</strong></td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id8">
+<h4>TISCI Message ID<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
+<p><p><code class="docutils literal"><span class="pre">TISCI_MSG_GET_OTP_ROW_LOCK_STATUS</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">(0x9026U)</span></code></p>
+<p>Message to get the lock status of a row</p>
+</p>
+<p><p><strong>struct tisci_msg_get_otp_row_lock_status_req</strong></p>
+<p>Request message for querying lock status of an OTP row</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="22%" />
+<col width="64%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>hdr</td>
+<td>struct tisci_header</td>
+<td>Common TI-SCI header</td>
+</tr>
+<tr class="row-odd"><td>row_idx</td>
+<td>u8</td>
+<td>Index of the otp row to be queried. Index starts from zero.</td>
+</tr>
+</tbody>
+</table>
+</p>
+<p><p><strong>struct tisci_msg_get_otp_row_lock_status_resp</strong></p>
+<p>Respone message for Get OTP row lock status request</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="18%" />
+<col width="66%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>hdr</td>
+<td>struct tisci_header</td>
+<td>Common TI-SCI header</td>
+</tr>
+<tr class="row-odd"><td>global_soft_lock</td>
+<td>u8</td>
+<td>indicates if global soft lock has been enabled preventing writes.</td>
+</tr>
+<tr class="row-even"><td>hw_write_lock</td>
+<td>u8</td>
+<td>indicates if write lock has been applied in HW on the current row.</td>
+</tr>
+<tr class="row-odd"><td>hw_read_lock</td>
+<td>u8</td>
+<td>indicates if read lock has been applied in HW on the current row.</td>
+</tr>
+<tr class="row-even"><td>row_soft_lock</td>
+<td>u8</td>
+<td>indicates if soft lock has been enabled on current row preventing writes.</td>
+</tr>
+</tbody>
+</table>
+<p>In all cases 0x5A indicates true and 0xA5 indicates false. All other values are invalid.</p>
+</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="dkek_management.html" class="btn btn-neutral float-right" title="Derived KEK TISCI Description" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="runtime_debug.html" class="btn btn-neutral" title="Runtime Debug TISCI Description" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyright 2016-2024</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'09.02.04',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+
+        $('body').on("mousewheel", function () {
+            // Remove default behavior
+            event.preventDefault();
+            // Scroll without smoothing
+            var wheelDelta = event.wheelDelta;
+            var currentScrollPosition = window.pageYOffset;
+            window.scrollTo(0, currentScrollPosition - wheelDelta);
+        });
+      });
+  </script>
+   
+
+</body>
+</html>

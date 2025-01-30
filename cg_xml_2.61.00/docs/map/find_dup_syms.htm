@@ -1,0 +1,146 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Documentation for find_dup_syms.pl</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Documentation for find_dup_syms.pl</span></strong></big>
+</td></tr>
+</table>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#USAGE">USAGE</a></li>
+  <li><a href="#OPTIONS">OPTIONS</a></li>
+  <li><a href="#EXAMPLES">EXAMPLES</a></li>
+  <li><a href="#DETAILS">DETAILS</a></li>
+  <li><a href="#HOW-TO-CREATE-THE-XML-FILE">HOW TO CREATE THE XML FILE</a></li>
+  <li><a href="#REQUIREMENTS">REQUIREMENTS</a></li>
+  <li><a href="#LIMITATIONS">LIMITATIONS</a></li>
+  <li><a href="#CONFIGURE-FOR-YOUR-SYSTEM">CONFIGURE FOR YOUR SYSTEM</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>find_dup_syms.pl</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<p>Checks for multiply defined symbols. Helps developer determine if he/she *might* accidentally be picking up the wrong version of a function.</p>
+
+<p>For example, suppose there is a user-defined version of clock() in an application that also includes an off-the-shelf library that defines the same function. If the wrong version gets linked in, host time might be read and real-time behavior could be messed up.</p>
+
+<h1 id="USAGE">USAGE</h1>
+
+<pre><code>    find_dup_syms.pl &lt;options&gt; &lt;XML-file&gt; &lt;NM-cmd&gt;</code></pre>
+
+<p>NM-cmd is the utility that prints the name list of an object file. Examples: nm6x for C6000 or nm55 for C5500. See &quot;HOW TO CREATE THE XML FILE&quot; (below) for details on generating the XML file.</p>
+
+<h1 id="OPTIONS">OPTIONS</h1>
+
+<pre><code>    --help                      : Print usage message
+    --quiet                     : Quiet mode (suppress warnings)
+    --other_symbols_too         : Check for duplicates of bss, data, and
+                                  weak symbols
+    --short                     : Short output format - faster run time
+                                  mutually excl. with --ignore_pulled_from
+    --ignore_pulled_from=&lt;file&gt; : Suppress printing of duplicates which are
+                                  pulled from &lt;file&gt;
+                                  mutually exclusive with --short
+    --basedir=&lt;dir&gt;             : Link command was run from directory &lt;dir&gt;
+    --cg_xml_version            : Print out the version of the cg_xml package</code></pre>
+
+<h1 id="EXAMPLES">EXAMPLES</h1>
+
+<p>If the final link command was performed in the directory C:\MyProjectDir\release, use</p>
+
+<pre><code>    find_dup_syms.pl --basedir=C:\MyProjectDir\release xmlfile.xml nm6x</code></pre>
+
+<p>Suppose you do not care about duplicate symbol definitions as long as the symbol was pulled in from file a.lib. Use</p>
+
+<pre><code>    find_dup_syms.pl --ignore_pulled_from=a.lib xmlfile.xml nm6x</code></pre>
+
+<p>In this case, if the script can determine conclusively that a symbol was pulled in from a.lib, it will silently ignore duplicate definitions of that symbol. However, if the script can only narrow down the source of the pulled in symbol to the set consisting of a.lib and b.lib then it will still print out the information for that symbol.</p>
+
+<h1 id="DETAILS">DETAILS</h1>
+
+<p>Script reads in an XML file representation of a linker map file and, with the aid of nmXX, reports global symbols which are defined in multiple XML files. Script also reports which version of a symbol was actually selected by the linker.</p>
+
+<p>The script must be able to locate each object file or archive. Hence, the script must be run from the same directory from which the final link was performed or the --basedir=&lt;dir&gt; option must be used to specify the directory where the final link was performed.</p>
+
+<p>Normally, the XML file must be specified as an absolute path or relative to the current directory. As a convenience, if the --base_dir=&lt;dir&gt; option is present, the XML file can also be specified relative to &lt;dir&gt;.</p>
+
+<p>Other Perl scripts that work with utilities typically allow you to directly pipe the output of the utility directly into the script. This script does not work that way; it requires the NM output from multiple files, not just one.</p>
+
+<p>By default, the script checks for duplicate definitions of text (code), data and bss symbols. Absolute symbol definitions are ignored. The reason is that on some targets, the compiler generates duplicate absolute symbol definitions by default. Handling this case would either generate a lot of false positives on some targets or yield a highly compiler-version dependent script). Duplicate weak definitions (Elf only feature) are considered by request only (--weak option). Weak definitions provide a method for a library developer to define library symbols that a user might want to override.</p>
+
+<p>Also by default, when duplicate symbols are discovered, the script prints out which definition was linked in (i.e, the name of the archive/object file which contains the definition that was linked in). This computation takes about 30% of the total run time. If this information is not needed, run the script with --short to get faster turnaround time.</p>
+
+<h1 id="HOW-TO-CREATE-THE-XML-FILE">HOW TO CREATE THE XML FILE</h1>
+
+<p>Generate the XML version of the map file with the linker option</p>
+
+<pre><code>    --xml_link_info=&lt;file&gt;</code></pre>
+
+<p>You must use a relatively recent linker which supports the --xml_link_info option. However, there is NO requirement as to which version of the tools were used to create the libraries being linked in. In other words, this script will work even if some of the libraries were built with old compiler tools.</p>
+
+<h1 id="REQUIREMENTS">REQUIREMENTS</h1>
+
+<ul>
+
+<li><p>XML version of map file.</p>
+
+</li>
+<li><p>nm command</p>
+
+</li>
+<li><p>All libraries and object files must exist under the same name and in the same location as when the application was linked and must be readable.</p>
+
+</li>
+</ul>
+
+<h1 id="LIMITATIONS">LIMITATIONS</h1>
+
+<ul>
+
+<li><p>Script must either be run from same directory in which final link was performed or the --basedir option must be used to specify directory from which final link was performed.</p>
+
+</li>
+<li><p>If there are 0 calls to a lib, that lib will not show up in the .xml file and hence, will not be checked for duplicate symbol definitions.</p>
+
+</li>
+<li><p>Libraries that are linked into a partial .out and then relinked will generally not be checked for duplicate symbol definitions. For example, after the following series of link steps, the files p1.lib and p2.lib will not show up in full.xml and hence will not be checked. Only references to members that needed to be resolved to build the partial .out will get checked.</p>
+
+<pre><code>    cl6x -z -r [-a] p1.lib p2.lib partial.out
+    cl6x -z --xml_link_info=full.xml partial.out ... -o full.out</code></pre>
+
+</li>
+<li><p>An attempt is made to track down the archive/object file from which the linked-in definition of a (multiply-defined) symbol originated. Usually, the script can precisely identify the file from which the definition was pulled. In a few cases it cannot (e.g., when the output section containing the symbol is part of a union). If the script cannot identify a unique file, it will print out a list of all candidates instead.</p>
+
+</li>
+</ul>
+
+<h1 id="CONFIGURE-FOR-YOUR-SYSTEM">CONFIGURE FOR YOUR SYSTEM</h1>
+
+<p>This script was written using Perl version 5.8.3. It may not work with earlier revisions of Perl.</p>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Documentation for find_dup_syms.pl</span></strong></big>
+</td></tr>
+</table>
+
+</body>
+
+</html>
+
+

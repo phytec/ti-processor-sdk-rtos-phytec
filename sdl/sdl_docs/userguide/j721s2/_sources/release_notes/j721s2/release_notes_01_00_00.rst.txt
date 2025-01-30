@@ -1,0 +1,119 @@
+Release Notes - 01_00_00
+========================
+
+Introduction
+------------
+
+This release notes provides important information that will assist you in using the SDL software package for the J721S2 family of devices.
+This document provides the product information and known issues that are specific to the SDL software package.
+
+New features added / supported is listed below and defects fixed are highlighted in **Fixed Issues**. Also please check **Upgrade and Compatibility** for backward compatibility
+
+What's New
+----------
+
+SDL support for the following modules are available:
+
+* R5F PMU, MPU, RAT and VIM
+* ESM
+* PBIST
+* LBIST
+* POK
+* VTM
+* TOG
+* ECC
+* RTI
+* R5F CCM
+* DCC
+* MCRC
+
+Safety Examples for the following modules are provided:
+
+* ESM
+* POK
+* VTM
+* MTOG
+* STOG
+* DCC
+* RTI
+* ECC
+* BIST
+
+
+Upgrade and Compatibility
+-------------------------
+
+None.
+
+Supported Devices
+-----------------
+
++------------------------+
+| Supported Platform     |
++========================+
+| J721S2                 |
+|                        |
++------------------------+
+
+
+Fixed Issues
+------------
+
+None - This is the first release.
+
+Known Issues and Limitations
+----------------------------
+
++--------------------------+---------+------------------------------------------+-------------------------------------------------+
+| Issue Id                 | Module  | Description                              | Workaround                                      |
++==========================+=========+==========================================+=================================================+
+| PROC_SDL-3350            | RAT     | Illegal boundary crossing test for       | None - This issue is under investigation.       |
+|                          |         | R5F RAT module fails.                    |                                                 |
++--------------------------+---------+------------------------------------------+-------------------------------------------------+
+| PROC_SDL-4140            | ECC     | Some ECC aggregator error tests failing. | None - updating of metadata and investigation   |
+|                          |         | Metadata is incorrect and needs to be    | of failues is in progress.                      |
+|                          |         | updated for the following:               |                                                 |
+|                          |         | SOC aggregators AGGR5 (HC CBASS),        | Due to this, the ECC error inject functionality |
+|                          |         | MSMC aggregator 0 (endpoint 85 only)     | for the mentioned IPs and endpoints is not      |
+|                          |         |                                          | usable in this release.                         |
+|                          |         | The following aggregators have failures  |                                                 |
+|                          |         | for certain endpoint error testing and   |                                                 |
+|                          |         | the failures are under debug:            |                                                 |
+|                          |         | PSRAM2KECC0.                             |                                                 |
++--------------------------+---------+------------------------------------------+-------------------------------------------------+
+| PROC_SDL-4141            | TOG     | 1 STOG instances error injection test is | None - This issue is under investigation.       |
+|                          |         | failing and are not included in the      |                                                 |
+|                          |         | test application. (STOG17)               |                                                 |
++--------------------------+---------+------------------------------------------+-------------------------------------------------+
+| PROC_SDL-4721            | PBIST   | C7X PBIST test failure in low-level test | Use the sdl_pbist_test_app only for reference   |
+|                          |         | application.                             | and test execution, not the pbist_test_app.     |
+|                          |         | Test passes in sdl_pbist_test_app but    |                                                 |
+|                          |         | fails in pbist_test_app.                 |                                                 |
++--------------------------+---------+------------------------------------------+-------------------------------------------------+
+| PROC_SDL-4720            | PBIST   | PBIST test case for DSS/EDP/DSI fails    | None - This issue is under investigation.       |
+|                          |         |                                          | Root cause may be hardware configuration and/or |
+|                          |         |                                          | pre-test sequence in the application.           |
++--------------------------+---------+------------------------------------------+-------------------------------------------------+
+| PROC_SDL-4142            | PBIST   | MAINR5F1 PBIST test fails in back-to-back| None - This issue is under investigation. It    |
+|                          |         | runs.                                    | could be due to power/reset sequence in the     |
+|                          |         |                                          | test application.                               |
++--------------------------+---------+------------------------------------------+-------------------------------------------------+
+| PROC_SDL-4740            | ECC     | VIM DED error insertion tests fail.      | None - This issue is under investigation.       |
+|                          |         | After inserting the error, the error     |                                                 |
+|                          |         | notification fails to come.              |                                                 |
++--------------------------+---------+------------------------------------------+-------------------------------------------------+
+
+Migration Information
+---------------------
+
+None
+
+Tool Chain Information
+----------------------
+
++-----------------------------------+-------------------------------+
+| Component                         | Version                       |
++===================================+===============================+
+| TI ARM R5F Clang Compiler tools   | 1.3.0.LTS                     |
++-----------------------------------+-------------------------------+
+

@@ -1,0 +1,51 @@
+root@j7-evm:/opt/vision_apps# ./run_app_tidl_avp.sh
+APP: Init ... !!!
+MEM: Init ... !!!
+MEM: Initialized DMA HEAP (fd=4) !!!
+MEM: Init ... Done !!!
+IPC: Init ... !!!
+IPC: Init ... Done !!!
+REMOTE_SERVICE: Init ... !!!
+REMOTE_SERVICE: Init ... Done !!!
+APP: Init ... Done !!!
+   143.109390 s:  VX_ZONE_INIT:Enabled
+   143.109413 s:  VX_ZONE_ERROR:Enabled
+   143.109418 s:  VX_ZONE_WARNING:Enabled
+   143.109857 s:  VX_ZONE_INIT:[tivxInit:71] Initialization Done !!!
+   143.110035 s:  VX_ZONE_INIT:[tivxHostInit:48] Initialization Done for HOST !!!
+Computing checksum at 0x0000FFFFAC004AC0, size = 262136
+Computing checksum at 0x0000FFFFAB934AC0, size = 262136
+Computing checksum at 0x0000FFFFAB243240, size = 386312
+[C7x_1 ]    143.553994 s:  VX_ZONE_WARNING:[tivxKernelTIDLCreate:615] All Interrupts DISABLED during TIDL process
+[C7x_1 ]    143.589957 s:  VX_ZONE_WARNING:[tivxKernelTIDLCreate:615] All Interrupts DISABLED during TIDL process
+[C7x_1 ]    143.625620 s:  VX_ZONE_WARNING:[tivxKernelTIDLCreate:615] All Interrupts DISABLED during TIDL process
+
+
+ =========================
+ Demo : TIDL AVP Demo
+ =========================
+
+ c: Select input channel
+
+ p: Print performance statistics
+
+ x: Exit
+
+ Enter Choice: x
+
+app_avp: Iteration 0 of 1000000000 ... Done.
+ PERF:            TOTAL:   37.74 FPS
+   145.485190 s:  VX_ZONE_INIT:[tivxHostDeInit:56] De-Initialization Done for HOST !!!
+   145.489546 s:  VX_ZONE_INIT:[tivxDeInit:111] De-Initialization Done !!!
+APP: Deinit ... !!!
+REMOTE_SERVICE: Deinit ... !!!
+REMOTE_SERVICE: Deinit ... Done !!!
+IPC: Deinit ... !!!
+IPC: DeInit ... Done !!!
+MEM: Deinit ... !!!
+MEM: Alloc's: 135 alloc's of 55243434 bytes 
+MEM: Free's : 135 free's  of 55243434 bytes 
+MEM: Open's : 0 allocs  of 0 bytes 
+MEM: Deinit ... Done !!!
+APP: Deinit ... Done !!!
+root@j7-evm:/opt/vision_apps#

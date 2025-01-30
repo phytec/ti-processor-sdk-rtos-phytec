@@ -1,0 +1,469 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Using Derived KEK on HS devices &mdash; TISCI User Guide</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="TISCI User Guide" href="../index.html"/>
+        <link rel="up" title="Chapter 6: Topic User Guides" href="index.html"/>
+        <link rel="next" title="Firewall FAQ" href="firewall_faq.html"/>
+        <link rel="prev" title="Using Extended OTP" href="extended_otp.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="../_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> TISCI
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                09.02.04
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../1_intro/index.html">Chapter 1: Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_tisci_msgs/index.html">Chapter 2: TISCI Message Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_boardcfg/index.html">Chapter 3: Board Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_trace/index.html">Chapter 4: Interpreting Trace Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_soc_doc/index.html">Chapter 5: SoC Family Specific Documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Chapter 6: Topic User Guides</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="authentication.html">System Firmware Authentication and Decryption Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devgrp_usage.html">Device Group Primer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domgrp_usage.html">Domain Group Primer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="secure_boot_signing.html">Signing binaries for Secure Boot on HS Devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hs_boardcfg_signing.html">Signing Board Configuration on HS devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openssl_usage.html">Using OpenSSL for certificate creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extended_otp.html">Using Extended OTP</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Using Derived KEK on HS devices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#key-derivation-method">Key Derivation Method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-derived-kek">Using Derived KEK</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#approach-1-dkek-programmed-into-sa2ul">Approach 1 - DKEK programmed into SA2UL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#approach-2-dkek-supplied-via-tisci">Approach 2 - DKEK supplied via TISCI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#comparing-the-two-approaches">Comparing the two approaches</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="firewall_faq.html">Firewall FAQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="saul_access.html">SAUL Access Outside of SYSFW</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security_handover.html">Performing Security Handover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="secure_debug.html">Secure Debug User Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="key_writer.html">Key  Writer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="otp_revision.html">Run time read/write to KEYREV and SWREV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keyring.html">Keyring Management</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">TISCI</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Chapter 6: Topic User Guides</a> &raquo;</li>
+      
+    <li>Using Derived KEK on HS devices</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="using-derived-kek-on-hs-devices">
+<h1>Using Derived KEK on HS devices<a class="headerlink" href="#using-derived-kek-on-hs-devices" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This document is only applicable to HS devices.</p>
+</div>
+<p>K3 HS devices have a randomly generated 256 bit key written into the efuses in
+TI Factory.
+This key is called a Key Encryption Key (KEK) and is unique to each device.
+The characteristics of KEK are listed below.</p>
+<ul class="simple">
+<li>KEK is a randomly generated symmetric key</li>
+<li>KEK is made using NIST certified tester routine</li>
+<li>KEK is different for each device and is not correlated in any ways with keys issued on others devices.</li>
+<li>KEK is not stored in any database or retained in any manufacturing tester</li>
+<li>KEK is burnt in TI factory.</li>
+</ul>
+<p>KEK is fed in hardware into the AES engine inside DMSC.
+The efuses carrying the KEK are marked as read and write protected.
+As a result, KEK is only accessible via the AES engine in DMSC.
+The DMSC AES engine has only a register interface and no DMA interface.
+The DMSC AES engine has lower throughput compared to the AES engine in SA2UL.
+Instead of exposing the DMSC AES engine to all cores, System Firmware provides API to
+obtain a key derived from KEK(DKEK) for encryption/decryption.
+DKEK can be used with SA2UL or with CPU acceleration to perform
+encryption/decryption operations.</p>
+<p>This document describes the usage of the Derived KEK(DKEK) API.
+This document must be read along side</p>
+<ol class="arabic simple">
+<li><a class="reference internal" href="../2_tisci_msgs/security/dkek_management.html"><span class="doc">Derived KEK TISCI Description</span></a> and</li>
+<li><a class="reference internal" href="../3_boardcfg/BOARDCFG_SEC.html"><span class="doc">Security Board Configuration</span></a>, specifically <a class="reference internal" href="../3_boardcfg/BOARDCFG_SEC.html#pub-boardcfg-dkek-config"><span class="std std-ref">Derived KEK Management</span></a></li>
+</ol>
+<div class="section" id="key-derivation-method">
+<h2>Key Derivation Method<a class="headerlink" href="#key-derivation-method" title="Permalink to this headline">¶</a></h2>
+<p>System Firmware uses CMAC as the Pseudo Random Function(PRF) in counter mode as
+described in Section 5.1 of NIST SP 800 108
+“Recommendation for Key Derivation Using Pseudorandom Functions”.
+The user can provide the following inputs as defined in the above
+document.</p>
+<ol class="arabic simple">
+<li>Label - A string that identifies the purpose for the derived keying material,
+which is encoded as a binary string.</li>
+<li>Context - A binary string containing the information related to the derived
+keying material.</li>
+</ol>
+<p>The total length of the Label and Context fields is limited by the size of the
+TISCI messages(see <a class="reference internal" href="../2_tisci_msgs/general/TISCI_header.html#pub-secure-msg-header"><span class="std std-ref">Secure Messaging Header</span></a>) to 41 bytes.</p>
+<p>System Firmware adds additional context containing the ID of the host requesting the
+DKEK into the input. As a result, each host requesting the DKEK receives a
+unique value.</p>
+<p>DKEK computation is deterministic on each device. For a given host, label and
+context, the derived KEK is the same even across reboots on the same device.</p>
+<p>On different devices, derived KEK is different for the same input. This is due
+to a random KEK being programmed into each device in TI factory.</p>
+<p>System Firmware always computes a 256 bit key. It is up to the host to use the desired
+length out of the 256 bits of the key.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Derived KEK does not describe a single key.
+The key derivation procedure produces different keys per host.
+The host can derive different keys based on the label and context provided as input.</p>
+</div>
+</div>
+<div class="section" id="using-derived-kek">
+<h2>Using Derived KEK<a class="headerlink" href="#using-derived-kek" title="Permalink to this headline">¶</a></h2>
+<p>There are two ways to use the derived KEK for encryption/decryption.</p>
+<ol class="arabic simple">
+<li>System Firmware programs SA2UL with DKEK. Host performs encryption/decryption with
+SA2UL.</li>
+<li>System Firmware computes DKEK and returns it to the host. Host can perform
+encryption/decryption with SA2UL or via CPU.</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This section assumes that the user is familiar with using SA2UL for
+performing encryption/decryption.</p>
+</div>
+<div class="section" id="approach-1-dkek-programmed-into-sa2ul">
+<h3>Approach 1 - DKEK programmed into SA2UL<a class="headerlink" href="#approach-1-dkek-programmed-into-sa2ul" title="Permalink to this headline">¶</a></h3>
+<p>In this approach, host requests System Firmware to derive a DKEK and program it into the
+SA2UL DKEK registers using the <a class="reference internal" href="../2_tisci_msgs/security/dkek_management.html#sec-api-sa2ul-set-dkek"><span class="std std-ref">TISCI_MSG_SA2UL_SET_DKEK</span></a> API.</p>
+<div class="figure">
+<img alt="../_images/dkek_approach1_set_dkek.svg" src="../_images/dkek_approach1_set_dkek.svg" /></div>
+<p>DKEK is not directly made available to the host. The host can use DKEK for
+encryption/decryption by setting the <code class="docutils literal"><span class="pre">USE_DKEK</span></code> flag in the SA2UL security
+context.</p>
+<div class="figure">
+<img alt="../_images/dkek_approach1_use_dkek.svg" src="../_images/dkek_approach1_use_dkek.svg" /></div>
+<p>When the host is done with the use of DKEK, it can release the DKEK registers
+by using the <a class="reference internal" href="../2_tisci_msgs/security/dkek_management.html#sec-api-sa2ul-release-dkek"><span class="std std-ref">TISCI_MSG_SA2UL_RELEASE_DKEK</span></a>
+API.</p>
+<div class="figure">
+<img alt="../_images/dkek_approach1_release_dkek.svg" src="../_images/dkek_approach1_release_dkek.svg" /></div>
+<div class="section" id="caveat-on-approach-1">
+<h4>Caveat on Approach 1<a class="headerlink" href="#caveat-on-approach-1" title="Permalink to this headline">¶</a></h4>
+<p>When the <code class="docutils literal"><span class="pre">USE_DKEK</span></code> flag is used in SA2UL security context, SA2UL checks if the
+privid of the initiator is present in the SA2UL DKEK privid register.
+SA2UL <strong>only</strong> checks the privid of the initiator against the SA2UL DKEK privid register
+and ignores any attributes such as user/priviliged and secure/non-secure in the transaction.</p>
+<p>This creates a tricky situation when secure and non-secure software are running on the same core.
+Software running on the same core share the same privid but differ in other attributes.
+It is possible for non-secure software to encrypt or decrypt data with DKEK configured
+by the secure software.</p>
+<p>This can be mitigated by setting the DKEK only when required and releasing the DKEK
+as soon as the encryption/decryption operation is complete.
+Alternatively approach 2 described below can be used.</p>
+</div>
+</div>
+<div class="section" id="approach-2-dkek-supplied-via-tisci">
+<h3>Approach 2 - DKEK supplied via TISCI<a class="headerlink" href="#approach-2-dkek-supplied-via-tisci" title="Permalink to this headline">¶</a></h3>
+<p>In this approach, host requests System Firmware to derive a DKEK and supply it in the
+response using the <a class="reference internal" href="../2_tisci_msgs/security/dkek_management.html#sec-api-sa2ul-get-dkek"><span class="std std-ref">TISCI_MSG_SA2UL_GET_DKEK</span></a> API.
+The host is responsible for maintaining the secrecy of the DKEK supplied by System Firmware.</p>
+<div class="figure">
+<img alt="../_images/dkek_approach2_get_dkek.svg" src="../_images/dkek_approach2_get_dkek.svg" /></div>
+<p>Once DKEK is available, the host can perform encryption/decryption with it in
+the same manner as any other symmetric key.</p>
+<div class="figure">
+<img alt="../_images/dkek_approach2_use_dkek.svg" src="../_images/dkek_approach2_use_dkek.svg" /></div>
+<p>As the SA2UL DKEK registers are not being used, there is no release DKEK API
+required in this approach.</p>
+</div>
+<div class="section" id="comparing-the-two-approaches">
+<h3>Comparing the two approaches<a class="headerlink" href="#comparing-the-two-approaches" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils" id="id1">
+<caption><span class="caption-number">Table 3 </span><span class="caption-text">Comparison</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Option 1</th>
+<th class="head">Option 2</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>DKEK programmed directly into SA2UL DKEK registers.</td>
+<td>DKEK is provided to host as a response to a TISCI message.</td>
+</tr>
+<tr class="row-odd"><td>No separate firewalling is required for DKEK.</td>
+<td>Host must firewall memory where it is storing DKEK.</td>
+</tr>
+<tr class="row-even"><td>DKEK can only be used through SA2UL. Host must set the <code class="docutils literal"><span class="pre">USE_DKEK</span></code>
+flag to true in the SA2UL security context. Key must not be populated
+in the SA2UL security context.</td>
+<td><p class="first">DKEK can be used in two ways</p>
+<ul class="last simple">
+<li>Through SA2UL - Host must program the key in its possession into
+the SA2UL security context.</li>
+<li>Using CPU - If hardware acceleration is not required,
+encryption/decryption can be performed using CPU and the DKEK
+in the possession of the host.</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>Only one host can use this approach at a time. There is only one set of
+SA2UL DKEK registers.
+Access to these registers for encryption/decryption is controlled by DKEK
+privid register.
+System Firmware programs the DKEK privid register with the privid of the host who
+has invoked the <a class="reference internal" href="../2_tisci_msgs/security/dkek_management.html#sec-api-sa2ul-set-dkek"><span class="std std-ref">TISCI_MSG_SA2UL_SET_DKEK</span></a>
+API.
+Only this host can use DKEK via the SA2UL DKEK registers until DKEK
+is released via <a class="reference internal" href="../2_tisci_msgs/security/dkek_management.html#sec-api-sa2ul-release-dkek"><span class="std std-ref">TISCI_MSG_SA2UL_RELEASE_DKEK</span></a></td>
+<td>Multiple hosts can use DKEK at the same time using this approach.
+Each host manages its own DKEK.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../2_tisci_msgs/security/dkek_management.html#sec-api-sa2ul-set-dkek"><span class="std std-ref">TISCI_MSG_SA2UL_SET_DKEK</span></a> and
+<a class="reference internal" href="../2_tisci_msgs/security/dkek_management.html#sec-api-sa2ul-release-dkek"><span class="std std-ref">TISCI_MSG_SA2UL_RELEASE_DKEK</span></a>
+API are used in this approach.</td>
+<td><a class="reference internal" href="../2_tisci_msgs/security/dkek_management.html#sec-api-sa2ul-get-dkek"><span class="std std-ref">TISCI_MSG_SA2UL_GET_DKEK</span></a> is used
+in this approach.</td>
+</tr>
+</tbody>
+</table>
+<p>We recommend using Approach 1 wherever possible to maintain the secrecy of DKEK.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="firewall_faq.html" class="btn btn-neutral float-right" title="Firewall FAQ" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="extended_otp.html" class="btn btn-neutral" title="Using Extended OTP" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyright 2016-2024</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'09.02.04',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+
+        $('body').on("mousewheel", function () {
+            // Remove default behavior
+            event.preventDefault();
+            // Scroll without smoothing
+            var wheelDelta = event.wheelDelta;
+            var currentScrollPosition = window.pageYOffset;
+            window.scrollTo(0, currentScrollPosition - wheelDelta);
+        });
+      });
+  </script>
+   
+
+</body>
+</html>

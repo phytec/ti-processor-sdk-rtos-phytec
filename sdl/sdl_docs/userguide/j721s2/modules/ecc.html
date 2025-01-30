@@ -1,0 +1,613 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>2.2. ECC : Error Correcting Code &mdash; Software Diagnostics Library (SDL) - J721S2 User Guide</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Software Diagnostics Library (SDL) - J721S2 User Guide" href="../index.html"/>
+        <link rel="up" title="2. Modules" href="../family_cfg/j721s2/index_modules_j721s2.html"/>
+        <link rel="next" title="2.3. PBIST : Memory Built-In Self-Test" href="pbist.html"/>
+        <link rel="prev" title="2.1. ESM : Error Signalling Module" href="esm.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="../_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index_j721s2.html" class="icon icon-home"> Software Diagnostics Library (SDL) - J721S2 User Guide
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                01_03_00
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/j721s2/index_release_notes_j721s2.html">1. Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">2. Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../family_cfg/j721s2/index_modules_j721s2.html">2. Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="esm.html">2.1. ESM : Error Signalling Module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.2. ECC : Error Correcting Code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">2.2.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#error-injection-for-various-ram-id-types">2.2.2. Error Injection for Various RAM ID types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-usage">2.2.3. Example Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#examples">2.2.4. Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#api">2.2.5. API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pbist.html">2.3. PBIST : Memory Built-In Self-Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lbist.html">2.4. LBIST : Logic Built-In Self-Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vtm.html">2.5. VTM : Voltage and Thermal Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rti.html">2.6. RTI : RTI/WWDT Windowed Watchdog Timer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pok.html">2.7. POK: Power OK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tog.html">2.8. TOG : Time-Out Gasket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mtog.html">2.9. MTOG : Master Time-Out Gasket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dcc.html">2.10. DCC : Dual Clock Comparator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mcrc.html">2.11. MCRC : Cyclic Redundancy Check</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r5fccm.html">2.12. R5F CCM: CPU Compare Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="osal.html">2.13. OSAL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r5.html">2.14. R5 Core Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rom_checksum.html">2.15. ROM_CHECKSUM: ROM Checksum Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/j721s2/index_examples_j721s2.html">3. Safety Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diagnostic_mappings.html">3. Diagnostic Mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/j721s2/index_application_notes_j721s2.html">4. Developer Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index_j721s2.html">Software Diagnostics Library (SDL) - J721S2 User Guide</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index_j721s2.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../family_cfg/j721s2/index_modules_j721s2.html"><span class="section-number">2. </span>Modules</a> &raquo;</li>
+      
+    <li><span class="section-number">2.2. </span>ECC : Error Correcting Code</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="ecc-error-correcting-code">
+<h1><span class="section-number">2.2. </span>ECC : Error Correcting Code<a class="headerlink" href="#ecc-error-correcting-code" title="Permalink to this headline">¶</a></h1>
+<section id="introduction">
+<h2><span class="section-number">2.2.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>To increase functional and system reliability, the memories in many device modules and subsystems are protected by Error Correcting Code (ECC), which performs Single Error Correction (SEC) and Double Error Detection (DED). Detected errors are reported via ESM. Single bit errors are corrected, and double bit errors are detected. The ECC Aggregator is connected to these memory and interconnect components which have the ECC. The ECC aggregator provides access to control and monitor the ECC protected memories in a module or subsystem.</p>
+<p>SDL provides support for ECC aggregator configuration. Each ECC aggregator instance can be independently configured through the same SDL API by passing a different instance. The safety manual also defines test-for-diagnostics for the various IPs with ECC/parity support. The SDL also provides the support for executing ECC aggregator self-tests, using the error injection feature of the ECC aggregator.
+The ECC aggregators should be configured at startup, after running BIST.</p>
+<p>The SDL provides support for the ECC through:</p>
+<ul>
+<li><p>ECC Configuration API</p></li>
+<li><p>ECC self-test API</p></li>
+<li><p>ECC error injection API</p></li>
+<li><p>ECC static register readback API</p></li>
+<li><p>ECC error status APIs</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>The SDL ECC module requires a mapping of certain aggregator registers into the address space of the R5F Core. In these cases, the ECC module will use the OSAL API SDL_OSAL_addrTranslate() to get the address. The application must provide the mapped address through this call. This mapping is required for any ECC aggregator that is used which has an address which is not in the 32-bit address space.
+The mapping is expected to always be valid because it may be needed at runtime to get information about ECC errors that may be encountered.</p></li>
+<li><p>ECC DED is supported only for wrapper type memories as well as interconnect type memories of EDC types.
+It’s not supported to redundent and parity types of checker-groups.</p></li>
+</ul>
+</aside>
+</div></blockquote>
+</li>
+</ul>
+<p>There are over 100 ECC aggregators on the device each supporting multiple memories and interconnects.</p>
+</section>
+<section id="error-injection-for-various-ram-id-types">
+<h2><span class="section-number">2.2.2. </span>Error Injection for Various RAM ID types<a class="headerlink" href="#error-injection-for-various-ram-id-types" title="Permalink to this headline">¶</a></h2>
+<p>There are two types of ECC aggregator RAM IDs supported on the device (wrapper and interconnect). The wrapper types are used for memories where local computations are performed for particular processing cores in the device, and the interconnect types are utilized for interconnect bus signals between cores or to/from peripherals.</p>
+<p>For wrapper RAM ID types, after injecting an error, the memory associated with that RAM ID needs to be accessed in order to trigger the error interrupt event. It is the application’s responsibility to trigger the error event through memory access after injecting the error.</p>
+</section>
+<section id="example-usage">
+<h2><span class="section-number">2.2.3. </span>Example Usage<a class="headerlink" href="#example-usage" title="Permalink to this headline">¶</a></h2>
+<p>The following shows an example of SDL ECC API usage by the application to set up the ECC to monitor for errors, as well as how to perform ECC self-test. The ESM should be configured to notify of the desired ECC events for the IPs. Please refer to the <a class="reference external" href="http://www.ti.com/lit/pdf/spruil1">J721S2 Technical Reference Manual</a> for a list of the ESM events.</p>
+<p>The following function is required to be defined by the application. It is used by the ECC module to notify the application in case of certain ECC errors that are reported through the R5F exception handlers. If it is not defined, it will result in a linker error. An example implementation is given below.</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>void<span class="w"> </span>SDL_ECC_applicationCallbackFunction<span class="o">(</span>SDL_ECC_MemType<span class="w"> </span>eccMemType,
+<span class="w">                                 </span>uint32_t<span class="w"> </span>errorSrc,
+<span class="w">                                 </span>uint32_t<span class="w"> </span>address,
+<span class="w">                                 </span>uint32_t<span class="w"> </span>ramId,
+<span class="w">                                 </span>uint64_t<span class="w"> </span>bitErrorOffset,
+<span class="w">                                 </span>uint32_t<span class="w"> </span>bitErrorGroup<span class="o">){</span>
+
+<span class="w">    </span>UART_printf<span class="o">(</span><span class="s2">&quot;\n  ECC Error Call back function called : eccMemType %d, errorSrc 0x%x, &quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">                </span><span class="s2">&quot;address 0x%x, ramId %d, bitErrorOffset 0x%04x%04x, bitErrorGroup %d\n&quot;</span>,
+<span class="w">                </span>eccMemType,<span class="w"> </span>errorSrc,<span class="w"> </span>address,<span class="w"> </span>ramId,<span class="w"> </span><span class="o">(</span>uint32_t<span class="o">)(</span>bitErrorOffset<span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="m">32</span><span class="o">)</span>,
+<span class="w">                </span><span class="o">(</span>uint32_t<span class="o">)(</span>bitErrorOffset<span class="w"> </span><span class="p">&amp;</span><span class="w"> </span>0x00000000FFFFFFFF<span class="o">)</span>,<span class="w"> </span>bitErrorGroup<span class="o">)</span><span class="p">;</span>
+<span class="w">    </span>UART_printf<span class="o">(</span><span class="s2">&quot;  Take action \n&quot;</span><span class="o">)</span><span class="p">;</span>
+
+<span class="w">    </span>/*<span class="w"> </span>Any<span class="w"> </span>additional<span class="w"> </span>customer<span class="w"> </span>specific<span class="w"> </span>actions<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>added<span class="w"> </span>here<span class="w"> </span>*/
+
+<span class="o">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Certain ECC events on CPU memory are reported as Exception events. In this case, the ECC SDL provdes a set of exception handlers that can be used to enable the SDL ECC self-test functionality and for notification of the ECC errors. The following example shows how to set up the exception handlers to use the SDL ECC implementations, and also provide application-specific handlers that will be called by the SDL handlers after the handler checks for ECC errors:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/*<span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>list<span class="w"> </span>of<span class="w"> </span>exception<span class="w"> </span>handle<span class="w"> </span>and<span class="w"> </span>the<span class="w"> </span>parameters<span class="w"> </span>*/
+const<span class="w"> </span>SDL_R5ExptnHandlers<span class="w"> </span><span class="nv">ECC_Test_R5ExptnHandlers</span><span class="w"> </span><span class="o">=</span>
+<span class="o">{</span>
+<span class="w">    </span>.udefExptnHandler<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">&amp;</span>SDL_EXCEPTION_undefInstructionExptnHandler,
+<span class="w">    </span>.swiExptnHandler<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">&amp;</span>SDL_EXCEPTION_swIntrExptnHandler,
+<span class="w">    </span>.pabtExptnHandler<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">&amp;</span>SDL_EXCEPTION_prefetchAbortExptnHandler,
+<span class="w">    </span>.dabtExptnHandler<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">&amp;</span>SDL_EXCEPTION_dataAbortExptnHandler,
+<span class="w">    </span>.irqExptnHandler<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">&amp;</span>SDL_EXCEPTION_irqExptnHandler,
+<span class="w">    </span>.fiqExptnHandler<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">&amp;</span>SDL_EXCEPTION_fiqExptnHandler,
+<span class="w">    </span>.udefExptnHandlerArgs<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">((</span>void<span class="w"> </span>*<span class="o">)</span>0u<span class="o">)</span>,
+<span class="w">    </span>.swiExptnHandlerArgs<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">((</span>void<span class="w"> </span>*<span class="o">)</span>0u<span class="o">)</span>,
+<span class="w">    </span>.pabtExptnHandlerArgs<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">((</span>void<span class="w"> </span>*<span class="o">)</span>0u<span class="o">)</span>,
+<span class="w">    </span>.dabtExptnHandlerArgs<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">((</span>void<span class="w"> </span>*<span class="o">)</span>0u<span class="o">)</span>,
+<span class="w">    </span>.irqExptnHandlerArgs<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">((</span>void<span class="w"> </span>*<span class="o">)</span>0u<span class="o">)</span>,
+<span class="o">}</span><span class="p">;</span>
+
+/*<span class="w"> </span>The<span class="w"> </span>following<span class="w"> </span>are<span class="w"> </span>the<span class="w"> </span>application<span class="w"> </span>implementations<span class="w"> </span>*/
+void<span class="w"> </span>ECC_Test_undefInstructionExptnCallback<span class="o">(</span>void<span class="o">)</span>
+<span class="o">{</span>
+<span class="w">    </span>UART_printf<span class="o">(</span><span class="s2">&quot;\n Undefined Instruction exception&quot;</span><span class="o">)</span><span class="p">;</span>
+<span class="o">}</span>
+
+void<span class="w"> </span>ECC_Test_swIntrExptnCallback<span class="o">(</span>void<span class="o">)</span>
+<span class="o">{</span>
+<span class="w">    </span>UART_printf<span class="o">(</span><span class="s2">&quot;\n Software interrupt exception&quot;</span><span class="o">)</span><span class="p">;</span>
+<span class="o">}</span>
+
+void<span class="w"> </span>ECC_Test_prefetchAbortExptnCallback<span class="o">(</span>void<span class="o">)</span>
+<span class="o">{</span>
+<span class="w">    </span>UART_printf<span class="o">(</span><span class="s2">&quot;\n Prefetch Abort exception&quot;</span><span class="o">)</span><span class="p">;</span>
+<span class="o">}</span>
+
+void<span class="w"> </span>ECC_Test_dataAbortExptnCallback<span class="o">(</span>void<span class="o">)</span>
+<span class="o">{</span>
+<span class="w">    </span>UART_printf<span class="o">(</span><span class="s2">&quot;\n Data Abort exception&quot;</span><span class="o">)</span><span class="p">;</span>
+<span class="o">}</span>
+
+void<span class="w"> </span>ECC_Test_irqExptnCallback<span class="o">(</span>void<span class="o">)</span>
+<span class="o">{</span>
+<span class="w">    </span>UART_printf<span class="o">(</span><span class="s2">&quot;\n Irq exception&quot;</span><span class="o">)</span><span class="p">;</span>
+<span class="o">}</span>
+
+void<span class="w"> </span>ECC_Test_fiqExptnCallback<span class="o">(</span>void<span class="o">)</span>
+<span class="o">{</span>
+<span class="w">    </span>UART_printf<span class="o">(</span><span class="s2">&quot;\n Fiq exception&quot;</span><span class="o">)</span><span class="p">;</span>
+<span class="o">}</span>
+
+/*<span class="w"> </span>The<span class="w"> </span>following<span class="w"> </span><span class="k">function</span><span class="w"> </span>inits<span class="w"> </span>and<span class="w"> </span>registers<span class="w"> </span>the<span class="w"> </span>SDL<span class="w"> </span>exception<span class="w"> </span>handlers<span class="w"> </span>*/
+void<span class="w"> </span>ECC_Test_exceptionInit<span class="o">(</span>void<span class="o">)</span>
+<span class="o">{</span>
+
+<span class="w">    </span>SDL_EXCEPTION_CallbackFunctions_t<span class="w"> </span><span class="nv">exceptionCallbackFunctions</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="o">{</span>
+<span class="w">        </span>.udefExptnCallback<span class="w"> </span><span class="o">=</span><span class="w"> </span>ECC_Test_undefInstructionExptnCallback,
+<span class="w">        </span>.swiExptnCallback<span class="w"> </span><span class="o">=</span><span class="w"> </span>ECC_Test_swIntrExptnCallback,
+<span class="w">        </span>.pabtExptnCallback<span class="w"> </span><span class="o">=</span><span class="w"> </span>ECC_Test_prefetchAbortExptnCallback,
+<span class="w">        </span>.dabtExptnCallback<span class="w"> </span><span class="o">=</span><span class="w"> </span>ECC_Test_dataAbortExptnCallback,
+<span class="w">        </span>.irqExptnCallback<span class="w"> </span><span class="o">=</span><span class="w"> </span>ECC_Test_irqExptnCallback,
+<span class="w">        </span>.fiqExptnCallback<span class="w"> </span><span class="o">=</span><span class="w"> </span>ECC_Test_fiqExptnCallback,
+<span class="w">    </span><span class="o">}</span><span class="p">;</span>
+
+<span class="w">    </span>/*<span class="w"> </span>Initialize<span class="w"> </span>SDL<span class="w"> </span>exception<span class="w"> </span>handler<span class="w"> </span>*/
+<span class="w">    </span>SDL_EXCEPTION_init<span class="o">(</span><span class="p">&amp;</span>exceptionCallbackFunctions<span class="o">)</span><span class="p">;</span>
+<span class="w">    </span>/*<span class="w"> </span>Register<span class="w"> </span>SDL<span class="w"> </span>exception<span class="w"> </span>handler<span class="w"> </span>*/
+<span class="w">    </span>Intc_RegisterExptnHandlers<span class="o">(</span><span class="p">&amp;</span>ECC_Test_R5ExptnHandlers<span class="o">)</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>To configure ECC for an instance and specified ram IDs:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>static<span class="w"> </span>SDL_ECC_MemSubType<span class="w"> </span>ECC_Test_MAINMSMC_A0subMemTypeList<span class="o">[</span>MAIN_MSMC_AGGR0_MAX_MEM_SECTIONS<span class="o">]</span><span class="w"> </span><span class="o">=</span>
+<span class="o">{</span>
+<span class="w">    </span>SDL_ECC_MAIN_MSMC_MEM_INTERCONN_SUBTYPE,/*<span class="w"> </span>SDL_COMPUTE_CLUSTER0_MSMC_ECC_AGGR0_MSMC_MMR_BUSECC_RAM_ID<span class="w"> </span>*/
+<span class="w">    </span>SDL_ECC_MAIN_MSMC_CACHE_TAG_MEM_INTERCONN_SUBTYPE,<span class="w"> </span>/*SDL_COMPUTE_CLUSTER0_MSMC_ECC_AGGR0_RMW2_CACHE_TAG_PIPE_BUSECC_RAM_ID<span class="w"> </span>*/
+<span class="w">    </span>SDL_ECC_MAIN_MSMC_MEM_WRAPPER_SUBTYPE,<span class="w"> </span>/*<span class="w"> </span>SDL_COMPUTE_CLUSTER0_MSMC_ECC_AGGR0_CLEC_SRAM_RAMECC_RAM_ID<span class="w"> </span>*/
+<span class="w">    </span>SDL_ECC_MAIN_MSMC_MEM_CLEC_EDC_CTRL_BUSECC_SUBTYPE,<span class="w"> </span>/*SDL_COMPUTE_CLUSTER0_MSMC_ECC_AGGR0_CLEC_J7ES_CLEC_EDC_CTRL_BUSECC_RAM_ID<span class="w"> </span>*/
+<span class="o">}</span><span class="p">;</span>
+
+
+static<span class="w"> </span>SDL_ECC_InitConfig_t<span class="w"> </span><span class="nv">ECC_Test_MAINMSMCA0ECCInitConfig</span><span class="w"> </span><span class="o">=</span>
+<span class="o">{</span>
+<span class="w">    </span>.numRams<span class="w"> </span><span class="o">=</span><span class="w"> </span>MAIN_MSMC_AGGR0_MAX_MEM_SECTIONS,
+<span class="w">    </span>/**&lt;<span class="w"> </span>Number<span class="w"> </span>of<span class="w"> </span>Rams<span class="w"> </span>ECC<span class="w"> </span>is<span class="w"> </span>enabled<span class="w">  </span>*/
+<span class="w">    </span>.pMemSubTypeList<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">&amp;</span><span class="o">(</span>ECC_Test_MAINMSMC_A0subMemTypeList<span class="o">[</span><span class="m">0</span><span class="o">])</span>,
+<span class="w">    </span>/**&lt;<span class="w"> </span>Sub<span class="w"> </span><span class="nb">type</span><span class="w"> </span>list<span class="w">  </span>*/
+<span class="o">}</span><span class="p">;</span>
+
+...
+
+/*<span class="w"> </span>Initialize<span class="w"> </span>MAIN<span class="w"> </span>ESM<span class="w"> </span>module<span class="w"> </span>-<span class="w"> </span>ESM<span class="w"> </span>config<span class="w"> </span>should<span class="w"> </span>be<span class="w"> </span>aligned<span class="w"> </span>with<span class="w"> </span>the<span class="w"> </span>desired<span class="w"> </span>error<span class="w"> </span>events<span class="w"> </span>*/
+<span class="nv">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>SDL_ESM_init<span class="o">(</span>SDL_ESM_INST_MAIN_ESM0,<span class="w"> </span><span class="p">&amp;</span>ECC_Test_esmInitConfig_MAIN,SDL_ESM_applicationCallbackFunction,ptr<span class="o">)</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="o">(</span>result<span class="w"> </span>!<span class="o">=</span><span class="w"> </span>SDL_PASS<span class="o">)</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span>/*<span class="w"> </span>print<span class="w"> </span>error<span class="w"> </span>and<span class="w"> </span>quit<span class="w"> </span>*/
+<span class="w">    </span>UART_printf<span class="o">(</span><span class="s2">&quot;ECC_Test_init: Error initializing MAIN ESM: result = %d\n&quot;</span>,<span class="w"> </span>result<span class="o">)</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nv">retValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>-1<span class="p">;</span>
+<span class="o">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span>UART_printf<span class="o">(</span><span class="s2">&quot;\nECC_Test_init: Init MAIN ESM complete \n&quot;</span><span class="o">)</span><span class="p">;</span>
+<span class="o">}</span>
+
+/*<span class="w"> </span>Initialize<span class="w"> </span>ECC<span class="w"> </span>*/
+<span class="nv">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>SDL_ECC_init<span class="o">(</span>SDL_ECC_MEMTYPE_MAIN_MSMC_AGGR0,<span class="w"> </span><span class="p">&amp;</span>ECC_Test_MAINMSMCA0ECCInitConfig<span class="o">)</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="o">(</span>result<span class="w"> </span>!<span class="o">=</span><span class="w"> </span>SDL_PASS<span class="o">)</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span>/*<span class="w"> </span>print<span class="w"> </span>error<span class="w"> </span>and<span class="w"> </span>quit<span class="w"> </span>*/
+<span class="w">     </span>UART_printf<span class="o">(</span><span class="s2">&quot;ECC_Test_init: Error initializing R5F core ECC: result = %d\n&quot;</span>,<span class="w"> </span>result<span class="o">)</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nv">retValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>-1<span class="p">;</span>
+<span class="o">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span>UART_printf<span class="o">(</span><span class="s2">&quot;\nECC_Test_init: MCU CBASS ECC Init complete \n&quot;</span><span class="o">)</span><span class="p">;</span>
+<span class="o">}</span>
+
+/*<span class="w"> </span>Initialize<span class="w"> </span>ECC<span class="w"> </span>callbacks<span class="w"> </span>within<span class="w"> </span>the<span class="w"> </span>Main<span class="w"> </span>ESM<span class="w"> </span>-<span class="w"> </span>this<span class="w"> </span>is<span class="w"> </span>used<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>self-test<span class="w"> </span>path<span class="w"> </span>*/
+<span class="nv">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>SDL_ECC_initEsm<span class="o">(</span>SDL_ESM_INST_MAIN_ESM0<span class="o">)</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="o">(</span>result<span class="w"> </span>!<span class="o">=</span><span class="w"> </span>SDL_PASS<span class="o">)</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span>/*<span class="w"> </span>print<span class="w"> </span>error<span class="w"> </span>and<span class="w"> </span>quit<span class="w"> </span>*/
+<span class="w">     </span>UART_printf<span class="o">(</span><span class="s2">&quot;ECC_Test_init: Error initializing ECC callback for Main ESM: result = %d\n&quot;</span>,<span class="w"> </span>result<span class="o">)</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nv">retValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>-1<span class="p">;</span>
+<span class="o">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span>UART_printf<span class="o">(</span><span class="s2">&quot;\nECC_Test_init: ECC Callback Init complete for Main ESM \n&quot;</span><span class="o">)</span><span class="p">;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Once the ECC is configured, then error notifications will come to the ESM module, and will activate the ESM-registered application callback.
+The application callback may want to retrive the error information in order to take some action based on the error, like clearing the ECC interrupts, logging the error information, or some other action.</p>
+<p>Example of retrieving error information</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>SDL_ECC_MemType<span class="w"> </span>eccmemtype<span class="p">;</span>
+SDL_Ecc_AggrIntrSrc<span class="w"> </span>eccIntrSrc<span class="p">;</span>
+SDL_ECC_ErrorInfo_t<span class="w"> </span>eccErrorInfo<span class="p">;</span>
+
+/*<span class="w"> </span>Get<span class="w"> </span>the<span class="w"> </span>information<span class="w"> </span>about<span class="w"> </span>which<span class="w"> </span>ECC<span class="w"> </span>memtype<span class="w"> </span>and<span class="w"> </span>ECC<span class="w"> </span>interrupt<span class="w"> </span>Src<span class="w"> </span>*/
+/*<span class="w"> </span>esmInst<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>ESM<span class="w"> </span>Instance<span class="w"> </span><span class="o">(</span>such<span class="w"> </span>as<span class="w"> </span>MCU,<span class="w"> </span>MAIN,<span class="w"> </span>WKUP<span class="o">)</span>,<span class="w"> </span>intSrc<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>ESM<span class="w"> </span>error<span class="w"> </span>event<span class="w"> </span>*/
+<span class="nv">retVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>SDL_ECC_getESMErrorInfo<span class="o">(</span>esmInst,<span class="w"> </span>intSrc,<span class="w"> </span><span class="p">&amp;</span>eccmemtype,<span class="w"> </span><span class="p">&amp;</span>eccIntrSrc<span class="o">)</span><span class="p">;</span>
+
+/*<span class="w"> </span>Based<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>ECC<span class="w"> </span>memtype<span class="w"> </span>and<span class="w"> </span>ECC<span class="w"> </span>interrupt<span class="w"> </span>source,<span class="w"> </span>get<span class="w"> </span>the<span class="w"> </span>ECC<span class="w"> </span>error<span class="w"> </span>info<span class="w"> </span>*/
+<span class="nv">retVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>SDL_ECC_getErrorInfo<span class="o">(</span>eccmemtype,<span class="w"> </span>eccIntrSrc,<span class="w"> </span><span class="p">&amp;</span>eccErrorInfo<span class="o">)</span><span class="p">;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>To clear and acknowledge the ECC interrupt:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/*<span class="w"> </span>If<span class="w"> </span>the<span class="w"> </span>error<span class="w"> </span>was<span class="w"> </span>due<span class="w"> </span>to<span class="w"> </span>injecting<span class="w"> </span>an<span class="w"> </span>error<span class="w"> </span>and<span class="w"> </span>is<span class="w"> </span>from<span class="w"> </span>an<span class="w"> </span>EDC<span class="w"> </span>type,<span class="w"> </span><span class="k">then</span><span class="w"> </span>use<span class="w"> </span>SDL_ECC_AGGR_ERROR_SUBTYPE_INJECT<span class="w"> </span>*/
+<span class="k">if</span><span class="w"> </span><span class="o">(</span>eccErrorInfo.injectBitErrCnt<span class="w"> </span>!<span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="o">)</span>
+<span class="o">{</span>
+<span class="w">    </span>SDL_ECC_clearNIntrPending<span class="o">(</span>eccmemtype,<span class="w"> </span>eccErrorInfo.memSubType,<span class="w"> </span>eccIntrSrc,<span class="w"> </span>SDL_ECC_AGGR_ERROR_SUBTYPE_INJECT,<span class="w"> </span>eccErrorInfo.injectBitErrCnt<span class="o">)</span><span class="p">;</span>
+<span class="o">}</span>
+<span class="k">else</span>
+<span class="o">{</span>
+<span class="w">    </span>SDL_ECC_clearNIntrPending<span class="o">(</span>eccmemtype,<span class="w"> </span>eccErrorInfo.memSubType,<span class="w"> </span>eccIntrSrc,<span class="w"> </span>SDL_ECC_AGGR_ERROR_SUBTYPE_NORMAL,<span class="w"> </span>eccErrorInfo.bitErrCnt<span class="o">)</span><span class="p">;</span>
+<span class="o">}</span>
+
+/*<span class="w"> </span>Ack<span class="w"> </span>the<span class="w"> </span>interrupt<span class="w"> </span><span class="nb">source</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>ECC<span class="w"> </span>memtype<span class="w"> </span>*/
+<span class="nv">retVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>SDL_ECC_ackIntr<span class="o">(</span>eccmemtype,<span class="w"> </span>eccIntrSrc<span class="o">)</span><span class="p">;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Execute an ECC Self-Test for a specified ECC aggregator (memtype) and RAM Id (subtype)</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uint32_t<span class="w"> </span>subType<span class="p">;</span>
+
+SDL_ECC_InjectErrorConfig_t<span class="w"> </span>injectErrorConfig<span class="p">;</span>
+
+UART_printf<span class="o">(</span><span class="s2">&quot;\n MSMC_BUSECC_RAM Single bit error self test: starting&quot;</span><span class="o">)</span><span class="p">;</span>
+
+memset<span class="o">(</span><span class="p">&amp;</span>injectErrorConfig,<span class="w"> </span><span class="m">0</span>,<span class="w"> </span>sizeof<span class="o">(</span>injectErrorConfig<span class="o">))</span><span class="p">;</span>
+
+/*<span class="w"> </span>Run<span class="w"> </span>one<span class="w"> </span>shot<span class="w"> </span><span class="nb">test</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>MSMC_BUSECC_RAM<span class="w"> </span><span class="m">1</span><span class="w"> </span>bit<span class="w"> </span>error<span class="w"> </span>*/
+/*<span class="w"> </span>Note<span class="w"> </span>the<span class="w"> </span>address<span class="w"> </span>is<span class="w"> </span>relative<span class="w"> </span>to<span class="w"> </span>start<span class="w"> </span>of<span class="w"> </span>ram<span class="w"> </span>*/
+injectErrorConfig.pErrMem<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">(</span>uint32_t<span class="w"> </span>*<span class="o">)(</span>0u<span class="o">)</span><span class="p">;</span>
+
+injectErrorConfig.flipBitMask<span class="w"> </span><span class="o">=</span><span class="w"> </span>0x1<span class="p">;</span>
+injectErrorConfig.chkGrp<span class="w"> </span><span class="o">=</span><span class="w"> </span>0x1<span class="p">;</span>
+<span class="nv">subType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>SDL_ECC_MAIN_MSMC_MEM_INTERCONN_SUBTYPE<span class="p">;</span>
+
+<span class="nv">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>SDL_ECC_selfTest<span class="o">(</span>SDL_ECC_MEMTYPE_MAIN_MSMC_AGGR0,
+<span class="w">                          </span>subType,
+<span class="w">                          </span>SDL_INJECT_ECC_ERROR_FORCING_1BIT_ONCE,
+<span class="w">                          </span><span class="p">&amp;</span>injectErrorConfig,
+<span class="w">                          </span><span class="m">1000</span><span class="o">)</span><span class="p">;</span>
+
+
+<span class="k">if</span><span class="w"> </span><span class="o">(</span>result<span class="w"> </span>!<span class="o">=</span><span class="w"> </span>SDL_PASS<span class="w"> </span><span class="o">)</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span>UART_printf<span class="o">(</span><span class="s2">&quot;\n MSMC_BUSECC_RAM  Single bit error self test: Subtype %d: test failed&quot;</span>,
+<span class="w">                </span>subType<span class="o">)</span><span class="p">;</span>
+<span class="w">    </span><span class="nv">retVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>-1<span class="p">;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Inject an error for a specified ECC aggregator (memtype) and RAM Id (subtype)</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uint32_t<span class="w"> </span>subType<span class="p">;</span>
+
+SDL_ECC_InjectErrorConfig_t<span class="w"> </span>injectErrorConfig<span class="p">;</span>
+
+UART_printf<span class="o">(</span><span class="s2">&quot;\n MSMC_BUSECC_RAM Single bit error injection: starting&quot;</span><span class="o">)</span><span class="p">;</span>
+
+memset<span class="o">(</span><span class="p">&amp;</span>injectErrorConfig,<span class="w"> </span><span class="m">0</span>,<span class="w"> </span>sizeof<span class="o">(</span>injectErrorConfig<span class="o">))</span><span class="p">;</span>
+
+<span class="w"> </span>/*<span class="w"> </span>Run<span class="w"> </span>one<span class="w"> </span>shot<span class="w"> </span><span class="nb">test</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>MSMC_BUSECC_RAM<span class="w"> </span><span class="m">1</span><span class="w"> </span>bit<span class="w"> </span>error<span class="w"> </span>*/
+<span class="w"> </span>/*<span class="w"> </span>Note<span class="w"> </span>the<span class="w"> </span>address<span class="w"> </span>is<span class="w"> </span>relative<span class="w"> </span>to<span class="w"> </span>start<span class="w"> </span>of<span class="w"> </span>ram<span class="w"> </span>*/
+<span class="w"> </span>injectErrorConfig.pErrMem<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">(</span>uint32_t<span class="w"> </span>*<span class="o">)(</span>0u<span class="o">)</span><span class="p">;</span>
+
+<span class="w"> </span>injectErrorConfig.flipBitMask<span class="w"> </span><span class="o">=</span><span class="w"> </span>0x1<span class="p">;</span>
+<span class="w"> </span>injectErrorConfig.chkGrp<span class="w"> </span><span class="o">=</span><span class="w"> </span>0x1<span class="p">;</span>
+<span class="w"> </span><span class="nv">subType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>SDL_ECC_MAIN_MSMC_MEM_INTERCONN_SUBTYPE<span class="p">;</span>
+
+<span class="w"> </span><span class="nv">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>SDL_ECC_injectError<span class="o">(</span>SDL_ECC_MEMTYPE_MAIN_MSMC_AGGR0,
+<span class="w">                              </span>subType,
+<span class="w">                              </span>SDL_INJECT_ECC_ERROR_FORCING_1BIT_ONCE,
+<span class="w">                              </span><span class="p">&amp;</span>injectErrorConfig<span class="o">)</span><span class="p">;</span>
+
+
+<span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="o">(</span>result<span class="w"> </span>!<span class="o">=</span><span class="w"> </span>SDL_PASS<span class="w"> </span><span class="o">)</span><span class="w"> </span><span class="o">{</span>
+<span class="w">     </span>UART_printf<span class="o">(</span><span class="s2">&quot;\n MSMC_BUSECC_RAM  Single bit error injection: Subtype %d: failed&quot;</span>,
+<span class="w">                 </span>subType<span class="o">)</span><span class="p">;</span>
+<span class="w">     </span><span class="nv">retVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>-1<span class="p">;</span>
+<span class="w"> </span><span class="o">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Read the Static registers:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>SDL_ECC_staticRegs<span class="w"> </span>staticRegs<span class="p">;</span>
+
+/*<span class="w"> </span>Read<span class="w"> </span>back<span class="w"> </span>the<span class="w"> </span>static<span class="w"> </span>registers<span class="w"> </span>*/
+<span class="nv">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>SDL_ECC_getStaticRegisters<span class="o">(</span>SDL_ECC_MEMTYPE_MCU_R5F0_CORE,<span class="w"> </span><span class="p">&amp;</span>staticRegs<span class="o">)</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="o">(</span>result<span class="w"> </span>!<span class="o">=</span><span class="w"> </span>SDL_PASS<span class="o">)</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span>/*<span class="w"> </span>print<span class="w"> </span>error<span class="w"> </span>and<span class="w"> </span>quit<span class="w"> </span>*/
+<span class="w">    </span>UART_printf<span class="o">(</span><span class="s2">&quot;ECC_Test_init: Error reading the static registers: result = %d\n&quot;</span><span class="o">)</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nv">retValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>-1<span class="p">;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="examples">
+<h2><span class="section-number">2.2.4. </span>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<p>The ECC module provides a test app that demonstrates the ECC functionality. Details of the test app name, location and build instructions are given in the table below.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Test App Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Location</p></th>
+<th class="head"><p>Build Command</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>sdl_ecc_test_app</p></td>
+<td><ul class="simple">
+<li><p>Initializes ECC instances</p></li>
+<li><p>Initializes ESM for ECC errors</p></li>
+<li><p>Initializes ECC self-test callbacks</p></li>
+<li><p>Injects errors and checks for ESM callback</p></li>
+<li><p>Performs ECC Self-tests</p></li>
+</ul>
+</td>
+<td><p>[sdl_install_dir]/test/ecc/</p></td>
+<td><p>make sdl_ecc_test_app PROFILE=release</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="api">
+<h2><span class="section-number">2.2.5. </span>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="../../../apiguide/j721s2/html/group__SDL__ECC__API.html">ECC API Guide</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="pbist.html" class="btn btn-neutral float-right" title="2.3. PBIST : Memory Built-In Self-Test" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="esm.html" class="btn btn-neutral" title="2.1. ESM : Error Signalling Module" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyright 1995-2021</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'01_03_00',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+      });
+  </script>
+   
+
+</body>
+</html>

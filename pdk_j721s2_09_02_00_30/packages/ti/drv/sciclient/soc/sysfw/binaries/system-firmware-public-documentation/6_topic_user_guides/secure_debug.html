@@ -1,0 +1,859 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Secure Debug User Guide &mdash; TISCI User Guide</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="TISCI User Guide" href="../index.html"/>
+        <link rel="up" title="Chapter 6: Topic User Guides" href="index.html"/>
+        <link rel="next" title="Key Writer" href="key_writer.html"/>
+        <link rel="prev" title="Performing Security Handover" href="security_handover.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="../_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> TISCI
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                09.02.04
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../1_intro/index.html">Chapter 1: Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_tisci_msgs/index.html">Chapter 2: TISCI Message Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_boardcfg/index.html">Chapter 3: Board Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_trace/index.html">Chapter 4: Interpreting Trace Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_soc_doc/index.html">Chapter 5: SoC Family Specific Documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Chapter 6: Topic User Guides</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="authentication.html">System Firmware Authentication and Decryption Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devgrp_usage.html">Device Group Primer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domgrp_usage.html">Domain Group Primer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="secure_boot_signing.html">Signing binaries for Secure Boot on HS Devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hs_boardcfg_signing.html">Signing Board Configuration on HS devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openssl_usage.html">Using OpenSSL for certificate creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extended_otp.html">Using Extended OTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dkek_management.html">Using Derived KEK on HS devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firewall_faq.html">Firewall FAQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="saul_access.html">SAUL Access Outside of SYSFW</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security_handover.html">Performing Security Handover</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Secure Debug User Guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-a-debug-certificate">Creating a debug certificate</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#x509-configuration-template">X509 Configuration Template</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#populating-the-fields-in-the-certificate">Populating the fields in the certificate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#debug-certificate-revision">Debug Certificate Revision</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#debug-extension">Debug Extension</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#certificate-validation-done-by-sysfw">Certificate validation done by System Firmware</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sending-debug-certificate-to-sysfw">Sending debug certificate to System Firmware</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#using-tisci-api">Using TISCI API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#over-the-jtag-interface">Over the JTAG interface</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#performing-jtag-unlock">Performing JTAG unlock</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#retrieveing-soc-uid">Retrieveing SOC UID</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#retrieving-the-soc-uid-over-jtag">Retrieving the SOC UID over JTAG</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#retrieving-the-soc-uid-over-uart">Retrieving the SOC UID over UART</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#retrieving-the-soc-uid-via-tisci">Retrieving the SOC UID via TISCI</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#controlling-debug-via-board-configuration">Controlling Debug via Board Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="key_writer.html">Key  Writer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="otp_revision.html">Run time read/write to KEYREV and SWREV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keyring.html">Keyring Management</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">TISCI</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Chapter 6: Topic User Guides</a> &raquo;</li>
+      
+    <li>Secure Debug User Guide</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="secure-debug-user-guide">
+<h1>Secure Debug User Guide<a class="headerlink" href="#secure-debug-user-guide" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This document is only applicable to High Security(HS) devices.</p>
+</div>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#introduction" id="id2">Introduction</a></li>
+<li><a class="reference internal" href="#creating-a-debug-certificate" id="id3">Creating a debug certificate</a><ul>
+<li><a class="reference internal" href="#x509-configuration-template" id="id4">X509 Configuration Template</a></li>
+<li><a class="reference internal" href="#populating-the-fields-in-the-certificate" id="id5">Populating the fields in the certificate</a></li>
+<li><a class="reference internal" href="#debug-certificate-revision" id="id6">Debug Certificate Revision</a></li>
+<li><a class="reference internal" href="#debug-extension" id="id7">Debug Extension</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#certificate-validation-done-by-sysfw" id="id8">Certificate validation done by System Firmware</a></li>
+<li><a class="reference internal" href="#sending-debug-certificate-to-sysfw" id="id9">Sending debug certificate to System Firmware</a><ul>
+<li><a class="reference internal" href="#using-tisci-api" id="id10">Using TISCI API</a></li>
+<li><a class="reference internal" href="#over-the-jtag-interface" id="id11">Over the JTAG interface</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#performing-jtag-unlock" id="id12">Performing JTAG unlock</a></li>
+<li><a class="reference internal" href="#retrieveing-soc-uid" id="id13">Retrieveing SOC UID</a><ul>
+<li><a class="reference internal" href="#retrieving-the-soc-uid-over-jtag" id="id14">Retrieving the SOC UID over JTAG</a></li>
+<li><a class="reference internal" href="#retrieving-the-soc-uid-over-uart" id="id15">Retrieving the SOC UID over UART</a></li>
+<li><a class="reference internal" href="#retrieving-the-soc-uid-via-tisci" id="id16">Retrieving the SOC UID via TISCI</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#controlling-debug-via-board-configuration" id="id17">Controlling Debug via Board Configuration</a></li>
+</ul>
+</div>
+<div class="section" id="introduction">
+<span id="sysfw-pub-sec-dbg-ug-intro"></span><h2><a class="toc-backref" href="#id2">Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>On K3 High Security - Security Enforced (HS-SE) devices, the JTAG port is closed by default.
+The below table shows the default state of the JTAG on various device types.</p>
+<table border="1" class="docutils" id="id1">
+<caption><span class="caption-number">Table 4 </span><span class="caption-text">JTAG Default state on various device types</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="25%" />
+<col width="28%" />
+<col width="18%" />
+<col width="29%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Device Type</th>
+<th class="head">Variant</th>
+<th class="head">M3 JTAG State</th>
+<th class="head">Other cores JTAG State</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>General Purpose (GP)</td>
+<td>NA</td>
+<td>Open</td>
+<td>Open</td>
+</tr>
+<tr class="row-odd"><td>High Security (HS)</td>
+<td>Field Securable (FS)</td>
+<td>Closed</td>
+<td>Open</td>
+</tr>
+<tr class="row-even"><td>High Security (HS)</td>
+<td>Security Enforced (SE)</td>
+<td>Closed</td>
+<td>Closed</td>
+</tr>
+</tbody>
+</table>
+<p>The JTAG port for M3 core running System Firmware always remains closed on HS-FS or
+HS-SE devices. Software cannot open the JTAG port for the M3 core.
+If required, the user can open the JTAG port and debug the remaining cores on the device.
+Opening the JTAG port when System Firmware is running requires</p>
+<ol class="arabic simple">
+<li>A signed X509 certificate authorizing the debug. - This is a distinct certificate
+from the X509 certificates used for secure boot.</li>
+<li>Sending the debug certificate to System Firmware to process and open the debug ports.</li>
+</ol>
+<p>This document describes both these steps. It also describes how the debug can be
+controlled via board configuration.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Please note that all steps in this document require JTAG connectivity to be
+enabled in efuses. Otherwise the steps in this document do not have any
+effect.</p>
+</div>
+</div>
+<div class="section" id="creating-a-debug-certificate">
+<h2><a class="toc-backref" href="#id3">Creating a debug certificate</a><a class="headerlink" href="#creating-a-debug-certificate" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="x509-configuration-template">
+<h3><a class="toc-backref" href="#id4">X509 Configuration Template</a><a class="headerlink" href="#x509-configuration-template" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">[</span><span class="w"> </span>req<span class="w"> </span><span class="o">]</span>
+<span class="nv">distinguished_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>req_distinguished_name
+<span class="nv">x509_extensions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>v3_ca
+<span class="nv">prompt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>no
+
+<span class="nv">dirstring_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>nobmp
+
+<span class="c1"># This information will be filled by the end user.</span>
+<span class="c1"># The current data is only a place holder.</span>
+<span class="c1"># System firmware does not make decisions based</span>
+<span class="c1"># on the contents of this distinguished name block.</span>
+<span class="o">[</span><span class="w"> </span>req_distinguished_name<span class="w"> </span><span class="o">]</span>
+<span class="nv">C</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>oR
+<span class="nv">ST</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>rx
+<span class="nv">L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>gQE843yQV0sag
+<span class="nv">O</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>dqhGYAQ2Y4gFfCq0t1yABCYxex9eAxt71f
+<span class="nv">OU</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>a87RB35W
+<span class="nv">CN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>x0FSqGTPWbGpuiV
+<span class="nv">emailAddress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>kFp5uGcgWXxcfxi@vsHs9C9qQWGrBs.com
+
+<span class="o">[</span><span class="w"> </span>v3_ca<span class="w"> </span><span class="o">]</span>
+<span class="nv">basicConstraints</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>CA:true
+<span class="m">1</span>.3.6.1.4.1.294.1.3<span class="o">=</span>ASN1:SEQUENCE:swrv
+<span class="m">1</span>.3.6.1.4.1.294.1.8<span class="o">=</span>ASN1:SEQUENCE:debug
+
+<span class="o">[</span><span class="w"> </span>swrv<span class="w"> </span><span class="o">]</span>
+<span class="c1"># Replace PUT-SWRV with actual SWREV SYSFW value</span>
+<span class="nv">swrv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:PUT-SWRV
+
+<span class="o">[</span><span class="w"> </span>debug<span class="w"> </span><span class="o">]</span>
+<span class="c1"># Replace PUT-DEVICE-UID with actual device UID value</span>
+<span class="nv">debugUID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT-DEVICE-UID
+<span class="c1"># Replace PUT-DBG-TYPE with actual debug type value</span>
+<span class="nv">debugType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:PUT-DBG-TYPE
+<span class="c1"># Replace PUT-NONSEC-DBG with actual non secure debug cores value</span>
+<span class="nv">coreDbgEn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:PUT-NONSEC-DBG
+<span class="c1"># Replace PUT-SEC-DBG with actual secure debug cores value</span>
+<span class="nv">coreDbgSecEn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:PUT-SEC-DBG
+</pre></div>
+</div>
+<p>This X509 config can then be signed with SMPK (private) or BMPK (private) by using the command below:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$<span class="w"> </span>openssl<span class="w"> </span>req<span class="w"> </span>-new<span class="w"> </span>-x509<span class="w"> </span>-key<span class="w"> </span>custMpk.pem<span class="w"> </span>-nodes<span class="w"> </span>-outform<span class="w"> </span>der<span class="w"> </span>-out<span class="w"> </span>debug_unlock_cert.der<span class="w"> </span>-config<span class="w"> </span>signing_config.txt<span class="w"> </span>-sha512
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The data in the <code class="docutils literal"><span class="pre">req_distinguished_name</span></code> section is random to indicate the following:</p>
+<ol class="last arabic simple">
+<li>System Firmware does not process the information in the section.</li>
+<li>The data in this section needs to be updated by the user to reflect their company name, location, email address, etc.</li>
+</ol>
+</div>
+</div>
+<div class="section" id="populating-the-fields-in-the-certificate">
+<h3><a class="toc-backref" href="#id5">Populating the fields in the certificate</a><a class="headerlink" href="#populating-the-fields-in-the-certificate" title="Permalink to this headline">¶</a></h3>
+<p>The X509 certificate format is described in <a class="reference internal" href="../2_tisci_msgs/security/sec_cert_format.html#sysfw-x509-ext-doc"><span class="std std-ref">Introduction</span></a>.</p>
+<p>System Firmware expects two X509 extensions in the debug unlock certificate.</p>
+<ol class="arabic simple">
+<li><a class="reference internal" href="../2_tisci_msgs/security/sec_cert_format.html#sysfw-debug-ext"><span class="std std-ref">System Firmware Debug Extension</span></a> - Mandatory</li>
+<li><a class="reference internal" href="../2_tisci_msgs/security/sec_cert_format.html#sysfw-swrev-ext"><span class="std std-ref">System Firmware Software Revision Extension</span></a> - Mandatory</li>
+</ol>
+<p>Below are the steps to populate the X509 extensions:</p>
+</div>
+<div class="section" id="debug-certificate-revision">
+<h3><a class="toc-backref" href="#id6">Debug Certificate Revision</a><a class="headerlink" href="#debug-certificate-revision" title="Permalink to this headline">¶</a></h3>
+<p>If you have specified a non-zero debug certificate revision in the
+<a class="reference internal" href="../3_boardcfg/BOARDCFG_SEC.html#pub-boardcfg-secure-debug-unlock"><span class="std std-ref">Secure Debug Unlock</span></a>, you must populate the
+<a class="reference internal" href="../2_tisci_msgs/security/sec_cert_format.html#sysfw-swrev-ext"><span class="std std-ref">System Firmware Software Revision Extension</span></a> in the certificate. Choose a version number
+equal to or higher than minimum specified version.</p>
+</div>
+<div class="section" id="debug-extension">
+<h3><a class="toc-backref" href="#id7">Debug Extension</a><a class="headerlink" href="#debug-extension" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p class="first">Populate the SOC UID in the extension. SOC UID can be obtained in multiple
+ways.</p>
+<ul class="simple">
+<li>Using TISCI API <a class="reference internal" href="../2_tisci_msgs/security/runtime_debug.html#get-soc-uid"><span class="std std-ref">TISCI_MSG_GET_SOC_UID</span></a></li>
+<li>Through message printed by ROM on UART port when in UART boot mode. - see <a class="reference internal" href="#sysfw-pub-sec-dbg-ug-soc-uid-over-uart"><span class="std std-ref">Retrieving the SOC UID over UART</span></a></li>
+<li>Using CCS to obtain SOC UID via JTAG - see <a class="reference internal" href="#sysfw-pub-sec-dbg-ug-soc-uid-over-jtag"><span class="std std-ref">Retrieving the SOC UID over JTAG</span></a></li>
+</ul>
+<p>If the board configuration allows a wild card jtag unlock i.e. skipping the
+SOC UID match, you can set the SOC UID to a 256 bit all zeros string.
+See example below.</p>
+<div class="code highlight-cpp"><div class="highlight"><pre><span></span><span class="n">debugUID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FORMAT</span><span class="o">:</span><span class="n">HEX</span><span class="p">,</span><span class="n">OCT</span><span class="o">:</span><span class="mo">0000000000000000000000000000000000000000000000000000000000000000</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">The <code class="docutils literal"><span class="pre">debugType</span></code> field is a combination field. It contains both the level of
+debug to be allowed at SOC level and a reserved field. Both fields are 16 bits
+wide.</p>
+<ul>
+<li><p class="first">Select debug privilege level for the table
+<a class="reference internal" href="../2_tisci_msgs/security/sec_cert_format.html#sysfw-x509-ext-doc-debug-levels-table"><span class="std std-ref">Debug Levels</span></a>.
+Encode this as a 16 bit integer.</p>
+</li>
+<li><p class="first">Set the reserved field as zero. Encode also as a 16 bit integer.</p>
+<p>Combine both of them as follows.</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>debugType = INTEGER:0xPPPPQQQQ
+</pre></div>
+</div>
+<p>where <code class="docutils literal"><span class="pre">PPPP</span></code> is the reserved field and <code class="docutils literal"><span class="pre">QQQQ</span></code> is the debug privilege level.</p>
+</li>
+</ul>
+<p>As an example, enabling full debug i.e. <code class="docutils literal"><span class="pre">DEBUG_FULL</span></code> in
+<a class="reference internal" href="../2_tisci_msgs/security/sec_cert_format.html#sysfw-x509-ext-doc-debug-levels-table"><span class="std std-ref">Debug Levels</span></a></p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>debugType = INTEGER:0x00000004
+</pre></div>
+</div>
+</li>
+<li><p class="first">The <code class="docutils literal"><span class="pre">coreDbgEn</span></code> lists the ID’s of processors for which non-secure debug is enabled.
+The processor ID’s can be obtained from the SOC specific information in this documentation.
+Processor ID’s are encoded as a string of hexadecimal values.
+Each processor ID takes a byte.</p>
+<p>E.g. For AM65x, the processor ID’s are listed in
+<a class="reference internal" href="../5_soc_doc/am65x/processors.html#soc-doc-am6-public-proc-desc-processors-list"><span class="std std-ref">AM65x Processor Descriptions</span></a>.
+If non-secure debug needs to be enabled for the following four cores on AM65x,</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="22%" />
+<col width="59%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Processor ID</th>
+<th class="head">Processor Name</th>
+<th class="head">Location in SoC</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0x20</td>
+<td>A53_CL0_C0</td>
+<td>COMPUTE_CLUSTER_MSMC0: (Cluster 0 Processor 0)</td>
+</tr>
+<tr class="row-odd"><td>0x21</td>
+<td>A53_CL0_C1</td>
+<td>COMPUTE_CLUSTER_MSMC0: (Cluster 0 Processor 1)</td>
+</tr>
+<tr class="row-even"><td>0x01</td>
+<td>R5_CL0_C0</td>
+<td>MCU_SEC_MMR0: (Cluster 0 Processor 0)</td>
+</tr>
+<tr class="row-odd"><td>0x02</td>
+<td>R5_CL0_C1</td>
+<td>MCU_SEC_MMR0: (Cluster 0 Processor 1)</td>
+</tr>
+</tbody>
+</table>
+<p>the <code class="docutils literal"><span class="pre">coreDbgEn</span></code> field is populated by concatenating the processor ID’s.</p>
+<div class="code highlight-cpp"><div class="highlight"><pre><span></span><span class="n">coreDbgEn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">INTEGER</span><span class="o">:</span><span class="mh">0x20210102</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The SoC reset enables both invasive and non-invasive debug for all
+non secure cores, so the non secure cores not listed in <code class="docutils literal"><span class="pre">coreDbgEn</span></code>
+also will be open for debug, in a case where <code class="docutils literal"><span class="pre">debugType</span></code> is set
+as one of <code class="docutils literal"><span class="pre">DEBUG_PUBLIC</span></code>, <code class="docutils literal"><span class="pre">DEBUG_PUBLIC_USER</span></code>, <code class="docutils literal"><span class="pre">DEBUG_FULL</span></code>, or
+<code class="docutils literal"><span class="pre">DEBUG_SECURE_USER</span></code>.</p>
+</div>
+<ol class="arabic" start="4">
+<li><p class="first">The <code class="docutils literal"><span class="pre">coreDbgSecEn</span></code> lists the ID’s of processors for which secure debug is enabled.
+The processor ID’s can be obtained from the SOC specific information in this documentation.
+Processor ID’s are encoded as a string of hexadecimal values.
+Each processor ID takes a byte.</p>
+<p>E.g. For AM65x, the processor ID’s are listed in
+<a class="reference internal" href="../5_soc_doc/am65x/processors.html#soc-doc-am6-public-proc-desc-processors-list"><span class="std std-ref">AM65x Processor Descriptions</span></a>
+If secure debug needs to be enabled for the following two cores on AM65x,</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="22%" />
+<col width="59%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Processor ID</th>
+<th class="head">Processor Name</th>
+<th class="head">Location in SoC</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0x22</td>
+<td>A53_CL1_C0</td>
+<td>COMPUTE_CLUSTER_MSMC0: (Cluster 1 Processor 0)</td>
+</tr>
+<tr class="row-odd"><td>0x23</td>
+<td>A53_CL1_C1</td>
+<td>COMPUTE_CLUSTER_MSMC0: (Cluster 1 Processor 1)</td>
+</tr>
+</tbody>
+</table>
+<p>the <code class="docutils literal"><span class="pre">coreSecDbgEn</span></code> field is populated by concatenating the processor ID’s.</p>
+<div class="code highlight-cpp"><div class="highlight"><pre><span></span><span class="n">coreDbgSecEn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">INTEGER</span><span class="o">:</span><span class="mh">0x2223</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="certificate-validation-done-by-sysfw">
+<h2><a class="toc-backref" href="#id8">Certificate validation done by System Firmware</a><a class="headerlink" href="#certificate-validation-done-by-sysfw" title="Permalink to this headline">¶</a></h2>
+<p>First, System Firmware expects a certificate signed with an active customer key to unlock
+the debug access to the non-M3 cores.</p>
+<p>The active customer key is:</p>
+<ol class="arabic simple">
+<li>SMPK if key revision is set to 1 in the efuses</li>
+<li>BMPK if key revision is set to 2 in the efuses</li>
+</ol>
+<p>Then, the signature of the certificate is verified, and the hash of the public key
+in the certificate is compared against the hash of the public key in the efuses.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">System Firmware proceeds to the next steps only if the signature is verified and the
+public key hashes match.</p>
+</div>
+<p>Next, System Firmware looks for the <a class="reference internal" href="../2_tisci_msgs/security/sec_cert_format.html#sysfw-debug-ext"><span class="std std-ref">System Firmware Debug Extension</span></a> and <a class="reference internal" href="../2_tisci_msgs/security/sec_cert_format.html#sysfw-swrev-ext"><span class="std std-ref">System Firmware Software Revision Extension</span></a> in
+the X509 certificate.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">If any one of the two X509 extensions is not present, further processing does not
+happen.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The remaining X509 extensions are ignored by System Firmware when processing the debug
+certificate.</p>
+</div>
+<p>Afterwards, System Firmware validates the information passed in the <a class="reference internal" href="../2_tisci_msgs/security/sec_cert_format.html#sysfw-debug-ext"><span class="std std-ref">System Firmware Debug Extension</span></a>
+and <a class="reference internal" href="../2_tisci_msgs/security/sec_cert_format.html#sysfw-swrev-ext"><span class="std std-ref">System Firmware Software Revision Extension</span></a> by doing the following:</p>
+<ol class="arabic simple">
+<li>The certificate revision of the debug certificate must be greater than or equal to
+the value specified by the <code class="docutils literal"><span class="pre">min_cert_rev</span></code> field in <a class="reference internal" href="../3_boardcfg/BOARDCFG_SEC.html#pub-boardcfg-secure-debug-unlock"><span class="std std-ref">Secure Debug Unlock</span></a>.</li>
+<li>The UID passed in the debug extension is checked against the SOC UID.
+The UID’s must match unless otherwise specified in the board configuration.
+See the field <code class="docutils literal"><span class="pre">allow_wildcard_unlock</span></code> in <a class="reference internal" href="../3_boardcfg/BOARDCFG_SEC.html#pub-boardcfg-secure-debug-unlock"><span class="std std-ref">Secure Debug Unlock</span></a>.</li>
+<li>System Firmware checks that the values specified for <code class="docutils literal"><span class="pre">debug_priv_level</span></code> are valid.</li>
+<li>System Firmware verifies that the processor ID’s specified in the fields
+<code class="docutils literal"><span class="pre">coreDbgEn</span></code> and <code class="docutils literal"><span class="pre">coreDbgSecEn</span></code> are valid, and that the cores in <code class="docutils literal"><span class="pre">coreDbgSecEn</span></code>
+actually support secure debug.</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><code class="docutils literal"><span class="pre">coreDbgSecEn</span></code> lists which cores need to have secure level debug enabled.
+<code class="docutils literal"><span class="pre">coreDbgEn</span></code> lists which cores need to have non-secure level debug enabled.</p>
+</div>
+<p>Once these checks pass, System Firmware performs the actual debug unlock operation.</p>
+</div>
+<div class="section" id="sending-debug-certificate-to-sysfw">
+<h2><a class="toc-backref" href="#id9">Sending debug certificate to System Firmware</a><a class="headerlink" href="#sending-debug-certificate-to-sysfw" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="using-tisci-api">
+<h3><a class="toc-backref" href="#id10">Using TISCI API</a><a class="headerlink" href="#using-tisci-api" title="Permalink to this headline">¶</a></h3>
+<p>The debug unlock certificate can be supplied to System Firmware via the
+<a class="reference internal" href="../2_tisci_msgs/security/runtime_debug.html#open-debug-fwls"><span class="std std-ref">TISCI_MSG_OPEN_DEBUG_FWLS - Open Debug Firewalls</span></a> message. The debug unlock certificate must first be
+placed in memory. The physical address of the certificate is passed as a part of
+the TISCI message. System Firmware validates the certificate and its contents. If the
+checks pass, System Firmware performs debug unlock.</p>
+<p>This procedure can be used when if JTAG debugger is unable to supply the unlock
+certificate over the JTAG interface.</p>
+</div>
+<div class="section" id="over-the-jtag-interface">
+<span id="sysfw-pub-sec-dbg-ug-over-jtag"></span><h3><a class="toc-backref" href="#id11">Over the JTAG interface</a><a class="headerlink" href="#over-the-jtag-interface" title="Permalink to this headline">¶</a></h3>
+<p>The debug unlock certificate can be provided to System Firmware over the JTAG interface.
+Even though the JTAG access to the cores on the device is locked, the host PC
+can read write to the Secure Access Point (Sec-AP) via the JTAG interface.
+The debug unlock certificate must be supplied to System Firmware via Sec-AP for processing.
+System Firmware processes the certificate, unlocks the JTAG and reports the JTAG unlock
+status. At this point, the host PC can debug the unlocked cores in the same manner as
+a GP device.</p>
+<p>The protocol for communication via the Sec-AP is described in
+<a class="reference internal" href="../2_tisci_msgs/security/sec_ap_data_transfer.html"><span class="doc">Secure AP Command Interface</span></a>. This data transfer protocol
+is also supported in TI Code Composer Studio(CCS). We will describe how to use
+CCS to unlock the JTAG. The required CCS version is CCS 9.3 or later.
+Normally it would suffice to have a version of CCS that supports the
+device you are using.</p>
+<ol class="arabic">
+<li><p class="first">Create a target configuration file for the HS EVM in CCS and launch the target
+configuration file. This will create a file <code class="docutils literal"><span class="pre">ccBoard0.dat</span></code> which we will use
+in later steps. You will not be able to connect to any cores on the device in this
+step.</p>
+</li>
+<li><p class="first">The file <code class="docutils literal"><span class="pre">ccBoard0.dat</span></code> is typically found in the following directories.</p>
+<ul class="simple">
+<li>on Linux, <code class="docutils literal"><span class="pre">~/.ti/&lt;ccs_version&gt;/0/0/BrdDat/ccBoard0.dat</span></code></li>
+<li>on Windows, <code class="docutils literal"><span class="pre">C:\Users\&lt;user&gt;\AppData\Local\Texas</span> <span class="pre">Instruments\CCS\&lt;ccs_version&gt;\0\0\BrdDat\ccBoard0.dat</span></code></li>
+</ul>
+</li>
+<li><p class="first">Find the “uscif” folder in CCS installation. This is typically in the
+following path <code class="docutils literal"><span class="pre">&lt;ccs</span> <span class="pre">install&gt;/ccs/ccs_base/common/uscif</span></code>. This folder will
+contain the <code class="docutils literal"><span class="pre">dbgauth</span></code> executable (<code class="docutils literal"><span class="pre">dbgauth.exe</span></code> on windows).</p>
+</li>
+<li><p class="first">Verify K3 support by running</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$<span class="w"> </span>./dbgauth<span class="w"> </span>--help
+...
+<span class="w">    </span>--mode<span class="w"> </span><span class="nv">3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>SUPPORTED<span class="w"> </span>TARGETS:<span class="w"> </span>All<span class="w"> </span>Keystone<span class="w"> </span><span class="m">3</span><span class="w"> </span>devices
+...
+</pre></div>
+</div>
+<p>The output must include the above description for “mode 3”.
+Older versions of EMUPACK included AM65x as the supported targets
+for mode 3.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="performing-jtag-unlock">
+<h2><a class="toc-backref" href="#id12">Performing JTAG unlock</a><a class="headerlink" href="#performing-jtag-unlock" title="Permalink to this headline">¶</a></h2>
+<p>To unlock the JTAG, use the <code class="docutils literal"><span class="pre">unlock</span></code> command of <code class="docutils literal"><span class="pre">dbgauth</span></code> tool. We are
+assuming that ccs version is <code class="docutils literal"><span class="pre">ccs1010</span></code>.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/opt/ti/ccs1010/ccs/ccs_base/common/uscif<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+
+$<span class="w"> </span>./dbgauth<span class="w"> </span>-c<span class="w"> </span>~/.ti/ccs1010/0/0/BrdDat/ccBoard0.dat<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>-x<span class="w"> </span>xds110<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>-s<span class="w"> </span>cs_dap_0<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>-o<span class="w"> </span>unlock<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>-m<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>-f<span class="w"> </span>~/debug_unlock_cert.der
+Using<span class="w"> </span>board<span class="w"> </span>config<span class="w"> </span>file:
+/home/user/.ti/ccs1010/0/0/BrdDat/ccBoard0.dat
+Successfully<span class="w"> </span>opened<span class="w"> </span>certificate<span class="w"> </span>file<span class="w"> </span>/home/user/debug_unlock_cert.der
+Read<span class="w"> </span><span class="m">1509</span><span class="w"> </span>bytes<span class="w"> </span>from<span class="w"> </span>certificate<span class="w"> </span>file<span class="w"> </span>/home/user/debug_unlock_cert.der
+The<span class="w"> </span>target<span class="w"> </span>device<span class="w"> </span>is<span class="w"> </span>unlocked.
+</pre></div>
+</div>
+<p>Please read the help of <code class="docutils literal"><span class="pre">dbgauth</span></code> for command line options.</p>
+<ol class="arabic">
+<li><p class="first">The argument to <code class="docutils literal"><span class="pre">-x</span></code> flag depends on the debugger used.</p>
+</li>
+<li><p class="first">The argument to <code class="docutils literal"><span class="pre">-s</span></code> flag depends on the board. This can be determined from
+the <code class="docutils literal"><span class="pre">ccBoard0.dat</span></code> file. Open <code class="docutils literal"><span class="pre">ccBoard0.data</span></code> with a text editor and look
+for similar line in the file. The identifier at the start of the line e.g.
+<code class="docutils literal"><span class="pre">cs_dap_0</span></code> indicates the name to be used as argument.</p>
+<div class="highlight-text"><div class="highlight"><pre><span></span>...
+@ cs_dap_0 family=cs_dap irbits=4 drbits=1 subpaths=15 identify=0 revision=Power-AP systemresetwhileconnected=1
+...
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="retrieveing-soc-uid">
+<h2><a class="toc-backref" href="#id13">Retrieveing SOC UID</a><a class="headerlink" href="#retrieveing-soc-uid" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="retrieving-the-soc-uid-over-jtag">
+<span id="sysfw-pub-sec-dbg-ug-soc-uid-over-jtag"></span><h3><a class="toc-backref" href="#id14">Retrieving the SOC UID over JTAG</a><a class="headerlink" href="#retrieving-the-soc-uid-over-jtag" title="Permalink to this headline">¶</a></h3>
+<p>To retrieve the SOC UID, use the <code class="docutils literal"><span class="pre">getuid</span></code> command of <code class="docutils literal"><span class="pre">dbgauth</span></code> tool. We are
+assuming that ccs version is <code class="docutils literal"><span class="pre">ccs1010</span></code>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The commands below are shown for Linux. They need to be modified according to
+path name conventions of other operating systems.</p>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/opt/ti/ccs1010/ccs/ccs_base/common/uscif<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+
+$<span class="w"> </span>./dbgauth<span class="w"> </span>-c<span class="w"> </span>~/.ti/ccs1010/0/0/BrdDat/ccBoard0.dat<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>-x<span class="w"> </span>xds110<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>-s<span class="w"> </span>cs_dap_0<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>-o<span class="w"> </span>getuid<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>-m<span class="w"> </span><span class="m">3</span>
+Using<span class="w"> </span>board<span class="w"> </span>config<span class="w"> </span>file:
+/home/user/.ti/ccs1010/0/0/BrdDat/ccBoard0.dat
+
+<span class="nv">UID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>c89491b8edad0fb3a5f201ec4caff17bcde0ed5ac845b17da14e0749da22d4cb
+</pre></div>
+</div>
+<p>The retrieved UID can be populated into the debug certificate in the below manner.</p>
+<blockquote>
+<div><div class="highlight-none"><div class="highlight"><pre><span></span>debugUID = FORMAT:HEX,OCT:c89491b8edad0fb3a5f201ec4caff17bcde0ed5ac845b17da14e0749da22d4cb
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="retrieving-the-soc-uid-over-uart">
+<span id="sysfw-pub-sec-dbg-ug-soc-uid-over-uart"></span><h3><a class="toc-backref" href="#id15">Retrieving the SOC UID over UART</a><a class="headerlink" href="#retrieving-the-soc-uid-over-uart" title="Permalink to this headline">¶</a></h3>
+<p>When the device is in UART boot mode, ROM prints the SOC information including
+the SOC ID on the boot UART. The last 32 bytes i.e. 64 characters before the
+start of the UART boot character ‘CC’ contain the SOC ID.</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>02000000011a00006a37657300000000
+00000000485353450200010002000100
+02a6000001000200cffc17b20bcbf96a
+8c712e8d732b48c3e09ac6c0951013ce
+a93e069d2ccdac95420cca9c5f637a80
+0bb88ba99d3a8b1d92075c67bcc047d2
+15de4a0d4ee20fd61f6002b07cd9b0b7
+c47d9ca8d1aae57b8e8784a12f636b2b
+760d7d98a18f189760dfd0f23e2b0cb1
+0ec7edc7c6edac3d9bdfefe0eddc3fff
+7fe9ad875195527dc89491b8edad0fb3
+a5f201ec4caff17bcde0ed5ac845b17d
+a14e0749da22d4cb
+CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+</pre></div>
+</div>
+<p>The above shows the UART output formatted to 32 characters per line.
+The characters corresponding to SOC data are</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>                c89491b8edad0fb3
+a5f201ec4caff17bcde0ed5ac845b17d
+a14e0749da22d4cb
+</pre></div>
+</div>
+</div>
+<div class="section" id="retrieving-the-soc-uid-via-tisci">
+<h3><a class="toc-backref" href="#id16">Retrieving the SOC UID via TISCI</a><a class="headerlink" href="#retrieving-the-soc-uid-via-tisci" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference internal" href="../2_tisci_msgs/security/runtime_debug.html#get-soc-uid"><span class="std std-ref">TISCI_MSG_GET_SOC_UID</span></a> API can be used to retrieve the
+SOC UID to print for reference:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>SOC_UID[0] = 0xB89194C8
+SOC_UID[1] = 0xB30FADED
+SOC_UID[2] = 0xEC01F2A5
+SOC_UID[3] = 0x7BF1AF4C
+SOC_UID[4] = 0x5AEDE0CD
+SOC_UID[5] = 0x7DB145C8
+SOC_UID[6] = 0x49074EA1
+SOC_UID[7] = 0xCBD422DA
+</pre></div>
+</div>
+<p>Please note that the data is formatted in little endian fashion and
+bytes inside individual words need to be reordered before populating
+the debugUID field in the certificate. Alternative is to cast the response
+payload to a byte array before printing to view the values in byte order.</p>
+</div>
+</div>
+<div class="section" id="controlling-debug-via-board-configuration">
+<h2><a class="toc-backref" href="#id17">Controlling Debug via Board Configuration</a><a class="headerlink" href="#controlling-debug-via-board-configuration" title="Permalink to this headline">¶</a></h2>
+<p>Security board configuration allows the user to control the JTAG unlock process. See
+<a class="reference internal" href="../3_boardcfg/BOARDCFG_SEC.html#pub-boardcfg-secure-debug-unlock"><span class="std std-ref">Secure Debug Unlock</span></a> for the data structure definition.</p>
+<ol class="arabic">
+<li><p class="first">By setting <code class="docutils literal"><span class="pre">allow_jtag_unlock</span></code> to 0, runtime JTAG unlock through System Firmware
+can be prevented. The JTAG cannot be unlocked using the TISCI API or through
+the Sec-AP once System Firmware is running.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Please note that JTAG connection for R5 can still be unlocked by including
+the ROM debug X509 extension in the R5 boot loader X509 certificate.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The rest of this section only applies in <code class="docutils literal"><span class="pre">allow_jtag_unlock</span></code> is set to
+<code class="docutils literal"><span class="pre">0x5A</span></code>.</p>
+</div>
+</li>
+<li><p class="first">Setting <code class="docutils literal"><span class="pre">allow_wildcard_unlock</span></code> skips matching the UID in the debug unlock
+certificate with the SOC UID. All the remaining checks should pass. This
+option allows using a single debug unlock certificate across multiple devices
+sharing the same root of trust keys (SMPK/BMPK).</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">While wildcard unlock is convenient during development, it must not used
+during production. Please avoid creating a wildcard debug unlock
+certificate with production keys.</p>
+</div>
+</li>
+<li><p class="first">Use <code class="docutils literal"><span class="pre">min_cert_rev</span></code> to prevent older debug unlock certificates from being used.
+Set this to <cite>0</cite> in development and increment it before production.</p>
+</li>
+<li><p class="first">While System Firmware allows debug unlock to be performed by one of the hosts on the device
+through a TISCI message, this path can be disabled as well. Set the <code class="docutils literal"><span class="pre">jtag_unlock_hosts</span></code>
+array to all zeroes to prevent jtag unlock using the TISCI message. Alternatively you
+can limit the hosts that can unlock debug to a specific hosts. Any host can be allowed
+to unlock the jtag port by using a special host id. Please refer to
+<a class="reference internal" href="../3_boardcfg/BOARDCFG_SEC.html#pub-boardcfg-secure-debug-unlock"><span class="std std-ref">Secure Debug Unlock</span></a>.</p>
+</li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="key_writer.html" class="btn btn-neutral float-right" title="Key Writer" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="security_handover.html" class="btn btn-neutral" title="Performing Security Handover" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyright 2016-2024</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'09.02.04',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+
+        $('body').on("mousewheel", function () {
+            // Remove default behavior
+            event.preventDefault();
+            // Scroll without smoothing
+            var wheelDelta = event.wheelDelta;
+            var currentScrollPosition = window.pageYOffset;
+            window.scrollTo(0, currentScrollPosition - wheelDelta);
+        });
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+
+Welcome to minicom 2.7.1                                                                                                                    
+                                                                                                                                            
+OPTIONS: I18n                                                                                                                               
+Compiled on Dec 23 2019, 02:06:26.                                                                                                          
+Port /dev/ttyUSB1, 19:36:16                                                                                                                 
+                                                                                                                                            
+Press CTRL-A Z for help on special keys                                                                                                     
+                                                                                                                                            
+01000000011a00006a3761657000000000000000475020200008010000080100C1.00.10.01 (Jun 29 2023 - 13:38:40)                                        
+Waiting for tifs.bin ...                                                                                                                    
+CCCTIFS  ver: 9.0.6--v09.00.06 (Kool Koala)                                                                                                 
+Waiting for multicore app ...                                                                                                               
+CCCCCCCCCst Application                                                                                                                     
+Test Name: POK API POSITIVE TEST  PASSED                                                                                                    
+Test Name: POK API NEGATIVE TEST  PASSED                                                                                                    
+Test Name: POK Ip_NEGATIVE TEST  PASSED                                                                                                     
+Test Name: POK Ip_POSITIVE TEST  PASSED                                                                                                     
+                                                                                                                                            
+ All tests have passed.                                                                                                                     
+/home/gtbldadm/nightlybuilds/SDL_J784S4_BUILD/328-2023-07-06_05-27-05/workarea/sdl/test/pok/pokUt/test_main.c:200:test_sdl_pok_baremetal_test_app:PASS
+                                                                                                                                            
+-----------------------                                                                                                                     
+1 Tests 0 Failures 0 Ignored                                                                                                                
+OK                                                                                                                                          
+                                                                                                                                            
+         

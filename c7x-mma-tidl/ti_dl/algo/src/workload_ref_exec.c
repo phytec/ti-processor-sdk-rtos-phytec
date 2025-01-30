@@ -1,0 +1,759 @@
+/*
+*
+* Copyright (c) {2015 - 2022} Texas Instruments Incorporated
+*
+* All rights reserved not granted herein.
+*
+* Limited License.
+*
+* Texas Instruments Incorporated grants a world-wide, royalty-free, non-exclusive
+* license under copyrights and patents it now or hereafter owns or controls to make,
+* have made, use, import, offer to sell and sell ("Utilize") this software subject to the
+* terms herein.  With respect to the foregoing patent license, such license is granted
+* solely to the extent that any such patent is necessary to Utilize the software alone.
+* The patent license shall not apply to any combinations which include this software,
+* other than combinations with devices manufactured by or for TI ("TI Devices").
+* No hardware patent is licensed hereunder.
+*
+* Redistributions must preserve existing copyright notices and reproduce this license
+* (including the above copyright notice and the disclaimer and (if applicable) source
+* code license limitations below) in the documentation and/or other materials provided
+* with the distribution
+*
+* Redistribution and use in binary form, without modification, are permitted provided
+* that the following conditions are met:
+*
+* *       No reverse engineering, decompilation, or disassembly of this software is
+* permitted with respect to any software provided in binary form.
+*
+* *       any redistribution and use are licensed by TI for use only with TI Devices.
+*
+* *       Nothing shall obligate TI to provide you with source code for the software
+* licensed and provided to you in object code.
+*
+* If software source code is provided to you, modification and redistribution of the
+* source code are permitted provided that the following conditions are met:
+*
+* *       any redistribution and use of the source code, including any resulting derivative
+* works, are licensed by TI for use only with TI Devices.
+*
+* *       any redistribution and use of any object code compiled from the source code
+* and any resulting derivative works, are licensed by TI for use only with TI Devices.
+*
+* Neither the name of Texas Instruments Incorporated nor the names of its suppliers
+*
+* may be used to endorse or promote products derived from this software without
+* specific prior written permission.
+*
+* DISCLAIMER.
+*
+* THIS SOFTWARE IS PROVIDED BY TI AND TI'S LICENSORS "AS IS" AND ANY EXPRESS
+* OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+* OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+* IN NO EVENT SHALL TI AND TI'S LICENSORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+* INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+* BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+* DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+* OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+* OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+* OF THE POSSIBILITY OF SUCH DAMAGE.
+*
+*/
+
+/**
+----------------------------------------------------------------------------
+@file    workload_ref_exec.c
+@brief   This file contains workload reference flow implementation
+@version 0.1 (Oct 2022) : Initial version [ADK]
+----------------------------------------------------------------------------
+*/
+
+#include "tidl_alg_int.h"
+#include "tidl_types.h"
+#include "tidl_layer.h"
+#include "tidl_function_mapping.h"
+#include "workload_ref_exec.h"
+#include "tidl_priv_algo.h"
+#include "gc.h"
+#include "gc_helper.h"
+
+/* ========================================================================== */
+/*                           Macros & Typedefs                                */
+/* ========================================================================== */
+
+#define WORKLOAD_REF_CONTEXT_STR           (0)
+#define WORKLOAD_REF_CONTEXT_RSTR          (1)
+#define WORKLOAD_REF_BUF_NOT_FOUND         (-1)
+#define TIDL_ALG_INPUT                     (0)
+#define TIDL_ALG_OUTPUT                    (1)
+
+/* ========================================================================== */
+/*                         Static Function Declarations                       */
+/* ========================================================================== */
+
+static int32_t WorkloadRefExec_getIndexFromDataId(int32_t dataId, int32_t dataIdArr[], int32_t numDataId)
+{
+  int32_t arrIdx = WORKLOAD_REF_BUF_NOT_FOUND;
+
+  for (int32_t i = 0; i < numDataId; i++)
+  {
+    if (dataId == dataIdArr[i])
+    {
+      arrIdx = i;
+      goto End;
+    }
+  }
+End:
+  assert(arrIdx != WORKLOAD_REF_BUF_NOT_FOUND);
+  return arrIdx;
+}
+
+static int32_t WorkloadRefExec_getValidOffset(const sTIDL_DataParams_t *dataParams,
+                          const sTIDL_Layer_t    * TIDLLayer,
+                          const sTIDL_AlgLayer_t * algLayer)
+{
+  int32_t offset = 0;
+  int32_t padR_h = 0;
+  int32_t padR_w = 0;
+  int32_t i = 0, j = 0;
+  int32_t isNetInOut = -1;
+
+  while (isNetInOut == -1)
+  {
+    int32_t dataIdNum[] = {TIDLLayer->numInBufs, TIDLLayer->numOutBufs};
+    for (j = 0; j < dataIdNum[i]; j++)
+    {
+      if (TIDLLayer->inData[j] == dataParams->dataId)
+      {
+        isNetInOut = (i == 0) ? TIDL_ALG_INPUT : TIDL_ALG_OUTPUT;
+        break;
+      }
+    }
+    i++;
+  }
+
+  if (algLayer->gcHelperHandle == NULL)
+  {
+    if (isNetInOut == TIDL_ALG_INPUT)
+    {
+      if(TIDLLayer->layerType == TIDL_ConvolutionLayer)
+      {
+        padR_h = TIDLLayer->layerParams.convParams.padH;
+        padR_w = TIDLLayer->layerParams.convParams.padW;
+      }
+      else if(TIDLLayer->layerType == TIDL_Deconv2DLayer)
+      {
+        padR_h = TIDLLayer->layerParams.convParams.padH;
+        padR_w = TIDLLayer->layerParams.convParams.padW;
+      }
+      else if(TIDLLayer->layerType == TIDL_PoolingLayer)
+      {
+        padR_h = TIDLLayer->layerParams.poolParams.padH;
+        padR_w = TIDLLayer->layerParams.poolParams.padW;
+      }
+      else if ((TIDLLayer->layerType == TIDL_ResizeLayer))
+      {
+        padR_h = 1;
+        padR_w = 1; //Need to relook this kernel. Looks like the pointers are weird
+      }
+
+      offset = ((dataParams->padH - padR_h) * dataParams->pitch[TIDL_LINE_PITCH]) + (dataParams->padW - padR_w);
+
+      if ((TIDLLayer->layerType == TIDL_ConvolutionLayer) && (TIDLLayer->strideOffsetMethod != TIDL_StrideOffsetTopLeft))
+      {
+        int32_t inWidth  = dataParams->dimValues[TIDL_DIM_WIDTH];
+        int32_t inHeight = dataParams->dimValues[TIDL_DIM_HEIGHT];
+        /* Line 94 : /tensorflow/core/kernels/quantized_conv_ops.cc*/
+        int32_t coeffsWidth   = TIDLLayer->layerParams.convParams.kernelW;
+        int32_t coeffsHeight  = TIDLLayer->layerParams.convParams.kernelH;
+        int32_t strideWidth   = TIDLLayer->layerParams.convParams.strideW;
+        int32_t strideHeight  = TIDLLayer->layerParams.convParams.strideH;
+        int32_t dilationWidth = TIDLLayer->layerParams.convParams.dilationW;
+        int32_t dilationHeight = TIDLLayer->layerParams.convParams.dilationH;
+        int32_t effectiveKw   = ((coeffsWidth - 1) * dilationWidth ) + 1;
+        int32_t effectiveKh   = ((coeffsHeight - 1)* dilationHeight) + 1;
+        int32_t filter_left_offset =
+          (((TIDLLayer->outData.dimValues[TIDL_DIM_WIDTH] - 1) * strideWidth )+ (effectiveKw - inWidth)) / 2;
+        int32_t filter_top_offset =
+          (((TIDLLayer->outData.dimValues[TIDL_DIM_HEIGHT] - 1) * strideHeight) + (effectiveKh - inHeight)) / 2;
+
+        offset = offset + (((effectiveKh / 2) * dataParams->pitch[TIDL_LINE_PITCH] )+ (effectiveKw / 2));
+        offset = offset - ((filter_top_offset * dataParams->pitch[TIDL_LINE_PITCH]) + filter_left_offset);
+      }
+    }
+    else if (isNetInOut == TIDL_ALG_OUTPUT)
+    {
+      offset = ((dataParams->padH)*dataParams->pitch[TIDL_LINE_PITCH]) + (dataParams->padW);
+    }
+  }
+
+  return offset;
+}
+
+static inline void WorkloadRefExec_getPtrsFromWorkload(TIDL_NetworkCommonParams *commonParams,
+                                                sWorkloadUnit_t *workloadUnit,
+                                                sTIDL_AlgLayer_t *algLayer,
+                                                sTIDL_Layer_t *tidlLayer,
+                                                void *inPtrs[],
+                                                void *outPtrs[])
+{
+  int32_t linkIdx  = 0;
+  int32_t jointIdx = 0;
+
+  const sGCHelperHandle   *gcHelperHandle   = algLayer->gcHelperHandle;
+  void * refInPtrs[TIDL_NUM_IN_BUFS] = {0};
+  void * refOutPtrs[TIDL_NUM_OUT_BUFS] = {0};
+
+  for (linkIdx = 0; linkIdx < workloadUnit->numLinks; linkIdx++)
+  {
+    sLink_t *link = getLinkPtr(workloadUnit, NOT_VALID, linkIdx);
+
+    for (jointIdx = 0; jointIdx < (link->numSrc + 1); jointIdx++)
+    {
+      const sJoint_t *joint;
+      const sBufParams_t *bufParams;
+
+      if (jointIdx == link->numSrc)
+      {
+        joint = &link->sink;
+      }
+      else
+      {
+        joint = &link->src[jointIdx];
+      }
+
+      bufParams = getBufParamsFromBufIndex(gcHelperHandle, joint->bufDBindex);
+
+      if ((bufParams->type == BUF_FM_FULL) &&
+          (!((link->subType == LINK_X_FM_CTXT_ST) || (link->subType == LINK_X_FM_CTXT_RST) || (link->subType == LINK_X_FM_CTXT_ACROSS_CORE)) ))
+      {
+        int32_t arrIdx;
+        sMetaDataID_t pMetaDataID;
+        void **ptrToArrMem;
+        void *gcPtr;
+
+        int32_t elemSize = getByteCnt(bufParams->dataType);
+        getMetaDataID(bufParams->dataId, &pMetaDataID);
+
+        gcPtr = TIDL_getPointerFromGC(joint, gcHelperHandle, commonParams->tidlCommonParams->sysScratchPtr);
+
+        if (jointIdx < link->numSrc)
+        {
+          arrIdx = WorkloadRefExec_getIndexFromDataId(pMetaDataID.layerId, tidlLayer->inData, tidlLayer->numInBufs);
+          ptrToArrMem = &refInPtrs[arrIdx];
+          if ((gcPtr == NULL) || ((commonParams->createParams->flowCtrl & TIDL_FLOW_CTRL_REF_ONLY) == TIDL_FLOW_CTRL_REF_ONLY))
+          {
+            gcPtr = (uint8_t *)inPtrs[arrIdx] + (joint->offset * elemSize);
+          }
+        }
+        else
+        {
+          arrIdx = WorkloadRefExec_getIndexFromDataId(pMetaDataID.layerId, &tidlLayer->outData.dataId, tidlLayer->numOutBufs);
+          ptrToArrMem = &refOutPtrs[arrIdx];
+          if (gcPtr == NULL)
+          {
+            gcPtr = (uint8_t *)outPtrs[arrIdx] + (joint->offset * elemSize);
+          }
+        }
+
+        gcPtr = (uint8_t *)gcPtr + (joint->superOffset * (algLayer->wlRepeatIter * elemSize));
+
+       if (((uintptr_t)gcPtr < (uintptr_t)(*ptrToArrMem)) || ((*ptrToArrMem) == NULL))
+        {
+          *ptrToArrMem = gcPtr;
+        }
+      }
+    }
+  }
+
+  memcpy(inPtrs , refInPtrs , sizeof(refInPtrs[0] ) * TIDL_NUM_IN_BUFS );
+  memcpy(outPtrs, refOutPtrs, sizeof(refOutPtrs[0]) * TIDL_NUM_OUT_BUFS);
+}
+
+static inline void WorkloadRefExec_getPtrsFromTIDL(TIDL_NetworkCommonParams *commonParams,
+                                                sWorkloadUnit_t *workloadUnit,
+                                                sTIDL_AlgLayer_t *algLayer,
+                                                sTIDL_Layer_t *tidlLayer,
+                                                void *inPtrs[],
+                                                void *outPtrs[])
+{
+  int32_t bufIdx = 0;
+  int32_t elemSize = 0;
+  sTIDL_DataParams_t * dataParams;
+
+  for (bufIdx = 0; bufIdx < tidlLayer->numInBufs; bufIdx++)
+  {
+    dataParams = TIDL_getDataParams(commonParams->createParams->net, tidlLayer->inData[bufIdx]);
+    elemSize   = TIDL_getDatElementSize(dataParams->elementType);
+    inPtrs[bufIdx] = (void *)((uint8_t *)inPtrs[bufIdx] + (WorkloadRefExec_getValidOffset(dataParams, tidlLayer, algLayer) * elemSize));
+  }
+
+  dataParams = &tidlLayer->outData;
+  elemSize   = TIDL_getDatElementSize(dataParams->elementType);
+  outPtrs[0] = (void *)((uint8_t *)outPtrs[0] + (WorkloadRefExec_getValidOffset(dataParams, tidlLayer, algLayer) * elemSize));
+}
+
+void WorkloadRefExec_getPtrs(TIDL_NetworkCommonParams *commonParams,
+                            sWorkloadUnit_t *workloadUnit,
+                            sTIDL_AlgLayer_t *algLayer,
+                            sTIDL_Layer_t *tidlLayer,
+                            void *inPtrs[],
+                            void *outPtrs[],
+                            void *refInPtrs[],
+                            void *refOutPtrs[])
+{
+  int32_t isGcSupportAvailable = 0;
+
+  if(workloadUnit != NULL)
+  {
+    if((tidlLayer->layerType != TIDL_DetectionOutputLayer) &&
+        (tidlLayer->layerType != TIDL_CustomLayer) &&
+        (tidlLayer->layerType != TIDL_ScatterElementsLayer))
+    {
+      isGcSupportAvailable = 1;
+    }
+  }
+
+  /* Detection output layer and custom layer internally handles offsets and only takes input pointers from GC */
+  if (tidlLayer->layerType != TIDL_CustomLayer)
+  {
+    if (isGcSupportAvailable == 1)
+    {
+      WorkloadRefExec_getPtrsFromWorkload(commonParams, workloadUnit, algLayer, tidlLayer, refInPtrs, refOutPtrs);
+    }
+    else
+    {
+      WorkloadRefExec_getPtrsFromTIDL(commonParams, workloadUnit, algLayer, tidlLayer, refInPtrs, refOutPtrs);
+    }
+  }
+}
+
+void WorkloadRefExec_getRefParams(WorkloadRefExec_RefExecParams *wlRefParams,
+                                TIDL_CreateParams *createParams,
+                                sWorkloadUnit_t *workloadUnit,
+                                sTIDL_Layer_t * tidlLayer,
+                                sTIDL_AlgLayer_t * algLayer)
+{
+  const sGCHelperHandle   *gcHelperHandle = algLayer->gcHelperHandle;
+  int32_t wlRepeatIter = algLayer->wlRepeatIter;
+
+  memset(wlRefParams, 0, sizeof(*wlRefParams));
+
+  for(int32_t inBuf = 0; inBuf < tidlLayer->numInBufs; inBuf++)
+  {
+    sTIDL_DataParams_t *dataParams = &createParams->net->TIDLLayers[algLayer->inLayerIdx[inBuf]].outData;
+    wlRefParams->origInHeight[inBuf] = dataParams->dimValues[TIDL_DIM_HEIGHT];
+    wlRefParams->origInChPitch[inBuf] = dataParams->pitch[TIDL_CHANNEL_PITCH];
+  }
+  wlRefParams->origOutHeight = tidlLayer->outData.dimValues[TIDL_DIM_HEIGHT];
+  wlRefParams->outTileHeight = tidlLayer->outData.dimValues[TIDL_DIM_HEIGHT];
+  wlRefParams->origOutChPitch = tidlLayer->outData.pitch[TIDL_CHANNEL_PITCH];
+
+  if ((workloadUnit != NULL) && (gcHelperHandle != NULL))
+  {
+    sWLMetaDataID_t wlMetaData;
+    getWLMetaDataID(workloadUnit->metadata, &wlMetaData);
+    int32_t multiCoreCtxCopyLinkIdx = 0;
+
+    for (int32_t linkIdx = 0; linkIdx < workloadUnit->numLinks; linkIdx++)
+    {
+      sLink_t *link = getLinkPtr(workloadUnit, NOT_VALID, linkIdx);
+      if(link->subType == LINK_X_FM_CTXT_ST)
+      {
+        wlRefParams->ctxtStrLink = link;
+      }
+      else if (link->subType == LINK_X_FM_CTXT_RST)
+      {
+        // Restore doesn't happen for the first normal tile when there is not first tile
+        if (!((wlMetaData.passiveLinkIndex != NOT_VALID) && (wlMetaData.tileType == NORMAL_TILE) && (wlRepeatIter == 0)))
+        {
+          wlRefParams->ctxtRstrLink = link;
+        }
+      }
+      else if (link->subType == LINK_X_FM_CTXT_ACROSS_CORE)
+      {
+        wlRefParams->multiCoreCtxCopyLink[multiCoreCtxCopyLinkIdx]  = link;
+        multiCoreCtxCopyLinkIdx++;
+      }
+    }
+
+    wlRefParams->outTileHeight = wlMetaData.outTileHeight;
+    wlRefParams->procType = algLayer->procType;
+  }
+}
+
+void WorkloadRefExec_strRstrContext(TIDL_Handle algHandle,
+                                    WorkloadRefExec_RefExecParams *wlRefParams,
+                                    int32_t wlIter,
+                                    sWorkloadUnit_t        * workloadUnit,
+                                    int32_t* multiCoreCtxtLinkIndex,
+                                    int32_t trigContext)
+{
+  if((wlRefParams->ctxtRstrLink != NULL) && (trigContext == TIDL_CONTEXT_RSTR))
+  {
+    uint8_t*  contextPtr = (uint8_t*) TIDL_getPointerFromGC(&wlRefParams->ctxtRstrLink->src[0], algHandle->gcHelperHandle, &algHandle->sysScratchPtr);
+    uint8_t*  rstrPtr    = (uint8_t*) TIDL_getPointerFromGC(&wlRefParams->ctxtRstrLink->sink, algHandle->gcHelperHandle, &algHandle->sysScratchPtr);
+
+    int32_t elemSize = getByteCnt(getBufParamsFromBufIndex(algHandle->gcHelperHandle, wlRefParams->ctxtRstrLink->sink.bufDBindex)->dataType);
+
+    TIDL_memcpy2D(rstrPtr,
+              contextPtr,
+              wlRefParams->ctxtRstrLink->src[0].flowCnt[FLOW_PIPELINE][0] * elemSize,
+              wlRefParams->ctxtRstrLink->src[0].flowCnt[FLOW_PIPELINE][1],
+              wlRefParams->ctxtRstrLink->sink.flowDim[FLOW_PIPELINE][0] * elemSize,
+              wlRefParams->ctxtRstrLink->src[0].flowDim[FLOW_PIPELINE][0] * elemSize,
+              algHandle->dmaUtilsContext,
+              algHandle->memcpyTr);
+  }
+
+  if((wlRefParams->ctxtStrLink != NULL) && (trigContext == TIDL_CONTEXT_STR))
+  {
+    uint8_t*  contextPtr = (uint8_t*) TIDL_getPointerFromGC(&wlRefParams->ctxtStrLink->sink, algHandle->gcHelperHandle, &algHandle->sysScratchPtr);
+    uint8_t*  strPtr     = (uint8_t*) TIDL_getPointerFromGC(&wlRefParams->ctxtStrLink->src[0], algHandle->gcHelperHandle, &algHandle->sysScratchPtr);
+
+    int32_t elemSize = getByteCnt(getBufParamsFromBufIndex(algHandle->gcHelperHandle, wlRefParams->ctxtStrLink->sink.bufDBindex)->dataType);
+
+    TIDL_memcpy2D(contextPtr,
+              strPtr,
+              wlRefParams->ctxtStrLink->src[0].flowCnt[FLOW_PIPELINE][0] * elemSize,
+              wlRefParams->ctxtStrLink->src[0].flowCnt[FLOW_PIPELINE][1],
+              wlRefParams->ctxtStrLink->sink.flowDim[FLOW_PIPELINE][0] * elemSize,
+              wlRefParams->ctxtStrLink->src[0].flowDim[FLOW_PIPELINE][0] * elemSize,
+              algHandle->dmaUtilsContext,
+              algHandle->memcpyTr);
+  }
+
+ for(int i = 0;i < MAX_MULTI_CORE_CTX_COPY_LINK;i++)
+  {
+    if((multiCoreCtxtLinkIndex[i] != NOT_VALID) && (trigContext == TIDL_CONTEXT_COPY_MULTI_CORE))
+    {
+        sLink_t* link = getLinkPtr(workloadUnit, NOT_VALID, multiCoreCtxtLinkIndex[i]); 
+
+        uint8_t*  contextPtr = (uint8_t*) TIDL_getPointerFromGC(&link->sink, algHandle->gcHelperHandle, &algHandle->sysScratchPtr);
+        uint8_t*  strPtr     = (uint8_t*) TIDL_getPointerFromGC(&link->src[0], algHandle->gcHelperHandle, &algHandle->sysScratchPtr);
+
+        int32_t elemSize = getByteCnt(getBufParamsFromBufIndex(algHandle->gcHelperHandle, link->sink.bufDBindex)->dataType);
+
+        TIDL_memcpy2D(contextPtr,
+                  strPtr,
+                  link->src[0].flowCnt[FLOW_PIPELINE][0] * elemSize,
+                  link->src[0].flowCnt[FLOW_PIPELINE][1],
+                  link->sink.flowDim[FLOW_PIPELINE][0] * elemSize,
+                  link->src[0].flowDim[FLOW_PIPELINE][0] * elemSize,
+                  algHandle->dmaUtilsContext,
+                  algHandle->memcpyTr);
+    }
+  }
+
+}
+
+int32_t WorkloadRefExec_enableRefExecFlow(int32_t flowCtrl,
+                                              sTIDL_Layer_t *tidlLayer,
+                                              sTIDL_AlgLayer_t *algLayer)
+{
+  int32_t isRefExecFlowEnabled = 0;
+
+  if ((flowCtrl & TIDL_FLOW_CTRL_REF_ONLY) == TIDL_FLOW_CTRL_REF_ONLY)
+  {
+    /* Ref flow should execute workload exec regardless */
+    isRefExecFlowEnabled = 1;
+  }
+  else if (algLayer->workloadUnit == NULL)
+  {
+    /* Unsupported layers */
+    isRefExecFlowEnabled = 1;
+  }
+  else if (tidlLayer->layerType == TIDL_ResizeLayer)
+  {
+    /* Resize unoptimized flow executes in ref mode */
+    if(algLayer->layerParams.resizeParams.isOptResizeAvail == 0)
+    {
+      isRefExecFlowEnabled = 1;
+    }
+  }
+  else if (tidlLayer->layerType == TIDL_SoftMaxLayer)
+  {
+    if (((flowCtrl & TIDL_FLOW_CTRL_REF_ONLY) == TIDL_FLOW_CTRL_REF_ONLY) ||
+        ((flowCtrl & TIDL_FLOW_CTRL_DSP_NATC) == TIDL_FLOW_CTRL_DSP_NATC))
+    {
+      isRefExecFlowEnabled = 1;
+    }
+  }
+  else if(tidlLayer->layerType == TIDL_ShuffleChannelLayer)
+  {
+    isRefExecFlowEnabled = 1;
+  }
+  else if(tidlLayer->layerType == TIDL_PadLayer)
+  {
+    isRefExecFlowEnabled = 1;
+  }
+
+  return isRefExecFlowEnabled;
+}
+
+static void WorkloadRefExec_splitGroupedConv(int32_t        tileProcIndex,
+                                          sTIDL_Layer_t     *tidlLayer,
+                                          sTIDL_AlgLayer_t  *algLayer)
+{
+  // Probably should move this init to the layer level file
+  if ((tidlLayer->layerType == TIDL_ConvolutionLayer) || (tidlLayer->layerType == TIDL_Deconv2DLayer))
+  {
+    algLayer->layerParams.convParams.coeffRefExtraOffset = 0U;
+    algLayer->layerParams.convParams.biasRefExtraOffset  = 0U;
+  }
+
+  if (algLayer->gcHelperHandle != NULL)
+  {
+    if (tidlLayer->layerType == TIDL_ConvolutionLayer)
+    {
+      sTIDL_ConvParams_t *convParams = &tidlLayer->layerParams.convParams;
+      sWorkloadUnitAuxilary_t* auxilaryWorkloadDB = (sWorkloadUnitAuxilary_t*) algLayer->gcHelperHandle->pAuxWLDB->pWLAuxList;
+      const sWorkloadUnitAuxilary_t *workloadOutParams = &auxilaryWorkloadDB[tileProcIndex];
+
+      /*Assuming
+        1) Tiling across channel dimension not happening
+      */
+      if (workloadOutParams->outSubTensorDims.channel < workloadOutParams->outFullTensorDims.channel)
+      {
+        int32_t groupIdx = workloadOutParams->outSubTensorPosition.startChannel / workloadOutParams->outSubTensorDims.channel;
+        int32_t weightSize = TIDL_ALIGN_CEIL(tidlLayer->weightsElementSizeInBits, 8U) / 8U;
+
+        algLayer->layerParams.convParams.coeffRefExtraOffset =  groupIdx *
+                                                              ((convParams->numInChannels / convParams->numGroups)*
+                                                              (convParams->kernelH * convParams->kernelW) *
+                                                              (convParams->numOutChannels / convParams->numGroups)) * weightSize;
+
+        algLayer->layerParams.convParams.biasRefExtraOffset  =  groupIdx * (convParams->numOutChannels / convParams->numGroups);
+      }
+
+      if((convParams->numGroups > 1) && (convParams->numGroups < convParams->numInChannels))
+      {
+        if (workloadOutParams->outSubTensorDims.channel < workloadOutParams->outFullTensorDims.channel)
+        {
+          convParams->numInChannels   = convParams->numInChannels / convParams->numGroups;
+          convParams->numOutChannels  = convParams->numOutChannels / convParams->numGroups;
+          convParams->numGroups       = 1;
+        }
+      }
+    }
+  }
+}
+
+/* ========================================================================== */
+/*                         Public  Function Declarations                      */
+/* ========================================================================== */
+
+int32_t WorkloadRefExec_GetOutBufIdx(const sWorkloadUnit_t *workloadUnit, const sGCHelperHandle * gcHelperHandle)
+{
+  int32_t bufDbIdx = 0;
+  if ((gcHelperHandle != NULL) && (workloadUnit != NULL))
+  {
+    for (int32_t linkIdx = 0; linkIdx < workloadUnit->numLinks; linkIdx++)
+    {
+      const sLink_t *link = getLinkPtr(workloadUnit, NOT_VALID, linkIdx);
+      const sBufParams_t *buf = getBufParamsFromBufIndex(gcHelperHandle, link->sink.bufDBindex);
+
+      if (buf->type == BUF_FM_FULL)
+      {
+        bufDbIdx = link->sink.bufDBindex;
+        break;
+      }
+    }
+    if(bufDbIdx == -1)
+    {
+      tidl_printf(0, "Outbuffer not found! \n");
+      assert(0);
+    }
+  }
+  return bufDbIdx;
+}
+
+/**
+ *  \brief This function runs workload through the reference flow.
+ *
+ *  \param  algHandle      [IN] Handle for the dataFlow ( this is created via WorkloadUnitExec_Init API)
+ *  \param  commonParams   [IN] Common params structure required for process
+ *  \param  workloadUnit   [IN] Workload structure containing gc info
+ *  \param  algLayer       [IN] Pointer to algLayer structure
+ *  \param  tidlLayer      [IN] Pinter to tidlLayer structure coming from net structure
+ *  \param  inPtrs[]       [IN] List of pointers to inputs (Expected to be A pointer)
+ *  \param  outPtrs[]      [OUT] Pointer to the output tensor (Expected to be A pointer)
+ *  \param  layerId        [IN] Layer Index
+ *
+ *  \return Error Status
+ */
+int32_t WorkloadRefExec_Process(TIDL_Handle         algHandle,
+                              TIDL_NetworkCommonParams *commonParams,
+                              sWorkloadUnit_t        * workloadUnit,
+                              sTIDL_AlgLayer_t     * algLayer,
+                              sTIDL_Layer_t        * tidlLayer,
+                              void                 * inPtrs[],
+                              void                 * outPtrs[],
+                              int32_t                layerId,
+                              int32_t                coreId)
+{
+  int32_t status = IALG_EOK;
+  uint64_t tStartLayer, tEndLayer;
+  uint64_t tStart, tEnd;
+  void * refInPtrs[TIDL_NUM_IN_BUFS] = {0};
+  void * refOutPtrs[TIDL_NUM_OUT_BUFS] = {0};
+  WorkloadRefExec_RefExecParams  wlRefParams;
+
+  int32_t isRefExecFlowEnabled = WorkloadRefExec_enableRefExecFlow(algHandle->createParams->flowCtrl, tidlLayer, algLayer);
+
+  memcpy(refInPtrs , inPtrs , sizeof(refInPtrs[0] ) * TIDL_NUM_IN_BUFS );
+  memcpy(refOutPtrs, outPtrs, sizeof(refOutPtrs[0]) * TIDL_NUM_OUT_BUFS);
+
+  if (isRefExecFlowEnabled == 1)
+  {
+    WorkloadRefExec_getRefParams(&wlRefParams, algHandle->createParams, workloadUnit, tidlLayer, algLayer);
+  }
+
+  if (isRefExecFlowEnabled == 1)
+  {
+    /* Gets B/C pointer */
+    WorkloadRefExec_getPtrs(commonParams, workloadUnit, algLayer, tidlLayer,
+                            inPtrs, outPtrs, refInPtrs, refOutPtrs);
+
+    /* Temporary fix to emulate unoptimized grouped convolution in reference flow */
+    WorkloadRefExec_splitGroupedConv(algHandle->currAlgLayer, tidlLayer, algLayer);
+
+    TIDL_getTscTime(&tStartLayer);
+  }
+
+  status = TIDL_layerProcessNew(commonParams, algLayer, tidlLayer, refInPtrs, refOutPtrs, layerId);
+
+#if ENABLE_OLD_FLOW
+  if  ( status == NOT_VALID)
+  {
+    status = TIDL_layerProcess(algHandle, algLayer, tidlLayer, refInPtrs, refOutPtrs, algHandle->sysMems,
+                              layerId, commonParams);
+  }
+#endif
+
+  if((status == IALG_EOK) && (algHandle->gcHelperHandle == NULL)) //Only for stats collection run
+  {
+    status = TIDL_updateAllLayersTensorStats(algHandle, tidlLayer, outPtrs, layerId);
+  }
+
+  if (isRefExecFlowEnabled == 1)
+  {
+    TIDL_getTscTime(&tEndLayer);
+    TIDL_updateprofileData(algHandle->alglayerParams[algHandle->currAlgLayer].metaData.profilePoint,
+                            TIDL_PROFILE_LAYER_WITHOUT_PADDING,
+                            tStartLayer,
+                            tEndLayer);
+
+    if (status == IALG_EOK)
+    {
+      WorkloadRefExec_strRstrContext(algHandle, &wlRefParams, algLayer->wlRepeatIter, workloadUnit, algLayer->multiCoreCtxtLinkIndex, TIDL_CONTEXT_RSTR);
+    }
+
+    if (status == IALG_EOK)
+    {
+      TIDL_getTscTime(&tStart);
+
+      // Need to fix the outPtr here
+      status = WorkloadUnitExec_padBufferExec(outPtrs[0], algLayer->wlRepeatIter, tidlLayer, commonParams->tidlCommonParams,
+                                              &algLayer->wlPadParams, workloadUnit, algLayer->gcHelperHandle, 
+                                              tidlLayer->outData.pitch[TIDL_CHANNEL_PITCH] * TIDL_getDatElementSize(tidlLayer->outData.elementType), 
+                                              tidlLayer->outData.pitch[TIDL_ROI_PITCH] * TIDL_getDatElementSize(tidlLayer->outData.elementType));
+
+      TIDL_getTscTime(&tEnd);
+      TIDL_updateprofileData(algHandle->alglayerParams[algHandle->currAlgLayer].metaData.profilePoint,
+                            TIDL_PROFILE_LAYER_PADDING_TRIGGER,
+                            tStart,
+                            tEnd);
+    }
+
+
+    if (status == IALG_EOK)
+    {
+      WorkloadRefExec_strRstrContext(algHandle, &wlRefParams, algLayer->wlRepeatIter, workloadUnit, algLayer->multiCoreCtxtLinkIndex, TIDL_CONTEXT_STR);
+    }
+  }
+
+  if ((status == IALG_EOK) && (commonParams->net->inferenceMode  == TIDL_inferenceModeLowLatency) )
+  {
+    int32_t numCores = commonParams->net->numCores;
+    if(algLayer->multiCoreCtxtLinkIndex[0] != NOT_VALID)
+    {
+      /* Sync to check whether all cores' compute is done and cores are ready for DMA transfer across each other -- this sync is required only if cross core DMA is needed
+      else this can result in hang for layers executing on single core */
+
+      TIDL_syncWl(algHandle->controlArgs.ctrlSetArgs, {}, TIDL_SYNC_POINT_DMA_READY, workloadUnit->wlExecId, coreId, numCores);
+    }
+    TIDL_getTscTime(&tStart); /* Start counting multi core context copy cycles after sync across all cores complete */
+    WorkloadRefExec_strRstrContext(algHandle, &wlRefParams, algLayer->wlRepeatIter, workloadUnit, algLayer->multiCoreCtxtLinkIndex, TIDL_CONTEXT_COPY_MULTI_CORE);
+    TIDL_getTscTime(&tEnd);
+    TIDL_updateprofileData(algHandle->alglayerParams[algHandle->currAlgLayer].metaData.profilePoint,
+                          TIDL_PROFILE_CONTEXT_CROSSCORE_COPY,
+                          tStart,
+                          tEnd);
+  }
+
+  return status;
+}
+
+// Need to understand the way trace writing is done. For ST and grouped conv would be different
+// with regards to file read/write
+/* Expects baseMem pointer */
+int32_t WorkloadRefExec_writeTraceDataBuf(void *outPtr,
+                                        TIDL_Handle algHandle,
+                                        sTIDL_Layer_t     *tidlLayer,
+                                        sTIDL_AlgLayer_t  *algLayer,
+                                        const sTensorPosition_t *tensorPosition,
+                                        const sTensorDims_t *tensorDims)
+{
+  int32_t status = IALG_EOK;
+  int32_t height = tidlLayer->outData.dimValues[TIDL_DIM_HEIGHT];
+  int32_t numChannels  = tidlLayer->outData.dimValues[TIDL_DIM_NUMCH];
+  int32_t startHeight  = 0;
+  int32_t startChannel = 0;
+
+  int32_t outOffset   = algLayer->wlPadParams.outOffset; /* Offset from baseMemPtr to C ptr for 0th iteration of workload */
+  int32_t superOffset = algLayer->wlPadParams.superOffset; /* outOffset change per workload */
+  int32_t outPadOffset = algLayer->wlPadParams.outPadOffset; /* Offset between A and C pointer */
+
+  if ( (tensorDims != NULL) && (tidlLayer->layerType != TIDL_InnerProductLayer) && (tidlLayer->layerType != TIDL_ReshapeLayer))
+  {
+    height = tensorDims->height;
+    numChannels  = tensorDims->channel;
+  }
+
+  if(tidlLayer->layerType == TIDL_PoolingLayer)
+  {
+    sTIDL_PoolingParams_t *params = &tidlLayer->layerParams.poolParams;
+    if((params->kernelW == 0) && (params->kernelH == 0))
+    {
+      /*Global pooling:*/
+      numChannels = 1U;
+    }
+  }
+
+  if ( tensorPosition != NULL )
+  {
+    /* @TODO: Need to handle cases where tiling is done along other dimensions */
+    startHeight  = (tensorPosition->startHeight + (algLayer->wlRepeatIter * height));
+    startChannel = tensorPosition->startChannel;
+  }
+
+  /* Trace buffer expects 'A' pointer */
+  outPtr = (uint8_t *)outPtr +
+          (((outOffset + (superOffset * algLayer->wlRepeatIter)) - outPadOffset) * algLayer->wlPadParams.elemSize);
+
+   status = tidl_writeTraceDataBuf((int8_t *)outPtr,
+                                algHandle->createParams->net,
+                                tidlLayer->outData.dataId,
+                                (int8_t *)algHandle->memRec[ALG_REF_OUTPUT_BUFF_MEMREC].base,
+                                algHandle->memRec[ALG_REF_OUTPUT_BUFF_MEMREC].size,
+                                startHeight,
+                                startChannel,
+                                height,
+                                numChannels,
+                                tidlLayer->outData.pitch[TIDL_CHANNEL_PITCH],
+                                algHandle->createParams->coreId,
+                                algHandle->createParams->traceBaseName);
+
+  return status;
+}

@@ -1,0 +1,397 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>2.6. RTI : RTI/WWDT Windowed Watchdog Timer &mdash; Software Diagnostics Library (SDL) - J721S2 User Guide</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Software Diagnostics Library (SDL) - J721S2 User Guide" href="../index.html"/>
+        <link rel="up" title="2. Modules" href="../family_cfg/j721s2/index_modules_j721s2.html"/>
+        <link rel="next" title="2.7. POK: Power OK" href="pok.html"/>
+        <link rel="prev" title="2.5. VTM : Voltage and Thermal Management" href="vtm.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="../_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index_j721s2.html" class="icon icon-home"> Software Diagnostics Library (SDL) - J721S2 User Guide
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                01_03_00
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/j721s2/index_release_notes_j721s2.html">1. Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">2. Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../family_cfg/j721s2/index_modules_j721s2.html">2. Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="esm.html">2.1. ESM : Error Signalling Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ecc.html">2.2. ECC : Error Correcting Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pbist.html">2.3. PBIST : Memory Built-In Self-Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lbist.html">2.4. LBIST : Logic Built-In Self-Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vtm.html">2.5. VTM : Voltage and Thermal Management</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.6. RTI : RTI/WWDT Windowed Watchdog Timer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">2.6.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-usage">2.6.2. Example Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#examples">2.6.3. Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#api">2.6.4. API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pok.html">2.7. POK: Power OK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tog.html">2.8. TOG : Time-Out Gasket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mtog.html">2.9. MTOG : Master Time-Out Gasket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dcc.html">2.10. DCC : Dual Clock Comparator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mcrc.html">2.11. MCRC : Cyclic Redundancy Check</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r5fccm.html">2.12. R5F CCM: CPU Compare Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="osal.html">2.13. OSAL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r5.html">2.14. R5 Core Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rom_checksum.html">2.15. ROM_CHECKSUM: ROM Checksum Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/j721s2/index_examples_j721s2.html">3. Safety Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diagnostic_mappings.html">3. Diagnostic Mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/j721s2/index_application_notes_j721s2.html">4. Developer Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index_j721s2.html">Software Diagnostics Library (SDL) - J721S2 User Guide</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index_j721s2.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../family_cfg/j721s2/index_modules_j721s2.html"><span class="section-number">2. </span>Modules</a> &raquo;</li>
+      
+    <li><span class="section-number">2.6. </span>RTI : RTI/WWDT Windowed Watchdog Timer</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="rti-rti-wwdt-windowed-watchdog-timer">
+<h1><span class="section-number">2.6. </span>RTI : RTI/WWDT Windowed Watchdog Timer<a class="headerlink" href="#rti-rti-wwdt-windowed-watchdog-timer" title="Permalink to this headline">¶</a></h1>
+<section id="introduction">
+<h2><span class="section-number">2.6.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>The Windowed Watchdog Timer (WWDT) generates reset after a programmable period, if not serviced within that period. This time-out boundary is configurable, and the windowed feature allows the start time boundary to be configurable. The WWDT can generate an Interrupt, if not serviced within window (Open Window) defined by start time and time-out boundary. Also the WWDT can generate an Interrupt if serviced outside Open Window (within Closed Window). Generation of Interrupt depends on the WWDT Reaction configuration.
+SDL supports configuration of the watchdog timers. It also supports notification of the error via ESM interrupt. Additionally, APIs for checking the status of the watchdog timer is provided.</p>
+<p>The module provides the following functionality</p>
+<ul class="simple">
+<li><p>Ability to to initialize the RTI -DWWD module</p></li>
+<li><p>Ability to configure RTI -DWWD module</p></li>
+<li><p>Ability to service an RTI instance</p></li>
+<li><p>Ability to read Status of the configuration</p></li>
+<li><p>Ability to read back static register</p></li>
+</ul>
+<p>There are 11 RTI Modules in the device – 2 in the MCU domain and 9 in the Main domain.
+Note that each instance of RTI is intended to function as a watchdog for the associated CPU core. For example, RTI0 is dedicated to the first A72 CPU core in the A72 cluster. The details of the timers and associated cores are given in the <a class="reference external" href="http://www.ti.com/lit/pdf/spruil1">J721S2 Technical Reference Manual</a>.</p>
+<p>Instances in the MCU domain:</p>
+<ul class="simple">
+<li><p>MCU_RTI0 is dedicated to the MCU cluster (MCU_R5FSS0) in lockstep and when unlocked serves as a Windowed Watchdog for the first R5F CPU core in the MCU domain (MCU_R5FSS0_CORE0).</p></li>
+<li><p>MCU_RTI1 is dedicated to the second R5F CPU core of the MCU cluster (MCU_R5FSS0_CORE1) when unlocked.</p></li>
+</ul>
+<p>Instances in the MAIN domain: They are intended to function as a Digital Windowed Watchdog for the CPU core that they are associated with, that is:</p>
+<ul class="simple">
+<li><p>RTI0 is dedicated to the first A72 CPU core in the Compute cluster (A72SS0_CORE0)</p></li>
+<li><p>RTI1 is dedicated to the second A72 CPU core in the Compute cluster (A72SS0_CORE1)</p></li>
+<li><p>RTI15 is dedicated to the sixth A72 CPU core in the Compute cluster (A72SS1_CORE1)</p></li>
+<li><p>RTI16 is dedicated to the C71SS0_CORE0</p></li>
+<li><p>RTI17 is dedicated to the C71SS1_CORE0</p></li>
+<li><p>RTI28 is dedicated to the first R5F CPU core in the Main domain (R5FSS0_CORE0)</p></li>
+<li><p>RTI29 is dedicated to the second R5F CPU core in the Main domain (R5FSS0_CORE1)</p></li>
+<li><p>RTI30 is dedicated to the third R5F CPU core in the Main domain (R5FSS1_CORE0)</p></li>
+<li><p>RTI31 is dedicated to the fourth R5F CPU core in the Main domain (R5FSS1_CORE1)</p></li>
+</ul>
+</section>
+<section id="example-usage">
+<h2><span class="section-number">2.6.2. </span>Example Usage<a class="headerlink" href="#example-usage" title="Permalink to this headline">¶</a></h2>
+<p>The following shows an example of SDL RTI API usage by the application to set up the RTI as a watchdog and usage of the various APIs. Events can be monitored by enabling the events in the associated ESM instance.</p>
+<p>Config an RTI Instance</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>SDL_RTI_configParms<span class="w"> </span>pConfig<span class="p">;</span>
+
+/*<span class="w"> </span>Configure<span class="w"> </span>RTI<span class="w"> </span>parameters<span class="w"> </span><span class="k">for</span><span class="w"> </span>preload,<span class="w"> </span>window<span class="w"> </span>and<span class="w"> </span>reaction*/
+pConfig.SDL_RTI_dwwdPreloadVal<span class="w"> </span><span class="o">=</span><span class="w"> </span>RTIGetPreloadValue<span class="o">(</span>RTI_CLOCK_SOURCE_32KHZ,<span class="w"> </span>RTI_WDT_TIMEOUT<span class="o">)</span><span class="p">;</span>
+pConfig.SDL_RTI_dwwdWindowSize<span class="w"> </span><span class="o">=</span><span class="w"> </span>RTI_DWWD_WINDOWSIZE_100_PERCENT<span class="p">;</span>
+pConfig.SDL_RTI_dwwdReaction<span class="w">   </span><span class="o">=</span><span class="w"> </span>RTI_DWWD_REACTION_GENERATE_NMI<span class="p">;</span>
+
+<span class="nv">retVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>SDL_RTI_config<span class="o">(</span>SDL_INSTANCE_MCU_RTI0_CFG,<span class="w"> </span><span class="p">&amp;</span>pConfig<span class="o">)</span><span class="p">;</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">(</span><span class="nv">retVal</span><span class="w"> </span><span class="o">==</span><span class="w"> </span>SDL_EFAIL<span class="o">)</span>
+<span class="o">{</span>
+<span class="w">    </span>UART_printf<span class="o">(</span><span class="s2">&quot;Error during Window configuration.\n&quot;</span><span class="o">)</span><span class="p">;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Verify the config</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/*<span class="w"> </span>Verify<span class="w"> </span>the<span class="w"> </span>config<span class="w"> </span>*/
+<span class="nv">retVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>SDL_RTI_verifyConfig<span class="o">(</span>SDL_INSTANCE_MCU_RTI0_CFG,<span class="w"> </span><span class="p">&amp;</span>pConfig<span class="o">)</span><span class="p">;</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">(</span><span class="nv">retVal</span><span class="w"> </span><span class="o">==</span><span class="w"> </span>SDL_EFAIL<span class="o">)</span>
+<span class="o">{</span>
+<span class="w">    </span>UART_printf<span class="o">(</span><span class="s2">&quot;Error during Window Verify configuration.\n&quot;</span><span class="o">)</span><span class="p">;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Read the static registers</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>SDL_RTI_staticRegs<span class="w"> </span>pStaticRegs<span class="p">;</span>
+
+<span class="nv">retVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>SDL_RTI_readStaticRegs<span class="o">(</span>SDL_INSTANCE_MCU_RTI0_CFG,<span class="w"> </span><span class="p">&amp;</span>pStaticRegs<span class="o">)</span><span class="p">;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Start an RTI Instance</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>SDL_RTI_start<span class="o">(</span>SDL_INSTANCE_MCU_RTI0_CFG<span class="o">)</span><span class="p">;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Service an RTI Instance</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/*<span class="w"> </span>Servicing<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>watchdog<span class="w"> </span>is<span class="w"> </span><span class="k">done</span><span class="w"> </span>by<span class="w"> </span>the<span class="w"> </span>core<span class="w"> </span>that<span class="w"> </span>is<span class="w"> </span>being<span class="w"> </span>monitored<span class="w"> </span>with<span class="w"> </span>the<span class="w"> </span>watchdg<span class="w"> </span>*/
+SDL_RTI_service<span class="o">(</span>SDL_INSTANCE_MCU_RTI0_CFG<span class="o">)</span><span class="p">;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="examples">
+<h2><span class="section-number">2.6.3. </span>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<p>Test apps that are meant for verifying the functionality of the module are also provided.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Test App Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Location</p></th>
+<th class="head"><p>Build Command</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>rti_func_test_app</p></td>
+<td><ul class="simple">
+<li><p>Configures the RTI for MCU R5F</p></li>
+<li><p>Triggers an error by not servicing the timer</p></li>
+<li><p>Checks for error response</p></li>
+</ul>
+</td>
+<td><p>[sdl_install_dir]/test/rti/rti_func</p></td>
+<td><p>make rti_func_test_app PROFILE=release</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="api">
+<h2><span class="section-number">2.6.4. </span>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="../../../apiguide/j721s2/html/group__SDL__RTI__API.html">RTI API Guide</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="pok.html" class="btn btn-neutral float-right" title="2.7. POK: Power OK" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="vtm.html" class="btn btn-neutral" title="2.5. VTM : Voltage and Thermal Management" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyright 1995-2021</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'01_03_00',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+      });
+  </script>
+   
+
+</body>
+</html>

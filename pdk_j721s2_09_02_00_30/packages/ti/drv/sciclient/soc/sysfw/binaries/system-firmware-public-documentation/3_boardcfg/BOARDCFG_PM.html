@@ -1,0 +1,535 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Power Management Board Configuration &mdash; TISCI User Guide</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="TISCI User Guide" href="../index.html"/>
+        <link rel="up" title="Chapter 3: Board Configuration" href="index.html"/>
+        <link rel="next" title="Board Configuration with ROM Combined Image format" href="BOARDCFG_COMBINED_IMG_FORMAT.html"/>
+        <link rel="prev" title="Security Board Configuration" href="BOARDCFG_SEC.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="../_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> TISCI
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                09.02.04
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../1_intro/index.html">Chapter 1: Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_tisci_msgs/index.html">Chapter 2: TISCI Message Documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Chapter 3: Board Configuration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="BOARDCFG.html">Board Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="BOARDCFG_RM.html">Resource Management Board Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="BOARDCFG_SEC.html">Security Board Configuration</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Power Management Board Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#device-groups-for-power-management-board-configuration">Device Groups for Power Management Board Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tisci-api-for-power-management-board-config">TISCI API for Power Management Board Config</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#boardcfg-pm-structure">boardcfg_pm structure</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#power-management-initialization-after-receiving-board-configuration">Power Management Initialization after receiving board configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#board-configuration-receive-and-validate">Board Configuration Receive and Validate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pm-initialization-dmsc-init">PM Initialization - DMSC Init</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pm-initialization-clock-init">PM Initialization - Clock Init</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pm-initialization-device-init">PM Initialization - Device Init</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pm-initialization-clock-messages-init">PM Initialization - Clock Messages Init</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pm-initialization-device-messages-init">PM Initialization - Device Messages Init</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pm-initialization-core-messages-init">PM Initialization - Core Messages Init</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#osal-pm-subsystem-init">OSAL PM Subsystem Init</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="BOARDCFG_COMBINED_IMG_FORMAT.html">Board Configuration with ROM Combined Image format</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../4_trace/index.html">Chapter 4: Interpreting Trace Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_soc_doc/index.html">Chapter 5: SoC Family Specific Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_topic_user_guides/index.html">Chapter 6: Topic User Guides</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">TISCI</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Chapter 3: Board Configuration</a> &raquo;</li>
+      
+    <li>Power Management Board Configuration</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="power-management-board-configuration">
+<h1>Power Management Board Configuration<a class="headerlink" href="#power-management-board-configuration" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<span id="pub-boardcfg-pm-intro"></span><h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>The PM board configuration message initializes the PM subsystem.
+The PM subsystem is not considered functional until after the PM board
+configuration message is received by DMSC.  The PM board configuration data can
+be sent any time after the standard boardcfg message (<a class="reference internal" href="BOARDCFG.html#pub-boardcfg-cfg"><span class="std std-ref">Configuration substructure enumeration</span></a>)
+is received.</p>
+<p>The system remains in ROM configured PLL and clock configuration till this
+message is invoked. On invoking this call, the OFC associated with the
+SoC is configured. This implies that many of PLLs and clock tree will
+get reconfigured. The OFC settings set by the PM board configuration is as given in
+<a class="reference internal" href="../5_soc_doc/am65x/pll_data.html"><span class="doc">AM65X_SR1 PLL Defaults</span></a>. Since the device is capable of deriving the
+clock from different supported input HFOSC frequencies, System Firmware reads the DEVSTAT
+to identify the HFOSC frequency and programs the PLLs and Dividers according to the
+input HFOSC to derive the Original Frequency Combination (OFC). The OFC is a fixed
+table built into the DMSC System Firmware. This is derived from silicon characterization
+data. The user is expected to ensure the device is first configured to this OFC
+frequency and then tweak specific device clock frequencies based on their usecase
+needs by using the PM messages for <a class="reference internal" href="../2_tisci_msgs/pm/clocks.html#pm-clocks-msg-set-freq"><span class="std std-ref">TISCI_MSG_SET_FREQ</span></a>
+and <a class="reference internal" href="../2_tisci_msgs/pm/clocks.html#pm-clocks-msg-set-clock-parent"><span class="std std-ref">TISCI_MSG_SET_CLOCK_PARENT</span></a>.</p>
+<p>It is strongly recommended for proper care to be taken for key peripherals
+that may be operational and communicating external to SoC. For example,
+depending on the SoC and product, pinmux can be used to move the IP’s pins
+into isolation to prevent glitch events from being exported from the IP at
+the point of reconfiguration of PLLs system wide to the official OFC
+configuration.</p>
+<div class="section" id="device-groups-for-power-management-board-configuration">
+<h3>Device Groups for Power Management Board Configuration<a class="headerlink" href="#device-groups-for-power-management-board-configuration" title="Permalink to this headline">¶</a></h3>
+<p>The PM board configuration TISCI message allows the user to specify the DEVGRP
+under which the PM subsystem operates.  A specified DEVGRP defines which PM
+driver instances are capable of usage by the host applications.  The host
+application can implement PM subsystem DEVGRP usage by sending a
+<a class="reference internal" href="#pub-boardcfg-pm-tisci"><span class="std std-ref">TISCI_MSG_PM_BOARD_CONFIG_PM</span></a> message with the
+boardcfg_pm_devgrp parameter populated with one or more SoC-specific device
+group values.  The DEVGRP value specifying whole device is mapped to zero so
+existing PM board configurations not explicitly defining a DEVGRP for the
+boardcfg_pm_devgrp parameter will be backwards compatible.</p>
+<p>DEVGRPS are cumulative so if multiple PM board configurations are received,
+each with a unique DEVGRP defined, all received DEVGRPs will be active.  To
+support accumulation of DEVGRPs the PM board configuration message can be sent
+any number of times.</p>
+</div>
+<div class="section" id="tisci-api-for-power-management-board-config">
+<span id="pub-boardcfg-pm-tisci"></span><h3>TISCI API for Power Management Board Config<a class="headerlink" href="#tisci-api-for-power-management-board-config" title="Permalink to this headline">¶</a></h3>
+<p>The following are the parameters required in the TI-SCI message to pass power management
+board configuration data to DMSC after DMSC sends boot notification complete.
+The PM board configuration message is not dependent on receipt of the
+standard board configuration message.</p>
+<div class="section" id="usage">
+<h4>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="75%" />
+<col width="25%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Message Type</strong></td>
+<td>Normal</td>
+</tr>
+<tr class="row-even"><td><strong>Secure Queue Only?</strong></td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="tisci-message-id">
+<h4>TISCI Message ID<a class="headerlink" href="#tisci-message-id" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal"><span class="pre">TISCI_MSG_BOARD_CONFIG_PM</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">(0x000EU)</span></code></p>
+</div>
+<div class="section" id="message-data-structures">
+<h4>Message Data Structures<a class="headerlink" href="#message-data-structures" title="Permalink to this headline">¶</a></h4>
+<p><p><strong>struct tisci_msg_board_config_pm_req</strong></p>
+<p>TISCI_MSG_BOARD_CONFIG_PM request to provide the location and size of the boardcfg Power Management configuration structure.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="19%" />
+<col width="63%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>hdr</td>
+<td>struct tisci_header</td>
+<td>TISCI header</td>
+</tr>
+<tr class="row-odd"><td>boardcfg_pmp_low</td>
+<td>u32</td>
+<td>Low 32-bits of physical pointer to boardcfg PM configuration struct.</td>
+</tr>
+<tr class="row-even"><td>boardcfg_pmp_high</td>
+<td>u32</td>
+<td>High 32-bits of physical pointer to boardcfg PM configuration struct.</td>
+</tr>
+<tr class="row-odd"><td>boardcfg_pm_size</td>
+<td>u16</td>
+<td>Size of PM configuration data.</td>
+</tr>
+<tr class="row-even"><td>boardcfg_pm_devgrp</td>
+<td>devgrp_t</td>
+<td>Device group for the PM configuration</td>
+</tr>
+</tbody>
+</table>
+</p>
+<p><p><strong>struct tisci_msg_board_config_pm_resp</strong></p>
+<p>Empty response for TISCI_MSG_BOARD_CONFIG_PM.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="43%" />
+<col width="31%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>hdr</td>
+<td>struct tisci_header</td>
+<td>TISCI header.</td>
+</tr>
+</tbody>
+</table>
+<p>Although this message is essentially empty and contains only a header
+ a full data structure is created for consistency in implementation.</p>
+</p>
+</div>
+</div>
+<div class="section" id="boardcfg-pm-structure">
+<span id="pub-boardcfg-pm"></span><h3>boardcfg_pm structure<a class="headerlink" href="#boardcfg-pm-structure" title="Permalink to this headline">¶</a></h3>
+<p>This is a fixed size c-structure which both defines the format of the
+configuration as well as reserves DMSC memory to store the configuration.
+However, the boardcfg_pm data structure is <strong>currently empty</strong>.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Although currently empty, in order to properly initialize the PM subsystem
+this message must still be sent with the address and size parameters all
+configured to 0.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Although currently empty, PM Board configuration requires to be signed and
+encrypted on HS devices to ensure authenticity and protect secrets. Please
+refer to <a class="reference internal" href="../6_topic_user_guides/hs_boardcfg_signing.html"><span class="doc">Signing Board Configuration on HS devices</span></a> on how to sign and
+encrypt board configuration on HS devices.</p>
+</div>
+</div>
+</div>
+<div class="section" id="power-management-initialization-after-receiving-board-configuration">
+<h2>Power Management Initialization after receiving board configuration<a class="headerlink" href="#power-management-initialization-after-receiving-board-configuration" title="Permalink to this headline">¶</a></h2>
+<p>Once the PM board configuration message is received by the System Firmware, it
+performs the following operations:</p>
+<div class="section" id="board-configuration-receive-and-validate">
+<h3>Board Configuration Receive and Validate<a class="headerlink" href="#board-configuration-receive-and-validate" title="Permalink to this headline">¶</a></h3>
+<p>The first step after receiving the board configuration by the
+tisci_msg_board_config_pm_handler is to identify which DEVGRP the message is for.</p>
+<img alt="../_images/PM_BRD_CFG_2.JPG" src="../_images/PM_BRD_CFG_2.JPG" />
+</div>
+<div class="section" id="pm-initialization-dmsc-init">
+<h3>PM Initialization - DMSC Init<a class="headerlink" href="#pm-initialization-dmsc-init" title="Permalink to this headline">¶</a></h3>
+<p>The next step of the tisci_msg_board_config_pm_handler is to perform the PM
+initialization. This involves multiple steps starting with DMSC initialization.
+The DMSC initialization involves unlocking the WKUP and MAIN CTRL MMRs. This is
+SoC specific.</p>
+<img alt="../_images/PM_BRD_CFG_3.JPG" src="../_images/PM_BRD_CFG_3.JPG" />
+</div>
+<div class="section" id="pm-initialization-clock-init">
+<h3>PM Initialization - Clock Init<a class="headerlink" href="#pm-initialization-clock-init" title="Permalink to this headline">¶</a></h3>
+<p>The next step of the tisci_msg_board_config_pm_handler is to perform the clock
+initialization. As part of this step the code initializes the PLLs and dividers
+as per the OFC for the input device group. The UART is re-initialized after the
+PLL is locked. The software reference counts for the clocks initialized at power
+up is updated.</p>
+<p>The Clock init initialization sequence is as below:</p>
+<img alt="../_images/PM_BRD_CFG_4.JPG" src="../_images/PM_BRD_CFG_4.JPG" />
+</div>
+<div class="section" id="pm-initialization-device-init">
+<h3>PM Initialization - Device Init<a class="headerlink" href="#pm-initialization-device-init" title="Permalink to this headline">¶</a></h3>
+<p>The next step of the tisci_msg_board_config_pm_handler is to perform the device
+initialization. As part of this step the code loops through all the devices in the
+devgrp. For each device the PSC connection is verified and the current state of
+the device PSC is captured. The module clock default flags are initialized in this
+function. After this the API clears the software state of the modules and clocks
+enabled at power up.</p>
+<p>The Device init initialization sequence is as below:</p>
+<img alt="../_images/PM_BRD_CFG_5.JPG" src="../_images/PM_BRD_CFG_5.JPG" />
+</div>
+<div class="section" id="pm-initialization-clock-messages-init">
+<h3>PM Initialization - Clock Messages Init<a class="headerlink" href="#pm-initialization-clock-messages-init" title="Permalink to this headline">¶</a></h3>
+<p>The next step of the tisci_msg_board_config_pm_handler is to
+register the software handler for the</p>
+<ul class="simple">
+<li><a class="reference internal" href="../2_tisci_msgs/pm/clocks.html#pm-clocks-msg-set-clock"><span class="std std-ref">TISCI_MSG_SET_CLOCK</span></a> message</li>
+<li><a class="reference internal" href="../2_tisci_msgs/pm/clocks.html#pm-clocks-msg-get-clock"><span class="std std-ref">TISCI_MSG_GET_CLOCK</span></a> message</li>
+<li><a class="reference internal" href="../2_tisci_msgs/pm/clocks.html#pm-clocks-msg-set-clock-parent"><span class="std std-ref">TISCI_MSG_SET_CLOCK_PARENT</span></a> message</li>
+<li><a class="reference internal" href="../2_tisci_msgs/pm/clocks.html#pm-clocks-msg-get-clock-parent"><span class="std std-ref">TISCI_MSG_GET_CLOCK_PARENT</span></a> message</li>
+<li><a class="reference internal" href="../2_tisci_msgs/pm/clocks.html#pm-clocks-msg-get-num-clock-parents"><span class="std std-ref">TISCI_MSG_GET_NUM_CLOCK_PARENTS</span></a> message</li>
+<li><a class="reference internal" href="../2_tisci_msgs/pm/clocks.html#pm-clocks-msg-set-freq"><span class="std std-ref">TISCI_MSG_SET_FREQ</span></a> message</li>
+<li><a class="reference internal" href="../2_tisci_msgs/pm/clocks.html#pm-clocks-msg-query-freq"><span class="std std-ref">TISCI_MSG_QUERY_FREQ</span></a> message</li>
+<li><a class="reference internal" href="../2_tisci_msgs/pm/clocks.html#pm-clocks-msg-get-freq"><span class="std std-ref">TISCI_MSG_GET_FREQ</span></a> message</li>
+</ul>
+<img alt="../_images/PM_BRD_CFG_6.JPG" src="../_images/PM_BRD_CFG_6.JPG" />
+</div>
+<div class="section" id="pm-initialization-device-messages-init">
+<h3>PM Initialization - Device Messages Init<a class="headerlink" href="#pm-initialization-device-messages-init" title="Permalink to this headline">¶</a></h3>
+<p>The next step of the tisci_msg_board_config_pm_handler is to
+register the software handler for the</p>
+<ul class="simple">
+<li><a class="reference internal" href="../2_tisci_msgs/pm/devices.html#pm-devices-msg-set-device"><span class="std std-ref">TISCI_MSG_SET_DEVICE</span></a> message</li>
+<li><a class="reference internal" href="../2_tisci_msgs/pm/devices.html#pm-devices-msg-get-device"><span class="std std-ref">TISCI_MSG_GET_DEVICE</span></a> message</li>
+<li><a class="reference internal" href="../2_tisci_msgs/pm/devices.html#pm-devices-msg-set-device-resets"><span class="std std-ref">TISCI_MSG_SET_DEVICE_RESETS</span></a> message</li>
+</ul>
+<img alt="../_images/PM_BRD_CFG_7.JPG" src="../_images/PM_BRD_CFG_7.JPG" />
+</div>
+<div class="section" id="pm-initialization-core-messages-init">
+<h3>PM Initialization - Core Messages Init<a class="headerlink" href="#pm-initialization-core-messages-init" title="Permalink to this headline">¶</a></h3>
+<p>The next step of the tisci_msg_board_config_pm_handler is to
+register the software handler for the</p>
+<ul class="simple">
+<li><a class="reference internal" href="../2_tisci_msgs/pm/sysreset.html#pm-sysreset-msg-sys-reset"><span class="std std-ref">TISCI_MSG_SYS_RESET</span></a> message</li>
+</ul>
+<img alt="../_images/PM_BRD_CFG_8.JPG" src="../_images/PM_BRD_CFG_8.JPG" />
+</div>
+<div class="section" id="osal-pm-subsystem-init">
+<h3>OSAL PM Subsystem Init<a class="headerlink" href="#osal-pm-subsystem-init" title="Permalink to this headline">¶</a></h3>
+<p>The UART clock dividers are re-programmed to make sure the UART logging function
+is still available from the system firmware after the PLLs are re-initialized.</p>
+<p>This is the last step in tisci_msg_board_config_pm_handler where the software
+state is updated to reflect the power management is initialized and now
+can accept power management messages.</p>
+<p>After this step the host response is sent. If for any reason any of the above
+steps fail the API would return with a NACK.</p>
+<img alt="../_images/PM_BRD_CFG_9.JPG" src="../_images/PM_BRD_CFG_9.JPG" />
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="BOARDCFG_COMBINED_IMG_FORMAT.html" class="btn btn-neutral float-right" title="Board Configuration with ROM Combined Image format" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="BOARDCFG_SEC.html" class="btn btn-neutral" title="Security Board Configuration" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyright 2016-2024</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'09.02.04',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+
+        $('body').on("mousewheel", function () {
+            // Remove default behavior
+            event.preventDefault();
+            // Scroll without smoothing
+            var wheelDelta = event.wheelDelta;
+            var currentScrollPosition = window.pageYOffset;
+            window.scrollTo(0, currentScrollPosition - wheelDelta);
+        });
+      });
+  </script>
+   
+
+</body>
+</html>

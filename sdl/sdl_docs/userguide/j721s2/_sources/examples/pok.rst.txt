@@ -1,0 +1,106 @@
+POK Safety Example
+==================
+
+Introduction
+------------
+
+This example demonstrates the usage of the POK modules. The example shows how to listen for POK error events using the ESM, and also forcing an error in order to demonstrate application notification of overvoltage and undervoltage events.
+
+The example demonstrates:
+
+    * Undervoltage event detection
+    * Overvoltage event detection
+
+Use Cases
+---------
+
+    +----------+--------------------------------------------------+-----------+
+    | Use Case | Description                                      | ESM       |
+    +==========+==================================================+===========+
+    | UC-1     | An under-voltage POK instance is configured to a | WKUP_ESM0 |
+    |          | threshold value that will force the undervoltage |           |
+    |          | event.                                           |           |
+    |          | Error event is triggered and application is      |           |
+    |          | notified of the event.                           |           |
+    +----------+--------------------------------------------------+-----------+
+    | UC-2     | An over-voltage POK instance is configured to a  | WKUP_ESM0 |
+    |          | threshold value that will force the overvoltage  |           |
+    |          | event.                                           |           |
+    |          | Error event is triggered and application is      |           |
+    |          | notified of the event.                           |           |
+    +----------+--------------------------------------------------+-----------+
+
+
+Example Details
+---------------
+
+The example should be loaded to the hardware using the Secondary Boot Loader (SBL) from the SDK.
+
++---------------------+------------------------------------------------+------------------------------------------+
+| Example Name        | Location                                       | Build Command                            |
++=====================+================================================+==========================================+
+| pok_app             | [sdl_install_dir]/examples/pok/                | make pok_app PROFILE=release             |
++---------------------+------------------------------------------------+------------------------------------------+
+
+Expected Output
+---------------
+
+.. code:: bash
+
+    POK Test Application
+    
+    sdlEsmSetupForPOK init: Init WKUP ESM complete
+    
+    
+     Below are the POK ID values
+      SDL_POK_VDDA_PMIC_IN_ID is:       0
+      SDL_POK_VDD_CORE_UV_ID is:        1
+      SDL_POK_VDDSHV_WKUP_GEN_UV_ID is: 2
+      SDL_POK_VDD_CPU_UV_ID is:         3
+      SDL_POK_VDDR_MCU_UV_ID is:        4
+      SDL_POK_VMON_EXT_UV_ID is:        5
+      SDL_POK_VDD_MCU_OV_ID is:         6
+      SDL_POK_VDDR_CORE_UV_ID is:       7
+      SDL_POK_VDDSHV_WKUP_GEN_OV_ID is: 8
+      SDL_POK_VDD_CORE_OV_ID is:        9
+      SDL_POK_VDDR_MCU_OV_ID is:        10
+      SDL_POK_VDD_CPU_OV_ID is:         11
+      SDL_POK_VDDR_CORE_OV_ID is:       12
+      SDL_POK_VMON_EXT_OV_ID is:        13
+    
+    
+    
+     POK ID = 1 , monitoring set to UV
+    Waiting for ESM to report the error
+    
+      ESM Call back function called : instType 0x1, intType 0x1, grpChannel 0x2, index 0x13, intSrc 0x53
+      Take action
+     Got the ESM Error Interrupt
+    Action taken
+    Safety software Example UC-1 pok for instance 1 PASSED
+    
+    
+     Below are the POK In POR ID values for the example
+      SDL_POR_POKHV_UV_ID is:           14
+      SDL_POR_POKLV_UV_ID is:           15
+      SDL_POR_POKHV_OV_ID is:           16
+    
+    
+     POK ID = 16 , monitoring set to OV
+    
+      ESM Call back function called : instType 0x1, intType 0x1, grpChannel 0x2, index 0x7, intSrc 0x47
+      Take action
+    Waiting for ESM to report the error
+     Got the ESM Error Interrupt
+    Action taken
+    Safety software Example UC-2 pok for instance  16 PASSED
+    Test Name: POK EXAMPLE UC-1  PASSED
+    Test Name: POR EXAMPLE UC-2  PASSED
+    
+     All tests have passed.
+
+     
+Reference
+---------
+
+`POK User Guide <../modules/pok.html>`_

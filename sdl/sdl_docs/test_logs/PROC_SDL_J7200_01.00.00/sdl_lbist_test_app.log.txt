@@ -1,0 +1,35 @@
+LBIST Test Applications
+
+ Starting LBIST HWPOST test...    HW POST MCU Status : SDL_LBIST_POST_NOT_RUN
+    HW POST DMSC Status : SDL_LBIST_POST_NOT_RUN
+
+ Starting LBIST test on Main R5F0-0, index 0...  Delta Cores prep time in micro secs 2284
+  Delta LBIST execution time in micro secs 18972
+  Delta Cores restore time in micro secs 264
+  LBIST complete for Main R5F0-0
+
+ Starting LBIST test on A72 core 0, index 1...  Delta Cores prep time in micro secs 219
+  Delta LBIST execution time in micro secs 18941
+  Delta Cores restore time in micro secs 303
+  LBIST complete for A72 core 0
+
+ LBIST Functionality Test Passed.
+
+ SDL_LBIST_eventHandler with invalid instance
+
+ SDL_LBIST_eventHandler with valid instance but no test started
+
+ Starting LBIST test on Main R5F0-0, index 0...    LBIST selfTest failed
+  Delta Cores prep time in micro secs 195
+  Delta LBIST execution time in micro secs 46987
+  Delta Cores restore time in micro secs 11
+  LBIST complete for Main R5F0-0
+
+ LBIST Error Module Test Passed.
+
+All tests have passed.
+common/lbist_test_main.c:261:test_sdl_lbist_test_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored
+OK

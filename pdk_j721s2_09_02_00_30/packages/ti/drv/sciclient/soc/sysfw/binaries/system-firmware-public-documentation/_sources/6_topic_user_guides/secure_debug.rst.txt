@@ -1,0 +1,520 @@
+=======================
+Secure Debug User Guide
+=======================
+
+.. note::
+
+   This document is only applicable to High Security(HS) devices.
+
+.. contents:: :local:
+
+.. _sysfw_pub_sec_dbg_ug_intro:
+
+Introduction
+============
+
+On K3 High Security - Security Enforced (HS-SE) devices, the JTAG port is closed by default.
+The below table shows the default state of the JTAG on various device types.
+
+.. table:: JTAG Default state on various device types
+
+   +----------------------------+--------------------------------+---------------------+---------------------------------+
+   | Device Type                | Variant                        | M3 JTAG State       | Other cores JTAG State          |
+   +============================+================================+=====================+=================================+
+   | General Purpose (GP)       | NA                             | Open                | Open                            |
+   +----------------------------+--------------------------------+---------------------+---------------------------------+
+   | High Security (HS)         | Field Securable (FS)           | Closed              | Open                            |
+   +----------------------------+--------------------------------+---------------------+---------------------------------+
+   | High Security (HS)         | Security Enforced (SE)         | Closed              | Closed                          |
+   +----------------------------+--------------------------------+---------------------+---------------------------------+
+
+The JTAG port for M3 core running |sysfw| always remains closed on HS-FS or
+HS-SE devices. Software cannot open the JTAG port for the M3 core.
+If required, the user can open the JTAG port and debug the remaining cores on the device.
+Opening the JTAG port when |sysfw| is running requires
+
+1. A signed X509 certificate authorizing the debug. - This is a distinct certificate
+   from the X509 certificates used for secure boot.
+2. Sending the debug certificate to |sysfw| to process and open the debug ports.
+
+
+This document describes both these steps. It also describes how the debug can be
+controlled via board configuration.
+
+.. note::
+
+   Please note that all steps in this document require JTAG connectivity to be
+   enabled in efuses. Otherwise the steps in this document do not have any
+   effect.
+
+
+Creating a debug certificate
+============================
+
+X509 Configuration Template
+---------------------------
+
+.. code-block :: bash
+
+    [ req ]
+    distinguished_name = req_distinguished_name
+    x509_extensions = v3_ca
+    prompt = no
+
+    dirstring_type = nobmp
+
+    # This information will be filled by the end user.
+    # The current data is only a place holder.
+    # System firmware does not make decisions based
+    # on the contents of this distinguished name block.
+    [ req_distinguished_name ]
+    C = oR
+    ST = rx
+    L = gQE843yQV0sag
+    O = dqhGYAQ2Y4gFfCq0t1yABCYxex9eAxt71f
+    OU = a87RB35W
+    CN = x0FSqGTPWbGpuiV
+    emailAddress = kFp5uGcgWXxcfxi@vsHs9C9qQWGrBs.com
+
+    [ v3_ca ]
+    basicConstraints = CA:true
+    1.3.6.1.4.1.294.1.3=ASN1:SEQUENCE:swrv
+    1.3.6.1.4.1.294.1.8=ASN1:SEQUENCE:debug
+
+    [ swrv ]
+    # Replace PUT-SWRV with actual SWREV SYSFW value
+    swrv = INTEGER:PUT-SWRV
+
+    [ debug ]
+    # Replace PUT-DEVICE-UID with actual device UID value
+    debugUID = FORMAT:HEX,OCT:PUT-DEVICE-UID
+    # Replace PUT-DBG-TYPE with actual debug type value
+    debugType = INTEGER:PUT-DBG-TYPE
+    # Replace PUT-NONSEC-DBG with actual non secure debug cores value
+    coreDbgEn = INTEGER:PUT-NONSEC-DBG
+    # Replace PUT-SEC-DBG with actual secure debug cores value
+    coreDbgSecEn = INTEGER:PUT-SEC-DBG
+
+This X509 config can then be signed with SMPK (private) or BMPK (private) by using the command below:
+
+.. code-block:: bash
+
+    $ openssl req -new -x509 -key custMpk.pem -nodes -outform der -out debug_unlock_cert.der -config signing_config.txt -sha512
+
+.. note::
+
+   The data in the ``req_distinguished_name`` section is random to indicate the following:
+
+   1. |sysfw| does not process the information in the section.
+   2. The data in this section needs to be updated by the user to reflect their company name, location, email address, etc.
+
+Populating the fields in the certificate
+----------------------------------------
+
+The X509 certificate format is described in :ref:`sysfw_x509_ext_doc`.
+
+|sysfw| expects two X509 extensions in the debug unlock certificate.
+
+1. :ref:`sysfw_debug_ext` - Mandatory
+2. :ref:`sysfw_swrev_ext` - Mandatory
+
+Below are the steps to populate the X509 extensions:
+
+Debug Certificate Revision
+--------------------------
+
+If you have specified a non-zero debug certificate revision in the
+:ref:`pub_boardcfg_secure_debug_unlock`, you must populate the
+:ref:`sysfw_swrev_ext` in the certificate. Choose a version number
+equal to or higher than minimum specified version.
+
+Debug Extension
+---------------
+
+1. Populate the SOC UID in the extension. SOC UID can be obtained in multiple
+   ways.
+
+   - Using TISCI API :ref:`TISCI_MSG_GET_SOC_UID <get-soc-uid>`
+   - Through message printed by ROM on UART port when in UART boot mode. - see :ref:`sysfw_pub_sec_dbg_ug_soc_uid_over_uart`
+
+   - Using CCS to obtain SOC UID via JTAG - see :ref:`sysfw_pub_sec_dbg_ug_soc_uid_over_jtag`
+
+   If the board configuration allows a wild card jtag unlock i.e. skipping the
+   SOC UID match, you can set the SOC UID to a 256 bit all zeros string.
+   See example below.
+
+   .. code::
+
+      debugUID = FORMAT:HEX,OCT:0000000000000000000000000000000000000000000000000000000000000000
+
+2. The ``debugType`` field is a combination field. It contains both the level of
+   debug to be allowed at SOC level and a reserved field. Both fields are 16 bits
+   wide.
+
+   - Select debug privilege level for the table
+     :ref:`Debug Levels <sysfw_x509_ext_doc_debug_levels_table>`.
+     Encode this as a 16 bit integer.
+
+   - Set the reserved field as zero. Encode also as a 16 bit integer.
+
+     Combine both of them as follows.
+
+     .. code-block:: none
+
+        debugType = INTEGER:0xPPPPQQQQ
+
+     where ``PPPP`` is the reserved field and ``QQQQ`` is the debug privilege level.
+
+   As an example, enabling full debug i.e. ``DEBUG_FULL`` in
+   :ref:`Debug Levels <sysfw_x509_ext_doc_debug_levels_table>`
+
+   .. code-block:: none
+
+      debugType = INTEGER:0x00000004
+
+3. The ``coreDbgEn`` lists the ID's of processors for which non-secure debug is enabled.
+   The processor ID's can be obtained from the SOC specific information in this documentation.
+   Processor ID's are encoded as a string of hexadecimal values.
+   Each processor ID takes a byte.
+
+   E.g. For AM65x, the processor ID's are listed in
+   :ref:`AM65x Processor Descriptions <soc_doc_am6_public_proc_desc_processors_list>`.
+   If non-secure debug needs to be enabled for the following four cores on AM65x,
+
+   +----------------+------------------+------------------------------------------------+
+   | Processor ID   | Processor Name   | Location in SoC                                |
+   +================+==================+================================================+
+   | 0x20           | A53_CL0_C0       | COMPUTE_CLUSTER_MSMC0: (Cluster 0 Processor 0) |
+   +----------------+------------------+------------------------------------------------+
+   | 0x21           | A53_CL0_C1       | COMPUTE_CLUSTER_MSMC0: (Cluster 0 Processor 1) |
+   +----------------+------------------+------------------------------------------------+
+   | 0x01           | R5_CL0_C0        | MCU_SEC_MMR0: (Cluster 0 Processor 0)          |
+   +----------------+------------------+------------------------------------------------+
+   | 0x02           | R5_CL0_C1        | MCU_SEC_MMR0: (Cluster 0 Processor 1)          |
+   +----------------+------------------+------------------------------------------------+
+
+   the ``coreDbgEn`` field is populated by concatenating the processor ID's.
+
+   .. code::
+
+      coreDbgEn = INTEGER:0x20210102
+
+.. note::
+
+    The SoC reset enables both invasive and non-invasive debug for all
+    non secure cores, so the non secure cores not listed in ``coreDbgEn``
+    also will be open for debug, in a case where ``debugType`` is set
+    as one of ``DEBUG_PUBLIC``, ``DEBUG_PUBLIC_USER``, ``DEBUG_FULL``, or
+    ``DEBUG_SECURE_USER``.
+
+4. The ``coreDbgSecEn`` lists the ID's of processors for which secure debug is enabled.
+   The processor ID's can be obtained from the SOC specific information in this documentation.
+   Processor ID's are encoded as a string of hexadecimal values.
+   Each processor ID takes a byte.
+
+   E.g. For AM65x, the processor ID's are listed in
+   :ref:`AM65x Processor Descriptions <soc_doc_am6_public_proc_desc_processors_list>`
+   If secure debug needs to be enabled for the following two cores on AM65x,
+
+   +----------------+------------------+------------------------------------------------+
+   | Processor ID   | Processor Name   | Location in SoC                                |
+   +================+==================+================================================+
+   | 0x22           | A53_CL1_C0       | COMPUTE_CLUSTER_MSMC0: (Cluster 1 Processor 0) |
+   +----------------+------------------+------------------------------------------------+
+   | 0x23           | A53_CL1_C1       | COMPUTE_CLUSTER_MSMC0: (Cluster 1 Processor 1) |
+   +----------------+------------------+------------------------------------------------+
+
+   the ``coreSecDbgEn`` field is populated by concatenating the processor ID's.
+
+   .. code::
+
+    coreDbgSecEn = INTEGER:0x2223
+
+Certificate validation done by |sysfw|
+======================================
+
+First, |sysfw| expects a certificate signed with an active customer key to unlock
+the debug access to the non-M3 cores. 
+
+The active customer key is:
+
+1. SMPK if key revision is set to 1 in the efuses
+2. BMPK if key revision is set to 2 in the efuses
+
+Then, the signature of the certificate is verified, and the hash of the public key
+in the certificate is compared against the hash of the public key in the efuses.
+
+.. note::
+
+   |sysfw| proceeds to the next steps only if the signature is verified and the
+   public key hashes match.
+
+Next, |sysfw| looks for the :ref:`sysfw_debug_ext` and :ref:`sysfw_swrev_ext` in 
+the X509 certificate.
+
+.. warning::
+
+   If any one of the two X509 extensions is not present, further processing does not 
+   happen.
+
+.. note::
+
+   The remaining X509 extensions are ignored by |sysfw| when processing the debug
+   certificate.
+
+Afterwards, |sysfw| validates the information passed in the :ref:`sysfw_debug_ext` 
+and :ref:`sysfw_swrev_ext` by doing the following:
+
+1. The certificate revision of the debug certificate must be greater than or equal to
+   the value specified by the ``min_cert_rev`` field in :ref:`pub_boardcfg_secure_debug_unlock`.
+
+2. The UID passed in the debug extension is checked against the SOC UID.
+   The UID's must match unless otherwise specified in the board configuration.
+   See the field ``allow_wildcard_unlock`` in :ref:`pub_boardcfg_secure_debug_unlock`.
+
+3. |sysfw| checks that the values specified for ``debug_priv_level`` are valid.
+
+4. |sysfw| verifies that the processor ID's specified in the fields
+   ``coreDbgEn`` and ``coreDbgSecEn`` are valid, and that the cores in ``coreDbgSecEn`` 
+   actually support secure debug.
+   
+.. note::
+     
+   ``coreDbgSecEn`` lists which cores need to have secure level debug enabled.
+   ``coreDbgEn`` lists which cores need to have non-secure level debug enabled.
+
+Once these checks pass, |sysfw| performs the actual debug unlock operation.
+
+Sending debug certificate to |sysfw|
+====================================
+
+Using TISCI API
+---------------
+
+The debug unlock certificate can be supplied to |sysfw| via the
+:ref:`open-debug-fwls` message. The debug unlock certificate must first be
+placed in memory. The physical address of the certificate is passed as a part of
+the TISCI message. |sysfw| validates the certificate and its contents. If the
+checks pass, |sysfw| performs debug unlock.
+
+This procedure can be used when if JTAG debugger is unable to supply the unlock
+certificate over the JTAG interface.
+
+.. _sysfw_pub_sec_dbg_ug_over_jtag:
+
+Over the JTAG interface
+-----------------------
+
+The debug unlock certificate can be provided to |sysfw| over the JTAG interface.
+Even though the JTAG access to the cores on the device is locked, the host PC
+can read write to the Secure Access Point (Sec-AP) via the JTAG interface.
+The debug unlock certificate must be supplied to |sysfw| via Sec-AP for processing.
+|sysfw| processes the certificate, unlocks the JTAG and reports the JTAG unlock
+status. At this point, the host PC can debug the unlocked cores in the same manner as
+a GP device.
+
+The protocol for communication via the Sec-AP is described in
+:doc:`../2_tisci_msgs/security/sec_ap_data_transfer`. This data transfer protocol
+is also supported in TI Code Composer Studio(CCS). We will describe how to use
+CCS to unlock the JTAG. The required CCS version is CCS 9.3 or later.
+Normally it would suffice to have a version of CCS that supports the
+device you are using.
+
+1. Create a target configuration file for the HS EVM in CCS and launch the target
+   configuration file. This will create a file ``ccBoard0.dat`` which we will use
+   in later steps. You will not be able to connect to any cores on the device in this
+   step.
+
+2. The file ``ccBoard0.dat`` is typically found in the following directories.
+
+   - on Linux, ``~/.ti/<ccs_version>/0/0/BrdDat/ccBoard0.dat``
+   - on Windows, ``C:\Users\<user>\AppData\Local\Texas Instruments\CCS\<ccs_version>\0\0\BrdDat\ccBoard0.dat``
+
+3. Find the "uscif" folder in CCS installation. This is typically in the
+   following path ``<ccs install>/ccs/ccs_base/common/uscif``. This folder will
+   contain the ``dbgauth`` executable (``dbgauth.exe`` on windows).
+
+4. Verify K3 support by running
+
+   .. code-block:: bash
+
+      $ ./dbgauth --help
+      ...
+          --mode 3 = SUPPORTED TARGETS: All Keystone 3 devices
+      ...
+
+   The output must include the above description for "mode 3".
+   Older versions of EMUPACK included AM65x as the supported targets
+   for mode 3.
+
+Performing JTAG unlock
+======================
+
+To unlock the JTAG, use the ``unlock`` command of ``dbgauth`` tool. We are
+assuming that ccs version is ``ccs1010``.
+
+.. code-block:: bash
+
+    $ cd /opt/ti/ccs1010/ccs/ccs_base/common/uscif || exit 1
+
+    $ ./dbgauth -c ~/.ti/ccs1010/0/0/BrdDat/ccBoard0.dat \
+            -x xds110 \
+            -s cs_dap_0 \
+            -o unlock \
+            -m 3 \
+            -f ~/debug_unlock_cert.der
+    Using board config file:
+    /home/user/.ti/ccs1010/0/0/BrdDat/ccBoard0.dat
+    Successfully opened certificate file /home/user/debug_unlock_cert.der
+    Read 1509 bytes from certificate file /home/user/debug_unlock_cert.der
+    The target device is unlocked.
+
+Please read the help of ``dbgauth`` for command line options.
+
+1. The argument to ``-x`` flag depends on the debugger used.
+2. The argument to ``-s`` flag depends on the board. This can be determined from
+   the ``ccBoard0.dat`` file. Open ``ccBoard0.data`` with a text editor and look
+   for similar line in the file. The identifier at the start of the line e.g.
+   ``cs_dap_0`` indicates the name to be used as argument.
+
+   .. code-block:: text
+
+        ...
+        @ cs_dap_0 family=cs_dap irbits=4 drbits=1 subpaths=15 identify=0 revision=Power-AP systemresetwhileconnected=1
+        ...
+
+Retrieveing SOC UID
+===================
+
+.. _sysfw_pub_sec_dbg_ug_soc_uid_over_jtag:
+
+Retrieving the SOC UID over JTAG
+--------------------------------
+
+To retrieve the SOC UID, use the ``getuid`` command of ``dbgauth`` tool. We are
+assuming that ccs version is ``ccs1010``.
+
+.. note::
+
+   The commands below are shown for Linux. They need to be modified according to
+   path name conventions of other operating systems.
+
+.. code-block:: bash
+
+    $ cd /opt/ti/ccs1010/ccs/ccs_base/common/uscif || exit 1
+
+    $ ./dbgauth -c ~/.ti/ccs1010/0/0/BrdDat/ccBoard0.dat \
+            -x xds110 \
+            -s cs_dap_0 \
+            -o getuid \
+            -m 3
+    Using board config file:
+    /home/user/.ti/ccs1010/0/0/BrdDat/ccBoard0.dat
+
+    UID = c89491b8edad0fb3a5f201ec4caff17bcde0ed5ac845b17da14e0749da22d4cb
+
+The retrieved UID can be populated into the debug certificate in the below manner.
+
+   .. code-block:: none
+
+      debugUID = FORMAT:HEX,OCT:c89491b8edad0fb3a5f201ec4caff17bcde0ed5ac845b17da14e0749da22d4cb
+
+
+.. _sysfw_pub_sec_dbg_ug_soc_uid_over_uart:
+
+Retrieving the SOC UID over UART
+--------------------------------
+
+When the device is in UART boot mode, ROM prints the SOC information including
+the SOC ID on the boot UART. The last 32 bytes i.e. 64 characters before the
+start of the UART boot character 'CC' contain the SOC ID.
+
+.. code-block:: none
+
+    02000000011a00006a37657300000000
+    00000000485353450200010002000100
+    02a6000001000200cffc17b20bcbf96a
+    8c712e8d732b48c3e09ac6c0951013ce
+    a93e069d2ccdac95420cca9c5f637a80
+    0bb88ba99d3a8b1d92075c67bcc047d2
+    15de4a0d4ee20fd61f6002b07cd9b0b7
+    c47d9ca8d1aae57b8e8784a12f636b2b
+    760d7d98a18f189760dfd0f23e2b0cb1
+    0ec7edc7c6edac3d9bdfefe0eddc3fff
+    7fe9ad875195527dc89491b8edad0fb3
+    a5f201ec4caff17bcde0ed5ac845b17d
+    a14e0749da22d4cb
+    CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+
+The above shows the UART output formatted to 32 characters per line.
+The characters corresponding to SOC data are
+
+.. code-block:: none
+
+                    c89491b8edad0fb3
+    a5f201ec4caff17bcde0ed5ac845b17d
+    a14e0749da22d4cb
+
+Retrieving the SOC UID via TISCI 
+--------------------------------
+
+The :ref:`TISCI_MSG_GET_SOC_UID <get-soc-uid>` API can be used to retrieve the
+SOC UID to print for reference:
+
+.. code-block:: none
+
+   SOC_UID[0] = 0xB89194C8
+   SOC_UID[1] = 0xB30FADED
+   SOC_UID[2] = 0xEC01F2A5
+   SOC_UID[3] = 0x7BF1AF4C
+   SOC_UID[4] = 0x5AEDE0CD
+   SOC_UID[5] = 0x7DB145C8
+   SOC_UID[6] = 0x49074EA1
+   SOC_UID[7] = 0xCBD422DA
+
+Please note that the data is formatted in little endian fashion and
+bytes inside individual words need to be reordered before populating
+the debugUID field in the certificate. Alternative is to cast the response
+payload to a byte array before printing to view the values in byte order.
+
+Controlling Debug via Board Configuration
+=========================================
+
+|Sec_bcfg| allows the user to control the JTAG unlock process. See
+:ref:`pub_boardcfg_secure_debug_unlock` for the data structure definition.
+
+
+1. By setting ``allow_jtag_unlock`` to 0, runtime JTAG unlock through |sysfw|
+   can be prevented. The JTAG cannot be unlocked using the TISCI API or through
+   the Sec-AP once |sysfw| is running.
+
+   .. warning::
+
+      Please note that JTAG connection for R5 can still be unlocked by including
+      the ROM debug X509 extension in the R5 boot loader X509 certificate.
+
+   .. note::
+
+      The rest of this section only applies in ``allow_jtag_unlock`` is set to
+      ``0x5A``.
+
+2. Setting ``allow_wildcard_unlock`` skips matching the UID in the debug unlock
+   certificate with the SOC UID. All the remaining checks should pass. This
+   option allows using a single debug unlock certificate across multiple devices
+   sharing the same root of trust keys (SMPK/BMPK).
+
+   .. warning::
+
+      While wildcard unlock is convenient during development, it must not used
+      during production. Please avoid creating a wildcard debug unlock
+      certificate with production keys.
+
+3. Use ``min_cert_rev`` to prevent older debug unlock certificates from being used.
+   Set this to `0` in development and increment it before production.
+
+4. While |sysfw| allows debug unlock to be performed by one of the hosts on the device
+   through a TISCI message, this path can be disabled as well. Set the ``jtag_unlock_hosts``
+   array to all zeroes to prevent jtag unlock using the TISCI message. Alternatively you
+   can limit the hosts that can unlock debug to a specific hosts. Any host can be allowed
+   to unlock the jtag port by using a special host id. Please refer to
+   :ref:`pub_boardcfg_secure_debug_unlock`.

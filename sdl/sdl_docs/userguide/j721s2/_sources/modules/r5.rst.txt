@@ -1,0 +1,69 @@
+R5 Core Modules
+===============
+
+Introduction
+------------
+
+The R5 Core modules provided as part of SDL include the following:
+
+* Performance Monitoring Unit (PMU) counter API
+* Memory Protection Unit (MPU) API
+* Region Address Translation (RAT) API
+* Vectored Interrupt Manager (VIM) API
+
+Performance Monitoring Unit (PMU) API
+-------------------------------------
+
+The PMU consists of three event counting registers, one cycle counting register and 12 CP15 registers for controlling and interrogating the counters. The performance monitoring registers are always accessible in Privileged mode. Control registers can be used to enable or disable each of the event counters individually, and read and reset the overflow flag for each counter. All three event counters are read and written through the same CP15 register. The counters can be enabled to assert an interrupt request when the processor is in Debug halt state. The PMU only counts events when non-invasive debug is enabled, that is, when either DBGEN or NIDEN inputs are asserted. The Cycle Count (CCNT) Register is always enabled regardless of whether non-invasive debug is enabled, unless the DP bit of the PMNC register is set.
+
+For a complete list of CPU events that can be monitored, see the Cortex-R5 Technical Reference Manual.
+
+Memory Protection Unit (MPU) API
+--------------------------------
+
+The R5F MPU works with the L1 memory system to control accesses to and from L1 and external memory.The MPU enables you to partition memory into regions and set individual protection attributes for each region. Each region is programmed with a base address and size, and the regions can be overlapped to enable efficient programming of the memory map. To support overlapping, the regions are assigned priorities, with region 0 having the lowest priority and region 15 having the highest. The MPU returns access permissions and attributes for the highest priority enabled region where the address hits.
+
+Region Address Translation (RAT) API
+------------------------------------
+
+The RAT module performs a region based address translation. It translates a 32-bit input address into a 48-bit output address. Any input transaction that starts inside of a programmed region will have its address translated, if the region is enabled. Any disabled region is ignored from the translation lookup. The input addresses are compared against all the enabled regions in parallel. The region size defines how many of the lowest address bits are included in the region space.
+
+Vectored Interrupt Manager (VIM)
+--------------------------------
+
+The Vectored Interrupt Manager (VIM) aggregates interrupts to a CPU. It is intended for use with a Cortex R5 from ARM in either split or lockstep configuration. The VIM has up to 1024 interrupt inputs per CPU, which may be either level or pulse. Each interrupt has a programmable priority (0-highest through 15-lowest). Each interrupt may also be mapped as anIRQ or FIQ (FIQ is also often denoted as Non-Maskable Interrupt, or NMI).
+
+The file test/r5f_startup/interrupt.c demonstrates using these APIs in a baremetal environment for interrupt-related functionality.
+
+Examples
+--------
+
+Test apps that are meant for verifying the functionality of the module are also provided.
+
++---------------------+--------------------------------------------------------+------------------------------------------+------------------------------------------+
+| Test App Name       | Description                                            | Location                                 | Build Command                            |
++=====================+========================================================+==========================================+==========================================+
+| pmu_test_app        | - Demonstrates the APIs to enable the use of PMU       | [sdl_install_dir]/test/pmu               | make pmu_test_app PROFILE=release        |
+|                     |   counters                                             |                                          |                                          |
++---------------------+--------------------------------------------------------+------------------------------------------+------------------------------------------+
+| mpu_func_test_app   | - Demonstrates execution self test of MPU              | [sdl_install_dir]/test/mpu/func_test     | make mpu_func_test_app PROFILE=release   |
++---------------------+--------------------------------------------------------+------------------------------------------+------------------------------------------+
+| rat_func_test_app   | - Demonstrates execution self test of RAT              | [sdl_install_dir]/test/rat/func_test     | make rat_func_test_app PROFILE=release   |
+|                     | - Programs a RAT region and modifies content           |                                          |                                          |
+|                     | - Verifies that content is as expected                 |                                          |                                          |
++---------------------+--------------------------------------------------------+------------------------------------------+------------------------------------------+
+| vim_test_app        | - Configures an interrupt and ISR                      | [sdl_install_dir]/test/vim/func_test     | make vim_test_app PROFILE=release        |
+|                     | - Verifies the config                                  |                                          |                                          |
+|                     | - Performs VIM SRAM Data ECC with DED Vector test      |                                          |                                          |
++---------------------+--------------------------------------------------------+------------------------------------------+------------------------------------------+
+
+API
+---
+
+|__R5F_PMU_API_LNK__|
+
+|__R5F_MPU_API_LNK__|
+
+|__R5F_RAT_API_LNK__|
+
+|__R5F_VIM_API_LNK__|

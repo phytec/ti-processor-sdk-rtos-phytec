@@ -1,0 +1,175 @@
+#-----------------------------------------------------------------------------
+# ti_rts_indirect.txt - Configuration file used with call_graph.pl.  Lists 
+#    parent/child function call relationships where the call is implemented
+#    either indirectly, or with a far call.  Specific to TI compiler RTS
+#    libs.  This file reflects the common behavior or the RTS compiler 
+#    across several devices, including C6000, ARM, and C5500.  For full 
+#    correctness, this file must be combine with the target specific RTS
+#    indirect information file, e.g. c60_rts_indirect.txt.
+#-----------------------------------------------------------------------------
+# For details on syntax, run "perldoc call_graph.pl". 
+#-----------------------------------------------------------------------------
+# Presumptions:
+# - "auto_init" calls no global constructors 
+# - The "_lock" and "_unlock" function pointers, used in several places to
+#   assure atomic access to global state, have not been modified from the
+#   default configuration of pointing to the function "_nop"
+# - The "_cleanup_ptr" function pointer, used in "exit", has not been modified
+#   from the default configuration of pointing to the function "_cleanup"
+# - "exit" calls no global destructors
+# - "exit" calls no functions registered with "atexit"
+# - The application doesn't call these RTS functions that make use of
+#   function pointers: qsort, bsearch
+# - No C++ RTS is used
+# - The function "add_device" is not called to add another device, with
+#   associated function pointers, for C I/O to use
+# - The C6x compiler, when building for C64+ under -ms[2 or 3], performs an
+#   optimization known as "calling convention customization".  It shows
+#   up here as call through a function in the RTS named _call_stub.  And
+#   the call graph stops at the point.  _call_stub is a utility function
+#   that actually makes an indirect call to some other function.  The Dwarf
+#   information for that call does not indicate which function is actually
+#   being called, even though at user source level it is an ordinary direct
+#   function call.  There is nothing that can be done about this at this point.
+#   This information is recorded in CQ SDSCM00008255.  
+#-----------------------------------------------------------------------------
+__buff_read      : __nop
+_exit            : __nop __cleanup
+_atexit          : __nop
+_fflush          : __nop
+_fopen           : __nop
+_freopen         : __nop
+__cleanup        : __nop
+_tabinit         : __nop
+_add_device      : __nop
+_remove_device   : __nop
+_open            : __nop _HOSTopen
+_read            : __nop _HOSTread
+_write           : __nop _HOSTwrite
+_lseek           : __nop _HOSTlseek
+_close           : __nop _HOSTclose
+_unlink          : __nop _HOSTunlink
+_rename          : __nop _HOSTrename
+_minit           : __nop
+_malloc          : __nop
+_realloc         : __nop
+_free            : __nop
+_rand            : __nop
+_srand           : __nop
+_HOSTopen        : __nop
+_HOSTclose       : __nop
+_HOSTread        : __nop
+_HOSTwrite       : __nop
+_HOSTlseek       : __nop
+_HOSTunlink      : __nop
+_HOSTrename      : __nop
+_getenv          : __nop
+_HOSTtime        : __nop
+_HOSTclock       : __nop
+
+__sproc_float    : __inpchar __uninpchar
+__sproc_int      : __inpchar __uninpchar
+__sproc_lb       : __inpchar __uninpchar
+__sproc_str      : __inpchar __uninpchar
+
+#-----------------------------------------------------------------------------
+# The function "_printfi" is actually passed pointers to static functions
+# that are always named "_outc" and "_outs".  The call_graph.pl script doesn't
+# handle static functions correctly.  It only looks at the name of such
+# functions, when it should look at the combination of the filename and
+# the function.  Thus, taking unfair advantage of that here by saying
+# "_printfi" calls "_outc" and "_outs", and "_pproc_str" calls "_outc".  When
+# call_graph.pl handles static functions more robustly, this will have to be
+# changed.
+#-----------------------------------------------------------------------------
+# A similar relationship exists between "_scanfi" and the static helper
+# functions "_inpchar", "_uninpchar", "_chkmbc"
+#-----------------------------------------------------------------------------
+__printfi   : __outc __outs
+__pproc_str : __outc
+__scanfi    : __inpchar __uninpchar __chkmbc
+
+#-----------------------------------------------------------------------------
+# The following lines are a repeat of all the entries from above, but with
+# the leading '_' removed.  This is a hack to make this file work for MSP430,
+# or any EABI build.  In such builds, the assembly name matches the C name.
+# Unlike COFF ABI, a leading '_' is not added.
+#-----------------------------------------------------------------------------
+_buff_read      : _nop
+exit            : _nop _cleanup
+atexit          : _nop
+fflush          : _nop
+fopen           : _nop
+freopen         : _nop
+_cleanup        : _nop
+tabinit         : _nop
+add_device      : _nop
+remove_device   : _nop
+open            : _nop HOSTopen
+read            : _nop HOSTread
+write           : _nop HOSTwrite
+lseek           : _nop HOSTlseek
+close           : _nop HOSTclose
+unlink          : _nop HOSTunlink
+rename          : _nop HOSTrename
+minit           : _nop
+malloc          : _nop
+realloc         : _nop
+free            : _nop
+rand            : _nop
+srand           : _nop
+HOSTopen        : _nop
+HOSTclose       : _nop
+HOSTread        : _nop
+HOSTwrite       : _nop
+HOSTlseek       : _nop
+HOSTunlink      : _nop
+HOSTrename      : _nop
+getenv          : _nop
+HOSTtime        : _nop
+HOSTclock       : _nop
+
+_sproc_float    : _inpchar _uninpchar
+_sproc_int      : _inpchar _uninpchar
+_sproc_lb       : _inpchar _uninpchar
+_sproc_str      : _inpchar _uninpchar
+
+_printfi   : _outc _outs
+_pproc_str : _outc
+_scanfi    : _inpchar _uninpchar _chkmbc
+
+# /*
+#  *
+#  * Copyright (C) 2011 Texas Instruments Incorporated - http://www.ti.com/ 
+#  * 
+#  * 
+#  *  Redistribution and use in source and binary forms, with or without 
+#  *  modification, are permitted provided that the following conditions 
+#  *  are met:
+#  *
+#  *    Redistributions of source code must retain the above copyright 
+#  *    notice, this list of conditions and the following disclaimer.
+#  *
+#  *    Redistributions in binary form must reproduce the above copyright
+#  *    notice, this list of conditions and the following disclaimer in the 
+#  *    documentation and/or other materials provided with the   
+#  *    distribution.
+#  *
+#  *    Neither the name of Texas Instruments Incorporated nor the names of
+#  *    its contributors may be used to endorse or promote products derived
+#  *    from this software without specific prior written permission.
+#  *
+#  *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 
+#  *  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT 
+#  *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+#  *  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT 
+#  *  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
+#  *  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT 
+#  *  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+#  *  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+#  *  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT 
+#  *  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
+#  *  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#  *
+# */
+

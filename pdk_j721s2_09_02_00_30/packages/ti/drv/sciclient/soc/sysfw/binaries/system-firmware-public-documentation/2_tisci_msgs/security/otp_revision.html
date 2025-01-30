@@ -1,0 +1,686 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>OTP Revision Read/Write Message Description &mdash; TISCI User Guide</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="TISCI User Guide" href="../../index.html"/>
+        <link rel="up" title="Chapter 2: TISCI Message Documentation" href="../index.html"/>
+        <link rel="next" title="KEYRING TISCI Description" href="keyring.html"/>
+        <link rel="prev" title="OTP Keywriter TISCI Description" href="keywriter.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="../../_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> TISCI
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                09.02.04
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../1_intro/index.html">Chapter 1: Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Chapter 2: TISCI Message Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../general/TISCI_header.html">Texas Instruments System Controller Interface (TISCI)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#general">General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#power-management-pm">Power Management (PM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#resource-management-rm">Resource Management (RM)</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#secure-management">Secure Management</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="sec_cert_format.html">Security X509 Certificate Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PROC_BOOT.html">Processor Boot Management TISCI Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="firewall_api.html">Firewall TISCI Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sec_ap_data_transfer.html">Secure AP Command Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="runtime_debug.html">Runtime Debug TISCI Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="extended_otp.html">Extended OTP TISCI Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dkek_management.html">Derived KEK TISCI Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dsmek_management.html">Derived SMEK TISCI Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="security_handover.html">Security Handover Message Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="keywriter.html">OTP Keywriter TISCI Description</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">OTP Revision Read/Write Message Description</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#api-description">API Description</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="keyring.html">KEYRING TISCI Description</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../3_boardcfg/index.html">Chapter 3: Board Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../4_trace/index.html">Chapter 4: Interpreting Trace Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../5_soc_doc/index.html">Chapter 5: SoC Family Specific Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../6_topic_user_guides/index.html">Chapter 6: Topic User Guides</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">TISCI</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Chapter 2: TISCI Message Documentation</a> &raquo;</li>
+      
+    <li>OTP Revision Read/Write Message Description</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="otp-revision-read-write-message-description">
+<h1>OTP Revision Read/Write Message Description<a class="headerlink" href="#otp-revision-read-write-message-description" title="Permalink to this headline">¶</a></h1>
+<p id="sec-otp-rev-rd-wr-message-desc">This chapter provides information on System Firmware APIs for reading and writing
+Software Revision and Key Revision to/from eFuses.</p>
+<p>The available APIs are listed below.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="56%" />
+<col width="13%" />
+<col width="16%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">TISCI Message ID</th>
+<th class="head">Message Name</th>
+<th class="head">Available in GP</th>
+<th class="head">Avialable in HS-FS</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0x9032</td>
+<td><a class="reference internal" href="#sec-api-wr-swrev-otp"><span class="std std-ref">TISCI_MSG_WRITE_SWREV</span></a></td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>0x9033</td>
+<td><a class="reference internal" href="#sec-api-rd-swrev-otp"><span class="std std-ref">TISCI_MSG_READ_SWREV</span></a></td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>0x9034</td>
+<td><a class="reference internal" href="#sec-api-rd-keycnt-keyrev-otp"><span class="std std-ref">TISCI_MSG_READ_KEYCNT_KEYREV</span></a></td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>0x9035</td>
+<td><a class="reference internal" href="#sec-api-wr-keyrev-otp"><span class="std std-ref">TISCI_MSG_WRITE_KEYREV</span></a></td>
+<td>No</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="api-description">
+<h2>API Description<a class="headerlink" href="#api-description" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="tisci-msg-write-swrev-write-software-revision">
+<span id="sec-api-wr-swrev-otp"></span><h3>TISCI_MSG_WRITE_SWREV - Write Software Revision<a class="headerlink" href="#tisci-msg-write-swrev-write-software-revision" title="Permalink to this headline">¶</a></h3>
+<p><strong>Usage</strong>:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="75%" />
+<col width="25%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Message Type</strong></td>
+<td>Normal</td>
+</tr>
+<tr class="row-even"><td><strong>Secure Queue Only?</strong></td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="tisci-message-id">
+<h3>TISCI Message ID<a class="headerlink" href="#tisci-message-id" title="Permalink to this headline">¶</a></h3>
+<p><p><code class="docutils literal"><span class="pre">TISCI_MSG_WRITE_SWREV</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">(0x9032U)</span></code></p>
+<p>Message to write SWREV values</p>
+</p>
+<p><p><strong>struct tisci_msg_set_swrev_req</strong></p>
+<p>Request message to set swrev</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="22%" />
+<col width="64%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>hdr</td>
+<td>struct tisci_header</td>
+<td>Standard TISCI header</td>
+</tr>
+<tr class="row-odd"><td>identifier</td>
+<td>u8</td>
+<td>One of the entries from enum tisci_otp_revision_identifier</td>
+</tr>
+<tr class="row-even"><td>value</td>
+<td>u32</td>
+<td>Revision value (integer) to be bit encoded, and programmed</td>
+</tr>
+</tbody>
+</table>
+<p>This message can only be sent by the host that is tied to root of trust
+ through the secure boardcfg extended otp extension</p>
+</p>
+<p><p><strong>struct tisci_msg_set_swrev_resp</strong></p>
+<p>Response message after seting swrev</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="37%" />
+<col width="40%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>hdr</td>
+<td>struct tisci_header</td>
+<td>Standard TISCI header</td>
+</tr>
+</tbody>
+</table>
+</p>
+</div>
+<div class="section" id="tisci-msg-read-swrev-read-software-revision">
+<span id="sec-api-rd-swrev-otp"></span><h3>TISCI_MSG_READ_SWREV - Read Software Revision<a class="headerlink" href="#tisci-msg-read-swrev-read-software-revision" title="Permalink to this headline">¶</a></h3>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">System Firmware currently supports reading only SWREV Secure Board Config with
+this message</p>
+</div>
+<p><strong>Usage</strong>:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="75%" />
+<col width="25%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Message Type</strong></td>
+<td>Normal</td>
+</tr>
+<tr class="row-even"><td><strong>Secure Queue Only?</strong></td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id1">
+<h3>TISCI Message ID<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p><p><code class="docutils literal"><span class="pre">TISCI_MSG_READ_SWREV</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">(0x9033U)</span></code></p>
+<p>Message to read SWREV values</p>
+</p>
+<p><p><strong>struct tisci_msg_get_swrev_req</strong></p>
+<p>Request message to get swrev</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="15%" />
+<col width="76%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>hdr</td>
+<td>struct tisci_header</td>
+<td>Standard TISCI header</td>
+</tr>
+<tr class="row-odd"><td>identifier</td>
+<td>u8</td>
+<td>One of the entries from enum tisci_otp_revision_identifier (Current support only for OTP_REV_ID_SEC_BRDCFG)</td>
+</tr>
+</tbody>
+</table>
+</p>
+<p><p><strong>struct tisci_msg_get_swrev_resp</strong></p>
+<p>Response message to get swrev</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="24%" />
+<col width="62%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>hdr</td>
+<td>struct tisci_header</td>
+<td>Standard TISCI header</td>
+</tr>
+<tr class="row-odd"><td>value</td>
+<td>u32</td>
+<td>Decoded Software Revision value (integer) from efuses</td>
+</tr>
+</tbody>
+</table>
+</p>
+</div>
+<div class="section" id="tisci-msg-read-keycnt-keyrev-read-key-count-and-key-revision">
+<span id="sec-api-rd-keycnt-keyrev-otp"></span><h3>TISCI_MSG_READ_KEYCNT_KEYREV - Read Key Count and Key Revision<a class="headerlink" href="#tisci-msg-read-keycnt-keyrev-read-key-count-and-key-revision" title="Permalink to this headline">¶</a></h3>
+<p><strong>Usage</strong>:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="75%" />
+<col width="25%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Message Type</strong></td>
+<td>Normal</td>
+</tr>
+<tr class="row-even"><td><strong>Secure Queue Only?</strong></td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id2">
+<h3>TISCI Message ID<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p><p><code class="docutils literal"><span class="pre">TISCI_MSG_READ_KEYCNT_KEYREV</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">(0x9034U)</span></code></p>
+<p>Message to read KEYCNT and KEYREV</p>
+</p>
+<p><p><strong>struct tisci_msg_get_keycnt_keyrev_req</strong></p>
+<p>Request message to get keycnt, keyrev</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="37%" />
+<col width="40%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>hdr</td>
+<td>struct tisci_header</td>
+<td>Standard TISCI header</td>
+</tr>
+</tbody>
+</table>
+</p>
+<p><p><strong>struct tisci_msg_get_keycnt_keyrev_resp</strong></p>
+<p>Response message to get keycnt, keyrev</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="34%" />
+<col width="44%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>hdr</td>
+<td>struct tisci_header</td>
+<td>Standard TISCI header</td>
+</tr>
+<tr class="row-odd"><td>keycnt</td>
+<td>u32</td>
+<td>Keycount integer value</td>
+</tr>
+<tr class="row-even"><td>keyrev</td>
+<td>u32</td>
+<td>Keyrevision integer value</td>
+</tr>
+</tbody>
+</table>
+</p>
+</div>
+<div class="section" id="tisci-msg-write-keyrev-write-key-revision">
+<span id="sec-api-wr-keyrev-otp"></span><h3>TISCI_MSG_WRITE_KEYREV - Write Key Revision<a class="headerlink" href="#tisci-msg-write-keyrev-write-key-revision" title="Permalink to this headline">¶</a></h3>
+<p><strong>Usage</strong>:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="75%" />
+<col width="25%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Message Type</strong></td>
+<td>Normal</td>
+</tr>
+<tr class="row-even"><td><strong>Secure Queue Only?</strong></td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id3">
+<h3>TISCI Message ID<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p><p><code class="docutils literal"><span class="pre">TISCI_MSG_WRITE_KEYREV</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">(0x9035U)</span></code></p>
+<p>Message to write KEYREV value</p>
+</p>
+<p><p><strong>struct tisci_msg_set_keyrev_req</strong></p>
+<p>Request message to set keyrev</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="20%" />
+<col width="66%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>hdr</td>
+<td>struct tisci_header</td>
+<td>Standard TISCI header</td>
+</tr>
+<tr class="row-odd"><td>value</td>
+<td>u32</td>
+<td>Key Revision value (integer) to be bit encoded, and programmed</td>
+</tr>
+<tr class="row-even"><td>cert_addr_lo</td>
+<td>u32</td>
+<td>Lower 32 bit address (in LE format) of the Dual signed certificate</td>
+</tr>
+<tr class="row-odd"><td>cert_addr_hi</td>
+<td>u32</td>
+<td>Higher 32 bit address (in LE format) of the Dual signed certificate</td>
+</tr>
+</tbody>
+</table>
+<p>This message can only be sent by the host that is tied to root of trust
+ through the secure boardcfg extended otp extension</p>
+</p>
+<p><p><strong>struct tisci_msg_set_keyrev_resp</strong></p>
+<p>Response message after setting keyrev</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="37%" />
+<col width="40%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>hdr</td>
+<td>struct tisci_header</td>
+<td>Standard TISCI header</td>
+</tr>
+</tbody>
+</table>
+</p>
+</div>
+<div class="section" id="otp-revision-identifier">
+<h3>OTP Revision Identifier<a class="headerlink" href="#otp-revision-identifier" title="Permalink to this headline">¶</a></h3>
+<p>This enumeration is used in <a class="reference internal" href="#sec-api-wr-swrev-otp"><span class="std std-ref">TISCI_MSG_WRITE_SWREV</span></a>
+and <a class="reference internal" href="#sec-api-rd-swrev-otp"><span class="std std-ref">TISCI_MSG_READ_SWREV</span></a></p>
+<p><p><strong>enum tisci_otp_revision_identifier</strong></p>
+<p>OTP Revision Identifiers</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="12%" />
+<col width="59%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Enum</th>
+<th class="head">Value</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>OTP_REV_ID_SBL</td>
+<td>0</td>
+<td>Sofware Revision SBL</td>
+</tr>
+<tr class="row-odd"><td>OTP_REV_ID_SYSFW</td>
+<td>1</td>
+<td>Software Revision SYSFW</td>
+</tr>
+<tr class="row-even"><td>OTP_REV_ID_SEC_BRDCFG</td>
+<td>2</td>
+<td>Software Revision Secure Board Configuration</td>
+</tr>
+</tbody>
+</table>
+</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="keyring.html" class="btn btn-neutral float-right" title="KEYRING TISCI Description" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="keywriter.html" class="btn btn-neutral" title="OTP Keywriter TISCI Description" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyright 2016-2024</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'09.02.04',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+
+        $('body').on("mousewheel", function () {
+            // Remove default behavior
+            event.preventDefault();
+            // Scroll without smoothing
+            var wheelDelta = event.wheelDelta;
+            var currentScrollPosition = window.pageYOffset;
+            window.scrollTo(0, currentScrollPosition - wheelDelta);
+        });
+      });
+  </script>
+   
+
+</body>
+</html>

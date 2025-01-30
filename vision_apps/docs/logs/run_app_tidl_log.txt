@@ -1,0 +1,45 @@
+root@j7-evm:/opt/vision_apps# ./run_app_tidl.sh
+APP: Init ... !!!
+MEM: Init ... !!!
+MEM: Initialized DMA HEAP (fd=4) !!!
+MEM: Init ... Done !!!
+IPC: Init ... !!!
+IPC: Init ... Done !!!
+REMOTE_SERVICE: Init ... !!!
+REMOTE_SERVICE: Init ... Done !!!
+APP: Init ... Done !!!
+   181.640433 s:  VX_ZONE_INIT:Enabled
+   181.640456 s:  VX_ZONE_ERROR:Enabled
+   181.640461 s:  VX_ZONE_WARNING:Enabled
+   181.644159 s:  VX_ZONE_INIT:[tivxInit:71] Initialization Done !!!
+   181.644350 s:  VX_ZONE_INIT:[tivxHostInit:48] Initialization Done for HOST !!!
+[C7x_1 ]    181.809425 s:  VX_ZONE_WARNING:[tivxKernelTIDLCreate:615] All Interrupts DISABLED during TIDL process
+
+
+ =================================
+ Demo : TIDL Object Classification
+ =================================
+
+ p: Print performance statistics
+
+ x: Exit
+
+ Enter Choice: network file: /opt/vision_apps/test_data/tivx/tidl_models/tidl_net_mobilenet_v1.bin
+config  file: /opt/vision_apps/test_data/tivx/tidl_models/tidl_io_mobilenet_v1_1.bin
+Iteration 0 of 1000000 ... 
+x
+
+   184.920091 s:  VX_ZONE_INIT:[tivxHostDeInit:56] De-Initialization Done for HOST !!!
+   184.924433 s:  VX_ZONE_INIT:[tivxDeInit:111] De-Initialization Done !!!
+APP: Deinit ... !!!
+REMOTE_SERVICE: Deinit ... !!!
+REMOTE_SERVICE: Deinit ... Done !!!
+IPC: Deinit ... !!!
+IPC: DeInit ... Done !!!
+MEM: Deinit ... !!!
+MEM: Alloc's: 21 alloc's of 29432301 bytes 
+MEM: Free's : 21 free's  of 29432301 bytes 
+MEM: Open's : 0 allocs  of 0 bytes 
+MEM: Deinit ... Done !!!
+APP: Deinit ... Done !!!
+root@j7-evm:/opt/vision_apps#

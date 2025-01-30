@@ -1,0 +1,20 @@
+01000000011a00006a3765730000000000000000475020200101010001010100CSBL Revision: 01.00.10.01 (Jun 29 2023 - 15:00:34)
+Waiting for tifs.bin ...
+CCCCCCCCCCCCCTIFS  ver: 9.0.6--v09.00.06 (Kool Koala)
+Waiting for multicore app ...
+CCC
+ EXCEPTION UNIT Test Application
+
+ Undefined Instruction exception
+ Software interrupt exception
+ Prefetch Abort exception
+ Data Abort exception
+ Irq exception
+ Fiq exceptionTest Name: EXCEPTION POSITIVE TEST  PASSED
+
+ All tests have passed.
+exception_test_main.c:194:test_sdl_exception_baremetal_test_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored
+OK

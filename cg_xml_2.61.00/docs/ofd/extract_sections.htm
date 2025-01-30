@@ -1,0 +1,123 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Documentation for extract_sections.pl</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Documentation for extract_sections.pl</span></strong></big>
+</td></tr>
+</table>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#USAGE">USAGE</a></li>
+  <li><a href="#OPTIONS">OPTIONS</a></li>
+  <li><a href="#DEPENDENCIES">DEPENDENCIES</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#OFD-OPTIONS">OFD OPTIONS</a></li>
+  <li><a href="#KNOWN-PROBLEM">KNOWN PROBLEM</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>extract_sections.pl</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<p>Generates a C array of the data in an initialized section e.g. will generate an array const unsigned char _cinit[0x7fc] = { 0x12, 0x34, 0x56... } A pragma CODE_SECTION or DATA_SECTION is added for link placeability</p>
+
+<h1 id="USAGE">USAGE</h1>
+
+<p>extract_sections --sect=.initSect1 --sect=.initSect2 --pragma=.xyz:initSect1 --pragma=.xyz:initSect2 filename.xml</p>
+
+<p>Note that --sect can be shortform replaced with -s. Likewise for --pragma as -p</p>
+
+<p>The --pragma (-p) is optional.</p>
+
+<p>Example : - from a DOS prompt: -</p>
+
+<p>[&gt;] &lt;ccstudiodir&gt;\dosrun.bat</p>
+
+<p>[&gt;] ofd6x -x -o=irom.xml irom.out</p>
+
+<p>[&gt;] perl extract_sections.pl --sect=.const --pragma=.constrom irom.xml</p>
+
+<p>If you need more initialized sections to be generated, just add them via additional &#39;--sect&#39;, &#39;--pragma&#39; entries e.g. &#39;--sect=.text&#39;</p>
+
+<p>Alternatively, pipe the output from OFD into the script ...</p>
+
+<p>ofd6x -x irom.out | perl extract_sections.pl --sect=.const --pragma=.constrom</p>
+
+<p>If you pass in a garbage section (ie one that does not exist in the COFF file, the script will skip it and move on. However, it might be easiest to run &#39;sectti app.out&#39; simply to see the list of sections in your output file.</p>
+
+<p>Make sure to match up the number of --sect entries with --pragma entries else results are undefined.</p>
+
+<p>Output of above commands would be 2 files :- irom.out.c, irom.out.h</p>
+
+<p>Note that internally, this script still needs the .out file because it has to seek &amp; read the raw data from the COFF file (since the data itself is not in the .xml). It gets the .out COFF filename internally from a field in the .xml.</p>
+
+<h1 id="OPTIONS">OPTIONS</h1>
+
+<p>None</p>
+
+<h1 id="DEPENDENCIES">DEPENDENCIES</h1>
+
+<p>None except that you need to first run OFD which is only available in Codegen Tools &gt;= v5.0 for c6000, v3.0 for C55, v4.0 for C54</p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>Generates a C array of the data in an initialized section e.g. will generate an array _const[] = {0x12, 0x34, 0x56...}</p>
+
+<p>Useful in cases such as ROMing where you e.g. want to get LOG_printf result data from ROM&#39;ed code, hence need to preserve the .const contents which hold the string data, when you build the final application</p>
+
+<p>Uses ofd&lt;ARCH&gt; XML output&#39;s raw_data_ptr, raw_data_size fields in each output section to achieve this.</p>
+
+<p>At a push, this could be used to generate a complete bootimage if you passed in all initialized sections via &#39;--sect=.const --sect=.text&#39; etc However you&#39;d be better served using bootimage.pl which does this for you.</p>
+
+<p>OFD stands for Object File Display utility. Examples include ofd6x for C6000 and ofd55 for C5500.</p>
+
+<p>This script was written using Perl version 5.8.3. It may not work with earlier revisions of Perl.</p>
+
+<h1 id="OFD-OPTIONS">OFD OPTIONS</h1>
+
+<p>Recent releases of OFD support options for filtering the XML output down to what is strictly of interest. The best options to use in combination with this script are:</p>
+
+<pre><code>  -x --xml_indent=0 --obj_display=none,sections</code></pre>
+
+<p>Filtering the XML in this way reduces the amount of data processed by this script, thus making it run faster.</p>
+
+<h1 id="KNOWN-PROBLEM">KNOWN PROBLEM</h1>
+
+<p>You may see diagnostics similar to ...</p>
+
+<pre><code> Warning: &lt;symbol&gt; element has non-unique value in &#39;name&#39; key attribute:
+      .text at extract_sections.pl line 154.
+ Warning: &lt;symbol&gt; element has non-unique value in &#39;name&#39; key attribute:
+      .bss at extract_sections.pl line 154.
+ Warning: &lt;symbol&gt; element has non-unique value in &#39;name&#39; key attribute:
+      .data at extract_sections.pl line 154.</code></pre>
+
+<p>These diagnostics do not result in the script failing or producing incorrect output.</p>
+
+<p>Fixing this problem requires a significant rewrite of this script. Since it is likely this script is no longer used, the work will not be done. If this judgement proves wrong, it will be revisited.</p>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Documentation for extract_sections.pl</span></strong></big>
+</td></tr>
+</table>
+
+</body>
+
+</html>
+
+

@@ -1,0 +1,43 @@
+
+Welcome to minicom 2.7.1                                                                                                                    
+                                                                                                                                            
+OPTIONS: I18n                                                                                                                               
+Compiled on Dec 23 2019, 02:06:26.                                                                                                          
+Port /dev/ttyUSB1, 19:34:00                                                                                                                 
+                                                                                                                                            
+Press CTRL-A Z for help on special keys                                                                                                     
+                                                                                                                                            
+01000000011a00006a3761657000000000000000475020200008010000080100C1.00.10.01 (Jun 29 2023 - 13:38:40)                                        
+Waiting for tifs.bin ...                                                                                                                    
+CCTIFS  ver: 9.0.6--v09.00.06 (Kool Koala)                                                                                                  
+Waiting for multicore app ...                                                                                                               
+CCCst Application                                                                                                                           
+                                                                                                                                            
+sdlEsmSetupForPOK init: Init WKUP ESM complete                                                                                              
+                                                                                                                                            
+                                                                                                                                            
+ POK ID = 1 , monitoring set to UV                                                                                                          
+Waiting for ESM to report the error                                                                                                         
+                                                                                                                                            
+  ESM Call back function called : instType 0x1, intType 0x1, grpChannel 0x2, index 0x1c, intSrc 0x5c                                        
+  Take action                                                                                                                               
+ Got the ESM Error Interrupt                                                                                                                
+Action taken                                                                                                                                
+Safety software Example UC-1 pok for instance 1 PASSED                                                                                      
+                                                                                                                                            
+                                                                                                                                            
+ POK ID = 13 , monitoring set to OV                                                                                                         
+                                                                                                                                            
+  ESM Call back function called : instType 0x1, intType 0x1, grpChannel 0x2, index 0xa, intSrc 0x4a                                         
+  Take action                                                                                                                               
+Waiting for ESM to report the error                                                                                                         
+ Got the ESM Error Interrupt                                                                                                                
+Action taken                                                                                                                                
+Safety software Example UC-2 pok for instance  13 PASSED                                                                                    
+Test Name: POK EXAMPLE UC-1  PASSED                                                                                                         
+Test Name: POR EXAMPLE UC-2  PASSED                                                                                                         
+                                                                                                                                            
+ All tests have passed.                                                                                                                     
+                                                                                                                                            
+                                                                                                                                            
+     

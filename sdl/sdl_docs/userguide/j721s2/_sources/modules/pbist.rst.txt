@@ -1,0 +1,263 @@
+PBIST : Memory Built-In Self-Test
+=================================
+
+Introduction
+------------
+
+Built-in Self-test (BIST) is a feature that allows self testing of the memory areas and logic circuitry in an Integrated Circuit (IC) without any external test equipment. In an embedded system, these tests are typically used during boot time or shutdown of the system to check the health of an SoC.
+
+PBIST is used to test the memory regions in the SoC and provides detection for permanent faults. The primary use case for PBIST is when it is invoked at start-up providing valuable information on any stuck-at bits in the memory.
+
+There can be multiple instances of PBIST in the SoC, and each has a number of memory regions associated with it. SDL provides support for PBIST features such as execution of PBIST test-for-diagnostic to test the PBIST logic and execution of PBIST. The same API is used with different configuration parameters to execute each instance. Checking of the status of HW POST PBIST execution is also supported.
+
+Some things to note:
+
+* PBIST is expected to be run at boot-time or once per drive cycle.
+* PBIST must be run from a different core than is being tested. This is because the test is destructive in nature. For this reason also, after BIST test it is necessary to reset the module.
+* BIST is executed by hardware for MCU automatically at boot up as part of HW POST.
+
+Jacinto devices support a software-initiated PBIST that can run tests on different memory sections at runtime. Note, however, that PBIST is destructive to the core/IP on which it is run. If it is executed after the IP under test is already in use in the system, it is the application's responsibility to perform any necessary context save/restore necessary for the core/IP.
+
+The PBIST Module of the SDL supports execution of the software-initiated PBIST for the various supported instances. It provides the following services:
+
+* Execution of the PBIST test for a specified instance
+* Configuration of the PBIST test for an instance
+* Start of the PBIST test
+* Checking of the PBIST results
+* Restore core to system control (PBIST reset and release test mode)
+* Return the status of the test
+
+For each PBIST Instance, the SDL PBIST module has a set of golden values for configuring the test, and these are used as the defaults.
+
+.. NOTE::
+
+    Execution of the PBIST tests requires preparation of the IPs under test by bringing them to a certain power and reset state before executing the test. It will be required that the application bring the cores/IPs to the proper state before executing the PBIST. Additionally, there is an "exit sequence" that is required to bring the cores/IPs back to the system control after the PBIST test is executed. This will also be the responsibility of the application. The PBIST examples provided with SDL will give the necessary sequences, which can be used by the application for implementing the sequence.
+
+.. ifconfig:: CONFIG_family in ('j721e')
+
+    .. NOTE::
+
+        The PBIST test for the C7X, C66X_1, C66X_2, MSMC and A72 instances require the PBIST registers to be mapped to a 32-bit address space for access from MCU R5F. For this reason the PBIST module request address translation when performing PBIST tests for these intances. The application must provide the SDL_OSAL_addrTranslate interface through SDL_OSAL_init so that these tests can be run. The application can perform a RAT mapping to allow access to these memories. After the test is completed, the application may remove the mapping.
+
+    There are 18 PBIST instances in the SoC
+
+.. ifconfig:: CONFIG_family in ('j7200')
+
+    .. NOTE::
+
+        The PBIST test for the MSMC and A72 instances require the PBIST registers to be mapped to a 32-bit address space for access from MCU R5F. For this reason the PBIST module request address translation when performing PBIST tests for these intances. The application must provide the SDL_OSAL_addrTranslate interface through SDL_OSAL_init so that these tests can be run. The application can perform a RAT mapping to allow access to these memories. After the test is completed, the application may remove the mapping.
+
+    There are 8 PBIST instances in the SoC
+
+.. ifconfig:: CONFIG_family in ('j721s2')
+
+    .. NOTE::
+
+        The PBIST test for the MSMC and A72 instances require the PBIST registers to be mapped to a 32-bit address space for access from MCU R5F. For this reason the PBIST module request address translation when performing PBIST tests for these intances. The application must provide the SDL_OSAL_addrTranslate interface through SDL_OSAL_init so that these tests can be run. The application can perform a RAT mapping to allow access to these memories. After the test is completed, the application may remove the mapping.
+
+    There are 18 PBIST instances in the SoC
+	
+.. ifconfig:: CONFIG_family in ('j784s4')
+
+    .. NOTE::
+
+          The PBIST example and tests require multicore app image to be loaded. These are genarated in the same folder as the binary is generated. Multi core app image binary file names are bist_example_r5f_baremetal_multicore_image.appimage, pbist_test_app_r5f_baremetal_multicore_image.appimage, sdl_pbist_test_app_r5f_baremetal_multicore_image.appimage.
+		Reason for using the multicore app image(R5F and C7X binary) is to make sure MCU R5F is able to do CLEC configuration.(Starting SDK 8.6.0, MUC R5F boots in non-secure mode).
+   
+Application Integration
+-----------------------
+
+Some instances on the J7 devices require a CLEC event to register for the PBIST test completion interrupt. To give flexibility to the application to decide which CLEC event SDL PBIST will use, the SDL PBIST calls the SDL_OSAL_getClecOutputEvent API to request the event from the application. When done with the event, SDL PBIST will call SDL_OSAL_releaseClecOutputEvent.
+
+Application must provide these two APIs in order to support CLEC usage, even if CLEC is not used on the device (for example J7200). Application can define these in the test application. This is needed when running C7x or A72 PBIST tests on the J721E device. Example implementations that the application can provide are given below:
+
+    .. code:: bash
+
+        int32_t SDL_OSAL_getClecOutputEvent(uint32_t *clecOutputEvt)
+        {
+            *clecOutputEvt = CSLR_COMPUTE_CLUSTER0_CLEC_MSMC_EVENT_IN_COMPUTE_CLUSTER0_CORE_CORE_MSMC_INTR_12;
+
+            return SDL_PASS;
+        }
+
+        int32_t SDL_OSAL_releaseClecOutputEvent(uint32_t clecOutputEvt)
+        {
+            return SDL_PASS;
+        }
+
+
+Example Usage
+-------------
+
+The following shows an example of SDL PBIST API usage by the application to check the HW POST results, and execute the PBIST test and test-for-diagnostic.
+
+Initialize the SDL OSAL (refer to OSAL section for further information on initializing the SDL OSAL interface):
+
+    .. code:: bash
+
+       /* Define all the SDL OSAL interfaces. Here only some are shown as example. */
+       pSDL_OSAL_hwipHandle SDL_TEST_registerInterrupt(SDL_OSAL_hwipParams *pParams)
+       {
+           HwiP_Params hwipParams;
+           HwiP_Params_init(&hwipParams);
+       
+           hwipParams.arg = pParams->callbackArg;
+       
+           return HwiP_create(pParams->intNum, pParams->callback, &hwipParams);
+       }
+       
+       int32_t SDL_TEST_enableInterrupt(uint32_t intNum)
+       {
+           HwiP_enableInterrupt(intNum);
+           return SDL_PASS;
+       }
+       
+       int32_t SDL_TEST_disableInterrupt(uint32_t intNum)
+       {
+           HwiP_disableInterrupt(intNum);
+           return SDL_PASS;
+       }
+       
+       int32_t SDL_TEST_globalDisableInterrupts(uintptr_t *key)
+       {
+           *key = HwiP_disable();
+           return SDL_PASS;
+       }
+       
+       int32_t SDL_TEST_globalRestoreInterrupts(uintptr_t key)
+       {
+           HwiP_restore(key);
+           return SDL_PASS;
+       }
+
+       void* SDL_TEST_addrTranslate(uint64_t addr, uint32_t size)
+       {
+           void * ret = (void *)(-1);
+           CSL_RatTranslationCfgInfo translationCfg;
+           uint32_t transAddr = (uint32_t)(-1);
+           uint32_t index = 0;
+           bool result;
+       
+           if ((addr == SDL_COMPUTE_CLUSTER0_C71SS0_PBIST_BASE) ||
+               (addr == SDL_COMPUTE_CLUSTER0_A72SS0_PBIST0_BASE) ||
+               (addr == SDL_C66SS0_VBUSP_CFG_PBISTCFG_BASE) ||
+               (addr == SDL_C66SS1_VBUSP_CFG_PBISTCFG_BASE) ||
+               (addr == SDL_COMPUTE_CLUSTER0_MSMC_PBIST_BASE) ||
+               (addr == SDL_COMPUTE_CLUSTER0_MSMC_PBIST_BASE))
+           {
+               /* Disable RAT translation */
+               result = CSL_ratDisableRegionTranslation((CSL_ratRegs *)PBIST_RAT_CFG_BASE,
+                                                        PBIST_RAT_REGION_INDEX);
+               transAddr = (uint32_t)0x60000000; // set the desired translated address
+               index = PBIST_RAT_REGION_INDEX;
+           }
+
+           if (transAddr != (uint32_t)(-1))
+           {
+               /* Add RAT configuration to access address > 32bit address range */
+               translationCfg.translatedAddress = addr;
+               translationCfg.sizeInBytes = size;
+               translationCfg.baseAddress = transAddr;
+
+               /* Set up RAT translation */
+               result = CSL_ratConfigRegionTranslation((CSL_ratRegs *)PBIST_RAT_CFG_BASE,
+                                                       index, &translationCfg);
+               if (result == (bool)true ) {
+                   ret = (void *)transAddr;
+               }
+           }
+       }
+
+              
+       SDL_OSAL_Interface osal_interface =
+       {
+           .enableInterrupt = (pSDL_OSAL_interruptFunction) SDL_TEST_enableInterrupt,
+           .disableInterrupt = (pSDL_OSAL_interruptFunction) SDL_TEST_disableInterrupt,
+           .registerInterrupt = (pSDL_OSAL_registerFunction) SDL_TEST_registerInterrupt,
+           .deregisterInterrupt = (pSDL_OSAL_deregisterFunction) HwiP_delete,
+           .globalDisableInterrupts = (pSDL_OSAL_globalDisableInterruptsFunction) SDL_TEST_globalDisableInterrupts,
+           .globalRestoreInterrupts = (pSDL_OSAL_globalRestoreInterruptsFunction) SDL_TEST_globalRestoreInterrupts,
+           .printFxn = (pSDL_OSAL_printFunction) UART_printf,
+           .delay = (pSDL_OSAL_delayFunction) Osal_delay,
+           .addrTranslate = (pSDL_OSAL_addrTranslateFunction) SDL_TEST_addrTranslate
+       };
+       
+       SDL_ErrType_t ret = SDL_PASS;
+       
+       ret = SDL_OSAL_init(&osal_interface);
+
+Check the HW POST result (if supported on device):
+
+    .. code:: bash
+
+        int32_t status = SDL_PASS;
+        SDL_PBIST_postResult result;
+        
+        status = SDL_PBIST_getPOSTStatus(&result);
+
+        /* Check the result, which will be one of SDL_PBIST_postResult */
+        if (result.mcuPostStatus == SDL_PBIST_POST_NOT_RUN)
+        {
+            // PBIST did not run
+        }
+        else if (result.mcuPostStatus == SDL_PBIST_POST_TIMEOUT)
+        {
+            // PBIST test timed out
+        }
+        else if (result.mcuPostStatus == SDL_PBIST_POST_COMPLETED_FAILURE)
+        {
+            // PBIST failed
+        }
+        else if (result.mcuPostStatus == SDL_PBIST_POST_COMPLETED_SUCCESS)
+        {
+            // PBIST passed
+        }
+
+
+Before executing the following PBIST tests, the IP under test must be brought to a certain power and reset state. The included PBIST example shows the sequence needed for each of the PBIST instances.
+
+Once the core(s) are brought to the required state, the following APIs can be run.
+
+Run the PBIST test-for-diagnostic:
+
+    .. code:: bash
+
+        bool PBISTResult;
+        
+        status = SDL_PBIST_selfTest(SDL_PBIST_INST_MAINR5F0, SDL_PBIST_NEG_TEST, NULL, &PBISTResult);
+        if ((status != SDL_PASS) || (PBISTResult == false))
+        {
+            // test failed
+        }
+
+Perform the PBIST test with the default config
+
+    .. code:: bash
+
+        bool PBISTResult;
+
+        status = SDL_PBIST_selfTest(SDL_PBIST_INST_MAINR5F0, SDL_PBIST_TEST, NULL, &PBISTResult);
+        if ((status != SDL_PASS) || (PBISTResult == false))
+        {
+            // test failed
+        }
+
+
+
+Examples
+--------
+
+The PBIST module provides a test app that demonstrate the PBIST functionality. Details of the test app name, location and build instructions are given in the table below.
+
++---------------------+--------------------------------------------------------+--------------------------------+------------------------------------------+
+| Test App Name       | Description                                            | Location                       | Build Command                            |
++=====================+========================================================+================================+==========================================+
+| sdl_pbist_test_app  | - Checks the Status of HW POST                         |                                |                                          |
+|                     | - Executes PBIST_NEG_TEST for all supported instances  | [sdl_install_dir]/test/pbist/  | make sdl_pbist_test_app PROFILE=release  |
+|                     | - Executes PBIST_TEST for all supported instances      |                                |                                          |
++---------------------+--------------------------------------------------------+--------------------------------+------------------------------------------+
+
+API
+---
+
+|__PBIST_API_LNK__|

@@ -1,0 +1,17 @@
+ATTR 0 Device_nGnRnE
+ATTR 1 OuterWTnWA__InnerWTnWA
+ATTR 2 OuterNC__InnerNC
+ATTR 3 OuterWBWA__InnerWBWA
+ATTR 4 OuterWBnWA__InnerWBnWA
+ATTR 5 OuterWBRWA__InnerWBRWA
+ATTR 6 OuterWBWAnT__InnerWBWAnT
+ATTR 7 OuterWBnWAnT__InnerWBnWAnT
+
+# (start_virt_addr) (end_virt_addr) 0:(start_phys_addr) size ATTRINDX sh              RW EL  ns  xn pxn af ng  fault
+6480_0000 649F_FFFF 0:6480_0000 2MB  ATTRIDX5 OuterShareable RW EL1 S  X  X  A  G NOFAULT # L2 SRAM Address Space
+64E0_0000 64E0_3FFF 0:64E0_0000 4KB  ATTRIDX5 OuterShareable RW EL1 S  X  X  A  G NOFAULT # L1 SRAM Address Space
+6D00_0000 6DFF_FFFF 0:6D00_0000 2MB  ATTRIDX0 OuterShareable RW EL1 S  X  X  A  G NOFAULT # DRU Address Space
+6E00_0000 6EFF_FFFF 0:6E00_0000 2MB  ATTRIDX0 OuterShareable RW EL1 S  X  X  A  G NOFAULT # MSMC Config Address Space
+7000_0000 703F_FFFF 0:7000_0000 2MB  ATTRIDX5 OuterShareable RW EL1 S  X  X  A  G NOFAULT # MSMC SRAM Address Space (4MB)
+7800_0000 7FFF_FFFF 0:7800_0000 2MB  ATTRIDX0 OuterShareable RW EL1 S  X  X  A  G NOFAULT # CLEC Address Space
+8000_0000 AFFF_FFFF 0:8000_0000 2MB  ATTRIDX5 OuterShareable RW EL1 S  X  X  A  G NOFAULT # DDR Address Space

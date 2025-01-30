@@ -1,0 +1,48 @@
+module xl4-ieee802-dot1q-tsn-config-uni {
+  yang-version 1.1;
+  namespace "http://excelfore.com/ns/xl4-ieee802-dot1q-tsn-config-uni";
+  prefix xl4tsnuni;
+
+  import ieee802-dot1q-tsn-config-uni {
+    prefix tsnuni;
+  }
+
+  organization
+    "Excelfore Japan K.K.";
+  contact
+    "URL: https://excelfore.com";
+  description
+    "This YANG module defines the Excelfore Deviations from IEEE std.";
+
+  revision 2023-04-25 {
+    description
+      "Initial revision.";
+    reference
+      "IEEE Std 801.1Q-2022
+       Excelfore xmrpd";
+  }
+
+  deviation "/tsnuni:tsn-uni/tsnuni:domain/tsnuni:cuc/tsnuni:stream/tsnuni:talker/tsnuni:data-frame-specification/tsnuni:field/tsnuni:ipv4-tuple" {
+    deviate not-supported;
+  }
+
+  deviation "/tsnuni:tsn-uni/tsnuni:domain/tsnuni:cuc/tsnuni:stream/tsnuni:talker/tsnuni:data-frame-specification/tsnuni:field/tsnuni:ipv6-tuple" {
+    deviate not-supported;
+  }
+
+  deviation "/tsnuni:tsn-uni/tsnuni:domain/tsnuni:cuc/tsnuni:stream/tsnuni:talker/tsnuni:interface-configuration/tsnuni:interface-list/tsnuni:config-list/tsnuni:config-value/tsnuni:ipv4-tuple" {
+    deviate not-supported;
+  }
+
+  deviation "/tsnuni:tsn-uni/tsnuni:domain/tsnuni:cuc/tsnuni:stream/tsnuni:talker/tsnuni:interface-configuration/tsnuni:interface-list/tsnuni:config-list/tsnuni:config-value/tsnuni:ipv6-tuple" {
+    deviate not-supported;
+  }
+
+  deviation "/tsnuni:tsn-uni/tsnuni:domain/tsnuni:cuc/tsnuni:stream/tsnuni:listener/tsnuni:interface-configuration/tsnuni:interface-list/tsnuni:config-list/tsnuni:config-value/tsnuni:ipv4-tuple" {
+    deviate not-supported;
+  }
+
+  deviation "/tsnuni:tsn-uni/tsnuni:domain/tsnuni:cuc/tsnuni:stream/tsnuni:listener/tsnuni:interface-configuration/tsnuni:interface-list/tsnuni:config-list/tsnuni:config-value/tsnuni:ipv6-tuple" {
+    deviate not-supported;
+  }
+}

@@ -1,0 +1,14 @@
+psdk_setup_file=.psdk_setup
+check_psdk_setup=load mmc 1:1 ${loadaddr} ${psdk_setup_file}
+
+# Reset to the default environment
+do_psdk_setup=env default -f -a; saveenv
+
+# If not previously configured, then configure the environment and indicate this by writing a file
+uenvcmd=if test ${boot_fit} -eq 1; then  setenv name_overlays $name_overlays_fit; fi; if run check_psdk_setup; then echo "Already setup."; else run do_psdk_setup; mw.b ${loadaddr} 0 1; fatwrite mmc 1:1 ${loadaddr} .psdk_setup 1; reset; fi
+
+dorprocboot=1
+name_overlays=k3-j721e-evm-virt-mac-client.dtbo k3-j721e-vision-apps.dtbo
+
+# Name overlays when booting from fit image
+name_overlays_fit=ti/k3-j721e-evm-virt-mac-client.dtbo ti/k3-j721e-vision-apps.dtbo

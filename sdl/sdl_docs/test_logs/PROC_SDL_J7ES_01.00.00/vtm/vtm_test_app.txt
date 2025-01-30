@@ -1,0 +1,10 @@
+VTM Unit Test Application
+Test Name: VTM API TEST  PASSED
+Test Name: VTM Negative TEST  PASSED
+
+ All tests have passed
+vtm_test_main.c:174:test_sdl_vtm_baremetal_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored
+OK

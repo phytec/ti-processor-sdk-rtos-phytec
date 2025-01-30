@@ -1,0 +1,6 @@
+01000000011a00006a3761657000000000000000475020200008010000080100CSBL Revision: 01.00.10.01 (Feb 22 2023 - 13:03:23)
+Waiting for tifs.bin ...
+CCCTIFS  ver: 8.6.3--v08.06.03 (Chill Capybar
+Waiting for multicore app ...
+CCCC
+ RTI Test Application

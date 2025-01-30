@@ -1,0 +1,56 @@
+01000000011a00006a3761657000000000000000475020200008010000080100CSBL Revision: 01.00.10.01 (Feb 22 2023 - 13:03:23)
+Waiting for tifs.bin ...
+CCTIFS  ver: 8.6.3--v08.06.03 (Chill Capybar
+Waiting for multicore app ...
+CCCCCCCCCCCCCCCCCCCCCCCCCCCCmcuClkFreq 1000000000
+
+MSMC Test Application
+
+All tests have passed.
+msmc_test_main.c:182:test_sdl_msmc_test_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored
+OK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

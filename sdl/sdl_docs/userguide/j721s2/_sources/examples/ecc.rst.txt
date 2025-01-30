@@ -1,0 +1,132 @@
+ECC Safety Example
+==================
+
+Introduction
+------------
+
+This example shows setup and usage of some ECC Aggregators for a few events in the Main domain.  It shows the following:
+
+* Setup of an ESM application callback to receive Single Error Correction (SEC) and Double Error Detection (DED) events and setup of ECC Aggregators in general
+* Triggering of ECC events for a small number of RAM IDs, including Interconnect type and Wrapper type
+* Printing out error information within the ECC callback upon reception of ECC events
+
+This ECC example application shows basic examples of receiving interrupts from Main ESM, as well as gathering more details about these ECC events.
+
+The following use cases are implemented in this example:
+
+Use Cases
+---------
+
+    +----------+-------------------------------------+------+-----------------------------------+---------------------------------------------------------------------------+-------------+
+    | Use Case | Description                         | ESM  | ECC Aggregator                    | ECC RAM ID                                                                | RAM ID Type |
+    +==========+=====================================+======+===================================+===========================================================================+=============+
+    | UC-1     | Single DED error on Main ESM for    | ESM0 | SDL_ECC_MEMTYPE_MAIN_MSMC_AGGR0   | SDL_COMPUTE_CLUSTER0_MSMC_ECC_AGGR0_CLEC_J7ES_CLEC_EDC_CTRL_BUSECC_RAM_ID | Wrapper     |
+    |          | wrapper RAM ID type                 |      |                                   |                                                                           |             |
+    +----------+-------------------------------------+------+-----------------------------------+---------------------------------------------------------------------------+-------------+
+    | UC-2     | Single SEC error on Main ESM for    | ESM0 | SDL_ECC_MEMTYPE_MAIN_MSMC_AGGR0   | SDL_COMPUTE_CLUSTER0_MSMC_ECC_AGGR0_MSMC_MMR_BUSECC_RAM_ID                | Wrapper     |
+    |          | wrapper RAM ID type                 |      |                                   |                                                                           |             |
+    +----------+-------------------------------------+------+-----------------------------------+---------------------------------------------------------------------------+-------------+
+    | UC-3     | Parity error injection on Main ESM  | ESM0 | SDL_ECC_MEMTYPE_MAIN_MSMC_AGGR0   | SDL_COMPUTE_CLUSTER0_MSMC_ECC_AGGR0_VBUSP_CFG_DSP4_P2P_DST_BUSECC_RAM_ID  | Interconnect|
+    |          | for interconnect RAM ID type        |      |                                   |                                                                           |             |
+    +----------+-------------------------------------+------+-----------------------------------+---------------------------------------------------------------------------+-------------+
+
+
+Example Details
+---------------
+
+The example should be loaded to the hardware using the Secondary Boot Loader (SBL) from the SDK.
+
++---------------------+------------------------------------------------+------------------------------------------+
+| Example Name        | Location                                       | Build Command                            |
++=====================+================================================+==========================================+
+| ecc_app             | [sdl_install_dir]/examples/ecc/                | make ecc_app PROFILE=release             |
++---------------------+------------------------------------------------+------------------------------------------+
+
+Expected Output
+---------------
+
+.. code:: bash
+
+     ECC Example Application
+     ECCC_Example_init: Init MAIN ESM complete
+     
+     SDTF_init: MCU MSMC ECC Init complete
+     
+     ECC_Example_init: ECC Callback Init complete for Main ESM
+     
+     
+     
+     ESM Safety Example tests: starting
+     
+      MSMC Double bit error inject Example test UC-1: starting
+       ESM Call back function called : instType 0x3, intType 0x2, grpChannel 0x1, index 0x10, intSrc 0x30
+       Take action
+      Low Priority Interrupt Executed
+     
+       ECC Error Call back function called : eccMemType 93, errorSrc 0x2, ramId 107, bitErrorOffset 0x00000000, bitErrorGroup 0
+     
+      
+      MSMC Double bit error inject test: Subtype 0x6b test complete
+     
+      Waiting for ESM Interrupt
+     
+     
+     
+     UC-1: Got Low priority ESM Interrupt
+     
+     
+     
+      MSMC Double bit error inject Example test UC-2: starting
+       ESM Call back function called : instType 0x3, intType 0x1, grpChannel 0x1, index 0x11, intSrc 0x31
+       Take action
+      High Priority Interrupt Executed
+     
+       ECC Error Call back function called : eccMemType 93, errorSrc 0x1, ramId 20, bitErrorOffset 0x00000000, bitErrorGroup 0
+     
+     
+      MSMC Double bit error inject test: Subtype 0x14 test complete
+     
+      Waiting for ESM Interrupt
+     
+     
+     
+      UC-2: Got High priority ESM Interrupt
+     
+     
+     
+     
+     
+     **** MSMC Memory Parity TEST ****
+     
+     
+       ESM Call back function called : instType 0x3, intType 0x2, grpChannel 0x1, index 0x10, intSrc 0x30
+       Take action
+      Low Priority Interrupt Executed
+     
+       ECC Error Call back function called : eccMemType 93, errorSrc 0x2, ramId 105, bitErrorOffset 0x00000000, bitErrorGroup 3
+     
+     
+      MSMC_BUSECC_RAM Single bit error self test: Subtype 0x69 test complete
+     
+      Waiting for ESM Interrupt
+     
+     
+     
+      Memory Parity Error Test Complete
+     
+     
+     
+      ECC Safety Example tests: success
+      ECC UC-1 and UC-2 Test
+     All Use_Cases have passed.
+     ecc_main.c:254:ECC_Example_app:PASS
+     
+     -----------------------
+     1 Tests 0 Failures 0 Ignored
+     OK
+
+
+Reference
+---------
+
+`ECC User Guide <../modules/ecc.html>`_

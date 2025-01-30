@@ -1,0 +1,21 @@
+.. include:: index_header.rst.inc
+
+.. toctree::
+   :maxdepth: 2
+   :numbered:
+   :caption: Table of Contents
+
+   overview
+   family_cfg/j721s2/index_release_notes_j721s2
+   getting_started
+   family_cfg/j721s2/index_modules_j721s2
+   family_cfg/j721s2/index_examples_j721s2
+   diagnostic_mappings
+   family_cfg/j721s2/index_application_notes_j721s2
+
+..
+  The following pages can be added later
+  family_cfg/j721s2/index_performance_j721s2
+  family_cfg/j721s2/index_memory_footprint_j721s2
+  family_cfg/j721s2/index_howto_j721s2
+  family_cfg/j721s2/index_faq_j721s2 

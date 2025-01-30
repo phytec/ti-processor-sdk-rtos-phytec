@@ -1,0 +1,8 @@
+ID,dTypeIn0,dTypeIn1,dTypeOut,width,height,strideIn0,strideIn1,strideOut,testType,outputDataLocation,numReps,demoCase
+1,int16_t,int16_t,int16_t,32,32,32,32,32,STATIC,VXLIB_TEST_OUTPUT_MSMC,1,false
+2,int16_t,int16_t,int16_t,64,64,64,64,64,STATIC,VXLIB_TEST_OUTPUT_MSMC,1,false
+3,int16_t,int16_t,int16_t,128,128,128,128,128,STATIC,VXLIB_TEST_OUTPUT_MSMC,1,false
+4,int16_t,int16_t,int16_t,256,256,256,256,256,STATIC,VXLIB_TEST_OUTPUT_MSMC,1,false
+5,int16_t,int16_t,int16_t,3,33,48,48,48,STATIC,VXLIB_TEST_OUTPUT_MSMC,1,false
+6,int16_t,int16_t,int16_t,32,32,32,64,64,STATIC,VXLIB_TEST_OUTPUT_MSMC,1,false
+

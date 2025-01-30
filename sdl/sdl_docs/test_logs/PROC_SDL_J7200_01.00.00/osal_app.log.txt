@@ -1,0 +1,31 @@
+SDL_OSAL_delay test PASSED
+SDL_OSAL_addrTranslate test PASSED
+SDL_OSAL_disableInterrupt with NULL function pointer test PASSED
+SDL_OSAL_enableInterrupt with NULL function pointer test PASSED
+SDL_OSAL_registerInterrupt with NULL function pointer test PASSED
+SDL_OSAL_deregisterInterrupt with NULL function pointer test PASSED
+SDL_OSAL_globalDisableInterrupt with NULL function pointer test PASSED
+SDL_OSAL_globalRestoreInterrupt with NULL function pointer test PASSED
+SDL_OSAL_init with NULL params test PASSED
+SDL_OSAL_disableInterrupt with NULL function pointer test PASSED
+SDL_OSAL_enableInterrupt with NULL function pointer test PASSED
+SDL_OSAL_registerInterrupt with NULL function pointer test PASSED
+SDL_OSAL_deregisterInterrupt with NULL function pointer test PASSED
+SDL_OSAL_globalDisableInterrupt with NULL function pointer test PASSED
+SDL_OSAL_globalRestoreInterrupt with NULL function pointer test PASSED
+SDL_OSAL_delay test PASSED
+SDL_OSAL_addrTranslate test PASSED
+SDL_OSAL_registerInterrupt with NULL params test PASSED
+SDL_OSAL_registerInterrupt with NULL handle test PASSED
+SDL_OSAL_deregisterInterrupt with NULL handle test PASSED
+SDL_OSAL_globalDisableInterrupts with NULL handle test PASSED
+SDL_OSAL_delay test PASSED
+SDL_OSAL_addrTranslate test PASSED
+SDL_OSAL_disableInterrupt test PASSED
+SDL_OSAL_enableInterrupt test PASSED
+SDL_OSAL_globalDisableInterrupts test PASSED
+SDL_OSAL_globalRestoreInterrupts test PASSED
+SDL_OSAL_registerInterrupt test PASSED
+SDL_OSAL_deregisterInterrupt test PASSED
+
+

@@ -1,0 +1,129 @@
+01000000011a00006a3776636c00000000000000475020200200010002000100CSBL Revision: 01.00.10.01 (Jun 29 2023 - 15:29:32)
+Waiting for tifs.bin ...
+CCCTIFS  ver: 9.0.6--v09.00.06 (Kool Koala)
+Waiting for multicore app ...
+CCCCmcuClkFreq 1000000000
+
+TOG Test Applications
+
+ sdlAppEsmSetupCommon...Done
+ sdlAppEsmSetupCommon...Done
+ sdlAppEsmSetup...Done
+ Starting TOG test on MCU INFRA0, index 0...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done
+  Delta TOG prep time in micro secs 27042
+  Delta TOG execution time in micro secs 8
+  Delta TOG restore time in micro secs 27039
+  TOG complete for MCU INFRA0
+
+ Starting TOG test on MCU FW1, index 1...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done
+  Delta TOG prep time in micro secs 27038
+  Delta TOG execution time in micro secs 3
+  Delta TOG restore time in micro secs 28039
+  TOG complete for MCU FW1
+
+ Starting TOG test on MCU 64B2, index 2...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done
+  Delta TOG prep time in micro secs 27038
+  Delta TOG execution time in micro secs 6
+  Delta TOG restore time in micro secs 28039
+  TOG complete for MCU 64B2
+
+ Starting TOG test on WKUP INFRA0, index 3...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done
+  Delta TOG prep time in micro secs 27038
+  Delta TOG execution time in micro secs 2
+  Delta TOG restore time in micro secs 28039
+  TOG complete for WKUP INFRA0
+
+ Starting TOG test on MCU_64B3, index 4...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done
+  Delta TOG prep time in micro secs 27039
+  Delta TOG execution time in micro secs 4
+  Delta TOG restore time in micro secs 28039
+  TOG complete for MCU_64B3
+
+ Starting TOG test on MCU_64B4, index 5...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done
+  Delta TOG prep time in micro secs 27038
+  Delta TOG execution time in micro secs 2
+  Delta TOG restore time in micro secs 28039
+  TOG complete for MCU_64B4
+
+ Starting TOG test on MAIN TIMEOUT0, index 6...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done
+  Delta TOG prep time in micro secs 27040
+  Delta TOG execution time in micro secs 10
+  Delta TOG restore time in micro secs 27040
+  TOG complete for MAIN TIMEOUT0
+
+ Starting TOG test on MAIN TIMEOUT3, index 7...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done
+  Delta TOG prep time in micro secs 27040
+  Delta TOG execution time in micro secs 9
+  Delta TOG restore time in micro secs 27040
+  TOG complete for MAIN TIMEOUT3
+
+ Starting TOG test on MAIN TIMEOUT4, index 8...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done
+  Delta TOG prep time in micro secs 27041
+  Delta TOG execution time in micro secs 8
+  Delta TOG restore time in micro secs 27040
+  TOG complete for MAIN TIMEOUT4
+
+ Starting TOG test on MAIN TIMEOUT2, index 9...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done
+  Delta TOG prep time in micro secs 27041
+  Delta TOG execution time in micro secs 8
+  Delta TOG restore time in micro secs 27040
+  TOG complete for MAIN TIMEOUT2
+
+ Starting TOG test on MAIN TIMEOUT1, index 10...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done
+  Delta TOG prep time in micro secs 27041
+  Delta TOG execution time in micro secs 9
+  Delta TOG restore time in micro secs 27040
+  TOG complete for MAIN TIMEOUT1
+
+ Starting TOG test on MAIN PVU0 SRC, index 11...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done
+  Delta TOG prep time in micro secs 27040
+  Delta TOG execution time in micro secs 9
+  Delta TOG restore time in micro secs 27039
+  TOG complete for MAIN PVU0 SRC
+
+ Starting TOG test on MAIN PVU0 CFG, index 12...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done
+  Delta TOG prep time in micro secs 27040
+  Delta TOG execution time in micro secs 30
+  Delta TOG restore time in micro secs 27040
+  TOG complete for MAIN PVU0 CFG
+
+ TOG Functionality Test Functionality test Passed.
+
+  SDL_TOG_verifyConfig API test failed on line no: 114
+
+ TOG API Module Test API test Passed.
+
+ TOG Error Module Test Error test Passed.
+
+All tests have passed.
+tog_test_main.c:342:test_sdl_tog_test_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored
+OK

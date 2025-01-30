@@ -1,0 +1,70 @@
+.. _pub_tisci_msg_doc:
+
+######################################
+Chapter 2: TISCI Message Documentation
+######################################
+
+.. toctree::
+   :maxdepth: 1
+
+   general/TISCI_header
+
+.. _general_messages:
+
+=======
+General
+=======
+
+.. toctree::
+   :maxdepth: 1
+
+   general/core
+
+
+.. _pm_messages:
+
+=====================
+Power Management (PM)
+=====================
+.. toctree::
+   :maxdepth: 1
+
+   pm/devices
+   pm/clocks
+   pm/sysreset
+   pm/lpm
+
+.. _rm_messages:
+
+========================
+Resource Management (RM)
+========================
+.. toctree::
+   :maxdepth: 1
+
+   rm/rm_irq
+   rm/rm_proxy
+   rm/rm_ra
+   rm/rm_udmap
+   rm/rm_psil
+
+.. _security_messages:
+
+=================
+Secure Management
+=================
+.. toctree::
+   :maxdepth: 1
+
+   security/sec_cert_format
+   security/PROC_BOOT
+   security/firewall_api
+   security/sec_ap_data_transfer
+   security/runtime_debug
+   security/extended_otp
+   security/dkek_management
+   security/dsmek_management
+   security/security_handover
+   security/keywriter
+   security/otp_revision
+   security/keyring

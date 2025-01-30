@@ -1,0 +1,14 @@
+<map id="median_filter.h" name="median_filter.h">
+<area shape="rect" id="node2" href="$perception_8h.html" title="perception/perception.h" alt="" coords="568,87,744,114"/>
+<area shape="rect" id="node16" href="$alg__common_8h.html" title="perception/algos/alg\l_common.h" alt="" coords="217,80,372,121"/>
+<area shape="rect" id="node17" href="$api__memory__if_8h.html" title="perception/utils/api\l_memory_if.h" alt="" coords="5,259,152,300"/>
+<area shape="rect" id="node3" href="$core_8h.html" title="perception/base/core.h" alt="" coords="649,266,820,293"/>
+<area shape="rect" id="node5" href="$sensor__types_8h.html" title="perception/base/sensor\l_types.h" alt="" coords="944,169,1117,211"/>
+<area shape="rect" id="node6" href="$plane_8h.html" title="Declarations for PTK_Plane struct+functions. " alt="" coords="227,177,405,203"/>
+<area shape="rect" id="node7" href="$point_8h.html" title="Declarations for PTK_Point and PTK_Vector struct+functions. " alt="" coords="349,266,523,293"/>
+<area shape="rect" id="node8" href="$rigidTransform_8h.html" title="Declaration of structures and functions for rigid transforms. " alt="" coords="274,348,510,375"/>
+<area shape="rect" id="node9" href="$pointCloud_8h.html" title="Declaration of structures and functions used to manipulate point clouds. " alt="" coords="479,177,691,203"/>
+<area shape="rect" id="node11" href="$grid_8h.html" title="This defines the common grid functionality which is then used to construct occupancy grids that store..." alt="" coords="997,266,1163,293"/>
+<area shape="rect" id="node14" href="$map_8h.html" title="A map is a aggregate of multiple grid structures storing different types of summary info about the en..." alt="" coords="1141,177,1312,203"/>
+<area shape="rect" id="node15" href="$grid__iter_8h.html" title="perception/base/grid\l_iter.h" alt="" coords="765,169,920,211"/>
+</map>

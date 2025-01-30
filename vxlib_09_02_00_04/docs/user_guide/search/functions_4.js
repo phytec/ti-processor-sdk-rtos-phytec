@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['setltcrflag_1688',['setLTCRFlag',['../VXLIB__tableLookup__lut__ci_8cpp.html#a52a1a5ecb1f82dce95a2285d34977cac',1,'VXLIB_tableLookup_lut_ci.cpp']]],
+  ['setltcrflag_3c_20int16_5ft_20_3e_1689',['setLTCRFlag&lt; int16_t &gt;',['../VXLIB__tableLookup__lut__ci_8cpp.html#aed4c300b3e9b45d23f251eeb936b7167',1,'VXLIB_tableLookup_lut_ci.cpp']]],
+  ['setltcrflag_3c_20int8_5ft_20_3e_1690',['setLTCRFlag&lt; int8_t &gt;',['../VXLIB__tableLookup__lut__ci_8cpp.html#a59e788cd923e2f98e05e033d67dc9b23',1,'VXLIB_tableLookup_lut_ci.cpp']]],
+  ['setltcrflag_3c_20uint16_5ft_20_3e_1691',['setLTCRFlag&lt; uint16_t &gt;',['../VXLIB__tableLookup__lut__ci_8cpp.html#a053c726aafa5b681509f9f18778705e8',1,'VXLIB_tableLookup_lut_ci.cpp']]],
+  ['setltcrflag_3c_20uint8_5ft_20_3e_1692',['setLTCRFlag&lt; uint8_t &gt;',['../VXLIB__tableLookup__lut__ci_8cpp.html#a5326a38d6cd49e878cc57e848364984f',1,'VXLIB_tableLookup_lut_ci.cpp']]],
+  ['setseicnt1_1693',['setSEICNT1',['../VXLIB__tableLookup__lut__ci_8cpp.html#a03f239fdc368805491e8280a84b24b3b',1,'VXLIB_tableLookup_lut_ci.cpp']]],
+  ['setseicnt1_3c_20vxlib_5fint16_20_3e_1694',['setSEICNT1&lt; VXLIB_INT16 &gt;',['../VXLIB__tableLookup__lut__ci_8cpp.html#a0e0cc7727a1cf26a6fcbb6cc9f7a0543',1,'VXLIB_tableLookup_lut_ci.cpp']]],
+  ['setseicnt1_3c_20vxlib_5fint8_20_3e_1695',['setSEICNT1&lt; VXLIB_INT8 &gt;',['../VXLIB__tableLookup__lut__ci_8cpp.html#ac729fdfb2857be255d144346b87e431c',1,'VXLIB_tableLookup_lut_ci.cpp']]],
+  ['setseicnt1_3c_20vxlib_5fuint16_20_3e_1696',['setSEICNT1&lt; VXLIB_UINT16 &gt;',['../VXLIB__tableLookup__lut__ci_8cpp.html#a24f894029dfc55cf49dbe462fa5bf47b',1,'VXLIB_tableLookup_lut_ci.cpp']]],
+  ['setseicnt1_3c_20vxlib_5fuint8_20_3e_1697',['setSEICNT1&lt; VXLIB_UINT8 &gt;',['../VXLIB__tableLookup__lut__ci_8cpp.html#a00ff1d193bc978022fab8634ee48047b',1,'VXLIB_tableLookup_lut_ci.cpp']]],
+  ['setsepromote_1698',['setSEPromote',['../VXLIB__tableLookup__lut__ci_8cpp.html#aba321fcaec38a567147cb788c1eb62df',1,'VXLIB_tableLookup_lut_ci.cpp']]],
+  ['setsepromote_3c_20vxlib_5fint16_20_3e_1699',['setSEPromote&lt; VXLIB_INT16 &gt;',['../VXLIB__tableLookup__lut__ci_8cpp.html#a41e7406dbae0d9315777f096c4b2ca26',1,'VXLIB_tableLookup_lut_ci.cpp']]],
+  ['setsepromote_3c_20vxlib_5fint8_20_3e_1700',['setSEPromote&lt; VXLIB_INT8 &gt;',['../VXLIB__tableLookup__lut__ci_8cpp.html#adcbeae0a45ea6f2a91f8d3134d7dee6b',1,'VXLIB_tableLookup_lut_ci.cpp']]],
+  ['setsepromote_3c_20vxlib_5fuint16_20_3e_1701',['setSEPromote&lt; VXLIB_UINT16 &gt;',['../VXLIB__tableLookup__lut__ci_8cpp.html#aca5773beb9df31b72eaf761205d6a9dc',1,'VXLIB_tableLookup_lut_ci.cpp']]],
+  ['setsepromote_3c_20vxlib_5fuint8_20_3e_1702',['setSEPromote&lt; VXLIB_UINT8 &gt;',['../VXLIB__tableLookup__lut__ci_8cpp.html#ac1a90f5b3a17b28ae0388adfd4e3d13f',1,'VXLIB_tableLookup_lut_ci.cpp']]],
+  ['setsepromotemode_1703',['setSEPromoteMode',['../VXLIB__minMaxLoc__ci_8cpp.html#abf4afe428b13c7b3b10852722973cd0a',1,'VXLIB_minMaxLoc_ci.cpp']]],
+  ['setsepromotemode_3c_20vxlib_5fminmaxloc_5fdtype_5f16s_20_3e_1704',['setSEPromoteMode&lt; VXLIB_MINMAXLOC_DTYPE_16S &gt;',['../VXLIB__minMaxLoc__ci_8cpp.html#aa6538a76a912b26e8944a114da86cf08',1,'VXLIB_minMaxLoc_ci.cpp']]],
+  ['setsepromotemode_3c_20vxlib_5fminmaxloc_5fdtype_5f16u_20_3e_1705',['setSEPromoteMode&lt; VXLIB_MINMAXLOC_DTYPE_16U &gt;',['../VXLIB__minMaxLoc__ci_8cpp.html#a2e1eb048a1b237c101764c89550ffa42',1,'VXLIB_minMaxLoc_ci.cpp']]],
+  ['setsepromotemode_3c_20vxlib_5fminmaxloc_5fdtype_5f8s_20_3e_1706',['setSEPromoteMode&lt; VXLIB_MINMAXLOC_DTYPE_8S &gt;',['../VXLIB__minMaxLoc__ci_8cpp.html#aa9c8d8beec965ef6ff0b93f82147deee',1,'VXLIB_minMaxLoc_ci.cpp']]],
+  ['setsepromotemode_3c_20vxlib_5fminmaxloc_5fdtype_5f8u_20_3e_1707',['setSEPromoteMode&lt; VXLIB_MINMAXLOC_DTYPE_8U &gt;',['../VXLIB__minMaxLoc__ci_8cpp.html#abb3802abeefa1b27d0ee707c01aff2d4',1,'VXLIB_minMaxLoc_ci.cpp']]],
+  ['sqrtdp_1708',['sqrtdp',['../VXLIB__meanStdDev__ci_8cpp.html#a46a1f1d388e7e24edfbd908b0a871c4a',1,'VXLIB_meanStdDev_ci.cpp']]],
+  ['subtractsaturate_1709',['subtractSaturate',['../VXLIB__subtract__ci_8cpp.html#a5800b65c494f7ca7a15f4f762f7ff5e6',1,'VXLIB_subtract_ci.cpp']]],
+  ['subtractsaturate_3c_20c7x_3a_3ashort_5fvec_20_3e_1710',['subtractSaturate&lt; c7x::short_vec &gt;',['../VXLIB__subtract__ci_8cpp.html#a8b271aec4207767f489d283ef918abb5',1,'VXLIB_subtract_ci.cpp']]],
+  ['subtractsaturate_3c_20c7x_3a_3auchar_5fvec_20_3e_1711',['subtractSaturate&lt; c7x::uchar_vec &gt;',['../VXLIB__subtract__ci_8cpp.html#a9946853fa07de9d2f70ef9e0f818e895',1,'VXLIB_subtract_ci.cpp']]]
+];

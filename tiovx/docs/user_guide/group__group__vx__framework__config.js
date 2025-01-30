@@ -1,0 +1,26 @@
+var group__group__vx__framework__config =
+[
+    [ "Context Configuration", "group__group__vx__context__cfg.html", "group__group__vx__context__cfg" ],
+    [ "Graph Configuration", "group__group__vx__graph__cfg.html", "group__group__vx__graph__cfg" ],
+    [ "Node Configuration", "group__group__vx__node__cfg.html", null ],
+    [ "Data Object: Array Configuration", "group__group__vx__array__cfg.html", null ],
+    [ "Data Object: Convolution Configuration", "group__group__vx__convolution__cfg.html", null ],
+    [ "Data Object: Distribution Configuration", "group__group__vx__distribution__cfg.html", null ],
+    [ "Data Object: Delay Configuration", "group__group__vx__delay__cfg.html", null ],
+    [ "Data Object: Image Configuration", "group__group__vx__image__cfg.html", null ],
+    [ "Data Object: LUT Configuration", "group__group__vx__lut__cfg.html", null ],
+    [ "Data Object: Matrix Configuration", "group__group__vx__matrix__cfg.html", null ],
+    [ "Data Object: Object Array Configuration", "group__group__vx__object__array__cfg.html", null ],
+    [ "Data Object: Pyramid Configuration", "group__group__vx__pyramid__cfg.html", "group__group__vx__pyramid__cfg" ],
+    [ "Data Object: Raw Image Configuration", "group__group__tivx__raw__image__cfg.html", null ],
+    [ "Data Object: Remap Configuration", "group__group__vx__remap__cfg.html", null ],
+    [ "Data Object: Scalar Configuration", "group__group__vx__scalar__cfg.html", null ],
+    [ "Data Object: Tensor Configuration", "group__group__vx__tensor__cfg.html", null ],
+    [ "Data Object: Threshold Configuration", "group__group__vx__threshold__cfg.html", null ],
+    [ "Data Object: User Data Object Configuration", "group__group__vx__user__data__cfg.html", null ],
+    [ "Miscellaneous Objects Configuration", "group__group__vx__misc__cfg.html", null ],
+    [ "TI Extensions", "group__group__vx__ti__extensions__cfg.html", "group__group__vx__ti__extensions__cfg" ],
+    [ "Module Configuration Configuration", "group__group__vx__module__cfg.html", "group__group__vx__module__cfg" ],
+    [ "Object Configuration", "group__group__tivx__obj__cfg.html", null ],
+    [ "Object Descriptor Configuration", "group__group__tivx__obj__desc__cfg.html", "group__group__tivx__obj__desc__cfg" ]
+];

@@ -1,0 +1,31 @@
+Welcome to minicom 2.7.1                                                                                                                    
+                                                                                                                                            
+OPTIONS: I18n                                                                                                                               
+Compiled on Dec 23 2019, 02:06:26.                                                                                                          
+Port /dev/ttyUSB1, 19:10:24                                                                                                                 
+                                                                                                                                            
+Press CTRL-A Z for help on special keys                                                                                                     
+                                                                                                                                            
+01000000011a00006a3761657000000000000000475020200008010000080100C1.00.10.01 (Jun 29 2023 - 13:38:40)                                        
+Waiting for tifs.bin ...                                                                                                                    
+CCCCCCTIFS  ver: 9.0.6--v09.00.06 (Kool Koala)                                                                                              
+Waiting for multicore app ...                                                                                                               
+CCCCCCCCCCCCCMPU Test Application                                                                                                           
+                                                                                                                                            
+ MPU self test for Mem Write Access Fault: starting                                                                                         
+ MPU self test for Mem Write Access Fault complete                                                                                          
+ MPU self test for Mem Read Access Fault: starting                                                                                          
+ MPU self test for Mem Read Access Fault complete                                                                                           
+ MPU self test for Mem Write Access Fault (Wait for long timeout): starting                                                                 
+ MPU self test for Mem Write Access Fault  (Wait for long timeout) complete                                                                 
+ MPU self test for Mem Read Access Fault  (Wait for long timeout): starting                                                                 
+ MPU self test for Mem Read Access Fault  (Wait for long timeout) completeTest Name: MPU FUNCTION TEST  PASSED                              
+                                                                                                                                            
+ All tests have passed.                                                                                                                     
+main.c:195:test_sdl_mpu_baremetal_test_app:PASS                                                                                             
+                                                                                                                                            
+-----------------------                                                                                                                     
+1 Tests 0 Failures 0 Ignored                                                                                                                
+OK                                                                                                                                          
+                                                                                                                                            
+       

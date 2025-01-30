@@ -1,0 +1,112 @@
+mcuClkFreq 1000000000
+
+TOG Test Applications
+
+ sdlAppEsmSetupCommon...Done
+ sdlAppEsmSetupCommon...Done
+ sdlAppEsmSetup...Done
+ Starting TOG test on MCU INFRA0, index 0...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done  Delta TOG prep time in micro secs 27048
+  Delta TOG execution time in micro secs 13
+  Delta TOG restore time in micro secs 27045
+  TOG complete for MCU INFRA0
+
+ Starting TOG test on MCU FW1, index 1...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done  Delta TOG prep time in micro secs 27043
+  Delta TOG execution time in micro secs 5
+  Delta TOG restore time in micro secs 28044
+  TOG complete for MCU FW1
+
+ Starting TOG test on MCU 64B2, index 2...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done  Delta TOG prep time in micro secs 27043
+  Delta TOG execution time in micro secs 12
+  Delta TOG restore time in micro secs 27042
+  TOG complete for MCU 64B2
+
+ Starting TOG test on WKUP INFRA0, index 3...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done  Delta TOG prep time in micro secs 27043
+  Delta TOG execution time in micro secs 4
+  Delta TOG restore time in micro secs 28043
+  TOG complete for WKUP INFRA0
+
+ Starting TOG test on MCU_64B3, index 4...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done  Delta TOG prep time in micro secs 27043
+  Delta TOG execution time in micro secs 7
+  Delta TOG restore time in micro secs 28043
+  TOG complete for MCU_64B3
+
+ Starting TOG test on MCU_64B4, index 5...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done  Delta TOG prep time in micro secs 27043
+  Delta TOG execution time in micro secs 4
+  Delta TOG restore time in micro secs 28043
+  TOG complete for MCU_64B4
+
+ Starting TOG test on MAIN TIMEOUT0, index 6...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done  Delta TOG prep time in micro secs 27046
+  Delta TOG execution time in micro secs 12
+  Delta TOG restore time in micro secs 27044
+  TOG complete for MAIN TIMEOUT0
+
+ Starting TOG test on MAIN TIMEOUT3, index 7...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done  Delta TOG prep time in micro secs 27045
+  Delta TOG execution time in micro secs 11
+  Delta TOG restore time in micro secs 27044
+  TOG complete for MAIN TIMEOUT3
+
+ Starting TOG test on MAIN TIMEOUT4, index 8...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done  Delta TOG prep time in micro secs 27045
+  Delta TOG execution time in micro secs 10
+  Delta TOG restore time in micro secs 27044
+  TOG complete for MAIN TIMEOUT4
+
+ Starting TOG test on MAIN TIMEOUT2, index 9...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done  Delta TOG prep time in micro secs 27045
+  Delta TOG execution time in micro secs 11
+  Delta TOG restore time in micro secs 27044
+  TOG complete for MAIN TIMEOUT2
+
+ Starting TOG test on MAIN TIMEOUT1, index 10...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done  Delta TOG prep time in micro secs 27045
+  Delta TOG execution time in micro secs 12
+  Delta TOG restore time in micro secs 27044
+  TOG complete for MAIN TIMEOUT1
+
+ Starting TOG test on MAIN PVU0 SRC, index 11...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done  Delta TOG prep time in micro secs 27045
+  Delta TOG execution time in micro secs 11
+  Delta TOG restore time in micro secs 27044
+  TOG complete for MAIN PVU0 SRC
+
+ Starting TOG test on MAIN PVU0 CFG, index 12...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done  Delta TOG prep time in micro secs 27045
+  Delta TOG execution time in micro secs 35
+  Delta TOG restore time in micro secs 27045
+  TOG complete for MAIN PVU0 CFG
+
+ TOG Functionality Test Functionality test Passed.
+
+  SDL_TOG_verifyConfig API test failed on line no: 107
+
+ TOG API Module Test API test Passed.
+
+ TOG Error Module Test Error test Passed.
+
+All tests have passed.
+tog_test_main.c:289:test_sdl_tog_test_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored
+OK

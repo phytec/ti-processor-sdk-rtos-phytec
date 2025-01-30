@@ -1,0 +1,241 @@
+root@j7-evm:/opt/vision_apps# ./vx_app_tutorial.out 
+APP: Init ... !!!
+MEM: Init ... !!!
+MEM: Initialized DMA HEAP (fd=4) !!!
+MEM: Init ... Done !!!
+IPC: Init ... !!!
+IPC: Init ... Done !!!
+REMOTE_SERVICE: Init ... !!!
+REMOTE_SERVICE: Init ... Done !!!
+APP: Init ... Done !!!
+   463.857600 s:  VX_ZONE_INIT:Enabled
+   463.857625 s:  VX_ZONE_ERROR:Enabled
+   463.857630 s:  VX_ZONE_WARNING:Enabled
+   463.858177 s:  VX_ZONE_INIT:[tivxInit:71] Initialization Done !!!
+   463.858435 s:  VX_ZONE_INIT:[tivxHostInit:48] Initialization Done for HOST !!!
+
+
+ ===============
+ OpenVX Tutorial
+ ===============
+
+ 1: Image
+ 2: Graph
+ 3: Graph Pipeline
+
+ a: Run All
+
+ x: Exit
+
+ Enter Choice: a
+
+ vx_tutorial_image_load_save: Tutorial Started !!! 
+ Loading file ${VX_TEST_DATA_PATH}/colors.bmp ...
+ Loaded image of dimensions 640 x 480
+ Saving to file ${VX_TEST_DATA_PATH}/vx_tutorial_image_load_save_out.bmp ...
+ vx_tutorial_image_load_save: Tutorial Done !!! 
+ 
+ vx_tutorial_image_query: Tutorial Started !!! 
+ Loading file ${VX_TEST_DATA_PATH}/colors.bmp ...
+ VX_TYPE_IMAGE: MY_IMAGE, 640 x 480, 1 plane(s), 921600 B, VX_DF_IMAGE_RGB VX_COLOR_SPACE_BT709 VX_CHANNEL_RANGE_FULL VX_MEMORY_TYPE_NONE, 1 refs
+ vx_tutorial_image_query: Tutorial Done !!! 
+ 
+ vx_tutorial_image_crop_roi: Tutorial Started !!! 
+ Loading file ${VX_TEST_DATA_PATH}/colors.bmp ...
+ VX_TYPE_IMAGE: ORIGINAL, 640 x 480, 1 plane(s), 921600 B, VX_DF_IMAGE_RGB VX_COLOR_SPACE_BT709 VX_CHANNEL_RANGE_FULL VX_MEMORY_TYPE_NONE, 1 refs
+ VX_TYPE_IMAGE: CROP_ROI, 320 x 240, 1 plane(s), 460800 B, VX_DF_IMAGE_RGB VX_COLOR_SPACE_BT709 VX_CHANNEL_RANGE_FULL VX_MEMORY_TYPE_NONE, 1 refs
+ Saving to file ${VX_TEST_DATA_PATH}/vx_tutorial_image_crop_roi.bmp ...
+ vx_tutorial_image_crop_roi: Tutorial Done !!! 
+ 
+ vx_tutorial_image_extract_channel: Tutorial Started !!! 
+ Loading file ${VX_TEST_DATA_PATH}/colors.bmp ...
+ VX_TYPE_IMAGE: INPUT, 640 x 480, 1 plane(s), 921600 B, VX_DF_IMAGE_RGB VX_COLOR_SPACE_BT709 VX_CHANNEL_RANGE_FULL VX_MEMORY_TYPE_NONE, 1 refs
+ VX_TYPE_IMAGE: R_CHANNEL, 640 x 480, 1 plane(s), 307200 B, VX_DF_IMAGE_U8 VX_COLOR_SPACE_NONE VX_CHANNEL_RANGE_FULL VX_MEMORY_TYPE_NONE, 1 refs
+ VX_TYPE_IMAGE: G_CHANNEL, 640 x 480, 1 plane(s), 307200 B, VX_DF_IMAGE_U8 VX_COLOR_SPACE_NONE VX_CHANNEL_RANGE_FULL VX_MEMORY_TYPE_NONE, 1 refs
+ VX_TYPE_IMAGE: B_CHANNEL, 640 x 480, 1 plane(s), 307200 B, VX_DF_IMAGE_U8 VX_COLOR_SPACE_NONE VX_CHANNEL_RANGE_FULL VX_MEMORY_TYPE_NONE, 1 refs
+ VX_TYPE_IMAGE: OUTPUT, 640 x 480, 1 plane(s), 921600 B, VX_DF_IMAGE_RGB VX_COLOR_SPACE_BT709 VX_CHANNEL_RANGE_FULL VX_MEMORY_TYPE_NONE, 1 refs
+ Saving to file ${VX_TEST_DATA_PATH}/vx_tutorial_image_extract_channel_out.bmp ...
+ vx_tutorial_image_extract_channel: Tutorial Done !!! 
+ 
+ vx_tutorial_image_color_convert: Tutorial Started !!! 
+ Loading file ${VX_TEST_DATA_PATH}/colors.bmp ...
+ VX_TYPE_IMAGE: RGB_IMAGE, 640 x 480, 1 plane(s), 921600 B, VX_DF_IMAGE_RGB VX_COLOR_SPACE_BT709 VX_CHANNEL_RANGE_FULL VX_MEMORY_TYPE_NONE, 1 refs
+ VX_TYPE_IMAGE: NV12_IMAGE, 0 x 0, 2 plane(s), 0 B, VX_DF_IMAGE_NV12 VX_COLOR_SPACE_BT709 VX_CHANNEL_RANGE_FULL VX_MEMORY_TYPE_NONE, 1 refs
+ VX_TYPE_IMAGE: Y_IMAGE, 640 x 480, 1 plane(s), 307200 B, VX_DF_IMAGE_U8 VX_COLOR_SPACE_NONE VX_CHANNEL_RANGE_FULL VX_MEMORY_TYPE_NONE, 1 refs
+ VX_TYPE_GRAPH: MY_GRAPH, 2 nodes, VX_GRAPH_STATE_VERIFIED, avg perf  0.000000s, 0 parameters, 1 refs
+ VX_TYPE_NODE: COLOR_CONVERT, 2 params, avg perf  0.000000s, VX_SUCCESS, 1 refs
+ VX_TYPE_NODE: CHANNEL_EXTRACT, 3 params, avg perf  0.000000s, VX_SUCCESS, 1 refs
+ Executing graph ...
+ Executing graph ... Done !!!
+ VX_TYPE_GRAPH: MY_GRAPH, 2 nodes, VX_GRAPH_STATE_COMPLETED, avg perf  0.006086s, 0 parameters, 1 refs
+ VX_TYPE_NODE: COLOR_CONVERT, 2 params, avg perf  0.004114s, VX_SUCCESS, 1 refs
+ VX_TYPE_NODE: CHANNEL_EXTRACT, 3 params, avg perf  0.001809s, VX_SUCCESS, 1 refs
+ Saving to file ${VX_TEST_DATA_PATH}/vx_tutorial_image_color_convert_out.bmp ...
+ vx_tutorial_image_color_convert: Tutorial Done !!! 
+ 
+ vx_tutorial_image_histogram: Tutorial Started !!! 
+ Loading file ${VX_TEST_DATA_PATH}/colors.bmp ...
+ VX_TYPE_IMAGE: INPUT, 640 x 480, 1 plane(s), 307200 B, VX_DF_IMAGE_U8 VX_COLOR_SPACE_NONE VX_CHANNEL_RANGE_FULL VX_MEMORY_TYPE_NONE, 1 refs
+ VX_TYPE_GRAPH: MY_GRAPH, 1 nodes, VX_GRAPH_STATE_VERIFIED, avg perf  0.000000s, 0 parameters, 1 refs
+ VX_TYPE_NODE: HISTOGRAM, 2 params, avg perf  0.000000s, VX_SUCCESS, 1 refs
+ Executing graph ...
+ Executing graph ... Done !!!
+ VX_TYPE_GRAPH: MY_GRAPH, 1 nodes, VX_GRAPH_STATE_COMPLETED, avg perf  0.001211s, 0 parameters, 1 refs
+ VX_TYPE_NODE: HISTOGRAM, 2 params, avg perf  0.001112s, VX_SUCCESS, 1 refs
+ VX_TYPE_IMAGE: HISTOGRAM_IMAGE, 256 x 128, 1 plane(s), 32768 B, VX_DF_IMAGE_U8 VX_COLOR_SPACE_NONE VX_CHANNEL_RANGE_FULL VX_MEMORY_TYPE_NONE, 1 refs
+ Saving to file ${VX_TEST_DATA_PATH}/vx_tutorial_image_histogram_out.bmp ...
+ vx_tutorial_image_histogram: Tutorial Done !!! 
+ 
+ vx_tutorial_graph_image_gradients: Tutorial Started !!! 
+ Loading file ${VX_TEST_DATA_PATH}/colors.bmp ...
+ VX_TYPE_IMAGE: INPUT, 640 x 480, 1 plane(s), 307200 B, VX_DF_IMAGE_U8 VX_COLOR_SPACE_NONE VX_CHANNEL_RANGE_FULL VX_MEMORY_TYPE_NONE, 1 refs
+ VX_TYPE_IMAGE: GRAD_X, 640 x 480, 1 plane(s), 614400 B, VX_DF_IMAGE_S16 VX_COLOR_SPACE_NONE VX_CHANNEL_RANGE_FULL VX_MEMORY_TYPE_NONE, 1 refs
+ VX_TYPE_IMAGE: GRAD_Y, 640 x 480, 1 plane(s), 614400 B, VX_DF_IMAGE_S16 VX_COLOR_SPACE_NONE VX_CHANNEL_RANGE_FULL VX_MEMORY_TYPE_NONE, 1 refs
+ VX_TYPE_IMAGE: MAGNITUDE, 640 x 480, 1 plane(s), 614400 B, VX_DF_IMAGE_S16 VX_COLOR_SPACE_NONE VX_CHANNEL_RANGE_FULL VX_MEMORY_TYPE_NONE, 1 refs
+ VX_TYPE_IMAGE: MAGNITUDE_IMAGE, 640 x 480, 1 plane(s), 307200 B, VX_DF_IMAGE_U8 VX_COLOR_SPACE_NONE VX_CHANNEL_RANGE_FULL VX_MEMORY_TYPE_NONE, 1 refs
+ VX_TYPE_IMAGE: GRAD_X_IMAGE, 640 x 480, 1 plane(s), 307200 B, VX_DF_IMAGE_U8 VX_COLOR_SPACE_NONE VX_CHANNEL_RANGE_FULL VX_MEMORY_TYPE_NONE, 1 refs
+ VX_TYPE_IMAGE: GRAD_Y_IMAGE, 640 x 480, 1 plane(s), 307200 B, VX_DF_IMAGE_U8 VX_COLOR_SPACE_NONE VX_CHANNEL_RANGE_FULL VX_MEMORY_TYPE_NONE, 1 refs
+ VX_TYPE_IMAGE: PHASE, 640 x 480, 1 plane(s), 307200 B, VX_DF_IMAGE_U8 VX_COLOR_SPACE_NONE VX_CHANNEL_RANGE_FULL VX_MEMORY_TYPE_NONE, 1 refs
+ VX_TYPE_GRAPH: graph_79, 6 nodes, VX_GRAPH_STATE_VERIFIED, avg perf  0.000000s, 0 parameters, 1 refs
+ VX_TYPE_NODE: SOBEL3x3, 3 params, avg perf  0.000000s, VX_SUCCESS, 1 refs
+ VX_TYPE_NODE: MAGNITUDE, 3 params, avg perf  0.000000s, VX_SUCCESS, 1 refs
+ VX_TYPE_NODE: PHASE, 3 params, avg perf  0.000000s, VX_SUCCESS, 1 refs
+ VX_TYPE_NODE: MAGNITUDE_IMAGE, 4 params, avg perf  0.000000s, VX_SUCCESS, 1 refs
+ VX_TYPE_NODE: GRAD_X_IMAGE, 4 params, avg perf  0.000000s, VX_SUCCESS, 1 refs
+ VX_TYPE_NODE: GRAD_Y_IMAGE, 4 params, avg perf  0.000000s, VX_SUCCESS, 1 refs
+ Executing graph ...
+ Executing graph ... Done !!!
+ VX_TYPE_GRAPH: graph_79, 6 nodes, VX_GRAPH_STATE_COMPLETED, avg perf  0.016433s, 0 parameters, 1 refs
+ VX_TYPE_NODE: SOBEL3x3, 3 params, avg perf  0.005346s, VX_SUCCESS, 1 refs
+ VX_TYPE_NODE: MAGNITUDE, 3 params, avg perf  0.006144s, VX_SUCCESS, 1 refs
+ VX_TYPE_NODE: PHASE, 3 params, avg perf  0.005397s, VX_SUCCESS, 1 refs
+ VX_TYPE_NODE: MAGNITUDE_IMAGE, 4 params, avg perf  0.002314s, VX_SUCCESS, 1 refs
+ VX_TYPE_NODE: GRAD_X_IMAGE, 4 params, avg perf  0.002421s, VX_SUCCESS, 1 refs
+ VX_TYPE_NODE: GRAD_Y_IMAGE, 4 params, avg perf  0.002448s, VX_SUCCESS, 1 refs
+ Saving to file ${VX_TEST_DATA_PATH}/vx_tutorial_graph_image_gradients_phase_out.bmp ...
+ Saving to file ${VX_TEST_DATA_PATH}/vx_tutorial_graph_image_gradients_magnitude_out.bmp ...
+ Saving to file ${VX_TEST_DATA_PATH}/vx_tutorial_graph_image_gradients_grad_x_out.bmp ...
+ Saving to file ${VX_TEST_DATA_PATH}/vx_tutorial_graph_image_gradients_grad_y_out.bmp ...
+ vx_tutorial_graph_image_gradients: Tutorial Done !!! 
+ 
+ vx_tutorial_graph_user_kernel: Tutorial Started !!! 
+ phase_rgb_user_kernel_add: SUCCESS !!!
+ Loading file ${VX_TEST_DATA_PATH}/vx_tutorial_graph_image_gradients_phase_out.bmp ...
+ VX_TYPE_IMAGE: INPUT, 640 x 480, 1 plane(s), 307200 B, VX_DF_IMAGE_U8 VX_COLOR_SPACE_NONE VX_CHANNEL_RANGE_FULL VX_MEMORY_TYPE_NONE, 1 refs
+ VX_TYPE_IMAGE: OUTPUT, 640 x 480, 1 plane(s), 921600 B, VX_DF_IMAGE_RGB VX_COLOR_SPACE_BT709 VX_CHANNEL_RANGE_FULL VX_MEMORY_TYPE_NONE, 1 refs
+ phase_rgb_user_kernel_validate: SUCCESS !!!
+ phase_rgb_user_kernel_init: SUCCESS !!!
+ VX_TYPE_GRAPH: graph_73, 1 nodes, VX_GRAPH_STATE_VERIFIED, avg perf  0.000000s, 0 parameters, 1 refs
+ VX_TYPE_NODE: PHASE_RGB, 2 params, avg perf  0.000000s, VX_SUCCESS, 1 refs
+ Executing graph ...
+ Executing graph ... Done !!!
+ VX_TYPE_GRAPH: graph_73, 1 nodes, VX_GRAPH_STATE_COMPLETED, avg perf  0.007329s, 0 parameters, 1 refs
+ VX_TYPE_NODE: PHASE_RGB, 2 params, avg perf  0.007290s, VX_SUCCESS, 1 refs
+ Saving to file ${VX_TEST_DATA_PATH}/vx_tutorial_graph_user_kernel_out.bmp ...
+ phase_rgb_user_kernel_deinit: SUCCESS !!!
+ phase_rgb_user_kernel_remove: SUCCESS !!!
+ vx_tutorial_graph_user_kernel: Tutorial Done !!! 
+ 
+ vx_tutorial_graph_user_kernel_pytiovx: Tutorial Started !!! 
+ phase_rgb_user_kernel_add: SUCCESS !!!
+ Loading file ${VX_TEST_DATA_PATH}/colors.bmp ...
+ VX_TYPE_IMAGE: input, 640 x 480, 1 plane(s), 307200 B, VX_DF_IMAGE_U8 VX_COLOR_SPACE_NONE VX_CHANNEL_RANGE_FULL VX_MEMORY_TYPE_NONE, 1 refs
+ VX_TYPE_IMAGE: grad_x, 640 x 480, 1 plane(s), 614400 B, VX_DF_IMAGE_S16 VX_COLOR_SPACE_NONE VX_CHANNEL_RANGE_FULL VX_MEMORY_TYPE_NONE, 1 refs
+ VX_TYPE_IMAGE: grad_y, 640 x 480, 1 plane(s), 614400 B, VX_DF_IMAGE_S16 VX_COLOR_SPACE_NONE VX_CHANNEL_RANGE_FULL VX_MEMORY_TYPE_NONE, 1 refs
+ VX_TYPE_IMAGE: phase, 640 x 480, 1 plane(s), 307200 B, VX_DF_IMAGE_U8 VX_COLOR_SPACE_NONE VX_CHANNEL_RANGE_FULL VX_MEMORY_TYPE_NONE, 1 refs
+ VX_TYPE_IMAGE: phase_rgb, 640 x 480, 1 plane(s), 921600 B, VX_DF_IMAGE_RGB VX_COLOR_SPACE_BT709 VX_CHANNEL_RANGE_FULL VX_MEMORY_TYPE_NONE, 1 refs
+ phase_rgb_user_kernel_validate: SUCCESS !!!
+ phase_rgb_user_kernel_init: SUCCESS !!!
+ VX_TYPE_GRAPH: graph_0, 3 nodes, VX_GRAPH_STATE_VERIFIED, avg perf  0.000000s, 0 parameters, 1 refs
+ Executing graph ...
+ Executing graph ... Done !!!
+ VX_TYPE_GRAPH: graph_0, 3 nodes, VX_GRAPH_STATE_COMPLETED, avg perf  0.018128s, 0 parameters, 1 refs
+ Saving to file ${VX_TEST_DATA_PATH}/vx_tutorial_graph_user_kernel_pytiovx_out.bmp ...
+ phase_rgb_user_kernel_deinit: SUCCESS !!!
+ phase_rgb_user_kernel_remove: SUCCESS !!!
+ vx_tutorial_graph_user_kernel_pytiovx: Tutorial Done !!! 
+ 
+ vx_tutorial_graph_user_kernel: Tutorial Started !!! 
+ phase_rgb_user_kernel_add: SUCCESS !!!
+ Loading file ${VX_TEST_DATA_PATH}/vx_tutorial_graph_image_gradients_phase_out.bmp ...
+ VX_TYPE_IMAGE: INPUT, 640 x 480, 1 plane(s), 307200 B, VX_DF_IMAGE_U8 VX_COLOR_SPACE_NONE VX_CHANNEL_RANGE_FULL VX_MEMORY_TYPE_NONE, 1 refs
+ VX_TYPE_IMAGE: OUTPUT, 640 x 480, 1 plane(s), 921600 B, VX_DF_IMAGE_RGB VX_COLOR_SPACE_BT709 VX_CHANNEL_RANGE_FULL VX_MEMORY_TYPE_NONE, 1 refs
+ phase_rgb_user_kernel_validate: SUCCESS !!!
+ VX_TYPE_GRAPH: graph_73, 1 nodes, VX_GRAPH_STATE_VERIFIED, avg perf  0.000000s, 0 parameters, 1 refs
+ VX_TYPE_NODE: PHASE_RGB, 2 params, avg perf  0.000000s, VX_SUCCESS, 1 refs
+ Executing graph ...
+ Executing graph ... Done !!!
+ VX_TYPE_GRAPH: graph_73, 1 nodes, VX_GRAPH_STATE_COMPLETED, avg perf  0.005950s, 0 parameters, 1 refs
+ VX_TYPE_NODE: PHASE_RGB, 2 params, avg perf  0.005819s, VX_SUCCESS, 1 refs
+ Saving to file ${VX_TEST_DATA_PATH}/vx_tutorial_graph_target_kernel_out.bmp ...
+ phase_rgb_user_kernel_remove: SUCCESS !!!
+ vx_tutorial_graph_user_kernel: Tutorial Done !!! 
+ 
+ vx_tutorial_graph_user_kernel_pytiovx: Tutorial Started !!! 
+ phase_rgb_user_kernel_add: SUCCESS !!!
+ Loading file ${VX_TEST_DATA_PATH}/colors.bmp ...
+ VX_TYPE_IMAGE: input, 640 x 480, 1 plane(s), 307200 B, VX_DF_IMAGE_U8 VX_COLOR_SPACE_NONE VX_CHANNEL_RANGE_FULL VX_MEMORY_TYPE_NONE, 1 refs
+ VX_TYPE_IMAGE: grad_x, 640 x 480, 1 plane(s), 614400 B, VX_DF_IMAGE_S16 VX_COLOR_SPACE_NONE VX_CHANNEL_RANGE_FULL VX_MEMORY_TYPE_NONE, 1 refs
+ VX_TYPE_IMAGE: grad_y, 640 x 480, 1 plane(s), 614400 B, VX_DF_IMAGE_S16 VX_COLOR_SPACE_NONE VX_CHANNEL_RANGE_FULL VX_MEMORY_TYPE_NONE, 1 refs
+ VX_TYPE_IMAGE: phase, 640 x 480, 1 plane(s), 307200 B, VX_DF_IMAGE_U8 VX_COLOR_SPACE_NONE VX_CHANNEL_RANGE_FULL VX_MEMORY_TYPE_NONE, 1 refs
+ VX_TYPE_IMAGE: phase_rgb, 640 x 480, 1 plane(s), 921600 B, VX_DF_IMAGE_RGB VX_COLOR_SPACE_BT709 VX_CHANNEL_RANGE_FULL VX_MEMORY_TYPE_NONE, 1 refs
+ phase_rgb_user_kernel_validate: SUCCESS !!!
+ VX_TYPE_GRAPH: graph_0, 3 nodes, VX_GRAPH_STATE_VERIFIED, avg perf  0.000000s, 0 parameters, 1 refs
+ Executing graph ...
+ Executing graph ... Done !!!
+ VX_TYPE_GRAPH: graph_0, 3 nodes, VX_GRAPH_STATE_COMPLETED, avg perf  0.016666s, 0 parameters, 1 refs
+ Saving to file ${VX_TEST_DATA_PATH}/vx_tutorial_graph_target_kernel_pytiovx_out.bmp ...
+ phase_rgb_user_kernel_remove: SUCCESS !!!
+ vx_tutorial_graph_user_kernel_pytiovx: Tutorial Done !!! 
+ 
+ vx_tutorial_graph_pipeline_two_nodes: Tutorial Started !!! 
+[ N0 ] Execution time for      4096 pixels (avg = 0.051800 ms, min = 0.047000 ms, max = 0.065000 ms)
+[ N1 ] Execution time for      4096 pixels (avg = 0.056100 ms, min = 0.048000 ms, max = 0.085000 ms)
+[ SYS ] Execution time (avg =    0.175 ms, sum =    1.756 ms, num = 10)
+ vx_tutorial_graph_pipeline_two_nodes: Tutorial Done !!! 
+ 
+
+
+ ===============
+ OpenVX Tutorial
+ ===============
+
+ 1: Image
+ 2: Graph
+ 3: Graph Pipeline
+
+ a: Run All
+
+ x: Exit
+
+ Enter Choice: 
+
+
+ ===============
+ OpenVX Tutorial
+ ===============
+
+ 1: Image
+ 2: Graph
+ 3: Graph Pipeline
+
+ a: Run All
+
+ x: Exit
+
+ Enter Choice: x
+
+   466.765081 s:  VX_ZONE_INIT:[tivxHostDeInit:56] De-Initialization Done for HOST !!!
+   466.769417 s:  VX_ZONE_INIT:[tivxDeInit:111] De-Initialization Done !!!
+APP: Deinit ... !!!
+REMOTE_SERVICE: Deinit ... !!!
+REMOTE_SERVICE: Deinit ... Done !!!
+IPC: Deinit ... !!!
+IPC: DeInit ... Done !!!
+MEM: Deinit ... !!!
+MEM: Alloc's: 77 alloc's of 40730450 bytes 
+MEM: Free's : 77 free's  of 40730450 bytes 
+MEM: Open's : 0 allocs  of 0 bytes 
+MEM: Deinit ... Done !!!
+APP: Deinit ... Done !!!
+root@j7-evm:/opt/vision_apps# 

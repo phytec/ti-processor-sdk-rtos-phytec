@@ -1,0 +1,197 @@
+===============================
+Using Derived KEK on HS devices
+===============================
+
+.. note::
+
+   This document is only applicable to HS devices.
+
+K3 HS devices have a randomly generated 256 bit key written into the efuses in
+TI Factory.
+This key is called a Key Encryption Key (KEK) and is unique to each device.
+The characteristics of KEK are listed below.
+
+- KEK is a randomly generated symmetric key
+
+- KEK is made using NIST certified tester routine
+
+- KEK is different for each device and is not correlated in any ways with keys issued on others devices.
+
+- KEK is not stored in any database or retained in any manufacturing tester
+
+- KEK is burnt in TI factory.
+
+KEK is fed in hardware into the AES engine inside DMSC.
+The efuses carrying the KEK are marked as read and write protected.
+As a result, KEK is only accessible via the AES engine in DMSC.
+The DMSC AES engine has only a register interface and no DMA interface.
+The DMSC AES engine has lower throughput compared to the AES engine in SA2UL.
+Instead of exposing the DMSC AES engine to all cores, |sysfw| provides API to
+obtain a key derived from KEK(DKEK) for encryption/decryption.
+DKEK can be used with SA2UL or with CPU acceleration to perform
+encryption/decryption operations.
+
+This document describes the usage of the Derived KEK(DKEK) API.
+This document must be read along side
+
+#. :doc:`../2_tisci_msgs/security/dkek_management` and
+#. :doc:`../3_boardcfg/BOARDCFG_SEC`, specifically :ref:`pub_boardcfg_dkek_config`
+
+Key Derivation Method
+=====================
+
+|sysfw| uses CMAC as the Pseudo Random Function(PRF) in counter mode as
+described in Section 5.1 of NIST SP 800 108
+"Recommendation for Key Derivation Using Pseudorandom Functions".
+The user can provide the following inputs as defined in the above
+document.
+
+#. Label - A string that identifies the purpose for the derived keying material,
+   which is encoded as a binary string.
+
+#. Context - A binary string containing the information related to the derived
+   keying material.
+
+The total length of the Label and Context fields is limited by the size of the
+TISCI messages(see :ref:`pub_secure_msg_header`) to 41 bytes.
+
+|sysfw| adds additional context containing the ID of the host requesting the
+DKEK into the input. As a result, each host requesting the DKEK receives a
+unique value.
+
+DKEK computation is deterministic on each device. For a given host, label and
+context, the derived KEK is the same even across reboots on the same device.
+
+On different devices, derived KEK is different for the same input. This is due
+to a random KEK being programmed into each device in TI factory.
+
+|sysfw| always computes a 256 bit key. It is up to the host to use the desired
+length out of the 256 bits of the key.
+
+.. note::
+
+   Derived KEK does not describe a single key.
+   The key derivation procedure produces different keys per host.
+   The host can derive different keys based on the label and context provided as input.
+
+
+Using Derived KEK
+=================
+
+There are two ways to use the derived KEK for encryption/decryption.
+
+#. |sysfw| programs SA2UL with DKEK. Host performs encryption/decryption with
+   SA2UL.
+
+#. |sysfw| computes DKEK and returns it to the host. Host can perform
+   encryption/decryption with SA2UL or via CPU.
+
+.. note::
+
+   This section assumes that the user is familiar with using SA2UL for
+   performing encryption/decryption.
+
+Approach 1 - DKEK programmed into SA2UL
+---------------------------------------
+
+In this approach, host requests |sysfw| to derive a DKEK and program it into the
+SA2UL DKEK registers using the :ref:`TISCI_MSG_SA2UL_SET_DKEK
+<sec-api-sa2ul-set-dkek>` API.
+
+.. figure:: ../img/sec/dkek/dkek_approach1_set_dkek.svg
+
+DKEK is not directly made available to the host. The host can use DKEK for
+encryption/decryption by setting the ``USE_DKEK`` flag in the SA2UL security
+context.
+
+.. figure:: ../img/sec/dkek/dkek_approach1_use_dkek.svg
+
+When the host is done with the use of DKEK, it can release the DKEK registers
+by using the :ref:`TISCI_MSG_SA2UL_RELEASE_DKEK <sec-api-sa2ul-release-dkek>`
+API.
+
+.. figure:: ../img/sec/dkek/dkek_approach1_release_dkek.svg
+
+Caveat on Approach 1
+^^^^^^^^^^^^^^^^^^^^
+
+When the ``USE_DKEK`` flag is used in SA2UL security context, SA2UL checks if the
+privid of the initiator is present in the SA2UL DKEK privid register.
+SA2UL **only** checks the privid of the initiator against the SA2UL DKEK privid register
+and ignores any attributes such as user/priviliged and secure/non-secure in the transaction.
+
+This creates a tricky situation when secure and non-secure software are running on the same core.
+Software running on the same core share the same privid but differ in other attributes.
+It is possible for non-secure software to encrypt or decrypt data with DKEK configured
+by the secure software.
+
+This can be mitigated by setting the DKEK only when required and releasing the DKEK
+as soon as the encryption/decryption operation is complete.
+Alternatively approach 2 described below can be used.
+
+Approach 2 - DKEK supplied via TISCI
+------------------------------------
+
+In this approach, host requests |sysfw| to derive a DKEK and supply it in the
+response using the :ref:`TISCI_MSG_SA2UL_GET_DKEK <sec-api-sa2ul-get-dkek>` API.
+The host is responsible for maintaining the secrecy of the DKEK supplied by |sysfw|.
+
+.. figure:: ../img/sec/dkek/dkek_approach2_get_dkek.svg
+
+Once DKEK is available, the host can perform encryption/decryption with it in
+the same manner as any other symmetric key.
+
+.. figure:: ../img/sec/dkek/dkek_approach2_use_dkek.svg
+
+As the SA2UL DKEK registers are not being used, there is no release DKEK API
+required in this approach.
+
+Comparing the two approaches
+----------------------------
+
+.. list-table:: Comparison
+   :header-rows: 1
+
+   * - Option 1
+     - Option 2
+
+   * - DKEK programmed directly into SA2UL DKEK registers.
+     - DKEK is provided to host as a response to a TISCI message.
+
+   * - No separate firewalling is required for DKEK.
+     - Host must firewall memory where it is storing DKEK.
+
+   * - DKEK can only be used through SA2UL. Host must set the ``USE_DKEK``
+       flag to true in the SA2UL security context. Key must not be populated
+       in the SA2UL security context.
+
+     - DKEK can be used in two ways
+
+       - Through SA2UL - Host must program the key in its possession into
+         the SA2UL security context.
+
+       - Using CPU - If hardware acceleration is not required,
+         encryption/decryption can be performed using CPU and the DKEK
+         in the possession of the host.
+
+   * - Only one host can use this approach at a time. There is only one set of
+       SA2UL DKEK registers.
+       Access to these registers for encryption/decryption is controlled by DKEK
+       privid register.
+       |sysfw| programs the DKEK privid register with the privid of the host who
+       has invoked the :ref:`TISCI_MSG_SA2UL_SET_DKEK <sec-api-sa2ul-set-dkek>`
+       API.
+       Only this host can use DKEK via the SA2UL DKEK registers until DKEK
+       is released via :ref:`TISCI_MSG_SA2UL_RELEASE_DKEK <sec-api-sa2ul-release-dkek>`
+
+     - Multiple hosts can use DKEK at the same time using this approach.
+       Each host manages its own DKEK.
+
+   * - :ref:`TISCI_MSG_SA2UL_SET_DKEK <sec-api-sa2ul-set-dkek>` and
+       :ref:`TISCI_MSG_SA2UL_RELEASE_DKEK <sec-api-sa2ul-release-dkek>`
+       API are used in this approach.
+
+     - :ref:`TISCI_MSG_SA2UL_GET_DKEK <sec-api-sa2ul-get-dkek>` is used
+       in this approach.
+
+We recommend using Approach 1 wherever possible to maintain the secrecy of DKEK.

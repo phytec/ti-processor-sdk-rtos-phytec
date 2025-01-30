@@ -1,0 +1,728 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Board Configuration with ROM Combined Image format &mdash; TISCI User Guide</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="TISCI User Guide" href="../index.html"/>
+        <link rel="up" title="Chapter 3: Board Configuration" href="index.html"/>
+        <link rel="next" title="Chapter 4: Interpreting Trace Data" href="../4_trace/index.html"/>
+        <link rel="prev" title="Power Management Board Configuration" href="BOARDCFG_PM.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="../_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> TISCI
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                09.02.04
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../1_intro/index.html">Chapter 1: Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_tisci_msgs/index.html">Chapter 2: TISCI Message Documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Chapter 3: Board Configuration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="BOARDCFG.html">Board Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="BOARDCFG_RM.html">Resource Management Board Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="BOARDCFG_SEC.html">Security Board Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="BOARDCFG_PM.html">Power Management Board Configuration</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Board Configuration with ROM Combined Image format</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#board-configuration-passing-without-rom-combined-image-format">Board configuration passing without ROM Combined image format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#board-configuration-passing-with-rom-combined-image-format">Board configuration passing with ROM Combined image format</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#boardconfig-data-for-combined-boot-flow">Boardconfig data for combined boot flow</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../4_trace/index.html">Chapter 4: Interpreting Trace Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_soc_doc/index.html">Chapter 5: SoC Family Specific Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_topic_user_guides/index.html">Chapter 6: Topic User Guides</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">TISCI</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Chapter 3: Board Configuration</a> &raquo;</li>
+      
+    <li>Board Configuration with ROM Combined Image format</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="board-configuration-with-rom-combined-image-format">
+<h1>Board Configuration with ROM Combined Image format<a class="headerlink" href="#board-configuration-with-rom-combined-image-format" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Certain devices like the J7200 and AM64 ROM supports a combined boot image boot
+flow. In this flow, a boot binary blob has both Secondarybootloader (SBL) and
+System Firmware (SYS-FW) embedded in the boot image with a single X509
+certificate.</p>
+<p>This method helps with the following situations:</p>
+<ul class="simple">
+<li>Allows ROM to load and run both the bootloader and SYS-FW in parallel
+without any dependency.</li>
+<li>Optimizes ROM boot time by minimizing different x509 certificate parsing
+and authentication.</li>
+</ul>
+<p>To support this combined boot format, ROM employs a new X509 extension called:
+<em>ext_boot_info</em>. It supports multiple boot components with a single certificate.
+It allows up to 5 components as part of this extension:</p>
+<ul class="simple">
+<li><strong>Component1</strong>: Mandatory and should point to info about SBL binary</li>
+<li><strong>Component2</strong>: Optional and if present should point to SYS-FW binary in
+all device types</li>
+<li><strong>Component3</strong>: Optional (Load section to SBL, new certType)</li>
+<li><strong>Component4</strong>: Optional (Load section to SYS-FW, new certType)</li>
+<li><strong>Component5</strong>: HS-FS and HS-SE non Prime devices. Mandatory and should point
+to SYS-FW Inner certificate– GP and HS-SE Prime devices. Optional (Load
+Section to SBL or SYS-FW)</li>
+</ul>
+<p>The board configuration corresponds to the <strong>Component3</strong> and <strong>Component4</strong>.</p>
+<p>The usage of <strong>Component3</strong> vs <strong>Component4</strong> vs both depends on the HSM or non
+HSM. The following table describes the combinations.</p>
+<p>For details on which device supports HSM and which does not refer <a class="reference internal" href="../1_intro/TISCI.html#pub-sysfw-introduction"><span class="std std-ref">Introduction</span></a>.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="20%" />
+<col width="14%" />
+<col width="25%" />
+<col width="22%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Application</th>
+<th class="head">TI Foundational
+Security</th>
+<th class="head">RM/PM
+SCI Server</th>
+<th class="head"><strong>Component3</strong>
+(SBL / SPL)</th>
+<th class="head"><strong>Component4</strong>
+(SYSFW)</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>non- HSM
+supporting
+devices</td>
+<td>DMSC
+M3 Based)</td>
+<td>DMSC
+(M3 based)</td>
+<td>Not Used</td>
+<td>Used for
+RM/PM/Security
+and common Board
+configuration</td>
+</tr>
+<tr class="row-odd"><td>HSM Supporting
+devices</td>
+<td>DMSC
+M3 based)</td>
+<td>Library
+on MCU R5</td>
+<td>Used for RM/PM
+Board Configuration</td>
+<td>Used for Security
+and common Board
+configuration</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="board-configuration-passing-without-rom-combined-image-format">
+<h2>Board configuration passing without ROM Combined image format<a class="headerlink" href="#board-configuration-passing-without-rom-combined-image-format" title="Permalink to this headline">¶</a></h2>
+<p>When not using ROM combined image format, the sequence of APIs that a bootloader
+developer needs to call is as below:</p>
+<p><em>STEP 1</em>: Load the firmware using ROM APIs during boot.</p>
+<div class="highlight-c"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><span class="cm">/** Firmware Load Command ID from R5 to M3 */</span>
+<span class="cp">#define ROM_MSG_R5_TO_M3_M3FW                    (0x8105U)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>This requests the ROM to load the System Firmware from a location in the SoC to the
+DMSC Internal memory. Based on the device type this may also include
+authentication and/or decryption of the System Firmware by ROM.</p>
+<p>The ROM will send back a response with the following message ID and response.</p>
+<div class="highlight-c"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><span class="cm">/** Firmware Load Command ID from M3 to R5 */</span>
+<span class="cp">#define ROM_MSG_M3_TO_R5_M3FW_RESULT             (0x8805U)</span>
+<span class="cm">/** Firmware Load Command response Authorization Passed */</span>
+<span class="cp">#define ROM_MSG_CERT_AUTH_PASS                   (0x555555U)</span>
+<span class="cm">/** Firmware Load Command response Authorization Failed */</span>
+<span class="cp">#define ROM_MSG_CERT_AUTH_FAIL                   (0xffffffU)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p><em>STEP 2</em>: The System Firmware once boots up will provide its own Boot Notification
+message to indicate that it is now ready to recieve board configuration data.</p>
+<p><code class="docutils literal"><span class="pre">TISCI_MSG_BOOT_NOTIFICATION</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">(0x000AU)</span></code></p>
+<p>The response along with the message type is as below:</p>
+<p><p><strong>struct tisci_msg_boot_notification_req</strong></p>
+<p>Notification message to indicate the DMSC is available.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="21%" />
+<col width="62%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>hdr</td>
+<td>struct tisci_header</td>
+<td>TISCI header</td>
+</tr>
+<tr class="row-odd"><td>extboot_status</td>
+<td>u32</td>
+<td>Status of extended boot. Applicable only for combined image</td>
+</tr>
+</tbody>
+</table>
+</p>
+<p><em>STEP 3</em>: Once the TISCI_MSG_BOOT_NOTIFICATION message is recieved, the
+Bootloader should send the following messages in this order:</p>
+<p><code class="docutils literal"><span class="pre">TISCI_MSG_BOARD_CONFIG</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">(0x000BU)</span></code></p>
+<p><code class="docutils literal"><span class="pre">TISCI_MSG_BOARD_CONFIG_SECURITY</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">(0x000DU)</span></code></p>
+<p><code class="docutils literal"><span class="pre">TISCI_MSG_BOARD_CONFIG_RM</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">(0x000CU)</span></code></p>
+<p><code class="docutils literal"><span class="pre">TISCI_MSG_BOARD_CONFIG_PM</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">(0x000EU)</span></code></p>
+<p>The PM and RM board configutaions can be sent in any order.</p>
+<p>Refer to the corresponding board configuration sections to know more about each
+section.</p>
+<p>Once the board configuration for each subsection is sent the corresponding
+messages from each section can be serviced.</p>
+</div>
+<div class="section" id="board-configuration-passing-with-rom-combined-image-format">
+<h2>Board configuration passing with ROM Combined image format<a class="headerlink" href="#board-configuration-passing-with-rom-combined-image-format" title="Permalink to this headline">¶</a></h2>
+<p>When the ROM Combined image format is used the binary blob loaded by ROM
+needs to be build as per the TRM chapter on “Intialization”. Specifically
+refer to “Extended Boot Info Extension”.</p>
+<p>ROM thus takes the binary blob with the different components and places them
+in the appropriate memory locations within the MCU SRAM and DMSC Internal memory.</p>
+<p>From a software perspective the Bootloader would only now need to wait for the
+following message:</p>
+<p><code class="docutils literal"><span class="pre">TISCI_MSG_BOOT_NOTIFICATION</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">(0x000AU)</span></code></p>
+<p>The <cite>extboot_status</cite> field in the below structure reflects the status of the
+passed board configuration to System Firmware.</p>
+<p><p><strong>struct tisci_msg_boot_notification_req</strong></p>
+<p>Notification message to indicate the DMSC is available.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="21%" />
+<col width="62%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>hdr</td>
+<td>struct tisci_header</td>
+<td>TISCI header</td>
+</tr>
+<tr class="row-odd"><td>extboot_status</td>
+<td>u32</td>
+<td>Status of extended boot. Applicable only for combined image</td>
+</tr>
+</tbody>
+</table>
+</p>
+<p>This value is bit wise encoded to reflect the status of the board configuration:</p>
+<div class="highlight-c"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span></pre></div></td><td class="code"><div><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Bitfields to define status and validity of different boardconfig</span>
+<span class="cm"> * data provided by system integrator.</span>
+<span class="cm"> *</span>
+<span class="cm"> * \def EXTBOOT_BOARDCFG_PRESENT</span>
+<span class="cm"> * Core board config data is present in SYSFW blob.</span>
+<span class="cm"> *</span>
+<span class="cm"> * \def EXTBOOT_BOARDCFG_VALID</span>
+<span class="cm"> * Core board config data specified in SYSFW blob is valid.</span>
+<span class="cm"> *</span>
+<span class="cm"> * \def EXTBOOT_BOARDCFG_SECURITY_PRESENT</span>
+<span class="cm"> * Security board config data is present in SYSFW blob.</span>
+<span class="cm"> *</span>
+<span class="cm"> * \def EXTBOOT_BOARDCFG_SECURITY_VALID</span>
+<span class="cm"> * Security board config data specified in SYSFW blob is valid.</span>
+<span class="cm"> *</span>
+<span class="cm"> * \def EXTBOOT_BOARDCFG_PM_PRESENT</span>
+<span class="cm"> * PM board config data is present in SYSFW blob.</span>
+<span class="cm"> *</span>
+<span class="cm"> * \def EXTBOOT_BOARDCFG_PM_VALID</span>
+<span class="cm"> * PM board config data specified in SYSFW blob is valid.</span>
+<span class="cm"> *</span>
+<span class="cm"> * \def EXTBOOT_BOARDCFG_RM_PRESENT</span>
+<span class="cm"> * RM board config data is present in SYSFW blob.</span>
+<span class="cm"> *</span>
+<span class="cm"> * \def EXTBOOT_BOARDCFG_RM_VALID</span>
+<span class="cm"> * RM board config data specified in SYSFW blob is valid.</span>
+<span class="cm"> *</span>
+<span class="cm"> * \def EXTBOOT_PRESENT</span>
+<span class="cm"> * Extended boot information is provided by ROM.</span>
+<span class="cm"> *</span>
+<span class="cm"> * \def EXTBOOT_VALID</span>
+<span class="cm"> * Extended boot top level elements are valid.</span>
+<span class="cm"> *</span>
+<span class="cm"> * \def EXTBOOT_BOARDCFG_NUM_FIELDS</span>
+<span class="cm"> * Number of fields in extended boot status</span>
+<span class="cm"> */</span>
+<span class="w"> </span><span class="cp">#define EXTBOOT_BOARDCFG_PRESENT                BIT(0)</span>
+<span class="w"> </span><span class="cp">#define EXTBOOT_BOARDCFG_VALID                  BIT(1)</span>
+<span class="w"> </span><span class="cp">#define EXTBOOT_BOARDCFG_SECURITY_PRESENT       BIT(2)</span>
+<span class="w"> </span><span class="cp">#define EXTBOOT_BOARDCFG_SECURITY_VALID         BIT(3)</span>
+<span class="w"> </span><span class="cp">#define EXTBOOT_BOARDCFG_PM_PRESENT             BIT(4)</span>
+<span class="w"> </span><span class="cp">#define EXTBOOT_BOARDCFG_PM_VALID               BIT(5)</span>
+<span class="w"> </span><span class="cp">#define EXTBOOT_BOARDCFG_RM_PRESENT             BIT(6)</span>
+<span class="w"> </span><span class="cp">#define EXTBOOT_BOARDCFG_RM_VALID               BIT(7)</span>
+<span class="w"> </span><span class="cp">#define EXTBOOT_PRESENT                         BIT(8)</span>
+<span class="w"> </span><span class="cp">#define EXTBOOT_VALID                           BIT(9)</span>
+<span class="w"> </span><span class="cp">#define EXTBOOT_BOARDCFG_NUM_FIELDS             (10)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="section" id="boardconfig-data-for-combined-boot-flow">
+<h3>Boardconfig data for combined boot flow<a class="headerlink" href="#boardconfig-data-for-combined-boot-flow" title="Permalink to this headline">¶</a></h3>
+<p>Boot ROM populates a <code class="docutils literal"><span class="pre">extboot_x509_table</span></code> structure in DMSC Internal memory,
+this data structure contains information about sbl image, sysfw image,
+sysfw inner certificate (specific to HS devices), sbl_data and sysfw_data.
+<code class="docutils literal"><span class="pre">sysfw_data</span></code> (compType 0x11) is captured in a structutre <code class="docutils literal"><span class="pre">extboot_x509_comp</span></code>.</p>
+<p><code class="docutils literal"><span class="pre">boardcfg_desc_table</span></code> is the strucutre for boardconfig data in combined
+boot flow. This has information on number of boardcfg descriptors, boardcfg swrev,
+and descriptors (<code class="docutils literal"><span class="pre">extboot_boardcfg_desc</span></code>) for individual boardconfigs such as
+core, security, rm and pm.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li><code class="docutils literal"><span class="pre">boardcfg_desc_table</span></code> must be formatted and prepared by the integrator
+and used as the input for <code class="docutils literal"><span class="pre">sysfw_data</span></code> (compType 0x11).</li>
+<li>boardcfg data itself does not need the certificate when part of
+<code class="docutils literal"><span class="pre">sysfw_data</span></code> component since it will be authenticated by ROM when
+booting the image, but for any boardcfg that is sent over TISCI that TIFS
+will still need to authenticate.</li>
+</ul>
+</div>
+<div class="figure">
+<img alt="../_images/ext_boot_info_boardcfg_struct.png" src="../_images/ext_boot_info_boardcfg_struct.png" />
+</div>
+<p><p><strong>struct extboot_x509_table</strong></p>
+<p>Component information table populated by ROM.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="27%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>magic_word</td>
+<td>u8</td>
+<td>Magic word for extended boot</td>
+</tr>
+<tr class="row-odd"><td>num_comps</td>
+<td>u32</td>
+<td>Number of components present in extended boot info table</td>
+</tr>
+<tr class="row-even"><td>comps</td>
+<td>struct extboot_x509_comp</td>
+<td>Information for each component</td>
+</tr>
+</tbody>
+</table>
+</p>
+<p><p><strong>struct extboot_x509_comp</strong></p>
+<p>Component information populated by ROM. The combined image has multiple components. ROM populates this information for each component.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="14%" />
+<col width="64%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>comp_type</td>
+<td>u32</td>
+<td>Type of component</td>
+</tr>
+<tr class="row-odd"><td>boot_core</td>
+<td>u32</td>
+<td>Core that loads or runs image</td>
+</tr>
+<tr class="row-even"><td>comp_opts</td>
+<td>u32</td>
+<td>Component options. Not used for now.</td>
+</tr>
+<tr class="row-odd"><td>dest_addr</td>
+<td>u64</td>
+<td>Image destination address</td>
+</tr>
+<tr class="row-even"><td>comp_size</td>
+<td>u32</td>
+<td>Size of the component in bytes</td>
+</tr>
+</tbody>
+</table>
+</p>
+<p><p><strong>struct boardcfg_desc_table</strong></p>
+<p>Boardcfg descriptor table provided by system integrator</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="34%" />
+<col width="51%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>num_elems</td>
+<td>u8</td>
+<td>Number of elements in board config table.</td>
+</tr>
+<tr class="row-odd"><td>sw_rev</td>
+<td>u8</td>
+<td>SW revision populated by system integrator.</td>
+</tr>
+<tr class="row-even"><td>descs</td>
+<td>struct extboot_boardcfg_desc</td>
+<td>Array of board config descriptors</td>
+</tr>
+</tbody>
+</table>
+</p>
+<p><p><strong>struct extboot_boardcfg_desc</strong></p>
+<p>Describes the board config data</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="7%" />
+<col width="4%" />
+<col width="89%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>type</td>
+<td>u16</td>
+<td>Type of board config data. This should map to corresponding TISCI message type. For example, a PM boardcfg should have a descriptor type TISCI_MSG_BOARD_CONFIG_PM.</td>
+</tr>
+<tr class="row-odd"><td>offset</td>
+<td>u16</td>
+<td>Offset for board config data from beginning of SYSFW data binary blob</td>
+</tr>
+<tr class="row-even"><td>size</td>
+<td>u16</td>
+<td>Size of board config data</td>
+</tr>
+<tr class="row-odd"><td>devgrp</td>
+<td>u8</td>
+<td>Device group to be used by SYSFW for automatic board config processing</td>
+</tr>
+<tr class="row-even"><td>reserved</td>
+<td>u8</td>
+<td>Reserved field. Not to be used.</td>
+</tr>
+</tbody>
+</table>
+</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../4_trace/index.html" class="btn btn-neutral float-right" title="Chapter 4: Interpreting Trace Data" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="BOARDCFG_PM.html" class="btn btn-neutral" title="Power Management Board Configuration" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyright 2016-2024</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'09.02.04',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+
+        $('body').on("mousewheel", function () {
+            // Remove default behavior
+            event.preventDefault();
+            // Scroll without smoothing
+            var wheelDelta = event.wheelDelta;
+            var currentScrollPosition = window.pageYOffset;
+            window.scrollTo(0, currentScrollPosition - wheelDelta);
+        });
+      });
+  </script>
+   
+
+</body>
+</html>

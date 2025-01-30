@@ -1,0 +1,10 @@
+<map id="PTK Base" name="PTK Base">
+<area shape="rect" id="node1" href="$group__group__ptk__plane.html" title="PTK Plane" alt="" coords="377,5,463,32"/>
+<area shape="rect" id="node2" href="$group__group__ptk__rigid__transform.html" title="PTK Rigid Transform APIs" alt="" coords="327,56,513,83"/>
+<area shape="rect" id="node3" href="$group__group__ptk__point.html" title="PTK Point" alt="" coords="378,107,462,133"/>
+<area shape="rect" id="node5" href="$group__group__ptk__point__cloud.html" title="PTK Point Cloud" alt="" coords="357,157,483,184"/>
+<area shape="rect" id="node6" href="$group__group__ptk__mapping.html" title="PTK Mapping Component" alt="" coords="327,208,513,235"/>
+<area shape="rect" id="node8" href="$group__group__ptk__core.html" title="PTK Core APIs" alt="" coords="363,259,477,285"/>
+<area shape="rect" id="node9" href="$group__group__ptk__matrix.html" title="PTK Matrix" alt="" coords="373,309,467,336"/>
+<area shape="rect" id="node7" href="$group__group__ptk__api.html" title="Perception Toolkit\l Interface Modules" alt="" coords="5,150,148,191"/>
+</map>

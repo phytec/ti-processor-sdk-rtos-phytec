@@ -1,0 +1,1025 @@
+U-Boot SPL 2020.01-g2781231a33 (Mar 27 2021 - 01:36:41 +0000)
+SYSFW ABI: 3.1 (firmware rev 0x0015 '21.1.1--v2021.01a (Terrific Lla')
+`
+U-Boot SPL 2020.01-g2781231a33 (Mar 27 2021 - 01:36:41 +0000)
+SYSFW ABI: 3.1 (firmware rev 0x0015 '21.1.1--v2021.01a (Terrific Lla')
+Trying to boot from MMC2
+Authentication passed
+Authentication passed
+Authentication passed
+Authentication passed
+Authentication passed
+Loading Environment from MMC... *** Warning - No MMC card found, using default environment
+
+Starting ATF on ARM64 core...
+
+NOTICE:  BL31: v2.4(release):07.03.00.002-dirty
+NOTICE:  BL31: Built : 04:52:30, Mar 28 2021
+
+U-Boot SPL 2020.01-g2781231a33 (Mar 29 2021 - 05:15:21 +0000)
+SYSFW ABI: 3.1 (firmware rev 0x0015 '21.1.1--v2021.01a (Terrific Lla')
+Detected: J7X-BASE-CPB rev E2
+Detected: J7X-INFOTAN-EXP rev E3
+Trying to boot from MMC2
+Authentication passed
+Authentication passed
+
+
+U-Boot 2020.01-g2781231a33 (Mar 29 2021 - 05:15:21 +0000)
+
+SoC:   J721E SR1.0
+Model: Texas Instruments K3 J721E SoC
+Board: J721EX-PM2-SOM rev E7
+DRAM:  4 GiB
+not found for dev hbmc-mux
+Flash: 0 Bytes
+MMC:   sdhci@4f80000: 0, sdhci@4fb0000: 1
+Loading Environment from MMC... OK
+In:    serial@2800000
+Out:   serial@2800000
+Err:   serial@2800000
+Detected: J7X-BASE-CPB rev E2
+Detected: J7X-INFOTAN-EXP rev E3
+Net:   K3 CPSW: nuss_ver: 0x6BA00101 cpsw_ver: 0x6BA80100 ale_ver: 0x00293904 Ports:1 mdio_freq:1000000
+
+Warning: ethernet@46000000 using MAC address from ROM
+eth0: ethernet@46000000
+Hit any key to stop autoboot:  0 
+switch to partitions #0, OK
+mmc1 is current device
+SD/MMC found on device 1
+483 bytes read in 1 ms (471.7 KiB/s)
+Loaded env from uEnv.txt
+Importing environment from mmc1 ...
+Running uenvcmd ...
+1 bytes read in 2 ms (0 Bytes/s)
+Already setup.
+Core 1 is already in use. No rproc commands work
+Core 2 is already in use. No rproc commands work
+5269848 bytes read in 114 ms (44.1 MiB/s)
+Load Remote Processor 2 with data@addr=0x82000000 5269848 bytes: Success!
+1968128 bytes read in 43 ms (43.6 MiB/s)
+Load Remote Processor 3 with data@addr=0x82000000 1968128 bytes: Success!
+1579152 bytes read in 36 ms (41.8 MiB/s)
+Load Remote Processor 6 with data@addr=0x82000000 1579152 bytes: Success!
+1579152 bytes read in 36 ms (41.8 MiB/s)
+Load Remote Processor 7 with data@addr=0x82000000 1579152 bytes: Success!
+10268656 bytes read in 93 ms (105.3 MiB/s)
+Load Remote Processor 8 with data@addr=0x82000000 10268656 bytes: Success!
+17033267 bytes read in 354 ms (45.9 MiB/s)
+## Loading kernel from FIT Image at 90000000 ...
+   Using 'k3-j721e-common-proc-board.dtb' configuration
+   Trying 'kernel@1' kernel subimage
+     Description:  Linux kernel
+     Type:         Kernel Image
+     Compression:  uncompressed
+     Data Start:   0x900000f4
+     Data Size:    16801402 Bytes = 16 MiB
+     Architecture: AArch64
+     OS:           Linux
+     Load Address: 0x80080000
+     Entry Point:  0x80080000
+   Verifying Hash Integrity ... OK
+Authentication passed
+## Loading fdt from FIT Image at 90000000 ...
+   Using 'k3-j721e-common-proc-board.dtb' configuration
+   Trying 'k3-j721e-common-proc-board.dtb' fdt subimage
+     Description:  Flattened Device Tree blob
+     Type:         Flat Device Tree
+     Compression:  uncompressed
+     Data Start:   0x9100603c
+     Data Size:    99442 Bytes = 97.1 KiB
+     Architecture: AArch64
+     Load Address: 0x83000000
+   Verifying Hash Integrity ... OK
+Authentication passed
+   Loading fdt from 0x9100603c to 0x83000000
+## Loading fdt from FIT Image at 90000000 ...
+   Using 'k3-j721e-vision-apps.dtbo' configuration
+   Trying 'k3-j721e-vision-apps.dtbo' fdt subimage
+     Description:  Flattened Device Tree blob
+     Type:         Flat Device Tree
+     Compression:  uncompressed
+     Data Start:   0x9103aec0
+     Data Size:    12626 Bytes = 12.3 KiB
+     Architecture: AArch64
+     Load Address: 0x830a0000
+   Verifying Hash Integrity ... OK
+Authentication passed
+   Loading fdt from 0x9103aec0 to 0x830a0000
+   Booting using the fdt blob at 0x83000000
+   Loading Kernel Image
+   Loading Device Tree to 000000008ffe3000, end 000000008ffff56f ... OK
+
+Starting kernel ...
+
+[    0.000000] Booting Linux on physical CPU 0x0000000000 [0x411fd080]
+[    0.000000] Linux version 5.4.106-g023faefa70 (oe-user@oe-host) (gcc version 9.2.1 20191025 (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10))) #1 SMP PREEMPT Sat Apr 10 00:18:09 UT1
+[    0.000000] Machine model: Texas Instruments K3 J721E SoC
+[    0.000000] earlycon: ns16550a0 at MMIO32 0x0000000002800000 (options '')
+[    0.000000] printk: bootconsole [ns16550a0] enabled
+[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a0000000, size 1 MiB
+[    0.000000] OF: reserved mem: initialized node vision-apps-r5f-dma-memory@a0000000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a0100000, size 15 MiB
+[    0.000000] OF: reserved mem: initialized node vision_apps-r5f-memory@a0100000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a1000000, size 1 MiB
+[    0.000000] OF: reserved mem: initialized node vision-apps-r5f-dma-memory@a1000000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a1100000, size 15 MiB
+[    0.000000] OF: reserved mem: initialized node vision-apps-r5f-memory@a1100000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a2000000, size 1 MiB
+[    0.000000] OF: reserved mem: initialized node vision-apps-r5f-dma-memory@a2000000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a2100000, size 31 MiB
+[    0.000000] OF: reserved mem: initialized node vision-apps-r5f-memory@a2100000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a4000000, size 1 MiB
+[    0.000000] OF: reserved mem: initialized node vision-apps-r5f-dma-memory@a4000000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a4100000, size 31 MiB
+[    0.000000] OF: reserved mem: initialized node vision-apps-r5f-memory@a4100000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a6000000, size 1 MiB
+[    0.000000] OF: reserved mem: initialized node vision-apps-r5f-dma-memory@a6000000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a6100000, size 15 MiB
+[    0.000000] OF: reserved mem: initialized node vision-apps-r5f-memory@a6100000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a7000000, size 1 MiB
+[    0.000000] OF: reserved mem: initialized node vision-apps-r5f-dma-memory@a7000000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a7100000, size 15 MiB
+[    0.000000] OF: reserved mem: initialized node vision-apps-r5f-memory@a7100000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a8000000, size 1 MiB
+[    0.000000] OF: reserved mem: initialized node vision-apps-c66-dma-memory@a8000000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a8100000, size 15 MiB
+[    0.000000] OF: reserved mem: initialized node vision-apps-c66-memory@a8100000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a9000000, size 1 MiB
+[    0.000000] OF: reserved mem: initialized node vision-apps-c66-dma-memory@a9000000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a9100000, size 15 MiB
+[    0.000000] OF: reserved mem: initialized node vision-apps-c66-memory@a9100000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created DMA memory pool at 0x00000000aa000000, size 1 MiB
+[    0.000000] OF: reserved mem: initialized node vision-apps-c71-dma-memory@aa000000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created DMA memory pool at 0x00000000aa100000, size 79 MiB
+[    0.000000] OF: reserved mem: initialized node vision-apps-c71-memory@aa100000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created DMA memory pool at 0x00000000b2000000, size 96 MiB
+[    0.000000] OF: reserved mem: initialized node vision-apps-dma-memory@b2000000, compatible id shared-dma-pool
+[    0.000000] OF: reserved mem: initialized node vision_apps_shared-memories, compatible id dma-heap-carveout
+[    0.000000] Reserved memory: created DMA memory pool at 0x00000000d8000000, size 576 MiB
+[    0.000000] OF: reserved mem: initialized node vision-apps-core-heap-memory-lo@d8000000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created DMA memory pool at 0x0000000880000000, size 1024 MiB
+[    0.000000] OF: reserved mem: initialized node vision-apps-core-heap-memory-hi@880000000, compatible id shared-dma-pool
+[    0.000000] cma: Failed to reserve 512 MiB
+[    0.000000] psci: probing for conduit method from DT.
+[    0.000000] psci: PSCIv1.1 detected in firmware.
+[    0.000000] psci: Using standard PSCI v0.2 function IDs
+[    0.000000] psci: Trusted OS migration not required
+[    0.000000] psci: SMC Calling Convention v1.0
+[    0.000000] percpu: Embedded 2 pages/cpu s48472 r8192 d74408 u131072
+[    0.000000] Detected PIPT I-cache on CPU0
+[    0.000000] CPU features: detected: GIC system register CPU interface
+[    0.000000] CPU features: detected: EL2 vector hardening
+[    0.000000] Built 1 zonelists, mobility grouping off.  Total pages: 46400
+[    0.000000] Kernel command line: console=ttyS2,115200n8 earlycon=ns16550a,mmio32,0x02800000 mtdparts=47040000.spi.0:512k(ospi.tiboot3),2m(ospi.tispl),4m(ospi.u-boot),128k(ospi.env),128k(ospi.env.backut
+[    0.000000] Dentry cache hash table entries: 524288 (order: 6, 4194304 bytes, linear)
+[    0.000000] Inode-cache hash table entries: 262144 (order: 5, 2097152 bytes, linear)
+[    0.000000] mem auto-init: stack:off, heap alloc:off, heap free:off
+[    0.000000] software IO TLB: mapped [mem 0x9a800000-0x9e800000] (64MB)
+[    0.000000] Memory: 1535424K/2973696K available (9662K kernel code, 790K rwdata, 3904K rodata, 1664K init, 681K bss, 1438272K reserved, 0K cma-reserved)
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=2, Nodes=1
+[    0.000000] rcu: Preemptible hierarchical RCU implementation.
+[    0.000000] rcu:     RCU restricting CPUs from NR_CPUS=256 to nr_cpu_ids=2.
+[    0.000000]  Tasks RCU enabled.
+[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.
+[    0.000000] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=2
+[    0.000000] NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0
+[    0.000000] GICv3: GIC: Using split EOI/Deactivate mode
+[    0.000000] GICv3: 960 SPIs implemented
+[    0.000000] GICv3: 0 Extended SPIs implemented
+[    0.000000] GICv3: Distributor has no Range Selector support
+[    0.000000] GICv3: 16 PPIs implemented
+[    0.000000] GICv3: no VLPI support, no direct LPI support
+[    0.000000] GICv3: CPU0: found redistributor 0 region 0:0x0000000001900000
+[    0.000000] ITS [mem 0x01820000-0x0182ffff]
+[    0.000000] GIC: enabling workaround for ITS: Socionext Synquacer pre-ITS
+[    0.000000] ITS@0x0000000001820000: allocated 1048576 Devices @8c0800000 (flat, esz 8, psz 64K, shr 0)
+[    0.000000] ITS: using cache flushing for cmd queue
+[    0.000000] GICv3: using LPI property table @0x00000008c00c0000
+[    0.000000] GIC: using cache flushing for LPI property table
+[    0.000000] GICv3: CPU0: using allocated LPI pending table @0x00000008c00d0000
+[    0.000000] random: get_random_bytes called from start_kernel+0x2b8/0x42c with crng_init=0
+[    0.000000] arch_timer: cp15 timer(s) running at 200.00MHz (phys).
+[    0.000000] clocksource: arch_sys_counter: mask: 0xffffffffffffff max_cycles: 0x2e2049d3e8, max_idle_ns: 440795210634 ns
+[    0.000001] sched_clock: 56 bits at 200MHz, resolution 5ns, wraps every 4398046511102ns
+[    0.008381] Console: colour dummy device 80x25
+[    0.012942] Calibrating delay loop (skipped), value calculated using timer frequency.. 400.00 BogoMIPS (lpj=800000)
+[    0.023611] pid_max: default: 32768 minimum: 301
+[    0.028361] LSM: Security Framework initializing
+[    0.033108] Mount-cache hash table entries: 8192 (order: 0, 65536 bytes, linear)
+[    0.040677] Mountpoint-cache hash table entries: 8192 (order: 0, 65536 bytes, linear)
+[    0.049769] ASID allocator initialised with 32768 entries
+[    0.055355] rcu: Hierarchical SRCU implementation.
+[    0.060388] Platform MSI: gic-its@1820000 domain created
+[    0.066040] PCI/MSI: /bus@100000/interrupt-controller@1800000/gic-its@1820000 domain created
+[    0.074874] smp: Bringing up secondary CPUs ...
+[    0.080070] Detected PIPT I-cache on CPU1
+[    0.080092] GICv3: CPU1: found redistributor 1 region 0:0x0000000001920000
+[    0.080102] GICv3: CPU1: using allocated LPI pending table @0x00000008c00e0000
+[    0.080132] CPU1: Booted secondary processor 0x0000000001 [0x411fd080]
+[    0.080184] smp: Brought up 1 node, 2 CPUs
+[    0.109530] SMP: Total of 2 processors activated.
+[    0.114334] CPU features: detected: 32-bit EL0 Support
+[    0.119587] CPU features: detected: CRC32 instructions
+[    0.131210] CPU: All CPU(s) started at EL2
+[    0.135404] alternatives: patching kernel code
+[    0.140493] devtmpfs: initialized
+[    0.148985] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+[    0.158954] futex hash table entries: 512 (order: -1, 32768 bytes, linear)
+[    0.166286] pinctrl core: initialized pinctrl subsystem
+[    0.172076] NET: Registered protocol family 16
+[    0.176808] DMA: preallocated 256 KiB pool for atomic allocations
+[    0.183295] hw-breakpoint: found 6 breakpoint and 4 watchpoint registers.
+[    0.198377] HugeTLB registered 16.0 GiB page size, pre-allocated 0 pages
+[    0.205232] HugeTLB registered 512 MiB page size, pre-allocated 0 pages
+[    0.211989] HugeTLB registered 2.00 MiB page size, pre-allocated 0 pages
+[    0.219554] cryptd: max_cpu_qlen set to 1000
+[    0.225668] vsys_3v3: supplied by evm_12v0
+[    0.229981] vsys_5v0: supplied by evm_12v0
+[    0.234517] iommu: Default domain type: Translated 
+[    0.239717] SCSI subsystem initialized
+[    0.243826] mc: Linux media interface: v0.10
+[    0.248194] videodev: Linux video capture interface: v2.00
+[    0.253805] pps_core: LinuxPPS API ver. 1 registered
+[    0.258874] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    0.268210] PTP clock support registered
+[    0.272220] EDAC MC: Ver: 3.0.0
+[    0.275939] FPGA manager framework
+[    0.279442] Advanced Linux Sound Architecture Driver Initialized.
+[    0.286002] clocksource: Switched to clocksource arch_sys_counter
+[    0.292300] VFS: Disk quotas dquot_6.6.0
+[    0.296345] VFS: Dquot-cache hash table entries: 8192 (order 0, 65536 bytes)
+[    0.305670] Carveout Heap: Exported 512 MiB at 0x00000000b8000000
+[    0.311911] thermal_sys: Registered thermal governor 'step_wise'
+[    0.311913] thermal_sys: Registered thermal governor 'power_allocator'
+[    0.318330] NET: Registered protocol family 2
+[    0.329716] tcp_listen_portaddr_hash hash table entries: 4096 (order: 0, 65536 bytes, linear)
+[    0.338482] TCP established hash table entries: 32768 (order: 2, 262144 bytes, linear)
+[    0.346676] TCP bind hash table entries: 32768 (order: 3, 524288 bytes, linear)
+[    0.354416] TCP: Hash tables configured (established 32768 bind 32768)
+[    0.361147] UDP hash table entries: 2048 (order: 0, 65536 bytes, linear)
+[    0.368036] UDP-Lite hash table entries: 2048 (order: 0, 65536 bytes, linear)
+[    0.375436] NET: Registered protocol family 1
+[    0.380150] RPC: Registered named UNIX socket transport module.
+[    0.386201] RPC: Registered udp transport module.
+[    0.391004] RPC: Registered tcp transport module.
+[    0.395807] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    0.402391] PCI: CLS 0 bytes, default 64
+[    0.406716] hw perfevents: enabled with armv8_pmuv3 PMU driver, 7 counters available
+[    0.416572] Initialise system trusted keyrings
+[    0.421185] workingset: timestamp_bits=46 max_order=15 bucket_order=0
+[    0.429811] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[    0.436049] NFS: Registering the id_resolver key type
+[    0.441222] Key type id_resolver registered
+[    0.445491] Key type id_legacy registered
+[    0.449588] nfs4filelayout_init: NFSv4 File Layout Driver Registering...
+[    0.456536] 9p: Installing v9fs 9p2000 file system support
+[    0.469083] Key type asymmetric registered
+[    0.473280] Asymmetric key parser 'x509' registered
+[    0.478283] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 244)
+[    0.485842] io scheduler mq-deadline registered
+[    0.490468] io scheduler kyber registered
+[    0.495699] pinctrl-single 4301c000.pinmux: 94 pins, size 376
+[    0.501780] pinctrl-single 11c000.pinmux: 173 pins, size 692
+[    0.510082] k3-ringacc 2b800000.ringacc: Failed to get MSI domain
+[    0.516346] k3-ringacc 3c000000.ringacc: Failed to get MSI domain
+[    0.522687] ti-pat 31010000.pat: Found PAT Rev 1.0 with 16384 pages
+[    0.529098] debugfs: Directory '31010000.pat' with parent 'regmap' already present!
+[    0.537072] ti-pat 31011000.pat: Found PAT Rev 1.0 with 16384 pages
+[    0.543488] debugfs: Directory '31011000.pat' with parent 'regmap' already present!
+[    0.551408] ti-pat 31012000.pat: Found PAT Rev 1.0 with 16384 pages
+[    0.557821] debugfs: Directory '31012000.pat' with parent 'regmap' already present!
+[    0.565734] ti-pat 31013000.pat: Found PAT Rev 1.0 with 2048 pages
+[    0.572060] debugfs: Directory '31013000.pat' with parent 'regmap' already present!
+[    0.579979] ti-pat 31014000.pat: Found PAT Rev 1.0 with 2048 pages
+[    0.586302] debugfs: Directory '31014000.pat' with parent 'regmap' already present!
+[    0.595692] Serial: 8250/16550 driver, 10 ports, IRQ sharing enabled
+[    0.607523] brd: module loaded
+[    0.613535] loop: module loaded
+[    0.617055] sysfs: cannot create duplicate filename '/devices/platform/dma_buf_phys'
+[    0.624980] CPU: 1 PID: 1 Comm: swapper/0 Not tainted 5.4.106-g023faefa70 #1
+[    0.632178] Hardware name: Texas Instruments K3 J721E SoC (DT)
+[    0.638133] Call trace:
+[    0.640629]  dump_backtrace+0x0/0x140
+[    0.644364]  show_stack+0x14/0x20
+[    0.647744]  dump_stack+0xb4/0x110
+[    0.651217]  sysfs_warn_dup+0x5c/0x78
+[    0.654951]  sysfs_create_dir_ns+0xd8/0xf0
+[    0.659133]  kobject_add_internal+0x94/0x280
+[    0.663489]  kobject_add+0x90/0xf8
+[    0.666961]  device_add+0xdc/0x600
+[    0.670430]  platform_device_add+0xfc/0x228
+[    0.674698]  platform_device_register_full+0xc8/0x140
+[    0.679858]  dma_buf_phys_init+0x68/0x94
+[    0.683860]  do_one_initcall+0x50/0x1a8
+[    0.687773]  kernel_init_freeable+0x194/0x23c
+[    0.692217]  kernel_init+0x10/0xfc
+[    0.695684]  ret_from_fork+0x10/0x1c
+[    0.699338] kobject_add_internal failed for dma_buf_phys with -EEXIST, don't try to register things with the same name in the same directory.
+[    0.713476] libphy: Fixed MDIO Bus: probed
+[    0.717828] tun: Universal TUN/TAP device driver, 1.6
+[    0.723229] igbvf: Intel(R) Gigabit Virtual Function Network Driver - version 2.4.0-k
+[    0.731233] igbvf: Copyright (c) 2009 - 2012 Intel Corporation.
+[    0.737296] sky2: driver version 1.30
+[    0.741566] VFIO - User Level meta-driver version: 0.3
+[    0.747161] i2c /dev entries driver
+[    0.751237] sdhci: Secure Digital Host Controller Interface driver
+[    0.757551] sdhci: Copyright(c) Pierre Ossman
+[    0.762219] sdhci-pltfm: SDHCI platform and OF driver helper
+[    0.768478] ledtrig-cpu: registered to indicate activity on CPUs
+[    0.775242] optee: probing for conduit method from DT.
+[    0.780516] optee: revision 3.11 (c4def2a8)
+[    0.780825] optee: initialized driver
+[    0.789663] NET: Registered protocol family 17
+[    0.794280] 9pnet: Installing 9P2000 support
+[    0.798668] Key type dns_resolver registered
+[    0.803188] registered taskstats version 1
+[    0.807375] Loading compiled-in X.509 certificates
+[    0.815957] k3-ringacc 2b800000.ringacc: Failed to get MSI domain
+[    0.822296] k3-ringacc 3c000000.ringacc: Failed to get MSI domain
+[    0.829935] ti-sci 44083000.dmsc: ABI: 3.1 (firmware rev 0x0015 '21.1.1--v2021.01a (Terrific Lla')
+[    0.849458] random: fast init done
+[    0.870454] davinci-mcasp 2ba0000.mcasp: IRQ common not found
+[    0.877764] omap_i2c 40b00000.i2c: bus 0 rev0.12 at 100 kHz
+[    0.883732] omap_i2c 40b10000.i2c: bus 1 rev0.12 at 100 kHz
+[    0.889715] omap_i2c 42120000.i2c: bus 2 rev0.12 at 100 kHz
+[    0.895732] pca953x 3-0020: 3-0020 supply vcc not found, using dummy regulator
+[    0.903148] pca953x 3-0020: using no AI
+[    0.930519] pca953x 3-0022: 3-0022 supply vcc not found, using dummy regulator
+[    0.937921] pca953x 3-0022: using AI
+[    0.942183] GPIO line 480 (CTRL_PM_I2C_OE) hogged as output/high
+[    0.948507] GPIO line 481 (MCASP/TRACE_MUX_S0) hogged as output/low
+[    0.955098] GPIO line 482 (MCASP/TRACE_MUX_S1) hogged as output/high
+[    0.961926] omap_i2c 2000000.i2c: bus 3 rev0.12 at 400 kHz
+[    0.968569] omap_i2c 2020000.i2c: bus 4 rev0.12 at 400 kHz
+[    0.974497] pca953x 5-0020: 5-0020 supply vcc not found, using dummy regulator
+[    0.981906] pca953x 5-0020: using no AI
+[    1.990161] pca953x 5-0020: failed writing register
+[    1.995206] pca953x: probe of 5-0020 failed with error -16
+[    2.000935] omap_i2c 2030000.i2c: bus 5 rev0.12 at 400 kHz
+[    2.006833] omap_i2c 2040000.i2c: bus 6 rev0.12 at 100 kHz
+[    2.012679] omap_i2c 2050000.i2c: bus 7 rev0.12 at 100 kHz
+[    2.018962] ti-sci-intr bus@100000:bus@28380000:interrupt-controller2: Interrupt Router 137 domain created
+[    2.028909] ti-sci-intr bus@100000:interrupt-controller0: Interrupt Router 131 domain created
+[    2.037692] ti-sci-intr bus@100000:navss@30000000:interrupt-controller1: Interrupt Router 213 domain created
+[    2.047857] ti-sci-inta 33d00000.interrupt-controller: Interrupt Aggregator domain -1 created
+[    3.065614] j721e-pcie 2900000.pcie: host bridge /bus@100000/pcie@2900000 ranges:
+[    3.073308] j721e-pcie 2900000.pcie:    IO 0x10001000..0x10010fff -> 0x10001000
+[    3.080791] j721e-pcie 2900000.pcie:   MEM 0x10011000..0x17ffffff -> 0x10011000
+[    3.088334] j721e-pcie 2900000.pcie: PCI host bridge to bus 0000:00
+[    3.094740] pci_bus 0000:00: root bus resource [bus 00-0f]
+[    3.100344] pci_bus 0000:00: root bus resource [io  0x0000-0xffff] (bus address [0x10001000-0x10010fff])
+[    3.110033] pci_bus 0000:00: root bus resource [mem 0x10011000-0x17ffffff]
+[    3.117075] pci 0000:00:00.0: [104c:b00d] type 01 class 0x060400
+[    3.123223] pci_bus 0000:00: 2-byte config write to 0000:00:00.0 offset 0x4 may corrupt adjacent RW1C bits
+[    3.133092] pci_bus 0000:00: 2-byte config write to 0000:00:00.0 offset 0x4 may corrupt adjacent RW1C bits
+[    3.142978] pci_bus 0000:00: 2-byte config write to 0000:00:00.0 offset 0xe8 may corrupt adjacent RW1C bits
+[    3.152936] pci_bus 0000:00: 2-byte config write to 0000:00:00.0 offset 0x3e may corrupt adjacent RW1C bits
+[    3.162902] pci_bus 0000:00: 2-byte config write to 0000:00:00.0 offset 0x92 may corrupt adjacent RW1C bits
+[    3.172863] pci_bus 0000:00: 2-byte config write to 0000:00:00.0 offset 0xb2 may corrupt adjacent RW1C bits
+[    3.182847] pci 0000:00:00.0: supports D1
+[    3.186940] pci 0000:00:00.0: PME# supported from D0 D1 D3hot
+[    3.192811] pci_bus 0000:00: 2-byte config write to 0000:00:00.0 offset 0x84 may corrupt adjacent RW1C bits
+[    3.204631] pci 0000:00:00.0: bridge configuration invalid ([bus 00-00]), reconfiguring
+[    3.212818] pci_bus 0000:00: 2-byte config write to 0000:00:00.0 offset 0x3e may corrupt adjacent RW1C bits
+[    3.222777] pci_bus 0000:00: 2-byte config write to 0000:00:00.0 offset 0x3e may corrupt adjacent RW1C bits
+[    3.232735] pci_bus 0000:00: 2-byte config write to 0000:00:00.0 offset 0x3e may corrupt adjacent RW1C bits
+[    3.244327] pci_bus 0000:01: busn_res: [bus 01-0f] end is updated to 01
+[    3.251096] pci 0000:00:00.0: PCI bridge to [bus 01]
+[    3.256358] pcieport 0000:00:00.0: PME: Signaling with IRQ 37
+[    3.262373] pcieport 0000:00:00.0: AER: enabled with IRQ 37
+[    4.270087] j721e-pcie 2910000.pcie: host bridge /bus@100000/pcie@2910000 ranges:
+[    4.277759] j721e-pcie 2910000.pcie:    IO 0x18001000..0x18010fff -> 0x18001000
+[    4.285235] j721e-pcie 2910000.pcie:   MEM 0x18011000..0x1fffffff -> 0x18011000
+[    4.292764] j721e-pcie 2910000.pcie: PCI host bridge to bus 0001:00
+[    4.299169] pci_bus 0001:00: root bus resource [bus 00-0f]
+[    4.304773] pci_bus 0001:00: root bus resource [io  0x10000-0x1ffff] (bus address [0x18001000-0x18010fff])
+[    4.314640] pci_bus 0001:00: root bus resource [mem 0x18011000-0x1fffffff]
+[    4.321676] pci 0001:00:00.0: [104c:b00d] type 01 class 0x060400
+[    4.327879] pci 0001:00:00.0: supports D1
+[    4.331973] pci 0001:00:00.0: PME# supported from D0 D1 D3hot
+[    4.339633] pci 0001:00:00.0: bridge configuration invalid ([bus 00-00]), reconfiguring
+[    4.349513] pci_bus 0001:01: busn_res: [bus 01-0f] end is updated to 01
+[    4.356279] pci 0001:00:00.0: PCI bridge to [bus 01]
+[    4.361518] pcieport 0001:00:00.0: PME: Signaling with IRQ 40
+[    4.367511] pcieport 0001:00:00.0: AER: enabled with IRQ 40
+[    5.375354] j721e-pcie 2920000.pcie: host bridge /bus@100000/pcie@2920000 ranges:
+[    5.383027] j721e-pcie 2920000.pcie:    IO 0x4400001000..0x4400010fff -> 0x00001000
+[    5.390859] j721e-pcie 2920000.pcie:   MEM 0x4400011000..0x4407ffffff -> 0x00011000
+[    5.398748] j721e-pcie 2920000.pcie: PCI host bridge to bus 0002:00
+[    5.405153] pci_bus 0002:00: root bus resource [bus 00-0f]
+[    5.410757] pci_bus 0002:00: root bus resource [io  0x20000-0x2ffff] (bus address [0x1000-0x10fff])
+[    5.420004] pci_bus 0002:00: root bus resource [mem 0x4400011000-0x4407ffffff] (bus address [0x00011000-0x07ffffff])
+[    5.430772] pci 0002:00:00.0: [104c:b00d] type 01 class 0x060400
+[    5.436975] pci 0002:00:00.0: supports D1
+[    5.441069] pci 0002:00:00.0: PME# supported from D0 D1 D3hot
+[    5.448746] pci 0002:00:00.0: bridge configuration invalid ([bus 00-00]), reconfiguring
+[    5.458584] pci_bus 0002:01: busn_res: [bus 01-0f] end is updated to 01
+[    5.465349] pci 0002:00:00.0: PCI bridge to [bus 01]
+[    5.470593] pcieport 0002:00:00.0: PME: Signaling with IRQ 43
+[    5.476593] pcieport 0002:00:00.0: AER: enabled with IRQ 43
+[    5.482995] k3-ringacc 2b800000.ringacc: Ring Accelerator probed rings:286, gp-rings[96,20] sci-dev-id:235
+[    5.492873] k3-ringacc 2b800000.ringacc: dma-ring-reset-quirk: disabled
+[    5.499631] k3-ringacc 2b800000.ringacc: RA Proxy rev. 66346100, num_proxies:64
+[    5.508483] k3-ringacc 3c000000.ringacc: Ring Accelerator probed rings:1024, gp-rings[440,150] sci-dev-id:211
+[    5.518636] k3-ringacc 3c000000.ringacc: dma-ring-reset-quirk: disabled
+[    5.525394] k3-ringacc 3c000000.ringacc: RA Proxy rev. 66346100, num_proxies:64
+[    5.533252] 40a00000.serial: ttyS1 at MMIO 0x40a00000 (irq = 7, base_baud = 6000000) is a 8250
+[    5.542413] 2800000.serial: ttyS2 at MMIO 0x2800000 (irq = 22, base_baud = 3000000) is a 8250
+[    5.551153] printk: console [ttyS2] enabled
+[    5.551153] printk: console [ttyS2] enabled
+[    5.559589] printk: bootconsole [ns16550a0] disabled
+[    5.559589] printk: bootconsole [ns16550a0] disabled
+[    5.569901] 2810000.serial: ttyS3 at MMIO 0x2810000 (irq = 23, base_baud = 3000000) is a 8250
+[    5.578702] 2840000.serial: ttyS6 at MMIO 0x2840000 (irq = 24, base_baud = 3000000) is a 8250
+[    5.587424] arm-smmu-v3 36600000.smmu: ias 48-bit, oas 48-bit (features 0x00001faf)
+[    5.596275] arm-smmu-v3 36600000.smmu: allocated 524288 entries for cmdq
+[    5.605099] arm-smmu-v3 36600000.smmu: allocated 524288 entries for evtq
+[    5.612630] arm-smmu-v3 36600000.smmu: msi_domain absent - falling back to wired irqs
+[    5.621313] cdns-ufshcd 4e84000.ufs: ufshcd_populate_vreg: Unable to find vdd-hba-supply regulator, assuming enabled
+[    5.631821] cdns-ufshcd 4e84000.ufs: ufshcd_populate_vreg: Unable to find vcc-supply regulator, assuming enabled
+[    5.641974] cdns-ufshcd 4e84000.ufs: ufshcd_populate_vreg: Unable to find vccq-supply regulator, assuming enabled
+[    5.652212] cdns-ufshcd 4e84000.ufs: ufshcd_populate_vreg: Unable to find vccq2-supply regulator, assuming enabled
+[    5.662886] scsi host0: ufshcd
+[    5.684626] cdns-ufshcd 4e84000.ufs: ufshcd_print_pwr_info:[RX, TX]: gear=[1, 1], lane[1, 1], pwr[SLOWAUTO_MODE, SLOWAUTO_MODE], rate = 0
+[    5.706010] davinci_mdio 46000f00.mdio: davinci mdio revision 9.7, bus freq 1000000
+[    5.713650] libphy: 46000f00.mdio: probed
+[    5.715721] cdns-ufshcd 4e84000.ufs: ufshcd_print_pwr_info:[RX, TX]: gear=[3, 3], lane[2, 2], pwr[FAST MODE, FAST MODE], rate = 2
+[    5.718791] davinci_mdio 46000f00.mdio: phy[0]: device 46000f00.mdio:00, driver TI DP83867
+[    5.729315] cdns-ufshcd 4e84000.ufs: ufshcd_find_max_sup_active_icc_level: Regulator capability was not set, actvIccLevel=0
+[    5.737538] am65-cpsw-nuss 46000000.ethernet: initializing am65 cpsw nuss version 0x6BA00101, cpsw version 0x6BA80100 Ports: 2 quirks:00000000
+[    5.748808] scsi 0:0:0:49488: Well-known LUN    TOSHIBA  THGAF8G8T23BAILB 0300 PQ: 0 ANSI: 6
+[    5.761401] am65-cpsw-nuss 46000000.ethernet: Failed to request tx dma channel -517
+[    5.770194] scsi 0:0:0:49476: Well-known LUN    TOSHIBA  THGAF8G8T23BAILB 0300 PQ: 0 ANSI: 6
+[    5.786228] cdns-ufshcd 4e84000.ufs: ufshcd_scsi_add_wlus: BOOT WLUN not found
+[    5.793789] am65-cpts 310d0000.cpts: CPTS ver 0x4e8a010a, freq:200000000, add_val:4 pps:0
+[    5.802393] mmc0: CQHCI version 5.10
+[    5.844586] mmc0: SDHCI controller on 4f80000.sdhci [4f80000.sdhci] using ADMA 64-bit
+[    5.853189] davinci-mcasp 2ba0000.mcasp: IRQ common not found
+[    5.864428] vdd_mmc1: supplied by vsys_3v3
+[    5.868989] omap-mailbox 31f80000.mailbox: omap mailbox rev 0x66fc7100
+[    5.875782] omap-mailbox 31f81000.mailbox: omap mailbox rev 0x66fc7100
+[    5.882585] omap-mailbox 31f82000.mailbox: omap mailbox rev 0x66fc7100
+[    5.889371] omap-mailbox 31f83000.mailbox: omap mailbox rev 0x66fc7100
+[    5.896130] omap-mailbox 31f84000.mailbox: omap mailbox rev 0x66fc7100
+[    5.905339] ti-udma 285c0000.dma-controller: Channels: 26 (tchan: 13, rchan: 13, gp-rflow: 8)
+[    5.915330] ti-udma 31150000.dma-controller: Channels: 84 (tchan: 42, rchan: 42, gp-rflow: 16)
+[    5.927820] spi-nor spi0.0: mt35xu512aba (65536 Kbytes)
+[    5.933067] 8 cmdlinepart partitions found on MTD device 47040000.spi.0
+[    5.939671] Creating 8 MTD partitions on "47040000.spi.0":
+[    5.945180] 0x000000000000-0x000000080000 : "ospi.tiboot3"
+[    5.951283] 0x000000080000-0x000000280000 : "ospi.tispl"
+[    5.956954] 0x000000280000-0x000000680000 : "ospi.u-boot"
+[    5.962753] 0x000000680000-0x0000006a0000 : "ospi.env"
+[    5.968312] 0x0000006a0000-0x0000006c0000 : "ospi.env.backup"
+[    5.974438] 0x0000006c0000-0x0000007c0000 : "ospi.sysfw"
+[    5.980267] 0x000000800000-0x000003fe0000 : "ospi.rootfs"
+[    5.986087] 0x000003fe0000-0x000004000000 : "ospi.phypattern"
+[    5.994346] spi-nor spi1.0: mt25qu512a (65536 Kbytes)
+[    6.007387] mmc0: Command Queue Engine enabled
+[    6.011832] mmc0: new HS200 MMC card at address 0001
+[    6.017064] mmcblk0: mmc0:0001 S0J56X 14.8 GiB 
+[    6.021704] mmcblk0boot0: mmc0:0001 S0J56X partition 1 31.5 MiB
+[    6.027732] mmcblk0boot1: mmc0:0001 S0J56X partition 2 31.5 MiB
+[    6.033736] mmcblk0rpmb: mmc0:0001 S0J56X partition 3 4.00 MiB, chardev (240:0)
+[    6.041039] davinci_mdio 46000f00.mdio: davinci mdio revision 9.7, bus freq 1000000
+[    6.048697] libphy: 46000f00.mdio: probed
+[    6.054149] davinci_mdio 46000f00.mdio: phy[0]: device 46000f00.mdio:00, driver TI DP83867
+[    6.062660] am65-cpsw-nuss 46000000.ethernet: initializing am65 cpsw nuss version 0x6BA00101, cpsw version 0x6BA80100 Ports: 2 quirks:00000000
+[    6.076523] am65-cpsw-nuss 46000000.ethernet: set new flow-id-base 48
+[    6.083404] am65-cpsw-nuss 46000000.ethernet: initialized cpsw ale version 1.4
+[    6.090615] am65-cpsw-nuss 46000000.ethernet: ALE Table size 64
+[    6.096896] am65-cpsw-nuss 46000000.ethernet: CPTS ver 0x4e8a010a, freq:500000000, add_val:1 pps:0
+[    6.107072] mmc1: CQHCI version 5.10
+[    7.172004] mmc1: SDHCI controller on 4fb0000.sdhci [4fb0000.sdhci] using ADMA 64-bit
+[    7.180135] davinci-mcasp 2ba0000.mcasp: IRQ common not found
+[    7.192133] debugfs: Directory 'pd:242' with parent 'pm_genpd' already present!
+[    7.199527] debugfs: Directory 'pd:241' with parent 'pm_genpd' already present!
+[    7.206840] debugfs: Directory 'pd:240' with parent 'pm_genpd' already present!
+[    7.214201] debugfs: Directory 'pd:239' with parent 'pm_genpd' already present!
+[    7.222358] input: gpio-keys as /devices/platform/gpio-keys/input/input0
+[    7.229202] hctosys: unable to open rtc device (rtc0)
+[    7.242095] ALSA device list:
+[    7.245051]   No soundcards found.
+[    7.248705] Waiting for root device PARTUUID=623041b9-02...
+[    7.280729] mmc1: new ultra high speed DDR50 SDHC card at address aaaa
+[    7.287604] mmcblk1: mmc1:aaaa SK32G 29.7 GiB 
+[    7.294696]  mmcblk1: p1 p2
+[    7.311028] EXT4-fs (mmcblk1p2): mounted filesystem with ordered data mode. Opts: (null)
+[    7.319147] VFS: Mounted root (ext4 filesystem) on device 179:98.
+[    7.329273] devtmpfs: mounted
+[    7.332595] Freeing unused kernel memory: 1664K
+[    7.337141] Run /sbin/init as init process
+[    7.506236] systemd[1]: System time before build time, advancing clock.
+[    7.556932] NET: Registered protocol family 10
+[    7.561823] Segment Routing with IPv6
+[    7.586544] systemd[1]: systemd 244.5+ running in system mode. (+PAM -AUDIT -SELINUX +IMA -APPARMOR -SMACK +SYSVINIT +UTMP -LIBCRYPTSETUP -GCRYPT -GNUTLS +ACL +XZ -LZ4 -SECCOMP +BLKID -ELFUTILS +KMOD )
+[    7.608293] systemd[1]: Detected architecture arm64.
+
+Welcome to Arago 2020.09!
+
+[    7.654549] systemd[1]: Set hostname to <j7-evm>.
+[    7.856629] systemd[1]: /lib/systemd/system/docker.socket:6: ListenStream= references a path below legacy directory /var/run/, updating /var/run/docker.sock → /run/docker.sock; please update the unit .
+[    7.922145] random: systemd: uninitialized urandom read (16 bytes read)
+[    7.928868] systemd[1]: system-getty.slice: unit configures an IP firewall, but the local system does not support BPF/cgroup firewalling.
+[    7.941192] systemd[1]: (This warning is only shown for the first unit using IP firewalling.)
+[    7.951112] systemd[1]: Created slice system-getty.slice.
+[  OK  ] Created slice system-getty.slice.
+[    7.970115] random: systemd: uninitialized urandom read (16 bytes read)
+[    7.977355] systemd[1]: Created slice system-serial\x2dgetty.slice.
+[  OK  ] Created slice system-serial\x2dgetty.slice.
+[    7.998066] random: systemd: uninitialized urandom read (16 bytes read)
+[    8.005204] systemd[1]: Created slice User and Session Slice.
+[  OK  ] Created slice User and Session Slice.
+[    8.026181] systemd[1]: Started Dispatch Password Requests to Console Directory Watch.
+[  OK  ] Started Dispatch Password …ts to Console Directory Watch.
+[    8.050109] systemd[1]: Started Forward Password Requests to Wall Directory Watch.
+[  OK  ] Started Forward Password R…uests to Wall Directory Watch.
+[    8.074102] systemd[1]: Reached target Paths.
+[  OK  ] Reached target Paths.
+[    8.090057] systemd[1]: Reached target Remote File Systems.
+[  OK  ] Reached target Remote File Systems.
+[    8.106047] systemd[1]: Reached target Slices.
+[  OK  ] Reached target Slices.
+[    8.122053] systemd[1]: Reached target Swap.
+[  OK  ] Reached target Swap.
+[    8.142780] systemd[1]: Listening on RPCbind Server Activation Socket.
+[  OK  ] Listening on RPCbind Server Activation Socket.
+[    8.162080] systemd[1]: Reached target RPC Port Mapper.
+[  OK  ] Reached target RPC Port Mapper.
+[    8.184198] systemd[1]: Listening on Process Core Dump Socket.
+[  OK  ] Listening on Process Core Dump Socket.
+[    8.202193] systemd[1]: Listening on initctl Compatibility Named Pipe.
+[  OK  ] Listening on initctl Compatibility Named Pipe.
+[    8.231019] systemd[1]: Condition check resulted in Journal Audit Socket being skipped.
+[    8.239346] systemd[1]: Listening on Journal Socket (/dev/log).
+[  OK  ] Listening on Journal Socket (/dev/log).
+[    8.258379] systemd[1]: Listening on Journal Socket.
+[  OK  ] Listening on Journal Socket.
+[    8.278370] systemd[1]: Listening on Network Service Netlink Socket.
+[  OK  ] Listening on Network Service Netlink Socket.
+[    8.302242] systemd[1]: Listening on udev Control Socket.
+[  OK  ] Listening on udev Control Socket.
+[    8.322158] systemd[1]: Listening on udev Kernel Socket.
+[  OK  ] Listening on udev Kernel Socket.
+[    8.345482] systemd[1]: Mounting Huge Pages File System...
+         Mounting Huge Pages File System...
+[    8.365563] systemd[1]: Mounting POSIX Message Queue File System...
+         Mounting POSIX Message Queue File System...
+[    8.386191] systemd[1]: Mounting Kernel Debug File System...
+         Mounting Kernel Debug File System...
+[    8.406211] systemd[1]: Mounting Temporary Directory (/tmp)...
+         Mounting Temporary Directory (/tmp)...
+[    8.429752] systemd[1]: Starting Create list of static device nodes for the current kernel...
+         Starting Create list of st…odes for the current kernel...
+[    8.457783] systemd[1]: Starting Start psplash boot splash screen...
+         Starting Start psplash boot splash screen...
+[    8.482052] systemd[1]: Started Hardware RNG Entropy Gatherer Daemon.
+[  OK  ] Started Hardware RNG Entropy Gatherer Daemon.
+[    8.508930] systemd[1]: Starting RPC Bind...
+         Starting RPC Bind...
+[    8.526221] systemd[1]: Condition check resulted in File System Check on Root Device being skipped.
+[    8.544314] systemd[1]: Starting Journal Service...
+         Starting Journal Service...
+[    8.570103] systemd[1]: Starting Load Kernel Modules...
+         Starting Load Kernel Modules...
+[    8.589361] cryptodev: loading out-of-tree module taints kernel.
+[    8.600838] systemd[1]: Starting Remount Root and Kernel File Systems...
+[    8.602213] cryptodev: driver 1.10 loaded.
+         Starting Remount Root and Kernel File Systems...
+[    8.628881] systemd[1]: Starting udev Coldplug all Devices...
+         Starting udev Coldplug all Devices...
+[    8.652706] systemd[1]: Started RPC Bind.
+[  OK  ] Started RPC Bind.
+[    8.671862] systemd[1]: Started Journal Service.
+[    8.673180] EXT4-fs (mmcblk1p2): re-mounted. Opts: (null)
+[  OK  ] Started Journal Service.
+[  OK  ] Mounted Huge Pages File System.
+[  OK  ] Mounted POSIX Message Queue File System.
+[  OK  ] Mounted Kernel Debug File System.
+[  OK  ] Mounted Temporary Directory (/tmp).
+[  OK  ] Started Create list of sta… nodes for the current kernel.
+[FAILED] Failed to start Start psplash boot splash screen.
+See 'systemctl status psplash-start.service' for details.
+[DEPEND] Dependency failed for Star…progress communication helper.
+[  OK  ] Started Load Kernel Modules.
+[  OK  ] Started Remount Root and Kernel File Systems.
+         Mounting Kernel Configuration File System...
+         Starting Flush Journal to Persistent Storage...
+[    8.889410] systemd-journald[167]: Received client request to flush runtime journal.
+         Starting Apply Kernel Variables...
+         Starting Create Static Device Nodes in /dev...
+[  OK  ] Mounted Kernel Configuration File System.
+[  OK  ] Started Flush Journal to Persistent Storage.
+[  OK  ] Started Apply Kernel Variables.
+[  OK  ] Started Create Static Device Nodes in /dev.
+[  OK  ] Reached target Local File Systems (Pre).
+         Mounting /media/ram...
+         Mounting /var/volatile...
+         Starting udev Kernel Device Manager...
+[  OK  ] Started udev Coldplug all Devices.
+[  OK  ] Mounted /media/ram.
+[  OK  ] Mounted /var/volatile.
+         Starting Load/Save Random Seed...
+[  OK  ] Reached target Local File Systems.
+         Starting Create Volatile Files and Directories...
+[  OK  ] Started udev Kernel Device Manager.
+[  OK  ] Started Create Volatile Files and Directories.
+         Starting Network Time Synchronization...
+         Starting Update UTMP about System Boot/Shutdown...
+[  OK  ] Started Update UTMP about System Boot/Shutdown.
+[  OK  ] Started Network Time Synchronization.
+[  OK  ] Reached target System Initialization.
+[  OK  ] Started Daily Cleanup of Temporary Directories.
+[  OK  ] Reached target System Time Set.
+[  OK  ] Reached target System Time Synchronized.
+[  OK  ] Started Daily rotation of log files.
+[  OK  ] Reached target Timers.
+[  OK  ] Listening on Avahi mDNS/DNS-SD Stack Activation Socket.
+[  OK  ] Listening on D-Bus System Message Bus Socket.
+         Starting Docker Socket for the API.
+[  OK  ] Listening on dropbear.socket.
+         Starting Reboot and dump vmcore via kexec...
+[  OK  ] Listening on Docker Socket for the API.
+[  OK  ] Reached target Sockets.
+[  OK  ] Reached target Basic System.
+[  OK  ] Started Job spooling tools.
+[  OK  ] Started Periodic Command Scheduler.
+[  OK  ] Started D-Bus System Message Bus[    9.572619] rti-wdt 2200000.watchdog: heartbeat 60 sec
+.
+         Starting Print notice about GPLv3 packages...
+         Starting IPv6 Packet Filtering Framework...
+         Starting IPv4 Packet Filtering Framework...
+[  OK  ] Started irqbalance daemon.
+         Starting rc.pvr.service...
+         Starting Login Service...
+[  OK  ] Started Reboot and dump vmcore via kexec.
+[    9.770050] rti-wdt 2210000.watchdog: heartbeat 60 sec
+[  OK  ] Started IPv6 Packet Filtering Framework.
+[  OK  ] Started IPv4 Packet Filtering Framework.
+[  OK  ] Reached target Network (Pre).
+         Starting Network Service...
+[    9.857062] PVR_K:  238: Read BVNC 22.104.208.318 from HW device registers
+[    9.877885] PVR_K:  238: RGX Device registered with BVNC 22.104.208.318
+[    9.899521] [drm] Initialized pvr 1.13.5776728 20170530 for 4e20000000.gpu on minor 0
+[  OK  ] Started Network Service.
+         Starting Wait for Network to be Configured...
+         Starting Network Name Resolution...
+[  OK  ] Started Login Service.
+[   10.042971] ina2xx 4-0040: power monitor ina226 (Rshunt = 10000 uOhm)
+[  OK  ] Started Network Name Resolution.
+[  OK  ] Reached target Network.
+[  OK  ] Reached target Host and Network Name Lookups.
+     [   10.098443] ina2xx 4-0041: power monitor ina226 (Rshunt = 10000 uOhm)
+    Starting Avahi mDNS/DNS-SD Stack...
+         Starting Enable and configure wl18xx bluetooth stack...
+[  OK  ] Started NFS status monitor for NFSv2/3 locking..
+         Starting Simple Network Ma…ent Protocol (SNMP) Daemon....
+         Starting Permit User Sessions...
+[  OK  ] Started Permit User Sessions.
+[  OK  ] Started Getty on tty1.
+[  OK  ] Started Serial Getty on ttyS2.
+[  OK  ] Started Serial Getty on ttyS3.
+[  OK  ] Reached target Login Prompts.
+         Starting Synchronize System and HW clocks...
+[  OK  ] Started Avahi mDNS/DNS-SD Stack[   10.200682] ina2xx 4-0042: power monitor ina226 (Rshunt = 10000 uOhm)
+.
+[FAILED] Failed to start Synchronize System and HW clocks.
+See 'systemctl status sync-clocks.service' for details.
+[  OK  ] Started Enable and configure wl18xx bluetooth stack.
+[   10.234480] ina2xx 4-0043: power monitor ina226 (Rshunt = 10000 uOhm)
+[   10.258154] ina2xx 4-0044: power monitor ina226 (Rshunt = 10000 uOhm)
+[   10.274569] ina2xx 4-0045: power monitor ina226 (Rshunt = 5000 uOhm)
+[   10.298506] ina2xx 4-0046: power monitor ina226 (Rshunt = 10000 uOhm)
+[   10.315572] ina2xx 4-0047: power monitor ina226 (Rshunt = 10000 uOhm)
+[   10.336589] ina2xx 4-0048: power monitor ina226 (Rshunt = 10000 uOhm)
+[   10.357702] ina2xx 4-0049: power monitor ina226 (Rshunt = 10000 uOhm)
+[   10.379013] ina2xx 4-004a: power monitor ina226 (Rshunt = 10000 uOhm)
+[   10.400597] ina2xx 4-004b: power monitor ina226 (Rshunt = 10000 uOhm)
+[   10.421618] ina2xx 4-004c: power monitor ina226 (Rshunt = 10000 uOhm)
+[   10.443474] ina2xx 4-004d: power monitor ina226 (Rshunt = 10000 uOhm)
+[   10.464186] ina2xx 4-004e: power monitor ina226 (Rshunt = 10000 uOhm)
+[   10.485532] ina2xx 4-004f: power monitor ina226 (Rshunt = 10000 uOhm)
+[   10.895189] k3-dsp-rproc 4d80800000.dsp: assigned reserved memory node vision-apps-c66-dma-memory@a9000000
+[   10.950687] k3-dsp-rproc 4d80800000.dsp: configured DSP for IPC-only mode
+[   11.002761] random: crng init done
+[   11.006156] random: 7 urandom warning(s) missed due to ratelimiting
+[   11.026108] remoteproc remoteproc0: 4d80800000.dsp is available
+[   11.054091] k3-dsp-rproc 4d81800000.dsp: assigned reserved memory node vision-apps-c66-dma-memory@a8000000
+[   11.102364] k3-dsp-rproc 4d81800000.dsp: configured DSP for IPC-only mode
+[   11.112083] remoteproc remoteproc0: powering up 4d80800000.dsp
+[   11.118017] remoteproc remoteproc0: Booting fw image j7-c66_0-fw, size 1579152
+[  OK  ] Started Load/Save Random Seed.
+[   11.134221] k3-dsp-rproc 4d80800000.dsp: DSP initialized in IPC-only mode
+[   11.146267]  remoteproc0#vdev0buffer: assigned reserved memory node vision-apps-c66-dma-memory@a9000000
+[   11.163474] virtio_rpmsg_bus virtio0: rpmsg host is online
+[   11.167129] virtio_rpmsg_bus virtio0: creating channel rpmsg_chrdev addr 0xd
+[   11.174085]  remoteproc0#vdev0buffer: registered virtio0 (type 7)
+[   11.186262] remoteproc remoteproc0: remote processor 4d80800000.dsp is now up
+[   11.264855] remoteproc remoteproc1: 4d81800000.dsp is available
+[   11.315469] k3-dsp-rproc 64800000.dsp: assigned reserved memory node vision-apps-c71-dma-memory@aa000000
+[   11.326539] remoteproc remoteproc1: powering up 4d81800000.dsp
+[   11.332427] remoteproc remoteproc1: Booting fw image j7-c66_1-fw, size 1579152
+[   11.339800] k3-dsp-rproc 4d81800000.dsp: DSP initialized in IPC-only mode
+[   11.358032]  remoteproc1#vdev0buffer: assigned reserved memory node vision-apps-c66-dma-memory@a8000000
+[   11.372979] virtio_rpmsg_bus virtio1: rpmsg host is online
+[   11.381669]  remoteproc1#vdev0buffer: registered virtio1 (type 7)
+[   11.389971] remoteproc remoteproc1: remote processor 4d81800000.dsp is now up
+[   11.402123] virtio_rpmsg_bus virtio1: creating channel rpmsg_chrdev addr 0xd
+[   11.414681] k3-dsp-rproc 64800000.dsp: configured DSP for IPC-only mode
+[   11.501015] remoteproc remoteproc2: 64800000.dsp is available
+[  OK  ] Started Simple Network Man…ement Protocol (SNMP) Daemon..
+[   11.636264] remoteproc remoteproc2: powering up 64800000.dsp
+[   11.642073] remoteproc remoteproc2: Booting fw image j7-c71_0-fw, size 10268656
+[   11.654048] k3-dsp-rproc 64800000.dsp: DSP initialized in IPC-only mode
+[   11.663137] CAN device driver interface
+[   11.666038]  remoteproc2#vdev0buffer: assigned reserved memory node vision-apps-c71-dma-memory@aa000000
+[   11.680864] virtio_rpmsg_bus virtio2: rpmsg host is online
+[   11.682820] virtio_rpmsg_bus virtio2: creating channel rpmsg_chrdev addr 0xd
+[   11.690075]  remoteproc2#vdev0buffer: registered virtio2 (type 7)
+[   11.703459] remoteproc remoteproc2: remote processor 64800000.dsp is now up
+[   11.787343] m_can_platform 40528000.can: m_can device registered (irq=15, version=32)
+[   11.904145] m_can_platform 40568000.can: m_can device registered (irq=17, version=32)
+***************************************************************
+***************************************************************
+NOTICE: This file system contains the following GPLv3 packages:
+        autoconf
+        bash-dev
+        bash
+        bc
+        binutils
+        cifs-utils
+        coreutils-stdbuf
+        coreutils
+        cpio
+        cpp-symlinks
+        cpp
+        dosfstools
+        elfutils
+        g++-symlinks
+        g++
+        gawk
+        gcc-symlinks
+        gcc
+        gdb
+        gdbserver
+        gettext
+        glmark2
+        gstreamer1.0-libav
+        gzip
+        less
+        libasm1
+        libbfd
+        libdw1
+        libelf1
+        libgdbm-compat4
+        libgdbm-dev
+        libgdbm6
+        libgettextlib
+        libgettextsrc
+        libgmp10
+        libidn2-0
+        libmpc3
+        libmpfr6
+        libreadline-dev
+        librea[   12.255267] platform 41000000.r5f: R5F core may have been powered on by a different host, programmed state (0) != actual state (1)
+dline8
+        libunistring2
+        m4-dev
+        m4
+        make
+        nettle
+        parted
+        tar
+        which
+
+If you do not wish to distribute GPLv3 components please remove
+the above packages prior to distribution.  This can be done using
+the opkg remove command.  i.e.:
+    opkg remove <package>
+Where <package> is the name printed in the list above
+
+NOTE: If the package is a dependency of another package you
+      will be notified of the dependent packages.  You should
+      use the --force-removal-of-dependent-packages option to
+      also remove the dependent packages as well
+***************************************************************
+***************************************************************
+[  OK  ] Started Print notice about GPLv3 packages.
+[   12.375874] platform 41000000.r5f: configured R5F for IPC-only mode
+[   12.448699] TI DP83867 46000f00.mdio:00: attached PHY driver [TI DP83867] (mii_bus:phy_addr=46000f00.mdio:00, irq=POLL)
+[   12.469941] am65-cpsw-nuss 46000000.ethernet eth0: Link is Down
+[   12.472707] platform 41000000.r5f: assigned reserved memory node vision-apps-r5f-dma-memory@a0000000
+[   12.578158] remoteproc remoteproc3: 41000000.r5f is available
+[   12.657197] remoteproc remoteproc3: powering up 41000000.r5f
+[   12.663113] remoteproc remoteproc3: Booting fw image j7-mcu-r5f0_0-fw, size 196136
+[   12.676637] platform 41000000.r5f: R5F core initialized in IPC-only mode
+[   12.686054]  remoteproc3#vdev0buffer: assigned reserved memory node vision-apps-r5f-dma-memory@a0000000
+[   12.699886] virtio_rpmsg_bus virtio3: rpmsg host is online
+[   12.710027]  remoteproc3#vdev0buffer: registered virtio3 (type 7)
+[   12.716124] remoteproc remoteproc3: remote processor 41000000.r5f is now up
+[   12.727579] virtio_rpmsg_bus virtio3: creating channel ti.ipc4.ping-pong addr 0xd
+[   12.735215] virtio_rpmsg_bus virtio3: creating channel rpmsg_chrdev addr 0xe
+[   12.761665] platform 5c00000.r5f: configured R5F for IPC-only mode
+[   12.822535] platform 5c00000.r5f: assigned reserved memory node vision-apps-r5f-dma-memory@a2000000
+[   12.934826] remoteproc remoteproc4: 5c00000.r5f is available
+[   13.003139] platform 5d00000.r5f: configured R5F for IPC-only mode
+[   13.033682] platform 5d00000.r5f: assigned reserved memory node vision-apps-r5f-dma-memory@a4000000
+[   13.103850] remoteproc remoteproc5: 5d00000.r5f is available
+[   13.121885] remoteproc remoteproc4: powering up 5c00000.r5f
+[   13.127530] remoteproc remoteproc4: Booting fw image j7-main-r5f0_0-fw, size 5269848
+[   13.142151] platform 5c00000.r5f: R5F core initialized in IPC-only mode
+[   13.150776]  remoteproc4#vdev0buffer: assigned reserved memory node vision-apps-r5f-dma-memory@a2000000
+[   13.165009] virtio_rpmsg_bus virtio4: rpmsg host is online
+[   13.173547]  remoteproc4#vdev0buffer: registered virtio4 (type 7)
+[   13.182030] remoteproc remoteproc4: remote processor 5c00000.r5f is now up
+[   13.194163] virtio_rpmsg_bus virtio4: creating channel rpmsg_chrdev addr 0xd
+[   13.279401] platform 5e00000.r5f: configured R5F for remoteproc mode
+[   13.309533] platform 5e00000.r5f: assigned reserved memory node vision-apps-r5f-dma-memory@a6000000
+[   13.318986] remoteproc remoteproc5: powering up 5d00000.r5f
+[   13.324683] remoteproc remoteproc5: Booting fw image j7-main-r5f0_1-fw, size 1968128
+[   13.338127] platform 5d00000.r5f: R5F core initialized in IPC-only mode
+[   13.350014]  remoteproc5#vdev0buffer: assigned reserved memory node vision-apps-r5f-dma-memory@a4000000
+[   13.356471] remoteproc remoteproc6: 5e00000.r5f is available
+[   13.359861] virtio_rpmsg_bus virtio5: rpmsg host is online
+[   13.378039]  remoteproc5#vdev0buffer: registered virtio5 (type 7)
+[   13.384197] remoteproc remoteproc5: remote processor 5d00000.r5f is now up
+[   13.394082] virtio_rpmsg_bus virtio5: creating channel rpmsg_chrdev addr 0xd
+[   13.403485] virtio_rpmsg_bus virtio5: creating channel rpmsg_chrdev addr 0x15
+[   13.414093] virtio_rpmsg_bus virtio2: creating channel rpmsg_chrdev addr 0x15
+[   13.414195] remoteproc remoteproc6: Direct firmware load for j7-main-r5f1_0-fw failed with error -2
+[   13.421294] virtio_rpmsg_bus virtio2: creating channel ti.ipc4.ping-pong addr 0xe
+[   13.442063] remoteproc remoteproc6: powering up 5e00000.r5f
+[   13.442082] virtio_rpmsg_bus virtio0: creating channel rpmsg_chrdev addr 0x15
+[   13.448493] remoteproc remoteproc6: Direct firmware load for j7-main-r5f1_0-fw failed with error -2
+[   13.458069] virtio_rpmsg_bus virtio0: creating channel ti.ipc4.ping-pong addr 0xe
+[   13.471559] platform 5f00000.r5f: configured R5F for remoteproc mode
+[   13.474109] remoteproc remoteproc6: request_firmware failed: -2
+[   13.477996] virtio_rpmsg_bus virtio1: creating channel rpmsg_chrdev addr 0x15
+[   13.494780] virtio_rpmsg_bus virtio1: creating channel ti.ipc4.ping-pong addr 0xe
+[   13.502366] virtio_rpmsg_bus virtio4: creating channel rpmsg_chrdev addr 0x15
+[   13.518109] virtio_rpmsg_bus virtio4: creating channel ti.ethfw.notifyservice addr 0x1e
+[   13.526504] platform 5f00000.r5f: assigned reserved memory node vision-apps-r5f-dma-memory@a7000000
+[   13.535702] virtio_rpmsg_bus virtio4: creating channel rpmsg-kdrv addr 0x1a
+[   13.542799] virtio_rpmsg_bus virtio4: creating channel ti.ipc4.ping-pong addr 0xe
+[   13.552347] rpmsg-kdrv-eth-switch rpmsg-kdrv-2-mpu_1_0_ethswitch-device-0: Device info: permissions: 07FFFFFF uart_id: 2
+[   13.554221] remoteproc remoteproc7: 5f00000.r5f is available
+[   13.570007] rpmsg-kdrv-eth-switch rpmsg-kdrv-2-mpu_1_0_ethswitch-device-0: FW ver 0.1 (rev 1) 28/Apr/2021 SHA:f76ca199
+[   13.580944] virtio_rpmsg_bus virtio5: creating channel ti.ipc4.ping-pong addr 0xe
+[  OK  ] Created slice system-systemd\x2dfsck.slice.
+[   13.763907] remoteproc remoteproc7: Direct firmware load for j7-main-r5f1_1-fw failed with error -2
+[   13.775035] remoteproc remoteproc7: powering up 5f00000.r5f
+[   13.786029] remoteproc remoteproc7: Direct firmware load for j7-main-r5f1_1-fw failed with error -2
+[   13.798046] remoteproc remoteproc7: request_firmware failed: -2
+[   13.966407] j721e-cpsw-virt-mac main_r5fss_cpsw9g_virt_mac0: virt_cpsw_nuss mac loaded
+[  OK  ] Found device /dev/mmcblk1p1.
+         Starting File System Check on /dev/mmcblk1p1...
+[   14.036921] j721e-cpsw-virt-mac main_r5fss_cpsw9g_virt_mac0: rdev_features:00000003 rdev_mtu:1522 flow_id:172 tx_psil_dst_id:4A00
+[   14.058505] j721e-audio sound@0: ASoC: failed to init link CPB pcm3168a DAC: -517
+[   14.082037] j721e-audio sound@0: devm_snd_soc_register_card() failed: -517
+[   14.142388] j721e-cpsw-virt-mac main_r5fss_cpsw9g_virt_mac0: local_mac_addr:00:00:00:00:00:00 rdev_mac_addr:70:ff:76:1d:92:c1
+[   14.170223] j721e-audio sound@0: ASoC: failed to init link CPB pcm3168a DAC: -517
+[   14.178820] j721e-audio sound@0: devm_snd_soc_register_card() failed: -517
+[  OK  ] Started File System Check on /dev/mmcblk1p1.
+         Mounting /run/media/mmcblk1p1...
+[  OK  ] Mounted /run/media/mmcblk1p1.
+[  OK  ] Created slice system-weston.slice.
+[  OK  ] Started Weston Wayland Compositor.
+[  OK  ] Created slice User Slice of UID 0.
+         Starting User Runtime Directory /run/user/0...
+[  OK  ] Started User Runtime Directory /run/user/0.
+[   15.023296] j721e-audio sound@0: ASoC: failed to init link CPB pcm3168a DAC: -517
+         Starting User Manager for UID 0...
+[   15.036864] j721e-audio sound@0: devm_snd_soc_register_card() failed: -517
+[   15.063284] j721e-audio sound@0: ASoC: failed to init link CPB pcm3168a DAC: -517
+[   15.072628] j721e-audio sound@0: devm_snd_soc_register_card() failed: -517
+[   15.086945] j721e-audio sound@0: ASoC: failed to init link CPB pcm3168a DAC: -517
+[   15.087253] omap_rng 4e10000.rng: Random Number Generator ver. 241b34c
+[   15.094513] j721e-audio sound@0: devm_snd_soc_register_card() failed: -517
+[   15.153537] remoteproc remoteproc8: b034000.pru is available
+[   15.185883] j721e-audio sound@0: ASoC: failed to init link CPB pcm3168a DAC: -517
+[   15.198048] j721e-audio sound@0: devm_snd_soc_register_card() failed: -517
+[   15.210309] j721e-audio sound@0: ASoC: failed to init link CPB pcm3168a DAC: -517
+[   15.219874] j721e-audio sound@0: devm_snd_soc_register_card() failed: -517
+[   15.266292] pru-rproc b034000.pru: PRU rproc node /bus@100000/icssg@b000000/pru@34000 probed successfully
+[   15.282716] j721e-audio sound@0: ASoC: failed to init link CPB pcm3168a DAC: -517
+[   15.292509] j721e-audio sound@0: devm_snd_soc_register_card() failed: -517
+[   15.357031] j721e-audio sound@0: ASoC: failed to init link CPB pcm3168a DAC: -517
+[   15.367175] j721e-audio sound@0: devm_snd_soc_register_card() failed: -517
+[   15.375290] remoteproc remoteproc9: b004000.rtu is available
+[   15.422073] pru-rproc b004000.rtu: PRU rproc node /bus@100000/icssg@b000000/rtu@4000 probed successfully
+[   15.478589] j721e-audio sound@0: ASoC: failed to init link CPB pcm3168a DAC: -517
+[   15.483032] PVR_K:  937: RGX Firmware image 'rgx.fw.22.104.208.318' loaded
+[   15.486178] pru-rproc b00a000.txpru: IRQ vring not found
+[   15.498248] j721e-audio sound@0: devm_snd_soc_register_card() failed: -517
+[   15.555265] pru-rproc b00a000.txpru: IRQ kick not found
+[   15.570140] remoteproc remoteproc10: b00a000.txpru is available
+[   15.594074] pru-rproc b00a000.txpru: PRU rproc node /bus@100000/icssg@b000000/txpru@a000 probed successfully
+[   15.614534] j721e-audio sound@0: ASoC: failed to init link CPB pcm3168a DAC: -517
+[   15.622696] remoteproc remoteproc11: b038000.pru is available
+[   15.629366] j721e-audio sound@0: devm_snd_soc_register_card() failed: -517
+[   15.641719] pru-rproc b038000.pru: PRU rproc node /bus@100000/icssg@b000000/pru@38000 probed successfully
+[   15.664652] j721e-audio sound@0: ASoC: failed to init link CPB pcm3168a DAC: -517
+[   15.672169] j721e-audio sound@0: devm_snd_soc_register_card() failed: -517
+[   15.680375] remoteproc remoteproc12: b006000.rtu is available
+[   15.719724] pru-rproc b006000.rtu: PRU rproc node /bus@100000/icssg@b000000/rtu@6000 probed successfully
+[   15.742242] cdns-usb3 6000000.usb: DRD version v1 (ID: 0004024e, rev: 00000200)
+[   15.754565] j721e-audio sound@0: ASoC: failed to init link CPB pcm3168a DAC: -517
+[   15.762137] pru-rproc b00c000.txpru: IRQ vring not found
+[   15.767574] j721e-audio sound@0: devm_snd_soc_register_card() failed: -517
+[   15.782103] pru-rproc b00c000.txpru: IRQ kick not found
+[   15.788977] remoteproc remoteproc13: b00c000.txpru is available
+[   15.798048] pru-rproc b00c000.txpru: PRU rproc node /bus@100000/icssg@b000000/txpru@c000 probed successfully
+[   15.814717] j721e-audio sound@0: ASoC: failed to init link CPB pcm3168a DAC: -517
+[   15.822442] remoteproc remoteproc14: b134000.pru is available
+[   15.828216] j721e-audio sound@0: devm_snd_soc_register_card() failed: -517
+[   15.835188] pru-rproc b134000.pru: PRU rproc node /bus@100000/icssg@b100000/pru@34000 probed successfully
+[   15.854601] j721e-audio sound@0: ASoC: failed to init link CPB pcm3168a DAC: -517
+[   15.862233] cdns-usb3 6400000.usb: DRD version v1 (ID: 0004024e, rev: 00000200)
+[   15.869542] j721e-audio sound@0: devm_snd_soc_register_card() failed: -517
+[   15.878509] j721e-audio sound@0: ASoC: failed to init link CPB pcm3168a DAC: -517
+[   15.886537] remoteproc remoteproc15: b104000.rtu is available
+[   15.892347] j721e-audio sound@0: devm_snd_soc_register_card() failed: -517
+[   15.902336] j721e-audio sound@0: ASoC: failed to init link CPB pcm3168a DAC: -517
+[   15.913718] j721e-audio sound@0: devm_snd_soc_register_card() failed: -517
+[   15.926725] pru-rproc b104000.rtu: PRU rproc node /bus@100000/icssg@b100000/rtu@4000 probed successfully
+[   15.950300] j721e-audio sound@0: ASoC: failed to init link CPB pcm3168a DAC: -517
+[   15.958338] pru-rproc b10a000.txpru: IRQ vring not found
+[   15.963665] j721e-audio sound@0: devm_snd_soc_register_card() failed: -517
+[   15.982020] pru-rproc b10a000.txpru: IRQ kick not found
+[   15.994067] remoteproc remoteproc16: b10a000.txpru is available
+[   16.006037] pru-rproc b10a000.txpru: PRU rproc node /bus@100000/icssg@b100000/txpru@a000 probed successfully
+[   16.026491] j721e-audio sound@0: ASoC: failed to init link CPB pcm3168a DAC: -517
+[   16.034545] remoteproc remoteproc17: b138000.pru is available
+[   16.040294] j721e-audio sound@0: devm_snd_soc_register_card() failed: -517
+[   16.058073] pru-rproc b138000.pru: PRU rproc node /bus@100000/icssg@b100000/pru@38000 probed successfully
+[   16.074522] j721e-audio sound@0: ASoC: failed to init link CPB pcm3168a DAC: -517
+[   16.082520] remoteproc remoteproc18: b106000.rtu is available
+[   16.088285] j721e-audio sound@0: devm_snd_soc_register_card() failed: -517
+[   16.090091] pru-rproc b106000.rtu: PRU rproc node /bus@100000/icssg@b100000/rtu@6000 probed successfully
+[   16.110460] j721e-audio sound@0: ASoC: failed to init link CPB pcm3168a DAC: -517
+[   16.118911] pru-rproc b10c000.txpru: IRQ vring not found
+[   16.124227] j721e-audio sound@0: devm_snd_soc_register_card() failed: -517
+[   16.138007] pru-rproc b10c000.txpru: IRQ kick not found
+[   16.144038] remoteproc remoteproc19: b10c000.txpru is available
+[   16.154039] pru-rproc b10c000.txpru: PRU rproc node /bus@100000/icssg@b100000/txpru@c000 probed successfully
+[   16.170437] j721e-audio sound@0: ASoC: failed to init link CPB pcm3168a DAC: -517
+
+ _____                    _____           _         _   
+|  _  [   16.181838] j721e-audio sound@0: devm_snd_soc_register_card() failed: -517
+|___ ___ ___ ___   |  _  |___ ___  |_|___ ___| |_ 
+|     |  _| .'| . | . |  |   __|  _| . | | | -_|  _|  _|
+|__|__|_| |__,|_  |___|  |__|  |_| |___|_| |___|___|_|  
+              |___|                    |___|            
+
+Arago Project http://arago-project.org j7-evm ttyS2
+
+Arago 2020.09 j7-evm ttyS2
+
+j7-evm login: [   16.362618] j721e-audio sound@0: ASoC: failed to init link CPB pcm3168a DAC: -517
+[   16.370100] j721e-audio sound@0: devm_snd_soc_register_card() failed: -517
+[   16.394924] j721e-audio sound@0: ASoC: failed to init link CPB pcm3168a DAC: -517
+[   16.402420] j721e-audio sound@0: devm_snd_soc_register_card() failed: -517
+[   16.815999] usbcore: registered new interface driver usbfs
+[   16.856251] usbcore: registered new interface driver hub
+[   16.870478] usbcore: registered new device driver usb
+[   16.883520] j721e-cpsw-virt-mac main_r5fss_cpsw9g_virt_mac0: virt_cpsw_nuss mac started
+[   16.902545] xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+[   16.916193] xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 1
+[   16.934135] xhci-hcd xhci-hcd.2.auto: hcc params 0x200073c9 hci version 0x100 quirks 0x0000000000010010
+[   16.946061] xhci-hcd xhci-hcd.2.auto: irq 601, io mem 0x06410000
+[   16.958052] usb usb1: New USB device found, idVendor=1d6b, idProduct=0002, bcdDevice= 5.04
+[   16.966305] usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[   16.978020] usb usb1: Product: xHCI Host Controller
+[   16.982961] usb usb1: Manufacturer: Linux 5.4.106-g023faefa70 xhci-hcd
+[   16.998003] usb usb1: SerialNumber: xhci-hcd.2.auto
+[   17.003168] hub 1-0:1.0: USB hub found
+[   17.010056] hub 1-0:1.0: 1 port detected
+[   17.014610] j721e-audio sound@0: ASoC: failed to init link CPB pcm3168a DAC: -517
+[   17.022392] xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+[   17.027879] j721e-audio sound@0: devm_snd_soc_register_card() failed: -517
+[   17.038291] j721e-audio sound@0: ASoC: failed to init link CPB pcm3168a DAC: -517
+[   17.045792] xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 2
+[   17.053442] j721e-audio sound@0: devm_snd_soc_register_card() failed: -517
+[   17.066012] xhci-hcd xhci-hcd.2.auto: Host supports USB 3.0 SuperSpeed
+[   17.078020] usb usb2: We don't know the algorithms for LPM for this host, disabling LPM.
+[   17.086143] usb usb2: New USB device found, idVendor=1d6b, idProduct=0003, bcdDevice= 5.04
+[   17.102002] usb usb2: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[   17.109215] usb usb2: Product: xHCI Host Controller
+[   17.122003] usb usb2: Manufacturer: Linux 5.4.106-g023faefa70 xhci-hcd
+[   17.128520] usb usb2: SerialNumber: xhci-hcd.2.auto
+[   17.138457] hub 2-0:1.0: USB hub found
+[   17.142223] hub 2-0:1.0: 1 port detected
+[   17.150499] j721e-audio sound@0: ASoC: failed to init link CPB pcm3168a DAC: -517
+[   17.161118] j721e-audio sound@0: devm_snd_soc_register_card() failed: -517
+[   17.174390] j721e-audio sound@0: ASoC: failed to init link CPB pcm3168a DAC: -517
+[   17.186108] j721e-audio sound@0: devm_snd_soc_register_card() failed: -517
+[   17.350009] usb 1-1: new high-speed USB device number 2 using xhci-hcd
+[   17.506275] usb 1-1: New USB device found, idVendor=0451, idProduct=8142, bcdDevice= 1.00
+[   17.518001] usb 1-1: New USB device strings: Mfr=0, Product=0, SerialNumber=1
+[   17.530002] usb 1-1: SerialNumber: F0070879E165
+[   17.534991] hub 1-1:1.0: USB hub found
+[   17.542011] hub 1-1:1.0: 4 ports detected
+[   17.551218] j721e-audio sound@0: ASoC: failed to init link CPB pcm3168a DAC: -517
+[   17.558709] j721e-audio sound@0: devm_snd_soc_register_card() failed: -517

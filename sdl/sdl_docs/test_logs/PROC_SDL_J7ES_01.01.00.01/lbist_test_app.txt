@@ -1,0 +1,70 @@
+01000000011a00006a3765730000000000000000475020200101010001010100CSBL Revision: 01.00.10.01 (Jun 29 2023 - 15:00:34)
+Waiting for tifs.bin ...
+CCTIFS  ver: 9.0.6--v09.00.06 (Kool Koala)
+Waiting for multicore app ...
+CCmcuClkFreq 1000000000
+
+LBIST Test Applications
+
+ Starting LBIST test on HWPOST - DMSC, index 0...
+   HW POST: LBIST not run on this device
+   HW POST core: HWPOST - DMSC: HW POST was not run on this device
+  LBIST complete for HWPOST - DMSC
+
+ Starting LBIST test on HWPOST - MCU, index 1...
+   HW POST: LBIST not run on this device
+   HW POST core: HWPOST - MCU: HW POST was not run on this device
+  LBIST complete for HWPOST - MCU
+
+ Starting LBIST test on Main R5F0-0, index 2...
+   LBIST MISR matched
+  Delta Cores prep time in micro secs 3031
+  Delta LBIST execution time in micro secs 17554
+  Delta Cores restore time in micro secs 226
+  LBIST complete for Main R5F0-0
+
+ Starting LBIST test on Main R5F1-0, index 3...
+   LBIST MISR matched
+  Delta Cores prep time in micro secs 197
+  Delta LBIST execution time in micro secs 17549
+  Delta Cores restore time in micro secs 226
+  LBIST complete for Main R5F1-0
+
+ Starting LBIST test on C7x , index 4...
+   LBIST MISR matched
+  Delta Cores prep time in micro secs 143
+  Delta LBIST execution time in micro secs 3503
+  Delta Cores restore time in micro secs 154
+  LBIST complete for C7x
+
+ Starting LBIST test on VPAC, index 5...
+   LBIST MISR matched
+  Delta Cores prep time in micro secs 81
+  Delta LBIST execution time in micro secs 6968
+  Delta Cores restore time in micro secs 91
+  LBIST complete for VPAC
+
+ Starting LBIST test on DMPAC, index 6...
+   LBIST MISR matched
+  Delta Cores prep time in micro secs 67
+  Delta LBIST execution time in micro secs 7263
+  Delta Cores restore time in micro secs 87
+  LBIST complete for DMPAC
+
+ Starting LBIST test on A72 core 0, index 7...
+   LBIST MISR matched
+  Delta Cores prep time in micro secs 245
+  Delta LBIST execution time in micro secs 17364
+  Delta Cores restore time in micro secs 280
+  LBIST complete for A72 core 0
+
+ LBIST Functionality Test Passed.
+
+ LBIST Error Module Test Passed.
+
+All tests have passed.
+common/lbist_test_main.c:277:test_sdl_lbist_test_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored
+OK

@@ -1,0 +1,15 @@
+SBL Revision: 01.00.10.01 (Dec  1 2021 - 08:15:07)
+TIFS  ver: 21.9.1--v2021.09a (Terrific Lla
+
+ POK Test Application
+Test Name: POK API POSITIVE TEST  PASSED 
+Test Name: POK API NEGATIVE TEST  PASSED 
+Test Name: POK Ip_NEGATIVE TEST  PASSED 
+Test Name: POK Ip_POSITIVE TEST  PASSED 
+
+ All tests have passed. 
+/home/gtbldadm/nightlybuilds/SDL_NIGHTLY_BUILD/160-2021-11-30_22-53-45/workarea/sdl/test/pok/pokUt/test_main.c:196:test_sdl_pok_baremetal_test_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored 
+OK

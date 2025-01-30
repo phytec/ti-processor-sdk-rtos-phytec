@@ -1,0 +1,97 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Documentation for global_types_gen.pl</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Documentation for global_types_gen.pl</span></strong></big>
+</td></tr>
+</table>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#USAGE">USAGE</a></li>
+  <li><a href="#OPTIONS">OPTIONS</a></li>
+  <li><a href="#DEPENDENCIES">DEPENDENCIES</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#OFD-OPTIONS">OFD OPTIONS</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>global_types_gen.pl</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<p>Reconstructs the global types used in a program. Can be used for example to see some of the data types used internally in DSP/BIOS or other libraries where the source code is typically not available. Useful for debugging e.g. postmortem situations. Conceivably host tools could be written which use this data to match up last-state-before-crash with the data structures used in the code.</p>
+
+<p>If you have all the source code available to all the libraries in your program this script is useless - but thats rarely the case.</p>
+
+<p>Works on executables, object files &amp; libraries.</p>
+
+<h1 id="USAGE">USAGE</h1>
+
+<p>global_types_gen &lt;filename.xml&gt;</p>
+
+<p>Example (from a DOS prompt): -</p>
+
+<pre><code>    [&gt;] &lt;ccstudiodir&gt;\dosrun.bat
+    [&gt;] ofd6x -xg -o=app.xml app.out
+    [&gt;] perl global_types_gen.pl app.xml</code></pre>
+
+<p>... OR ...</p>
+
+<pre><code>    [&gt;] ofdXX -xg &lt;out file&gt; | perl global_types_gen.pl </code></pre>
+
+<h1 id="OPTIONS">OPTIONS</h1>
+
+<p>None</p>
+
+<h1 id="DEPENDENCIES">DEPENDENCIES</h1>
+
+<p>You need to first run OFD which is only available in Codegen Tools &gt;= v5.0 for c6000, v3.0 for C55, v4.0 for C54</p>
+
+<p>Also, you *MUST* run ofdXX -g. The -g flag is essential, otherwise the DWARF DW_AT_stuff tags will *NOT* be in the XML file.</p>
+
+<p>Additional limitations are: -</p>
+
+<pre><code>    &gt; only works on code built with &#39;new&#39; Codegen ie code built for
+      DWARF-Debug (e.g. &gt;= CGT 5.0 for c6x, &gt;= CGT 3.0 for c55x...)
+    &gt; only displays C type data. Will not work on C++ classes etc.</code></pre>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>Reconstructs the global types used in a program. Can be used for example to see some of the data types used internally in DSP/BIOS or other libraries where the source code is typically not available. Useful for debugging e.g. postmortem situations. Conceivably host tools could be written which use this data to match up last-state-before-crash with the data structures used in the code.</p>
+
+<p>OFD stands for Object File Display utility. Examples include ofd6x for C6000 and ofd55 for C5500.</p>
+
+<p>This script was written using Perl version 5.8.3. It may not work with earlier revisions of Perl.</p>
+
+<h1 id="OFD-OPTIONS">OFD OPTIONS</h1>
+
+<p>Recent releases of OFD support options for filtering the XML output down to what is strictly of interest. The best options to use in combination with this script are:</p>
+
+<pre><code>  -xg --xml_indent=0 --obj_display=none --dwarf_display=none,dinfo,types</code></pre>
+
+<p>Filtering the XML in this way reduces the amount of data processed by this script, thus making it run faster.</p>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Documentation for global_types_gen.pl</span></strong></big>
+</td></tr>
+</table>
+
+</body>
+
+</html>
+
+

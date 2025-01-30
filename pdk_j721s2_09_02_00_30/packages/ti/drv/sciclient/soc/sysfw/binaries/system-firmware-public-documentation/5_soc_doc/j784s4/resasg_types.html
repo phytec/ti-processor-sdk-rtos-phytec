@@ -1,0 +1,942 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>J784S4 Board Configuration Resource Assignment Type Descriptions &mdash; TISCI User Guide</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="TISCI User Guide" href="../../index.html"/>
+        <link rel="up" title="Chapter 5: SoC Family Specific Documentation" href="../index.html"/>
+        <link rel="next" title="J784S4 Interrupt Management Device Descriptions" href="interrupt_cfg.html"/>
+        <link rel="prev" title="J784S4 PLL Defaults" href="pll_data.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="../../_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> TISCI
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                09.02.04
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../1_intro/index.html">Chapter 1: Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../2_tisci_msgs/index.html">Chapter 2: TISCI Message Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../3_boardcfg/index.html">Chapter 3: Board Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../4_trace/index.html">Chapter 4: Interpreting Trace Data</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Chapter 5: SoC Family Specific Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#am65x-sr1">AM65x SR1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#am65x-sr2">AM65x SR2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#am64x">AM64x</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#am62x">AM62x</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#am62ax">AM62Ax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#am62px">AM62Px</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#j721e">J721E</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#j7200">J7200</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#j721s2">J721S2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#j722s">J722S</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#j784s4">J784S4</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="hosts.html">J784S4 Host Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="devices.html">J784S4 Devices Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="clocks.html">J784S4 Clock Identifiers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pll_data.html">J784S4 PLL Defaults</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">J784S4 Board Configuration Resource Assignment Type Descriptions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#introduction">Introduction</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="interrupt_cfg.html">J784S4 Interrupt Management Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ra_cfg.html">J784S4 Ring Accelerator Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dma_cfg.html">J784S4 DMA Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="psil_cfg.html">J784S4 PSI-L Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="proxy_cfg.html">J784S4 Proxy Device Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sec_proxy.html">J784S4 Secure Proxy Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="processors.html">J784S4 Processor Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="firewalls.html">J784S4 Firewall Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="soc_devgrps.html">J784S4 Device Group descriptions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../6_topic_user_guides/index.html">Chapter 6: Topic User Guides</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">TISCI</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Chapter 5: SoC Family Specific Documentation</a> &raquo;</li>
+      
+    <li>J784S4 Board Configuration Resource Assignment Type Descriptions</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="j784s4-board-configuration-resource-assignment-type-descriptions">
+<h1>J784S4 Board Configuration Resource Assignment Type Descriptions<a class="headerlink" href="#j784s4-board-configuration-resource-assignment-type-descriptions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>This chapter provides information of Board Configuration resource assignment
+type IDs that are permitted in the J784S4 SoC.  The resource type IDs represent
+J784S4 resources ranges assignable to SoC processing entities (or PEs).</p>
+<p><strong>WARNING</strong>: System Firmware RM currently supports a maximum of 586 RM board
+configuration resource assignment ranges on the J784S4 SoC.  Sending more
+entries than the maximum will result in the RM board configuration being NACK’d</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="7%" />
+<col width="29%" />
+<col width="8%" />
+<col width="10%" />
+<col width="13%" />
+<col width="14%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Device Name</th>
+<th class="head">Device ID
+(10-bits)</th>
+<th class="head">Subtype Name</th>
+<th class="head">Subtype ID
+(6-bits)</th>
+<th class="head">Unique Type ID
+(16-bits)</th>
+<th class="head">Resource Range Start</th>
+<th class="head">Resource Range Number</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>J784S4_DEV_GPIOMUX_INTRTR0</td>
+<td>0x00A</td>
+<td>RESASG_SUBTYPE_IR_OUTPUT</td>
+<td>0x00</td>
+<td>0x0280</td>
+<td>0</td>
+<td>64</td>
+</tr>
+<tr class="row-odd"><td>J784S4_DEV_CMPEVENT_INTRTR0</td>
+<td>0x00B</td>
+<td>RESASG_SUBTYPE_IR_OUTPUT</td>
+<td>0x00</td>
+<td>0x02C0</td>
+<td>0</td>
+<td>16</td>
+</tr>
+<tr class="row-even"><td>J784S4_DEV_MAIN2MCU_LVL_INTRTR0</td>
+<td>0x0AD</td>
+<td>RESASG_SUBTYPE_IR_OUTPUT</td>
+<td>0x00</td>
+<td>0x2B40</td>
+<td>0</td>
+<td>64</td>
+</tr>
+<tr class="row-odd"><td>J784S4_DEV_MAIN2MCU_PLS_INTRTR0</td>
+<td>0x0AE</td>
+<td>RESASG_SUBTYPE_IR_OUTPUT</td>
+<td>0x00</td>
+<td>0x2B80</td>
+<td>0</td>
+<td>48</td>
+</tr>
+<tr class="row-even"><td>J784S4_DEV_TIMESYNC_INTRTR0</td>
+<td>0x0B0</td>
+<td>RESASG_SUBTYPE_IR_OUTPUT</td>
+<td>0x00</td>
+<td>0x2C00</td>
+<td>0</td>
+<td>48</td>
+</tr>
+<tr class="row-odd"><td>J784S4_DEV_WKUP_GPIOMUX_INTRTR0</td>
+<td>0x0B1</td>
+<td>RESASG_SUBTYPE_IR_OUTPUT</td>
+<td>0x00</td>
+<td>0x2C40</td>
+<td>0</td>
+<td>32</td>
+</tr>
+<tr class="row-even"><td>J784S4_DEV_NAVSS0_BCDMA_0</td>
+<td>0x119</td>
+<td>RESASG_SUBTYPE_GLOBAL_EVENT_TRIGGER</td>
+<td>0x02</td>
+<td>0x4642</td>
+<td>50176</td>
+<td>96</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>RESASG_SUBTYPE_UDMAP_GLOBAL_CONFIG</td>
+<td>0x03</td>
+<td>0x4643</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>RESASG_SUBTYPE_BCDMA_RING_SPLIT_TR_RX_CHAN</td>
+<td>0x0E</td>
+<td>0x464E</td>
+<td>16</td>
+<td>32</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>RESASG_SUBTYPE_BCDMA_RING_SPLIT_TR_TX_CHAN</td>
+<td>0x0F</td>
+<td>0x464F</td>
+<td>0</td>
+<td>16</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>RESASG_SUBTYPE_BCDMA_SPLIT_TR_RX_CHAN</td>
+<td>0x21</td>
+<td>0x4661</td>
+<td>0</td>
+<td>32</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>RESASG_SUBTYPE_BCDMA_SPLIT_TR_TX_CHAN</td>
+<td>0x22</td>
+<td>0x4662</td>
+<td>0</td>
+<td>16</td>
+</tr>
+<tr class="row-even"><td>J784S4_DEV_NAVSS0_INTR_0</td>
+<td>0x11B</td>
+<td>RESASG_SUBTYPE_IR_OUTPUT</td>
+<td>0x00</td>
+<td>0x46C0</td>
+<td>16</td>
+<td>160</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>196</td>
+<td>28</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>228</td>
+<td>28</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>260</td>
+<td>28</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>292</td>
+<td>28</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>324</td>
+<td>28</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>356</td>
+<td>156</td>
+</tr>
+<tr class="row-odd"><td>J784S4_DEV_NAVSS0_MODSS_INTA_0</td>
+<td>0x136</td>
+<td>RESASG_SUBTYPE_IA_VINT</td>
+<td>0x0A</td>
+<td>0x4D8A</td>
+<td>0</td>
+<td>64</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>RESASG_SUBTYPE_GLOBAL_EVENT_SEVT</td>
+<td>0x0D</td>
+<td>0x4D8D</td>
+<td>20480</td>
+<td>1024</td>
+</tr>
+<tr class="row-odd"><td>J784S4_DEV_NAVSS0_MODSS_INTA_1</td>
+<td>0x137</td>
+<td>RESASG_SUBTYPE_IA_VINT</td>
+<td>0x0A</td>
+<td>0x4DCA</td>
+<td>0</td>
+<td>64</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>RESASG_SUBTYPE_GLOBAL_EVENT_SEVT</td>
+<td>0x0D</td>
+<td>0x4DCD</td>
+<td>22528</td>
+<td>1024</td>
+</tr>
+<tr class="row-odd"><td>J784S4_DEV_NAVSS0_PROXY_0</td>
+<td>0x138</td>
+<td>RESASG_SUBTYPE_PROXY_PROXIES</td>
+<td>0x00</td>
+<td>0x4E00</td>
+<td>0</td>
+<td>64</td>
+</tr>
+<tr class="row-even"><td>J784S4_DEV_NAVSS0_RINGACC_0</td>
+<td>0x13B</td>
+<td>RESASG_SUBTYPE_RA_ERROR_OES</td>
+<td>0x00</td>
+<td>0x4EC0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>RESASG_SUBTYPE_RA_GP</td>
+<td>0x01</td>
+<td>0x4EC1</td>
+<td>423</td>
+<td>345</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>878</td>
+<td>146</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>RESASG_SUBTYPE_RA_UDMAP_RX</td>
+<td>0x02</td>
+<td>0x4EC2</td>
+<td>345</td>
+<td>78</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>RESASG_SUBTYPE_RA_UDMAP_TX</td>
+<td>0x03</td>
+<td>0x4EC3</td>
+<td>4</td>
+<td>81</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>RESASG_SUBTYPE_RA_UDMAP_TX_EXT</td>
+<td>0x04</td>
+<td>0x4EC4</td>
+<td>85</td>
+<td>256</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>RESASG_SUBTYPE_RA_UDMAP_RX_H</td>
+<td>0x05</td>
+<td>0x4EC5</td>
+<td>343</td>
+<td>2</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>RESASG_SUBTYPE_RA_UDMAP_RX_UH</td>
+<td>0x06</td>
+<td>0x4EC6</td>
+<td>341</td>
+<td>2</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>RESASG_SUBTYPE_RA_UDMAP_TX_H</td>
+<td>0x07</td>
+<td>0x4EC7</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>RESASG_SUBTYPE_RA_UDMAP_TX_UH</td>
+<td>0x08</td>
+<td>0x4EC8</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>RESASG_SUBTYPE_RA_VIRTID</td>
+<td>0x0A</td>
+<td>0x4ECA</td>
+<td>0</td>
+<td>4096</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>RESASG_SUBTYPE_RA_MONITORS</td>
+<td>0x0B</td>
+<td>0x4ECB</td>
+<td>0</td>
+<td>32</td>
+</tr>
+<tr class="row-even"><td>J784S4_DEV_NAVSS0_UDMAP_0</td>
+<td>0x13F</td>
+<td>RESASG_SUBTYPE_UDMAP_RX_FLOW_COMMON</td>
+<td>0x00</td>
+<td>0x4FC0</td>
+<td>82</td>
+<td>142</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>RESASG_SUBTYPE_UDMAP_INVALID_FLOW_OES</td>
+<td>0x01</td>
+<td>0x4FC1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>RESASG_SUBTYPE_GLOBAL_EVENT_TRIGGER</td>
+<td>0x02</td>
+<td>0x4FC2</td>
+<td>49152</td>
+<td>1024</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>RESASG_SUBTYPE_UDMAP_GLOBAL_CONFIG</td>
+<td>0x03</td>
+<td>0x4FC3</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>RESASG_SUBTYPE_UDMAP_RX_CHAN</td>
+<td>0x0A</td>
+<td>0x4FCA</td>
+<td>4</td>
+<td>78</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>RESASG_SUBTYPE_UDMAP_RX_HCHAN</td>
+<td>0x0B</td>
+<td>0x4FCB</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>RESASG_SUBTYPE_UDMAP_RX_UHCHAN</td>
+<td>0x0C</td>
+<td>0x4FCC</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>RESASG_SUBTYPE_UDMAP_TX_CHAN</td>
+<td>0x0D</td>
+<td>0x4FCD</td>
+<td>4</td>
+<td>81</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>RESASG_SUBTYPE_UDMAP_TX_ECHAN</td>
+<td>0x0E</td>
+<td>0x4FCE</td>
+<td>85</td>
+<td>256</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>RESASG_SUBTYPE_UDMAP_TX_HCHAN</td>
+<td>0x0F</td>
+<td>0x4FCF</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>RESASG_SUBTYPE_UDMAP_TX_UHCHAN</td>
+<td>0x10</td>
+<td>0x4FD0</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr class="row-odd"><td>J784S4_DEV_NAVSS0_UDMASS_INTA_0</td>
+<td>0x141</td>
+<td>RESASG_SUBTYPE_IA_VINT</td>
+<td>0x0A</td>
+<td>0x504A</td>
+<td>56</td>
+<td>200</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>RESASG_SUBTYPE_GLOBAL_EVENT_SEVT</td>
+<td>0x0D</td>
+<td>0x504D</td>
+<td>56</td>
+<td>4552</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>RESASG_SUBTYPE_IA_BCDMA_TX_CHAN_ERROR_OES</td>
+<td>0x0F</td>
+<td>0x504F</td>
+<td>1536</td>
+<td>16</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>RESASG_SUBTYPE_IA_BCDMA_TX_CHAN_DATA_COMPLETION_OES</td>
+<td>0x10</td>
+<td>0x5050</td>
+<td>2048</td>
+<td>16</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>RESASG_SUBTYPE_IA_BCDMA_TX_CHAN_RING_COMPLETION_OES</td>
+<td>0x11</td>
+<td>0x5051</td>
+<td>2560</td>
+<td>16</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>RESASG_SUBTYPE_IA_BCDMA_RX_CHAN_ERROR_OES</td>
+<td>0x12</td>
+<td>0x5052</td>
+<td>3072</td>
+<td>32</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>RESASG_SUBTYPE_IA_BCDMA_RX_CHAN_DATA_COMPLETION_OES</td>
+<td>0x13</td>
+<td>0x5053</td>
+<td>3584</td>
+<td>32</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>RESASG_SUBTYPE_IA_BCDMA_RX_CHAN_RING_COMPLETION_OES</td>
+<td>0x14</td>
+<td>0x5054</td>
+<td>4096</td>
+<td>32</td>
+</tr>
+<tr class="row-odd"><td>J784S4_DEV_MCU_NAVSS0_INTR_ROUTER_0</td>
+<td>0x144</td>
+<td>RESASG_SUBTYPE_IR_OUTPUT</td>
+<td>0x00</td>
+<td>0x5100</td>
+<td>12</td>
+<td>12</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>36</td>
+<td>28</td>
+</tr>
+<tr class="row-odd"><td>J784S4_DEV_MCU_NAVSS0_PROXY0</td>
+<td>0x147</td>
+<td>RESASG_SUBTYPE_PROXY_PROXIES</td>
+<td>0x00</td>
+<td>0x51C0</td>
+<td>1</td>
+<td>63</td>
+</tr>
+<tr class="row-even"><td>J784S4_DEV_MCU_NAVSS0_RINGACC0</td>
+<td>0x148</td>
+<td>RESASG_SUBTYPE_RA_ERROR_OES</td>
+<td>0x00</td>
+<td>0x5200</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>RESASG_SUBTYPE_RA_GP</td>
+<td>0x01</td>
+<td>0x5201</td>
+<td>96</td>
+<td>156</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>RESASG_SUBTYPE_RA_UDMAP_RX</td>
+<td>0x02</td>
+<td>0x5202</td>
+<td>50</td>
+<td>43</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>RESASG_SUBTYPE_RA_UDMAP_TX</td>
+<td>0x03</td>
+<td>0x5203</td>
+<td>2</td>
+<td>44</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>RESASG_SUBTYPE_RA_UDMAP_RX_H</td>
+<td>0x05</td>
+<td>0x5205</td>
+<td>48</td>
+<td>2</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>RESASG_SUBTYPE_RA_UDMAP_TX_H</td>
+<td>0x07</td>
+<td>0x5207</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>RESASG_SUBTYPE_RA_VIRTID</td>
+<td>0x0A</td>
+<td>0x520A</td>
+<td>0</td>
+<td>4096</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>RESASG_SUBTYPE_RA_MONITORS</td>
+<td>0x0B</td>
+<td>0x520B</td>
+<td>0</td>
+<td>32</td>
+</tr>
+<tr class="row-even"><td>J784S4_DEV_MCU_NAVSS0_UDMAP_0</td>
+<td>0x149</td>
+<td>RESASG_SUBTYPE_UDMAP_RX_FLOW_COMMON</td>
+<td>0x00</td>
+<td>0x5240</td>
+<td>48</td>
+<td>48</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>RESASG_SUBTYPE_UDMAP_INVALID_FLOW_OES</td>
+<td>0x01</td>
+<td>0x5241</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>RESASG_SUBTYPE_GLOBAL_EVENT_TRIGGER</td>
+<td>0x02</td>
+<td>0x5242</td>
+<td>56320</td>
+<td>256</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>RESASG_SUBTYPE_UDMAP_GLOBAL_CONFIG</td>
+<td>0x03</td>
+<td>0x5243</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>RESASG_SUBTYPE_UDMAP_RX_CHAN</td>
+<td>0x0A</td>
+<td>0x524A</td>
+<td>2</td>
+<td>43</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>RESASG_SUBTYPE_UDMAP_RX_HCHAN</td>
+<td>0x0B</td>
+<td>0x524B</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>RESASG_SUBTYPE_UDMAP_TX_CHAN</td>
+<td>0x0D</td>
+<td>0x524D</td>
+<td>2</td>
+<td>44</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>RESASG_SUBTYPE_UDMAP_TX_HCHAN</td>
+<td>0x0F</td>
+<td>0x524F</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr class="row-even"><td>J784S4_DEV_MCU_NAVSS0_UDMASS_INTA_0</td>
+<td>0x14B</td>
+<td>RESASG_SUBTYPE_IA_VINT</td>
+<td>0x0A</td>
+<td>0x52CA</td>
+<td>22</td>
+<td>234</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>RESASG_SUBTYPE_GLOBAL_EVENT_SEVT</td>
+<td>0x0D</td>
+<td>0x52CD</td>
+<td>16406</td>
+<td>1514</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="interrupt_cfg.html" class="btn btn-neutral float-right" title="J784S4 Interrupt Management Device Descriptions" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="pll_data.html" class="btn btn-neutral" title="J784S4 PLL Defaults" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyright 2016-2024</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'09.02.04',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+
+        $('body').on("mousewheel", function () {
+            // Remove default behavior
+            event.preventDefault();
+            // Scroll without smoothing
+            var wheelDelta = event.wheelDelta;
+            var currentScrollPosition = window.pageYOffset;
+            window.scrollTo(0, currentScrollPosition - wheelDelta);
+        });
+      });
+  </script>
+   
+
+</body>
+</html>

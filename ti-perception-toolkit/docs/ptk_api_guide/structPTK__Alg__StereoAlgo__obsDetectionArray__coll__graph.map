@@ -1,0 +1,4 @@
+<map id="PTK_Alg_StereoAlgo_obsDetectionArray" name="PTK_Alg_StereoAlgo_obsDetectionArray">
+<area shape="rect" id="node2" href="$structPTK__Alg__StereoAlgo__obsDetection.html" title="Stereo algorithm &#45; properties of a detected obstacles. " alt="" coords="81,359,234,451"/>
+<area shape="rect" id="node5" href="$structPTK__Alg__StereoAlgo__lineModel.html" title="Stereo algorithm &#45; line model for detected obstacle bounding box. " alt="" coords="222,160,375,252"/>
+</map>

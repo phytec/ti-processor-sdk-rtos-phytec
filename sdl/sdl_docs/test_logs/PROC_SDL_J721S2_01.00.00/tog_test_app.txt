@@ -1,0 +1,123 @@
+
+TOG Test Applications
+
+ sdlAppEsmSetupCommon...Done
+ sdlAppEsmSetupCommon...Done
+ sdlAppEsmSetup...Done
+ Starting TOG test on NAVSS_TO_AC, index 0...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done  Delta TOG prep time in micro secs 26064
+  Delta TOG execution time in micro secs 44
+  Delta TOG restore time in micro secs 27058
+  TOG complete for NAVSS_TO_AC
+
+ Starting TOG test on AC_CFG_TO_AC, index 1...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done  Delta TOG prep time in micro secs 27050
+  Delta TOG execution time in micro secs 13
+  Delta TOG restore time in micro secs 27050
+  TOG complete for AC_CFG_TO_AC
+
+ Starting TOG test on AC_CFG, index 2...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done  Delta TOG prep time in micro secs 27048
+  Delta TOG execution time in micro secs 13
+  Delta TOG restore time in micro secs 27048
+  TOG complete for AC_CFG
+
+ Starting TOG test on RC_TO_HC2, index 3...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done  Delta TOG prep time in micro secs 27047
+  Delta TOG execution time in micro secs 13
+  Delta TOG restore time in micro secs 27047
+  TOG complete for RC_TO_HC2
+
+ Starting TOG test on HC2_TO_HC, index 4...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done  Delta TOG prep time in micro secs 27047
+  Delta TOG execution time in micro secs 14
+  Delta TOG restore time in micro secs 27046
+  TOG complete for HC2_TO_HC
+
+ Starting TOG test on RC_TO_RC, index 5...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done  Delta TOG prep time in micro secs 27047
+  Delta TOG execution time in micro secs 11
+  Delta TOG restore time in micro secs 27046
+  TOG complete for RC_TO_RC
+
+ Starting TOG test on IPPHY_TO_RTI, index 6...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done  Delta TOG prep time in micro secs 27045
+  Delta TOG execution time in micro secs 12
+  Delta TOG restore time in micro secs 27047
+  TOG complete for IPPHY_TO_RTI
+
+ Starting TOG test on IPPHY_TO_IPPHY, index 7...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done  Delta TOG prep time in micro secs 27046
+  Delta TOG execution time in micro secs 11
+  Delta TOG restore time in micro secs 27048
+  TOG complete for IPPHY_TO_IPPHY
+
+ Starting TOG test on MAIN_INFRA, index 8...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done  Delta TOG prep time in micro secs 27046
+  Delta TOG execution time in micro secs 12
+  Delta TOG restore time in micro secs 27046
+  TOG complete for MAIN_INFRA
+
+ Starting TOG test on PVU0_CFG, index 9...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done  Delta TOG prep time in micro secs 27046
+  Delta TOG execution time in micro secs 11
+  Delta TOG restore time in micro secs 27045
+  TOG complete for PVU0_CFG
+
+ Starting TOG test on WKUP_VDC_INFRA, index 10...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done  Delta TOG prep time in micro secs 27043
+  Delta TOG execution time in micro secs 5
+  Delta TOG restore time in micro secs 27046
+  TOG complete for WKUP_VDC_INFRA
+
+ Starting TOG test on TIMEOUT_64B2, index 11...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done  Delta TOG prep time in micro secs 27043
+  Delta TOG execution time in micro secs 11
+  Delta TOG restore time in micro secs 27046
+  TOG complete for TIMEOUT_64B2
+
+ Starting TOG test on TIMEOUT_64B3, index 12...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done  Delta TOG prep time in micro secs 27043
+  Delta TOG execution time in micro secs 5126223
+  Delta TOG restore time in micro secs 27044
+  TOG complete for TIMEOUT_64B3
+
+ Starting TOG test on TIMEOUT_64B4, index 13...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done  Delta TOG prep time in micro secs 27045
+  Delta TOG execution time in micro secs 5126216
+  Delta TOG restore time in micro secs 27044
+  TOG complete for TIMEOUT_64B4
+
+ Starting TOG test on MCU_VDC_INFRA, index 14...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done  Delta TOG prep time in micro secs 27044
+  Delta TOG execution time in micro secs 7
+  Delta TOG restore time in micro secs 27045
+  TOG complete for MCU_VDC_INFRA
+
+ TOG Functionality Test Functionality test Passed.
+
+ TOG API Module Test API test Passed.
+
+ TOG Error Module Test Error test Passed.
+
+All tests have passed.
+tog_test_main.c:317:test_sdl_tog_test_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored
+OK

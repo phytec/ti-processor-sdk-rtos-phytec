@@ -1,0 +1,325 @@
+ESM Safety Example
+==================
+
+Introduction
+------------
+
+This example demonstrates High and Low priority events received from the WKUP_ESM, MCU_ESM, and ESM (Main domain ESM) through the application-registered callback. It also shows routing and clearing of events to the MCU_SAFETY_ERRORn pin.
+
+This example displays setting up ESM to
+
+    * Enable/Disable input events to the ESM module for each ESM instance
+    * Registration of application callback for ESM error events for each ESM instance
+    * Designating input events as high priority or low priority for each ESM instance
+    * Designating direct pin routing to MCU_SAFETY_ERRORn pin for external monitor communication
+
+The following modules are used as triggers to monitor and handle ESM events:
+
+    * Voltage and Thermal Manager (VTM)
+    * Timer
+    * ECC
+
+Use Cases
+---------
+
+    +----------+-------------------------------------+-----------+-----------------------------------+---------------------------------------------------+----------+-----------------------+
+    | Use Case | Description                         | ESM       | Input Event                       | Input Trigger                                     | Priority | Action                |
+    +==========+=====================================+===========+===================================+===================================================+==========+=======================+
+    | UC-1     | Configuration of Low Priority ESM   | WKUP_ESM0 | WKUP_VTM0_THERM_LVL_GT_TH1_INTR_0 | Change threshold in VTM to trigger early warning, | Low      | Error event is logged |
+    |          | event with no error pin trigger     |           | Temp greature than early warning  | then return thresholds back to normal to simulate |          | by application.       |
+    |          | using WKUP_ESM0.                    |           | threshold                         | "cooling down".                                   |          | Print event to UART.  |
+    |          | Error event is triggered and app    |           |                                   |                                                   |          | Error event is cleared|
+    |          | is notified of event                |           |                                   |                                                   |          |                       |
+    +----------+-------------------------------------+-----------+-----------------------------------+---------------------------------------------------+----------+-----------------------+
+    | UC-2     | Configuration of High Priority ESM  | WKUP_ESM0 | WKUP_VTM0_THERM_LVL_GT_TH2_INTR_0 | Change threshold in VTM to trigger early warning, | High     | Error event is logged |
+    |          | event with error pin trigger using  |           |                                   | then alter thresholds again to pass temperature   |          | by application.       |
+    |          | WKUP_ESM0.                          |           |                                   | critical threshold. Lastly, return thresholds back|          | Print event to UART.  |
+    |          | Application handles the error event |           |                                   | to normal to simulate "cooling down".             |          | Application clears    |
+    |          | in software and clears the error    |           |                                   |                                                   |          | error pin to simulate |
+    |          | pin.                                |           |                                   |                                                   |          | resolution of event   |
+    |          |                                     |           |                                   |                                                   |          | by software.          |
+    +----------+-------------------------------------+-----------+-----------------------------------+---------------------------------------------------+----------+-----------------------+
+    | UC-3     | Configuration of High Priority ESM  | WKUP_ESM0 | WKUP_VTM0_THERM_LVL_GT_TH2_INTR_0 | Change threshold i nVTM to trigger early warning, | High     | Error event is logged |
+    |          | event with error pin trigger.       |           |                                   | then alter thresholds again to pass temperature   |          | by application.       |
+    |          | Applicatino is unable to handle the |           |                                   | critical threshold. Lastly, return thresholds back|          | Print event to UART.  |
+    |          | error event in software and does not|           |                                   | to normal to simulate "cooling down".             |          | Application does not  |
+    |          | clear the error pin.                |           |                                   |                                                   |          | clear the error pin   |
+    |          |                                     |           |                                   |                                                   |          | in order to simulate  |
+    |          |                                     |           |                                   |                                                   |          | no internal resolution|
+    |          |                                     |           |                                   |                                                   |          | by software.          |
+    |          |                                     |           |                                   |                                                   |          | Simulates notification|
+    |          |                                     |           |                                   |                                                   |          | to external monitor.  |
+    +----------+-------------------------------------+-----------+-----------------------------------+---------------------------------------------------+----------+-----------------------+
+    | UC-4     | Configuration of Low Priority ESM   | MCU_ESM0  | MCU_TIMER3_INTR_PEND_0            | Timer expiration                                  | Low      | Error event is logged |
+    |          | event with no error pin trigger     |           |                                   |                                                   |          | by application.       |
+    |          | using MCU_ESM0.                     |           |                                   |                                                   |          | Print event to UART.  |
+    |          | Error is triggered and application  |           |                                   |                                                   |          | Error event is cleared|
+    |          | is notified of the event.           |           |                                   |                                                   |          | and execution         |
+    |          |                                     |           |                                   |                                                   |          | continues.            |
+    +----------+-------------------------------------+-----------+-----------------------------------+---------------------------------------------------+----------+-----------------------+
+    | UC-5     | Configuration of High Priority ESM  | MCU_ESM0  | MCU_TIMER2_INTR_PEND_0            | Timer expiration                                  | High     | Error event is logged |
+    |          | event with error pin trigger using  |           |                                   |                                                   |          | by application.       |
+    |          | MCU_ESM0.                           |           |                                   |                                                   |          | Print event to UART.  |
+    |          | Application handles the error event |           |                                   |                                                   |          | Application clears    |
+    |          | in software and clears the error    |           |                                   |                                                   |          | error pin to simulate |
+    |          | pin.                                |           |                                   |                                                   |          | resolution of event   |
+    |          |                                     |           |                                   |                                                   |          | by software.          |
+    +----------+-------------------------------------+-----------+-----------------------------------+---------------------------------------------------+----------+-----------------------+
+    | UC-6     | Configuration of Low Priority ESM   | ESM0      |                                   | ECC error injection                               | Low      | Error event is logged |
+    |          | event with no error pin trigger     |           |                                   |                                                   |          | by application.       |
+    |          | using ESM0.                         |           |                                   |                                                   |          | Print event to UART.  |
+    |          | Error event is triggered and app    |           |                                   |                                                   |          | Error event is cleared|
+    |          | is notified of event.               |           |                                   |                                                   |          | and execution         |
+    |          |                                     |           |                                   |                                                   |          | continues.            |
+    +----------+-------------------------------------+-----------+-----------------------------------+---------------------------------------------------+----------+-----------------------+
+    | UC-7     | Configuration of Hishg Priority ESM | ESM0      |                                   | ECC error injection                               | High     | Error event is logged |
+    |          | event with error pin trigger        |           |                                   |                                                   |          | by application.       |
+    |          | using ESM0.                         |           |                                   |                                                   |          | Print event to UART.  |
+    |          | Application handles the error event |           |                                   |                                                   |          | Application clears    |
+    |          | in software and clears the error    |           |                                   |                                                   |          | error pin to simulate |
+    |          | pin.                                |           |                                   |                                                   |          | resolution of event   |
+    |          |                                     |           |                                   |                                                   |          | by software.          |
+    +----------+-------------------------------------+-----------+-----------------------------------+---------------------------------------------------+----------+-----------------------+
+
+
+Example Details
+---------------
+
+The example should be loaded to the hardware using the Secondary Boot Loader (SBL) from the SDK.
+
++---------------------+------------------------------------------------+------------------------------------------+
+| Example Name        | Location                                       | Build Command                            |
++=====================+================================================+==========================================+
+| esm_wkup_mcu_app    | [sdl_install_dir]/examples/esm/wkup_mcu_esm0/  | make esm_wkup_mcu_app PROFILE=release    |
++---------------------+------------------------------------------------+------------------------------------------+
+| esm_main_app        | [sdl_install_dir]/examples/esm/main_esm0/      | make esm_main_app PROFILE=release        |
++---------------------+------------------------------------------------+------------------------------------------+
+
+Expected Output
+---------------
+
+esm_wkup_mcu_app:
+
+.. code:: bash
+
+     ESM Example Application
+
+     VTM_ESM_init: Init WKUP ESM complete 
+     
+     TIMER_ESM_init: Init MCU ESM complete 
+     
+     ESM example init complete
+       Any clear of MCU_SAFETY_ERRORn pin will first wait 10 usecs
+       Minimum Time Interval is 99 usecs
+     ESM timer initialization complete
+     
+     Starting Test Case 0 
+     
+       ESM Call back function called : instType 0x1, intType 0x2, grpChannel 0x0, index 0x8, intSrc 0x8 
+       Take action 
+       ESM instance #1, ESM interrupt type = Low Priority ESM event
+     
+         Got ltThr0 interrupt through ESM module
+     
+         System at a temperature below the threshold of lt_thr0 
+         System running at a safe temperature 
+     
+       ESM Call back function called : instType 0x1, intType 0x2, grpChannel 0x0, index 0x9, intSrc 0x9 
+       Take action 
+       ESM instance #1, ESM interrupt type = Low Priority ESM event
+     
+       ESM Call back function called : instType 0x1, intType 0x1, grpChannel 0x0, index 0xa, intSrc 0xa 
+       Take action 
+       ESM instance #1, ESM interrupt type = High Priority ESM event
+     case 0 sucess
+     
+     Use Case 0 completed: Input Event Trigger = Step completed successfully, 
+                            Event Handler Complete = Step completed successfully, 
+                            MCU_SAFETY_ERRORn Pin Clear = Step completed successfully
+     
+     Starting Test Case 1 
+     
+       ESM Call back function called : instType 0x1, intType 0x2, grpChannel 0x0, index 0x8, intSrc 0x8 
+       Take action 
+       ESM instance #1, ESM interrupt type = Low Priority ESM event
+     
+       ESM Call back function called : instType 0x1, intType 0x1, grpChannel 0x0, index 0xa, intSrc 0xa 
+       Take action 
+       ESM instance #1, ESM interrupt type = High Priority ESM event
+     
+       ESM Call back function called : instType 0x1, intType 0x2, grpChannel 0x0, index 0x8, intSrc 0x8 
+       Take action 
+       ESM instance #1, ESM interrupt type = Low Priority ESM event
+     
+         Got ltThr0 interrupt through ESM module
+     
+         System at a temperature below the threshold of lt_thr0 
+         System running at a safe temperature 
+     
+       ESM Call back function called : instType 0x1, intType 0x2, grpChannel 0x0, index 0x9, intSrc 0x9 
+       Take action 
+       ESM instance #1, ESM interrupt type = Low Priority ESM event
+     
+       timerExpPinDisable: before clear, ESM instance 1 view of MCU_SAFETY_ERRORn pin is 0
+     case 1 sucess
+     
+     Use Case 1 completed: Input Event Trigger = Step completed successfully, 
+                            Event Handler Complete = Step completed successfully, 
+                            MCU_SAFETY_ERRORn Pin Clear = Step completed successfully
+     
+     Starting Test Case 2 
+     
+       ESM Call back function called : instType 0x1, intType 0x2, grpChannel 0x0, index 0x8, intSrc 0x8 
+       Take action 
+       ESM instance #1, ESM interrupt type = Low Priority ESM event
+     
+       ESM Call back function called : instType 0x1, intType 0x1, grpChannel 0x0, index 0xa, intSrc 0xa 
+       Take action 
+       ESM instance #1, ESM interrupt type = High Priority ESM event
+     
+       timerExpPinDisable: before clear, ESM instance 1 view of MCU_SAFETY_ERRORn pin is 0
+     
+       ESM Call back function called : instType 0x1, intType 0x2, grpChannel 0x0, index 0x8, intSrc 0x8 
+       Take action 
+       ESM instance #1, ESM interrupt type = Low Priority ESM event
+     
+         Got ltThr0 interrupt through ESM module
+     
+         System at a temperature below the threshold of lt_thr0 
+         System running at a safe temperature 
+     
+       ESM Call back function called : instType 0x1, intType 0x2, grpChannel 0x0, index 0x9, intSrc 0x9 
+       Take action 
+       ESM instance #1, ESM interrupt type = Low Priority ESM event
+     
+     Use Case 2 completed: Input Event Trigger = Step completed successfully, 
+                            Event Handler Complete = Step completed successfully, 
+                            MCU_SAFETY_ERRORn Pin Clear = Step completed successfully
+     
+     Starting Test Case 3 
+     ERR: Unexpected ESM Instance 2 and ESM Interrupt Type 2 
+     
+       ESM Call back function called : instType 0x2, intType 0x2, grpChannel 0x1, index 0x19, intSrc 0x39 
+       Take action 
+       ESM instance #2, ESM interrupt type = Low Priority ESM event
+     
+     Use Case 3 completed: Input Event Trigger = Step completed successfully, 
+                            Event Handler Complete = Step completed successfully, 
+                            MCU_SAFETY_ERRORn Pin Clear = Step completed successfully
+     
+     Starting Test Case 4 
+     ERR: Unexpected ESM Instance 2 and ESM Interrupt Type 1 
+     
+       ESM Call back function called : instType 0x2, intType 0x1, grpChannel 0x1, index 0x18, intSrc 0x38 
+       Take action 
+       ESM instance #2, ESM interrupt type = High Priority ESM event
+     
+       timerExpPinDisable: before clear, ESM instance 2 view of MCU_SAFETY_ERRORn pin is 0
+     
+     Use Case 4 completed: Input Event Trigger = Step completed successfully, 
+                            Event Handler Complete = Step completed successfully, 
+                            MCU_SAFETY_ERRORn Pin Clear = Step completed successfully
+     
+     
+     ESM Example Application summary
+     -------------------------------
+     Completed 5 Test Cases
+     Received 4 High Priority Interrupts
+     Received 9 Low Priority Interrupts
+     
+     Test Case Event Log
+     ------------------
+     
+     Test Case 0: ESM Call back function called : grpChannel 0x0, index 0x8, intSrc 0x8 
+       ESM instance #1, ESM interrupt type = Low Priority ESM event
+     
+     Test Case 0: ESM Call back function called : grpChannel 0x0, index 0x9, intSrc 0x9 
+       ESM instance #1, ESM interrupt type = Low Priority ESM event
+     
+     Test Case 0: ESM Call back function called : grpChannel 0x0, index 0xa, intSrc 0xa 
+       ESM instance #1, ESM interrupt type = High Priority ESM event
+     
+     Test Case 1: ESM Call back function called : grpChannel 0x0, index 0x8, intSrc 0x8 
+       ESM instance #1, ESM interrupt type = Low Priority ESM event
+     
+     Test Case 1: ESM Call back function called : grpChannel 0x0, index 0xa, intSrc 0xa 
+       ESM instance #1, ESM interrupt type = High Priority ESM event
+     
+     Test Case 1: ESM Call back function called : grpChannel 0x0, index 0x8, intSrc 0x8 
+       ESM instance #1, ESM interrupt type = Low Priority ESM event
+     
+     Test Case 1: ESM Call back function called : grpChannel 0x0, index 0x9, intSrc 0x9 
+       ESM instance #1, ESM interrupt type = Low Priority ESM event
+     
+     Test Case 2: ESM Call back function called : grpChannel 0x0, index 0x8, intSrc 0x8 
+       ESM instance #1, ESM interrupt type = Low Priority ESM event
+     
+     Test Case 2: ESM Call back function called : grpChannel 0x0, index 0xa, intSrc 0xa 
+       ESM instance #1, ESM interrupt type = High Priority ESM event
+     
+     Test Case 2: ESM Call back function called : grpChannel 0x0, index 0x8, intSrc 0x8 
+       ESM instance #1, ESM interrupt type = Low Priority ESM event
+     
+     Test Case 2: ESM Call back function called : grpChannel 0x0, index 0x9, intSrc 0x9 
+       ESM instance #1, ESM interrupt type = Low Priority ESM event
+     
+     Test Case 3: ESM Call back function called : grpChannel 0x1, index 0x19, intSrc 0x39 
+       ESM instance #2, ESM interrupt type = Low Priority ESM event
+     
+     Test Case 4: ESM Call back function called : grpChannel 0x1, index 0x18, intSrc 0x38 
+       ESM instance #2, ESM interrupt type = High Priority ESM event
+
+     ESM Example Application: Complete
+      All Use cases have passed. 
+     esm_input_trig.c:638:esm_app:PASS
+     
+     -----------------------
+     1 Tests 0 Failures 0 Ignored
+
+esm_main_app:
+
+.. code:: bash
+
+    ESM Example Application
+    
+    ESM_ECC_Example_init: Init MAIN ESM complete
+    
+    SDTF_init: MCU MSMC ECC Init complete
+    
+    ESM_ECC_Example_init: ECC Callback Init complete for Main ESM
+    
+     ESM Safety Example tests: starting
+     MSMC Double bit error inject Example test UC-6: starting
+      ESM Call back function called : instType 0x3, intType 0x2, grpChannel 0x1, index 0x10, intSrc 0x30
+      Take action
+     Low Priority Interrupt Executed
+    
+      ECC Error Call back function called : eccMemType 16, errorSrc 0x2, ramId 107, bitErrorOffset 0x00000000, bitErrorGroup 0
+    
+     MSMC Double bit error inject test: Subtype 0x6b test complete
+     UC-6: Got Low priority ESM Interrupt
+    
+     MSMC Double bit error inject Example test UC-7: starting
+      ESM Call back function called : instType 0x3, intType 0x1, grpChannel 0x1, index 0x11, intSrc 0x31
+      Take action
+     High Priority Interrupt Executed
+    
+      ECC Error Call back function called : eccMemType 16, errorSrc 0x1, ramId 20, bitErrorOffset 0x00000000, bitErrorGroup 0
+    
+     MSMC Double bit error inject test: Subtype 0x14 test complete
+     UC-7: Got High priority ESM Interrupt
+    
+     ESM Safety Example tests: success
+     ESM UC-6 and UC-7 Test Passed.
+    
+    All Use_Cases have passed.
+    main.c:292:esm_app:PASS
+    
+    -----------------------
+    1 Tests 0 Failures 0 Ignored
+
+
+Reference
+---------
+
+`ESM User Guide <../modules/esm.html>`_

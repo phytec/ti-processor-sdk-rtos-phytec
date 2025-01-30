@@ -1,0 +1,92 @@
+
+CCM Test Application
+
+  ESM Call back function called : instType 0x2, intType 0x1, grpChannel 0x3, index 0x0, intSrc 0x60
+  Take action
+
+  ESM Call back function called : instType 0x2, intType 0x1, grpChannel 0x3, index 0x3, intSrc 0x63
+  Take action
+
+ CCM_Test_init: Init MCU ESM complete
+
+CCM_Test_init: Init MAIN ESM complete
+
+ CCM_Test_init: Init WKUP ESM complete
+
+CCM_Test_init: CCM Init complete
+
+CCM_Test_init: CCM Init complete
+
+CCM Functional Test
+
+ CCM self test: starting
+ CCM Self Test complete
+ CCM self test with error forcing: starting
+  ESM Call back function called : instType 0x2, intType 0x1, grpChannel 0x3, index 0x0, intSrc 0x60
+  Take action
+
+ CCM Self Test with error forcing complete
+ CCM inject  error: test starting
+  ESM Call back function called : instType 0x2, intType 0x1, grpChannel 0x3, index 0x0, intSrc 0x60
+  Take action
+
+  ESM Call back function called : instType 0x2, intType 0x1, grpChannel 0x3, index 0x1, intSrc 0x61
+  Take action
+
+ CCM inject Test complete
+ CCM inactivity monitor self test: starting
+ CCM inactivity monitor Self Test complete
+ CCM Inactivity self test with error forcing: starting
+  ESM Call back function called : instType 0x2, intType 0x1, grpChannel 0x3, index 0x0, intSrc 0x60
+  Take action
+
+ CCM Inactivity Self Test with error forcing complete
+ CCM inject inactivity monitor error: test starting
+  ESM Call back function called : instType 0x2, intType 0x1, grpChannel 0x3, index 0x0, intSrc 0x60
+  Take action
+
+  ESM Call back function called : instType 0x2, intType 0x1, grpChannel 0x3, index 0x2, intSrc 0x62
+  Take action
+
+ CCM inject inactivity monitor Test complete
+ CCM polarity invert self test: starting
+  ESM Call back function called : instType 0x2, intType 0x1, grpChannel 0x3, index 0x0, intSrc 0x60
+  Take action
+
+  ESM Call back function called : instType 0x2, intType 0x1, grpChannel 0x3, index 0x1, intSrc 0x61
+  Take action
+
+ CCM polarity invert self test complete
+ CCM VIM self test: starting
+ CCM VIM Self Test complete
+ CCM VIM self test with error forcing: starting
+  ESM Call back function called : instType 0x2, intType 0x1, grpChannel 0x3, index 0x0, intSrc 0x60
+  Take action
+
+ CCM VIM Self Test with error forcing complete
+ CCM inject VIM error: test starting
+  ESM Call back function called : instType 0x2, intType 0x1, grpChannel 0x3, index 0x0, intSrc 0x60
+  Take action
+
+  ESM Call back function called : instType 0x2, intType 0x1, grpChannel 0x3, index 0x3, intSrc 0x63
+  Take action
+
+ CCM inject VIM Test complete
+  ESM Call back function called : instType 0x2, intType 0x1, grpChannel 0x3, index 0x0, intSrc 0x60
+  Take action
+
+  ESM Call back function called : instType 0x2, intType 0x1, grpChannel 0x3, index 0x1, intSrc 0x61
+  Take action
+
+ CCM Functionality Test Passed.
+
+ CCM SDL API Test Passed.
+
+ CCM SDL Error Test Passed.
+
+All tests have passed.
+common/ccm_test_main.c:262:test_sdl_ccm_test_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored
+OK

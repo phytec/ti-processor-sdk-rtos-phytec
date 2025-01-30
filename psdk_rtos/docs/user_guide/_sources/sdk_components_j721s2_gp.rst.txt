@@ -1,0 +1,98 @@
+
+.. _sdk_components:
+
+
+SDK Components
+^^^^^^^^^^^^^^
+
+The following table lists all the top-level folders in the SDK package and the component
+it represents.
+
++------------------------+----------------------------------+
+| Folder                 | Component                        |
++========================+==================================+
+| cg_xml_*               | :ref:`cg_xml`                    |
++------------------------+----------------------------------+
+| mcusw                  | :ref:`mcusw`                     |
++------------------------+----------------------------------+
+| pdk_j721s2_*           | :ref:`pdk`                       |
++------------------------+----------------------------------+
+| psdk_rtos              | SDK Scripts and Documentation    |
++------------------------+----------------------------------+
+| sdl                    | :ref:`sdl`                       |
++------------------------+----------------------------------+
+
+.. _pdk:
+
+Platform Development Kit (PDK)
+------------------------------
+
+This package contains device drivers, bootloaders, CSL for baremetal/RTOS.
+
++------------------------+---------------------------------------+
+| Version                | |pdk_version|                         |
++------------------------+---------------------------------------+
+| Release notes          | |pdk_release_notes|                   |
++------------------------+---------------------------------------+
+| User guide             | |pdk_user_guide|                      |
++------------------------+---------------------------------------+
+
+.. _mcusw:
+
+MCU Software (MCU SW)
+---------------------
+
+This package contains integrated MCU demos, MCAL for AutoSAR.
+
++------------------------+---------------------------------------+
+| Version                | |mcusw_version|                       |
++------------------------+---------------------------------------+
+| Release notes          | |mcusw_release_notes|                 |
++------------------------+---------------------------------------+
+| User guide             | |mcusw_user_guide|                    |
++------------------------+---------------------------------------+
+
+
+.. _sdl:
+
+Software Diagnostics Library (SDL)
+----------------------------------
+
+This package provides interfaces to safety mechanisms and features
+for the development of software applications involving Functional
+Safety
+
++------------------------+---------------------------------------+
+| Version                | |sdl_version|                         |
++------------------------+---------------------------------------+
+| Release notes          | |sdl_release_notes|                   |
++------------------------+---------------------------------------+
+| User guide             | |sdl_user_guide|                      |
++------------------------+---------------------------------------+
+
+System firmware (SYSFW)
+-----------------------
+
+This package provides services for clock, power and resource management.
+These services are accessed via the "sciclient" interface in PDK.
+
++------------------------+---------------------------------------+
+| Version                | |sysfw_version|                       |
++------------------------+---------------------------------------+
+| User guide             | |sysfw_user_guide|                    |
++------------------------+---------------------------------------+
+
+.. _cg_xml:
+
+CGT XML Processing Scripts
+**************************
+
+This package contains Code Generation Tools XML Processing Scripts
+
++------------------------+---------------------------------------+
+| Version                | 2.61.00                               |
++------------------------+---------------------------------------+
+| Release notes          | |cg_xml_release_notes|                |
++------------------------+---------------------------------------+
+| User guide             | |cg_xml_user_guide|                   |
++------------------------+---------------------------------------+

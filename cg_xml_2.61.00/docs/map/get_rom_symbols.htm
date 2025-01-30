@@ -1,0 +1,85 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Documentation for get_rom_symbols.pl</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Documentation for get_rom_symbols.pl</span></strong></big>
+</td></tr>
+</table>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#USAGE">USAGE</a></li>
+  <li><a href="#ADDTIONAL-OPTIONS">ADDTIONAL OPTIONS</a></li>
+  <li><a href="#PERL-VERSION-DETAILS">PERL VERSION DETAILS</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>get_rom_symbols.pl</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<p>Perl script that reads in an XML file representation of a linker map file and spits out many .asm files as follows: -</p>
+
+<pre><code>   /* This file is *auto-generated*. Mods risk being overwritten */
+   
+        .global _memset
+   _memset      .set    0x3e600</code></pre>
+
+<p>The end output is a list of all the symbols and their addresses to which they got ROM&#39;ed.</p>
+
+<p>This would typically be run in the context of a batch file / shell-script doing e.g. (first ensure cgtools\bin is in your path!) del *tmp*.asm del *tmp*.obj</p>
+
+<pre><code>   perl c:\temp\cg_xml\map\get_rom_symbols.pl ..\rom_image\rom_rts.xml -s=.rom_rts
+
+   cl6x -g -mv6400 *.asm
+
+   ar6x r rom_rts_symbols.lib *.obj
+
+   del *tmp*.asm
+   del *tmp*.obj</code></pre>
+
+<p>Why do we put each in a separate .asm file? Because then we can patch on a per function basis i.e. we simply explicitly link the patched RAM version before linkage of the ROM symbols lib. Each asm file is built and archived into a library thus enabling standard linker -priority switch selection mechanisms.</p>
+
+<p>Wildcards on section names can be specified by using the -e option e.g. -e=.bios.* will pick up all of .bios, fbios, .bios_abc, .bios:abc We separate this from -s because -s is an exact string match e.g. -s=.bios will *only* pick up .bios whereas -e=.bios would pick up .bios and fbios.</p>
+
+<p>We also support absolute symbols - what does this mean? BIOS 5.x for example has several absolute symbols which are symbols in the sym-table with a constant value like PIP_A_TABLEN yet they do not take up any target memory, nor are they part of any section. We need to &#39;bring these forward&#39; in same fashion as the functions in sections. We use a different cmd line option (-a) to do this. The script user has to pass in the name of the absolute symbols to generate files with .set directives.</p>
+
+<p>NOTE : this script generates A LOT of files! These are temporary since we can kill the .asm and their .obj&#39;s after we archive the objects into a lib. But we dont do the &#39;cleanup&#39; in this script because we wish to avoid shell [delete, rename etc] commands inside this script which would tie the script to a particular environment [windows, linux etc] You probably want to run this script from an empty directory</p>
+
+<p>Note that the i/p XML version of map file can be obtained via linker option --xml_link_info=&lt;file&gt;</p>
+
+<h1 id="USAGE">USAGE</h1>
+
+<pre><code>   get_rom_symbols.pl link_xml_file -s=.rom_sect1 -s=.rom_sect2 -e=.sect.* -a=sym1</code></pre>
+
+<h1 id="ADDTIONAL-OPTIONS">ADDTIONAL OPTIONS</h1>
+
+<pre><code> --cg_xml_version : Print out the version of the cg_xml package in use</code></pre>
+
+<h1 id="PERL-VERSION-DETAILS">PERL VERSION DETAILS</h1>
+
+<p>This script was written using Perl version 5.8.3. It may not work with earlier revisions of Perl.</p>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Documentation for get_rom_symbols.pl</span></strong></big>
+</td></tr>
+</table>
+
+</body>
+
+</html>
+
+

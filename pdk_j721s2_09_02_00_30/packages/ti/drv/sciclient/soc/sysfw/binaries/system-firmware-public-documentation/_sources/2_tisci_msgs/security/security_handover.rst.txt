@@ -1,0 +1,44 @@
+=======================================
+Security Handover Message Description
+=======================================
+
+.. _sec_sec_handover_tisci_desc:
+
+This chapter provides information on |sysfw| API for Security handover.
+The only available API is listed below.
+
++------------------+-----------------------------------------------------------------------+-----------------+--------------------+
+| TISCI Message ID |                        Message Name                                   | Available in GP | Avialable in HS-FS |
++==================+=======================================================================+=================+====================+
+| 0x9030           | :ref:`TISCI_MSG_SEC_HANDOVER   <sec-api-sec-handover>`                | Yes             | Yes                |
++------------------+-----------------------------------------------------------------------+-----------------+--------------------+
+
+This document must be read along side
+
+#. :doc:`../../6_topic_user_guides/security_handover` and
+#. :doc:`../../3_boardcfg/BOARDCFG_SEC`, specifically :ref:`pub_boardcfg_security_handover`
+
+API Description
+===============
+
+.. _sec-api-sec-handover:
+
+TISCI_MSG_SEC_HANDOVER - Do Security Handover
+---------------------------------------------
+
+**Usage**:
+
++------------------------+--------+
+| **Message Type**       | Normal |
++------------------------+--------+
+| **Secure Queue Only?** | Yes    |
++------------------------+--------+
+
+TISCI Message ID
+----------------
+
+.. sysfwapimacro:: TISCI_MSG_SEC_HANDOVER
+
+.. sysfwapistruct:: tisci_msg_security_handover_req
+
+.. sysfwapistruct:: tisci_msg_security_handover_resp

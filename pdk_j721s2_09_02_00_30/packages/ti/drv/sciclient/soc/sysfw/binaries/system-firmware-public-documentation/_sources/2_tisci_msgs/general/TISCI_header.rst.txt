@@ -1,0 +1,291 @@
+Texas Instruments System Controller Interface (TISCI)
+=====================================================
+
+Communicating with the System Controller Entity
+-----------------------------------------------
+
+Texas Instruments' System Control Interface (TISCI) defines the communication
+protocol between various processing entities to the System Control Entity on
+TI SoCs. This is a set of message formats and sequence of operations required
+to communicate and get system services processed from the System Control Entity
+in the SoC.
+
+The block diagram of the different Hosts communicating with the System Firmware
+or System Controller Entity is as shown below.
+
+A host uses multiple threads to communicate with the System Firmware.
+On the K3 devices the following threads are used for each host:
+
+- High priority thread write to System Firmware
+- Low priority thread write to System Firmware
+- Response thread read from System Firmware
+- Notification thread read from System Firmware
+- Notification Response thread write to System Firmware
+
+On the K3-Lite Devices the following threads are used for each host:
+
+- Low priority thread write to System Firmware
+- Response thread read from System Firmware
+
+Each physical processor in the SoC has the ability to operate in different modes
+like privileged and non-priviledged, secure or non secure. The definition of host
+goes beyond the physical processor and also differentiates the mode in which
+the processor operates. Refer :ref:`soc_doc_am6_public_host_desc_host_list`
+for the list of hosts supported in the AM65XX device. Similar Host ID list
+is available for other devices.
+
+
+.. note::
+   The majority of users will not need to use TISCI since they will
+   use Processor SDK Linux/RTOS services. For users that do not use
+   Processor SDK, TISCI is provided to access system services.
+
+   An example of when you may need to make use of TISCI is for the
+   implementation of another operating system. Users can look at the
+   integration in Processor SDK for an example.
+
+On devices with distributed TIFS and DM services across multiple cores,
+the interaction between the hosts and the security and device manager is as below:
+
+.. figure:: ../../img/softwareInteraction.png
+
+    Software on different cores  and secure proxy communication channels
+
+The communication mechanism for different cores is as below
+
+For secure cores the communication mechanism is as below:
+
+.. figure:: ../../img/SeqDiagram_Secure.png
+
+For messages running from MCU R5F the communication mechanism is as below:
+
+.. figure:: ../../img/SeqDiagram_NonSecure_R5.png
+
+For messages running from other non-secure cores the communication mechanism is as below:
+
+.. figure:: ../../img/SeqDiagram_NonSecure_other.png
+
+The following subsections gives a high level overview of the different
+APIs and functions available via the TISCI interface.
+
+Power and Clock Management
+--------------------------
+
+Public APIs are provided to perform:
+
+- Device Management: Enable and release a module
+
+  - This configures both power and clock details for the module and keeps
+    track of its usage.
+- Clock Management: Control the frequency of the clock to a module.
+- Device Reset Control
+
+Refer :ref:`pm_messages` for more details.
+
+Resource Management
+-------------------
+
+Public APIs are provided to:
+
+- Manage DMA/Navigator Resources
+
+  - UDMAP/PKTDMA/BCDMA
+  - Ring Accelerator
+  - PSI-L
+  - Proxy
+- Program interrupts (interrupt aggregators and routers) both
+  at SoC and subsystem (DMA/Navigator) level
+
+Refer :ref:`rm_messages` for more details.
+
+Foundational Security Management
+--------------------------------
+
+Public APIs are provided to directly configure these features following
+polices and root of trust:
+
+- Firewall
+
+  - Additional layer of access control beyond MMU/MPU located at each
+    destination/slave interface to control memory and register access
+- SA2-UL Security Contexts
+
+  -  Contains actual keys for crypto accelerator
+
+APIs are also provided to authenticate and/or decrypt blobs in memory.
+
+Refer :ref:`security_messages` for more details.
+
+TISCI General Messages
+----------------------
+
+In addition to the above messages, the TISCI also supports certain general
+messages. Details regarding the same are available at :ref:`general_messages`.
+Refer to this section in order to understand the generic message header 
+format for each of the power management, resource management and security
+management messages.
+
+
+TISCI Generic Messaging Header
+------------------------------
+
+All messages are prefixed by a header. This header is always present for
+transmit or receive messages. The format is as follows:
+
+.. sysfwapistruct:: tisci_header
+    :exclude-members: payload
+
+The ``host`` field must contain a value from the
+:doc:`Valid SoC Host ID List <../../5_soc_doc/am65x/hosts>`
+that corresponds to the host actually sending the message as identified. 
+
+The ``seq`` field is a sequence number that will be returned back to the user
+for the response corresponding to the message. It is up to the user to define
+``seq`` in whatever way they choose. The primary intent of this field is to
+allow for the queueing of multiple messages on different priority queues while
+still being able to identify the response to the specific message that was
+transmitted.
+
+The following generic flags are available for the ``flags`` field:
+
+Request flags
+^^^^^^^^^^^^^
+
+.. sysfwapimacro:: TISCI_MSG_FLAG_RESERVED0
+.. sysfwapimacro:: TISCI_MSG_FLAG_AOP
+
+.. warning::
+
+   It is critical that the TISCI_MSG_FLAG_AOP is set (often
+   TISCI_MSG_FLAG_AOP is the desired option) if a proper response is
+   required, as without any ACK requested no response will be sent at all,
+   even in the case of failure. If no response is acceptable this warning
+   can be disregarded.
+
+Response flags
+^^^^^^^^^^^^^^
+
+.. sysfwapimacro:: TISCI_MSG_FLAG_ACK
+
+
+.. _pub_secure_msg_header:
+
+Secure Messaging Header
+-----------------------
+
+All messages received by System Firmware through a secure transport must include
+a "Secure Messaging Header" in addition to the "Generic Messaging Header". The
+"Secure Messaging Header" allows System Firmware to verify that the message has
+been received intact. The format is as follows.
+
+.. note::
+   The Secure Messaging Header is only required when sending messages over
+   secure transport. Messages sent over non-secure transport must not
+   contain the secure messaging header.
+
+.. sysfwapistruct:: tisci_sec_header
+
+.. figure:: ../../img/tisci-sec-ext-images/secure-header.png
+
+    Secure Messaging Header format
+
+
+1. The Secure header is mandatory for all messages that are received via secure
+   transports. In AM6x devices, secure transport is a secure proxy thread that
+   has been marked as secure.
+
+2. The secure header is placed before a TI SCI message. We chose this header
+   placement as it is akin to wrapping a TISCI message in a secure header.
+   Processing of the secure header can happen in a separate layer on both the
+   transmitter and the receiver. Rest of the code can be unaware of the secure
+   header.
+
+3. The first two bytes of the secure header are used for storing the
+   integrity check field.
+
+4. The next two bytes of the secure header are reserved for future use and are
+   initialized to zero.
+
+Secure header in the request path
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The maximum length of the data that needs to be integrity checked is 56 bytes.
+Of these 8 bytes are taken up by the standard TISCI header, 4 bytes by the
+secure header leaving 44 bytes for the payload.
+
+.. figure:: ../../img/tisci-sec-ext-images/user-integrity-check-calculation.png
+
+            Integrity Check calculation in the request path
+
+The user is expected to
+
+1. Prepare the TISCI message as usual.
+
+2. Prepend the secure header initialized to zero. In the memory layout, the
+   secure header should be followed by the TISCI header. TISCI header should be
+   followed by the payload.
+
+3. The value of the integrity check is calculated as described in
+:ref:`tisci-sec-hdr-integ-check-calc`.
+
+4. The calculated value of the integrity check is inserted MSB first into the
+   secure header extension.
+
+   .. code-block:: c
+
+      integ_check[0] = MSB(calc_val)
+      integ_check[1] = LSB(calc_val)
+
+5. Send the message to System Firmware via the chosen transport.
+
+Secure header in the response path
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In the response path, System Firmware populates the integrity check in the same
+manner for all responses via a secure transport. The sender of the message can
+verify the integrity check before processing the response.
+
+Secure header on a GP device vs a HS device
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+GP Device
+~~~~~~~~~
+
+The Secure Messaging header **is not processed by System Firmware on a GP
+device**. So the host sending the TISCI request can populate the Secure
+Messaging Header with zeros.
+
+To maintain API compatiblity between GP and HS devices, all messages sent or
+received from System Firmware via a secure transport must include the Secure
+Messaging Header.
+
+HS Device
+~~~~~~~~~
+
+On a HS device, System Firmware processes the integrity check field. The
+integrity check field needs to be correctly populated as per the defined
+integrity check function for HS devices.
+
+
+.. _tisci-sec-hdr-integ-check-calc:
+
+Secure header integrity check calculation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. note::
+
+   The integrity check function for HS devices will be defined with the release
+   of the HS devices.
+
+TISCI Message Eligibility for Secure vs Non-secure transport
+------------------------------------------------------------
+
+Certain messages are only eligible to be sent over secure transport due
+to the nature of the services they offer. However, all messages are able be
+sent on secure queues, even when supported on non-secure queues as well.
+However, it must be considered that messages that can be sent on either
+secure or non-secure transport must have the tisci_sec_header **only**
+when being sent over secure transport.
+
+Each message has a table under a *Usage* section that describes whether a
+message is limited to being sent over secure queues only.

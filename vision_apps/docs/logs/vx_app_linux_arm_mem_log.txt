@@ -1,0 +1,86 @@
+root@j7-evm:/opt/vision_apps# ./vx_app_linux_arm_mem.out
+APP: Init ... !!!
+MEM: Init ... !!!
+MEM: Initialized DMA HEAP (fd=4) !!!
+MEM: Init ... Done !!!
+IPC: Init ... !!!
+IPC: Init ... Done !!!
+REMOTE_SERVICE: Init ... !!!
+REMOTE_SERVICE: Init ... Done !!!
+APP: Init ... Done !!!
+APP_MEM: 0: Allocated memory @ 0xffffb7df0000 of size 131072 bytes 
+APP_MEM: 0: Translated virtual addr = 0xffffb7df0000 -> phyical addr = ae000000 
+APP_MEM: 0: Exported dmaBufId 16 with offset 0
+APP_MEM: 1: Allocated memory @ 0xffffb7dd0000 of size 131072 bytes 
+APP_MEM: 1: Translated virtual addr = 0xffffb7dd0000 -> phyical addr = ae020000 
+APP_MEM: 1: Exported dmaBufId 18 with offset 0
+APP_MEM: 2: Allocated memory @ 0xffffb7db0000 of size 131072 bytes 
+APP_MEM: 2: Translated virtual addr = 0xffffb7db0000 -> phyical addr = ae040000 
+APP_MEM: 2: Exported dmaBufId 20 with offset 0
+APP_MEM: 3: Allocated memory @ 0xffffb7d90000 of size 131072 bytes 
+APP_MEM: 3: Translated virtual addr = 0xffffb7d90000 -> phyical addr = ae060000 
+APP_MEM: 3: Exported dmaBufId 22 with offset 0
+APP_MEM: 4: Allocated memory @ 0xffffb7d70000 of size 131072 bytes 
+APP_MEM: 4: Translated virtual addr = 0xffffb7d70000 -> phyical addr = ae080000 
+APP_MEM: 4: Exported dmaBufId 24 with offset 0
+APP_MEM: 5: Allocated memory @ 0xffffb7d50000 of size 131072 bytes 
+APP_MEM: 5: Translated virtual addr = 0xffffb7d50000 -> phyical addr = ae0a0000 
+APP_MEM: 5: Exported dmaBufId 26 with offset 0
+APP_MEM: 6: Allocated memory @ 0xffffb7d30000 of size 131072 bytes 
+APP_MEM: 6: Translated virtual addr = 0xffffb7d30000 -> phyical addr = ae0c0000 
+APP_MEM: 6: Exported dmaBufId 28 with offset 0
+APP_MEM: 7: Allocated memory @ 0xffffb7d10000 of size 131072 bytes 
+APP_MEM: 7: Translated virtual addr = 0xffffb7d10000 -> phyical addr = ae0e0000 
+APP_MEM: 7: Exported dmaBufId 30 with offset 0
+APP_MEM: 8: Allocated memory @ 0xffffb7cf0000 of size 131072 bytes 
+APP_MEM: 8: Translated virtual addr = 0xffffb7cf0000 -> phyical addr = ae100000 
+APP_MEM: 8: Exported dmaBufId 32 with offset 0
+APP_MEM: 9: Allocated memory @ 0xffffb7cd0000 of size 131072 bytes 
+APP_MEM: 9: Translated virtual addr = 0xffffb7cd0000 -> phyical addr = ae120000 
+APP_MEM: 9: Exported dmaBufId 34 with offset 0
+APP_MEM: 10: Allocated memory @ 0xffffb7cb0000 of size 131072 bytes 
+APP_MEM: 10: Translated virtual addr = 0xffffb7cb0000 -> phyical addr = ae140000 
+APP_MEM: 10: Exported dmaBufId 36 with offset 0
+APP_MEM: 11: Allocated memory @ 0xffffb7c90000 of size 131072 bytes 
+APP_MEM: 11: Translated virtual addr = 0xffffb7c90000 -> phyical addr = ae160000 
+APP_MEM: 11: Exported dmaBufId 38 with offset 0
+APP_MEM: 12: Allocated memory @ 0xffffb7c70000 of size 131072 bytes 
+APP_MEM: 12: Translated virtual addr = 0xffffb7c70000 -> phyical addr = ae180000 
+APP_MEM: 12: Exported dmaBufId 40 with offset 0
+APP_MEM: 13: Allocated memory @ 0xffffb7c50000 of size 131072 bytes 
+APP_MEM: 13: Translated virtual addr = 0xffffb7c50000 -> phyical addr = ae1a0000 
+APP_MEM: 13: Exported dmaBufId 42 with offset 0
+APP_MEM: 14: Allocated memory @ 0xffffb7c30000 of size 131072 bytes 
+APP_MEM: 14: Translated virtual addr = 0xffffb7c30000 -> phyical addr = ae1c0000 
+APP_MEM: 14: Exported dmaBufId 44 with offset 0
+APP_MEM: 15: Allocated memory @ 0xffffb7c10000 of size 131072 bytes 
+APP_MEM: 15: Translated virtual addr = 0xffffb7c10000 -> phyical addr = ae1e0000 
+APP_MEM: 15: Exported dmaBufId 46 with offset 0
+APP_MEM: elasped time for data processing is 2912 usecs
+APP_MEM: 0: Free'ed memory @ 0xffffb7df0000 of size 131072 bytes 
+APP_MEM: 1: Free'ed memory @ 0xffffb7dd0000 of size 131072 bytes 
+APP_MEM: 2: Free'ed memory @ 0xffffb7db0000 of size 131072 bytes 
+APP_MEM: 3: Free'ed memory @ 0xffffb7d90000 of size 131072 bytes 
+APP_MEM: 4: Free'ed memory @ 0xffffb7d70000 of size 131072 bytes 
+APP_MEM: 5: Free'ed memory @ 0xffffb7d50000 of size 131072 bytes 
+APP_MEM: 6: Free'ed memory @ 0xffffb7d30000 of size 131072 bytes 
+APP_MEM: 7: Free'ed memory @ 0xffffb7d10000 of size 131072 bytes 
+APP_MEM: 8: Free'ed memory @ 0xffffb7cf0000 of size 131072 bytes 
+APP_MEM: 9: Free'ed memory @ 0xffffb7cd0000 of size 131072 bytes 
+APP_MEM: 10: Free'ed memory @ 0xffffb7cb0000 of size 131072 bytes 
+APP_MEM: 11: Free'ed memory @ 0xffffb7c90000 of size 131072 bytes 
+APP_MEM: 12: Free'ed memory @ 0xffffb7c70000 of size 131072 bytes 
+APP_MEM: 13: Free'ed memory @ 0xffffb7c50000 of size 131072 bytes 
+APP_MEM: 14: Free'ed memory @ 0xffffb7c30000 of size 131072 bytes 
+APP_MEM: 15: Free'ed memory @ 0xffffb7c10000 of size 131072 bytes 
+APP: Deinit ... !!!
+REMOTE_SERVICE: Deinit ... !!!
+REMOTE_SERVICE: Deinit ... Done !!!
+IPC: Deinit ... !!!
+IPC: DeInit ... Done !!!
+MEM: Deinit ... !!!
+MEM: Alloc's: 16 alloc's of 2097152 bytes 
+MEM: Free's : 16 free's  of 2097152 bytes 
+MEM: Open's : 0 allocs  of 0 bytes 
+MEM: Deinit ... Done !!!
+APP: Deinit ... Done !!!

@@ -1,0 +1,1603 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://autosar.org/schema/r4.0 autosar_4-2-1.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE UUID="bd5aae52-e1aa-41d7-892f-2eac612cfabb">
+      <SHORT-NAME>AUTOSAR</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE UUID="6c5ab293-a4c5-46fc-8f13-375e06d41897">
+          <SHORT-NAME>Can</SHORT-NAME>
+          <AR-PACKAGES>
+            <AR-PACKAGE UUID="09d9ec00-d096-4a27-85f4-1a7e19f673b8">
+              <SHORT-NAME>BswModuleDescriptions</SHORT-NAME>
+              <ELEMENTS>
+                <BSW-MODULE-DESCRIPTION UUID="4c281345-255f-4fb3-856f-df35659909e8">
+                  <SHORT-NAME>Can</SHORT-NAME>
+                  <MODULE-ID>80</MODULE-ID>
+                  <PROVIDED-ENTRYS>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Can_0_Int0ISR">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_0_Int0ISR</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Can_0_Int0ISR_Fun">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_0_Int0ISR_Fun</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Can_0_Int1ISR">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_0_Int1ISR</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Can_0_Int1ISR_Fun">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_0_Int1ISR_Fun</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Can_1_Int0ISR">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_1_Int0ISR</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Can_1_Int0ISR_Fun">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_1_Int0ISR_Fun</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Can_1_Int1ISR">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_1_Int1ISR</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Can_1_Int1ISR_Fun">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_1_Int1ISR_Fun</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Can_2_Int0ISR">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_2_Int0ISR</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Can_2_Int0ISR_Fun">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_2_Int0ISR_Fun</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Can_2_Int1ISR">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_2_Int1ISR</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Can_2_Int1ISR_Fun">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_2_Int1ISR_Fun</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Can_ChangeBaudrate">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_ChangeBaudrate</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Can_CheckBaudrate">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_CheckBaudrate</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Can_SetBaudrate">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_SetBaudrate</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Can_CheckWakeup">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_CheckWakeup</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Can_DisableControllerInterrupts">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_DisableControllerInterrupts</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Can_EnableControllerInterrupts">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_EnableControllerInterrupts</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Can_Init">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_Init</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Can_MainFunction_Mode">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_MainFunction_Mode</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Can_SetControllerMode">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_SetControllerMode</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL S="Can_Write">
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_Write</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                  </PROVIDED-ENTRYS>
+                  <BSW-MODULE-DEPENDENCYS>
+                    <BSW-MODULE-DEPENDENCY UUID="9d90c255-2a7a-4827-9933-fbbeed7687d4">
+                      <SHORT-NAME>Dem</SHORT-NAME>
+                      <TARGET-MODULE-ID>54</TARGET-MODULE-ID>
+                      <REQUIRED-ENTRYS>
+                        <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                          <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Dem/BswModuleEntries/Dem_ReportErrorStatus</BSW-MODULE-ENTRY-REF>
+                        </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                      </REQUIRED-ENTRYS>
+                    </BSW-MODULE-DEPENDENCY>
+                    <BSW-MODULE-DEPENDENCY UUID="9009aea5-4138-4a93-8a40-52d9808e7260">
+                      <SHORT-NAME>EcuM</SHORT-NAME>
+                      <TARGET-MODULE-ID>10</TARGET-MODULE-ID>
+                      <EXPECTED-CALLBACKS>
+                        <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                          <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/EcuM/BswModuleEntries/EcuM_CheckWakeup</BSW-MODULE-ENTRY-REF>
+                        </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                      </EXPECTED-CALLBACKS>
+                    </BSW-MODULE-DEPENDENCY>
+                    <BSW-MODULE-DEPENDENCY UUID="9b2b01d5-a335-44cd-8ec4-eecf80cd5705">
+                      <SHORT-NAME>CanIf</SHORT-NAME>
+                      <TARGET-MODULE-ID>60</TARGET-MODULE-ID>
+                      <EXPECTED-CALLBACKS>
+                        <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                          <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/CanIf/BswModuleEntries/CanIf_ControllerModeIndication</BSW-MODULE-ENTRY-REF>
+                        </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                      </EXPECTED-CALLBACKS>
+                    </BSW-MODULE-DEPENDENCY>
+                  </BSW-MODULE-DEPENDENCYS>
+                  <INTERNAL-BEHAVIORS>
+                    <BSW-INTERNAL-BEHAVIOR UUID="4db049df-a00c-4e76-ad77-45295037bb24">
+                      <SHORT-NAME>InternalBehaviour_0</SHORT-NAME>
+                      <EXCLUSIVE-AREAS>
+                        <EXCLUSIVE-AREA UUID="58702b9a-3987-4387-bdb0-4d3c9d872cbe">
+                          <SHORT-NAME>CAN_EXCLUSIVE_AREA_0</SHORT-NAME>
+                          <CATEGORY />
+                        </EXCLUSIVE-AREA>
+                      </EXCLUSIVE-AREAS>
+                      <ENTITYS>
+                        <BSW-CALLED-ENTITY S="" UUID="d68ac6ae-49bf-49f7-888d-c375eaaa7604">
+                          <SHORT-NAME>Can_Init</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>NON-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE_SLOW</SW-ADDR-METHOD-REF>
+                          <CALL-POINTS>
+                          </CALL-POINTS>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_Init</IMPLEMENTED-ENTRY-REF>
+                        </BSW-CALLED-ENTITY>
+                        <BSW-SCHEDULABLE-ENTITY UUID="c3299397-8cd6-4849-8705-364d0053913f">
+                          <SHORT-NAME>Can_MainFunction_Write</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>SINGLE-CORE-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE</SW-ADDR-METHOD-REF>
+                          <CALL-POINTS>
+                            <BSW-DIRECT-CALL-POINT>
+                              <SHORT-NAME>CanIf_TxConfirmation</SHORT-NAME>
+                              <CALLED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/CanIf/BswModuleEntries/CanIf_TxConfirmation</CALLED-ENTRY-REF>
+                            </BSW-DIRECT-CALL-POINT>
+                          </CALL-POINTS>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_MainFunction_Write</IMPLEMENTED-ENTRY-REF>
+                        </BSW-SCHEDULABLE-ENTITY>
+                        <BSW-SCHEDULABLE-ENTITY UUID="b90c1107-11e6-48f5-bf2e-f45d524c1cb0">
+                          <SHORT-NAME>Can_MainFunction_Read</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>SINGLE-CORE-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE</SW-ADDR-METHOD-REF>
+                          <CALL-POINTS>
+                            <BSW-DIRECT-CALL-POINT>
+                              <SHORT-NAME>CanIf_RxIndication</SHORT-NAME>
+                              <CALLED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/CanIf/BswModuleEntries/CanIf_RxIndication</CALLED-ENTRY-REF>
+                            </BSW-DIRECT-CALL-POINT>
+                          </CALL-POINTS>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_MainFunction_Read</IMPLEMENTED-ENTRY-REF>
+                        </BSW-SCHEDULABLE-ENTITY>
+                        <BSW-SCHEDULABLE-ENTITY UUID="4507e4ed-b7f6-4754-8be5-9c07cd5ce537">
+                          <SHORT-NAME>Can_MainFunction_Mode</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>SINGLE-CORE-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE</SW-ADDR-METHOD-REF>
+                          <CALL-POINTS>
+                            <BSW-DIRECT-CALL-POINT>
+                              <SHORT-NAME>CanIf_ControllerModeIndication</SHORT-NAME>
+                              <CALLED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/CanIf/BswModuleEntries/CanIf_ControllerModeIndication</CALLED-ENTRY-REF>
+                            </BSW-DIRECT-CALL-POINT>
+                          </CALL-POINTS>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_MainFunction_Mode</IMPLEMENTED-ENTRY-REF>
+                        </BSW-SCHEDULABLE-ENTITY>
+                        <BSW-SCHEDULABLE-ENTITY UUID="2e21f171-cbc0-44f3-8b23-467317e8854e">
+                          <SHORT-NAME>Can_MainFunction_BusOff</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>SINGLE-CORE-REENTRANT</REENTRANCY-LEVEL>
+                          <CALL-POINTS>
+                            <BSW-DIRECT-CALL-POINT>
+                              <SHORT-NAME>CanIf_ControllerBusOff</SHORT-NAME>
+                              <CALLED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/CanIf/BswModuleEntries/CanIf_ControllerBusOff</CALLED-ENTRY-REF>
+                            </BSW-DIRECT-CALL-POINT>
+                          </CALL-POINTS>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_MainFunction_BusOff</IMPLEMENTED-ENTRY-REF>
+                        </BSW-SCHEDULABLE-ENTITY>
+                        <BSW-SCHEDULABLE-ENTITY UUID="49ca96cf-0ae1-4559-a586-4de961c3fc52">
+                          <SHORT-NAME>Can_MainFunction_Wakeup</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>SINGLE-CORE-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE</SW-ADDR-METHOD-REF>
+                          <CALL-POINTS>
+                            <BSW-DIRECT-CALL-POINT>
+                              <SHORT-NAME>EcuM_CheckWakeup</SHORT-NAME>
+                              <CALLED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/EcuM/BswModuleEntries/EcuM_CheckWakeup</CALLED-ENTRY-REF>
+                            </BSW-DIRECT-CALL-POINT>
+                          </CALL-POINTS>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_MainFunction_Wakeup</IMPLEMENTED-ENTRY-REF>
+                        </BSW-SCHEDULABLE-ENTITY>
+                        <BSW-CALLED-ENTITY S="" UUID="8f0a8ebf-72a1-46cb-a830-8042d9727811">
+                          <SHORT-NAME>Can_ChangeBaudRate</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>NON-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE</SW-ADDR-METHOD-REF>
+                          <CALL-POINTS>
+                          </CALL-POINTS>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_ChangeBaudrate</IMPLEMENTED-ENTRY-REF>
+                        </BSW-CALLED-ENTITY>
+                        <BSW-CALLED-ENTITY S="" UUID="52d479b6-eda4-4432-94df-5a730736ca78">
+                          <SHORT-NAME>Can_CheckBaudRate</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>MULTICORE-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE</SW-ADDR-METHOD-REF>
+                          <CALL-POINTS>
+                          </CALL-POINTS>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_CheckBaudrate</IMPLEMENTED-ENTRY-REF>
+                        </BSW-CALLED-ENTITY>
+                        <BSW-CALLED-ENTITY S="" UUID="30ea8969-2f6d-410c-8dc1-93006209a657">
+                          <SHORT-NAME>Can_CheckWakeup</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>SINGLE-CORE-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE</SW-ADDR-METHOD-REF>
+                          <CALL-POINTS>
+                          </CALL-POINTS>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_CheckWakeup</IMPLEMENTED-ENTRY-REF>
+                        </BSW-CALLED-ENTITY>
+                        <BSW-CALLED-ENTITY S="" UUID="47a9274a-fa5b-476a-8b9a-bf6b6de1d521">
+                          <SHORT-NAME>Can_DisableControllerInterrupts</SHORT-NAME>
+                          <CATEGORY />
+                          <CAN-ENTER-EXCLUSIVE-AREA-REFS>
+                            <CAN-ENTER-EXCLUSIVE-AREA-REF DEST="EXCLUSIVE-AREA">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/CAN_EXCLUSIVE_AREA_0</CAN-ENTER-EXCLUSIVE-AREA-REF>
+                          </CAN-ENTER-EXCLUSIVE-AREA-REFS>
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>SINGLE-CORE-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE</SW-ADDR-METHOD-REF>
+                          <CALL-POINTS>
+                          </CALL-POINTS>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_DisableControllerInterrupts</IMPLEMENTED-ENTRY-REF>
+                        </BSW-CALLED-ENTITY>
+                        <BSW-CALLED-ENTITY S="" UUID="94ff2b4e-a123-4839-aa18-c18496488bfc">
+                          <SHORT-NAME>Can_EnableControllerInterrupts</SHORT-NAME>
+                          <CATEGORY />
+                          <CAN-ENTER-EXCLUSIVE-AREA-REFS>
+                            <CAN-ENTER-EXCLUSIVE-AREA-REF DEST="EXCLUSIVE-AREA">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/CAN_EXCLUSIVE_AREA_0</CAN-ENTER-EXCLUSIVE-AREA-REF>
+                          </CAN-ENTER-EXCLUSIVE-AREA-REFS>
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>SINGLE-CORE-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE</SW-ADDR-METHOD-REF>
+                          <CALL-POINTS>
+                          </CALL-POINTS>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_EnableControllerInterrupts</IMPLEMENTED-ENTRY-REF>
+                        </BSW-CALLED-ENTITY>
+                        <BSW-CALLED-ENTITY S="" UUID="9af5825c-dbb4-4fb6-9d62-2d5dd8744272">
+                          <SHORT-NAME>Can_TestLoopBackModeEnable</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>NON-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE_SLOW</SW-ADDR-METHOD-REF>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_TestLoopBackModeEnable</IMPLEMENTED-ENTRY-REF>
+                        </BSW-CALLED-ENTITY>
+                        <BSW-CALLED-ENTITY S="" UUID="3c47117d-10ef-4606-b345-4b2fc3863dbb">
+                          <SHORT-NAME>Can_DisableControllerInterrupts</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>NON-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE_SLOW</SW-ADDR-METHOD-REF>
+                          <CALL-POINTS>
+                          </CALL-POINTS>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_DisableControllerInterrupts</IMPLEMENTED-ENTRY-REF>
+                        </BSW-CALLED-ENTITY>
+                        <BSW-CALLED-ENTITY S="" UUID="d646d376-8b3e-4735-b670-9c0bdc2b799c">
+                          <SHORT-NAME>Can_SetControllerMode</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>NON-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE_SLOW</SW-ADDR-METHOD-REF>
+                          <CALL-POINTS>
+                            <BSW-DIRECT-CALL-POINT>
+                              <SHORT-NAME>CanIf_ControllerModeIndication</SHORT-NAME>
+                              <CALLED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/CanIf/BswModuleEntries/CanIf_ControllerModeIndication</CALLED-ENTRY-REF>
+                            </BSW-DIRECT-CALL-POINT>
+                          </CALL-POINTS>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_SetControllerMode</IMPLEMENTED-ENTRY-REF>
+                        </BSW-CALLED-ENTITY>
+                        <BSW-CALLED-ENTITY S="" UUID="6dee0ae8-47e2-45a2-a7bb-513f7ca60407">
+                          <SHORT-NAME>Can_TestLoopBackModeDisable</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>NON-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE_SLOW</SW-ADDR-METHOD-REF>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_TestLoopBackModeDisable</IMPLEMENTED-ENTRY-REF>
+                        </BSW-CALLED-ENTITY>
+                        <BSW-CALLED-ENTITY S="" UUID="0077219d-41bd-4e11-ba21-80afc882ca9a">
+                          <SHORT-NAME>Can_Write</SHORT-NAME>
+                          <CATEGORY />
+                          <CAN-ENTER-EXCLUSIVE-AREA-REFS>
+                            <CAN-ENTER-EXCLUSIVE-AREA-REF DEST="EXCLUSIVE-AREA">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/CAN_EXCLUSIVE_AREA_0</CAN-ENTER-EXCLUSIVE-AREA-REF>
+                          </CAN-ENTER-EXCLUSIVE-AREA-REFS>
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>SINGLE-CORE-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE</SW-ADDR-METHOD-REF>
+                          <CALL-POINTS>
+                          </CALL-POINTS>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_Write</IMPLEMENTED-ENTRY-REF>
+                        </BSW-CALLED-ENTITY>
+                        <BSW-INTERRUPT-ENTITY S="" UUID="a5cd952e-deb8-4e2b-8a42-f0c7f50a5f2d">
+                          <SHORT-NAME>Can_0_Int0ISR</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>NON-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE_FAST</SW-ADDR-METHOD-REF>
+                          <CALL-POINTS>
+                            <BSW-DIRECT-CALL-POINT>
+                              <SHORT-NAME>Can_0_Int0ISR_Fun</SHORT-NAME>
+                              <CALLED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_0_Int0ISR_Fun</CALLED-ENTRY-REF>
+                            </BSW-DIRECT-CALL-POINT>
+                          </CALL-POINTS>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_0_Int0ISR</IMPLEMENTED-ENTRY-REF>
+                          <INTERRUPT-CATEGORY>CAT-1</INTERRUPT-CATEGORY>
+                          <INTERRUPT-SOURCE />
+                        </BSW-INTERRUPT-ENTITY>
+                        <BSW-INTERRUPT-ENTITY S="" UUID="081b468e-9f9b-4038-a24b-30e241a2e5b5">
+                          <SHORT-NAME>Can_1_Int0ISR</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>NON-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE_FAST</SW-ADDR-METHOD-REF>
+                          <CALL-POINTS>
+                            <BSW-DIRECT-CALL-POINT>
+                              <SHORT-NAME>Can_1_Int0ISR_Fun</SHORT-NAME>
+                              <CALLED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_1_Int0ISR_Fun</CALLED-ENTRY-REF>
+                            </BSW-DIRECT-CALL-POINT>
+                          </CALL-POINTS>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_1_Int0ISR</IMPLEMENTED-ENTRY-REF>
+                          <INTERRUPT-CATEGORY>CAT-1</INTERRUPT-CATEGORY>
+                          <INTERRUPT-SOURCE />
+                        </BSW-INTERRUPT-ENTITY>
+                        <BSW-INTERRUPT-ENTITY S="" UUID="ae3be406-d024-4a18-84c8-61a94f9bb500">
+                          <SHORT-NAME>Can_1_Int1ISR</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>NON-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE_FAST</SW-ADDR-METHOD-REF>
+                          <CALL-POINTS>
+                            <BSW-DIRECT-CALL-POINT>
+                              <SHORT-NAME>Can_1_Int1ISR_Fun</SHORT-NAME>
+                              <CALLED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_1_Int1ISR_Fun</CALLED-ENTRY-REF>
+                            </BSW-DIRECT-CALL-POINT>
+                          </CALL-POINTS>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_1_Int1ISR</IMPLEMENTED-ENTRY-REF>
+                          <INTERRUPT-CATEGORY>CAT-1</INTERRUPT-CATEGORY>
+                          <INTERRUPT-SOURCE />
+                        </BSW-INTERRUPT-ENTITY>
+                        <BSW-INTERRUPT-ENTITY S="" UUID="e31633da-7b54-43e2-a5f5-0a8a852333c5">
+                          <SHORT-NAME>Can_0_Int0ISR_Fun</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>NON-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE_FAST</SW-ADDR-METHOD-REF>
+                          <CALL-POINTS>
+                            <BSW-DIRECT-CALL-POINT>
+                              <SHORT-NAME>EcuM_CheckWakeup</SHORT-NAME>
+                              <CALLED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/EcuM/BswModuleEntries/EcuM_CheckWakeup</CALLED-ENTRY-REF>
+                            </BSW-DIRECT-CALL-POINT>
+                            <BSW-DIRECT-CALL-POINT>
+                              <SHORT-NAME>CanIf_ControllerBusOff</SHORT-NAME>
+                              <CALLED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/CanIf/BswModuleEntries/CanIf_ControllerBusOff</CALLED-ENTRY-REF>
+                            </BSW-DIRECT-CALL-POINT>
+                            <BSW-DIRECT-CALL-POINT>
+                              <SHORT-NAME>CanIf_RxIndication</SHORT-NAME>
+                              <CALLED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/CanIf/BswModuleEntries/CanIf_RxIndication</CALLED-ENTRY-REF>
+                            </BSW-DIRECT-CALL-POINT>
+                            <BSW-DIRECT-CALL-POINT>
+                              <SHORT-NAME>CanIf_txConfirmation</SHORT-NAME>
+                              <CALLED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/CanIf/BswModuleEntries/CanIf_TxConfirmation</CALLED-ENTRY-REF>
+                            </BSW-DIRECT-CALL-POINT>
+                          </CALL-POINTS>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_0_Int1ISR_Fun</IMPLEMENTED-ENTRY-REF>
+                          <INTERRUPT-CATEGORY>CAT-1</INTERRUPT-CATEGORY>
+                          <INTERRUPT-SOURCE />
+                        </BSW-INTERRUPT-ENTITY>
+                        <BSW-INTERRUPT-ENTITY S="" UUID="06933053-5f74-4ebf-b107-9a2841183fd5">
+                          <SHORT-NAME>Can_0_Int1ISR_Fun</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>NON-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE_FAST</SW-ADDR-METHOD-REF>
+                          <CALL-POINTS>
+                            <BSW-DIRECT-CALL-POINT>
+                              <SHORT-NAME>EcuM_CheckWakeup</SHORT-NAME>
+                              <CALLED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/EcuM/BswModuleEntries/EcuM_CheckWakeup</CALLED-ENTRY-REF>
+                            </BSW-DIRECT-CALL-POINT>
+                            <BSW-DIRECT-CALL-POINT>
+                              <SHORT-NAME>CanIf_ControllerBusOff</SHORT-NAME>
+                              <CALLED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/CanIf/BswModuleEntries/CanIf_ControllerBusOff</CALLED-ENTRY-REF>
+                            </BSW-DIRECT-CALL-POINT>
+                            <BSW-DIRECT-CALL-POINT>
+                              <SHORT-NAME>CanIf_RxIndication</SHORT-NAME>
+                              <CALLED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/CanIf/BswModuleEntries/CanIf_RxIndication</CALLED-ENTRY-REF>
+                            </BSW-DIRECT-CALL-POINT>
+                            <BSW-DIRECT-CALL-POINT>
+                              <SHORT-NAME>CanIf_txConfirmation</SHORT-NAME>
+                              <CALLED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/CanIf/BswModuleEntries/CanIf_TxConfirmation</CALLED-ENTRY-REF>
+                            </BSW-DIRECT-CALL-POINT>
+                          </CALL-POINTS>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_1_Int0ISR_Fun</IMPLEMENTED-ENTRY-REF>
+                          <INTERRUPT-CATEGORY>CAT-1</INTERRUPT-CATEGORY>
+                          <INTERRUPT-SOURCE />
+                        </BSW-INTERRUPT-ENTITY>
+                        <BSW-INTERRUPT-ENTITY S="" UUID="61e6352b-c8ef-4793-b7ad-3c08605116ef">
+                          <SHORT-NAME>Can_1_Int0ISR_Fun</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>NON-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE_FAST</SW-ADDR-METHOD-REF>
+                          <CALL-POINTS>
+                            <BSW-DIRECT-CALL-POINT>
+                              <SHORT-NAME>EcuM_CheckWakeup</SHORT-NAME>
+                              <CALLED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/EcuM/BswModuleEntries/EcuM_CheckWakeup</CALLED-ENTRY-REF>
+                            </BSW-DIRECT-CALL-POINT>
+                            <BSW-DIRECT-CALL-POINT>
+                              <SHORT-NAME>CanIf_ControllerBusOff</SHORT-NAME>
+                              <CALLED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/CanIf/BswModuleEntries/CanIf_ControllerBusOff</CALLED-ENTRY-REF>
+                            </BSW-DIRECT-CALL-POINT>
+                            <BSW-DIRECT-CALL-POINT>
+                              <SHORT-NAME>CanIf_RxIndication</SHORT-NAME>
+                              <CALLED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/CanIf/BswModuleEntries/CanIf_RxIndication</CALLED-ENTRY-REF>
+                            </BSW-DIRECT-CALL-POINT>
+                            <BSW-DIRECT-CALL-POINT>
+                              <SHORT-NAME>CanIf_txConfirmation</SHORT-NAME>
+                              <CALLED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/CanIf/BswModuleEntries/CanIf_TxConfirmation</CALLED-ENTRY-REF>
+                            </BSW-DIRECT-CALL-POINT>
+                          </CALL-POINTS>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_1_Int0ISR_Fun</IMPLEMENTED-ENTRY-REF>
+                          <INTERRUPT-CATEGORY>CAT-1</INTERRUPT-CATEGORY>
+                          <INTERRUPT-SOURCE />
+                        </BSW-INTERRUPT-ENTITY>
+                        <BSW-INTERRUPT-ENTITY S="" UUID="f3dc4fa7-998d-4894-a20a-b8df5feda358">
+                          <SHORT-NAME>Can_1_Int1ISR_Fun</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>NON-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE_FAST</SW-ADDR-METHOD-REF>
+                          <CALL-POINTS>
+                            <BSW-DIRECT-CALL-POINT>
+                              <SHORT-NAME>EcuM_CheckWakeup</SHORT-NAME>
+                              <CALLED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/EcuM/BswModuleEntries/EcuM_CheckWakeup</CALLED-ENTRY-REF>
+                            </BSW-DIRECT-CALL-POINT>
+                            <BSW-DIRECT-CALL-POINT>
+                              <SHORT-NAME>CanIf_ControllerBusOff</SHORT-NAME>
+                              <CALLED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/CanIf/BswModuleEntries/CanIf_ControllerBusOff</CALLED-ENTRY-REF>
+                            </BSW-DIRECT-CALL-POINT>
+                            <BSW-DIRECT-CALL-POINT>
+                              <SHORT-NAME>CanIf_RxIndication</SHORT-NAME>
+                              <CALLED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/CanIf/BswModuleEntries/CanIf_RxIndication</CALLED-ENTRY-REF>
+                            </BSW-DIRECT-CALL-POINT>
+                            <BSW-DIRECT-CALL-POINT>
+                              <SHORT-NAME>CanIf_txConfirmation</SHORT-NAME>
+                              <CALLED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/CanIf/BswModuleEntries/CanIf_TxConfirmation</CALLED-ENTRY-REF>
+                            </BSW-DIRECT-CALL-POINT>
+                          </CALL-POINTS>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_1_Int1ISR_Fun</IMPLEMENTED-ENTRY-REF>
+                          <INTERRUPT-CATEGORY>CAT-1</INTERRUPT-CATEGORY>
+                          <INTERRUPT-SOURCE />
+                        </BSW-INTERRUPT-ENTITY>
+                        <BSW-INTERRUPT-ENTITY S="" UUID="">
+                          <SHORT-NAME>Can_2_Int0ISR_Fun</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>NON-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE_FAST</SW-ADDR-METHOD-REF>
+                          <CALL-POINTS>
+                            <BSW-DIRECT-CALL-POINT>
+                              <SHORT-NAME>EcuM_CheckWakeup</SHORT-NAME>
+                              <CALLED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/EcuM/BswModuleEntries/EcuM_CheckWakeup</CALLED-ENTRY-REF>
+                            </BSW-DIRECT-CALL-POINT>
+                            <BSW-DIRECT-CALL-POINT>
+                              <SHORT-NAME>CanIf_ControllerBusOff</SHORT-NAME>
+                              <CALLED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/CanIf/BswModuleEntries/CanIf_ControllerBusOff</CALLED-ENTRY-REF>
+                            </BSW-DIRECT-CALL-POINT>
+                            <BSW-DIRECT-CALL-POINT>
+                              <SHORT-NAME>CanIf_RxIndication</SHORT-NAME>
+                              <CALLED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/CanIf/BswModuleEntries/CanIf_RxIndication</CALLED-ENTRY-REF>
+                            </BSW-DIRECT-CALL-POINT>
+                            <BSW-DIRECT-CALL-POINT>
+                              <SHORT-NAME>CanIf_txConfirmation</SHORT-NAME>
+                              <CALLED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/CanIf/BswModuleEntries/CanIf_TxConfirmation</CALLED-ENTRY-REF>
+                            </BSW-DIRECT-CALL-POINT>
+                          </CALL-POINTS>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_2_Int0ISR_Fun</IMPLEMENTED-ENTRY-REF>
+                          <INTERRUPT-CATEGORY>CAT-1</INTERRUPT-CATEGORY>
+                          <INTERRUPT-SOURCE />
+                        </BSW-INTERRUPT-ENTITY>
+                        <BSW-INTERRUPT-ENTITY S="" UUID="">
+                          <SHORT-NAME>Can_2_Int1ISR_Fun</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>NON-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE_FAST</SW-ADDR-METHOD-REF>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_2_Int1ISR_Fun</IMPLEMENTED-ENTRY-REF>
+                          <INTERRUPT-CATEGORY>CAT-1</INTERRUPT-CATEGORY>
+                          <INTERRUPT-SOURCE />
+                        </BSW-INTERRUPT-ENTITY>
+                        <BSW-INTERRUPT-ENTITY S="" UUID="4e8cf408-f7e4-4acb-bd45-033b0531b0b0">
+                          <SHORT-NAME>Can_0_Int1ISR</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>NON-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE_FAST</SW-ADDR-METHOD-REF>
+                          <CALL-POINTS>
+                            <BSW-DIRECT-CALL-POINT>
+                              <SHORT-NAME>Can_0_Int1ISR_Fun</SHORT-NAME>
+                              <CALLED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_0_Int1ISR_Fun</CALLED-ENTRY-REF>
+                            </BSW-DIRECT-CALL-POINT>
+                          </CALL-POINTS>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_0_Int1ISR</IMPLEMENTED-ENTRY-REF>
+                          <INTERRUPT-CATEGORY>CAT-1</INTERRUPT-CATEGORY>
+                          <INTERRUPT-SOURCE />
+                        </BSW-INTERRUPT-ENTITY>
+                        <BSW-INTERRUPT-ENTITY S="" UUID="">
+                          <SHORT-NAME>Can_2_Int0ISR</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>NON-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE_FAST</SW-ADDR-METHOD-REF>
+                          <CALL-POINTS>
+                            <BSW-DIRECT-CALL-POINT>
+                              <SHORT-NAME>Can_2_Int0ISR_Fun</SHORT-NAME>
+                              <CALLED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_2_Int0ISR_Fun</CALLED-ENTRY-REF>
+                            </BSW-DIRECT-CALL-POINT>
+                          </CALL-POINTS>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_2_Int0ISR</IMPLEMENTED-ENTRY-REF>
+                          <INTERRUPT-CATEGORY>CAT-1</INTERRUPT-CATEGORY>
+                          <INTERRUPT-SOURCE />
+                        </BSW-INTERRUPT-ENTITY>
+                        <BSW-INTERRUPT-ENTITY S="" UUID="">
+                          <SHORT-NAME>Can_2_Int1ISR</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>NON-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE_FAST</SW-ADDR-METHOD-REF>
+                          <CALL-POINTS>
+                            <BSW-DIRECT-CALL-POINT>
+                              <SHORT-NAME>Can_2_Int1ISR_Fun</SHORT-NAME>
+                              <CALLED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_2_Int1ISR_Fun</CALLED-ENTRY-REF>
+                            </BSW-DIRECT-CALL-POINT>
+                          </CALL-POINTS>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_2_Int1ISR</IMPLEMENTED-ENTRY-REF>
+                          <INTERRUPT-CATEGORY>CAT-1</INTERRUPT-CATEGORY>
+                          <INTERRUPT-SOURCE />
+                        </BSW-INTERRUPT-ENTITY>
+                        <BSW-CALLED-ENTITY S="" UUID="442b4d60-c4c3-45ec-9802-4d6a4fb3f552">
+                          <SHORT-NAME>Can_GetVersionInfo</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>SINGLE-CORE-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE_SLOW</SW-ADDR-METHOD-REF>
+                          <CALL-POINTS>
+                          </CALL-POINTS>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_GetVersionInfo</IMPLEMENTED-ENTRY-REF>
+                        </BSW-CALLED-ENTITY>
+                        <BSW-CALLED-ENTITY S="" UUID="214a18d3-59a7-45da-b347-ea2f5a425879">
+                          <SHORT-NAME>Can_RegisterReadback</SHORT-NAME>
+                          <CATEGORY />
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <REENTRANCY-LEVEL>NON-REENTRANT</REENTRANCY-LEVEL>
+                          <SW-ADDR-METHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE</SW-ADDR-METHOD-REF>
+                          <CALL-POINTS>
+                          </CALL-POINTS>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR/Can/BswModuleEntries/Can_RegisterReadback</IMPLEMENTED-ENTRY-REF>
+                        </BSW-CALLED-ENTITY>
+                      </ENTITYS>
+                      <EVENTS>
+                        <BSW-TIMING-EVENT S="" UUID="4fef93c3-ebc5-4902-b5ca-b69e4fc5b455">
+                          <SHORT-NAME>CanWriteTimingEvent_MainFunction</SHORT-NAME>
+                          <CATEGORY />
+                          <STARTS-ON-EVENT-REF DEST="BSW-SCHEDULABLE-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_MainFunction_Write</STARTS-ON-EVENT-REF>
+                        </BSW-TIMING-EVENT>
+                        <BSW-TIMING-EVENT S="" UUID="fdc40e4c-d006-4545-a3ca-077b96303e4e">
+                          <SHORT-NAME>CanReadTimingEvent_MainFunction</SHORT-NAME>
+                          <CATEGORY />
+                          <STARTS-ON-EVENT-REF DEST="BSW-SCHEDULABLE-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_MainFunction_Read</STARTS-ON-EVENT-REF>
+                        </BSW-TIMING-EVENT>
+                        <BSW-TIMING-EVENT S="" UUID="520e67e4-9693-4fbb-b52b-03fc1f7a1a62">
+                          <SHORT-NAME>CanWakeupTimingEvent_MainFunction</SHORT-NAME>
+                          <CATEGORY />
+                          <STARTS-ON-EVENT-REF DEST="BSW-SCHEDULABLE-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_MainFunction_Wakeup</STARTS-ON-EVENT-REF>
+                        </BSW-TIMING-EVENT>
+                        <BSW-TIMING-EVENT S="" UUID="3f81660c-88bc-41e3-9edc-e54f991d860a">
+                          <SHORT-NAME>CanModeTimingEvent_MainFunction</SHORT-NAME>
+                          <CATEGORY />
+                          <STARTS-ON-EVENT-REF DEST="BSW-SCHEDULABLE-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_MainFunction_Mode</STARTS-ON-EVENT-REF>
+                        </BSW-TIMING-EVENT>
+                        <BSW-TIMING-EVENT S="" UUID="2fb20b66-c309-41c0-a714-9c1a313a5178">
+                          <SHORT-NAME>CanBusOffTimingEvent_MainFunction</SHORT-NAME>
+                          <CATEGORY />
+                          <STARTS-ON-EVENT-REF DEST="BSW-SCHEDULABLE-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_MainFunction_BusOff</STARTS-ON-EVENT-REF>
+                        </BSW-TIMING-EVENT>
+                      </EVENTS>
+                    </BSW-INTERNAL-BEHAVIOR>
+                  </INTERNAL-BEHAVIORS>
+                </BSW-MODULE-DESCRIPTION>
+              </ELEMENTS>
+            </AR-PACKAGE>
+            <AR-PACKAGE S="" UUID="275b3865-a1b9-437d-b331-e85ca1e53c53">
+              <SHORT-NAME>BswModuleEntries</SHORT-NAME>
+              <ELEMENTS>
+                <BSW-MODULE-ENTRY UUID="72fd8f57-6633-4a55-afcb-513b4180c896">
+                  <SHORT-NAME>Can_Init</SHORT-NAME>
+                  <CATEGORY />
+                  <SHORT-NAME-PATTERN />
+                  <SERVICE-ID>0</SERVICE-ID>
+                  <ROLE />
+                  <IS-REENTRANT>false</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>TASK</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY S="" UUID="efebc866-74a5-4a53-817f-12f7f48dd42c">
+                  <SHORT-NAME>Can_MainFunction_Write</SHORT-NAME>
+                  <CATEGORY />
+                  <SERVICE-ID>1</SERVICE-ID>
+                  <ROLE />
+                  <IS-REENTRANT>true</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>SCHEDULED</CALL-TYPE>
+                  <EXECUTION-CONTEXT>TASK</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="f01ae8e6-f4c1-48a8-9ca7-658a2b5e8f36">
+                  <SHORT-NAME>Can_SetControllerMode</SHORT-NAME>
+                  <CATEGORY />
+                  <SHORT-NAME-PATTERN />
+                  <SERVICE-ID>3</SERVICE-ID>
+                  <ROLE />
+                  <IS-REENTRANT>false</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>false</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>TASK</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="02147768-c50b-48eb-9030-c57c6317d669">
+                  <SHORT-NAME>Can_Write</SHORT-NAME>
+                  <CATEGORY />
+                  <SHORT-NAME-PATTERN />
+                  <SERVICE-ID>6</SERVICE-ID>
+                  <ROLE />
+                  <IS-REENTRANT>true</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="968121f7-4ce7-4535-86b8-80199227e53f">
+                  <SHORT-NAME>Can_CheckWakeup</SHORT-NAME>
+                  <CATEGORY />
+                  <SHORT-NAME-PATTERN />
+                  <SERVICE-ID>0x0b</SERVICE-ID>
+                  <ROLE />
+                  <IS-REENTRANT>false</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="d95b8061-93a1-4f4b-a96b-2bfe52b977ea">
+                  <SHORT-NAME>Can_DisableControllerInterrupts</SHORT-NAME>
+                  <CATEGORY />
+                  <SHORT-NAME-PATTERN />
+                  <SERVICE-ID>0x04</SERVICE-ID>
+                  <ROLE />
+                  <IS-REENTRANT>true</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="1054ae53-179c-4165-8f5a-2da16521af8f">
+                  <SHORT-NAME>Can_EnableControllerInterrupts</SHORT-NAME>
+                  <CATEGORY />
+                  <SHORT-NAME-PATTERN />
+                  <SERVICE-ID>0x05</SERVICE-ID>
+                  <ROLE />
+                  <IS-REENTRANT>true</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="65ddb098-d6e4-4398-87e0-594ac6d84b08">
+                  <SHORT-NAME>Can_MainFunction_BusOff</SHORT-NAME>
+                  <CATEGORY />
+                  <SHORT-NAME-PATTERN />
+                  <SERVICE-ID>0x09</SERVICE-ID>
+                  <ROLE />
+                  <IS-REENTRANT>false</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>SCHEDULED</CALL-TYPE>
+                  <EXECUTION-CONTEXT>TASK</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="20dfce25-a275-4a2a-bc62-6d9784b9948f">
+                  <SHORT-NAME>Can_MainFunction_Read</SHORT-NAME>
+                  <CATEGORY />
+                  <SHORT-NAME-PATTERN />
+                  <SERVICE-ID>0x08</SERVICE-ID>
+                  <ROLE />
+                  <IS-REENTRANT>false</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>SCHEDULED</CALL-TYPE>
+                  <EXECUTION-CONTEXT>TASK</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="52833885-487c-428f-8606-35062c4a8d7d">
+                  <SHORT-NAME>Can_MainFunction_Wakeup</SHORT-NAME>
+                  <CATEGORY />
+                  <SHORT-NAME-PATTERN />
+                  <SERVICE-ID>0x0a</SERVICE-ID>
+                  <ROLE />
+                  <IS-REENTRANT>false</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>SCHEDULED</CALL-TYPE>
+                  <EXECUTION-CONTEXT>TASK</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="93f624eb-01f0-4389-9b93-bb0babf8acb5">
+                  <SHORT-NAME>Can_MainFunction_Mode</SHORT-NAME>
+                  <CATEGORY />
+                  <SHORT-NAME-PATTERN />
+                  <SERVICE-ID>0x0c</SERVICE-ID>
+                  <ROLE />
+                  <IS-REENTRANT>false</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>SCHEDULED</CALL-TYPE>
+                  <EXECUTION-CONTEXT>TASK</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="e751394f-25b2-4352-8bb3-2a5fe09b3afc">
+                  <SHORT-NAME>Can_ChangeBaudrate</SHORT-NAME>
+                  <CATEGORY />
+                  <SHORT-NAME-PATTERN />
+                  <SERVICE-ID>0x0d</SERVICE-ID>
+                  <ROLE />
+                  <IS-REENTRANT>false</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="b55da1a0-699a-4293-9b12-a0e94a4daf28">
+                  <SHORT-NAME>Can_0_Int0ISR_Fun</SHORT-NAME>
+                  <CATEGORY />
+                  <SHORT-NAME-PATTERN />
+                  <ROLE />
+                  <IS-REENTRANT>false</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>INTERRUPT-CAT-2</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="850bbf64-d327-49af-84ff-7b01f8435d5f">
+                  <SHORT-NAME>Can_1_Int0ISR_Fun</SHORT-NAME>
+                  <CATEGORY />
+                  <SHORT-NAME-PATTERN />
+                  <ROLE />
+                  <IS-REENTRANT>false</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>INTERRUPT-CAT-2</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="751d6b81-3ce7-4c5e-8f71-f05b3df5574c">
+                  <SHORT-NAME>Can_0_Int1ISR_Fun</SHORT-NAME>
+                  <CATEGORY />
+                  <SHORT-NAME-PATTERN />
+                  <ROLE />
+                  <IS-REENTRANT>false</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>INTERRUPT-CAT-2</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="4425e548-4a53-47d1-978b-b33b5195d9bf">
+                  <SHORT-NAME>Can_1_Int1ISR_Fun</SHORT-NAME>
+                  <CATEGORY />
+                  <SHORT-NAME-PATTERN />
+                  <ROLE />
+                  <IS-REENTRANT>false</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>INTERRUPT-CAT-2</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="d995042c-88cb-44bc-a42f-e8119b2c671b">
+                  <SHORT-NAME>Can_0_Int0ISR</SHORT-NAME>
+                  <CATEGORY />
+                  <SHORT-NAME-PATTERN />
+                  <ROLE />
+                  <IS-REENTRANT>false</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>INTERRUPT</CALL-TYPE>
+                  <EXECUTION-CONTEXT>INTERRUPT-CAT-1</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="ee0dd8ae-d001-4be8-87cd-9876da1ca4d6">
+                  <SHORT-NAME>Can_1_Int0ISR</SHORT-NAME>
+                  <CATEGORY />
+                  <SHORT-NAME-PATTERN />
+                  <ROLE />
+                  <IS-REENTRANT>false</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>INTERRUPT</CALL-TYPE>
+                  <EXECUTION-CONTEXT>INTERRUPT-CAT-1</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="62d17315-e1e9-4c2f-9eb4-113193aeca34">
+                  <SHORT-NAME>Can_0_Int1ISR</SHORT-NAME>
+                  <CATEGORY />
+                  <SHORT-NAME-PATTERN />
+                  <ROLE />
+                  <IS-REENTRANT>false</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>INTERRUPT</CALL-TYPE>
+                  <EXECUTION-CONTEXT>INTERRUPT-CAT-1</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="d1cc171a-f0df-407c-a423-499f0187deec">
+                  <SHORT-NAME>Can_1_Int1ISR</SHORT-NAME>
+                  <CATEGORY />
+                  <SHORT-NAME-PATTERN />
+                  <ROLE />
+                  <IS-REENTRANT>false</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>INTERRUPT</CALL-TYPE>
+                  <EXECUTION-CONTEXT>INTERRUPT-CAT-1</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="">
+                  <SHORT-NAME>Can_2_Int0ISR</SHORT-NAME>
+                  <CATEGORY />
+                  <SHORT-NAME-PATTERN />
+                  <ROLE />
+                  <IS-REENTRANT>false</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>INTERRUPT</CALL-TYPE>
+                  <EXECUTION-CONTEXT>INTERRUPT-CAT-1</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="">
+                  <SHORT-NAME>Can_2_Int1ISR</SHORT-NAME>
+                  <CATEGORY />
+                  <SHORT-NAME-PATTERN />
+                  <ROLE />
+                  <IS-REENTRANT>false</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>INTERRUPT</CALL-TYPE>
+                  <EXECUTION-CONTEXT>INTERRUPT-CAT-1</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="411f581d-de79-489f-938c-3ec03f5b8c0e">
+                  <SHORT-NAME>Can_CheckBaudrate</SHORT-NAME>
+                  <CATEGORY />
+                  <SHORT-NAME-PATTERN />
+                  <SERVICE-ID>0x0e</SERVICE-ID>
+                  <ROLE />
+                  <IS-REENTRANT>true</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="2acac440-3f63-405a-9693-eec005d21ead">
+                  <SHORT-NAME>Can_TestLoopBackModeEnable</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">This service will enable CAN loopback mode</L-2>
+                  </DESC>
+                  <CATEGORY />
+                  <SHORT-NAME-PATTERN />
+                  <SERVICE-ID>0x0e</SERVICE-ID>
+                  <ROLE />
+                  <IS-REENTRANT>false</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                  <ARGUMENTS>
+                    <SW-SERVICE-ARG UUID="af016968-bb9e-4c58-96a4-eb46c0f286e5">
+                      <SHORT-NAME>Controller</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">CAN Controller to enable loopback mode</L-2>
+                      </DESC>
+                      <DIRECTION>IN</DIRECTION>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <SW-ALIGNMENT />
+                            <DISPLAY-FORMAT />
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR/Platform/ImplementationDataTypes_Blueprint/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                            <ADDITIONAL-NATIVE-TYPE-QUALIFIER />
+                            <SW-INTENDED-RESOLUTION />
+                            <SW-INTERPOLATION-METHOD />
+                            <MC-FUNCTION />
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                    </SW-SERVICE-ARG>
+                    <SW-SERVICE-ARG UUID="07a5d415-92cf-4a8d-bd33-f0f36ce37514">
+                      <SHORT-NAME>Mode</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Loopback mode</L-2>
+                      </DESC>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR/Platform/ImplementationDataTypes_Blueprint/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                    </SW-SERVICE-ARG>
+                  </ARGUMENTS>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="1af31afa-ab4f-47af-9a71-7f37e3d75eff">
+                  <SHORT-NAME>Can_TestLoopBackModeDisable</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">This service will enable CAN loopback mode</L-2>
+                  </DESC>
+                  <CATEGORY />
+                  <SHORT-NAME-PATTERN />
+                  <ROLE />
+                  <IS-REENTRANT>false</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                  <ARGUMENTS>
+                    <SW-SERVICE-ARG UUID="e863bb13-8545-48df-b3da-2e7ab5958b84">
+                      <SHORT-NAME>Controller</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">CAN Controller to enable loopback mode</L-2>
+                      </DESC>
+                      <DIRECTION>IN</DIRECTION>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <SW-ALIGNMENT />
+                            <DISPLAY-FORMAT />
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR/Platform/ImplementationDataTypes_Blueprint/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                            <ADDITIONAL-NATIVE-TYPE-QUALIFIER />
+                            <SW-INTENDED-RESOLUTION />
+                            <SW-INTERPOLATION-METHOD />
+                            <MC-FUNCTION />
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                    </SW-SERVICE-ARG>
+                    <SW-SERVICE-ARG UUID="1c6d65c4-ba01-4eb6-bd8f-e449a18f37ac">
+                      <SHORT-NAME>Mode</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Loopback mode</L-2>
+                      </DESC>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR/Platform/ImplementationDataTypes_Blueprint/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                    </SW-SERVICE-ARG>
+                  </ARGUMENTS>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="8362417b-1708-4fbb-92b2-6444e5e14360">
+                  <SHORT-NAME>Can_GetVersionInfo</SHORT-NAME>
+                  <CATEGORY />
+                  <SHORT-NAME-PATTERN />
+                  <SERVICE-ID>7</SERVICE-ID>
+                  <ROLE />
+                  <IS-REENTRANT>true</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>TASK</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="0a1a3ddd-01f0-46a8-bec0-c7141c7b1396">
+                  <SHORT-NAME>Can_RegisterReadback</SHORT-NAME>
+                  <CATEGORY />
+                  <SHORT-NAME-PATTERN />
+                  <SERVICE-ID>13</SERVICE-ID>
+                  <ROLE />
+                  <IS-REENTRANT>false</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="e4f87b6c-2d5f-46e2-80bb-6ec4ffc64d2e">
+                  <SHORT-NAME>Can_SetBaudrate</SHORT-NAME>
+                  <CATEGORY />
+                  <SHORT-NAME-PATTERN />
+                  <SERVICE-ID>15</SERVICE-ID>
+                  <ROLE />
+                  <IS-REENTRANT>false</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+              </ELEMENTS>
+            </AR-PACKAGE>
+          </AR-PACKAGES>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="877a1911-48c3-43ce-8c6a-8a6ae16efe44">
+          <SHORT-NAME>Dem</SHORT-NAME>
+          <AR-PACKAGES>
+            <AR-PACKAGE UUID="d5adcb77-8631-4bbd-a6e4-357cc99790ad">
+              <SHORT-NAME>BswModuleEntries</SHORT-NAME>
+              <ELEMENTS>
+                <BSW-MODULE-ENTRY UUID="8d312afd-eec7-4872-a649-c50b08c31c0c">
+                  <SHORT-NAME>Dem_ReportErrorStatus</SHORT-NAME>
+                  <CATEGORY />
+                  <SHORT-NAME-PATTERN />
+                  <SERVICE-ID>15</SERVICE-ID>
+                  <ROLE />
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+              </ELEMENTS>
+            </AR-PACKAGE>
+          </AR-PACKAGES>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="5b7b94ef-8e14-4fac-bf69-8ae290282e93">
+          <SHORT-NAME>Det</SHORT-NAME>
+          <AR-PACKAGES>
+            <AR-PACKAGE UUID="9fd2c230-f187-4590-a071-bdbc5c0e2d4e">
+              <SHORT-NAME>BswModuleEntries</SHORT-NAME>
+              <ELEMENTS>
+                <BSW-MODULE-ENTRY UUID="cef916f0-515f-490c-9ad6-4cfec8184b88">
+                  <SHORT-NAME>Det_ReportError</SHORT-NAME>
+                  <CATEGORY />
+                  <SERVICE-ID>1</SERVICE-ID>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                </BSW-MODULE-ENTRY>
+              </ELEMENTS>
+            </AR-PACKAGE>
+          </AR-PACKAGES>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="f4102d84-cabc-415e-97ba-873e899bc9dd">
+          <SHORT-NAME>EcuM</SHORT-NAME>
+          <AR-PACKAGES>
+            <AR-PACKAGE UUID="1023a2be-1aa0-4311-b879-c2e4191be77a">
+              <SHORT-NAME>BswModuleEntries</SHORT-NAME>
+              <ELEMENTS>
+                <BSW-MODULE-ENTRY S="" UUID="dd6503c0-5c84-4d1d-b930-21853b855e1c">
+                  <SHORT-NAME>EcuM_CheckWakeup</SHORT-NAME>
+                  <CATEGORY />
+                  <SERVICE-ID>12</SERVICE-ID>
+                  <CALL-TYPE>CALLBACK</CALL-TYPE>
+                  <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                </BSW-MODULE-ENTRY>
+              </ELEMENTS>
+            </AR-PACKAGE>
+          </AR-PACKAGES>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="ffe1105b-aff7-4b0d-9182-b73e57c5a7fa">
+          <SHORT-NAME>CanIf</SHORT-NAME>
+          <AR-PACKAGES>
+            <AR-PACKAGE UUID="c56ad42b-d3f9-4bf0-85ba-af73d6f1d593">
+              <SHORT-NAME>BswModuleEntries</SHORT-NAME>
+              <ELEMENTS>
+                <BSW-MODULE-ENTRY UUID="b55cd4d9-0234-4993-84c8-b188bf5fb837">
+                  <SHORT-NAME>CanIf_ControllerModeIndication</SHORT-NAME>
+                  <SERVICE-ID>23</SERVICE-ID>
+                  <ROLE />
+                  <CALL-TYPE>CALLBACK</CALL-TYPE>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="07a58085-7cb2-4014-850f-da48a5710c61">
+                  <SHORT-NAME>CanIf_TxConfirmation</SHORT-NAME>
+                  <SERVICE-ID>0x13</SERVICE-ID>
+                  <ROLE />
+                  <CALL-TYPE>CALLBACK</CALL-TYPE>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="d46a2754-ea62-45cf-a97d-4d650c54348f">
+                  <SHORT-NAME>CanIf_RxIndication</SHORT-NAME>
+                  <SERVICE-ID>0x14</SERVICE-ID>
+                  <ROLE />
+                  <CALL-TYPE>CALLBACK</CALL-TYPE>
+                </BSW-MODULE-ENTRY>
+                <BSW-MODULE-ENTRY UUID="d9a69772-81ac-4d22-a6f5-bba5111e6afa">
+                  <SHORT-NAME>CanIf_ControllerBusOff</SHORT-NAME>
+                  <SERVICE-ID>0x16</SERVICE-ID>
+                  <ROLE />
+                  <CALL-TYPE>CALLBACK</CALL-TYPE>
+                </BSW-MODULE-ENTRY>
+              </ELEMENTS>
+            </AR-PACKAGE>
+          </AR-PACKAGES>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+    <AR-PACKAGE UUID="52907f66-aefa-4398-882a-b536afdc6b10">
+      <SHORT-NAME>TI_TDA3XX</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE UUID="3bc36069-ef99-4935-a95b-adab66a81479">
+          <SHORT-NAME>Can</SHORT-NAME>
+          <ELEMENTS>
+            <BSW-IMPLEMENTATION S="" UUID="fb807b12-0a93-4305-8a63-3e2056810b9c">
+              <SHORT-NAME>TI_TDA3XX_Can</SHORT-NAME>
+              <CATEGORY />
+              <CODE-DESCRIPTORS>
+                <CODE UUID="9c51ed2a-8dfb-4633-839a-ad6370257a3d">
+                  <SHORT-NAME>Files</SHORT-NAME>
+                  <ARTIFACT-DESCRIPTORS>
+                    <AUTOSAR-ENGINEERING-OBJECT S="">
+                      <SHORT-LABEL>Can.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                      <DOMAIN />
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT S="">
+                      <SHORT-LABEL>Can_Irq.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                      <DOMAIN />
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT S="">
+                      <SHORT-LABEL>Can_Dcan.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                      <DOMAIN />
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT S="">
+                      <SHORT-LABEL>Can_Priv.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                      <DOMAIN />
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT S="">
+                      <SHORT-LABEL>Can_PBcfg_tda3xx.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                      <DOMAIN />
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT S="">
+                      <SHORT-LABEL>Can_Mcan.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                      <DOMAIN />
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT S="">
+                      <SHORT-LABEL>mcan.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                      <DOMAIN />
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                  </ARTIFACT-DESCRIPTORS>
+                </CODE>
+              </CODE-DESCRIPTORS>
+              <COMPILERS>
+                <COMPILER UUID="79188202-3524-4599-b148-6d858dd00156">
+                  <SHORT-NAME>armcl</SHORT-NAME>
+                  <CATEGORY />
+                  <NAME>TI ARM Compiler</NAME>
+                  <OPTIONS>-c -qq --endian=little -mv7M4 --float_support=vfplib --abi=eabi -eo.oem4 -ea.sem4 --symdebug:dwarf --embed_inline_assembly --gcc --emit_warnings_as_errors -g -ms --opt_level=3 -os --optimize_with_debug</OPTIONS>
+                  <VENDOR>Texas Instruments</VENDOR>
+                  <VERSION>5.2.5</VERSION>
+                </COMPILER>
+              </COMPILERS>
+              <LINKERS>
+                <LINKER UUID="d94be72d-b17f-4a61-9f86-110b94c93535">
+                  <SHORT-NAME>armcl</SHORT-NAME>
+                  <NAME>TI ARM Linker</NAME>
+                  <OPTIONS />
+                  <VENDOR>Texas Instruments</VENDOR>
+                  <VERSION>5.2.5</VERSION>
+                </LINKER>
+              </LINKERS>
+              <PROGRAMMING-LANGUAGE>C</PROGRAMMING-LANGUAGE>
+              <REQUIRED-ARTIFACTS>
+                <DEPENDENCY-ON-ARTIFACT S="" UUID="f946307c-3a68-41f6-bb3b-afb4d09b22bf">
+                  <SHORT-NAME>ExternalLibs</SHORT-NAME>
+                  <CATEGORY />
+                  <ARTIFACT-DESCRIPTOR S="">
+                    <SHORT-LABEL>libc</SHORT-LABEL>
+                    <CATEGORY>SWLIB</CATEGORY>
+                    <DOMAIN />
+                  </ARTIFACT-DESCRIPTOR>
+                  <USAGES>
+                    <USAGE>LINK</USAGE>
+                    <USAGE>COMPILE</USAGE>
+                  </USAGES>
+                </DEPENDENCY-ON-ARTIFACT>
+              </REQUIRED-ARTIFACTS>
+              <RESOURCE-CONSUMPTION UUID="5f2882b8-78ff-49c3-b0a9-98c88af2a2f8">
+                <SHORT-NAME>TI_TDA3XX_Can_Resources</SHORT-NAME>
+                <CATEGORY />
+                <EXECUTION-TIMES>
+                  <MEASURED-EXECUTION-TIME S="" UUID="dd0859c5-041f-41f8-9483-6cf7ac3b1767">
+                    <SHORT-NAME>Can_ISR_Time</SHORT-NAME>
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_0_Int0ISR_Fun</EXECUTABLE-ENTITY-REF>
+                    <MEMORY-SECTION-LOCATIONS>
+                      <MEMORY-SECTION-LOCATION S="" />
+                    </MEMORY-SECTION-LOCATIONS>
+                    <SOFTWARE-CONTEXT S="">
+                      <INPUT />
+                      <STATE />
+                    </SOFTWARE-CONTEXT>
+                    <NOMINAL-EXECUTION-TIME />
+                  </MEASURED-EXECUTION-TIME>
+                  <MEASURED-EXECUTION-TIME UUID="85229f3f-f861-41b8-8011-ce9ec794fec4">
+                    <SHORT-NAME>Can_Write_Time</SHORT-NAME>
+                    <EXCLUSIVE-AREA-REF DEST="EXCLUSIVE-AREA">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/CAN_EXCLUSIVE_AREA_0</EXCLUSIVE-AREA-REF>
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_Write</EXECUTABLE-ENTITY-REF>
+                    <MEMORY-SECTION-LOCATIONS>
+                      <MEMORY-SECTION-LOCATION S="" />
+                    </MEMORY-SECTION-LOCATIONS>
+                    <SOFTWARE-CONTEXT>
+                      <INPUT />
+                      <STATE />
+                    </SOFTWARE-CONTEXT>
+                    <NOMINAL-EXECUTION-TIME />
+                  </MEASURED-EXECUTION-TIME>
+                  <MEASURED-EXECUTION-TIME UUID="84756cc7-ee69-422c-a9db-f825f4630bfa">
+                    <SHORT-NAME>Can_MainFunction_Write_Time</SHORT-NAME>
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-SCHEDULABLE-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_MainFunction_Write</EXECUTABLE-ENTITY-REF>
+                    <MEMORY-SECTION-LOCATIONS>
+                      <MEMORY-SECTION-LOCATION S="" />
+                    </MEMORY-SECTION-LOCATIONS>
+                    <SOFTWARE-CONTEXT>
+                      <INPUT />
+                      <STATE />
+                    </SOFTWARE-CONTEXT>
+                    <NOMINAL-EXECUTION-TIME />
+                  </MEASURED-EXECUTION-TIME>
+                  <MEASURED-EXECUTION-TIME UUID="0adfcfb0-0fdb-4c3a-9fe8-a770cf72d9ef">
+                    <SHORT-NAME>Can_MainFunction_Read_Time</SHORT-NAME>
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-SCHEDULABLE-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_MainFunction_Read</EXECUTABLE-ENTITY-REF>
+                    <MEMORY-SECTION-LOCATIONS>
+                      <MEMORY-SECTION-LOCATION S="" />
+                    </MEMORY-SECTION-LOCATIONS>
+                    <SOFTWARE-CONTEXT>
+                      <INPUT />
+                      <STATE />
+                    </SOFTWARE-CONTEXT>
+                    <NOMINAL-EXECUTION-TIME />
+                  </MEASURED-EXECUTION-TIME>
+                </EXECUTION-TIMES>
+                <MEMORY-SECTIONS>
+                  <MEMORY-SECTION S="" UUID="ec2e8686-3e36-411c-a5ad-952707f0fd6d">
+                    <SHORT-NAME>CONFIG_DATA</SHORT-NAME>
+                    <CATEGORY />
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <MEM-CLASS-SYMBOL />
+                    <SIZE>1024</SIZE>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CONFIG_DATA</SW-ADDRMETHOD-REF>
+                    <SYMBOL />
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION S="" UUID="651ab878-d199-424c-9238-0387779bc282">
+                    <SHORT-NAME>CODE</SHORT-NAME>
+                    <CATEGORY />
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <EXECUTABLE-ENTITY-REFS>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_ChangeBaudRate</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_CheckBaudRate</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_CheckWakeup</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_DisableControllerInterrupts</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_EnableControllerInterrupts</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_Init</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-SCHEDULABLE-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_MainFunction_BusOff</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-SCHEDULABLE-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_MainFunction_Mode</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-SCHEDULABLE-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_MainFunction_Read</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-SCHEDULABLE-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_MainFunction_Wakeup</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-SCHEDULABLE-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_MainFunction_Write</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_SetControllerMode</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_TestLoopBackModeDisable</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_TestLoopBackModeEnable</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_Write</EXECUTABLE-ENTITY-REF>
+                    </EXECUTABLE-ENTITY-REFS>
+                    <MEM-CLASS-SYMBOL />
+                    <SIZE>0x5000</SIZE>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE</SW-ADDRMETHOD-REF>
+                    <SYMBOL />
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION S="" UUID="6d7d351b-2d1e-4892-8cfc-fdac5d55c444">
+                    <SHORT-NAME>VAR_INIT_UNSPECIFIED</SHORT-NAME>
+                    <CATEGORY />
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <MEM-CLASS-SYMBOL />
+                    <SIZE>256</SIZE>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/VAR</SW-ADDRMETHOD-REF>
+                    <SYMBOL />
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION S="" UUID="d31808d4-e024-4ae1-8bf9-46ff52e0beff">
+                    <SHORT-NAME>VAR_NOINIT_UNSPECIFIED</SHORT-NAME>
+                    <CATEGORY />
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <MEM-CLASS-SYMBOL />
+                    <SIZE>1024</SIZE>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/VAR</SW-ADDRMETHOD-REF>
+                    <SYMBOL />
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION S="" UUID="d6cef53f-e685-4a3f-8483-e27a032d4822">
+                    <SHORT-NAME>CONST_UNSPECIFIED</SHORT-NAME>
+                    <CATEGORY />
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <MEM-CLASS-SYMBOL />
+                    <SIZE>1024</SIZE>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CONST</SW-ADDRMETHOD-REF>
+                    <SYMBOL />
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION S="" UUID="49a8ffe0-cbae-4dfe-8124-dd39f6adf850">
+                    <SHORT-NAME>ISR_CODE</SHORT-NAME>
+                    <CATEGORY />
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <EXECUTABLE-ENTITY-REFS>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_0_Int0ISR</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_0_Int1ISR</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_1_Int0ISR</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_1_Int1ISR</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_2_Int0ISR</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_2_Int1ISR</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_0_Int0ISR_Fun</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_0_Int1ISR_Fun</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_1_Int0ISR_Fun</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_1_Int1ISR_Fun</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_2_Int0ISR_Fun</EXECUTABLE-ENTITY-REF>
+                      <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_2_Int1ISR_Fun</EXECUTABLE-ENTITY-REF>
+                    </EXECUTABLE-ENTITY-REFS>
+                    <MEM-CLASS-SYMBOL />
+                    <SIZE>12288</SIZE>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CODE</SW-ADDRMETHOD-REF>
+                    <SYMBOL />
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION S="" UUID="6b47aff3-3da4-4731-9fd4-26f7931e5e40">
+                    <SHORT-NAME>CONST_32</SHORT-NAME>
+                    <CATEGORY />
+                    <ALIGNMENT>32</ALIGNMENT>
+                    <MEM-CLASS-SYMBOL />
+                    <SIZE>512</SIZE>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/CONST</SW-ADDRMETHOD-REF>
+                    <SYMBOL />
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION S="" UUID="62d10423-1735-45f7-9cd2-47aefe5173bb">
+                    <SHORT-NAME>VAR_NOINIT_16</SHORT-NAME>
+                    <CATEGORY />
+                    <ALIGNMENT>16</ALIGNMENT>
+                    <MEM-CLASS-SYMBOL />
+                    <SIZE>1024</SIZE>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/VAR</SW-ADDRMETHOD-REF>
+                    <SYMBOL />
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION S="" UUID="584c52ec-a22b-4076-b5e2-767a6aa6d9ca">
+                    <SHORT-NAME>VAR_NOINIT_8</SHORT-NAME>
+                    <CATEGORY />
+                    <ALIGNMENT>8</ALIGNMENT>
+                    <MEM-CLASS-SYMBOL />
+                    <SIZE>512</SIZE>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/VAR</SW-ADDRMETHOD-REF>
+                    <SYMBOL />
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION S="" UUID="3e371618-b622-4d1b-a6d4-810251545f7a">
+                    <SHORT-NAME>VAR_NOINIT_32</SHORT-NAME>
+                    <CATEGORY />
+                    <ALIGNMENT>32</ALIGNMENT>
+                    <MEM-CLASS-SYMBOL />
+                    <SIZE>512</SIZE>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR/MemMap/SwAddrMethods_Blueprint/VAR</SW-ADDRMETHOD-REF>
+                    <SYMBOL />
+                  </MEMORY-SECTION>
+                </MEMORY-SECTIONS>
+                <STACK-USAGES>
+                  <MEASURED-STACK-USAGE S="" UUID="47b3eaf6-f014-4671-acc0-cc1fe0c296f4">
+                    <SHORT-NAME>Can_ISR_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-INTERRUPT-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_0_Int0ISR_Fun</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>168</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>168</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>168</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="3ec37caf-7ad7-491d-871d-16bd86007bbd">
+                    <SHORT-NAME>Can_Write_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_Write</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>384</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>384</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>384</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="85e59991-725d-4f1b-a7bd-4641abc08d3e">
+                    <SHORT-NAME>Can_MainFunction_Read_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-SCHEDULABLE-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_MainFunction_Read</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>376</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>376</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>376</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="53e7130c-f672-471f-b008-803a52e7546d">
+                    <SHORT-NAME>Can_MainFunction_Write_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-SCHEDULABLE-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_MainFunction_Write</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>112</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>112</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>112</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="7466df79-578a-4a16-b3e2-4310b8ac01f6">
+                    <SHORT-NAME>Can_GetVersionInfo_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_GetVersionInfo</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>8</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>8</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>8</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="4dac61c3-ec74-4862-8774-ab5338dd6d5a">
+                    <SHORT-NAME>Can_Init_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_Init</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>320</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>320</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>320</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="1847e2d0-6829-4f05-9451-277b4dbd5126">
+                    <SHORT-NAME>Can_SetControllerMode_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_SetControllerMode</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>160</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>160</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>160</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="3f6279dc-4a02-40c5-994f-d36e2e5374b0">
+                    <SHORT-NAME>Can_CheckWakeup_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_CheckWakeup</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>80</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>80</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>80</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="24f8e608-ba1c-4b37-9bd2-3652ee2c3285">
+                    <SHORT-NAME>Can_DisableControllerInterrupts_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_DisableControllerInterrupts</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>80</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>80</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>80</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="53339fe3-63b6-4931-a2a8-8282291b6273">
+                    <SHORT-NAME>Can_EnableControllerInterrupts_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_EnableControllerInterrupts</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>80</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>80</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>80</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="58134f08-2172-4741-b144-3cad37a054dc">
+                    <SHORT-NAME>Can_MainFunction_BusOff_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-SCHEDULABLE-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_MainFunction_BusOff</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>112</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>112</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>112</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="1b2ec57e-664b-4b5e-ae71-67da02a55eb9">
+                    <SHORT-NAME>Can_MainFunction_Wakeup_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-SCHEDULABLE-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_MainFunction_Wakeup</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>72</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>72</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>72</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="d69ee005-30e5-41a4-b688-d364046ba5a5">
+                    <SHORT-NAME>Can_MainFunction_Mode_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-SCHEDULABLE-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_MainFunction_Mode</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>128</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>128</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>128</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="497f8115-01c0-4145-8371-da76df6862c2">
+                    <SHORT-NAME>Can_ChangeBaudrate_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_ChangeBaudRate</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>328</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>328</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>328</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="a822eade-a38e-46a3-b1ef-15e5f2ccb330">
+                    <SHORT-NAME>Can_CheckBaudrate_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_CheckBaudRate</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>40</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>40</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>40</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="2a86fd09-089e-4cb2-adb5-e3e2fa5fcfa5">
+                    <SHORT-NAME>Can_TestLoopBackModeEnable_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_TestLoopBackModeEnable</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>120</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>120</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>120</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="e239893e-ba1f-411c-a880-8e7a4b347445">
+                    <SHORT-NAME>Can_TestLoopBackModeDisable_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_TestLoopBackModeDisable</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>120</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>120</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>120</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="87494544-92c9-4cf8-b23f-6c8ad0c104c4">
+                    <SHORT-NAME>Can_RegisterReadback_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_RegisterReadback</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>32</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>32</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>32</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="">
+                    <SHORT-NAME>Can_EccParityEnable_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_EccParityEnable</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>112</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>112</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>112</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="">
+                    <SHORT-NAME>Can_EccDiagnosticGetErrMsgBoxNum_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_EccDiagnosticGetErrMsgBoxNum</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>64</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>64</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>64</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="">
+                    <SHORT-NAME>Can_EccDiagnosticModeEnable_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_EccDiagnosticModeEnable</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>72</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>72</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>72</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="">
+                    <SHORT-NAME>Can_EccGetErrStatus_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_EccGetErrStatus</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>64</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>64</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>64</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="">
+                    <SHORT-NAME>Can_EccClrErrStatus_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_EccClrErrStatus</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>56</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>56</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>56</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                  <MEASURED-STACK-USAGE S="" UUID="">
+                    <SHORT-NAME>Can_DeInit_Stack</SHORT-NAME>
+                    <CATEGORY />
+                    <EXECUTABLE-ENTITY-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR/Can/BswModuleDescriptions/Can/InternalBehaviour_0/Can_DeInit</EXECUTABLE-ENTITY-REF>
+                    <AVERAGE-MEMORY-CONSUMPTION>104</AVERAGE-MEMORY-CONSUMPTION>
+                    <MAXIMUM-MEMORY-CONSUMPTION>104</MAXIMUM-MEMORY-CONSUMPTION>
+                    <MINIMUM-MEMORY-CONSUMPTION>104</MINIMUM-MEMORY-CONSUMPTION>
+                    <TEST-PATTERN />
+                  </MEASURED-STACK-USAGE>
+                </STACK-USAGES>
+              </RESOURCE-CONSUMPTION>
+              <SW-VERSION>1.9.0</SW-VERSION>
+              <USED-CODE-GENERATOR />
+              <VENDOR-ID>44</VENDOR-ID>
+              <AR-RELEASE-VERSION>4.2.1</AR-RELEASE-VERSION>
+              <VENDOR-API-INFIX />
+              <VENDOR-SPECIFIC-MODULE-DEF-REFS>
+                <VENDOR-SPECIFIC-MODULE-DEF-REF DEST="ECUC-MODULE-DEF">/TI_TDA3XX/Can</VENDOR-SPECIFIC-MODULE-DEF-REF>
+              </VENDOR-SPECIFIC-MODULE-DEF-REFS>
+            </BSW-IMPLEMENTATION>
+          </ELEMENTS>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>

@@ -1,0 +1,400 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>System Firmware Authentication and Decryption Requests &mdash; TISCI User Guide</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="TISCI User Guide" href="../index.html"/>
+        <link rel="up" title="Chapter 6: Topic User Guides" href="index.html"/>
+        <link rel="next" title="Device Group Primer" href="devgrp_usage.html"/>
+        <link rel="prev" title="Chapter 6: Topic User Guides" href="index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="../_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> TISCI
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                09.02.04
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../1_intro/index.html">Chapter 1: Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_tisci_msgs/index.html">Chapter 2: TISCI Message Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_boardcfg/index.html">Chapter 3: Board Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_trace/index.html">Chapter 4: Interpreting Trace Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_soc_doc/index.html">Chapter 5: SoC Family Specific Documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Chapter 6: Topic User Guides</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">System Firmware Authentication and Decryption Requests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#supported-signing-methods">Supported Signing Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#certificate-extensions">Certificate Extensions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#mandatory-extensions">Mandatory Extensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#optional-extensions">Optional Extensions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#authentication-sequence">Authentication Sequence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="devgrp_usage.html">Device Group Primer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domgrp_usage.html">Domain Group Primer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="secure_boot_signing.html">Signing binaries for Secure Boot on HS Devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hs_boardcfg_signing.html">Signing Board Configuration on HS devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openssl_usage.html">Using OpenSSL for certificate creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extended_otp.html">Using Extended OTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dkek_management.html">Using Derived KEK on HS devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firewall_faq.html">Firewall FAQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="saul_access.html">SAUL Access Outside of SYSFW</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security_handover.html">Performing Security Handover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="secure_debug.html">Secure Debug User Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="key_writer.html">Key  Writer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="otp_revision.html">Run time read/write to KEYREV and SWREV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keyring.html">Keyring Management</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">TISCI</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Chapter 6: Topic User Guides</a> &raquo;</li>
+      
+    <li>System Firmware Authentication and Decryption Requests</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sysfw-authentication-and-decryption-requests">
+<h1>System Firmware Authentication and Decryption Requests<a class="headerlink" href="#sysfw-authentication-and-decryption-requests" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This document is only applicable to HS devices.</p>
+</div>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>System Firmware provides authentication and decryption services for various binary data
+types using customer root-of-trust keys programmed into the device efuses.</p>
+<p>The <a class="reference internal" href="../2_tisci_msgs/security/PROC_BOOT.html#proc-boot-authenticate-image-and-configure-processor"><span class="std std-ref">TISCI_MSG_PROC_AUTH_BOOT</span></a> API is used to
+authenticate and (optionally) decrypt a binary image according to the needs for
+the secure application. This API serves a dual purpose in the definition from
+System Firmware:</p>
+<p><strong>Authenticated Processor Boot</strong></p>
+<p>Authentication of binary images which are to be executed in a secure boot flow,
+with chain of trust guaranteed by System Firmware.</p>
+<p><strong>Generalized Authentication</strong></p>
+<p>Authenticate a generic binary image which contains user IP or data which must be
+guaranteed authenticity by System Firmware.</p>
+</div>
+<div class="section" id="supported-signing-methods">
+<h2>Supported Signing Methods<a class="headerlink" href="#supported-signing-methods" title="Permalink to this headline">¶</a></h2>
+<p>System Firmware supports signature verification using RSASSA-PKCS1-v1_5 as described in
+<a class="reference internal" href="#sysfw-auth-ug-ref"><span class="std std-ref">[1]</span></a>. Currently only RSA-4K keys are supported.</p>
+</div>
+<div class="section" id="certificate-extensions">
+<h2>Certificate Extensions<a class="headerlink" href="#certificate-extensions" title="Permalink to this headline">¶</a></h2>
+<p>The below sections describe which extensions are mandatory and optional in order
+to make authentication requests from System Firmware</p>
+<p>See the description for the <a class="reference internal" href="../2_tisci_msgs/security/sec_cert_format.html#sysfw-x509-ext-requirements"><span class="std std-ref">Applicability of certificate extensions to image types</span></a>
+binary type in the System Firmware X.509 extension reference for full details on
+mandatory and optional extensions for all authenticated binary types.</p>
+<div class="section" id="mandatory-extensions">
+<h3>Mandatory Extensions<a class="headerlink" href="#mandatory-extensions" title="Permalink to this headline">¶</a></h3>
+<p>At a minimum, all authenticated data must include
+<a class="reference internal" href="../2_tisci_msgs/security/sec_cert_format.html#sysfw-image-integrity-ext"><span class="std std-ref">System Firmware Image Integrity Extension</span></a> and <a class="reference internal" href="../2_tisci_msgs/security/sec_cert_format.html#sysfw-load-ext"><span class="std std-ref">System Firmware Load Extension</span></a> to provide integrity
+details on the data payload.</p>
+<ul class="simple">
+<li>All integrity checking is performed by checking the SHA2-512 hash of the data
+payload and no other format is currently supported.</li>
+<li>The load extension indicates whether the data shall be validated in-place or
+copied to another destination.</li>
+</ul>
+<p>The <a class="reference internal" href="../2_tisci_msgs/security/sec_cert_format.html#sysfw-swrev-ext"><span class="std std-ref">System Firmware Software Revision Extension</span></a> is mandatory with suggested minimum value of 1. After
+initial certificate parsing and validation, currently no additional actions are
+taken by the presence of this extension. Its use is reserved for future
+definition TBD.</p>
+</div>
+<div class="section" id="optional-extensions">
+<h3>Optional Extensions<a class="headerlink" href="#optional-extensions" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="encryption">
+<h4>Encryption<a class="headerlink" href="#encryption" title="Permalink to this headline">¶</a></h4>
+<p>The <a class="reference internal" href="../2_tisci_msgs/security/sec_cert_format.html#sysfw-encryption-ext"><span class="std std-ref">System Firmware Encryption Extension</span></a> optionally allows for AES-256-CBC decryption of
+the data payload. This is applicable to any payload type which requires
+encryption protection, including processor boot or generic data binaries.</p>
+</div>
+<div class="section" id="processor-configuration">
+<h4>Processor Configuration<a class="headerlink" href="#processor-configuration" title="Permalink to this headline">¶</a></h4>
+<p><a class="reference internal" href="../2_tisci_msgs/security/sec_cert_format.html#sysfw-boot-ext"><span class="std std-ref">System Firmware Boot Extension</span></a> provides means to configure the processor options defined
+in  <a class="reference internal" href="../2_tisci_msgs/security/PROC_BOOT.html#proc-boot-flags"><span class="std std-ref">Generic Processor Flags</span></a>. This guarantees authenticated configuration of the
+processor’s boot vector and other processor-specific parameters critical for
+the secure boot operation.</p>
+<p>Omission of this extension effectively renders the call to
+<code class="docutils literal"><span class="pre">TISCI_MSG_PROC_AUTH_BOOT</span></code> to the generalized authentication request
+mentioned earlier in this document.</p>
+</div>
+</div>
+</div>
+<div class="section" id="authentication-sequence">
+<h2>Authentication Sequence<a class="headerlink" href="#authentication-sequence" title="Permalink to this headline">¶</a></h2>
+<p id="sysfw-auth-ug-ref">The following diagram shows the sequence which System Firmware applies when
+authenticating a binary image.</p>
+<div class="figure">
+<img alt="../_images/sysfw_authentication_flow.png" src="../_images/sysfw_authentication_flow.png" />
+</div>
+<p>The sequence can be described in the following steps upon call of the
+<code class="docutils literal"><span class="pre">TISCI_MSG_PROC_AUTH_BOOT</span></code></p>
+<ol class="arabic simple">
+<li>Verify integrity of the public key in certificate, comparing its hash against
+the hash programmed into the OTP efuse. Values must agree.</li>
+<li><strong>Authentication</strong>: Authentication of digital signature in the certificate.
+Must agree</li>
+<li><strong>Image Data Integrity</strong>: Hash of data payload is taken while loaded into the
+address specified in the load extension. Hash of payload must match integrity
+value.</li>
+<li><strong>IP Confidentiality</strong>: Executable/secret data is optionally decrypted</li>
+<li><strong>Authenticated Decryption</strong>: Decrypted results checked for correctness using
+the magic number in the extension</li>
+</ol>
+<p>Only if the above steps are valid will the API continue taking action as
+requested:</p>
+<ul class="simple">
+<li>Generic authentication: API will return ACK if above checks are successful</li>
+<li>Processor boot authentication: System Firmware will now attempt to apply the processor
+configuration found in the extension, using the same rules as
+<a class="reference internal" href="../2_tisci_msgs/security/PROC_BOOT.html#proc-boot-set-processor-configuration"><span class="std std-ref">TISCI_MSG_PROC_SET_CONFIG - Set Processor Configuration</span></a>. API will return ACK if
+successful.</li>
+</ul>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>RFC-8017 | PKCS #1: RSA Cryptography Specifications Version 2.2,
+<a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc8017">https://datatracker.ietf.org/doc/html/rfc8017</a></li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="devgrp_usage.html" class="btn btn-neutral float-right" title="Device Group Primer" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Chapter 6: Topic User Guides" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyright 2016-2024</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'09.02.04',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+
+        $('body').on("mousewheel", function () {
+            // Remove default behavior
+            event.preventDefault();
+            // Scroll without smoothing
+            var wheelDelta = event.wheelDelta;
+            var currentScrollPosition = window.pageYOffset;
+            window.scrollTo(0, currentScrollPosition - wheelDelta);
+        });
+      });
+  </script>
+   
+
+</body>
+</html>

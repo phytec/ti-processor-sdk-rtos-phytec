@@ -1,0 +1,34 @@
+ PMU Test Application
+Number of PMU counters implemented is: 0x3
+
+  readStatic register successful
+
+static config exportsEvents value is: 0x0
+
+ static config cycleCntDiv value is: 0x0
+
+ iCacheMissCnt is: 0x3e
+
+ dCacheMissCnt is: 0x3d
+
+ branchCnt is: 0x4b6070
+
+ cycleCnt is: 0x2fc448a
+
+ Setting all PMU counters to new values:
+ New iCacheMissCnt is: 0x2
+
+ New dCacheMissCnt is: 0x2
+
+ New branchCnt is: 0x10
+
+ New cycleCnt is: 0x3374
+
+ Test Name: sdl_core_r5_pmuTest  PASSED
+
+ All tests have passed.
+main.c:190:test_sdl_pmu_baremetal_test_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored
+OK

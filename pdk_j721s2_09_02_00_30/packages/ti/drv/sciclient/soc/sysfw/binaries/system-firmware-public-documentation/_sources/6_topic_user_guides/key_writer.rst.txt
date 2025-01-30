@@ -1,0 +1,205 @@
+=========================
+Key  Writer
+=========================
+
+This guide describes the procedure and :ref:`format <sysfw_pub_keywr_cert_format>` to 
+be followed to populate customer keys in eFuses of the SoC.
+
+.. Note:: 
+
+    This document must be read along side :doc:`../2_tisci_msgs/security/keywriter`
+
+High Security (HS) Device Sub-types
+===================================
+#. **HS-FS (High Security - Field Securable)**:
+   Device type before customer keys are programmed (the state in which the device 
+   leaves TI factory). In this state, device protects the ROM code, TI keys and certain 
+   security peripherals. HS-FS devices do not enforce secure boot process.
+
+    * M3 JTAG port is closed, R5 JTAG port is open
+
+    * DMSC Firewalls are closed, SOC Firewalls are open
+
+    * Board configuration need not be signed
+
+    * ROM Boot expects a TI signed binary (encryption is optional)
+
+    * |sysfw| binary is signed by the TI Private key (TI MPK). 
+      (Refer :ref:`pub_sign_unencrypted_mpk` for more details)
+
+#. **HS-SE (High Security – Security Enforced)**:
+   Device type after customer keys are programmed. HS-SE devices enforce secure boot.
+
+    * M3, R5 JTAG ports are both closed
+
+    * DMSC, SOC Firewalls are both closed
+
+    * Board configuration needs to be signed with active customer private key (SMPK/BMPK)
+
+    * ROM Boot expects a dual signed, encrypted system firmware binary
+
+    * |sysfw| binary is encrypted by the TI Encryption key (TI MEK), and signed by the 
+      TI Private key (TI MPK). Customer has to dual sign it with their private key (SMPK/BMPK).
+      (Refer :ref:`pub_sign_encrypted_mek`)
+
+
+HS-FS to HS-SE Conversion
+=========================
+
+In order to convert a HS-FS device to HS-SE device, one has to program the customer root 
+key set (optionally backup key set) on the target device, using OTP Keywriter. 
+
+Customer key information is encrypted into x509 certificate extension fields. A list of
+fields that OTP keywriter supports, can be found :ref:`here <keywriter_supported_fields>`.
+
+.. figure:: ../img/sec/key_writer/hsfs_to_hsse_conversion.png
+  :width: 100%
+
+
+.. _keywriter_cert_gen_procedure:
+
+Procedure
+=========
+
+The following figure illustrates the procedure to be followed to generate the required x509 certifcate for key writing.
+
+.. figure:: ../img/sec/key_writer/key_writer_procedure.png
+  :width: 100%
+
+#. OEM generates a random 256-bit number to be used as an AES encryption key for
+   protecting the OTP extension data.
+
+#. The AES-256 key from step 1 is used to encrypt all X509 extension fields,
+   which require encryption protection.
+
+#. The following X509 extensions are created, using the AES key encrypted with the TI FEK (public key):
+
+   * Encrypting the AES-256 key with TI FEK
+   * Signing the AES-256 key with the SMPK, and encrypting that with the TI FEK
+   * (optionally, refer step 6) signing the AES-256 key with the BMPK, and encrypting
+     that with the TI FEK
+
+#. All of the extensions from steps 1-3 are combined into a X.509 configuration which
+   is used to generate and sign a certificate with the SMPK.
+
+.. Note::
+
+    The SMPK Hash and the BMPK Hash are computed using SHA-512 Algorithm to hash the corresponding 
+    Public keys in DER format. 
+
+#. This X509 config is sigend using SMPK (private).
+
+#. (Optional) If the OEM chooses to write BMPK/BMEK fields, the X509 config from step 5
+   needs to be signed using BMPK (private).
+
+.. _keywriter_supported_fields:
+
+Supported fields
+================
+
+Following fields are supported by the Key writer.
+
+.. csv-table:: Supported OTP keys
+    :file: ../img/sec/key_writer/otp_kw_supported_values.csv
+    :widths: 20 35 45
+    :header-rows: 1
+
+.. important::
+
+    The current version of the OTP Keywriter only supports 4096 bit RSA format for SMPK and BMPK. 
+    Support for ECDSA and different key lengths will be available in subsequent versions.
+
+MPK/MEK Options
+^^^^^^^^^^^^^^^
+
+.. note::
+
+    These are currently not supported, and reserved for future use.
+
+MPK (SMPKH/BMPKH) options is a 10 bit value, split into two 5 bit values, to be programmed
+contiguous to MPK part 1 and part 2. MEK options is a 5 bit value, programmed
+contiguous to MEK.
+
+Secure ROM uses MPK options bit index 0 for RMA process.
+On a HS-SE device, if this bit is set, ``tiMpk`` will be used as root of trust
+instead of SMPKH/BMPKH.
+
+MSV
+^^^
+
+Model Specific Value is a 20 bit value.
+
+BCH code 
+^^^^^^^^
+
+BCH code is used for error correction.
+
+`BCH algorithm <https://en.wikipedia.org/wiki/BCH_code>`_ 
+(288, 261, 7) is used for SMPKH(BMPKH), SMEK(BMEK). 
+
+Out of 261 bits, 256 correspond to SMPKH(BMPKH) part1/2 or SMEK(BMEK) and the 
+remaining 5 bits are the MPK/MEK options. If no options are specified, they are set to 0.
+
+BCH algorithm (32, 20, 5) is used for MSV (20 bit value, and 12 bit BCH code).
+
+BCH codes are computed at time of fuse programming by OTP Keywriter firmware 
+based on plaintext key values.
+
+
+SWREV
+^^^^^
+
+eFuse values of SWREV-SBL, SWREV-SYSFW, SWREV-BOARDCONFIG, use double redundancy 
+to reduce the chance of data corruption. Refer 
+:ref:`SWREV decode logic <sysfw_pub_swrev_decode_logic>` for more details.
+
+Use of SWREV is optional. However, if SWREV is used, an initial non-zero value 
+is required to enforce revision checks. Thus, SWREV values are programmed to an 
+initial value of '1' for all fields at TI factory. Thus, individual SWREV
+fields typically are not required to be programmed.
+
+
+Extended OTP
+^^^^^^^^^^^^
+
+.. important::
+
+    The index and size of ext_otp in the x509 certificate extension 
+    :ref:`keywr_aes_enc_ext_otp` should be multiples of 8
+
+1024 bits are provided as input, out of which ``size`` number of bits starting from 
+``index`` are programmed into efuses. Following figure illustrates the bit mapping
+from byte array (input) to efuse array (efuse rows).
+
+.. figure:: ../img/sec/key_writer/efuse_32_to_25_example.png
+  :width: 100%
+
+.. admonition:: Example
+    
+    If only byte array indexes 2 and 3 were to be programmed (0xCC, 0xDD respectively)
+    from the above figure, we can see that efuse rows 0 and 1 would be programmed
+    as (0x01CC0000) and (0x0000006E) with masks (0x01FF0000) and (0x0000007F)
+    respectively.
+
+    If they were to be write protected, we have to write protect both row 0 and 
+    row 1. 
+
+    So, we need to set ``wprp`` to ``0000000000000003 0000000000000000``
+    The MSB 16 octets are for wp, LSB 16 octets are for rp.
+    bits 0 and 1 are set in wp, to write protect efuse row 0 and row 1.
+    
+    Please note that this would cause the remaining bits of row 0 and row 1 
+    also to be write protected.
+
+
+
+
+.. _sysfw_pub_keywr_cert_format:
+
+X509 Configuration Template
+===========================
+
+.. literalinclude:: ../img/sec/key_writer/config_template.txt
+    :language: bash
+
+

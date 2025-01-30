@@ -1,0 +1,107 @@
+#
+# This file is the makefile for building sciclient .
+#
+ifeq ($(RULES_MAKE), )
+include $(PDK_INSTALL_PATH)/ti/build/Rules.make
+else
+include $(RULES_MAKE)
+endif
+
+LIB_POSTFIX = tirtos
+ifeq ($(IS_BAREMETAL),yes)
+LIB_POSTFIX = baremetal
+endif
+
+MODULE_NAME = sciserver_$(LIB_POSTFIX)
+
+ifeq ($(SOC),$(filter $(SOC), j721e))
+  SCISERVER_SOCVER = V1
+endif
+ifeq ($(SOC),$(filter $(SOC), j7200))
+  SCISERVER_SOCVER = V2
+endif
+ifeq ($(SOC),$(filter $(SOC), j721s2))
+  SCISERVER_SOCVER = V4
+endif
+ifeq ($(SOC),$(filter $(SOC), j784s4))
+  SCISERVER_SOCVER = V6
+endif
+
+# Leave RMPMHAL_SCMVERSION blank if you want a script to generate it from git tag/commit
+RMPMHAL_SCMVERSION ?=
+
+SCISERVER_MAJOR_VERSION_NAME ?= "v09.02.00"
+SCISERVER_SUBVERSION ?= 00
+SCISERVER_PATCHVERSION ?= 00
+# Leave SCISERVER_SCMVERSION blank if you want a script to generate it from git tag/commit
+SCISERVER_SCMVERSION ?=
+
+all: src/sciserver/sciserver.c
+src/sciserver/sciserver.c: src/version/sciserver_version.h src/version/rmpmhal_version.h
+src/version/sciserver_version.h: gen_version_includes
+src/version/rmpmhal_version.h: gen_version_includes
+
+SRCDIR = src/sciserver
+SRCDIR += src/sciserver/$(SOC)
+
+INCDIR = soc/sysfw/include 
+INCDIR += soc/$(SCISERVER_SOCVER)
+INCDIR += src/sciserver
+INCDIR += src/sciserver/$(SOC)
+INCDIR += src/version
+INCDIR += src/rm_pm_hal/include/
+INCDIR += src/rm_pm_hal/include/soc/$(SOC)
+INCDIR += src/rm_pm_hal/pm/include
+INCDIR += src/rm_pm_hal/rm
+
+# List all the external components/interfaces, whose interface header files
+# need to be included for this component
+INCLUDE_EXTERNAL_INTERFACES = pdk osal
+
+# Common source files and CFLAGS across all platforms and cores
+ifeq ($(SOC),$(filter $(SOC), j721e j7200 j721s2 j784s4))
+    SRCS_COMMON  = sciserver.c
+    SRCS_COMMON += sciserver_secproxyTransfer.c
+    SRCS_COMMON += sciserver_secproxyRoutingDescription.c
+    SRCS_COMMON += sciserver_secproxySocData.c
+    SRCS_COMMON += sciserver_secproxyConfigData.c
+    SRCS_COMMON += sciserver_dmTxRoutingData.c
+    SRCS_COMMON += sciserver_soc.c
+# Keep the sciclient.c the first file in this list. This is used to trigger
+# the generation of the header files from the firmware binary file.
+ifneq ($(IS_BAREMETAL),yes)
+    SRCS_COMMON += sciserver_tirtos.c
+endif
+endif
+
+CFLAGS_LOCAL_COMMON = $(PDK_CFLAGS) $(SCICLIENT_CFLAGS)
+
+# Core/SoC/platform specific source files and CFLAGS
+# Example:
+#   SRCS_<core/SoC/platform-name> =
+#   CFLAGS_LOCAL_<core/SoC/platform-name> =
+
+# Include common make files
+ifeq ($(MAKERULEDIR), )
+#Makerule path not defined, define this and assume relative path from ROOTDIR
+  MAKERULEDIR := $(ROOTDIR)/ti/build/makerules
+  export MAKERULEDIR
+endif
+include $(MAKERULEDIR)/common.mk
+
+.PHONY: gen_version_includes
+
+gen_version_includes:
+ifneq ($(OS),Windows_NT)
+	@$(ECHO) \# Check and update: src/version/rmpmhal_version.h
+	@src/version/generate_rmpmhal_ver.sh $(RMPMHAL_SCMVERSION) > src/version/$(MODULE_NAME)-rmpmhal_version.h.tmp
+	@if cmp -s src/version/rmpmhal_version.h src/version/$(MODULE_NAME)-rmpmhal_version.h.tmp; then rm src/version/$(MODULE_NAME)-rmpmhal_version.h.tmp; else mv src/version/$(MODULE_NAME)-rmpmhal_version.h.tmp src/version/rmpmhal_version.h; fi
+	@$(ECHO) \# Check and update: src/version/sciserver_version.h
+	@src/version/generate_sciserver_ver.sh $(SCISERVER_SUBVERSION) $(SCISERVER_PATCHVERSION) $(SCISERVER_MAJOR_VERSION_NAME) $(SCISERVER_SCMVERSION) > src/version/$(MODULE_NAME)-sciserver_version.h.tmp
+	@if cmp -s src/version/sciserver_version.h src/version/$(MODULE_NAME)-sciserver_version.h.tmp; then rm src/version/$(MODULE_NAME)-sciserver_version.h.tmp; else mv src/version/$(MODULE_NAME)-sciserver_version.h.tmp src/version/sciserver_version.h; fi
+endif
+
+# OBJs and libraries are built by using rule defined in rules_<target>.mk
+#     and need not be explicitly specified here
+
+# Nothing beyond this point

@@ -1,0 +1,157 @@
+CCCCCmcuClkFreq 1000000000
+
+ECC Test Application
+
+ECC_Test_init: UART ready to print, proceeding with ECC_Test init
+
+ECC_Test_init: Profile init complete
+
+ECC_Test_init: Copy Reset vector complete
+
+ECC_Test_init: Exception init complete
+
+ECC_Test_init: register VIM DED Handler complete
+
+ECC_Test_init: Init MCU ESM complete
+
+ECC_Test_init: Init WKUP ESM complete
+
+ECC_Test_init: Init MAIN ESM complete
+
+ECC_Test_init: R5F Core ECC Init complete
+
+ECC_Test_init: R5F Memtype Register Readback successful
+
+ECC_Test_init: MCU_NAVSS0 ECC Init complete
+
+ECC_Test_init: MAIN ECC_COMPUTE_CLUSTER0_2 ECC Init complete
+
+ECC_Test_init: MCU_NAVSS0 ECC Init complete
+
+ECC_Test_init: MCU_NAVSS0 Memtype Register Readback successful
+
+ECC_Test_init: MAIN_MSMC ECC Init complete
+
+ECC_Test_init: MAIN_MSMC Memtype Register Readback successful
+
+ECC_Test_init: ECC Callback Init complete for MCU ESM
+
+ECC_Test_init: ECC Callback Init complete for Main ESM
+
+ECC_Test_init: ECC Callback Init complete for WKUP ESM
+
+ECC_Test_init: ECC Memory init complete
+
+ECC_Test_init: ECC Memory init complete
+
+ECC_Test_init: ECC Memory init complete
+
+ ECC SDL API tests: starting
+ ATCM Single bit error inject: test starting
+ ATCM Single bit error inject at pErrMem 0x0: test complete
+ ATCM Double bit error inject: starting
+  ECC Error Call back function called : eccMemType 0, errorSrc 0x2, address 0x200, ramId -1, bitErrorOffset 0xffffffffffffffff, bitErrorGroup -1
+  Take action
+
+ ATCM Double bit error inject: pErrMem 0x200 fixed location once test complete
+ ATCM Single bit error self test: starting
+ ATCM Single bit error self test at pErrMem 0x100: test complete
+ ATCM non accessable Single bit error self test: starting
+ ATCM non accessable Single bit error self test at pErrMem 0x100: test complete
+ ATCM Single bit error negative-1 self test: starting
+ ATCM Single bit error negative-1 self test at pErrMem 0x100: test complete
+ ATCM Double bit error self test: starting
+ ATCM Double bit error self test: pErrMem 0x400 fixed location once test complete
+ B0TCM0 Bank0 Single bit error self test: starting
+ B0TCM0 Bank0 Single bit error self test at pErrMem 0x41010100: test complete
+ B0TCM0 Bank0 Double bit error self test: starting
+ B0TCM0 Bank0 Double bit error self test: pErrMem 0x41010200 fixed location once test complete
+ B0TCM0 Bank1 Single bit error self test: starting
+ B0TCM0 Bank1 Single bit error self test at pErrMem 0x41010104: test complete
+ B0TCM0 Bank1 Double bit error self test: starting
+ B0TCM0 Bank1 Double bit error self test: pErrMem 0x41010204 fixed location once test complete
+ B1TCM0 Bank0 Single bit error self test: starting
+ B1TCM0 Bank0 Single bit error self test at pErrMem 0x41010108: test complete
+ B1TCM0 Bank0 Double bit error self test: starting
+ B1TCM0 Bank0 Double bit error self test: pErrMem 0x41010208 fixed location once test complete
+ B1TCM0 Bank1 Single bit error self test: starting
+ B1TCM0 Bank1 Single bit error self test at pErrMem 0x4101010c: test complete
+ B1TCM0 Bank1 Double bit error self test: starting
+ B1TCM0 Bank1 Double bit error self test: pErrMem 0x4101020c fixed location once test complete
+ ATCM Double bit Program section error inject: starting
+  ECC Error Call back function called : eccMemType 0, errorSrc 0x2, address 0x7c00, ramId -1, bitErrorOffset 0xffffffffffffffff, bitErrorGroup -1
+  Take action
+
+ ATCM Double bit Program section error inject: pErrMem 0x7c00 fixed location once test complete
+ CBASS Double bit error self test: starting
+ CBASS Double bit error self test: Subtype 0x2 fixed location once test complete
+ CBASS Double bit error inject test: starting
+  ESM Call back function called : instType 0x2, intType 0x1, grpChannel 0x2, index 0x7, intSrc 0x47
+  Take action
+
+  ECC Error Call back function called : eccMemType 64, errorSrc 0x2, ramId 2, bitErrorOffset 0x00000000, bitErrorGroup 4
+
+ CBASS Double bit error inject test: Subtype 0x2 test complete
+ CBASS Single bit error self test: starting
+ CBASS Single bit error self test: Subtype 0x0 test complete
+ CBASS Single bit error inject test: starting
+  ESM Call back function called : instType 0x3, intType 0x1, grpChannel 0xd, index 0x13, intSrc 0x1b3
+  Take action
+
+  ECC Error Call back function called : eccMemType 38, errorSrc 0x2, ramId 0, bitErrorOffset 0x00000000, bitErrorGroup 0
+
+ CBASS Single bit error inject test: Subtype 0x0 test complete
+ SDL_ECC_MEMTYPE_MAIN_MSMC_AGGR0 Single bit error self test: starting
+ SDL_ECC_MEMTYPE_MAIN_MSMC_AGGR0 Single bit error self test: Subtype 0x18 test complete
+ MSMC_BUSECC_RAM Double bit error self test: starting
+ SDL_ECC_NAVSS0_1_ECC_AGGR Double bit error self test: Subtype 0x0 fixed location once test complete
+ Error inject: EFAIL test starting
+ Error inject at pErrMem 0x0: EFAIL test complete
+ ATCM Single bit N row error inject: test starting
+ ATCM Single bit N row error inject at pErrMem 0x0: test complete
+ ATCM Single bit Repeat error inject: test starting
+ ATCM Single bit Repeat error inject at pErrMem 0x0: test complete
+ ATCM Double bit N row error inject: test starting
+ ATCM Double bit N row error inject at pErrMem 0x0: test complete
+ NAVSS0_1 Double bit repeat error inject: starting
+ NAVSS0_1 Double bit repeat error inject: Subtype 0x1 fixed location once test complete
+ VIM RAM Single bit error inject: test starting
+  ESM Call back function called : instType 0x2, intType 0x1, grpChannel 0x1, index 0x0, intSrc 0x20
+  Take action
+
+  ECC Error Call back function called : eccMemType 0, errorSrc 0x1, ramId 27, bitErrorOffset 0x00000004, bitErrorGroup 0
+
+ VIM RAM Single bit error inject at pErrMem 0x40f82000: test complete
+ VIM RAM Double bit error inject: starting
+  ESM Call back function called : instType 0x2, intType 0x1, grpChannel 0x1, index 0x1, intSrc 0x21
+  Take action
+
+  ECC Error Call back function called : eccMemType 0, errorSrc 0x2, ramId 27, bitErrorOffset 0x00000020, bitErrorGroup 0
+
+ VIM RAM Double bit error inject: pErrMem 0x40f82004 fixed location once test complete
+ VIM RAM Single bit error self test: starting
+ VIM RAM Single bit error self test: at pErrMem 0x40f82000: test complete
+ VIM RAM Double bit error self test: starting
+ VIM RAM Double bit error self test: pErrMem 0x40f82004 fixed location once test complete
+ MSMC_BUSECC_RAM Single bit error self test: starting
+ ECC_Test_runECCSEC_DED_MSMCRAMSelfTest Single bit error self test: Subtype 0x18 test complete
+ VIM RAM Double bit error inject: starting
+ VIM RAM Double bit error inject: pErrMem 0x40f82098
+  VIM DED error happened
+  Take action
+fixed location once test complete
+ waiting for DED Vector Trigger
+ DED Vector Trigger: Success
+ ECC SDL API tests: success
+ ECC Functionality Test Passed.
+
+ ECC negative tests: starting
+ ECC negative tests: success
+ ECC Error Module Test Passed.
+
+All tests have passed.
+common/ecc_test_main.c:291:test_sdl_ecc_test_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored
+OK

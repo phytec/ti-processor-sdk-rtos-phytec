@@ -1,0 +1,13 @@
+
+ECC Test Application
+
+ ECC Functionality Test Passed.
+
+ ECC Error Module Test Passed.
+
+All tests have passed.
+common/ecc_test_main.c:291:test_sdl_ecc_test_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored
+OK

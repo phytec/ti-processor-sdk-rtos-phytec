@@ -1,0 +1,83 @@
+
+.. _getting_started:
+
+Getting Started
+===============
+
+This section highlights some of the most common resources required to use this SDK and/or its components.  This SDK is made up of
+several components.  Component details, including capabilities, features, and limitations, are found in component specific documentation.
+The links to component specific documentation are indexed on the following page: :ref:`sdk_components`
+
+This SDK supports **J721S2** family of SoCs including devices listed below.
+
++------------------------+---------------------------------------+
+| **Platform**           | **Devices**                           |
++------------------------+---------------------------------------+
+| |platform|             | TDA4VL, TDA4AL, TDA4VE, AM68A, AM68   |
++------------------------+---------------------------------------+
+
+Dependencies
+------------
+
+This SDK and its components are built for the family of SoC specified above. Some of the demo/example/reference applications
+provided by SDK, depends on specific board(s), below listed are the boards/hardware dependencies
+
+Hardware Dependencies
+^^^^^^^^^^^^^^^^^^^^^
+
+Evaluation Module (EVM)
+"""""""""""""""""""""""
+
+    * This SDK is intended to run on the following board combination:
+
+      * `TDA4VL & TDA4AL system-on-module <https://www.ti.com/tool/J721EXSOMXEVM>`_
+      * `J7 common processor board <https://www.ti.com/tool/J721EXCPXEVM>`_.
+    * For details on configuring the EVM to run this SDK, refer to the :ref:`evm_setup_j721s2` section.
+
+JTAG
+""""
+    * The common processor board listed above provides on on-board XDS110 USB debugger as shown :ref:`here <j721s2_common-processor-board>`
+    * Alternately an external debugger such as `XDS560V2 <http://www.spectrumdigital.com/xds560v2-system-trace-jtag-emulator-with-target-adapters/>`_ could be used.
+    * JTAG would allow one to debug execution on different compute cores, load and run applications, etc...
+    * To be able to load a program via JTAG, the board will have to be configured in :ref:`No Boot Mode <j721s2_no_boot_mode>` .
+    * **Note that** while configuring to no-boot mode is mandatory to load and run apps from CCS. It's not mandatory, once the device is booted.
+
+        e.g. When set to operate in mmc/sd boot mode and mmc/sd card include valid images, on powerup/boot completion, JTAG could be be used to connect to enabled compute core.
+
+uart terminal
+"""""""""""""
+    * Most of the example application provided in the SDK, prints status of the application via the uart terminal.
+    * Recommend to connect an serial cable to the uart terminal :ref:`Debug UART <j721s2_evm_daughter_card>` of the EVM
+
+Software Dependencies (not included in SDK)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Code Composer Studio (CCS) - Recommend IDE
+""""""""""""""""""""""""""""""""""""""""""
+
+    CCS is an integrated development environment (IDE) that supports TI's Microcontroller and Embedded Processors portfolio.
+    Refer to :ref:`ccs_setup_j721s2` for steps to install and configure CCS to work with this SDK.
+
+
+.. _linux_build:
+
+Building on a Linux PC
+""""""""""""""""""""""
+
+- Download and Untar the SDK tar ball **ti-processor-sdk-rtos-j721s2-xx_xx_xx_xx.tar.gz**
+
+.. code:: bash
+
+    cd {path/to/file}
+    tar xf ti-processor-sdk-rtos-j721s2-xx_xx_xx_xx.tar.gz
+
+- Different components in the SDK have different demos.  Please refer to the below table to get started with which demo domain you are interested in.
+
++---------------------------+-------------------------------------------------+
+| **Topic**                 | **Documentation Links**                         |
++---------------------------+-------------------------------------------------+
+| Integrated MCU            | See MCUSW [|mcusw_user_guide|]                  |
++---------------------------+-------------------------------------------------+
+| RTOS Device Drivers       | See PDK [|pdk_user_guide|]                      |
++---------------------------+-------------------------------------------------+
+

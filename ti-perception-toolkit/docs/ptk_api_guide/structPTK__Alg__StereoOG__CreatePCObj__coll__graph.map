@@ -1,0 +1,6 @@
+<map id="PTK_Alg_StereoOG_CreatePCObj" name="PTK_Alg_StereoOG_CreatePCObj">
+<area shape="rect" id="node7" href="$structPTK__Alg__StereoOG__CreatePCCamParams.html" title="Stereo PC creation process &#45; camera Parameters. " alt="" coords="501,413,742,505"/>
+<area shape="rect" id="node9" href="$structPTK__3D__Matrix.html" title="Definition of a 3x3 matrix. " alt="" coords="681,165,802,243"/>
+<area shape="rect" id="node3" href="$structPTK__Alg__StereoOG__CreatePCAllParams.html" title="Stereo PC creation process &#45; All algorithm parameters. " alt="" coords="182,568,410,660"/>
+<area shape="rect" id="node4" href="$structPTK__Alg__StereoOG__CreatePCConfigParams.html" title="Stereo PC creation process &#45; config Parameters. " alt="" coords="170,413,422,505"/>
+</map>

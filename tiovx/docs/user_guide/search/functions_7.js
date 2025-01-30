@@ -1,0 +1,12 @@
+var searchData=
+[
+  ['phase_5frgb_5fuser_5fkernel_5fadd',['phase_rgb_user_kernel_add',['../phase__rgb__user__kernel_8c.html#a5e51581ab691a0e9037aed069be8495b',1,'phase_rgb_user_kernel_add(vx_context context, vx_bool add_as_target_kernel):&#160;phase_rgb_user_kernel.c'],['../phase__rgb__user__kernel_8h.html#a5e51581ab691a0e9037aed069be8495b',1,'phase_rgb_user_kernel_add(vx_context context, vx_bool add_as_target_kernel):&#160;phase_rgb_user_kernel.c']]],
+  ['phase_5frgb_5fuser_5fkernel_5fadd_5fas_5ftarget_5fkernel',['phase_rgb_user_kernel_add_as_target_kernel',['../phase__rgb__user__kernel_8c.html#aba18efe50f3602ef221480ead3cf5879',1,'phase_rgb_user_kernel.c']]],
+  ['phase_5frgb_5fuser_5fkernel_5fadd_5fas_5fuser_5fkernel',['phase_rgb_user_kernel_add_as_user_kernel',['../phase__rgb__user__kernel_8c.html#a7c691dea4f45ce5f916b8a85755bd96a',1,'phase_rgb_user_kernel.c']]],
+  ['phase_5frgb_5fuser_5fkernel_5fdeinit',['phase_rgb_user_kernel_deinit',['../phase__rgb__user__kernel_8c.html#a1d9397bcd330123d495c6990f18f1015',1,'phase_rgb_user_kernel.c']]],
+  ['phase_5frgb_5fuser_5fkernel_5finit',['phase_rgb_user_kernel_init',['../phase__rgb__user__kernel_8c.html#a7d7d2c869a100813bc3bf0ca85808a99',1,'phase_rgb_user_kernel.c']]],
+  ['phase_5frgb_5fuser_5fkernel_5fnode',['phase_rgb_user_kernel_node',['../phase__rgb__user__kernel_8c.html#a88488bc22b7681a4c2ad9cc7e80bd214',1,'phase_rgb_user_kernel_node(vx_graph graph, vx_image in, vx_image out):&#160;phase_rgb_user_kernel.c'],['../phase__rgb__user__kernel_8h.html#a88488bc22b7681a4c2ad9cc7e80bd214',1,'phase_rgb_user_kernel_node(vx_graph graph, vx_image in, vx_image out):&#160;phase_rgb_user_kernel.c']]],
+  ['phase_5frgb_5fuser_5fkernel_5fremove',['phase_rgb_user_kernel_remove',['../phase__rgb__user__kernel_8c.html#a25ca1ab2d5d29d7d84d81ddc366a464c',1,'phase_rgb_user_kernel_remove(vx_context context):&#160;phase_rgb_user_kernel.c'],['../phase__rgb__user__kernel_8h.html#a25ca1ab2d5d29d7d84d81ddc366a464c',1,'phase_rgb_user_kernel_remove(vx_context context):&#160;phase_rgb_user_kernel.c']]],
+  ['phase_5frgb_5fuser_5fkernel_5frun',['phase_rgb_user_kernel_run',['../phase__rgb__user__kernel_8c.html#aaab492fc8853c4a4d487b39d80676a25',1,'phase_rgb_user_kernel.c']]],
+  ['phase_5frgb_5fuser_5fkernel_5fvalidate',['phase_rgb_user_kernel_validate',['../phase__rgb__user__kernel_8c.html#afb3302e5e0e9ec44562c7aaefdac5758',1,'phase_rgb_user_kernel.c']]]
+];

@@ -1,0 +1,30 @@
+01000000011a00006a3776636c00000000000000475020200200010002000100CSBL Revision: 01.00.10.01 (Jun 29 2023 - 15:29:32)
+Waiting for tifs.bin ...
+CCCCCCCCCCCCTIFS  ver: 9.0.6--v09.00.06 (Kool Koala)
+Waiting for multicore app ...
+CCCCCCCCCCCCCCCCCCC
+ DCC Example Test Application
+
+DCC_Test_init: Init MCU ESM complete
+
+
+SDL DCC EXAMPLE TEST: Start UC-1
+
+INSTANCE: MCU_DCC0
+Source clock: RC OSC
+Test clock: MCAN
+
+SDL DCC EXAMPLE TEST: Seed values calculation done.
+SDL DCC EXAMPLE TEST: Changing the clock ratios
+SDL DCC EXAMPLE TEST: Seed values calculation done.
+SDL DCC EXAMPLE TEST: Enabling DCC and waiting for Error interrupt
+
+Interrupt is generated to ESM
+    ESM Call back function called : instType 0x2, intType 0x1, grpChannel 0x2, index 0x16, intSrc 0x56
+    Take action
+
+SDL DCC EXAMPLE TEST: DCC Generated Error interrupt
+SDL DCC EXAMPLE TEST: Indicating clock drift/change
+Test Name: DCC EXAMPLE TEST  PASSED
+
+ All tests have passed.

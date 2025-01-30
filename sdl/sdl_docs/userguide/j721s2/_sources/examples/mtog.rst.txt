@@ -1,0 +1,69 @@
+MTOG Safety Example
+===================
+
+Introduction
+------------
+
+This example demonstrates the usage of the MTOG module. The example shows how to listen for MTOG error events using the ESM, and also forcing an error in order to demonstrate application notification of a timeout event.
+
+The example demonstrates:
+
+    * Setting a timeout for MTOG instance
+    * Error injection for an MTOG instance
+    * Error event detection for a timeout event
+
+Use Cases
+---------
+
+    +----------+--------------------------------------------------+-----------+
+    | Use Case | Description                                      | ESM       |
+    +==========+==================================================+===========+
+    | UC-1     | The MTOG is programmed with a timeout that is    | MAIN_ESM0 |
+    |          | small enough to trigger a timeout event on any   |           |
+    |          | access.                                          |           |
+    |          | Error event is triggered and application is      |           |
+    |          | notified of the event.                           |           |
+    +----------+--------------------------------------------------+-----------+
+
+
+Example Details
+---------------
+
+The example should be loaded to the hardware using the Secondary Boot Loader (SBL) from the SDK.
+
++---------------------+------------------------------------------------+------------------------------------------+
+| Example Name        | Location                                       | Build Command                            |
++=====================+================================================+==========================================+
+| mtog_app            | [sdl_install_dir]/examples/mtog/               | make mtog_app PROFILE=release            |
++---------------------+------------------------------------------------+------------------------------------------+
+
+Expected Output
+---------------
+
+.. code:: bash
+
+    MTOG Safety Example
+    
+     sdlAppEsmSetupCommon...Done
+     sdlAppEsmSetupCommon...Done
+     sdlAppEsmSetup...Done
+     Starting MTOG test on MAIN MTOG0, index 0...
+     sdlAppEsmConfig...Done
+     MTOG Reset done
+     sdlAppEsmDisable...Done  Delta MTOG prep time in micro secs 27053
+      Delta MTOG execution time in micro secs 18036
+      Delta MTOG restore time in micro secs 28047
+      MTOG complete for MAIN MTOG0
+    
+     MTOG Saftey Example passed.
+    mtog_main.c:190:test_sdl_mtog_test_app:PASS
+    
+    -----------------------
+    1 Tests 0 Failures 0 Ignored
+    OK
+
+
+Reference
+---------
+
+`MTOG User Guide <../modules/mtog.html>`_

@@ -1,0 +1,143 @@
+
+
+
+Welcome to minicom 2.7.1                                                                                                                    
+                                                                                                                                            
+OPTIONS: I18n                                                                                                                               
+Compiled on Dec 23 2019, 02:06:26.                                                                                                          
+Port /dev/ttyUSB1, 20:22:24                                                                                                                 
+                                                                                                                                            
+Press CTRL-A Z for help on special keys                                                                                                     
+                                                                                                                                            
+01000000011a00006a3761657000000000000000475020200008010000080100C1.00.10.01 (Jun 29 2023 - 13:38:40)                                        
+Waiting for tifs.bin ...                                                                                                                    
+CCCTIFS  ver: 9.0.6--v09.00.06 (Kool Koala)                                                                                                 
+Waiting for multicore app ...                                                                                                               
+CCCCCC 1000000000                                                                                                                           
+                                                                                                                                            
+LBIST Test Applications                                                                                                                     
+                                                                                                                                            
+ Starting LBIST HWPOST test...    HW POST MCU Status : SDL_LBIST_POST_NOT_RUN                                                               
+    HW POST SMS Status : SDL_LBIST_POST_NOT_RUN                                                                                             
+                                                                                                                                            
+ Starting LBIST test on Main R5F0-0, index 0...  Delta Cores prep time in micro secs 2765                                                   
+  Delta LBIST execution time in micro secs 17445                                                                                            
+  Delta Cores restore time in micro secs 159                                                                                                
+  LBIST complete for Main R5F0-0                                                                                                            
+                                                                                                                                            
+ Starting LBIST test on Main R5F1-0, index 1...  Delta Cores prep time in micro secs 93                                                     
+  Delta LBIST execution time in micro secs 17374                                                                                            
+  Delta Cores restore time in micro secs 129                                                                                                
+  LBIST complete for Main R5F1-0                                                                                                            
+                                                                                                                                            
+ Starting LBIST test on C7x0 , index 2...  Delta Cores prep time in micro secs 92                                                           
+  Delta LBIST execution time in micro secs 18845                                                                                            
+  Delta Cores restore time in micro secs 13556                                                                                              
+  LBIST complete for C7x0                                                                                                                   
+                                                                                                                                            
+ Starting LBIST test on C7x1 , index 3...  Delta Cores prep time in micro secs 90                                                           
+  Delta LBIST execution time in micro secs 18844                                                                                            
+  Delta Cores restore time in micro secs 13557                                                                                              
+  LBIST complete for C7x1                                                                                                                   
+                                                                                                                                            
+ Starting LBIST test on VPAC0, index 4...  Delta Cores prep time in micro secs 40                                                           
+  Delta LBIST execution time in micro secs 18844                                                                                            
+  Delta Cores restore time in micro secs 60                                                                                                 
+  LBIST complete for VPAC0                                                                                                                  
+                                                                                                                                            
+ Starting LBIST test on DMPAC, index 5...  Delta Cores prep time in micro secs 37                                                           
+  Delta LBIST execution time in micro secs 7267                                                                                             
+  Delta Cores restore time in micro secs 53                                                                                                 
+  LBIST complete for DMPAC                                                                                                                  
+                                                                                                                                            
+ Starting LBIST test on A72 core 0, index 6...  Delta Cores prep time in micro secs 295                                                     
+  Delta LBIST execution time in micro secs 18845 
+  Delta Cores restore time in micro secs 489                                                                                                
+  LBIST complete for A72 core 0 
+
+ Starting LBIST test on VPAC1, index 7...  Delta Cores prep time in micro secs 41 
+  Delta LBIST execution time in micro secs 18846 
+  Delta Cores restore time in micro secs 64 
+  LBIST complete for VPAC1 
+
+ Starting LBIST test on A72 core 1, index 8...  Delta Cores prep time in micro secs 289 
+  Delta LBIST execution time in micro secs 18843 
+  Delta Cores restore time in micro secs 465 
+  LBIST complete for A72 core 1 
+
+ Starting LBIST test on C7x2 , index 9...  Delta Cores prep time in micro secs 91 
+  Delta LBIST execution time in micro secs 18843 
+  Delta Cores restore time in micro secs 13554 
+  LBIST complete for C7x2  
+
+ Starting LBIST test on C7x3 , index 10...  Delta Cores prep time in micro secs 87 
+  Delta LBIST execution time in micro secs 18844 
+  Delta Cores restore time in micro secs 13549 
+  LBIST complete for C7x3  
+
+ Starting LBIST test on A72SS0 core 0, index 11...  Delta Cores prep time in micro secs 291 
+  Delta LBIST execution time in micro secs 15617 
+  Delta Cores restore time in micro secs 468 
+  LBIST complete for A72SS0 core 0 
+
+ Starting LBIST test on A72SS0 core 1, index 12...  Delta Cores prep time in micro secs 292 
+  Delta LBIST execution time in micro secs 15614 
+  Delta Cores restore time in micro secs 467 
+  LBIST complete for A72SS0 core 1 
+
+ Starting LBIST test on A72SS0 core 2, index 13...  Delta Cores prep time in micro secs 290 
+  Delta LBIST execution time in micro secs 15614 
+  Delta Cores restore time in micro secs 471 
+  LBIST complete for A72SS0 core 2 
+
+ Starting LBIST test on A72SS0 core 3, index 14...  Delta Cores prep time in micro secs 289 
+  Delta LBIST execution time in micro secs 15615 
+  Delta Cores restore time in micro secs 471 
+  LBIST complete for A72SS0 core 3 
+
+ Starting LBIST test on A72SS1 core0 , index 15...  Delta Cores prep time in micro secs 291 
+  Delta LBIST execution time in micro secs 15615 
+  Delta Cores restore time in micro secs 463 
+  LBIST complete for A72SS1 core0  
+
+ Starting LBIST test on A72SS1 core 1, index 16...  Delta Cores prep time in micro secs 291 
+  Delta LBIST execution time in micro secs 15614 
+  Delta Cores restore time in micro secs 469 
+  LBIST complete for A72SS1 core 1 
+
+ Starting LBIST test on A72SS1 core 2, index 17...  Delta Cores prep time in micro secs 290 
+  Delta LBIST execution time in micro secs 15613 
+  Delta Cores restore time in micro secs 466 
+  LBIST complete for A72SS1 core 2 
+
+ Starting LBIST test on A72SS1 core 3, index 18...  Delta Cores prep time in micro secs 290 
+  Delta LBIST execution time in micro secs 15614 
+  Delta Cores restore time in micro secs 465 
+  LBIST complete for A72SS1 core 3 
+
+ Starting LBIST test on Main R5F2-0, index 19...  Delta Cores prep time in micro secs 50 
+  Delta LBIST execution time in micro secs 17370 
+  Delta Cores restore time in micro secs 96 
+  LBIST complete for Main R5F2-0 
+
+ LBIST Functionality Test Passed.
+
+ SDL_LBIST_eventHandler with invalid instance
+
+ SDL_LBIST_eventHandler with valid instance but no test started
+
+ Starting LBIST test on Main R5F0-0, index 0...    LBIST selfTest failed 
+  Delta Cores prep time in micro secs 99 
+  Delta LBIST execution time in micro secs 45410 
+  Delta Cores restore time in micro secs 1 
+  LBIST complete for Main R5F0-0 
+
+ LBIST Error Module Test Passed.
+
+All tests have passed. 
+common/lbist_test_main.c:277:test_sdl_lbist_test_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored 
+OK
+

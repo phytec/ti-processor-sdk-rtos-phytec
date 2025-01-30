@@ -1,0 +1,62 @@
+CCCCCCCCCCCCCCCCCmcuClkFreq 1000000000
+
+LBIST Test Applications
+
+ Starting LBIST HWPOST test...    HW POST MCU Status : SDL_LBIST_POST_NOT_RUN
+    HW POST SMS Status : SDL_LBIST_POST_NOT_RUN
+
+ Starting LBIST test on Main R5F0-0, index 0...  Delta Cores prep time in micro secs 2403
+  Delta LBIST execution time in micro secs 17438
+  Delta Cores restore time in micro secs 154
+  LBIST complete for Main R5F0-0
+
+ Starting LBIST test on Main R5F1-0, index 1...  Delta Cores prep time in micro secs 90
+  Delta LBIST execution time in micro secs 17375
+  Delta Cores restore time in micro secs 124
+  LBIST complete for Main R5F1-0
+
+ Starting LBIST test on C7x0 , index 2...  Delta Cores prep time in micro secs 98
+  Delta LBIST execution time in micro secs 18844
+  Delta Cores restore time in micro secs 70
+  LBIST complete for C7x0
+
+ Starting LBIST test on C7x1 , index 3...  Delta Cores prep time in micro secs 79
+  Delta LBIST execution time in micro secs 18843
+  Delta Cores restore time in micro secs 72
+  LBIST complete for C7x1
+
+ Starting LBIST test on VPAC0, index 4...  Delta Cores prep time in micro secs 37
+  Delta LBIST execution time in micro secs 18844
+  Delta Cores restore time in micro secs 40
+  LBIST complete for VPAC0
+
+ Starting LBIST test on DMPAC, index 5...  Delta Cores prep time in micro secs 36
+  Delta LBIST execution time in micro secs 7265
+  Delta Cores restore time in micro secs 54
+  LBIST complete for DMPAC
+
+ Starting LBIST test on A72 core 0, index 6...  Delta Cores prep time in micro secs 162
+  Delta LBIST execution time in micro secs 18843
+  Delta Cores restore time in micro secs 215
+  LBIST complete for A72 core 0
+
+ LBIST Functionality Test Passed.
+
+ SDL_LBIST_eventHandler with invalid instance
+
+ SDL_LBIST_eventHandler with valid instance but no test started
+
+ Starting LBIST test on Main R5F0-0, index 0...    LBIST selfTest failed
+  Delta Cores prep time in micro secs 97
+  Delta LBIST execution time in micro secs 45409
+  Delta Cores restore time in micro secs 2
+  LBIST complete for Main R5F0-0
+
+ LBIST Error Module Test Passed.
+
+All tests have passed.
+common/lbist_test_main.c:261:test_sdl_lbist_test_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored
+OK

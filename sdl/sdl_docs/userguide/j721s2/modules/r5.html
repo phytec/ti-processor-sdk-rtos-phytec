@@ -1,0 +1,371 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>2.14. R5 Core Modules &mdash; Software Diagnostics Library (SDL) - J721S2 User Guide</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Software Diagnostics Library (SDL) - J721S2 User Guide" href="../index.html"/>
+        <link rel="up" title="2. Modules" href="../family_cfg/j721s2/index_modules_j721s2.html"/>
+        <link rel="next" title="2.15. ROM_CHECKSUM: ROM Checksum Module" href="rom_checksum.html"/>
+        <link rel="prev" title="2.13. OSAL" href="osal.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="../_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index_j721s2.html" class="icon icon-home"> Software Diagnostics Library (SDL) - J721S2 User Guide
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                01_03_00
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/j721s2/index_release_notes_j721s2.html">1. Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">2. Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../family_cfg/j721s2/index_modules_j721s2.html">2. Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="esm.html">2.1. ESM : Error Signalling Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ecc.html">2.2. ECC : Error Correcting Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pbist.html">2.3. PBIST : Memory Built-In Self-Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lbist.html">2.4. LBIST : Logic Built-In Self-Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vtm.html">2.5. VTM : Voltage and Thermal Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rti.html">2.6. RTI : RTI/WWDT Windowed Watchdog Timer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pok.html">2.7. POK: Power OK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tog.html">2.8. TOG : Time-Out Gasket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mtog.html">2.9. MTOG : Master Time-Out Gasket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dcc.html">2.10. DCC : Dual Clock Comparator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mcrc.html">2.11. MCRC : Cyclic Redundancy Check</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r5fccm.html">2.12. R5F CCM: CPU Compare Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="osal.html">2.13. OSAL</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.14. R5 Core Modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">2.14.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#performance-monitoring-unit-pmu-api">2.14.2. Performance Monitoring Unit (PMU) API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#memory-protection-unit-mpu-api">2.14.3. Memory Protection Unit (MPU) API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#region-address-translation-rat-api">2.14.4. Region Address Translation (RAT) API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vectored-interrupt-manager-vim">2.14.5. Vectored Interrupt Manager (VIM)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#examples">2.14.6. Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#api">2.14.7. API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rom_checksum.html">2.15. ROM_CHECKSUM: ROM Checksum Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/j721s2/index_examples_j721s2.html">3. Safety Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diagnostic_mappings.html">3. Diagnostic Mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/j721s2/index_application_notes_j721s2.html">4. Developer Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index_j721s2.html">Software Diagnostics Library (SDL) - J721S2 User Guide</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index_j721s2.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../family_cfg/j721s2/index_modules_j721s2.html"><span class="section-number">2. </span>Modules</a> &raquo;</li>
+      
+    <li><span class="section-number">2.14. </span>R5 Core Modules</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="r5-core-modules">
+<h1><span class="section-number">2.14. </span>R5 Core Modules<a class="headerlink" href="#r5-core-modules" title="Permalink to this headline">¶</a></h1>
+<section id="introduction">
+<h2><span class="section-number">2.14.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>The R5 Core modules provided as part of SDL include the following:</p>
+<ul class="simple">
+<li><p>Performance Monitoring Unit (PMU) counter API</p></li>
+<li><p>Memory Protection Unit (MPU) API</p></li>
+<li><p>Region Address Translation (RAT) API</p></li>
+<li><p>Vectored Interrupt Manager (VIM) API</p></li>
+</ul>
+</section>
+<section id="performance-monitoring-unit-pmu-api">
+<h2><span class="section-number">2.14.2. </span>Performance Monitoring Unit (PMU) API<a class="headerlink" href="#performance-monitoring-unit-pmu-api" title="Permalink to this headline">¶</a></h2>
+<p>The PMU consists of three event counting registers, one cycle counting register and 12 CP15 registers for controlling and interrogating the counters. The performance monitoring registers are always accessible in Privileged mode. Control registers can be used to enable or disable each of the event counters individually, and read and reset the overflow flag for each counter. All three event counters are read and written through the same CP15 register. The counters can be enabled to assert an interrupt request when the processor is in Debug halt state. The PMU only counts events when non-invasive debug is enabled, that is, when either DBGEN or NIDEN inputs are asserted. The Cycle Count (CCNT) Register is always enabled regardless of whether non-invasive debug is enabled, unless the DP bit of the PMNC register is set.</p>
+<p>For a complete list of CPU events that can be monitored, see the Cortex-R5 Technical Reference Manual.</p>
+</section>
+<section id="memory-protection-unit-mpu-api">
+<h2><span class="section-number">2.14.3. </span>Memory Protection Unit (MPU) API<a class="headerlink" href="#memory-protection-unit-mpu-api" title="Permalink to this headline">¶</a></h2>
+<p>The R5F MPU works with the L1 memory system to control accesses to and from L1 and external memory.The MPU enables you to partition memory into regions and set individual protection attributes for each region. Each region is programmed with a base address and size, and the regions can be overlapped to enable efficient programming of the memory map. To support overlapping, the regions are assigned priorities, with region 0 having the lowest priority and region 15 having the highest. The MPU returns access permissions and attributes for the highest priority enabled region where the address hits.</p>
+</section>
+<section id="region-address-translation-rat-api">
+<h2><span class="section-number">2.14.4. </span>Region Address Translation (RAT) API<a class="headerlink" href="#region-address-translation-rat-api" title="Permalink to this headline">¶</a></h2>
+<p>The RAT module performs a region based address translation. It translates a 32-bit input address into a 48-bit output address. Any input transaction that starts inside of a programmed region will have its address translated, if the region is enabled. Any disabled region is ignored from the translation lookup. The input addresses are compared against all the enabled regions in parallel. The region size defines how many of the lowest address bits are included in the region space.</p>
+</section>
+<section id="vectored-interrupt-manager-vim">
+<h2><span class="section-number">2.14.5. </span>Vectored Interrupt Manager (VIM)<a class="headerlink" href="#vectored-interrupt-manager-vim" title="Permalink to this headline">¶</a></h2>
+<p>The Vectored Interrupt Manager (VIM) aggregates interrupts to a CPU. It is intended for use with a Cortex R5 from ARM in either split or lockstep configuration. The VIM has up to 1024 interrupt inputs per CPU, which may be either level or pulse. Each interrupt has a programmable priority (0-highest through 15-lowest). Each interrupt may also be mapped as anIRQ or FIQ (FIQ is also often denoted as Non-Maskable Interrupt, or NMI).</p>
+<p>The file test/r5f_startup/interrupt.c demonstrates using these APIs in a baremetal environment for interrupt-related functionality.</p>
+</section>
+<section id="examples">
+<h2><span class="section-number">2.14.6. </span>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<p>Test apps that are meant for verifying the functionality of the module are also provided.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Test App Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Location</p></th>
+<th class="head"><p>Build Command</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>pmu_test_app</p></td>
+<td><ul class="simple">
+<li><p>Demonstrates the APIs to enable the use of PMU
+counters</p></li>
+</ul>
+</td>
+<td><p>[sdl_install_dir]/test/pmu</p></td>
+<td><p>make pmu_test_app PROFILE=release</p></td>
+</tr>
+<tr class="row-odd"><td><p>mpu_func_test_app</p></td>
+<td><ul class="simple">
+<li><p>Demonstrates execution self test of MPU</p></li>
+</ul>
+</td>
+<td><p>[sdl_install_dir]/test/mpu/func_test</p></td>
+<td><p>make mpu_func_test_app PROFILE=release</p></td>
+</tr>
+<tr class="row-even"><td><p>rat_func_test_app</p></td>
+<td><ul class="simple">
+<li><p>Demonstrates execution self test of RAT</p></li>
+<li><p>Programs a RAT region and modifies content</p></li>
+<li><p>Verifies that content is as expected</p></li>
+</ul>
+</td>
+<td><p>[sdl_install_dir]/test/rat/func_test</p></td>
+<td><p>make rat_func_test_app PROFILE=release</p></td>
+</tr>
+<tr class="row-odd"><td><p>vim_test_app</p></td>
+<td><ul class="simple">
+<li><p>Configures an interrupt and ISR</p></li>
+<li><p>Verifies the config</p></li>
+<li><p>Performs VIM SRAM Data ECC with DED Vector test</p></li>
+</ul>
+</td>
+<td><p>[sdl_install_dir]/test/vim/func_test</p></td>
+<td><p>make vim_test_app PROFILE=release</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="api">
+<h2><span class="section-number">2.14.7. </span>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="../../../apiguide/j721s2/html/group__SDL__ARM__R5__PMU__API.html">R5F PMU API Guide</a></p>
+<p><a class="reference external" href="../../../apiguide/j721s2/html/group__SDL__ARM__R5__MPU__API.html">R5F MPU API Guide</a></p>
+<p><a class="reference external" href="../../../apiguide/j721s2/html/group__SDL__RAT__API.html">R5F RAT API Guide</a></p>
+<p><a class="reference external" href="../../../apiguide/j721s2/html/group__SDL__VIM__API.html">R5F VIM API Guide</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="rom_checksum.html" class="btn btn-neutral float-right" title="2.15. ROM_CHECKSUM: ROM Checksum Module" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="osal.html" class="btn btn-neutral" title="2.13. OSAL" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyright 1995-2021</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'01_03_00',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+      });
+  </script>
+   
+
+</body>
+</html>

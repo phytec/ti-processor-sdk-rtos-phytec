@@ -1,0 +1,152 @@
+=============================
+AM64X DMA Device Descriptions
+=============================
+
+Introduction
+============
+
+This chapter provides information on the DMA devices in the AM64X SoC.  Some
+System Firmware TISCI messages take device specific inputs. This chapter
+provides information on the valid values for DMA TISCI message parameters.
+
+.. _pub_soc_am64x_dma_device_ids:
+
+DMA Device IDs
+==============
+
+Some System Firmware TISCI message APIs require the DMA device ID be provided as
+part of the request. Based on :doc:`AM64X Device IDs <devices>` these are the
+valid DMA device IDs.
+
++---------------------------+-----------------+
+| DMA Device Name           |   DMA Device ID |
++===========================+=================+
+| AM64X_DEV_DMASS0_BCDMA_0  |              26 |
++---------------------------+-----------------+
+| AM64X_DEV_DMASS0_PKTDMA_0 |              30 |
++---------------------------+-----------------+
+
+.. _pub_soc_am64x_dma_channels_and_flows:
+
+DMA Channel and Flow Indices
+============================
+
+This section describes valid DMA channel indexes for each DMA channel type.
+Receive flow index range type information is also described if applicable to the
+DMA being described.
+
+
+.. warning::
+
+    Resources marked as reserved for use by DMSC **cannot** be assigned to a
+    host within the RM Board Configuration resource assignment array.  The RM
+    Board Configuration is rejected if an overlap with a reserved resource is
+    detected.
+
+
+**DMASS0_BCDMA_0**
+
++-------------------+--------------------------+
+| Tx Channel Type   | Tx Channel Index Range   |
++===================+==========================+
+| SPLIT_TR_TX_CHAN  | 0 to 19                  |
++-------------------+--------------------------+
+
++-------------------+--------------------------+
+| Rx Channel Type   | Rx Channel Index Range   |
++===================+==========================+
+| SPLIT_TR_RX_CHAN  | 0 to 19                  |
++-------------------+--------------------------+
+
++---------------------------+---------------------------------------------+
+| Block Copy Channel Type   | Block Copy Channel (Offset) + Index Range   |
++===========================+=============================================+
+| BLOCK_COPY_CHAN           | 0 to 27                                     |
++---------------------------+---------------------------------------------+
+
++------------------+-----------------------+
+| Rx Flow Type     | Rx Flow Index Range   |
++==================+=======================+
+| BLOCK_COPY_CHAN  | 0 to 27               |
++------------------+-----------------------+
+| SPLIT_TR_TX_CHAN | 28 to 47              |
++------------------+-----------------------+
+| SPLIT_TR_RX_CHAN | 48 to 67              |
++------------------+-----------------------+
+
+
+**DMASS0_PKTDMA_0**
+
++-----------------------------------+--------------------------+
+| Tx Channel Type                   | Tx Channel Index Range   |
++===================================+==========================+
+| UNMAPPED_TX_CHAN                  | 0 to 15                  |
++-----------------------------------+--------------------------+
+| CPSW_TX_CHAN                      | 16 to 23                 |
++-----------------------------------+--------------------------+
+| SAUL_TX_0_CHAN                    | 24 to 24                 |
+| (**RESERVED BY SYSTEM FIRMWARE**) |                          |
++-----------------------------------+--------------------------+
+| SAUL_TX_1_CHAN                    | 25 to 25                 |
++-----------------------------------+--------------------------+
+| ICSSG_0_TX_CHAN                   | 26 to 33                 |
++-----------------------------------+--------------------------+
+| ICSSG_1_TX_CHAN                   | 34 to 41                 |
++-----------------------------------+--------------------------+
+
++-----------------------------------+--------------------------+
+| Rx Channel Type                   | Rx Channel Index Range   |
++===================================+==========================+
+| UNMAPPED_RX_CHAN                  | 0 to 15                  |
++-----------------------------------+--------------------------+
+| CPSW_RX_CHAN                      | 16 to 16                 |
++-----------------------------------+--------------------------+
+| SAUL_RX_0_CHAN                    | 17 to 17                 |
+| (**RESERVED BY SYSTEM FIRMWARE**) |                          |
++-----------------------------------+--------------------------+
+| SAUL_RX_1_CHAN                    | 18 to 18                 |
+| (**RESERVED BY SYSTEM FIRMWARE**) |                          |
++-----------------------------------+--------------------------+
+| SAUL_RX_2_CHAN                    | 19 to 19                 |
++-----------------------------------+--------------------------+
+| SAUL_RX_3_CHAN                    | 20 to 20                 |
++-----------------------------------+--------------------------+
+| ICSSG_0_RX_CHAN                   | 21 to 24                 |
++-----------------------------------+--------------------------+
+| ICSSG_1_RX_CHAN                   | 25 to 28                 |
++-----------------------------------+--------------------------+
+
++-----------------------------------+-----------------------+
+| Rx Flow Type                      | Rx Flow Index Range   |
++===================================+=======================+
+| UNMAPPED_TX_CHAN                  | 0 to 15               |
++-----------------------------------+-----------------------+
+| CPSW_TX_CHAN                      | 16 to 79              |
++-----------------------------------+-----------------------+
+| SAUL_TX_0_CHAN                    | 80 to 87              |
+| (**RESERVED BY SYSTEM FIRMWARE**) |                       |
++-----------------------------------+-----------------------+
+| SAUL_TX_1_CHAN                    | 88 to 95              |
++-----------------------------------+-----------------------+
+| ICSSG_0_TX_CHAN                   | 96 to 103             |
++-----------------------------------+-----------------------+
+| ICSSG_1_TX_CHAN                   | 104 to 111            |
++-----------------------------------+-----------------------+
+| UNMAPPED_RX_CHAN                  | 112 to 127            |
++-----------------------------------+-----------------------+
+| CPSW_RX_CHAN                      | 128 to 143            |
++-----------------------------------+-----------------------+
+| SAUL_RX_0_CHAN                    | 144 to 151            |
+| (**RESERVED BY SYSTEM FIRMWARE**) |                       |
++-----------------------------------+-----------------------+
+| SAUL_RX_1_CHAN                    | 144 to 151            |
++-----------------------------------+-----------------------+
+| SAUL_RX_2_CHAN                    | 152 to 159            |
++-----------------------------------+-----------------------+
+| SAUL_RX_3_CHAN                    | 152 to 159            |
++-----------------------------------+-----------------------+
+| ICSSG_0_RX_CHAN                   | 160 to 223            |
++-----------------------------------+-----------------------+
+| ICSSG_1_RX_CHAN                   | 224 to 287            |
++-----------------------------------+-----------------------+
+

@@ -1,0 +1,553 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>5. EVM Setup for J721S2 &mdash; Processor SDK RTOS J721S2</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Processor SDK RTOS J721S2" href="index.html"/>
+        <link rel="next" title="6. CCS Setup for J721S2" href="ccs_setup_j721s2.html"/>
+        <link rel="prev" title="4.1. Release notes - 09_00_00" href="release_notes_09_00_00_j721s2_gp.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Processor SDK RTOS J721S2
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                09_02_00
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview_gp.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_j721s2_gp.html">2. Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sdk_components_j721s2_gp.html">3. SDK Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes_gp.html">4. Release Notes</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">5. EVM Setup for J721S2</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#evm-setup-to-run-sdk-demos">5.1. EVM Setup to run SDK demos</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#daughter-card-requirements">5.1.1. Daughter card requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#uart-terminal-setup">5.1.2. UART terminal setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#boot-modes">5.1.3. Boot Modes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#no-boot-mode">5.1.3.1. No Boot Mode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sd-boot-mode">5.1.3.2. SD Boot Mode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#xspi-boot-mode">5.1.3.3. XSPI Boot Mode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#uart-boot-mode">5.1.3.4. UART Boot Mode</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#evm-and-daughter-card-information">5.2. EVM and Daughter Card information</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#platform-som">5.2.1. J721S2 SOM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#common-processor-board">5.2.2. Common Processor Board</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#infotainment-daughter-card">5.2.3. Infotainment daughter card</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#quad-port-ethernet-daughter-card">5.2.4. Quad Port Ethernet daughter card</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gesi-daughter-card">5.2.5. GESI daughter card</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fusion-daughter-card">5.2.6. Fusion daughter card</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ccs_setup_j721s2.html">6. CCS Setup for J721S2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datasheet_sdk_j721s2_gp.html">7. Data Sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer_notes.html">8. Developer Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="documentation_tarball.html">9. Documentation Tarball</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Processor SDK RTOS J721S2</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li><span class="section-number">5. </span>EVM Setup for J721S2</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="evm-setup-for-j721s2">
+<span id="evm-setup-j721s2"></span><h1><span class="section-number">5. </span>EVM Setup for J721S2<a class="headerlink" href="#evm-setup-for-j721s2" title="Permalink to this headline">¶</a></h1>
+<p>This section is intended to give a quick reference of EVM related to SDK usage.  Full EVM documentation
+can be referenced at <a class="reference external" href="https://www.ti.com/tool/J721S2XSOMXEVM">TDA4VL &amp; TDA4AL system-on-module</a>.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ul class="simple">
+<li><p>The power supply current requires more than 1A &#64;12V input</p></li>
+<li><p>DisplayPort-to-DVI or DisplayPort-to-HDMI adapters don’t work with DisplayPort</p></li>
+<li><p>The SOM board has to be tightly inserted into the connector sockets.</p></li>
+<li><p>When connecting the fusion daughter card, the power cable connecting processor board
+and fusion board should look exactly like the picture in section <a class="reference internal" href="#j721s2-evm-daughter-card"><span class="std std-ref">J721S2 SOM</span></a>.
+(P.S. The same cable from TDA2P EVM has the opposite wire connection at one end)</p></li>
+</ul>
+</aside>
+<section id="evm-setup-to-run-sdk-demos">
+<h2><span class="section-number">5.1. </span>EVM Setup to run SDK demos<a class="headerlink" href="#evm-setup-to-run-sdk-demos" title="Permalink to this headline">¶</a></h2>
+<section id="daughter-card-requirements">
+<h3><span class="section-number">5.1.1. </span>Daughter card requirements<a class="headerlink" href="#daughter-card-requirements" title="Permalink to this headline">¶</a></h3>
+<p>Below table shows the daughter cards required for various features/demos</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Feature</p></th>
+<th class="head"><p>Infotainment card</p></th>
+<th class="head"><p>Fusion 1 card</p></th>
+<th class="head"><p>IMX390+UB953 FPDLink sensors</p></th>
+<th class="head"><p>GESI card</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>HDMI display</p></td>
+<td><p>REQUIRED</p></td>
+<td><p>na</p></td>
+<td><p>na</p></td>
+<td><p>na</p></td>
+</tr>
+<tr class="row-odd"><td><p>eDP (DisplayPort)display</p></td>
+<td><p>na</p></td>
+<td><p>na</p></td>
+<td><p>na</p></td>
+<td><p>na</p></td>
+</tr>
+<tr class="row-even"><td><p>CSI2RX camera input</p></td>
+<td><p>na</p></td>
+<td><p>REQURIED</p></td>
+<td><p>REQURIED</p></td>
+<td><p>na</p></td>
+</tr>
+<tr class="row-odd"><td><p>CAN demos</p></td>
+<td><p>na</p></td>
+<td><p>na</p></td>
+<td><p>na</p></td>
+<td><p>REQUIRED</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="uart-terminal-setup">
+<h3><span class="section-number">5.1.2. </span>UART terminal setup<a class="headerlink" href="#uart-terminal-setup" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Connect USB cable to Main UART port on common processor board (see <a class="reference internal" href="#j721s2-common-processor-board"><span class="std std-ref">Common Processor Board</span></a>)</p>
+<ul>
+<li><p>4 UART ports would be visible at the PC side</p></li>
+<li><p>Port 0 from this is used this for Linux, RTOS UART terminal from A72</p></li>
+</ul>
+</li>
+<li><p><strong>Setup UART for 115200 baud rate, 8 data bits, no party, 1 stop bit</strong></p></li>
+</ul>
+</section>
+<section id="boot-modes">
+<h3><span class="section-number">5.1.3. </span>Boot Modes<a class="headerlink" href="#boot-modes" title="Permalink to this headline">¶</a></h3>
+<p>Bootmodes are selected using the SW8 and SW9 switches on the common processor board.</p>
+<section id="no-boot-mode">
+<span id="j721s2-no-boot-mode"></span><h4><span class="section-number">5.1.3.1. </span>No Boot Mode<a class="headerlink" href="#no-boot-mode" title="Permalink to this headline">¶</a></h4>
+<p>When you want the binaries to be loaded from a debugger (CCS), the common
+processor boards has to be set in the NO boot mode.</p>
+<p>Following are the switch settings to do the same.:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">SW8</span><span class="p">[</span><span class="mi">1-8</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1000</span><span class="w"> </span><span class="mi">1000</span>
+<span class="n">SW9</span><span class="p">[</span><span class="mi">1-8</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mo">0111</span><span class="w"> </span><span class="mo">0000</span>
+</pre></div>
+</div>
+<figure class="align-default" id="figure-1">
+<img alt="_images/K3-J721E-EVM-Switch-NO-boot.png" src="_images/K3-J721E-EVM-Switch-NO-boot.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 5.1 </span><span class="caption-text">No Boot Mode</span><a class="headerlink" href="#figure-1" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="sd-boot-mode">
+<span id="j721s2-sd-boot-mode"></span><h4><span class="section-number">5.1.3.2. </span>SD Boot Mode<a class="headerlink" href="#sd-boot-mode" title="Permalink to this headline">¶</a></h4>
+<p>Following are the switch settings to set the boot mode to SD for common processor board.:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">SW8</span><span class="p">[</span><span class="mi">1-8</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1000</span><span class="w"> </span><span class="mo">0010</span>
+<span class="n">SW9</span><span class="p">[</span><span class="mi">1-8</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mo">0000</span><span class="w"> </span><span class="mo">0000</span>
+</pre></div>
+</div>
+<figure class="align-default" id="figure-2">
+<img alt="_images/K3-J721E-EVM-Switch-SD-boot.png" src="_images/K3-J721E-EVM-Switch-SD-boot.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 5.2 </span><span class="caption-text">MMC/SD Boot Mode</span><a class="headerlink" href="#figure-2" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="xspi-boot-mode">
+<span id="j721s2-xspi-boot-mode"></span><h4><span class="section-number">5.1.3.3. </span>XSPI Boot Mode<a class="headerlink" href="#xspi-boot-mode" title="Permalink to this headline">¶</a></h4>
+<p>Following are the switch settings to set the boot mode to XSPI for common processor board.:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">SW3</span><span class="p">[</span><span class="mi">1-8</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="n">xxx</span><span class="w"> </span><span class="n">xxxx</span>
+<span class="n">SW8</span><span class="p">[</span><span class="mi">1-8</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mo">0000</span><span class="w"> </span><span class="mi">1010</span>
+<span class="n">SW9</span><span class="p">[</span><span class="mi">1-8</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mo">0110</span><span class="w"> </span><span class="mo">0000</span>
+</pre></div>
+</div>
+<figure class="align-default" id="figure-3">
+<a class="reference internal image-reference" href="_images/K3-J721E-EVM-SW3-UART-boot.png"><img alt="_images/K3-J721E-EVM-SW3-UART-boot.png" src="_images/K3-J721E-EVM-SW3-UART-boot.png" style="width: 674.25px; height: 586.5px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.3 </span><span class="caption-text">XSPI Boot Mode SW3</span><a class="headerlink" href="#figure-3" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="figure-4">
+<img alt="_images/K3-J721S2-EVM-Switch-XSPI-boot.png" src="_images/K3-J721S2-EVM-Switch-XSPI-boot.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 5.4 </span><span class="caption-text">XSPI Boot Mode SW8 and SW9</span><a class="headerlink" href="#figure-4" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="uart-boot-mode">
+<span id="j721s2-uart-boot-mode"></span><h4><span class="section-number">5.1.3.4. </span>UART Boot Mode<a class="headerlink" href="#uart-boot-mode" title="Permalink to this headline">¶</a></h4>
+<p>Following are the switch settings to set the boot mode to SD for common processor board.:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">SW3</span><span class="p">[</span><span class="mi">1-8</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="n">xxx</span><span class="w"> </span><span class="n">xxxx</span>
+<span class="n">SW8</span><span class="p">[</span><span class="mi">1-8</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mo">0000</span><span class="w"> </span><span class="mo">0000</span>
+<span class="n">SW9</span><span class="p">[</span><span class="mi">1-8</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mo">0111</span><span class="w"> </span><span class="mo">0000</span>
+</pre></div>
+</div>
+<figure class="align-default" id="figure-5">
+<a class="reference internal image-reference" href="_images/K3-J721E-EVM-SW3-UART-boot.png"><img alt="_images/K3-J721E-EVM-SW3-UART-boot.png" src="_images/K3-J721E-EVM-SW3-UART-boot.png" style="width: 674.25px; height: 586.5px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.5 </span><span class="caption-text">UART Boot Mode SW3</span><a class="headerlink" href="#figure-5" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="figure-6">
+<img alt="_images/K3-J721E-EVM-Switch-UART-boot.png" src="_images/K3-J721E-EVM-Switch-UART-boot.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 5.6 </span><span class="caption-text">UART Boot Mode SW8 and SW9</span><a class="headerlink" href="#figure-6" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+</section>
+<section id="evm-and-daughter-card-information">
+<h2><span class="section-number">5.2. </span>EVM and Daughter Card information<a class="headerlink" href="#evm-and-daughter-card-information" title="Permalink to this headline">¶</a></h2>
+<section id="platform-som">
+<h3><span class="section-number">5.2.1. </span>J721S2 SOM<a class="headerlink" href="#platform-som" title="Permalink to this headline">¶</a></h3>
+<p>The J721S2 Evaluation Module consists of a SOM (System on Module), shown in the red box below, fitted to a common processor board or base EVM.</p>
+<figure class="align-default" id="figure-7">
+<span id="j721s2-evm-daughter-card"></span><img alt="_images/K3-J7ES-SOM.png" src="_images/K3-J7ES-SOM.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 5.7 </span><span class="caption-text">J721S2 SOM</span><a class="headerlink" href="#figure-7" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>Contents of the board</p>
+<ul class="simple">
+<li><p>J721S2 SoC</p></li>
+<li><p>Power controller</p></li>
+<li><p>4 GiB DDR RAM</p></li>
+<li><p>OSPI NOR flash</p></li>
+<li><p>Hyperflash</p></li>
+</ul>
+</section>
+<section id="common-processor-board">
+<span id="j721s2-common-processor-board"></span><h3><span class="section-number">5.2.2. </span>Common Processor Board<a class="headerlink" href="#common-processor-board" title="Permalink to this headline">¶</a></h3>
+<p>Common Processor Board is the main board which has peripherals to provide
+most common functionality. It has expander ports to connect to different adapter cards.</p>
+<figure class="align-default" id="figure-8">
+<img alt="_images/K3-Common-Proc-Board.png" src="_images/K3-Common-Proc-Board.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 5.8 </span><span class="caption-text">J721S2 Common Processor Board</span><a class="headerlink" href="#figure-8" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>Contents of the board</p>
+<ol class="arabic simple">
+<li><p>4xUART to USB port for Main uarts</p>
+<ul class="simple">
+<li><p>Port0 from this is used this for Linux, RTOS UART terminal from A72</p></li>
+</ul>
+</li>
+<li><p>2xUART to USB port MCU domain uarts</p>
+<ul class="simple">
+<li><p>Port0 from this is used for Cortex M4F UART</p></li>
+<li><p>Port1 from this is used for MCU R5F UART</p></li>
+</ul>
+</li>
+<li><p>2x Display (eDP/DP) ports</p>
+<ul class="simple">
+<li><p>Display0 is used by software for eDP/DP output</p></li>
+</ul>
+</li>
+<li><p>Ethernet (CPSW2G) port</p></li>
+<li><p>SD card slot</p></li>
+<li><p>XDS110 on board USB JTAG connector</p></li>
+<li><p>USB ports</p></li>
+<li><p>12V Power input</p></li>
+<li><p>Power switch</p></li>
+<li><p>MIPI JTAG connector</p></li>
+</ol>
+</section>
+<section id="infotainment-daughter-card">
+<h3><span class="section-number">5.2.3. </span>Infotainment daughter card<a class="headerlink" href="#infotainment-daughter-card" title="Permalink to this headline">¶</a></h3>
+<p>Infotainment daughter card is adapter board which has additional peripherals for
+infotainment use cases. This has support for HDMI display, FPDlink display
+extra audio channels.</p>
+<figure class="align-default" id="figure-9">
+<img alt="_images/K3-Infotainment-card.png" src="_images/K3-Infotainment-card.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 5.9 </span><span class="caption-text">Infotainment daughter card</span><a class="headerlink" href="#figure-9" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>Contents of the board</p>
+<ul class="simple">
+<li><p>HDMI display connector</p></li>
+<li><p>2x FPDlink display connectors</p></li>
+<li><p>14x 3.5mm audio jacks</p></li>
+<li><p>Parallel port Omnivision camera connector (direct connection, i.e no FPDLink)</p></li>
+<li><p>CSI camera connector (direct connection, i.e no FPDLink)</p></li>
+</ul>
+</section>
+<section id="quad-port-ethernet-daughter-card">
+<h3><span class="section-number">5.2.4. </span>Quad Port Ethernet daughter card<a class="headerlink" href="#quad-port-ethernet-daughter-card" title="Permalink to this headline">¶</a></h3>
+<p>Quad Port Ethernet (QPENet) board is an adapter board which offers
+additional Ethernet port capabilities to the Jacinto7 EVM.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>J721S2 does not make use of this card.  It is used by other SoCs
+in the Jacinto Family.</p>
+</aside>
+<figure class="align-default" id="figure-10">
+<img alt="_images/K3-QPENet-card.png" src="_images/K3-QPENet-card.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 5.10 </span><span class="caption-text">QPENet daughter card</span><a class="headerlink" href="#figure-10" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="gesi-daughter-card">
+<h3><span class="section-number">5.2.5. </span>GESI daughter card<a class="headerlink" href="#gesi-daughter-card" title="Permalink to this headline">¶</a></h3>
+<p>GESI(Gateway/Ethernet Switch/Industrial) daughter card is an adapter board which
+has additional peripherals for gateway and industrial use cases.
+This has support for extra Ethernet ports and CAN ports.</p>
+<figure class="align-default" id="figure-11">
+<img alt="_images/K3-GESI-card.png" src="_images/K3-GESI-card.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 5.11 </span><span class="caption-text">GESI daughter card</span><a class="headerlink" href="#figure-11" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>Contents of the board</p>
+<ul class="simple">
+<li><p>5x Ethernet ports (J721S2 only uses port PRG0_RGMII1_B)</p></li>
+<li><p>Profinet connector</p></li>
+<li><p>Motor control headers</p></li>
+<li><p>Additional CAN Transceivers/ headers</p></li>
+</ul>
+</section>
+<section id="fusion-daughter-card">
+<span id="j721s2-fusion-daughter-card"></span><h3><span class="section-number">5.2.6. </span>Fusion daughter card<a class="headerlink" href="#fusion-daughter-card" title="Permalink to this headline">¶</a></h3>
+<p>Fusion daughter card is adapter board to connect 4 camera sensors (IMX390+UB953 serializer)
+through de-serializer (UB960) available on the Fusion1 daughter card to CSI2RX ports of J721S2 SoC.</p>
+<p>Connect the daughter card to common processor board at “CSI2 Exp” connector J25.</p>
+<figure class="align-default" id="figure-12">
+<img alt="_images/Fusion_card_connector.png" src="_images/Fusion_card_connector.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 5.12 </span><span class="caption-text">CSI2 Exp Connector</span><a class="headerlink" href="#figure-12" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="figure-13">
+<img alt="_images/fusion1_board.png" src="_images/fusion1_board.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 5.13 </span><span class="caption-text">Fusion1 Board</span><a class="headerlink" href="#figure-13" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="figure-14">
+<img alt="_images/fusion1_board_camera.png" src="_images/fusion1_board_camera.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 5.14 </span><span class="caption-text">Fusion1 Camera Setup</span><a class="headerlink" href="#figure-14" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ccs_setup_j721s2.html" class="btn btn-neutral float-right" title="6. CCS Setup for J721S2" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="release_notes_09_00_00_j721s2_gp.html" class="btn btn-neutral" title="4.1. Release notes - 09_00_00" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyright 1995-2022</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+      });
+  </script>
+   
+
+</body>
+</html>

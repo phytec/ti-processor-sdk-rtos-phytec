@@ -1,0 +1,441 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Keyring Management &mdash; TISCI User Guide</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="TISCI User Guide" href="../index.html"/>
+        <link rel="up" title="Chapter 6: Topic User Guides" href="index.html"/>
+        <link rel="prev" title="Run time read/write to KEYREV and SWREV" href="otp_revision.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="../_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> TISCI
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                09.02.04
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../1_intro/index.html">Chapter 1: Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_tisci_msgs/index.html">Chapter 2: TISCI Message Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_boardcfg/index.html">Chapter 3: Board Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_trace/index.html">Chapter 4: Interpreting Trace Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_soc_doc/index.html">Chapter 5: SoC Family Specific Documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Chapter 6: Topic User Guides</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="authentication.html">System Firmware Authentication and Decryption Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devgrp_usage.html">Device Group Primer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domgrp_usage.html">Domain Group Primer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="secure_boot_signing.html">Signing binaries for Secure Boot on HS Devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hs_boardcfg_signing.html">Signing Board Configuration on HS devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openssl_usage.html">Using OpenSSL for certificate creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extended_otp.html">Using Extended OTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dkek_management.html">Using Derived KEK on HS devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firewall_faq.html">Firewall FAQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="saul_access.html">SAUL Access Outside of SYSFW</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security_handover.html">Performing Security Handover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="secure_debug.html">Secure Debug User Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="key_writer.html">Key  Writer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="otp_revision.html">Run time read/write to KEYREV and SWREV</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Keyring Management</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#background-on-use-cases">Background on Use-cases</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#functional-goals">Functional Goals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#design">Design</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#key-data-storage">Key Data Storage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#keyring-import">Keyring Import</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">TISCI</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Chapter 6: Topic User Guides</a> &raquo;</li>
+      
+    <li>Keyring Management</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="keyring-management">
+<h1>Keyring Management<a class="headerlink" href="#keyring-management" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="table-of-contents">
+<p class="topic-title">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#introduction" id="id2">Introduction</a></li>
+<li><a class="reference internal" href="#background-on-use-cases" id="id3">Background on Use-cases</a></li>
+<li><a class="reference internal" href="#functional-goals" id="id4">Functional Goals</a></li>
+<li><a class="reference internal" href="#design" id="id5">Design</a><ul>
+<li><a class="reference internal" href="#key-data-storage" id="id6">Key Data Storage</a></li>
+<li><a class="reference internal" href="#keyring-import" id="id7">Keyring Import</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#references" id="id8">References</a></li>
+</ul>
+</div>
+<div class="section" id="introduction">
+<span id="dref-sec-keyring-int"></span><h2><a class="toc-backref" href="#id2">Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>The extended keyring enables the generic data blob to be signed/verified with user’s</dt>
+<dd>auxiliary key other than the root key (i.e. SMPK/BMPK).</dd>
+</dl>
+</div>
+<div class="section" id="background-on-use-cases">
+<span id="dref-sec-keyring-background"></span><h2><a class="toc-backref" href="#id3">Background on Use-cases</a><a class="headerlink" href="#background-on-use-cases" title="Permalink to this headline">¶</a></h2>
+<p>The following describes the use-cases which substantiate the need for
+keyring within SMS and drive the design decisions described later in this
+document.</p>
+<ul class="simple">
+<li>Import auxiliary public keys’ hash presented in the form of a signed x509 certificate
+after validation.</li>
+<li>The imported keys’ hash can be used to authenticate the signed firmware or data blobs
+presented to System Firmware.</li>
+</ul>
+</div>
+<div class="section" id="functional-goals">
+<span id="dref-sec-keyring-func-goals"></span><h2><a class="toc-backref" href="#id4">Functional Goals</a><a class="headerlink" href="#functional-goals" title="Permalink to this headline">¶</a></h2>
+<p>Keyring provides the following functionality:</p>
+<ol class="arabic simple">
+<li>APIs to import the entire keyring in to TIFS internal memory.</li>
+<li><dl class="first docutils">
+<dt>System Firmware can use the keys imported from the extended key ring,</dt>
+<dd>during the signed firmware or data blob authentication.</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="design">
+<span id="dref-sec-keyring-design"></span><h2><a class="toc-backref" href="#id5">Design</a><a class="headerlink" href="#design" title="Permalink to this headline">¶</a></h2>
+<p>Keyring design is described in the following sections</p>
+<div class="section" id="key-data-storage">
+<span id="dref-sec-keyring-storage"></span><h3><a class="toc-backref" href="#id6">Key Data Storage</a><a class="headerlink" href="#key-data-storage" title="Permalink to this headline">¶</a></h3>
+<p>The keyring exists in a carved out section of SMS internal memory with
+a build-time configurable size. The keyring memory contains following
+information:</p>
+<ul class="simple">
+<li>Internal state of the keyring. This is only initialized and transitioned
+inside System Firmware.  It is meaningless from the host perspective and should be
+treated as reserved.</li>
+<li>Array of metadata descriptors for the keys in the keyring.
+The descriptors for the key slots specify:</li>
+</ul>
+<table border="1" class="docutils align-center" id="id1">
+<caption><span class="caption-number">Table 6 </span><span class="caption-text">Parameters of public keys</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Keyring parameters</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>key_type</td>
+<td>flag to indicate if key is symmetric or asymmetric</td>
+</tr>
+<tr class="row-odd"><td>keyid</td>
+<td>keyid of the key</td>
+</tr>
+<tr class="row-even"><td>imageauth</td>
+<td>flag to indicate if key can be used for firmware image authentication</td>
+</tr>
+<tr class="row-odd"><td>debugauth</td>
+<td>flag to indicate if key can be used for debug certificate authentication</td>
+</tr>
+<tr class="row-even"><td>reserved</td>
+<td>for internal use</td>
+</tr>
+<tr class="row-odd"><td>esmpkh</td>
+<td>esmpk hash for authentication</td>
+</tr>
+</tbody>
+</table>
+<p id="dref-keyring-data-structure">The above information is placed at the base of the keyring memory. This can be
+more concisely represented by the C-code definition of the keyring structure for
+asymmetric keys:</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">keyring_asymm</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">struct</span><span class="w"> </span><span class="nc">aux_pk</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">key_type</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">key_id</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">imageauth</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">debugauth</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">reserved</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+<span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="n">aux_pk</span><span class="p">;</span>
+<span class="w">      </span><span class="kt">uint8_t</span><span class="w">   </span><span class="n">esmpkh</span><span class="p">[</span><span class="mi">64</span><span class="p">];</span>
+<span class="w">  </span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="keyring-import">
+<span id="dref-sec-keyring-provision"></span><h3><a class="toc-backref" href="#id7">Keyring Import</a><a class="headerlink" href="#keyring-import" title="Permalink to this headline">¶</a></h3>
+<p>Early in the lifecycle of the HS device, the customer will use the keywriter to
+blow the eFuse with Secondary MPKH and MEK (among other contents) and
+transition the device from HS-FS state to HS-SE. At this point, the keyring
+contents have not yet been populated and it is up to the system software owner
+to provision an initial set of keys.  This is achieved through a bulk import of
+the keyring contents which have been appended to an x509 certificate signed with the
+active customer MPK, similar to how one signs an encrypted binary for secure boot.
+Validation of the certificate ensures that the keyring contents are trustworthy and
+can hence be stored into the reserved memory. If the certificate check fails then
+provisioning will not be successful and the keyring will remain unitialized.</p>
+<p>The host is responsibile for ensuring that the keyring data is properly
+formatted when creating the payload for the keyring import API. If not, the data
+will be interpreted differently between the host and System Firmware which can cause
+unpredictable values for the various fields in the structure. The data
+corruption may cause following failures in subsequent key operations:</p>
+<ul class="simple">
+<li>Key type is not correct, so operations checking for the key type will fail.</li>
+<li>The key id of each key must be between and including values 1-254, else the keyring import
+will fail.</li>
+<li>Usage flags are not correct, so usage permissions checks will fail.</li>
+</ul>
+<p>Keyring import operation requires following constraints:</p>
+<ul class="simple">
+<li>The number of keys in the certificate extension must match the number of keys
+present in the keyring.</li>
+<li>Without a certificate extension, keyring import will fail.</li>
+<li>The number of asymmetric keys should be between and including values 1-6.</li>
+<li>Keyring can only be imported once, and any further attempts will fail.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="references">
+<span id="dref-sec-keyring-ref"></span><h2><a class="toc-backref" href="#id8">References</a><a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><a class="reference external" href="https://en.wikipedia.org/wiki/Public_key_infrastructure">https://en.wikipedia.org/wiki/Public_key_infrastructure</a></li>
+<li>Internet X.509 Public Key Infrastructure Certificate and Certificate
+Revocation List (CRL) Profile <a class="reference external" href="https://tools.ietf.org/html/rfc5280">https://tools.ietf.org/html/rfc5280</a></li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="otp_revision.html" class="btn btn-neutral" title="Run time read/write to KEYREV and SWREV" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyright 2016-2024</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'09.02.04',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+
+        $('body').on("mousewheel", function () {
+            // Remove default behavior
+            event.preventDefault();
+            // Scroll without smoothing
+            var wheelDelta = event.wheelDelta;
+            var currentScrollPosition = window.pageYOffset;
+            window.scrollTo(0, currentScrollPosition - wheelDelta);
+        });
+      });
+  </script>
+   
+
+</body>
+</html>

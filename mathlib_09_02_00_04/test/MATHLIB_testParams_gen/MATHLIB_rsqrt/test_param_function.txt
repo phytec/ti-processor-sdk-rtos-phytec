@@ -1,0 +1,11 @@
+/*
+ *  Sends the test parameter structure and number of tests
+ */
+void MATHLIB_rsqrt_getTestParams (
+    MATHLIB_rsqrt_testParams_t **params,
+    int32_t *                                 numTests)
+{
+   *params = testParams;
+   *numTests =
+       sizeof (testParams) / sizeof (MATHLIB_rsqrt_testParams_t);
+}

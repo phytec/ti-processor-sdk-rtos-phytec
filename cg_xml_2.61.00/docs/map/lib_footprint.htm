@@ -1,0 +1,146 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Documentation for lib_footprint.pl</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Documentation for lib_footprint.pl</span></strong></big>
+</td></tr>
+</table>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#USAGE">USAGE</a></li>
+  <li><a href="#OPTIONS">OPTIONS</a></li>
+  <li><a href="#HOW-TO-CREATE-THE-XML-FILE">HOW TO CREATE THE XML FILE</a></li>
+  <li><a href="#NOTES-ON-THE-OUTPUT">NOTES ON THE OUTPUT</a>
+    <ul>
+      <li><a href="#STACK-AND-HEAP-SIZES">STACK AND HEAP SIZES</a></li>
+      <li><a href="#DIFFERENT-RESULTS-VS.-OTHER-METHODS">DIFFERENT RESULTS VS. OTHER METHODS</a></li>
+      <li><a href="#HOLES-ARE-NOT-COUNTED">HOLES ARE NOT COUNTED</a></li>
+      <li><a href="#NOTE-ON-LINKING-WITH--CR">NOTE ON LINKING WITH -CR</a></li>
+    </ul>
+  </li>
+  <li><a href="#HOW-SECTIONS-ARE-CLASSIFIED">HOW SECTIONS ARE CLASSIFIED</a>
+    <ul>
+      <li><a href="#SYNTAX-OF-SECTION-CLASSIFICATION-CONFIGURATION-FILE">SYNTAX OF SECTION CLASSIFICATION CONFIGURATION FILE</a></li>
+    </ul>
+  </li>
+  <li><a href="#PERL-VERSION-REQUIRED">PERL VERSION REQUIRED</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>lib_footprint.pl</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<p>Perl script that reads in an XML file representation of a linker map file and reports how much memory each library occupies.</p>
+
+<h1 id="USAGE">USAGE</h1>
+
+<pre><code>   lib_footprint.pl [options] &lt;xml file&gt;</code></pre>
+
+<h1 id="OPTIONS">OPTIONS</h1>
+
+<pre><code> --sect_classes=&lt;file&gt; : Configuration file that classifies sections
+ --cg_xml_version      : Print out the version of the cg_xml package in use</code></pre>
+
+<h1 id="HOW-TO-CREATE-THE-XML-FILE">HOW TO CREATE THE XML FILE</h1>
+
+<p>Generate the XML version of the map file with the linker option --xml_link_info=&lt;file&gt;</p>
+
+<p>You must use a relatively recent linker which supports the --xml_link_info option. However, there is NO requirement as to which version of the tools were used to create the libraries being linked in. In other words, this script will work even if some of the libraries were built with old compiler tools.</p>
+
+<h1 id="NOTES-ON-THE-OUTPUT">NOTES ON THE OUTPUT</h1>
+
+<h2 id="STACK-AND-HEAP-SIZES">STACK AND HEAP SIZES</h2>
+
+<p>Gets fooled on overall stack and heap (used by malloc) sizes. That is not defined in input sections where all the size information is gathered. Those sizes are assigned directly by the linker to the output section.</p>
+
+<h2 id="DIFFERENT-RESULTS-VS.-OTHER-METHODS">DIFFERENT RESULTS VS. OTHER METHODS</h2>
+
+<p>Other methods for measuring the size of a library may get a different result than this script. This script only measures the size of library modules actually <b>used</b> by the application. If a library module is never referenced, the linker does not bring it in, this script does not see that module, and it does not count when summing up the size of the library. Other methods for measuring a library typically add up the the size of every module in the library with no consideration for the possibibility one or more modules may not be linked in.</p>
+
+<h2 id="HOLES-ARE-NOT-COUNTED">HOLES ARE NOT COUNTED</h2>
+
+<p>This script considers the size of each section as it is pulled out of library, before it is combined with other input sections to form a larger output section. It is possible for holes to occur between input sections. Such holes are not counted by this script.</p>
+
+<p>Consider the following example:</p>
+
+<ul>
+
+<li><p>A library named example.lib has 2 files in it</p>
+
+</li>
+<li><p>Each file contains one code section that is 50 bytes long</p>
+
+</li>
+<li><p>Each code section is required to be aligned on a 64 byte boundary</p>
+
+</li>
+<li><p>Both code sections are linked in to the final .out file being measured</p>
+
+</li>
+<li><p>The code sections are combined into an output section named .example_text</p>
+
+</li>
+<li><p>The output section .example_text does not include any other input sections</p>
+
+</li>
+</ul>
+
+<p>This script will say that example.lib contributes 100 bytes to the final link. Measuring the size of the output section .example_text with other methods (such as using sectti.pl from the OFD directory) will show that the section .example_text is 114 bytes. Why the difference?</p>
+
+<p>A hole of 64 - 50 = 14 bytes, in the section .example_text, lies between the code sections from the two files in example.lib. That hole is not counted by this script.</p>
+
+<p>It is, in general, impossible for such holes to be counted by this script. They can occur anywhere, for nearly any reason. They can occur when input sections from libraries (which are counted by this script) are combined together with input sections from normal object files (which are not counted by this script). In practice, size of such holes is rarely a factor.</p>
+
+<h2 id="NOTE-ON-LINKING-WITH--CR">NOTE ON LINKING WITH -CR</h2>
+
+<p>If you link with -cr, use --sect_classes to mark .cinit as a section to IGNORE (details below).</p>
+
+<h1 id="HOW-SECTIONS-ARE-CLASSIFIED">HOW SECTIONS ARE CLASSIFIED</h1>
+
+<p>The final report shows how much code, data, and uninitialized data each library contributes to overall code size. This is achieved by classifying each output section as one of CODE, DATA, or UDATA. The classification scheme is a simple one based on the names of the sections. The default scheme is illustrated in the subroutine &quot;default_sect_classes&quot;. This should cover many common cases. Since not all cases are covered, the option &quot;--sect_classes=file&quot; is provided to give you the ability to change the section classification (file syntax below). This script should be accompanied by the example section classification file &quot;classes.txt&quot;. It defines the section classifications equivalent to the script default. Thus, it serves as a good starting point for additions or modifications.</p>
+
+<p>Note you can also mark sections as IGNORE. As the name implies, such sections are ignored.</p>
+
+<p>If -cr (instead of -c) is used on the link, then the .cinit section should be marked IGNORE. This script cannot tell the difference between a .cinit section that is loaded in memory (linked with -c) and one that is only a copy section (linked with -cr) the loader reads to perform the global variable initialization at load time.</p>
+
+<h2 id="SYNTAX-OF-SECTION-CLASSIFICATION-CONFIGURATION-FILE">SYNTAX OF SECTION CLASSIFICATION CONFIGURATION FILE</h2>
+
+<pre><code>   &lt;section name&gt; &lt;space or &#39;,&#39; or &#39;=&#39;&gt; &lt;CODE|DATA|UDATA|IGNORE&gt;</code></pre>
+
+<p>Each section specification must be contained on a single line</p>
+
+<p>Optional space can surround the section name or classification</p>
+
+<p>Blank lines are ignored</p>
+
+<p>&#39;#&#39; is for comments. Anything on a line after &#39;#&#39; is ignored.</p>
+
+<h1 id="PERL-VERSION-REQUIRED">PERL VERSION REQUIRED</h1>
+
+<p>This script was written using Perl version 5.8.3. It may not work with earlier revisions of Perl.</p>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Documentation for lib_footprint.pl</span></strong></big>
+</td></tr>
+</table>
+
+</body>
+
+</html>
+
+

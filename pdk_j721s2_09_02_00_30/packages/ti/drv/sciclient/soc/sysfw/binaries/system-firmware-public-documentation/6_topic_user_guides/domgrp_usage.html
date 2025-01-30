@@ -1,0 +1,381 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Domain Group Primer &mdash; TISCI User Guide</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="TISCI User Guide" href="../index.html"/>
+        <link rel="up" title="Chapter 6: Topic User Guides" href="index.html"/>
+        <link rel="next" title="Signing binaries for Secure Boot on HS Devices" href="secure_boot_signing.html"/>
+        <link rel="prev" title="Device Group Primer" href="devgrp_usage.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="../_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> TISCI
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                09.02.04
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../1_intro/index.html">Chapter 1: Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_tisci_msgs/index.html">Chapter 2: TISCI Message Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_boardcfg/index.html">Chapter 3: Board Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_trace/index.html">Chapter 4: Interpreting Trace Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_soc_doc/index.html">Chapter 5: SoC Family Specific Documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Chapter 6: Topic User Guides</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="authentication.html">System Firmware Authentication and Decryption Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devgrp_usage.html">Device Group Primer</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Domain Group Primer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#definition">Definition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#domgrp-values">DOMGRP values</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="secure_boot_signing.html">Signing binaries for Secure Boot on HS Devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hs_boardcfg_signing.html">Signing Board Configuration on HS devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openssl_usage.html">Using OpenSSL for certificate creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extended_otp.html">Using Extended OTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dkek_management.html">Using Derived KEK on HS devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firewall_faq.html">Firewall FAQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="saul_access.html">SAUL Access Outside of SYSFW</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security_handover.html">Performing Security Handover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="secure_debug.html">Secure Debug User Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="key_writer.html">Key  Writer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="otp_revision.html">Run time read/write to KEYREV and SWREV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keyring.html">Keyring Management</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">TISCI</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Chapter 6: Topic User Guides</a> &raquo;</li>
+      
+    <li>Domain Group Primer</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="domain-group-primer">
+<h1>Domain Group Primer<a class="headerlink" href="#domain-group-primer" title="Permalink to this headline">¶</a></h1>
+<p>This document provides a quick primer on what domain group is
+and provides guidance on usage of domain groups.</p>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>The SoC is partitioned into different functional domains, each containing
+specific processing cores and peripherals. In the K3 platform SoCs,
+the domains are Wake-up (WKUP), MCU, MAIN. The domain fragmentation
+allows domains to be reset and allows efficient addressing of safety
+requirements.</p>
+<p>The focus on the functional domain differentiates domain group from device
+group. The domain group’s purpose is to identify the region to be reset.
+The device group may have overlapping definitions with domain group, but device
+group can have devices not meant to be reset. For example, the EARLY_CAN may
+become a device for early CAN response, but it is not meant to be a reset option.</p>
+</div>
+<div class="section" id="definition">
+<h2>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">¶</a></h2>
+<p>Each “Domain Group” or DOMGRP is used to denote the functional domains of the
+SoC. Each domain’s reset can be invoked with corresponding reset API call
+<a class="reference internal" href="../2_tisci_msgs/pm/sysreset.html#pub-sysreset-tisci"><span class="std std-ref">TISCI_MSG_SYS_RESET</span></a>.</p>
+<p>The specific grouping of device instances are documented in the SoC
+specific documentation.</p>
+</div>
+<div class="section" id="domgrp-values">
+<h2>DOMGRP values<a class="headerlink" href="#domgrp-values" title="Permalink to this headline">¶</a></h2>
+<p>Domain group identification follows a generic bitfield format.</p>
+<ul class="simple">
+<li>domgrp_t type is u8 (8 bits)</li>
+<li>Values for the field is defined as follows:</li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="7%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Device Group</th>
+<th class="head">Value</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>DOMGRP_COMPATIBILITY</td>
+<td>0</td>
+<td>SoC SYSFW domgrp for backward compatibility. When sysreset did not have domain as
+an input parameter, use this value as a replacement.</td>
+</tr>
+<tr class="row-odd"><td>DOMGRP_00</td>
+<td>1 &lt;&lt; 0</td>
+<td>SoC specific domgrp 0.
+Please refer to <a class="reference internal" href="../5_soc_doc/index.html#pub-soc-family-doc"><span class="std std-ref">SoC information</span></a> for the specific SoC.</td>
+</tr>
+<tr class="row-even"><td>DOMGRP_01</td>
+<td>1 &lt;&lt; 1</td>
+<td>SoC specific domgrp 1.
+Please refer to <a class="reference internal" href="../5_soc_doc/index.html#pub-soc-family-doc"><span class="std std-ref">SoC information</span></a> for the specific SoC.</td>
+</tr>
+<tr class="row-odd"><td>DOMGRP_02</td>
+<td>1 &lt;&lt; 2</td>
+<td>SoC specific domgrp 2.
+Please refer to <a class="reference internal" href="../5_soc_doc/index.html#pub-soc-family-doc"><span class="std std-ref">SoC information</span></a> for the specific SoC.</td>
+</tr>
+<tr class="row-even"><td>DOMGRP_03</td>
+<td>1 &lt;&lt; 3</td>
+<td>SoC specific domgrp 3.
+Please refer to <a class="reference internal" href="../5_soc_doc/index.html#pub-soc-family-doc"><span class="std std-ref">SoC information</span></a> for the specific SoC.</td>
+</tr>
+<tr class="row-odd"><td>DOMGRP_04</td>
+<td>1 &lt;&lt; 4</td>
+<td>SoC specific domgrp 4.
+Please refer to <a class="reference internal" href="../5_soc_doc/index.html#pub-soc-family-doc"><span class="std std-ref">SoC information</span></a> for the specific SoC.</td>
+</tr>
+<tr class="row-even"><td>DOMGRP_05</td>
+<td>1 &lt;&lt; 5</td>
+<td>SoC specific domgrp 5.
+Please refer to <a class="reference internal" href="../5_soc_doc/index.html#pub-soc-family-doc"><span class="std std-ref">SoC information</span></a> for the specific SoC.</td>
+</tr>
+<tr class="row-odd"><td>DOMGRP_06</td>
+<td>1 &lt;&lt; 6</td>
+<td>SoC specific domgrp 6.
+Please refer to <a class="reference internal" href="../5_soc_doc/index.html#pub-soc-family-doc"><span class="std std-ref">SoC information</span></a> for the specific SoC.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<ul class="last simple">
+<li>SoC specific domain grouping is predefined and NOT configurable by user.</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="secure_boot_signing.html" class="btn btn-neutral float-right" title="Signing binaries for Secure Boot on HS Devices" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="devgrp_usage.html" class="btn btn-neutral" title="Device Group Primer" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyright 2016-2024</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'09.02.04',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+
+        $('body').on("mousewheel", function () {
+            // Remove default behavior
+            event.preventDefault();
+            // Scroll without smoothing
+            var wheelDelta = event.wheelDelta;
+            var currentScrollPosition = window.pageYOffset;
+            window.scrollTo(0, currentScrollPosition - wheelDelta);
+        });
+      });
+  </script>
+   
+
+</body>
+</html>

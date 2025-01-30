@@ -1,0 +1,111 @@
+=======================
+J721E Host Descriptions
+=======================
+
+.. _soc_doc_j721e_public_host_desc_intro:
+
+Introduction
+============
+
+This chapter provides information on the set of HostIDs permitted
+in this J721E SoC. HostIDs uniquely identify each logically distinct high level
+software entity. A software entity identification number (HostID) can be
+assigned to an OS either native or virtualized, or a firmware/native
+application. The HostID is used to select the set of Secure Proxy channels for
+which this software entity should use to communicate with the System Firmware.
+
+As an example with an R5 core, then there could be 0, 1, or n number of
+R5 related hosts. The only limit is the number of available Secure Proxy
+Channels. Typically though, an R5 core will be assigned one secure host as well as one non
+secure host, but may be assigned additional hosts for certain usecases. As for other
+cores, some will only use secure hosts, and others will only use non secure hosts.
+Since the hosts are tied to Secure Proxy Channels, hosts are just a way of sectioning
+off data for a designated purpose.
+
+System Firmware also checks that the used HostID comes from software running
+on the correct core (as implied by Host Name in the below table) and with the
+correct security level (Security Status column).
+
+Additionally, one of the key reasons why HostID is tied in with Secure Proxy
+channels is because it prevents spoofing. When a message is received by
+System Firmware, the Secure Proxy channel tied to the HostID in the message is
+verified against the Secure Proxy channel on which the message was received.
+Specifically, only the HostID listed in the "Host Name" column can use the Secure
+Proxy channel associated with it.
+
+.. _soc_doc_j721e_public_host_desc_host_list:
+
+Enumeration of Host IDs
+=======================
+
++-----------+-------------+-------------------+-----------------------------------------+
+|   Host ID | Host Name   | Security Status   | Description                             |
++===========+=============+===================+=========================================+
+|         0 | DMSC        | Secure            | Security Controller                     |
++-----------+-------------+-------------------+-----------------------------------------+
+|         3 | MCU_0_R5_0  | Non Secure        | Cortex R5 context 0 on MCU island       |
++-----------+-------------+-------------------+-----------------------------------------+
+|         4 | MCU_0_R5_1  | Secure            | Cortex R5 context 1 on MCU island(Boot) |
++-----------+-------------+-------------------+-----------------------------------------+
+|         5 | MCU_0_R5_2  | Non Secure        | Cortex R5 context 2 on MCU island       |
++-----------+-------------+-------------------+-----------------------------------------+
+|         6 | MCU_0_R5_3  | Secure            | Cortex R5 context 3 on MCU island       |
++-----------+-------------+-------------------+-----------------------------------------+
+|        10 | A72_0       | Secure            | Cortex A72 context 0 on Main island     |
++-----------+-------------+-------------------+-----------------------------------------+
+|        11 | A72_1       | Secure            | Cortex A72 context 1 on Main island     |
++-----------+-------------+-------------------+-----------------------------------------+
+|        12 | A72_2       | Non Secure        | Cortex A72 context 2 on Main island     |
++-----------+-------------+-------------------+-----------------------------------------+
+|        13 | A72_3       | Non Secure        | Cortex A72 context 3 on Main island     |
++-----------+-------------+-------------------+-----------------------------------------+
+|        14 | A72_4       | Non Secure        | Cortex A72 context 4 on Main island     |
++-----------+-------------+-------------------+-----------------------------------------+
+|        20 | C7X_0       | Secure            | C7x Context 0 on Main island            |
++-----------+-------------+-------------------+-----------------------------------------+
+|        21 | C7X_1       | Non Secure        | C7x context 1 on Main island            |
++-----------+-------------+-------------------+-----------------------------------------+
+|        25 | C6X_0_0     | Secure            | C6x_0 Context 0 on Main island          |
++-----------+-------------+-------------------+-----------------------------------------+
+|        26 | C6X_0_1     | Non Secure        | C6x_0 context 1 on Main island          |
++-----------+-------------+-------------------+-----------------------------------------+
+|        27 | C6X_1_0     | Secure            | C6x_1 Context 0 on Main island          |
++-----------+-------------+-------------------+-----------------------------------------+
+|        28 | C6X_1_1     | Non Secure        | C6x_1 context 1 on Main island          |
++-----------+-------------+-------------------+-----------------------------------------+
+|        30 | GPU_0       | Non Secure        | RGX context 0 on Main island            |
++-----------+-------------+-------------------+-----------------------------------------+
+|        35 | MAIN_0_R5_0 | Non Secure        | Cortex R5_0 context 0 on Main island    |
++-----------+-------------+-------------------+-----------------------------------------+
+|        36 | MAIN_0_R5_1 | Secure            | Cortex R5_0 context 1 on Main island    |
++-----------+-------------+-------------------+-----------------------------------------+
+|        37 | MAIN_0_R5_2 | Non Secure        | Cortex R5_0 context 2 on Main island    |
++-----------+-------------+-------------------+-----------------------------------------+
+|        38 | MAIN_0_R5_3 | Secure            | Cortex R5_0 context 3 on Main island    |
++-----------+-------------+-------------------+-----------------------------------------+
+|        40 | MAIN_1_R5_0 | Non Secure        | Cortex R5_1 context 0 on Main island    |
++-----------+-------------+-------------------+-----------------------------------------+
+|        41 | MAIN_1_R5_1 | Secure            | Cortex R5_1 context 1 on Main island    |
++-----------+-------------+-------------------+-----------------------------------------+
+|        42 | MAIN_1_R5_2 | Non Secure        | Cortex R5_1 context 2 on Main island    |
++-----------+-------------+-------------------+-----------------------------------------+
+|        43 | MAIN_1_R5_3 | Secure            | Cortex R5_1 context 3 on Main island    |
++-----------+-------------+-------------------+-----------------------------------------+
+|        50 | ICSSG_0     | Non Secure        | ICSSG context 0 on Main island          |
++-----------+-------------+-------------------+-----------------------------------------+
+|       250 | DM2DMSC     | Secure            | DM to DMSC communication                |
++-----------+-------------+-------------------+-----------------------------------------+
+|       251 | DMSC2DM     | Non Secure        | DMSC to DM communication                |
++-----------+-------------+-------------------+-----------------------------------------+
+|       254 | DM          | Non Secure        | Device Management                       |
++-----------+-------------+-------------------+-----------------------------------------+
+
+.. note::
+
+   * Description provides an intended purpose
+     of the host ID, though on some systems,
+     this might be used differently, backing memory and
+     link allocations are made with the specified purpose
+     in mind
+   * Security Status provides an intended purpose for the
+     Host context

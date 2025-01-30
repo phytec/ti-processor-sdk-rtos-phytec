@@ -1,0 +1,25 @@
+DCC Example Test Application
+
+DCC_Test_init: Init MCU ESM complete
+
+
+INSTANCE: DCC0
+Source clock: RC OSC
+Test clock: MCAN
+
+
+SDL DCC EXAMPLE TEST: Start UC-5
+SDL DCC EXAMPLE TEST: Seed values calculation done.
+SDL DCC EXAMPLE TEST: Changing the clock ratios
+SDL DCC EXAMPLE TEST: Seed values calculation done.
+SDL DCC EXAMPLE TEST: Enabling DCC and waiting for Error interrupt
+
+Interrupt is generated to ESM
+    ESM Call back function called : instType 0x3, intType 0x1, grpChannel 0x3, index 0x8, intSrc 0x68
+    Take action
+
+SDL DCC EXAMPLE TEST: DCC Generated Error interrupt
+SDL DCC EXAMPLE TEST: Indicating clock drift/change
+Test Name: DCC EXAMPLE TEST  PASSED
+
+ All tests have passed.

@@ -1,0 +1,67 @@
+=======================================
+TISCI PM System Reset API Documentation
+=======================================
+
+This document describes the TISCI API for issuing warm reset to a domain.
+
+.. _pm_sysreset_msg_sys_reset:
+
+TISCI_MSG_SYS_RESET
+===================
+
+Objective
+----------
+
+Request for a software warm reset of a domain.
+
+Usage
+-----
+
++------------------------+--------+
+| **Message Type**       | Normal |
++------------------------+--------+
+| **Secure Queue Only?** | No     |
++------------------------+--------+
+
+User can use this API to issue software warm reset of a domain. The domain
+definition may vary from SoC to SoC. Depending on the SoC, certain domain
+reset could be defined to be equivalent to a system-wide reset. The reset
+brings the device or part of the device to a known state after events such
+as power-up, hardware request, or software request. The domain reset can
+be used for error handling and recovery.
+
+To maintain backward compatibility, when a user leaves the domain parameter
+empty, the API would process the message with the DOMGRP_COMPATIBILITY as
+the domain value.
+
+After calling the TISCI_MSG_SYS_RESET API, the chosen domain will be
+deinitialized. The user is responsible for reconfiguring the devices in the
+chosen domain by resending the board configuration for baseport, power
+management, resource management, and security management. If the chosen
+domain reset would lead to system-wide reset, then no additional board
+configuration calls are necessary.
+
+.. note::
+  On AM62x, AM64x, AM62Ax, AM62Px and J722S devices the module parameter is unused.
+  On these devices this API will result in a system-wide warm reset, or
+  if MCU reset isolation is enabled, a MAIN domain only reset.
+
+Macros Used in this Document
+----------------------------
+
+.. _pub_sysreset_tisci:
+
+TISCI Message ID
+----------------
+
+.. sysfwapimacro:: TISCI_MSG_SYS_RESET
+
+Message Data Structures
+-----------------------
+
+.. sysfwapistruct:: tisci_msg_sys_reset_req
+
+To maintain backward compatibility, when a user does not pass the domain
+argument, it would perform the SoC's default reset behavior.
+
+.. sysfwapistruct:: tisci_msg_sys_reset_resp

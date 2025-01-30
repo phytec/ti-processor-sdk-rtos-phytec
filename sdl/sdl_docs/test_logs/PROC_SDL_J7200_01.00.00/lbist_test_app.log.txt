@@ -1,0 +1,38 @@
+mcuClkFreq 1000000000
+
+LBIST Test Applications
+
+ Starting LBIST test on HWPOST - DMSC, index 0...
+   HW POST: Device does not contain proper seed for MISR in eFuse - HW POST LBIST not supported on this device
+   HW POST core: HWPOST - DMSC: HW POST was not run on this device
+  LBIST complete for HWPOST - DMSC
+
+ Starting LBIST test on HWPOST - MCU, index 1...
+   HW POST: Device does not contain proper seed for MISR in eFuse - HW POST LBIST not supported on this device
+   HW POST core: HWPOST - MCU: HW POST was not run on this device
+  LBIST complete for HWPOST - MCU
+
+ Starting LBIST test on Main R5F0-0, index 2...
+   LBIST MISR matched
+  Delta Cores prep time in micro secs 2301
+  Delta LBIST execution time in micro secs 18924
+  Delta Cores restore time in micro secs 237
+  LBIST complete for Main R5F0-0
+
+ Starting LBIST test on A72 core 0, index 3...
+   LBIST MISR matched
+  Delta Cores prep time in micro secs 230
+  Delta LBIST execution time in micro secs 18914
+  Delta Cores restore time in micro secs 270
+  LBIST complete for A72 core 0
+
+ LBIST Functionality Test Passed.
+
+ LBIST Error Module Test Passed.
+
+All tests have passed.
+common/lbist_test_main.c:261:test_sdl_lbist_test_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored
+OK

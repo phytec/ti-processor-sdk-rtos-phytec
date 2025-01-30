@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['icu_5factive',['ICU_ACTIVE',['../group__MCAL__ICU__CFG.html#gga1aaa5f33692b085f6e133947e5b2a5e8a937f683aadda671213ca92bd07579814',1,'Icu.h']]],
+  ['icu_5fboth_5fedges',['ICU_BOTH_EDGES',['../group__MCAL__ICU__CFG.html#gga00aa4bd32417e2f74f28a3b20b47d5f0aeef151dff18253f547400f214be9a7f8',1,'Icu.h']]],
+  ['icu_5fcircular_5fbuffer',['ICU_CIRCULAR_BUFFER',['../group__MCAL__ICU__CFG.html#gga07402d6dd3279b4f5662a7f055b69a60a545c3f8ace7be571e28fe89184c0faf4',1,'Icu.h']]],
+  ['icu_5fduty_5fcycle',['ICU_DUTY_CYCLE',['../group__MCAL__ICU__CFG.html#gga83513d38f0b24d642a1cd8cf6c88cd31adf2a0c1a636c718b002f43659cb81da4',1,'Icu.h']]],
+  ['icu_5ffalling_5fedge',['ICU_FALLING_EDGE',['../group__MCAL__ICU__CFG.html#gga00aa4bd32417e2f74f28a3b20b47d5f0a93337e7e722ca7e24f28747e5b785cec',1,'Icu.h']]],
+  ['icu_5fhigh_5ftime',['ICU_HIGH_TIME',['../group__MCAL__ICU__CFG.html#gga83513d38f0b24d642a1cd8cf6c88cd31a5f08fb2da47526b5bdcb18916913f894',1,'Icu.h']]],
+  ['icu_5fidle',['ICU_IDLE',['../group__MCAL__ICU__CFG.html#gga1aaa5f33692b085f6e133947e5b2a5e8ad02b1dd54aaa23e099ba0790deafe023',1,'Icu.h']]],
+  ['icu_5flinear_5fbuffer',['ICU_LINEAR_BUFFER',['../group__MCAL__ICU__CFG.html#gga07402d6dd3279b4f5662a7f055b69a60a3a084d0a859a25758a90487bade225a2',1,'Icu.h']]],
+  ['icu_5flow_5ftime',['ICU_LOW_TIME',['../group__MCAL__ICU__CFG.html#gga83513d38f0b24d642a1cd8cf6c88cd31aecc80f0bdb823730f0988c1b324c52f1',1,'Icu.h']]],
+  ['icu_5fmode_5fedge_5fcounter',['ICU_MODE_EDGE_COUNTER',['../group__MCAL__ICU__CFG.html#gga59fbcb3ef95add127c6960853bacf1b4a22c8dfb3c8f2ee839c195d1fc21ff7c0',1,'Icu.h']]],
+  ['icu_5fmode_5fnormal',['ICU_MODE_NORMAL',['../group__MCAL__ICU__CFG.html#gga21b0035b5da07687050c3cdcfc617f79aa180564f1c05943505f8145c865c826a',1,'Icu.h']]],
+  ['icu_5fmode_5fsignal_5fedge_5fdetect',['ICU_MODE_SIGNAL_EDGE_DETECT',['../group__MCAL__ICU__CFG.html#gga59fbcb3ef95add127c6960853bacf1b4a5c436cf20781946f6a4727b3840a79de',1,'Icu.h']]],
+  ['icu_5fmode_5fsignal_5fmeasurement',['ICU_MODE_SIGNAL_MEASUREMENT',['../group__MCAL__ICU__CFG.html#gga59fbcb3ef95add127c6960853bacf1b4a83190fb4722a60da299ca2bcbc2e26c8',1,'Icu.h']]],
+  ['icu_5fmode_5fsleep',['ICU_MODE_SLEEP',['../group__MCAL__ICU__CFG.html#gga21b0035b5da07687050c3cdcfc617f79a6104b4b7993e452f60a16c07c44bcfab',1,'Icu.h']]],
+  ['icu_5fmode_5ftimestamp',['ICU_MODE_TIMESTAMP',['../group__MCAL__ICU__CFG.html#gga59fbcb3ef95add127c6960853bacf1b4a7ad59dbfbd3e4fd4db4045141959f881',1,'Icu.h']]],
+  ['icu_5fperiod_5ftime',['ICU_PERIOD_TIME',['../group__MCAL__ICU__CFG.html#gga83513d38f0b24d642a1cd8cf6c88cd31ab94835cd66894cd9b4c94c515278b6fa',1,'Icu.h']]],
+  ['icu_5frising_5fedge',['ICU_RISING_EDGE',['../group__MCAL__ICU__CFG.html#gga00aa4bd32417e2f74f28a3b20b47d5f0a3493b1d28ecd3a764c85765f92011516',1,'Icu.h']]]
+];

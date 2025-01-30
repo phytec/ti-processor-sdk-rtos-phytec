@@ -1,0 +1,24 @@
+
+Welcome to minicom 2.7.1                                                                                                                    
+                                                                                                                                            
+OPTIONS: I18n                                                                                                                               
+Compiled on Dec 23 2019, 02:06:26.                                                                                                          
+Port /dev/ttyUSB1, 19:44:08                                                                                                                 
+                                                                                                                                            
+Press CTRL-A Z for help on special keys                                                                                                     
+                                                                                                                                            
+01000000011a00006a3761657000000000000000475020200008010000080100C1.00.10.01 (Jun 29 2023 - 13:38:40)                                        
+Waiting for tifs.bin ...                                                                                                                    
+CCCCCTIFS  ver: 9.0.6--v09.00.06 (Kool Koala)                                                                                               
+Waiting for multicore app ...                                                                                                               
+CCCIT Test Application                                                                                                                      
+Test Name: RAT POSITIVE TEST  PASSED                                                                                                        
+Test Name: RAT NEGATIVE TEST  PASSED                                                                                                        
+                                                                                                                                            
+ All tests have passed.                                                                                                                     
+rat_test_main.c:197:test_sdl_rat_baremetal_test_app:PASS                                                                                    
+                                                                                                                                            
+-----------------------                                                                                                                     
+1 Tests 0 Failures 0 Ignored                                                                                                                
+OK                                                                                                                                          
+   

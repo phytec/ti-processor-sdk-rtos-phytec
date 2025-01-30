@@ -1,0 +1,46 @@
+
+.. _datasheet_sdk_j721s2_gp:
+
+Data Sheet
+^^^^^^^^^^
+
+Datasheet section contains performance information about various modules within **Processor SDK RTOS** |platform|.
+
+.. IMPORTANT::
+
+   - Some datasheet information is not available here and users must request access to the **ADDON** package for **Processor SDK RTOS** |platform| in order to get this information.
+   - Users can request access to the **ADDON** package from here [|mysecure_request|]
+   - Once access is granted, users can download the the **ADDON** package from here [|mysecure_download|]
+   - Once the **ADDON** package is installed, the datasheet can be found here **${PSDK_RTOS_ADDON_PATH}/psdk_rtos/docs/datasheet/index.html**
+
+.. NOTE::
+
+   All performance measurements provided in this document are PRELIMINARY and have not necessarily been fully optimized yet.
+
+
+Common parameters used for performance benchmarking
+===================================================
+
+Any additional parameters or overrides to common parameters, will be specified in respective sections.
+
+========== ===============================================================
+Parameter  Value
+========== ===============================================================
+SoC        J721s2
+Board      J721s2 EVM with Fusion1 card
+R5F        1 GHZ (L1P, L1D cache ON)
+MSMC cache 0 bytes
+DDR        4266 MT/s
+Others     Cache Enabled, Release Build, Code/Data sections in DDR
+========== ===============================================================
+
+Platform Development Kit (PDK)
+==============================
+
+For performance details, see PDK datasheet here [|pdk_data_sheet|]
+
+MCU Software (MCU SW)
+=====================
+
+MCUSW datasheet only available through **ADDON** package (refer to instructions at top of this page).
+

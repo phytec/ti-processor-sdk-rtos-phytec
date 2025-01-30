@@ -1,0 +1,22 @@
+<map id="rigidTransform.h" name="rigidTransform.h">
+<area shape="rect" id="node2" href="$plane_8h.html" title="Declarations for PTK_Plane struct+functions. " alt="" coords="1035,155,1105,181"/>
+<area shape="rect" id="node3" href="$perception_8h.html" title="perception.h" alt="" coords="1055,229,1157,256"/>
+<area shape="rect" id="node20" href="$point_8h.html" title="Declarations for PTK_Point and PTK_Vector struct+functions. " alt="" coords="1109,80,1175,107"/>
+<area shape="rect" id="node21" href="$pointCloud_8h.html" title="Declaration of structures and functions used to manipulate point clouds. " alt="" coords="1181,155,1285,181"/>
+<area shape="rect" id="node4" href="$stereo__algo_8h.html" title="stereo_algo.h" alt="" coords="652,304,763,331"/>
+<area shape="rect" id="node5" href="$stereo__ground__estimation_8h.html" title="stereo_ground_estimation.h" alt="" coords="839,379,1043,405"/>
+<area shape="rect" id="node6" href="$run__stereo__ground__estimation_8h.html" title="run_stereo_ground_estimation.h" alt="" coords="818,453,1050,480"/>
+<area shape="rect" id="node7" href="$algos_8h.html" title="algos.h" alt="" coords="975,528,1045,555"/>
+<area shape="rect" id="node8" href="$vdisparity__ground__model_8h.html" title="vdisparity_ground_model.h" alt="" coords="1124,453,1323,480"/>
+<area shape="rect" id="node9" href="$stereo__object__detect_8h.html" title="stereo_object_detect.h" alt="" coords="489,379,659,405"/>
+<area shape="rect" id="node10" href="$highlight__obstacle_8h.html" title="highlight_obstacle.h" alt="" coords="325,453,479,480"/>
+<area shape="rect" id="node11" href="$obstacle__from__disparity_8h.html" title="obstacle_from_disparity.h" alt="" coords="554,453,743,480"/>
+<area shape="rect" id="node12" href="$run__stereo__object__detect_8h.html" title="run_stereo_object_detect.h" alt="" coords="103,453,301,480"/>
+<area shape="rect" id="node13" href="$create__og_8h.html" title="create_og.h" alt="" coords="1445,379,1543,405"/>
+<area shape="rect" id="node14" href="$create__pc_8h.html" title="create_pc.h" alt="" coords="1568,379,1665,405"/>
+<area shape="rect" id="node15" href="$disparity__merge_8h.html" title="disparity_merge.h" alt="" coords="5,379,145,405"/>
+<area shape="rect" id="node16" href="$hole__filling_8h.html" title="hole_filling.h" alt="" coords="1008,304,1113,331"/>
+<area shape="rect" id="node17" href="$median__filter_8h.html" title="median_filter.h" alt="" coords="1249,304,1368,331"/>
+<area shape="rect" id="node18" href="$common__defs_8h.html" title="common_defs.h" alt="" coords="1547,304,1673,331"/>
+<area shape="rect" id="node19" href="$common__types_8h.html" title="common_types.h" alt="" coords="1697,304,1832,331"/>
+</map>

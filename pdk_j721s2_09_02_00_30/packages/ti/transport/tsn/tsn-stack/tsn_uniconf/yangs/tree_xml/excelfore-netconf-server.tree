@@ -1,0 +1,18 @@
+module: excelfore-netconf-server
+  +--rw x4nconf-server
+     +--rw transport
+        +--rw tls
+        |  +--rw port?           inet:port-number
+        |  +--rw server-cert     string
+        |  +--rw server-key      string
+        |  +--rw capath?         string
+        |  +--rw cert-to-name* [id]
+        |     +--rw id             uint32
+        |     +--rw fingerprint    x509c2n:tls-fingerprint
+        |     +--rw map-type       identityref
+        |     +--rw name           string
+        +--rw ssh
+           +--rw port?                     inet:port-number
+           +--rw use-unix-domain-socket?   boolean
+           +--rw sub-ipc-port?             inet:port-number
+           +--rw sub-socket-name?          string

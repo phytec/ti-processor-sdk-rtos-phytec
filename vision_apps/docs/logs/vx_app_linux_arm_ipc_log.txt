@@ -1,0 +1,388 @@
+root@j7-evm:/opt/vision_apps# ./vx_app_linux_arm_ipc.out
+APP: Init ... !!!
+MEM: Init ... !!!
+MEM: Initialized DMA HEAP (fd=4) !!!
+MEM: Init ... Done !!!
+IPC: Init ... !!!
+IPC: Init ... Done !!!
+REMOTE_SERVICE: Init ... !!!
+REMOTE_SERVICE: Init ... Done !!!
+APP: Init ... Done !!!
+   279.643933 s:  VX_ZONE_INIT:Enabled
+   279.643962 s:  VX_ZONE_ERROR:Enabled
+   279.643967 s:  VX_ZONE_WARNING:Enabled
+   279.644489 s:  VX_ZONE_INIT:[tivxInit:71] Initialization Done !!!
+   279.644722 s:  VX_ZONE_INIT:[tivxHostInit:48] Initialization Done for HOST !!!
+APP IPC TIOVX: Waiting for all messages to get echoed from remote core...
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead0000
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead0001
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead0002
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead0003
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead0004
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead0005
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead0006
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead0007
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead0008
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead0009
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead000a
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead000b
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead000c
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead000d
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead000e
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead000f
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead0000
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead0001
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead0002
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead0003
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead0004
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead0005
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead0006
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead0007
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead0008
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead0009
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead000a
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead000b
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead000c
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead000d
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead000e
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead000f
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead0000
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead0001
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead0002
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead0003
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead0004
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead0005
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead0006
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead0000
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead0007
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead0001
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead0008
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead0002
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead0009
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead0003
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead000a
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead0004
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead000b
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead0005
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead000c
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead0006
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead000d
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead0007
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead000e
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead0008
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead000f
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead0009
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead0000
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead000a
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead0001
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead000b
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead0002
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead000c
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead0003
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead000d
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead0004
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead000e
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead0005
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead000f
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead0006
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead0000
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead0007
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead0001
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead0008
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead0002
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead0009
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead0000
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead0003
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead000a
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead0001
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead0004
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead000b
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead0002
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead0005
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead000c
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead0003
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead0006
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead000d
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead0004
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead0007
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead000e
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead0005
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead0008
+IPC: RX: mcu2_0 -> mpu1_0 (port 13) msg = 0xdead000f
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead0006
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead0009
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead0007
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead000a
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead0008
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead000b
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead0009
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead000c
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead000a
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead000d
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead000b
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead000e
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead000c
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead000f
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead000d
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead0000
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead000e
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead0001
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead000f
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead0002
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead0000
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead0000
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead0003
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead0001
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead0001
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead0004
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead0002
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead0002
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead0005
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead0003
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead0003
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead0006
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead0004
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead0004
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead0007
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead0005
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead0005
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead0008
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead0006
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead0006
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead0009
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead0007
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead0007
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead000a
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead0008
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead0008
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead000b
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead0009
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead0009
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead000c
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead000a
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead000a
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead000d
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead000b
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead000b
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead000e
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead000c
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead000c
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead000f
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead000d
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead0000
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead000d
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead0000
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead000e
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead0001
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead000e
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead0001
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead000f
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead0002
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead000f
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead0002
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead0000
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead0003
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead0000
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead0003
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead0001
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead0004
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead0001
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead0004
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead0002
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead0005
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead0002
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead0005
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead0003
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead0006
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead0003
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead0006
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead0004
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead0007
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead0004
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead0007
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead0005
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead0008
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead0005
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead0008
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead0006
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead0009
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead0006
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead0009
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead0007
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead000a
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead0007
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead000a
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead0008
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead000b
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead0008
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead000b
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead0009
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead000c
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead0009
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead000c
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead000a
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead000d
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead000a
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead000d
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead000b
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead000e
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead000b
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead000e
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead000c
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead000f
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead000c
+IPC: RX: c6x_1 -> mpu1_0 (port 13) msg = 0xdead000f
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead000d
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead0000
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead000d
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead000e
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead0001
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead000e
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead000f
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead0002
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead000f
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead0000
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead0003
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead0000
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead0001
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead0004
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead0001
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead0002
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead0005
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead0002
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead0003
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead0006
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead0003
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead0004
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead0007
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead0004
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead0005
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead0008
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead0005
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead0006
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead0009
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead0006
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead0007
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead000a
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead0007
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead0008
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead000b
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead0008
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead0009
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead000c
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead0009
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead000a
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead000d
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead000a
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead000b
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead000e
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead000b
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead000c
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead000f
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead000c
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead000d
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead0000
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead000d
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead000e
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead0001
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead000e
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead000f
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead0002
+IPC: RX: mcu2_1 -> mpu1_0 (port 13) msg = 0xdead000f
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead0000
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead0003
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead0001
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead0004
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead0002
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead0005
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead0003
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead0006
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead0004
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead0007
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead0005
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead0008
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead0006
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead0009
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead0007
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead000a
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead0008
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead000b
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead0009
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead000c
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead000a
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead000d
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead000b
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead000e
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead000c
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead000f
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead000d
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead0000
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead000e
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead0001
+IPC: RX: c6x_2 -> mpu1_0 (port 13) msg = 0xdead000f
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead0002
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead0003
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead0004
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead0005
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead0006
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead0007
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead0008
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead0009
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead000a
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead000b
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead000c
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead000d
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead000e
+IPC: RX: c7x_1 -> mpu1_0 (port 13) msg = 0xdead000f
+APP IPC TIOVX: Waiting for all messages to get echoed ... Done.
+APP IPC TIOVX: Running remote service test ... 
+   289.645790 s: REMOTE_SERVICE_TEST: Running test for CPU mcu2_0 !!!
+   289.646427 s: REMOTE_SERVICE_TEST: Test passed !!!
+   289.646518 s: REMOTE_SERVICE_TEST: Running test @ 0xae000000 of 1024 bytes size for CPU mcu2_0 !!!
+   289.647143 s: REMOTE_SERVICE_TEST: Test passed !!!
+   289.647150 s: REMOTE_SERVICE_TEST: Running timer test of 10000 msecs for CPU mcu2_0 !!!
+   299.646634 s: REMOTE_SERVICE_TEST: Running timer test of 10000 msecs for CPU mcu2_0 ... DONE !!!
+   299.646668 s: REMOTE_SERVICE_TEST: Running test for CPU mcu2_1 !!!
+   299.647232 s: REMOTE_SERVICE_TEST: Test passed !!!
+   299.647310 s: REMOTE_SERVICE_TEST: Running test @ 0xae000000 of 1024 bytes size for CPU mcu2_1 !!!
+   299.647893 s: REMOTE_SERVICE_TEST: Test passed !!!
+   299.647899 s: REMOTE_SERVICE_TEST: Running timer test of 10000 msecs for CPU mcu2_1 !!!
+[MCU2_0]    299.646466 s: REMOTE_SERVICE_TEST: delay = 10000 ms, elasped time local = 9999 ms, elapsed time global = 9999 ms
+   309.647596 s: REMOTE_SERVICE_TEST: Running timer test of 10000 msecs for CPU mcu2_1 ... DONE !!!
+   309.647631 s: REMOTE_SERVICE_TEST: Running test for CPU c6x_1 !!!
+   309.647987 s: REMOTE_SERVICE_TEST: Test passed !!!
+   309.648066 s: REMOTE_SERVICE_TEST: Running test @ 0xae000000 of 1024 bytes size for CPU c6x_1 !!!
+   309.648465 s: REMOTE_SERVICE_TEST: Test passed !!!
+   309.648471 s: REMOTE_SERVICE_TEST: Running timer test of 10000 msecs for CPU c6x_1 !!!
+[MCU2_1]    309.647446 s: REMOTE_SERVICE_TEST: delay = 10000 ms, elasped time local = 9999 ms, elapsed time global = 9999 ms
+   319.648305 s: REMOTE_SERVICE_TEST: Running timer test of 10000 msecs for CPU c6x_1 ... DONE !!!
+   319.648340 s: REMOTE_SERVICE_TEST: Running test for CPU c6x_2 !!!
+   319.648705 s: REMOTE_SERVICE_TEST: Test passed !!!
+   319.648783 s: REMOTE_SERVICE_TEST: Running test @ 0xae000000 of 1024 bytes size for CPU c6x_2 !!!
+   319.649185 s: REMOTE_SERVICE_TEST: Test passed !!!
+   319.649192 s: REMOTE_SERVICE_TEST: Running timer test of 10000 msecs for CPU c6x_2 !!!
+[C6x_1 ]    319.648210 s: REMOTE_SERVICE_TEST: delay = 10000 ms, elasped time local = 9999 ms, elapsed time global = 9999 ms
+   329.649313 s: REMOTE_SERVICE_TEST: Running timer test of 10000 msecs for CPU c6x_2 ... DONE !!!
+   329.649348 s: REMOTE_SERVICE_TEST: Running test for CPU c7x_1 !!!
+   329.649710 s: REMOTE_SERVICE_TEST: Test passed !!!
+   329.649788 s: REMOTE_SERVICE_TEST: Running test @ 0xae000000 of 1024 bytes size for CPU c7x_1 !!!
+   329.650186 s: REMOTE_SERVICE_TEST: Test passed !!!
+   329.650192 s: REMOTE_SERVICE_TEST: Running timer test of 10000 msecs for CPU c7x_1 !!!
+[C6x_2 ]    329.649211 s: REMOTE_SERVICE_TEST: delay = 10000 ms, elasped time local = 9999 ms, elapsed time global = 9999 ms
+   339.649494 s: REMOTE_SERVICE_TEST: Running timer test of 10000 msecs for CPU c7x_1 ... DONE !!!
+APP IPC TIOVX: Running remote service test ... Done.
+   339.649553 s:  VX_ZONE_INIT:[tivxHostDeInit:56] De-Initialization Done for HOST !!!
+   339.653884 s:  VX_ZONE_INIT:[tivxDeInit:111] De-Initialization Done !!!
+APP: Deinit ... !!!
+REMOTE_SERVICE: Deinit ... !!!
+[C7x_1 ]    339.649400 s: REMOTE_SERVICE_TEST: delay = 10000 ms, elasped time local = 9999 ms, elapsed time global = 9999 ms
+REMOTE_SERVICE: Deinit ... Done !!!
+IPC: Deinit ... !!!
+IPC: DeInit ... Done !!!
+MEM: Deinit ... !!!
+MEM: Alloc's: 5 alloc's of 5120 bytes 
+MEM: Free's : 5 free's  of 5120 bytes 
+MEM: Open's : 0 allocs  of 0 bytes 
+MEM: Deinit ... Done !!!
+APP: Deinit ... Done !!!
+APP IPC TIOVX: Done !!!

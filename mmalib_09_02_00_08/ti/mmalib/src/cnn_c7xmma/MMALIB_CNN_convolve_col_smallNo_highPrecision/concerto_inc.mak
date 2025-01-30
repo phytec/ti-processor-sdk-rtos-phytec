@@ -1,0 +1,1 @@
+STATIC_LIBS += cnn_c7xmma/MMALIB_CNN_convolve_col_smallNo_highPrecision_pointwisePost_lib_$(TARGET_CPU)

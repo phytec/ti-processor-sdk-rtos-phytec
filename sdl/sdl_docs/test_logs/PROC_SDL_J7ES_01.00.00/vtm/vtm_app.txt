@@ -1,0 +1,105 @@
+mcuClkFreq 1000000000
+
+ VTM Example Application
+
+VTM_ESM_init: Init WKUP ESM complete
+
+ VTM_ESM_init complete
+Starting Use Case 0
+
+    Got gtThr1 interrupt through ESM module
+
+    Crossed early warning threshold of gt_thr1
+    System should take action to implement system cooling
+
+  ESM Call back function called : instType 0x1, intType 0x2, grpChannel 0x0, index 0x8, intSrc 0x8
+  Take action
+  ESM instance #1, ESM interrupt type = Low Priority ESM event
+
+    Got ltThr0 interrupt through ESM module
+
+    System at a temperature below the threshold of lt_thr0
+    System running at a safe temperature
+
+  ESM Call back function called : instType 0x1, intType 0x2, grpChannel 0x0, index 0x9, intSrc 0x9
+  Take action
+  ESM instance #1, ESM interrupt type = Low Priority ESM event
+case 0 sucess
+
+ Use Case 0 completed: Input Event Trigger = Step completed successfully,
+
+Starting Use Case 1
+
+    Got gtThr1 interrupt through ESM module
+
+    Crossed early warning threshold of gt_thr1
+    System should take action to implement system cooling
+
+  ESM Call back function called : instType 0x1, intType 0x2, grpChannel 0x0, index 0x8, intSrc 0x8
+  Take action
+  ESM instance #1, ESM interrupt type = Low Priority ESM event
+
+    Got gtThr2 interrupt through ESM module
+
+    Crossed critical threshold of gt_thr2
+    System should take critical action to implement system cooling
+
+  ESM Call back function called : instType 0x1, intType 0x1, grpChannel 0x0, index 0xa, intSrc 0xa
+  Take action
+  ESM instance #1, ESM interrupt type = High Priority ESM event
+
+    Got gtThr1 interrupt through ESM module
+
+    Crossed early warning threshold of gt_thr1
+    System should take action to implement system cooling
+
+  ESM Call back function called : instType 0x1, intType 0x2, grpChannel 0x0, index 0x8, intSrc 0x8
+  Take action
+  ESM instance #1, ESM interrupt type = Low Priority ESM event
+
+    Got ltThr0 interrupt through ESM module
+
+    System at a temperature below the threshold of lt_thr0
+    System running at a safe temperature
+
+  ESM Call back function called : instType 0x1, intType 0x2, grpChannel 0x0, index 0x9, intSrc 0x9
+  Take action
+  ESM instance #1, ESM interrupt type = Low Priority ESM event
+
+ Use Case 1 completed: Input Event Trigger = Step completed successfully,
+
+
+ESM Example Application summary
+-------------------------------
+Completed 2 Test Cases
+Received 1 High Priority Interrupts
+Received 5 Low Priority Interrupts
+
+Test Case Event Log
+------------------
+
+Test Case 0: ESM Call back function called : grpChannel 0x0, index 0x8, intSrc 0x8
+  ESM instance #1, ESM interrupt type = Low Priority ESM event
+
+Test Case 0: ESM Call back function called : grpChannel 0x0, index 0x9, intSrc 0x9
+  ESM instance #1, ESM interrupt type = Low Priority ESM event
+
+Test Case 1: ESM Call back function called : grpChannel 0x0, index 0x8, intSrc 0x8
+  ESM instance #1, ESM interrupt type = Low Priority ESM event
+
+Test Case 1: ESM Call back function called : grpChannel 0x0, index 0xa, intSrc 0xa
+  ESM instance #1, ESM interrupt type = High Priority ESM event
+
+Test Case 1: ESM Call back function called : grpChannel 0x0, index 0x8, intSrc 0x8
+  ESM instance #1, ESM interrupt type = Low Priority ESM event
+
+Test Case 1: ESM Call back function called : grpChannel 0x0, index 0x9, intSrc 0x9
+  ESM instance #1, ESM interrupt type = Low Priority ESM event
+
+ VTM Example Application: Complete
+ All Use cases have passed.
+main.c:531:vtm_example_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored
+OK

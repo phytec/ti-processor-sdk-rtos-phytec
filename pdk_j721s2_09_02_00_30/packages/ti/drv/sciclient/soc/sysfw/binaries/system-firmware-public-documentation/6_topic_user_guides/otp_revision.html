@@ -1,0 +1,520 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Run time read/write to KEYREV and SWREV &mdash; TISCI User Guide</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="TISCI User Guide" href="../index.html"/>
+        <link rel="up" title="Chapter 6: Topic User Guides" href="index.html"/>
+        <link rel="next" title="Keyring Management" href="keyring.html"/>
+        <link rel="prev" title="Key Writer" href="key_writer.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="../_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> TISCI
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                09.02.04
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../1_intro/index.html">Chapter 1: Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_tisci_msgs/index.html">Chapter 2: TISCI Message Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_boardcfg/index.html">Chapter 3: Board Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_trace/index.html">Chapter 4: Interpreting Trace Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_soc_doc/index.html">Chapter 5: SoC Family Specific Documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Chapter 6: Topic User Guides</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="authentication.html">System Firmware Authentication and Decryption Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devgrp_usage.html">Device Group Primer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domgrp_usage.html">Domain Group Primer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="secure_boot_signing.html">Signing binaries for Secure Boot on HS Devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hs_boardcfg_signing.html">Signing Board Configuration on HS devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openssl_usage.html">Using OpenSSL for certificate creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extended_otp.html">Using Extended OTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dkek_management.html">Using Derived KEK on HS devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firewall_faq.html">Firewall FAQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="saul_access.html">SAUL Access Outside of SYSFW</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security_handover.html">Performing Security Handover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="secure_debug.html">Secure Debug User Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="key_writer.html">Key  Writer</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Run time read/write to KEYREV and SWREV</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#related-tisci-messages">Related TISCI Messages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#otp-revision-structure">OTP Revision Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#swrev-sbl-sysfw-decode-logic">SWREV SBL, SYSFW Decode Logic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dual-signed-certificate-for-writing-keyrev">Dual Signed Certificate for writing KEYREV</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="keyring.html">Keyring Management</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">TISCI</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Chapter 6: Topic User Guides</a> &raquo;</li>
+      
+    <li>Run time read/write to KEYREV and SWREV</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="run-time-read-write-to-keyrev-and-swrev">
+<h1>Run time read/write to KEYREV and SWREV<a class="headerlink" href="#run-time-read-write-to-keyrev-and-swrev" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This document is only applicable to AM6x, AM65x, J721e, and J7200 High
+Security (HS) devices.</p>
+</div>
+<div class="section" id="related-tisci-messages">
+<h2>Related TISCI Messages<a class="headerlink" href="#related-tisci-messages" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="48%" />
+<col width="40%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">TISCI Message ID</th>
+<th class="head">Message Name</th>
+<th class="head">Comment</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0x9032</td>
+<td><a class="reference internal" href="../2_tisci_msgs/security/otp_revision.html#sec-api-wr-swrev-otp"><span class="std std-ref">TISCI_MSG_WRITE_SWREV</span></a></td>
+<td>Allows writing to SWREV (SBL, SYSFW, Secure BoardConfig)</td>
+</tr>
+<tr class="row-odd"><td>0x9033</td>
+<td><a class="reference internal" href="../2_tisci_msgs/security/otp_revision.html#sec-api-rd-swrev-otp"><span class="std std-ref">TISCI_MSG_READ_SWREV</span></a></td>
+<td>Allows reading SWREV</td>
+</tr>
+<tr class="row-even"><td>0x9034</td>
+<td><a class="reference internal" href="../2_tisci_msgs/security/otp_revision.html#sec-api-rd-keycnt-keyrev-otp"><span class="std std-ref">TISCI_MSG_READ_KEYCNT_KEYREV</span></a></td>
+<td>Allows reading KeyCount and KeyRevision</td>
+</tr>
+<tr class="row-odd"><td>0x9035</td>
+<td><a class="reference internal" href="../2_tisci_msgs/security/otp_revision.html#sec-api-wr-keyrev-otp"><span class="std std-ref">TISCI_MSG_WRITE_KEYREV</span></a></td>
+<td>Allows writing to KEYREV (KEYREV max value is 2)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last"><a class="reference internal" href="../2_tisci_msgs/security/otp_revision.html#sec-api-rd-swrev-otp"><span class="std std-ref">TISCI_MSG_READ_SWREV</span></a> currently supports
+SWREV Secure Boardconfig only. Reading SWREV (SBL, SYSFW) has to be done
+from the Security Manager registers, with offset for
+<code class="docutils literal"><span class="pre">SECMGR_SWRV_STATUS_REG_y</span></code> register.</p>
+</div>
+<p>Refer <a class="reference internal" href="../2_tisci_msgs/security/otp_revision.html"><span class="doc">OTP Revision Read/Write Message Description</span></a> for more details on the
+message structure.</p>
+</div>
+<div class="section" id="otp-revision-structure">
+<h2>OTP Revision Structure<a class="headerlink" href="#otp-revision-structure" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">OTP Revision Name</th>
+<th class="head">Number of bits (with double redundancy)</th>
+<th class="head">Format</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Software Revision (SBL + SYSFW)</td>
+<td>192 (96 + 96)</td>
+<td><code class="docutils literal"><span class="pre">(sbl[31:0]</span> <span class="pre">|</span> <span class="pre">sysfw[15:0]</span> <span class="pre">|</span> <span class="pre">sbl[47:31]</span> <span class="pre">|</span> <span class="pre">sysfw[47:16])</span>&#160; <span class="pre">|</span>&#160; <span class="pre">(sbl[31:0]</span> <span class="pre">|</span> <span class="pre">sysfw[15:0]</span> <span class="pre">|</span> <span class="pre">sbl[47:31]</span> <span class="pre">|</span> <span class="pre">sysfw[47:16])</span></code></td>
+</tr>
+<tr class="row-odd"><td>Software Revision (Board Config)</td>
+<td>128 (64 + 64)</td>
+<td><code class="docutils literal"><span class="pre">(swrev-brdcfg[31:0]</span> <span class="pre">|</span> <span class="pre">swrev-brdcfg[63:32])</span> <span class="pre">|</span> <span class="pre">(swrev-brdcfg[31:0]</span> <span class="pre">|</span> <span class="pre">swrev-brdcfg[63:32])</span></code></td>
+</tr>
+<tr class="row-even"><td>Key Revision</td>
+<td>32 (only LSB 16 (8 + 8) are used)</td>
+<td><code class="docutils literal"><span class="pre">0x0000</span> <span class="pre">|</span> <span class="pre">keyrev[7:0]</span> <span class="pre">|</span> <span class="pre">keyrev[7:0]</span></code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Copy in the efuses, helps to reduce the chances of data corruption.</p>
+</div>
+<p>All the revision values are encoded to the following bit pattern, before
+being programmed into efuses. The integer value (SWREV) translates into the
+bit position (starting from index 1 instead of 0) of the most significant <cite>1</cite>
+in its binary representation.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The decoding of the SWREV (SYSFW, SBL) has to be done from the MMRs by
+the user. The application is responsible to read these values from the Secure MMRs.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><strong>Example:</strong> A SWREV value of <code class="docutils literal"><span class="pre">3</span></code> would translate to the following bit pattern
+<code class="docutils literal"><span class="pre">0b</span> <span class="pre">0000</span> <span class="pre">0000</span> <span class="pre">0000</span> <span class="pre">0000</span> <span class="pre">0000</span> <span class="pre">0000</span> <span class="pre">0000</span> <span class="pre">0111</span></code>. It could also be represented as
+<code class="docutils literal"><span class="pre">0b</span> <span class="pre">0000</span> <span class="pre">0000</span> <span class="pre">0000</span> <span class="pre">0000</span> <span class="pre">0000</span> <span class="pre">0000</span> <span class="pre">0000</span> <span class="pre">0100</span></code>. The position of the most
+significant <code class="docutils literal"><span class="pre">1</span></code> is the SWREV value.</p>
+</div>
+</div>
+<div class="section" id="swrev-sbl-sysfw-decode-logic">
+<span id="sysfw-pub-swrev-decode-logic"></span><h2>SWREV SBL, SYSFW Decode Logic<a class="headerlink" href="#swrev-sbl-sysfw-decode-logic" title="Permalink to this headline">¶</a></h2>
+<p>SWREV SBL and SWREV SYSFW are clubbed together, and programmed into efuses.</p>
+<p>Reading from Secure MMRs would result in an array of uint32_t, of size 6.</p>
+<img alt="../_images/swrev_sbl_sysfw_format.png" src="../_images/swrev_sbl_sysfw_format.png" />
+<p>Following logic can be used to decode the SWREV values from MMRs.</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cm">/* Leverage Double Redundancy */</span>
+<span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">row</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+<span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">row</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+<span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">row</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
+
+<span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0xFFFF</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">swrev_sbl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">__clz</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+<span class="p">}</span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">swrev_sbl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">32</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">__clz</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0xFFFF</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">swrev_sysfw</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">__clz</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0xFFFF0000</span><span class="p">);</span>
+<span class="p">}</span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">swrev_sysfw</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">32</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">__clz</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">__clz</span></code> is a function to count leading zeros. It is a compiler intrinsic
+function, but the following code snippet also gives the same result</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">uint32_t</span><span class="w"> </span><span class="nf">count_leading_zeros</span><span class="p">(</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">bit_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">lz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">bit_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="mi">8</span><span class="p">;</span>
+
+<span class="w">    </span><span class="cm">/* Left shift until Most significant bit doesn become 1 */</span>
+<span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">bit_count</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)))</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">        </span><span class="n">lz</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">lz</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="dual-signed-certificate-for-writing-keyrev">
+<h2>Dual Signed Certificate for writing KEYREV<a class="headerlink" href="#dual-signed-certificate-for-writing-keyrev" title="Permalink to this headline">¶</a></h2>
+<p>The message structure for <a class="reference internal" href="../2_tisci_msgs/security/otp_revision.html#sec-api-wr-keyrev-otp"><span class="std std-ref">tisci_msg_set_keyrev_req</span></a>
+requires the keyrev <code class="docutils literal"><span class="pre">value</span></code> to be programmed, as well the address where the
+Dual signed certificate is stored. This is will be used by the System Firmware to
+verify against SMPK Public Key Hash, and BMPK Public Key Hash in the device
+efuses.</p>
+<p>After verification of these key hashes, keyrev will be programmed.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>KEYREV by default is set to <code class="docutils literal"><span class="pre">1</span></code>. Maximum supported value is <code class="docutils literal"><span class="pre">2</span></code>.</p>
+<table border="1" class="last docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key rev value</th>
+<th class="head">Valid State transition</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0</td>
+<td>OTP Keywriter to set valid state to 1</td>
+</tr>
+<tr class="row-odd"><td>1</td>
+<td>Key rev API to set valid state to 2 (if key cnt is also 2)</td>
+</tr>
+<tr class="row-even"><td>2</td>
+<td>No other change allowed</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Following is the template for Primary Certificate (SMPK private key to be
+used for signing this)</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">[</span><span class="w"> </span>req<span class="w"> </span><span class="o">]</span>
+<span class="nv">distinguished_name</span><span class="w">     </span><span class="o">=</span><span class="w"> </span>req_distinguished_name
+<span class="nv">x509_extensions</span><span class="w">        </span><span class="o">=</span><span class="w"> </span>v3_ca
+<span class="nv">prompt</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span>no
+
+<span class="nv">dirstring_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>nobmp
+
+<span class="o">[</span><span class="w"> </span>req_distinguished_name<span class="w"> </span><span class="o">]</span>
+<span class="nv">C</span><span class="w">                      </span><span class="o">=</span><span class="w"> </span>US
+<span class="nv">ST</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span>SC
+<span class="nv">L</span><span class="w">                      </span><span class="o">=</span><span class="w"> </span>Dallas
+<span class="nv">O</span><span class="w">                      </span><span class="o">=</span><span class="w"> </span>Texas<span class="w"> </span>Instruments.,<span class="w"> </span>Inc.
+<span class="nv">OU</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span>PBU
+<span class="nv">CN</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span>Albert
+<span class="nv">emailAddress</span><span class="w">           </span><span class="o">=</span><span class="w"> </span>Albert@ti.com
+
+<span class="o">[</span><span class="w"> </span>v3_ca<span class="w"> </span><span class="o">]</span>
+<span class="w"> </span><span class="nv">basicConstraints</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>CA:true
+</pre></div>
+</div>
+<p>Following is the template for Secondary Certificate (BMPK private key to be
+used for signing this)</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">[</span><span class="w"> </span>req<span class="w"> </span><span class="o">]</span>
+<span class="nv">distinguished_name</span><span class="w">     </span><span class="o">=</span><span class="w"> </span>req_distinguished_name
+<span class="nv">x509_extensions</span><span class="w">        </span><span class="o">=</span><span class="w"> </span>v3_ca
+<span class="nv">prompt</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span>no
+
+<span class="nv">dirstring_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>nobmp
+
+<span class="o">[</span><span class="w"> </span>req_distinguished_name<span class="w"> </span><span class="o">]</span>
+<span class="nv">C</span><span class="w">                      </span><span class="o">=</span><span class="w"> </span>US
+<span class="nv">ST</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span>SC
+<span class="nv">L</span><span class="w">                      </span><span class="o">=</span><span class="w"> </span>Dallas
+<span class="nv">O</span><span class="w">                      </span><span class="o">=</span><span class="w"> </span>Texas<span class="w"> </span>Instruments.,<span class="w"> </span>Inc.
+<span class="nv">OU</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span>PBU
+<span class="nv">CN</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span>Albert
+<span class="nv">emailAddress</span><span class="w">           </span><span class="o">=</span><span class="w"> </span>Albert@ti.com
+
+<span class="o">[</span><span class="w"> </span>v3_ca<span class="w"> </span><span class="o">]</span>
+<span class="w"> </span><span class="nv">basicConstraints</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>CA:true
+<span class="w"> </span><span class="m">1</span>.3.6.1.4.1.294.1.34<span class="o">=</span>ASN1:SEQUENCE:image_integrity
+
+<span class="o">[</span><span class="w"> </span>image_integrity<span class="w"> </span><span class="o">]</span>
+<span class="w"> </span><span class="nv">shaType</span><span class="w">      </span><span class="o">=</span><span class="w">  </span>OID:2.16.840.1.101.3.4.2.3
+<span class="w"> </span><span class="nv">shaValue</span><span class="w">     </span><span class="o">=</span><span class="w">  </span>FORMAT:HEX,OCT:TEST_IMAGE_SHA512
+<span class="w"> </span><span class="nv">imageSize</span><span class="w">    </span><span class="o">=</span><span class="w">  </span>INTEGER:TEST_IMAGE_SIZE
+</pre></div>
+</div>
+<p>Replace <code class="docutils literal"><span class="pre">TEST_IMAGE_SHA512</span></code> and <code class="docutils literal"><span class="pre">TEST_IMAGE_SIZE</span></code> with the SHA512 hash
+and size in bytes of the Primary Ceritificate. Concatenate Secondary certificate
+and Primary Certificate to form the Final Certificate, whose address in memory
+would be populated in the <a class="reference internal" href="../2_tisci_msgs/security/otp_revision.html#sec-api-wr-keyrev-otp"><span class="std std-ref">tisci_msg_set_keyrev_req</span></a>
+message</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="keyring.html" class="btn btn-neutral float-right" title="Keyring Management" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="key_writer.html" class="btn btn-neutral" title="Key Writer" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyright 2016-2024</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'09.02.04',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+
+        $('body').on("mousewheel", function () {
+            // Remove default behavior
+            event.preventDefault();
+            // Scroll without smoothing
+            var wheelDelta = event.wheelDelta;
+            var currentScrollPosition = window.pageYOffset;
+            window.scrollTo(0, currentScrollPosition - wheelDelta);
+        });
+      });
+  </script>
+   
+
+</body>
+</html>

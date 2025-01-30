@@ -1,0 +1,11 @@
+POK Test Application
+Test Name: POK API POSITIVE TEST  PASSED
+Test Name: POK API NEGATIVE TEST  PASSED
+Test Name: POK Ip_NEGATIVE TEST  PASSED
+Test Name: POK Ip_POSITIVE TEST  PASSED
+
+ All tests have passed.
+/home/gtbldadm/nightlybuilds/SDL_NIGHTLY_BUILD/104-2021-10-04_00-08-55/workarea/sdl/test/pok/pokUt/test_main.c:190:test_sdl_pok_baremetal_test_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored

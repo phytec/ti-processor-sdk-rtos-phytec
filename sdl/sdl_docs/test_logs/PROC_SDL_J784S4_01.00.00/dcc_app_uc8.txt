@@ -1,0 +1,56 @@
+01000000011a00006a3761657000000000000000475020200008010000080100CSBL Revision: 01.00.10.01 (Feb 22 2023 - 13:03:23)
+Waiting for tifs.bin ...
+CCCTIFS  ver: 8.6.3--v08.06.03 (Chill Capybar
+Waiting for multicore app ...
+CC
+ DCC Example Test Application
+
+DCC_Test_init: Init MCU ESM complete
+
+
+INSTANCE: MCU_DCC2
+Source clock: RC OSC
+Test clock: HFOSC0
+
+
+SDL DCC EXAMPLE TEST: Start UC-8
+SDL DCC EXAMPLE TEST: Seed values calculation done.
+SDL DCC EXAMPLE TEST: DCC configured
+SDL DCC EXAMPLE TEST: Enabling DCC
+SDL DCC EXAMPLE TEST: Waiting for some time to perform Continuous mode
+SDL DCC EXAMPLE TEST: DCC module is disabled
+Test Name: DCC EXAMPLE TEST  PASSED
+
+ All tests have passed.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

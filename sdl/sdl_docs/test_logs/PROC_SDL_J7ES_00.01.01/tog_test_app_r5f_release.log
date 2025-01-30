@@ -1,0 +1,49 @@
+SBL Revision: 01.00.10.01 (Dec  1 2021 - 08:15:07)
+TIFS  ver: 21.9.1--v2021.09a (Terrific Lla
+mcuClkFreq 1000000000
+
+TOG Test Applications
+
+ sdlAppEsmSetupCommon...Done
+ sdlAppEsmSetupCommon...Done
+ sdlAppEsmSetup...Done
+ Starting TOG test on MCU INFRA0, index 0...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done  Delta TOG prep time in micro secs 27048 
+  Delta TOG execution time in micro secs 10 
+  Delta TOG restore time in micro secs 27046 
+  TOG complete for MCU INFRA0 
+
+ Starting TOG test on MCU FW1, index 1...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done  Delta TOG prep time in micro secs 27043 
+  Delta TOG execution time in micro secs 3 
+  Delta TOG restore time in micro secs 28043 
+  TOG complete for MCU FW1 
+
+ Starting TOG test on MCU 64B2, index 2...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done  Delta TOG prep time in micro secs 27043 
+  Delta TOG execution time in micro secs 6 
+  Delta TOG restore time in micro secs 28043 
+  TOG complete for MCU 64B2 
+
+ Starting TOG test on WKUP INFRA0, index 3...
+ sdlAppEsmConfig...Done
+ sdlAppEsmDisable...Done  Delta TOG prep time in micro secs 27043 
+  Delta TOG execution time in micro secs 3 
+  Delta TOG restore time in micro secs 28043 
+  TOG complete for WKUP INFRA0 
+
+ TOG Functionality Test Functionality test Passed.
+
+ TOG API Module Test API test Passed.
+
+ TOG Error Module Test Error test Passed.
+
+All tests have passed. 
+tog_test_main.c:266:test_sdl_tog_test_app:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored 
+OK

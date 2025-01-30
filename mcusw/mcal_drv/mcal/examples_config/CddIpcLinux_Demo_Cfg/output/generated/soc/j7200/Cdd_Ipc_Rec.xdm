@@ -1,0 +1,765 @@
+<!-- This file is just for reference. This file can be used to generate the default configuration for MPU 1 0  -->
+<?xml version='1.0'?>
+<datamodel version="6.0" 
+           xmlns="http://www.tresos.de/_projects/DataModel2/14/root.xsd" 
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/14/attribute.xsd" 
+           xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd" 
+           xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
+
+  <d:ctr type="AUTOSAR" factory="autosar" 
+         xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd" 
+         xmlns:cd="http://www.tresos.de/_projects/DataModel2/08/customdata.xsd" 
+         xmlns:f="http://www.tresos.de/_projects/DataModel2/14/formulaexpr.xsd" 
+         xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd" 
+         xmlns:mt="http://www.tresos.de/_projects/DataModel2/11/multitest.xsd"  
+         xmlns:variant="http://www.tresos.de/_projects/DataModel2/11/variant.xsd">
+    <d:lst type="TOP-LEVEL-PACKAGES">
+      <d:ctr name="TI_J7" type="AR-PACKAGE">
+        <d:lst type="ELEMENTS">
+          <d:chc name="Cdd_Ipc_Rec" type="AR-ELEMENT" value="MODULE-CONFIGURATION">
+            <d:ctr type="MODULE-CONFIGURATION">
+              <a:a name="DEF" value="ASPath:/TI_J7/Cdd_Ipc"/>
+              <a:a name="IMPORTER_INFO" value="@REC"/>
+              <d:var name="IMPLEMENTATION_CONFIG_VARIANT" type="ENUMERATION" 
+                     value="VariantPreCompile">
+                <a:a name="IMPORTER_INFO" value="@REC"/>
+              </d:var>
+              <d:lst name="CddComStackContribution" type="MAP"/>
+              <d:lst name="CddEcucPartitionInteraction" type="MAP"/>
+              <d:lst name="CddGeneral" type="MAP"/>
+              <d:lst name="CddGlobalTimeContribution" type="MAP"/>
+              <d:ctr name="CddIpcGeneral" type="IDENTIFIABLE">
+                <a:a name="IMPORTER_INFO" value="@REC"/>
+                <d:var name="CddDevErrorDetect" type="BOOLEAN" value="true">
+                  <a:a name="IMPORTER_INFO" value="@REC"/>
+                </d:var>
+                <d:var name="CddIrqType" type="ENUMERATION" 
+                       value="CDD_IPC_ISR_CAT2">
+                  <a:a name="IMPORTER_INFO" value="@REC"/>
+                </d:var>
+                <d:var name="NewMsgNtfyFunc" type="FUNCTION-NAME" 
+                       value="Cdd_IpcNewMessageNotify">
+                  <a:a name="IMPORTER_INFO" value="@REC"/>
+                </d:var>
+                <d:var name="NewControlMsgNtfyFunc" type="FUNCTION-NAME" 
+                       value="Cdd_IpcNewCtrlMessageNotify">
+                  <a:a name="IMPORTER_INFO" value="@REC"/>
+                </d:var>
+                <d:ref name="CddIpcOsCounterRef" type="REFERENCE" 
+                       value="ASPath:/Os/Os/OsCounter_0">
+                  <a:a name="ENABLE" value="true"/>
+                  <a:a name="IMPORTER_INFO" value="@REC"/>
+                </d:ref>
+                <d:var name="CddIpcOSCounterId" type="INTEGER" value="0">
+                  <a:a name="IMPORTER_INFO" value="@REC"/>
+                </d:var>
+                <d:var name="CddIpcDeviceVariant" type="ENUMERATION" 
+                       value="J7200">
+                  <a:a name="IMPORTER_INFO" value="@REC"/>
+                </d:var>
+                <d:var name="CddVersionInfoApi" type="BOOLEAN" value="true">
+                  <a:a name="IMPORTER_INFO" value="@REC"/>
+                </d:var>
+                <d:var name="CddDeinitApi" type="BOOLEAN" value="true">
+                  <a:a name="IMPORTER_INFO" value="@REC"/>
+                </d:var>
+                <d:var name="CddIpcAnnounceApi" type="BOOLEAN" value="true">
+                  <a:a name="IMPORTER_INFO" value="@REC"/>
+                </d:var>
+                <d:var name="CddRegisterReadBackApi" type="BOOLEAN" value="true">
+                  <a:a name="IMPORTER_INFO" value="@REC"/>
+                </d:var>
+                <d:var name="CddSafetyDiagnosticsApi" type="BOOLEAN" 
+                       value="true">
+                  <a:a name="IMPORTER_INFO" value="@REC"/>
+                </d:var>
+                <d:var name="CddIsInitDoneApi" type="BOOLEAN" value="true">
+                  <a:a name="IMPORTER_INFO" value="@REC"/>
+                </d:var>
+                <d:var name="CddGetMsgMaxSizeApi" type="BOOLEAN" value="true">
+                  <a:a name="IMPORTER_INFO" value="@REC"/>
+                </d:var>
+                <d:ctr name="CddDemEventParameterRefs" type="IDENTIFIABLE">
+                  <a:a name="IMPORTER_INFO" value="@REC"/>
+                  <d:ref name="CDD_IPC_E_HARDWARE_ERROR" type="REFERENCE" 
+                         value="ASPath:/Dem/Dem/DemConfigSet/CDD_IPC_E_HARDWARE_ERROR">
+                    <a:a name="IMPORTER_INFO" value="@REC"/>
+                  </d:ref>
+                </d:ctr>
+              </d:ctr>
+              <d:ctr name="CddIpcVirtIoConfig" type="IDENTIFIABLE">
+                <a:a name="IMPORTER_INFO" value="@REC"/>
+                <d:var name="VertIoRingAddr" type="INTEGER" value="2751463424">
+                  <a:a name="IMPORTER_INFO" value="@REC"/>
+                </d:var>
+                <d:var name="VertIoRingSize" type="INTEGER" value="8388608">
+                  <a:a name="IMPORTER_INFO" value="@REC"/>
+                </d:var>
+                <d:var name="VertIoObjSize" type="INTEGER" value="4096">
+                  <a:a name="IMPORTER_INFO" value="@REC"/>
+                </d:var>
+              </d:ctr>
+              <d:ctr name="CddIpcProcIDs" type="IDENTIFIABLE">
+                <a:a name="IMPORTER_INFO" value="@REC"/>
+                <d:var name="OwnProcID" type="ENUMERATION" 
+                       value="CDD_IPC_CORE_MCU2_1">
+                  <a:a name="IMPORTER_INFO" value="@REC"/>
+                </d:var>
+                <d:lst name="RemoteProcID" type="MAP">
+                  <d:ctr name="RemoteProcID_0" type="IDENTIFIABLE">
+                    <a:a name="IMPORTER_INFO" value="@REC"/>
+                    <d:var name="ProcID" type="ENUMERATION" 
+                           value="CDD_IPC_CORE_MPU1_0">
+                      <a:a name="IMPORTER_INFO" value="@REC"/>
+                    </d:var>
+                  </d:ctr>
+                </d:lst>
+              </d:ctr>
+              <d:ctr name="CddIpcCommChannels" type="IDENTIFIABLE">
+                <a:a name="IMPORTER_INFO" value="@REC"/>
+                <d:lst name="CddIpcCommChs" type="MAP">
+                  <d:ctr name="Cdd_IpcMpu10" type="IDENTIFIABLE">
+                    <a:a name="IMPORTER_INFO" value="@REC"/>
+                    <d:var name="CommId" type="INTEGER" value="0">
+                      <a:a name="IMPORTER_INFO" value="@REC"/>
+                    </d:var>
+                    <d:var name="LocalEp" type="INTEGER" value="13"/>
+                    <d:var name="RemoteEp" type="INTEGER" value="13"/>
+                    <d:var name="RemoteProcID" type="ENUMERATION" 
+                           value="CDD_IPC_CORE_MPU1_0">
+                      <a:a name="IMPORTER_INFO" value="@REC"/>
+                    </d:var>
+                    <d:var name="MaxNumMsgQueued" type="INTEGER" value="256">
+                      <a:a name="IMPORTER_INFO" value="@REC"/>
+                    </d:var>
+                    <d:var name="MaxMsgSize" type="INTEGER" value="496">
+                      <a:a name="IMPORTER_INFO" value="@REC"/>
+                    </d:var>
+                  </d:ctr>
+                </d:lst>
+              </d:ctr>
+              <d:ctr name="CddIpcMailBoxInfo" type="IDENTIFIABLE">
+                <a:a name="IMPORTER_INFO" value="@REC"/>
+                <d:lst name="CddIpcMailBox" type="MAP">
+                  <d:ctr name="CddIpcMailBox_0" type="IDENTIFIABLE">
+                    <a:a name="IMPORTER_INFO" value="@REC"/>
+                    <d:var name="HostProcID" type="ENUMERATION" 
+                           value="IPC_MPU1_0">
+                      <a:a name="IMPORTER_INFO" value="@REC"/>
+                    </d:var>
+                    <d:lst name="CddIpcMailBoxMapping" type="MAP">
+                      <d:ctr name="CddIpcMailBoxMapping_0" type="IDENTIFIABLE">
+                        <a:a name="IMPORTER_INFO" value="@REC"/>
+                        <d:var name="CoreID" type="ENUMERATION" 
+                               value="IPC_MPU1_0">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_cluster" type="INTEGER" value="255">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_user" type="INTEGER" value="255">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_fifo" type="INTEGER" value="255"/>
+                        <d:var name="Tx_cluster" type="INTEGER" value="255">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Tx_user" type="INTEGER" value="255">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Tx_fifo" type="INTEGER" value="255">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                      </d:ctr>
+                      <d:ctr name="CddIpcMailBoxMapping_1" type="IDENTIFIABLE">
+                        <a:a name="IMPORTER_INFO" value="@REC"/>
+                        <d:var name="CoreID" type="ENUMERATION" 
+                               value="IPC_MCU1_0">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Rx_user" type="INTEGER" value="255"/>
+                        <d:var name="Rx_fifo" type="INTEGER" value="255"/>
+                        <d:var name="Tx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Tx_user" type="INTEGER" value="255"/>
+                        <d:var name="Tx_fifo" type="INTEGER" value="255"/>
+                      </d:ctr>
+                      <d:ctr name="CddIpcMailBoxMapping_2" type="IDENTIFIABLE">
+                        <a:a name="IMPORTER_INFO" value="@REC"/>
+                        <d:var name="CoreID" type="ENUMERATION" 
+                               value="IPC_MCU1_1">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Rx_user" type="INTEGER" value="255"/>
+                        <d:var name="Rx_fifo" type="INTEGER" value="255"/>
+                        <d:var name="Tx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Tx_user" type="INTEGER" value="255"/>
+                        <d:var name="Tx_fifo" type="INTEGER" value="255"/>
+                      </d:ctr>
+                      <d:ctr name="CddIpcMailBoxMapping_3" type="IDENTIFIABLE">
+                        <a:a name="IMPORTER_INFO" value="@REC"/>
+                        <d:var name="CoreID" type="ENUMERATION" 
+                               value="IPC_MCU2_0">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Rx_user" type="INTEGER" value="255"/>
+                        <d:var name="Rx_fifo" type="INTEGER" value="255"/>
+                        <d:var name="Tx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Tx_user" type="INTEGER" value="255"/>
+                        <d:var name="Tx_fifo" type="INTEGER" value="255"/>
+                      </d:ctr>
+                      <d:ctr name="CddIpcMailBoxMapping_4" type="IDENTIFIABLE">
+                        <a:a name="IMPORTER_INFO" value="@REC"/>
+                        <d:var name="CoreID" type="ENUMERATION" 
+                               value="IPC_MCU2_1">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_cluster" type="INTEGER" value="1">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_user" type="INTEGER" value="0">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_fifo" type="INTEGER" value="2">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Tx_cluster" type="INTEGER" value="1">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Tx_user" type="INTEGER" value="0">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Tx_fifo" type="INTEGER" value="3">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                      </d:ctr>
+                      <d:ctr name="CddIpcMailBoxMapping_5" type="IDENTIFIABLE">
+                        <a:a name="IMPORTER_INFO" value="@REC"/>
+                        <d:var name="CoreID" type="ENUMERATION" 
+                               value="IPC_MPU1_1">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Rx_user" type="INTEGER" value="255"/>
+                        <d:var name="Rx_fifo" type="INTEGER" value="255"/>
+                        <d:var name="Tx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Tx_user" type="INTEGER" value="255"/>
+                        <d:var name="Tx_fifo" type="INTEGER" value="255"/>
+                      </d:ctr>
+                    </d:lst>
+                  </d:ctr>
+                  <d:ctr name="CddIpcMailBox_1" type="IDENTIFIABLE">
+                    <a:a name="IMPORTER_INFO" value="@REC"/>
+                    <d:var name="HostProcID" type="ENUMERATION" 
+                           value="IPC_MCU1_0">
+                      <a:a name="IMPORTER_INFO" value="@REC"/>
+                    </d:var>
+                    <d:lst name="CddIpcMailBoxMapping" type="MAP">
+                      <d:ctr name="CddIpcMailBoxMapping_0" type="IDENTIFIABLE">
+                        <a:a name="IMPORTER_INFO" value="@REC"/>
+                        <d:var name="CoreID" type="ENUMERATION" 
+                               value="IPC_MPU1_0">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Rx_user" type="INTEGER" value="255"/>
+                        <d:var name="Rx_fifo" type="INTEGER" value="255"/>
+                        <d:var name="Tx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Tx_user" type="INTEGER" value="255"/>
+                        <d:var name="Tx_fifo" type="INTEGER" value="255"/>
+                      </d:ctr>
+                      <d:ctr name="CddIpcMailBoxMapping_1" type="IDENTIFIABLE">
+                        <a:a name="IMPORTER_INFO" value="@REC"/>
+                        <d:var name="CoreID" type="ENUMERATION" 
+                               value="IPC_MCU1_0">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_cluster" type="INTEGER" value="255">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_user" type="INTEGER" value="255">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_fifo" type="INTEGER" value="255"/>
+                        <d:var name="Tx_cluster" type="INTEGER" value="255">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Tx_user" type="INTEGER" value="255">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Tx_fifo" type="INTEGER" value="255"/>
+                      </d:ctr>
+                      <d:ctr name="CddIpcMailBoxMapping_2" type="IDENTIFIABLE">
+                        <a:a name="IMPORTER_INFO" value="@REC"/>
+                        <d:var name="CoreID" type="ENUMERATION" 
+                               value="IPC_MCU1_1">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Rx_user" type="INTEGER" value="255"/>
+                        <d:var name="Rx_fifo" type="INTEGER" value="255"/>
+                        <d:var name="Tx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Tx_user" type="INTEGER" value="255"/>
+                        <d:var name="Tx_fifo" type="INTEGER" value="255"/>
+                      </d:ctr>
+                      <d:ctr name="CddIpcMailBoxMapping_3" type="IDENTIFIABLE">
+                        <a:a name="IMPORTER_INFO" value="@REC"/>
+                        <d:var name="CoreID" type="ENUMERATION" 
+                               value="IPC_MCU2_0">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Rx_user" type="INTEGER" value="255"/>
+                        <d:var name="Rx_fifo" type="INTEGER" value="255"/>
+                        <d:var name="Tx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Tx_user" type="INTEGER" value="255">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Tx_fifo" type="INTEGER" value="255"/>
+                      </d:ctr>
+                      <d:ctr name="CddIpcMailBoxMapping_4" type="IDENTIFIABLE">
+                        <a:a name="IMPORTER_INFO" value="@REC"/>
+                        <d:var name="CoreID" type="ENUMERATION" 
+                               value="IPC_MCU2_1">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Rx_user" type="INTEGER" value="255"/>
+                        <d:var name="Rx_fifo" type="INTEGER" value="255"/>
+                        <d:var name="Tx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Tx_user" type="INTEGER" value="255">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Tx_fifo" type="INTEGER" value="255"/>
+                      </d:ctr>
+                      <d:ctr name="CddIpcMailBoxMapping_5" type="IDENTIFIABLE">
+                        <a:a name="IMPORTER_INFO" value="@REC"/>
+                        <d:var name="CoreID" type="ENUMERATION" 
+                               value="IPC_MPU1_1">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Rx_user" type="INTEGER" value="255"/>
+                        <d:var name="Rx_fifo" type="INTEGER" value="255"/>
+                        <d:var name="Tx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Tx_user" type="INTEGER" value="255"/>
+                        <d:var name="Tx_fifo" type="INTEGER" value="255"/>
+                      </d:ctr>
+                    </d:lst>
+                  </d:ctr>
+                  <d:ctr name="CddIpcMailBox_2" type="IDENTIFIABLE">
+                    <a:a name="IMPORTER_INFO" value="@REC"/>
+                    <d:var name="HostProcID" type="ENUMERATION" 
+                           value="IPC_MCU1_1">
+                      <a:a name="IMPORTER_INFO" value="@REC"/>
+                    </d:var>
+                    <d:lst name="CddIpcMailBoxMapping" type="MAP">
+                      <d:ctr name="CddIpcMailBoxMapping_0" type="IDENTIFIABLE">
+                        <a:a name="IMPORTER_INFO" value="@REC"/>
+                        <d:var name="CoreID" type="ENUMERATION" 
+                               value="IPC_MPU1_0">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Rx_user" type="INTEGER" value="255"/>
+                        <d:var name="Rx_fifo" type="INTEGER" value="255"/>
+                        <d:var name="Tx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Tx_user" type="INTEGER" value="255"/>
+                        <d:var name="Tx_fifo" type="INTEGER" value="255"/>
+                      </d:ctr>
+                      <d:ctr name="CddIpcMailBoxMapping_1" type="IDENTIFIABLE">
+                        <a:a name="IMPORTER_INFO" value="@REC"/>
+                        <d:var name="CoreID" type="ENUMERATION" 
+                               value="IPC_MCU1_0">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Rx_user" type="INTEGER" value="255"/>
+                        <d:var name="Rx_fifo" type="INTEGER" value="255"/>
+                        <d:var name="Tx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Tx_user" type="INTEGER" value="255"/>
+                        <d:var name="Tx_fifo" type="INTEGER" value="255"/>
+                      </d:ctr>
+                      <d:ctr name="CddIpcMailBoxMapping_2" type="IDENTIFIABLE">
+                        <a:a name="IMPORTER_INFO" value="@REC"/>
+                        <d:var name="CoreID" type="ENUMERATION" 
+                               value="IPC_MCU1_1">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_cluster" type="INTEGER" value="255">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_user" type="INTEGER" value="255">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_fifo" type="INTEGER" value="255"/>
+                        <d:var name="Tx_cluster" type="INTEGER" value="255">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Tx_user" type="INTEGER" value="255">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Tx_fifo" type="INTEGER" value="255"/>
+                      </d:ctr>
+                      <d:ctr name="CddIpcMailBoxMapping_3" type="IDENTIFIABLE">
+                        <a:a name="IMPORTER_INFO" value="@REC"/>
+                        <d:var name="CoreID" type="ENUMERATION" 
+                               value="IPC_MCU2_0">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Rx_user" type="INTEGER" value="255"/>
+                        <d:var name="Rx_fifo" type="INTEGER" value="255"/>
+                        <d:var name="Tx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Tx_user" type="INTEGER" value="255">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Tx_fifo" type="INTEGER" value="255"/>
+                      </d:ctr>
+                      <d:ctr name="CddIpcMailBoxMapping_4" type="IDENTIFIABLE">
+                        <a:a name="IMPORTER_INFO" value="@REC"/>
+                        <d:var name="CoreID" type="ENUMERATION" 
+                               value="IPC_MCU2_1">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Rx_user" type="INTEGER" value="255"/>
+                        <d:var name="Rx_fifo" type="INTEGER" value="255"/>
+                        <d:var name="Tx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Tx_user" type="INTEGER" value="255">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Tx_fifo" type="INTEGER" value="255"/>
+                      </d:ctr>
+                      <d:ctr name="CddIpcMailBoxMapping_5" type="IDENTIFIABLE">
+                        <a:a name="IMPORTER_INFO" value="@REC"/>
+                        <d:var name="CoreID" type="ENUMERATION" 
+                               value="IPC_MPU1_1">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Rx_user" type="INTEGER" value="255"/>
+                        <d:var name="Rx_fifo" type="INTEGER" value="255"/>
+                        <d:var name="Tx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Tx_user" type="INTEGER" value="255"/>
+                        <d:var name="Tx_fifo" type="INTEGER" value="255"/>
+                      </d:ctr>
+                    </d:lst>
+                  </d:ctr>
+                  <d:ctr name="CddIpcMailBox_3" type="IDENTIFIABLE">
+                    <a:a name="IMPORTER_INFO" value="@REC"/>
+                    <d:var name="HostProcID" type="ENUMERATION" 
+                           value="IPC_MCU2_0">
+                      <a:a name="IMPORTER_INFO" value="@REC"/>
+                    </d:var>
+                    <d:lst name="CddIpcMailBoxMapping" type="MAP">
+                      <d:ctr name="CddIpcMailBoxMapping_0" type="IDENTIFIABLE">
+                        <a:a name="IMPORTER_INFO" value="@REC"/>
+                        <d:var name="CoreID" type="ENUMERATION" 
+                               value="IPC_MPU1_0">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Rx_user" type="INTEGER" value="255"/>
+                        <d:var name="Rx_fifo" type="INTEGER" value="255"/>
+                        <d:var name="Tx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Tx_user" type="INTEGER" value="255"/>
+                        <d:var name="Tx_fifo" type="INTEGER" value="255"/>
+                      </d:ctr>
+                      <d:ctr name="CddIpcMailBoxMapping_1" type="IDENTIFIABLE">
+                        <a:a name="IMPORTER_INFO" value="@REC"/>
+                        <d:var name="CoreID" type="ENUMERATION" 
+                               value="IPC_MCU1_0">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Rx_user" type="INTEGER" value="255"/>
+                        <d:var name="Rx_fifo" type="INTEGER" value="255"/>
+                        <d:var name="Tx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Tx_user" type="INTEGER" value="255">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Tx_fifo" type="INTEGER" value="255"/>
+                      </d:ctr>
+                      <d:ctr name="CddIpcMailBoxMapping_2" type="IDENTIFIABLE">
+                        <a:a name="IMPORTER_INFO" value="@REC"/>
+                        <d:var name="CoreID" type="ENUMERATION" 
+                               value="IPC_MCU1_1">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Rx_user" type="INTEGER" value="255"/>
+                        <d:var name="Rx_fifo" type="INTEGER" value="255"/>
+                        <d:var name="Tx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Tx_user" type="INTEGER" value="255">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Tx_fifo" type="INTEGER" value="255"/>
+                      </d:ctr>
+                      <d:ctr name="CddIpcMailBoxMapping_3" type="IDENTIFIABLE">
+                        <a:a name="IMPORTER_INFO" value="@REC"/>
+                        <d:var name="CoreID" type="ENUMERATION" 
+                               value="IPC_MCU2_0">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_cluster" type="INTEGER" value="255">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_user" type="INTEGER" value="255">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_fifo" type="INTEGER" value="255"/>
+                        <d:var name="Tx_cluster" type="INTEGER" value="255">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Tx_user" type="INTEGER" value="255">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Tx_fifo" type="INTEGER" value="255"/>
+                      </d:ctr>
+                      <d:ctr name="CddIpcMailBoxMapping_4" type="IDENTIFIABLE">
+                        <a:a name="IMPORTER_INFO" value="@REC"/>
+                        <d:var name="CoreID" type="ENUMERATION" 
+                               value="IPC_MCU2_1">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Rx_user" type="INTEGER" value="255"/>
+                        <d:var name="Rx_fifo" type="INTEGER" value="255"/>
+                        <d:var name="Tx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Tx_user" type="INTEGER" value="255"/>
+                        <d:var name="Tx_fifo" type="INTEGER" value="255"/>
+                      </d:ctr>
+                      <d:ctr name="CddIpcMailBoxMapping_5" type="IDENTIFIABLE">
+                        <a:a name="IMPORTER_INFO" value="@REC"/>
+                        <d:var name="CoreID" type="ENUMERATION" 
+                               value="IPC_MPU1_1">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Rx_user" type="INTEGER" value="255"/>
+                        <d:var name="Rx_fifo" type="INTEGER" value="255"/>
+                        <d:var name="Tx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Tx_user" type="INTEGER" value="255"/>
+                        <d:var name="Tx_fifo" type="INTEGER" value="255"/>
+                      </d:ctr>
+                    </d:lst>
+                  </d:ctr>
+                  <d:ctr name="CddIpcMailBox_4" type="IDENTIFIABLE">
+                    <a:a name="IMPORTER_INFO" value="@REC"/>
+                    <d:var name="HostProcID" type="ENUMERATION" 
+                           value="IPC_MCU2_1">
+                      <a:a name="IMPORTER_INFO" value="@REC"/>
+                    </d:var>
+                    <d:lst name="CddIpcMailBoxMapping" type="MAP">
+                      <d:ctr name="CddIpcMailBoxMapping_0" type="IDENTIFIABLE">
+                        <a:a name="IMPORTER_INFO" value="@REC"/>
+                        <d:var name="CoreID" type="ENUMERATION" 
+                               value="IPC_MPU1_0">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_cluster" type="INTEGER" value="1">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_user" type="INTEGER" value="2">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_fifo" type="INTEGER" value="3">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Tx_cluster" type="INTEGER" value="1">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Tx_user" type="INTEGER" value="2">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Tx_fifo" type="INTEGER" value="2">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                      </d:ctr>
+                      <d:ctr name="CddIpcMailBoxMapping_1" type="IDENTIFIABLE">
+                        <a:a name="IMPORTER_INFO" value="@REC"/>
+                        <d:var name="CoreID" type="ENUMERATION" 
+                               value="IPC_MCU1_0">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Rx_user" type="INTEGER" value="255"/>
+                        <d:var name="Rx_fifo" type="INTEGER" value="255"/>
+                        <d:var name="Tx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Tx_user" type="INTEGER" value="255">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Tx_fifo" type="INTEGER" value="255"/>
+                      </d:ctr>
+                      <d:ctr name="CddIpcMailBoxMapping_2" type="IDENTIFIABLE">
+                        <a:a name="IMPORTER_INFO" value="@REC"/>
+                        <d:var name="CoreID" type="ENUMERATION" 
+                               value="IPC_MCU1_1">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Rx_user" type="INTEGER" value="255"/>
+                        <d:var name="Rx_fifo" type="INTEGER" value="255"/>
+                        <d:var name="Tx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Tx_user" type="INTEGER" value="255">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Tx_fifo" type="INTEGER" value="255"/>
+                      </d:ctr>
+                      <d:ctr name="CddIpcMailBoxMapping_3" type="IDENTIFIABLE">
+                        <a:a name="IMPORTER_INFO" value="@REC"/>
+                        <d:var name="CoreID" type="ENUMERATION" 
+                               value="IPC_MCU2_0">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Rx_user" type="INTEGER" value="255"/>
+                        <d:var name="Rx_fifo" type="INTEGER" value="255"/>
+                        <d:var name="Tx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Tx_user" type="INTEGER" value="255"/>
+                        <d:var name="Tx_fifo" type="INTEGER" value="255"/>
+                      </d:ctr>
+                      <d:ctr name="CddIpcMailBoxMapping_4" type="IDENTIFIABLE">
+                        <a:a name="IMPORTER_INFO" value="@REC"/>
+                        <d:var name="CoreID" type="ENUMERATION" 
+                               value="IPC_MCU2_1">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_cluster" type="INTEGER" value="255">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_user" type="INTEGER" value="255">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_fifo" type="INTEGER" value="255"/>
+                        <d:var name="Tx_cluster" type="INTEGER" value="255">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Tx_user" type="INTEGER" value="255">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Tx_fifo" type="INTEGER" value="255"/>
+                      </d:ctr>
+                      <d:ctr name="CddIpcMailBoxMapping_5" type="IDENTIFIABLE">
+                        <a:a name="IMPORTER_INFO" value="@REC"/>
+                        <d:var name="CoreID" type="ENUMERATION" 
+                               value="IPC_MPU1_1">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Rx_user" type="INTEGER" value="255"/>
+                        <d:var name="Rx_fifo" type="INTEGER" value="255"/>
+                        <d:var name="Tx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Tx_user" type="INTEGER" value="255"/>
+                        <d:var name="Tx_fifo" type="INTEGER" value="255"/>
+                      </d:ctr>
+                    </d:lst>
+                  </d:ctr>
+                  <d:ctr name="CddIpcMailBox_5" type="IDENTIFIABLE">
+                    <a:a name="IMPORTER_INFO" value="@REC"/>
+                    <d:var name="HostProcID" type="ENUMERATION" 
+                           value="IPC_MPU1_1">
+                      <a:a name="IMPORTER_INFO" value="@REC"/>
+                    </d:var>
+                    <d:lst name="CddIpcMailBoxMapping" type="MAP">
+                      <d:ctr name="CddIpcMailBoxMapping_0" type="IDENTIFIABLE">
+                        <a:a name="IMPORTER_INFO" value="@REC"/>
+                        <d:var name="CoreID" type="ENUMERATION" 
+                               value="IPC_MPU1_0">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Rx_user" type="INTEGER" value="255"/>
+                        <d:var name="Rx_fifo" type="INTEGER" value="255"/>
+                        <d:var name="Tx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Tx_user" type="INTEGER" value="255"/>
+                        <d:var name="Tx_fifo" type="INTEGER" value="255"/>
+                      </d:ctr>
+                      <d:ctr name="CddIpcMailBoxMapping_1" type="IDENTIFIABLE">
+                        <a:a name="IMPORTER_INFO" value="@REC"/>
+                        <d:var name="CoreID" type="ENUMERATION" 
+                               value="IPC_MCU1_0">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Rx_user" type="INTEGER" value="255"/>
+                        <d:var name="Rx_fifo" type="INTEGER" value="255"/>
+                        <d:var name="Tx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Tx_user" type="INTEGER" value="255"/>
+                        <d:var name="Tx_fifo" type="INTEGER" value="255"/>
+                      </d:ctr>
+                      <d:ctr name="CddIpcMailBoxMapping_2" type="IDENTIFIABLE">
+                        <a:a name="IMPORTER_INFO" value="@REC"/>
+                        <d:var name="CoreID" type="ENUMERATION" 
+                               value="IPC_MCU1_1">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Rx_user" type="INTEGER" value="255"/>
+                        <d:var name="Rx_fifo" type="INTEGER" value="255"/>
+                        <d:var name="Tx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Tx_user" type="INTEGER" value="255"/>
+                        <d:var name="Tx_fifo" type="INTEGER" value="255"/>
+                      </d:ctr>
+                      <d:ctr name="CddIpcMailBoxMapping_3" type="IDENTIFIABLE">
+                        <a:a name="IMPORTER_INFO" value="@REC"/>
+                        <d:var name="CoreID" type="ENUMERATION" 
+                               value="IPC_MCU2_0">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Rx_user" type="INTEGER" value="255"/>
+                        <d:var name="Rx_fifo" type="INTEGER" value="255"/>
+                        <d:var name="Tx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Tx_user" type="INTEGER" value="255"/>
+                        <d:var name="Tx_fifo" type="INTEGER" value="255"/>
+                      </d:ctr>
+                      <d:ctr name="CddIpcMailBoxMapping_4" type="IDENTIFIABLE">
+                        <a:a name="IMPORTER_INFO" value="@REC"/>
+                        <d:var name="CoreID" type="ENUMERATION" 
+                               value="IPC_MCU2_1">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Rx_user" type="INTEGER" value="255"/>
+                        <d:var name="Rx_fifo" type="INTEGER" value="255"/>
+                        <d:var name="Tx_cluster" type="INTEGER" value="255"/>
+                        <d:var name="Tx_user" type="INTEGER" value="255"/>
+                        <d:var name="Tx_fifo" type="INTEGER" value="255"/>
+                      </d:ctr>
+                      <d:ctr name="CddIpcMailBoxMapping_5" type="IDENTIFIABLE">
+                        <a:a name="IMPORTER_INFO" value="@REC"/>
+                        <d:var name="CoreID" type="ENUMERATION" 
+                               value="IPC_MPU1_1">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_cluster" type="INTEGER" value="255">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_user" type="INTEGER" value="255">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Rx_fifo" type="INTEGER" value="255"/>
+                        <d:var name="Tx_cluster" type="INTEGER" value="255">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Tx_user" type="INTEGER" value="255">
+                          <a:a name="IMPORTER_INFO" value="@REC"/>
+                        </d:var>
+                        <d:var name="Tx_fifo" type="INTEGER" value="255"/>
+                      </d:ctr>
+                    </d:lst>
+                  </d:ctr>
+                </d:lst>
+              </d:ctr>
+            </d:ctr>
+          </d:chc>
+        </d:lst>
+      </d:ctr>
+    </d:lst>
+  </d:ctr>
+
+</datamodel>
