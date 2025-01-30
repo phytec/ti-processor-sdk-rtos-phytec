@@ -1,5 +1,8 @@
 PSDK_PATH ?= $(abspath ..)
 
+# External repos managed by repo tool
+REPO_EXT = $(abspath ../../repos/ti-sdk)
+
 # Compilers
 PSDK_TOOLS_PATH ?= $(HOME)/ti
 ifeq ($(SOC),am62a)
@@ -43,7 +46,7 @@ PTK_PATH ?= $(PSDK_PATH)/ti-perception-toolkit
 TIADALG_PATH ?= $(PSDK_PATH)/tiadalg
 GLM_PATH ?= $(PSDK_PATH)/glm
 ETHFW_PATH ?= $(PSDK_PATH)/ethfw
-TI_SECURE_DEV_PKG ?= $(PSDK_PATH)/core-secdev-k3
+TI_SECURE_DEV_PKG ?= $(REPO_EXT)/core-secdev-k3
 
 # This is required to be set when pulling in the safertos_version
 BOARD=$(SOC)_evm
