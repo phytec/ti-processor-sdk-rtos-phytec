@@ -6,3 +6,9 @@ ti-cgt-armllvm_3.2.1.LTS/
 protobuf-3.20.2/
 
 __pycache__/
+
+# Build artifacts
+out/
+lib/
+binary/
+psdk_fw/
