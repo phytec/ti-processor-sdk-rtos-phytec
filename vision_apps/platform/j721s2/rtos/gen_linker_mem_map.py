@@ -274,8 +274,8 @@ c7x_2_ddr_scratch_addr    = c7x_2_ddr_local_heap_addr + c7x_2_ddr_local_heap_siz
 c7x_2_ddr_scratch_size    = 64*MB;
 
 # Shared memory for DMA Buf FD carveout (located in high mem)
-ddr_shared_mem_addr_phys  = 0x900000000; # TODO: Clean this up
-ddr_shared_mem_size       = 512*MB;
+ddr_shared_mem_addr_phys  = 0x8C0000000;
+ddr_shared_mem_size       = 512*MB; # duplicate!
 
 #
 # Create memory section based on addr and size defined above, including
@@ -730,6 +730,6 @@ LinkerCmdFile(mcu3_1_mmap, "./mcu3_1/linker_mem_map.cmd").export();
 
 HtmlMmapTable(html_mmap, "./system_memory_map.html").export();
 
-CHeaderFile(c_header_mmap, 0x880000000, 0x100000000, "./app_mem_map.h").export();
+CHeaderFile(c_header_mmap, ddr_mem_addr_hi_phy, ddr_mem_addr_hi, "./app_mem_map.h").export();
 
 DtsFile(dts_mmap, "./k3-j721s2-rtos-memory-map.dtsi").export();
