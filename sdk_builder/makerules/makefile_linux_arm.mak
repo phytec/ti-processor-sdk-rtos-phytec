@@ -17,7 +17,8 @@ else
 LINUX_FIRMWARE_PREFIX=$(SOC)
 endif
 
-FIRMWARE_SUBFOLDER?=vision_apps_evm
+# FIXME use the BOARD variable?!
+FIRMWARE_SUBFOLDER?=vision_apps_phyboard-izar_edgeai
 UENV_NAME?=uEnv_$(SOC)_vision_apps.txt
 LINUX_FS_STAGE_PATH?=/tmp/tivision_apps_targetfs_stage
 # The bootfs stage path is used to keep the default bootfs dir unaltered.
