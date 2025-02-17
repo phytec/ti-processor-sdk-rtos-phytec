@@ -202,7 +202,8 @@ BUILD_MCU_BOARD_DEPENDENCIES?=yes
 
 ifeq ($(BUILD_EDGEAI), yes)
 BUILD_MCU_BOARD_DEPENDENCIES=no
-FIRMWARE_SUBFOLDER=vision_apps_eaik
+#FIXME make dependend on BOARD/ FIRMWARE_SUBFOLDER from makerules/makefile_linux_arm.mak
+FIRMWARE_SUBFOLDER=vision_apps_phyboard-izar_edgeai
 UENV_NAME=uEnv_$(SOC)_edgeai_apps.txt
 endif
 
