@@ -93,6 +93,9 @@ HS=1
 else ifeq ($(SOC)-$(TISDK_IMAGE), j722s-adas)
 BUILD_EDGEAI=no
 HS=1
+else ifeq ($(SOC)-$(TISDK_IMAGE), j721s2-ampliphy-edgeai)
+BUILD_EDGEAI=yes
+HS=0
 else
 BUILD_EDGEAI=no
 HS=0
