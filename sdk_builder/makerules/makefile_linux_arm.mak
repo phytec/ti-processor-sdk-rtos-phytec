@@ -78,6 +78,9 @@ endif
 	install -m 775 -d $(LINUX_FS_STAGE_PATH)/opt/imaging/ar0233/wdr
 
 	install -m 775 -d $(LINUX_FS_STAGE_PATH)/opt/imaging/imx219/linear
+
+	install -m 775 -d $(LINUX_FS_STAGE_PATH)/opt/imaging/ar0144_12bit/linear
+
 ifeq ($(SOC), $(filter $(SOC), am62a j722s))
 	install -m 775 -d $(LINUX_FS_STAGE_PATH)/opt/imaging/ov2312/linear
 	install -m 775 -d $(LINUX_FS_STAGE_PATH)/opt/imaging/ox05b1s/linear
@@ -93,6 +96,9 @@ endif
 	cp $(IMAGING_PATH)/sensor_drv/src/ar0233/dcc_bins/wdr/*.bin $(LINUX_FS_STAGE_PATH)/opt/imaging/ar0233/wdr
 
 	cp $(IMAGING_PATH)/sensor_drv/src/imx219/dcc_bins/linear/*.bin $(LINUX_FS_STAGE_PATH)/opt/imaging/imx219/linear
+
+	cp $(IMAGING_PATH)/sensor_drv/src/ar0144_12bit/dcc_bins/*.bin $(LINUX_FS_STAGE_PATH)/opt/imaging/ar0144_12bit/linear
+
 ifeq ($(SOC), $(filter $(SOC), am62a j722s))
 	cp $(IMAGING_PATH)/sensor_drv/src/ov2312/dcc_bins/linear/*.bin $(LINUX_FS_STAGE_PATH)/opt/imaging/ov2312/linear
 	cp $(IMAGING_PATH)/sensor_drv/src/ox05b1s/dcc_bins/linear/*.bin $(LINUX_FS_STAGE_PATH)/opt/imaging/ox05b1s/linear
