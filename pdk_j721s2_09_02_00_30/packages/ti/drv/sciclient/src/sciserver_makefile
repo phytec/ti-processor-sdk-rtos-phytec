@@ -28,13 +28,15 @@ ifeq ($(SOC),$(filter $(SOC), j784s4))
 endif
 
 # Leave RMPMHAL_SCMVERSION blank if you want a script to generate it from git tag/commit
-RMPMHAL_SCMVERSION ?=
+# Auto-generating DOES NOT WORK in the combined Phytec repository !!!
+RMPMHAL_SCMVERSION ?= "REL.PSDK.09.02.00.30-phy"
 
 SCISERVER_MAJOR_VERSION_NAME ?= "v09.02.00"
 SCISERVER_SUBVERSION ?= 00
 SCISERVER_PATCHVERSION ?= 00
 # Leave SCISERVER_SCMVERSION blank if you want a script to generate it from git tag/commit
-SCISERVER_SCMVERSION ?=
+# Auto-generating DOES NOT WORK in the combined Phytec repository !!!
+SCISERVER_SCMVERSION ?= "REL.PSDK.09.02.00.30-phy"
 
 all: src/sciserver/sciserver.c
 src/sciserver/sciserver.c: src/version/sciserver_version.h src/version/rmpmhal_version.h
@@ -44,7 +46,7 @@ src/version/rmpmhal_version.h: gen_version_includes
 SRCDIR = src/sciserver
 SRCDIR += src/sciserver/$(SOC)
 
-INCDIR = soc/sysfw/include 
+INCDIR = soc/sysfw/include
 INCDIR += soc/$(SCISERVER_SOCVER)
 INCDIR += src/sciserver
 INCDIR += src/sciserver/$(SOC)
