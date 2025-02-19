@@ -35,7 +35,7 @@
 export OS ?= linux
 
 SDK_INSTALL_PATH ?= $(abspath ../../../../)
-TOOLS_INSTALL_PATH ?= $(SDK_INSTALL_PATH)
+TOOLS_INSTALL_PATH ?= $(HOME)/ti
 
 #Default BUILD_OS_TYPE (tirtos/baremetal/freertos)
 export BUILD_OS_TYPE ?= freertos
@@ -53,8 +53,8 @@ SOC ?= $(firstword $(LIMIT_SOCS))
 CORE ?= $(firstword $(LIMIT_CORES))
 else
 #if LIMIT_BOARDS is not defined, default BOARD and SOC to the below
-export BOARD ?= j721e_evm
-export SOC ?= j721e
+export BOARD ?= j721s2_evm
+export SOC ?= j721s2
 endif
 # Default to m4 build depending on BOARD selected!!
 ifeq ($(BOARD),$(filter $(BOARD),j721e_evm j7200_evm j721s2_evm j784s4_evm))
