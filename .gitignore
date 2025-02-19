@@ -2,6 +2,8 @@ tisdk-adas-image-j721s2-evm.tar.xz
 boot-adas-j721s2-evm.tar.gz
 pdk_j721s2_09_02_00_30/docs/
 pdk_j721s2_09_02_00_30/packages/ti/boot/sbl/
+pdk_j721s2_09_02_00_30/packages/ti/drv/sciclient/src/version/rmpmhal_version.h
+pdk_j721s2_09_02_00_30/packages/ti/drv/sciclient/src/version/sciserver_version.h
 ti-cgt-armllvm_3.2.1.LTS/
 protobuf-3.20.2/
 
