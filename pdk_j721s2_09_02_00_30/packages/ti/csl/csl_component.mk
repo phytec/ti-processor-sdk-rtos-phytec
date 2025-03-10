@@ -534,7 +534,7 @@ export csl_uart_test_app_$(SOC)_CORELIST
 ifeq ($(CSL_BUILD),$(filter $(CSL_BUILD), CSL))
 csl_EXAMPLE_LIST += csl_uart_test_app
 endif
-csl_uart_test_app_SBL_APPIMAGEGEN = yes
+csl_uart_test_app_SBL_APPIMAGEGEN = no
 export csl_uart_test_app_SBL_APPIMAGEGEN
 
 # UART intr test app
