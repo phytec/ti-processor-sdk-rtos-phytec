@@ -2,6 +2,8 @@ tisdk-adas-image-j721s2-evm.tar.xz
 boot-adas-j721s2-evm.tar.gz
 pdk_j721s2_09_02_00_30/docs/
 pdk_j721s2_09_02_00_30/packages/ti/binary/
+pdk_j721s2_09_02_00_30/packages/ti/board/utils/uniflash/target/bin/
+pdk_j721s2_09_02_00_30/packages/ti/boot/keywriter/soc/j721s2/tifs_keywriter.h
 pdk_j721s2_09_02_00_30/packages/ti/boot/sbl/
 pdk_j721s2_09_02_00_30/packages/ti/**/lib/
 pdk_j721s2_09_02_00_30/packages/ti/drv/sciclient/src/version/rmpmhal_version.h
