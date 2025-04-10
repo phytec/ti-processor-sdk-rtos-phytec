@@ -350,7 +350,7 @@ csl_dss_display_app_RELPATH = ti/csl/example/dss/display_app
 csl_dss_display_app_PATH = $(PDK_CSL_COMP_PATH)/example/dss/display_app
 csl_dss_display_app_BOARD_DEPENDENCY = yes
 csl_dss_display_app_CORE_DEPENDENCY = yes
-csl_dss_display_app_SBL_APPIMAGEGEN = yes
+csl_dss_display_app_SBL_APPIMAGEGEN = no
 export csl_dss_display_app_COMP_LIST
 export csl_dss_display_app_BOARD_DEPENDENCY
 export csl_dss_display_app_CORE_DEPENDENCY
@@ -375,7 +375,7 @@ csl_dss_colorbar_app_RELPATH = ti/csl/example/dss/colorbar_app
 csl_dss_colorbar_app_PATH = $(PDK_CSL_COMP_PATH)/example/dss/colorbar_app
 csl_dss_colorbar_app_BOARD_DEPENDENCY = yes
 csl_dss_colorbar_app_CORE_DEPENDENCY = yes
-csl_dss_colorbar_app_SBL_APPIMAGEGEN = yes
+csl_dss_colorbar_app_SBL_APPIMAGEGEN = no
 export csl_dss_colorbar_app_SBL_APPIMAGEGEN
 export csl_dss_colorbar_app_COMP_LIST
 export csl_dss_colorbar_app_BOARD_DEPENDENCY
@@ -471,7 +471,7 @@ export csl_mailbox_ipc_app_$(SOC)_CORELIST
 ifeq ($(CSL_BUILD),$(filter $(CSL_BUILD), CSL))
 csl_EXAMPLE_LIST += csl_mailbox_ipc_app
 endif
-csl_mailbox_ipc_app_SBL_APPIMAGEGEN = yes
+csl_mailbox_ipc_app_SBL_APPIMAGEGEN = no
 export csl_mailbox_ipc_app_SBL_APPIMAGEGEN
 
 # MAILBOX IPC Multicore app: Combines multiple core images into one image
@@ -630,7 +630,7 @@ endif
 export csl_mcspi_masterslave_app_$(SOC)_CORELIST
 
 ifeq ($(SOC),$(filter $(SOC), j721e am65xx j7200 j721s2 am64x))
-  csl_mcspi_masterslave_app_SBL_APPIMAGEGEN = yes
+  csl_mcspi_masterslave_app_SBL_APPIMAGEGEN = no
   export csl_mcspi_masterslave_app_SBL_APPIMAGEGEN
 endif
 
@@ -655,7 +655,7 @@ csl_mcspi_masterPerformance_app_BOARDLIST = $(filter $(DEFAULT_$(SOC)_BOARDLIST_
 export csl_mcspi_masterPerformance_app_BOARDLIST
 csl_mcspi_masterPerformance_app_$(SOC)_CORELIST = $(filter $(DEFAULT_$(SOC)_CORELIST_tirtos), mpu1_0)
 export csl_mcspi_masterPerformance_app_$(SOC)_CORELIST
-csl_mcspi_masterPerformance_app_SBL_APPIMAGEGEN = yes
+csl_mcspi_masterPerformance_app_SBL_APPIMAGEGEN = no
 export csl_mcspi_masterPerformance_app_SBL_APPIMAGEGEN
 
 # Packaged for below CSL_BUILDS
@@ -679,7 +679,7 @@ csl_baremetal_mcspi_masterPerformance_app_BOARDLIST =am65xx_evm
 export csl_baremetal_mcspi_masterPerformance_app_BOARDLIST
 csl_baremetal_mcspi_masterPerformance_app_$(SOC)_CORELIST = mpu1_0
 export csl_baremetal_mcspi_masterPerformance_app_$(SOC)_CORELIST
-csl_baremetal_mcspi_masterPerformance_app_SBL_APPIMAGEGEN = yes
+csl_baremetal_mcspi_masterPerformance_app_SBL_APPIMAGEGEN = no
 export csl_baremetal_mcspi_masterPerformance_app_SBL_APPIMAGEGEN
 
 # Packaged for below CSL_BUILDS
@@ -702,7 +702,7 @@ csl_spinlock_test_app_BOARDLIST = j721e_evm j7200_evm j721s2_evm j784s4_evm
 export csl_spinlock_test_app_BOARDLIST
 csl_spinlock_test_app_$(SOC)_CORELIST = mcu1_0 mcu2_1 mpu1_0
 export csl_spinlock_test_app_$(SOC)_CORELIST
-csl_spinlock_test_app_SBL_APPIMAGEGEN = yes
+csl_spinlock_test_app_SBL_APPIMAGEGEN = no
 export csl_spinlock_test_app_SBL_APPIMAGEGEN
 
 # Packaged for below CSL_BUILDS
@@ -741,7 +741,7 @@ export csl_gpio_toggle_app_$(SOC)_CORELIST
 ifeq ($(CSL_BUILD),$(filter $(CSL_BUILD), CSL))
 csl_EXAMPLE_LIST += csl_gpio_toggle_app
 endif
-csl_gpio_toggle_app_SBL_APPIMAGEGEN = yes
+csl_gpio_toggle_app_SBL_APPIMAGEGEN = no
 export csl_gpio_toggle_app_SBL_APPIMAGEGEN
 
 # GPIO test app - GPIO interrupt
@@ -769,7 +769,7 @@ export csl_gpio_interrupt_app_$(SOC)_CORELIST
 ifeq ($(CSL_BUILD),$(filter $(CSL_BUILD), CSL))
 csl_EXAMPLE_LIST += csl_gpio_interrupt_app
 endif
-csl_gpio_interrupt_app_SBL_APPIMAGEGEN = yes
+csl_gpio_interrupt_app_SBL_APPIMAGEGEN = no
 export csl_gpio_interrupt_app_SBL_APPIMAGEGEN
 
 # XMC MPU test app
@@ -884,7 +884,7 @@ csl_ospi_flash_app_BOARDLIST = am65xx_evm j721e_evm j7200_evm am64x_evm j721s2_e
 export csl_ospi_flash_app_BOARDLIST
 csl_ospi_flash_app_$(SOC)_CORELIST = mcu1_0
 export csl_ospi_flash_app_$(SOC)_CORELIST
-csl_ospi_flash_app_SBL_APPIMAGEGEN = yes
+csl_ospi_flash_app_SBL_APPIMAGEGEN = no
 export csl_ospi_flash_app_SBL_APPIMAGEGEN
 
 # Packaged for below CSL_BUILDS
@@ -910,7 +910,7 @@ ocmc_memory_benchmarking_app_freertos_BOARDLIST = j7200_evm j721e_evm j721s2_evm
 export ocmc_memory_benchmarking_app_freertos_BOARDLIST
 ocmc_memory_benchmarking_app_freertos_$(SOC)_CORELIST = mcu1_0 mcu2_0
 export ocmc_memory_benchmarking_app_freertos_$(SOC)_CORELIST
-ocmc_memory_benchmarking_app_freertos_SBL_APPIMAGEGEN = yes
+ocmc_memory_benchmarking_app_freertos_SBL_APPIMAGEGEN = no
 ocmc_memory_benchmarking_app_freertos_SBL_APP_BINIMAGEGEN = no
 ocmc_memory_benchmarking_app_freertos_SBL_XIP_APPIMAGEGEN = no
 export ocmc_memory_benchmarking_app_freertos_SBL_XIP_APPIMAGEGEN
@@ -941,7 +941,7 @@ ocmc_dual_core_memory_benchmarking_app_freertos_BOARDLIST = j7200_evm j721e_evm 
 export ocmc_dual_core_memory_benchmarking_app_freertos_BOARDLIST
 ocmc_dual_core_memory_benchmarking_app_freertos_$(SOC)_CORELIST = mcu1_0 mcu2_0
 export ocmc_dual_core_memory_benchmarking_app_freertos_$(SOC)_CORELIST
-ocmc_dual_core_memory_benchmarking_app_freertos_SBL_APPIMAGEGEN = yes
+ocmc_dual_core_memory_benchmarking_app_freertos_SBL_APPIMAGEGEN = no
 ocmc_dual_core_memory_benchmarking_app_freertos_SBL_APP_BINIMAGEGEN = no
 ocmc_dual_core_memory_benchmarking_app_freertos_SBL_XIP_APPIMAGEGEN = no
 export ocmc_dual_core_memory_benchmarking_app_freertos_SBL_XIP_APPIMAGEGEN
@@ -1005,7 +1005,7 @@ ddr_memory_benchmarking_app_freertos_BOARDLIST = j7200_evm j721e_evm j721s2_evm 
 export ddr_memory_benchmarking_app_freertos_BOARDLIST
 ddr_memory_benchmarking_app_freertos_$(SOC)_CORELIST = mcu1_0 mcu2_0
 export ddr_memory_benchmarking_app_freertos_$(SOC)_CORELIST
-ddr_memory_benchmarking_app_freertos_SBL_APPIMAGEGEN = yes
+ddr_memory_benchmarking_app_freertos_SBL_APPIMAGEGEN = no
 ddr_memory_benchmarking_app_freertos_SBL_APP_BINIMAGEGEN = no
 ddr_memory_benchmarking_app_freertos_SBL_XIP_APPIMAGEGEN = no
 export ddr_memory_benchmarking_app_freertos_SBL_XIP_APPIMAGEGEN
@@ -1036,7 +1036,7 @@ ddr_dual_core_memory_benchmarking_app_freertos_BOARDLIST = j7200_evm j721e_evm j
 export ddr_dual_core_memory_benchmarking_app_freertos_BOARDLIST
 ddr_dual_core_memory_benchmarking_app_freertos_$(SOC)_CORELIST = mcu1_0 mcu2_0
 export ddr_dual_core_memory_benchmarking_app_freertos_$(SOC)_CORELIST
-ddr_dual_core_memory_benchmarking_app_freertos_SBL_APPIMAGEGEN = yes
+ddr_dual_core_memory_benchmarking_app_freertos_SBL_APPIMAGEGEN = no
 ddr_dual_core_memory_benchmarking_app_freertos_SBL_APP_BINIMAGEGEN = no
 ddr_dual_core_memory_benchmarking_app_freertos_SBL_XIP_APPIMAGEGEN = no
 export ddr_dual_core_memory_benchmarking_app_freertos_SBL_XIP_APPIMAGEGEN
@@ -1100,7 +1100,7 @@ msmc_memory_benchmarking_app_freertos_BOARDLIST = j7200_evm j721e_evm j721s2_evm
 export msmc_memory_benchmarking_app_freertos_BOARDLIST
 msmc_memory_benchmarking_app_freertos_$(SOC)_CORELIST = mcu1_0 mcu2_0
 export msmc_memory_benchmarking_app_freertos_$(SOC)_CORELIST
-msmc_memory_benchmarking_app_freertos_SBL_APPIMAGEGEN = yes
+msmc_memory_benchmarking_app_freertos_SBL_APPIMAGEGEN = no
 msmc_memory_benchmarking_app_freertos_SBL_APP_BINIMAGEGEN = no
 msmc_memory_benchmarking_app_freertos_SBL_XIP_APPIMAGEGEN = no
 export msmc_memory_benchmarking_app_freertos_SBL_XIP_APPIMAGEGEN
@@ -1131,7 +1131,7 @@ xip_memory_benchmarking_app_freertos_BOARDLIST = j7200_evm j721e_evm j721s2_evm 
 export xip_memory_benchmarking_app_freertos_BOARDLIST
 xip_memory_benchmarking_app_freertos_$(SOC)_CORELIST = mcu1_0 mcu2_0
 export xip_memory_benchmarking_app_freertos_$(SOC)_CORELIST
-xip_memory_benchmarking_app_freertos_SBL_APPIMAGEGEN = yes
+xip_memory_benchmarking_app_freertos_SBL_APPIMAGEGEN = no
 xip_memory_benchmarking_app_freertos_SBL_APP_BINIMAGEGEN = no
 xip_memory_benchmarking_app_freertos_SBL_XIP_APPIMAGEGEN = yes
 export xip_memory_benchmarking_app_freertos_SBL_XIP_APPIMAGEGEN
@@ -1162,7 +1162,7 @@ xip_dual_core_memory_benchmarking_app_freertos_BOARDLIST = j7200_evm j721e_evm j
 export xip_dual_core_memory_benchmarking_app_freertos_BOARDLIST
 xip_dual_core_memory_benchmarking_app_freertos_$(SOC)_CORELIST = mcu1_0 mcu2_0
 export xip_dual_core_memory_benchmarking_app_freertos_$(SOC)_CORELIST
-xip_dual_core_memory_benchmarking_app_freertos_SBL_APPIMAGEGEN = yes
+xip_dual_core_memory_benchmarking_app_freertos_SBL_APPIMAGEGEN = no
 xip_dual_core_memory_benchmarking_app_freertos_SBL_APP_BINIMAGEGEN = no
 xip_dual_core_memory_benchmarking_app_freertos_SBL_XIP_APPIMAGEGEN = yes
 export xip_dual_core_memory_benchmarking_app_freertos_SBL_XIP_APPIMAGEGEN
@@ -1325,7 +1325,7 @@ csl_pcie_ep_write_loopback_app_BOARDLIST = tda2xx-evm tda2px-evm tda2ex-evm idkA
 export csl_pcie_ep_write_loopback_app_BOARDLIST
 ifeq ($(BOARD),$(filter $(BOARD), tda2xx-evm tda2px-evm tda2ex-evm))
 csl_pcie_ep_write_loopback_app_$(SOC)_CORELIST = a15_0
-csl_pcie_ep_write_loopback_app_SBL_APPIMAGEGEN = yes
+csl_pcie_ep_write_loopback_app_SBL_APPIMAGEGEN = no
 export csl_pcie_ep_write_loopback_app_SBL_APPIMAGEGEN
 endif
 ifeq ($(BOARD),$(filter $(BOARD), idkAM572x idkAM571x evmAM572x evmDRA72x evmDRA75x tda2xx-rvp idkAM574x))
@@ -1353,7 +1353,7 @@ csl_pcie_rc_write_loopback_app_BOARDLIST = tda2xx-evm tda2px-evm tda2ex-evm idkA
 export csl_pcie_rc_write_loopback_app_BOARDLIST
 ifeq ($(BOARD),$(filter $(BOARD), tda2xx-evm tda2px-evm tda2ex-evm tda2xx-rvp))
 csl_pcie_rc_write_loopback_app_$(SOC)_CORELIST = a15_0
-csl_pcie_rc_write_loopback_app_SBL_APPIMAGEGEN = yes
+csl_pcie_rc_write_loopback_app_SBL_APPIMAGEGEN = no
 export csl_pcie_rc_write_loopback_app_SBL_APPIMAGEGEN
 endif
 ifeq ($(BOARD),$(filter $(BOARD), idkAM572x idkAM571x evmAM572x evmDRA72x evmDRA75x idkAM574x))
@@ -1483,7 +1483,7 @@ endif
 export csl_crc_cputest_app_$(SOC)_CORELIST
 
 ifeq ($(SOC),$(filter $(SOC), j721e j721s2 j784s4 am65xx j7200 am64x))
-  csl_crc_cputest_app_SBL_APPIMAGEGEN = yes
+  csl_crc_cputest_app_SBL_APPIMAGEGEN = no
   export csl_crc_cputest_app_SBL_APPIMAGEGEN
 endif
 
@@ -1539,7 +1539,7 @@ csl_EXAMPLE_LIST += csl_ecc_test_app
 endif
 
 ifeq ($(BOARD),$(filter $(BOARD), am65xx_evm j721e_evm j721s2_evm j784s4_evm j7200_evm am64x_evm))
-csl_ecc_test_app_SBL_APPIMAGEGEN = yes
+csl_ecc_test_app_SBL_APPIMAGEGEN = no
 export csl_ecc_test_app_SBL_APPIMAGEGEN
 endif
 
@@ -1612,7 +1612,7 @@ ifeq ($(CSL_BUILD),$(filter $(CSL_BUILD), CSL))
 csl_EXAMPLE_LIST += csl_esm_clk_loss_test_app
 endif
 
-csl_esm_clk_loss_test_app_SBL_APPIMAGEGEN = yes
+csl_esm_clk_loss_test_app_SBL_APPIMAGEGEN = no
 export csl_esm_clk_loss_test_app_SBL_APPIMAGEGEN
 
 # DCC test app
@@ -1637,7 +1637,7 @@ endif
 export csl_dcc_singleshotmode_app_$(SOC)_CORELIST
 
 ifeq ($(SOC),$(filter $(SOC), j721e j721s2 j784s4 am65xx j7200))
-  csl_dcc_singleshotmode_app_SBL_APPIMAGEGEN = yes
+  csl_dcc_singleshotmode_app_SBL_APPIMAGEGEN = no
   export csl_dcc_singleshotmode_app_SBL_APPIMAGEGEN
 endif
 
@@ -1646,7 +1646,7 @@ ifeq ($(CSL_BUILD),$(filter $(CSL_BUILD), CSL))
 csl_EXAMPLE_LIST += csl_dcc_singleshotmode_app
 endif
 
-csl_dcc_singleshotmode_app_SBL_APPIMAGEGEN = yes
+csl_dcc_singleshotmode_app_SBL_APPIMAGEGEN = no
 export csl_dcc_singleshotmode_app_SBL_APPIMAGEGEN
 
 # RTI test app
@@ -1679,7 +1679,7 @@ ifeq ($(CSL_BUILD),$(filter $(CSL_BUILD), CSL CSL_TRIM))
 csl_EXAMPLE_LIST += csl_rti_dwwd_test_app
 endif
 
-csl_rti_dwwd_test_app_SBL_APPIMAGEGEN = yes
+csl_rti_dwwd_test_app_SBL_APPIMAGEGEN = no
 export csl_rti_dwwd_test_app_SBL_APPIMAGEGEN
 
 # ADC test app
@@ -1704,7 +1704,7 @@ endif
 export csl_adc_singleshot_test_app_$(SOC)_CORELIST
 
 ifeq ($(SOC),$(filter $(SOC), j721e am65xx j7200 am64x_evm))
-  csl_adc_singleshot_test_app_SBL_APPIMAGEGEN = yes
+  csl_adc_singleshot_test_app_SBL_APPIMAGEGEN = no
   export csl_adc_singleshot_test_app_SBL_APPIMAGEGEN
 endif
 
@@ -1713,7 +1713,7 @@ ifeq ($(CSL_BUILD),$(filter $(CSL_BUILD), CSL))
 csl_EXAMPLE_LIST += csl_adc_singleshot_test_app
 endif
 
-csl_adc_singleshot_test_app_SBL_APPIMAGEGEN = yes
+csl_adc_singleshot_test_app_SBL_APPIMAGEGEN = no
 export csl_adc_singleshot_test_app_SBL_APPIMAGEGEN
 
 # EPWM test app
@@ -1743,7 +1743,7 @@ ifeq ($(CSL_BUILD),$(filter $(CSL_BUILD), CSL))
 csl_EXAMPLE_LIST += csl_epwm_duty_cycle_test_app
 endif
 
-csl_epwm_duty_cycle_test_app_SBL_APPIMAGEGEN = yes
+csl_epwm_duty_cycle_test_app_SBL_APPIMAGEGEN = no
 export csl_epwm_duty_cycle_test_app_SBL_APPIMAGEGEN
 
 # EPWM to ECAP capture loopback test app
@@ -1769,7 +1769,7 @@ ifeq ($(CSL_BUILD),$(filter $(CSL_BUILD), CSL))
 csl_EXAMPLE_LIST += csl_ecap_epwm_loopback_test_app
 endif
 
-csl_ecap_epwm_loopback_test_app_SBL_APPIMAGEGEN = yes
+csl_ecap_epwm_loopback_test_app_SBL_APPIMAGEGEN = no
 export csl_ecap_epwm_loopback_test_app_SBL_APPIMAGEGEN
 
 # ECAP apwm test app
@@ -1795,7 +1795,7 @@ ifeq ($(CSL_BUILD),$(filter $(CSL_BUILD), CSL))
 csl_EXAMPLE_LIST += csl_ecap_apwm_test_app
 endif
 
-csl_ecap_apwm_test_app_SBL_APPIMAGEGEN = yes
+csl_ecap_apwm_test_app_SBL_APPIMAGEGEN = no
 export csl_ecap_apwm_test_app_SBL_APPIMAGEGEN
 
 # EQEP capture test app
@@ -1822,7 +1822,7 @@ ifeq ($(CSL_BUILD),$(filter $(CSL_BUILD), CSL))
 csl_EXAMPLE_LIST += csl_eqep_capture_test_app
 endif
 
-csl_eqep_capture_test_app_SBL_APPIMAGEGEN = yes
+csl_eqep_capture_test_app_SBL_APPIMAGEGEN = no
 export csl_eqep_capture_test_app_SBL_APPIMAGEGEN
 
 # HyperBus test app
@@ -1840,7 +1840,7 @@ csl_hyperbus_app_BOARDLIST = j721e_evm j7200_evm
 export csl_hyperbus_app_BOARDLIST
 csl_hyperbus_app_$(SOC)_CORELIST = mcu1_0
 export csl_hyperbus_app_$(SOC)_CORELIST
-export csl_hyperbus_app_SBL_APPIMAGEGEN = yes
+export csl_hyperbus_app_SBL_APPIMAGEGEN = no
 csl_EXAMPLE_LIST += csl_hyperbus_app
 
 # MCAN test app
@@ -1870,7 +1870,7 @@ csl_EXAMPLE_LIST += csl_mcan_evm_loopback_app
 endif
 
 ifeq ($(BOARD),$(filter $(BOARD), tda3xx-evm tda2px-evm j721e_evm j721s2_evm j7200_evm j784s4_evm))
-csl_mcan_evm_loopback_app_SBL_APPIMAGEGEN = yes
+csl_mcan_evm_loopback_app_SBL_APPIMAGEGEN = no
 export csl_mcan_evm_loopback_app_SBL_APPIMAGEGEN
 endif
 
@@ -1899,7 +1899,7 @@ export csl_ddr_test_app_$(SOC)_CORELIST
 ifeq ($(CSL_BUILD),$(filter $(CSL_BUILD), CSL))
 csl_EXAMPLE_LIST += csl_ddr_test_app
 endif
-csl_ddr_test_app_SBL_APPIMAGEGEN = yes
+csl_ddr_test_app_SBL_APPIMAGEGEN = no
 export csl_ddr_test_app_SBL_APPIMAGEGEN
 
 
@@ -1925,7 +1925,7 @@ export csl_ccmr5_test_app_$(SOC)_CORELIST
 ifeq ($(CSL_BUILD),$(filter $(CSL_BUILD), CSL CSL_TRIM))
 csl_EXAMPLE_LIST += csl_ccmr5_baremetal_test_app
 endif
-csl_ccmr5_baremetal_test_app_SBL_APPIMAGEGEN = yes
+csl_ccmr5_baremetal_test_app_SBL_APPIMAGEGEN = no
 export csl_ccmr5_baremetal_test_app_SBL_APPIMAGEGEN
 
 # VIM R5 test app
@@ -1945,7 +1945,7 @@ ifeq ($(BOARD),$(filter $(BOARD), am65xx_evm am65xx_idk am64x_evm j721e_evm j721
 csl_vim_baremetal_test_app_$(SOC)_CORELIST = mcu1_0 mcu1_1
 endif
 export csl_vim_test_app_$(SOC)_CORELIST
-csl_vim_baremetal_test_app_SBL_APPIMAGEGEN = yes
+csl_vim_baremetal_test_app_SBL_APPIMAGEGEN = no
 export csl_vim_baremetal_test_app_SBL_APPIMAGEGEN
 
 # Packaged for below CSL_BUILDS
@@ -1977,7 +1977,7 @@ ifeq ($(CSL_BUILD),$(filter $(CSL_BUILD), CSL CSL_TRIM))
 csl_EXAMPLE_LIST += csl_core_r5_baremetal_test_app
 endif
 
-csl_core_r5_baremetal_test_app_SBL_APPIMAGEGEN = yes
+csl_core_r5_baremetal_test_app_SBL_APPIMAGEGEN = no
 export csl_core_r5_baremetal_test_app_SBL_APPIMAGEGEN
 
 
@@ -2007,7 +2007,7 @@ ifeq ($(CSL_BUILD),$(filter $(CSL_BUILD), CSL CSL_TRIM))
 csl_EXAMPLE_LIST += csl_dmTimer_baremetal_test_app
 endif
 
-csl_dmTimer_baremetal_test_app_SBL_APPIMAGEGEN = yes
+csl_dmTimer_baremetal_test_app_SBL_APPIMAGEGEN = no
 export csl_dmTimer_baremetal_test_app_SBL_APPIMAGEGEN
 
 # CBASS test app
@@ -2034,7 +2034,7 @@ ifeq ($(CSL_BUILD),$(filter $(CSL_BUILD), CSL CSL_TRIM))
 csl_EXAMPLE_LIST += csl_cbass_baremetal_test_app
 endif
 
-csl_cbass_baremetal_test_app_SBL_APPIMAGEGEN = yes
+csl_cbass_baremetal_test_app_SBL_APPIMAGEGEN = no
 export csl_cbass_baremetal_test_app_SBL_APPIMAGEGEN
 
 # ecc_aggr test app
@@ -2060,7 +2060,7 @@ ifeq ($(CSL_BUILD),$(filter $(CSL_BUILD), CSL CSL_TRIM))
 csl_EXAMPLE_LIST += csl_ecc_aggr_baremetal_test_app
 endif
 
-csl_ecc_aggr_baremetal_test_app_SBL_APPIMAGEGEN = yes
+csl_ecc_aggr_baremetal_test_app_SBL_APPIMAGEGEN = no
 export csl_ecc_aggr_baremetal_test_app_SBL_APPIMAGEGEN
 
 # esm test app
@@ -2086,7 +2086,7 @@ ifeq ($(CSL_BUILD),$(filter $(CSL_BUILD), CSL CSL_TRIM))
 csl_EXAMPLE_LIST += csl_esm_baremetal_test_app
 endif
 
-csl_esm_baremetal_test_app_SBL_APPIMAGEGEN = yes
+csl_esm_baremetal_test_app_SBL_APPIMAGEGEN = no
 export csl_esm_baremetal_test_app_SBL_APPIMAGEGEN
 
 # LBIST test app
@@ -2112,7 +2112,7 @@ ifeq ($(CSL_BUILD),$(filter $(CSL_BUILD), CSL))
 csl_EXAMPLE_LIST += csl_lbist_test_app
 endif
 
-csl_lbist_test_app_SBL_APPIMAGEGEN = yes
+csl_lbist_test_app_SBL_APPIMAGEGEN = no
 export csl_lbist_test_app_SBL_APPIMAGEGEN
 
 # PBIST test app
@@ -2138,7 +2138,7 @@ ifeq ($(CSL_BUILD),$(filter $(CSL_BUILD), CSL))
 csl_EXAMPLE_LIST += csl_pbist_test_app
 endif
 
-csl_pbist_test_app_SBL_APPIMAGEGEN = yes
+csl_pbist_test_app_SBL_APPIMAGEGEN = no
 export csl_pbist_test_app_SBL_APPIMAGEGEN
 
 # FSI test app
@@ -2157,7 +2157,7 @@ export csl_fsi_test_app_BOARDLIST
 csl_fsi_test_app_$(SOC)_CORELIST = mcu1_0
 export csl_fsi_test_app_$(SOC)_CORELIST
 
-csl_fsi_test_app_SBL_APPIMAGEGEN = yes
+csl_fsi_test_app_SBL_APPIMAGEGEN = no
 export csl_fsi_test_app_SBL_APPIMAGEGEN
 
 # Packaged for below CSL_BUILDS
@@ -2189,7 +2189,7 @@ ifeq ($(CSL_BUILD),$(filter $(CSL_BUILD), CSL))
 csl_EXAMPLE_LIST += csl_vtm_pvt_sensor_read
 endif
 
-csl_vtm_pvt_sensor_read_SBL_APPIMAGEGEN = yes
+csl_vtm_pvt_sensor_read_SBL_APPIMAGEGEN = no
 export csl_vtm_pvt_sensor_read_SBL_APPIMAGEGEN
 
 
@@ -2216,7 +2216,7 @@ ifeq ($(CSL_BUILD),$(filter $(CSL_BUILD), CSL))
 csl_EXAMPLE_LIST += csl_vtm_pvt_sensor_maxt_outrg
 endif
 
-csl_vtm_pvt_sensor_maxt_outrg_SBL_APPIMAGEGEN = yes
+csl_vtm_pvt_sensor_maxt_outrg_SBL_APPIMAGEGEN = no
 export csl_vtm_pvt_sensor_maxt_outrg_SBL_APPIMAGEGEN
 
 
@@ -2243,7 +2243,7 @@ ifeq ($(CSL_BUILD),$(filter $(CSL_BUILD), CSL))
 csl_EXAMPLE_LIST += csl_vtm_pvt_sensor_temp_alert
 endif
 
-csl_vtm_pvt_sensor_temp_alert_SBL_APPIMAGEGEN = yes
+csl_vtm_pvt_sensor_temp_alert_SBL_APPIMAGEGEN = no
 export csl_vtm_pvt_sensor_temp_alert_SBL_APPIMAGEGEN
 
 
@@ -2270,7 +2270,7 @@ ifeq ($(CSL_BUILD),$(filter $(CSL_BUILD), CSL))
 csl_EXAMPLE_LIST += csl_vtm_ut_baremetal_app
 endif
 
-csl_vtm_ut_baremetal_app_SBL_APPIMAGEGEN = yes
+csl_vtm_ut_baremetal_app_SBL_APPIMAGEGEN = no
 export csl_vtm_ut_baremetal_app_SBL_APPIMAGEGEN
 
 
@@ -2297,7 +2297,7 @@ ifeq ($(CSL_BUILD),$(filter $(CSL_BUILD), CSL))
 csl_EXAMPLE_LIST += csl_pok_ut_baremetal_app
 endif
 
-csl_pok_ut_baremetal_app_SBL_APPIMAGEGEN = yes
+csl_pok_ut_baremetal_app_SBL_APPIMAGEGEN = no
 export csl_pok_ut_baremetal_app_SBL_APPIMAGEGEN
 
 # STOG test app
@@ -2323,7 +2323,7 @@ ifeq ($(CSL_BUILD),$(filter $(CSL_BUILD), CSL))
 csl_EXAMPLE_LIST += csl_stog_test_app
 endif
 
-csl_stog_test_app_SBL_APPIMAGEGEN = yes
+csl_stog_test_app_SBL_APPIMAGEGEN = no
 export csl_stog_test_app_SBL_APPIMAGEGEN
 
 
@@ -2350,7 +2350,7 @@ ifeq ($(CSL_BUILD),$(filter $(CSL_BUILD), CSL CSL_TRIM))
 csl_EXAMPLE_LIST += csl_r5_mpu_tcm_app
 endif
 
-csl_r5_mpu_tcm_app_SBL_APPIMAGEGEN = yes
+csl_r5_mpu_tcm_app_SBL_APPIMAGEGEN = no
 export csl_r5_mpu_tcm_app_SBL_APPIMAGEGEN
 
 #include sub component.mk file

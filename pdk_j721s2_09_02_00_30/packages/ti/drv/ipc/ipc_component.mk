@@ -225,7 +225,7 @@ ipc_rtos_echo_test_$(1)_PKG_LIST = ipc_rtos_echo_test_$(1)
 ipc_rtos_echo_test_$(1)_INCLUDE = $(ipc_rtos_echo_test_$(1)_PATH)
 export ipc_rtos_echo_test_$(1)_BOARDLIST = $(filter $(DEFAULT_BOARDLIST_$(1)), $(drvipc_BOARDLIST))
 export ipc_rtos_echo_test_$(1)_$(SOC)_CORELIST = $(filter $(DEFAULT_$(SOC)_CORELIST_$(1)), $(drvipc_$(SOC)_RTOS_CORELIST))
-export ipc_rtos_echo_test_$(1)_SBL_APPIMAGEGEN = yes
+export ipc_rtos_echo_test_$(1)_SBL_APPIMAGEGEN = no
 ifneq ($(1),$(filter $(1), safertos))
 ipc_EXAMPLE_LIST += ipc_rtos_echo_test_$(1)
 else
@@ -250,7 +250,7 @@ ipc_rtos_echo_testb_$(1)_PKG_LIST = ipc_rtos_echo_testb_$(1)
 ipc_rtos_echo_testb_$(1)_INCLUDE = $(ipc_rtos_echo_testb_$(1)_PATH)
 export ipc_rtos_echo_testb_$(1)_BOARDLIST = $(filter $(DEFAULT_BOARDLIST_$(1)), $(drvipc_BOARDLIST))
 export ipc_rtos_echo_testb_$(1)_$(SOC)_CORELIST = $(filter $(DEFAULT_$(SOC)_CORELIST_$(1)), $(drvipc_$(SOC)_RTOS_CORELIST))
-export ipc_rtos_echo_testb_$(1)_SBL_APPIMAGEGEN = yes
+export ipc_rtos_echo_testb_$(1)_SBL_APPIMAGEGEN = no
 ifneq ($(1),$(filter $(1), safertos))
 ipc_EXAMPLE_LIST += ipc_rtos_echo_testb_$(1)
 else
@@ -280,7 +280,7 @@ export ipc_baremetal_echo_test_BOARDLIST
 ipc_baremetal_echo_test_$(SOC)_CORELIST = $(filter-out mcu1_0,$(drvipc_$(SOC)_BAREMETAL_CORELIST))
 export ipc_baremetal_echo_test_$(SOC)_CORELIST
 ipc_EXAMPLE_LIST += ipc_baremetal_echo_test
-export ipc_baremetal_echo_test_SBL_APPIMAGEGEN = yes
+export ipc_baremetal_echo_test_SBL_APPIMAGEGEN = no
 
 # Test Configuration: Set of negative tests to validate IPC APIs, run indpendently on each core
 define IPC_NEGATIVE_TEST_RULE
@@ -295,7 +295,7 @@ ipc_negative_test_$(1)_PKG_LIST = ipc_negative_test_$(1)
 ipc_negative_test_$(1)_INCLUDE = $(ipc_negative_test_$(1)_PATH)
 export ipc_negative_test_$(1)_BOARDLIST = $(filter $(DEFAULT_BOARDLIST_$(1)), $(drvipc_BOARDLIST))
 export ipc_negative_test_$(1)_$(SOC)_CORELIST = $(filter $(DEFAULT_$(SOC)_CORELIST_$(1)), $(drvipc_$(SOC)_RTOS_CORELIST))
-export ipc_negative_test_$(1)_SBL_APPIMAGEGEN = yes
+export ipc_negative_test_$(1)_SBL_APPIMAGEGEN = no
 ifneq ($(1),$(filter $(1), safertos))
 ipc_EXAMPLE_LIST += ipc_negative_test_$(1)
 else
@@ -320,7 +320,7 @@ ipc_perf_test_$(1)_PKG_LIST = ipc_perf_test_$(1)
 ipc_perf_test_$(1)_INCLUDE = $(ipc_perf_test_$(1)_PATH)
 export ipc_perf_test_$(1)_BOARDLIST = $(filter $(DEFAULT_BOARDLIST_$(1)), $(drvipc_BOARDLIST))
 export ipc_perf_test_$(1)_$(SOC)_CORELIST = $(filter $(DEFAULT_$(SOC)_CORELIST_$(1)), $(drvipc_$(SOC)_RTOS_CORELIST))
-export ipc_perf_test_$(1)_SBL_APPIMAGEGEN = yes
+export ipc_perf_test_$(1)_SBL_APPIMAGEGEN = no
 ifneq ($(1),$(filter $(1), safertos))
 ipc_EXAMPLE_LIST += ipc_perf_test_$(1)
 else
@@ -345,7 +345,7 @@ ipc_extended_test_$(1)_PKG_LIST = ipc_extended_test_$(1)
 ipc_extended_test_$(1)_INCLUDE = $(ipc_extended_test_$(1)_PATH)
 export ipc_extended_test_$(1)_BOARDLIST = j784s4_evm
 export ipc_extended_test_$(1)_$(SOC)_CORELIST = mcu1_0
-export ipc_extended_test_$(1)_SBL_APPIMAGEGEN = yes
+export ipc_extended_test_$(1)_SBL_APPIMAGEGEN = no
 ifneq ($(1),$(filter $(1), safertos))
 ipc_EXAMPLE_LIST += ipc_extended_test_$(1)
 else
