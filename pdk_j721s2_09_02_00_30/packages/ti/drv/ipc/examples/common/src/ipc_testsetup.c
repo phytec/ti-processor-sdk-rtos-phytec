@@ -262,6 +262,10 @@ void rpmsg_responderFxn(void *arg0, void *arg1)
             }
             str[len++] = '\0';
         }
+        /* Check if we received a shutdown request from the remote endpoint */
+        else if (*(uint32_t*)str == IPC_RP_MBOX_SHUTDOWN) {
+            g_exitRespTsk = 1;
+        }
         else
         {
             /* If this is not ping/pong message, just print the message */
