@@ -132,7 +132,7 @@ volatile uint32_t gMessagesReceived = 0;
 static uint32_t   RecvEndPt = 0;
 #endif
 
-//#define DEBUG_PRINT
+#define DEBUG_PRINT
 
 /*
  * This "Task" waits for Linux vdev ready, and late create the vrings
