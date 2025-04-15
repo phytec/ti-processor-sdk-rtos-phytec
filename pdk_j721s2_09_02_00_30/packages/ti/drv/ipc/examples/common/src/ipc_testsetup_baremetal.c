@@ -73,9 +73,9 @@
 /* End point number to be used for chrdev end point */
 #define ENDPT_CHRDEV   14U
 #if defined(SIM_BUILD)
-#define NUMMSGS  1000
+#define NUMMSGS  10
 #else
-#define NUMMSGS  10000 /* number of message sent by the sender function */
+#define NUMMSGS  10 /* number of message sent by the sender function */
 #endif
 
 typedef struct Ipc_TestParams_s
@@ -196,7 +196,6 @@ void rpmsg_responderFxn(uintptr_t arg0, uintptr_t arg1)
 #if !defined(BUILD_MPU1_0) && defined(A72_LINUX_OS)
     RPMessage_Handle handle_chrdev;
 #endif
-    RPMessage_Handle *responseHandle = NULL;
     RPMessage_Params params;
     uint32_t         myEndPt = 0;
     uint32_t         remoteEndPt;
@@ -207,7 +206,6 @@ void rpmsg_responderFxn(uintptr_t arg0, uintptr_t arg1)
     void             *buf;
     uint32_t         lastNumMessagesReceived = 0;
     uint32_t         emptyReceiveCalls = 0;
-    uint8_t          responseSent = 0;
     uint8_t          i = 0;
     uint32_t         numProc = (uint32_t)arg0;
 
@@ -280,8 +278,10 @@ void rpmsg_responderFxn(uintptr_t arg0, uintptr_t arg1)
     {
         /* Wait for messages to show up */
         while(gMessagesReceived == lastNumMessagesReceived);
+	App_printf("RecvTask: gMessagesReceived %d, lastNumMessagesReceived %d\n",
+		gMessagesReceived, lastNumMessagesReceived);
 
-	/* Check for any new announcements first, and start the sender function */
+        /* Check for any new announcements first, and start the sender function */
         for (i = 0; i < numProc; i++)
         {
 #if !defined(BUILD_MPU1_0) && defined(A72_LINUX_OS)
@@ -289,16 +289,15 @@ void rpmsg_responderFxn(uintptr_t arg0, uintptr_t arg1)
             if(pRemoteProcArray[i] == IPC_MPU1_0)
                 continue;
 #endif
-
             if (pHandleArray[i] == NULL)
             {
                 status = RPMessage_getRemoteEndPt(pRemoteProcArray[i], SERVICE_PING, &remoteProcId,
                                                   &remoteEndPt, 0);
                 if (status == IPC_SOK)
-		{
+                {
                     rpmsg_startSender(pRemoteProcArray[i], i, &pHandleArray[i], &pEndptArray[i]);
                     pCntPing[i]++;
-		}
+                }
             }
         }
 
@@ -307,7 +306,6 @@ void rpmsg_responderFxn(uintptr_t arg0, uintptr_t arg1)
         status = RPMessage_recvNb(handle,
                                   (Ptr)str, &len, &remoteEndPt,
                                   &remoteProcId);
-        responseHandle = &handle;
 #if !defined(BUILD_MPU1_0) && defined(A72_LINUX_OS)
         if (status != IPC_SOK)
         {
@@ -315,7 +313,6 @@ void rpmsg_responderFxn(uintptr_t arg0, uintptr_t arg1)
             status = RPMessage_recvNb(handle_chrdev,
                                       (Ptr)str, &len, &remoteEndPt,
                                       &remoteProcId);
-            responseHandle = &handle_chrdev;
         }
 #endif
 
@@ -338,6 +335,7 @@ void rpmsg_responderFxn(uintptr_t arg0, uintptr_t arg1)
                 }
             }
         }
+	App_printf("RecvTask: RPMessage_recvNb status %d, len %d\n", status, len);
 
         if(status != IPC_SOK)
         {
@@ -346,118 +344,92 @@ void rpmsg_responderFxn(uintptr_t arg0, uintptr_t arg1)
 #endif
             emptyReceiveCalls++;
             lastNumMessagesReceived++;
+	    continue;
+        }
+        if (*(uint32_t*)str == IPC_RP_MBOX_SHUTDOWN)
+        {
+            g_exitRespTsk = 1;
+            *(uint32_t *)str = IPC_RP_MBOX_SHUTDOWN_ACK;
+            len = sizeof(uint32_t);
+	    App_printf("RecvTask: Shutdown message received, sending ack\n");
+	    lastNumMessagesReceived++;
+            break;
+        }
+
+        status = sscanf(str, "ping %d", &n);
+        if(status == 1)
+        {
+            memset(str, 0, MSGSIZE);
+            len = snprintf(str, 255, "pong %d", n);
+            if(len > 255)
+            {
+                App_printf("RecvTask: snprintf failed, len %d\n", len);
+                len = 255;
+            }
+            str[len++] = '\0';
         }
         else
         {
-            lastNumMessagesReceived++;
+            status = sscanf(str, "pong %d", &n);
+            if (status == 1)
+            {
+                pCntPong[i]++;
 
-            /* NULL terminated string */
-            if (len >= MSGSIZE)
-            {
-                str[MSGSIZE-1] = '\0';
-            }
-            else
-            {
-                str[len] = '\0';
-            }
+                /* This is a resopnse from a peer */
+                if (pCntPing[i] < NUMMSGS)
+                {
 #ifdef DEBUG_PRINT
-            App_printf("RecvTask: Revcvd msg \"%s\" len %d from %s\n",
-                    str, len, Ipc_mpGetName(remoteProcId));
+                    App_printf("RecvTask%d: Received \"%s\" len %d from %s endPt %d \n",
+                                  remoteProcId, str, len, Ipc_mpGetName(remoteProcId),
+                                  remoteEndPt);
 #endif
-        }
-        if(status == IPC_SOK)
-        {
-            status = sscanf(str, "ping %d", &n);
-            if(status == 1)
-            {
-                memset(str, 0, MSGSIZE);
-                len = snprintf(str, 255, "pong %d", n);
-                if(len > 255)
-                {
-                    App_printf("RecvTask: snprintf failed, len %d\n", len);
-                    len = 255;
-                }
-                str[len++] = '\0';
-            }
-            else
-            {
-                status = sscanf(str, "pong %d", &n);
-                if (status == 1)
-                {
-                    pCntPong[i]++;
-
-                    /* This is a resopnse from a peer */
-                    if (pCntPing[i] < NUMMSGS)
+                    /* Send data to remote endPt: */
+                    memset(str, 0, 256);
+                    len = snprintf(str, 255, "ping %d", pCntPing[i]++);
+                    if (len > 255)
                     {
-#ifdef DEBUG_PRINT
-                        App_printf("SendTask%d: Received \"%s\" len %d from %s endPt %d \n",
-                                      remoteProcId, str, len, Ipc_mpGetName(remoteProcId),
-                                      remoteEndPt);
-#endif
-                        /* Send data to remote endPt: */
-                        memset(str, 0, 256);
-                        len = snprintf(str, 255, "ping %d", pCntPing[i]++);
-                        if (len > 255)
-                        {
-                            App_printf("SendTask%d: snprintf failed, len %d\n", remoteProcId, len);
-                            len = 255;
-                        }
-                        str[len++] = '\0';
+                        App_printf("RecvTask%d: snprintf failed, len %d\n", remoteProcId, len);
+                        len = 255;
+                    }
+                    str[len++] = '\0';
 
 #ifdef DEBUG_PRINT
-                        App_printf("SendTask%d: Sending \"%s\" from %s to %s...\n", remoteProcId,
+                    App_printf("RecvTask%d: Sending \"%s\" from %s to %s...\n", remoteProcId,
+                                  str, Ipc_mpGetSelfName(),
+                                  Ipc_mpGetName(remoteProcId));
+#endif
+
+                    status = RPMessage_send(pHandleArray[i], remoteProcId, ENDPT_PING, pEndptArray[i], (Ptr)str, len);
+                    if (status != IPC_SOK)
+                    {
+                        App_printf("RecvTask%d: RPMessage_send Failed Msg-> \"%s\" from %s to %s...\n",
+                                      remoteProcId,
                                       str, Ipc_mpGetSelfName(),
                                       Ipc_mpGetName(remoteProcId));
-#endif
-
-                        status = RPMessage_send(pHandleArray[i], remoteProcId, ENDPT_PING, pEndptArray[i], (Ptr)str, len);
-                        if (status != IPC_SOK)
-                        {
-                            App_printf("SendTask%d: RPMessage_send Failed Msg-> \"%s\" from %s to %s...\n",
-                                          remoteProcId,
-                                          str, Ipc_mpGetSelfName(),
-                                          Ipc_mpGetName(remoteProcId));
-                        }
                     }
-                    else if (pCntPing[i] == NUMMSGS)
-                    {
-                        App_printf("%s <--> %s, Ping- %d, pong - %d completed\n",
-                                      Ipc_mpGetSelfName(),
-                                      Ipc_mpGetName(remoteProcId),
-                                      pCntPing[i], pCntPong[i]);
-                        pCntPing[i]++;
-                    }
-                    responseSent = 1;
                 }
-                else
+                else if (pCntPing[i] == NUMMSGS)
                 {
-                    /* If this is not ping/pong message, just print the message */
-                    App_printf("%s <--> %s : %s recvd : %d:%d:%d\n",
+                    App_printf("%s <--> %s, Ping- %d, pong - %d completed\n",
                                   Ipc_mpGetSelfName(),
                                   Ipc_mpGetName(remoteProcId),
-                                  str,
-                                  gMessagesReceived,
-                                  lastNumMessagesReceived,
-                                  emptyReceiveCalls);
+                                  pCntPing[i], pCntPong[i]);
+                    pCntPing[i]++;
                 }
-            }
-            if (responseSent == 0)
+                }
+            else
             {
-#ifdef DEBUG_PRINT
-                App_printf("RecvTask: Sending msg \"%s\" len %d from %s to %s\n",
-                              str, len, Ipc_mpGetSelfName(),
-                              Ipc_mpGetName(remoteProcId));
-#endif
-                status = RPMessage_send(*responseHandle, remoteProcId, remoteEndPt, myEndPt, str, len);
-                if (status != IPC_SOK)
-                {
-                    App_printf("RecvTask: Sending msg \"%s\" len %d from %s to %s failed!!!\n",
-                                  str, len, Ipc_mpGetSelfName(),
-                                  Ipc_mpGetName(remoteProcId));
-                }
+                /* If this is not ping/pong message, just print the message */
+                App_printf("%s <--> %s : %s recvd : %d:%d:%d\n",
+                              Ipc_mpGetSelfName(),
+                              Ipc_mpGetName(remoteProcId),
+                              str,
+                              gMessagesReceived,
+                              lastNumMessagesReceived,
+                              emptyReceiveCalls);
             }
-            responseSent = 0;
         }
+        lastNumMessagesReceived++;
     }
 
     App_printf("%s responder task exiting ...\n",
@@ -539,6 +511,8 @@ static void IpcTestBaremetalNewMsgCb(uint32_t srcEndPt, uint32_t procId)
 {
     /* Add code here to take action on any incoming messages */
     gMessagesReceived++;
+    App_printf("IpcTestBaremetalNewMsgCb: srcEndPt %d, procId %d\n",
+		  srcEndPt, procId);
     return;
 }
 
@@ -613,7 +587,6 @@ int32_t Ipc_echo_test(void)
      * load resource table
      */
     Ipc_loadResourceTable((void*)&ti_ipc_remoteproc_ResourceTable);
-
 #if !defined(A72_LINUX_OS_IPC_ATTACH)
     /* Wait for Linux VDev ready... */
     for(t = 0; t < numProc; t++)
