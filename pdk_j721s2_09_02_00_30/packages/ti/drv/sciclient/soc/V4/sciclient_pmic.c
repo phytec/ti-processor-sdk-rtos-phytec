@@ -39,7 +39,12 @@
 
 #include <stdint.h>
 
+#if defined(j721s2_evm)
 #include <ti/board/src/j721s2_evm/include/board_power.h>
+#endif
+#if defined(phyboard_izar)
+#include <ti/board/src/phyboard_izar/include/board_power.h>
+#endif
 #include <ti/drv/sciclient/sciclient.h>
 
 int32_t Sciclient_pmicShutdown(void)

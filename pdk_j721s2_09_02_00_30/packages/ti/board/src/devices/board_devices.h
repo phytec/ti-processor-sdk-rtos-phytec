@@ -151,6 +151,10 @@
 #include <ti/board/src/devices/fpd/ds90ub9702.h>
 #endif
 
+#if defined(phyboard_izar)
+#include <ti/board/src/devices/common/common.h>
+#endif
+
 #if defined(j784s4_evm)
 #include <ti/board/src/devices/common/common.h>
 
