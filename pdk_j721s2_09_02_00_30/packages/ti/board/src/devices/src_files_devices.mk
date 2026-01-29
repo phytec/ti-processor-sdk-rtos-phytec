@@ -17,6 +17,12 @@ INCDIR += src/devices/audio src/devices/common src/devices/fpd src/devices/senso
 SRCS_COMMON += common.c pcm3168A.c ds90ub953.c ds90ub960.c imx390.c ds90ub9702.c
 endif
 
+ifeq ($(BOARD),$(filter $(BOARD), phyboard_izar))
+SRCDIR += src/devices/audio src/devices/common src/devices/fpd src/devices/sensors
+INCDIR += src/devices/audio src/devices/common src/devices/fpd src/devices/sensors
+SRCS_COMMON += common.c
+endif
+
 ifeq ($(BOARD),$(filter $(BOARD), j784s4_evm))
 SRCDIR += src/devices/audio src/devices/common src/devices/fpd src/devices/sensors
 INCDIR += src/devices/audio src/devices/common src/devices/fpd src/devices/sensors

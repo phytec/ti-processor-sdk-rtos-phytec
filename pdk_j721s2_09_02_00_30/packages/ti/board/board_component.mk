@@ -68,7 +68,7 @@ ifeq ($(board_component_make_include), )
 
 board_lib_BOARDLIST       = evmAM335x icev2AM335x iceAMIC110 skAM335x bbbAM335x evmAM437x idkAM437x skAM437x evmAM572x idkAM571x idkAM572x evmK2H evmK2K evmK2E evmK2L evmK2G iceK2G \
                             evmC6678 evmC6657 tda2xx-evm evmDRA75x tda2ex-evm evmDRA72x tda3xx-evm evmDRA78x evmOMAPL137 lcdkOMAPL138 idkAM574x am65xx_evm am65xx_idk j721e_sim j721e_qt \
-                            j721e_evm j7200_evm j721s2_evm am64x_evm am64x_svb tpr12_evm tpr12_qt awr294x_evm j784s4_evm
+                            j721e_evm j7200_evm j721s2_evm am64x_evm am64x_svb tpr12_evm tpr12_qt awr294x_evm j784s4_evm phyboard_izar
 board_lib_tda2xx_CORELIST = a15_0 ipu1_0 c66x
 board_lib_tda2ex_CORELIST = a15_0 ipu1_0 c66x
 board_lib_tda3xx_CORELIST = ipu1_0 c66x
