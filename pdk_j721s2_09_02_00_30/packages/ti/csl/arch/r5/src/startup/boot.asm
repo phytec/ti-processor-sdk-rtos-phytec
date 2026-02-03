@@ -372,6 +372,7 @@ SVC_STACK_ADDR .long __SVC_STACK_END
 ;***************************************************************
 __stack:.usect  ".stack", 0, 4
 
+        .sect   ".bootCode"
         .global _c_int00
 ;***************************************************************
 ;* FUNCTION DEF: _c_int00

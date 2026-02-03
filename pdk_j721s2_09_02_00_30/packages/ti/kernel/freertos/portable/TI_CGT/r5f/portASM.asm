@@ -148,7 +148,7 @@ portRESTORE_CONTEXT .macro
     .global vPortRestoreTaskContext
     .sect ".text.hwi"
     .arm
-vPortRestoreTaskContext 
+vPortRestoreTaskContext:
     ;  Switch to system mode.
     CPS     #SYS_MODE
     portRESTORE_CONTEXT
@@ -331,14 +331,14 @@ ARM_STATE:
     STR r12, [r0]
 
     ; Capture the faulty SP
-    MOVW r0, faultySPConst
-    MOVT r0, faultySPConst
+    MOVW r0, #:lower16:FaultySP
+    MOVT r0, #:upper16:FaultySP
     LDR r0, [r0]
     STR SP, [r0]
 
     ; Capture the faulty LR
-    MOVW r0, faultyLRConst
-    MOVT r0, faultyLRConst
+    MOVW r0, #:lower16:FaultyLR
+    MOVT r0, #:upper16:FaultyLR
     LDR r0, [r0]
     STR LR, [r0]
 
