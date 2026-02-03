@@ -44,7 +44,7 @@
 #include <ti/drv/uart/UART.h>
 #include <ti/drv/uart/soc/UART_soc.h>
 #include <ti/drv/sciclient/sciclient.h>
-#include <ti/board/src/j721s2_evm/include/board_cfg.h>
+#include <ti/board/board_cfg.h>
 
 #define MCU_UART_INSTANCE               (BOARD_UART_INSTANCE)
 
