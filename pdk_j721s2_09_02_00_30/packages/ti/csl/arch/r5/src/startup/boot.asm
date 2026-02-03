@@ -69,7 +69,7 @@
         .asg	_system_pre_init, PRE_INIT_RTN
         .asg	__TI_auto_init, AUTO_INIT_RTN
         .asg	_args_main,   ARGS_MAIN_RTN
-        .asg	exit,         EXIT_RTN
+        .asg	_exit,         EXIT_RTN
         .asg    __stack, MAIN_FUNC_SP
    .else ; COFF TI ARM9 ABI
         .asg	__system_pre_init, PRE_INIT_RTN
@@ -581,6 +581,40 @@ L2:     B   L2
 
    .endif    ; !.TMS470_16BIS
 
+	.func	AUTO_INIT_RTN
+AUTO_INIT_RTN:
+	push	{r4, lr}
+	;; clear BSS
+	movw	r0, #:lower16:__bss_start__
+	movt	r0, #:upper16:__bss_start__
+	movw	r2, #:lower16:__bss_end__
+	movt	r2, #:upper16:__bss_end__
+	sub	r2, r2, r0
+	mov	r1, #0
+	bl	memset
+	pop	{r4, lr}
+	b	__libc_init_array
+
+	.size AUTO_INIT_RTN, . - AUTO_INIT_RTN
+	.endfunc
+
+	.func	EXIT_RTN
+EXIT_RTN:
+	b	.
+	.size EXIT_RTN, . - EXIT_RTN
+	.endfunc
+
+	.global	main
+	.func	ARGS_MAIN_RTN
+ARGS_MAIN_RTN:
+	mov	r0, #0
+	mov	r1, #0
+	mov	r2, #0
+	b	main
+
+	.size ARGS_MAIN_RTN, . - ARGS_MAIN_RTN
+	.endfunc
+
 ;***************************************************************
 ;* CONSTANTS USED BY THIS MODULE
 ;***************************************************************
@@ -617,5 +651,5 @@ _stkchk_called:
         .global AUTO_INIT_RTN
 	.global ARGS_MAIN_RTN
 	.global MAIN_FUNC_SP
-	.global	EXIT_RTN
+	.weak	EXIT_RTN
 	.global	__mpu_init
