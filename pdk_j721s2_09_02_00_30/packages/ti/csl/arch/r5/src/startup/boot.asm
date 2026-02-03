@@ -153,8 +153,8 @@ _c_int00:
         ;* INITIALIZE THE IRQ MODE STACK
         ;*------------------------------------------------------
         .if __TI_AVOID_EMBEDDED_CONSTANTS
-        MOVW    sp, IRQ_STACK_ADDR
-        MOVT    sp, IRQ_STACK_ADDR
+        movw	sp, #:lower16:__IRQ_STACK_END
+        movt	sp, #:upper16:__IRQ_STACK_END
         .else
         LDR     sp, IRQ_STACK_ADDR
         .endif
@@ -171,8 +171,8 @@ _c_int00:
         ;* INITIALIZE THE FIQ MODE STACK
         ;*------------------------------------------------------
         .if __TI_AVOID_EMBEDDED_CONSTANTS
-        MOVW    sp, FIQ_STACK_ADDR
-        MOVT    sp, FIQ_STACK_ADDR
+        movw	sp, #:lower16:__FIQ_STACK_END
+        movt	sp, #:upper16:__FIQ_STACK_END
         .else
         LDR     sp, FIQ_STACK_ADDR
         .endif
@@ -189,8 +189,8 @@ _c_int00:
         ;* INITIALIZE THE ABORT MODE STACK
         ;*------------------------------------------------------
         .if __TI_AVOID_EMBEDDED_CONSTANTS
-        MOVW    sp, ABORT_STACK_ADDR
-        MOVT    sp, ABORT_STACK_ADDR
+        movw	sp, #:lower16:__ABORT_STACK_END
+        movt	sp, #:upper16:__ABORT_STACK_END
         .else
         LDR     sp, ABORT_STACK_ADDR
         .endif
@@ -207,8 +207,8 @@ _c_int00:
         ;* INITIALIZE THE UNDEFINED MODE STACK
         ;*------------------------------------------------------
         .if __TI_AVOID_EMBEDDED_CONSTANTS
-        MOVW    sp, UND_STACK_ADDR
-        MOVT    sp, UND_STACK_ADDR
+        movw	sp, #:lower16:__UND_STACK_END
+        movt	sp, #:upper16:__UND_STACK_END
         .else
         LDR     sp, UND_STACK_ADDR
         .endif
@@ -225,8 +225,8 @@ _c_int00:
         ;* INITIALIZE THE SUPERVISOR MODE STACK
         ;*------------------------------------------------------
         .if __TI_AVOID_EMBEDDED_CONSTANTS
-        MOVW    sp, SVC_STACK_ADDR
-        MOVT    sp, SVC_STACK_ADDR
+        movw	sp, #:lower16:__SVC_STACK_END
+        movt	sp, #:upper16:__SVC_STACK_END
         .else
         LDR     sp, SVC_STACK_ADDR
         .endif
@@ -243,10 +243,10 @@ _c_int00:
         ;* INITIALIZE THE USER MODE STACK
         ;*------------------------------------------------------
         .if __TI_AVOID_EMBEDDED_CONSTANTS
-        MOVW    sp, __stack
-        MOVT    sp, __stack
-        MOVW    r0, __STACK_SIZE
-        MOVT    r0, __STACK_SIZE
+        MOVW    sp, #:lower16:__stack
+        MOVT    sp, #:upper16:__stack
+        MOVW    r0, #:lower16:__STACK_SIZE
+        MOVT    r0, #:upper16:__STACK_SIZE
         .else
         LDR     sp, c_stack
         LDR     r0, c_STACK_SIZE
@@ -264,8 +264,8 @@ _c_int00:
         ;* SAVE CURRENT STACK POINTER FOR SDP ANALYSIS
         ;*-----------------------------------------------------
         .if __TI_AVOID_EMBEDDED_CONSTANTS
-        MOVW    r0, MAIN_FUNC_SP
-        MOVT    r0, MAIN_FUNC_SP
+        MOVW    r0, #:lower16:MAIN_FUNC_SP
+        MOVT    r0, #:upper16:MAIN_FUNC_SP
         .else
         LDR     r0, c_mf_sp
         .endif
@@ -362,11 +362,15 @@ L2:     B   L2
         .global __ABORT_STACK_END
         .global __UND_STACK_END
         .global __SVC_STACK_END
+
+        .if !__TI_AVOID_EMBEDDED_CONSTANTS
 IRQ_STACK_ADDR .long __IRQ_STACK_END
 FIQ_STACK_ADDR .long __FIQ_STACK_END
 ABORT_STACK_ADDR .long __ABORT_STACK_END
 UND_STACK_ADDR .long __UND_STACK_END
 SVC_STACK_ADDR .long __SVC_STACK_END
+        .endif			; !__TI_AVOID_EMBEDDED_CONSTANTS
+
 ;***************************************************************
 ;* DEFINE THE USER MODE STACK (DEFAULT SIZE IS 512)
 ;***************************************************************
@@ -410,8 +414,8 @@ _c_int00:
         ;* INITIALIZE THE IRQ MODE STACK
         ;*------------------------------------------------------
         .if __TI_AVOID_EMBEDDED_CONSTANTS
-        MOVW    sp, IRQ_STACK_ADDR
-        MOVT    sp, IRQ_STACK_ADDR
+        movw	sp, #:lower16:__IRQ_STACK_END
+        movt	sp, #:upper16:__IRQ_STACK_END
         .else
         LDR     sp, IRQ_STACK_ADDR
         .endif
@@ -428,8 +432,8 @@ _c_int00:
         ;* INITIALIZE THE FIQ MODE STACK
         ;*------------------------------------------------------
         .if __TI_AVOID_EMBEDDED_CONSTANTS
-        MOVW    sp, FIQ_STACK_ADDR
-        MOVT    sp, FIQ_STACK_ADDR
+        movw	sp, #:lower16:__FIQ_STACK_END
+        movt	sp, #:upper16:__FIQ_STACK_END
         .else
         LDR     sp, FIQ_STACK_ADDR
         .endif
@@ -446,8 +450,8 @@ _c_int00:
         ;* INITIALIZE THE ABORT MODE STACK
         ;*------------------------------------------------------
         .if __TI_AVOID_EMBEDDED_CONSTANTS
-        MOVW    sp, ABORT_STACK_ADDR
-        MOVT    sp, ABORT_STACK_ADDR
+        movw	sp, #:lower16:__ABORT_STACK_END
+        movt	sp, #:upper16:__ABORT_STACK_END
         .else
         LDR     sp, ABORT_STACK_ADDR
         .endif
@@ -464,8 +468,8 @@ _c_int00:
         ;* INITIALIZE THE UNDEFINED MODE STACK
         ;*------------------------------------------------------
         .if __TI_AVOID_EMBEDDED_CONSTANTS
-        MOVW    sp, UND_STACK_ADDR
-        MOVT    sp, UND_STACK_ADDR
+        movw	sp, #:lower16:__UND_STACK_END
+        movt	sp, #:upper16:__UND_STACK_END
         .else
         LDR     sp, UND_STACK_ADDR
         .endif
@@ -482,8 +486,8 @@ _c_int00:
         ;* INITIALIZE THE SUPERVISOR MODE STACK
         ;*------------------------------------------------------
         .if __TI_AVOID_EMBEDDED_CONSTANTS
-        MOVW    sp, SVC_STACK_ADDR
-        MOVT    sp, SVC_STACK_ADDR
+        movw	sp, #:lower16:__SVC_STACK_END
+        movt	sp, #:upper16:__SVC_STACK_END
         .else
         LDR     sp, SVC_STACK_ADDR
         .endif
@@ -500,10 +504,10 @@ _c_int00:
         ;* INITIALIZE THE USER MODE STACK
         ;*------------------------------------------------------
         .if __TI_AVOID_EMBEDDED_CONSTANTS
-        MOVW    sp, __stack
-        MOVT    sp, __stack
-        MOVW    r0, __STACK_SIZE
-        MOVT    r0, __STACK_SIZE
+        MOVW    sp, #:lower16:__stack
+        MOVT    sp, #:upper16:__stack
+        MOVW    r0, #:lower16:__STACK_SIZE
+        MOVT    r0, #:upper16:__STACK_SIZE
         .else
         LDR     sp, c_stack
         LDR     r0, c_STACK_SIZE
@@ -521,8 +525,8 @@ _c_int00:
         ;* SAVE CURRENT STACK POINTER FOR SDP ANALYSIS
         ;*-----------------------------------------------------
         .if __TI_AVOID_EMBEDDED_CONSTANTS
-        MOVW    r0, MAIN_FUNC_SP
-        MOVT    r0, MAIN_FUNC_SP
+        MOVW    r0, #:lower16:MAIN_FUNC_SP
+        MOVT    r0, #:upper16:MAIN_FUNC_SP
         .else
         LDR     r0, c_mf_sp
         .endif
