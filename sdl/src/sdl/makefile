@@ -213,11 +213,10 @@ PACKAGE_SRCS_COMMON += sdl_mcrc.h
 SRCS_COMMON += sdl_ecc_r5.c sdl_exception.c sdl_mpu.c sdl_mpuCfg.c
 SRCS_ASM_COMMON += sdl_r5_utils.asm
 
-PACKAGE_SRCS_COMMON += sdl_r5_core.h
 SRCS_COMMON += sdl_ecc.c
 
 SRCS_ASM_COMMON += sdl_ecc_utils.asm
-PACKAGE_SRCS_COMMON += sdl_ecc_core.h sdl_priv.h sdl_ecc_utils.h sdl_soc_ecc.h
+PACKAGE_SRCS_COMMON += sdl_ecc_core.h sdl_ecc_utils.h
 
 SRCS_COMMON +=  sdl_dcc.c
 PACKAGE_SRCS_COMMON += sdl_dcc.h
@@ -252,7 +251,6 @@ PACKAGE_SRCS_COMMON += sdl_dcc.h
 SRCS_COMMON += sdl_ecc_r5.c sdl_exception.c sdl_mpu.c sdl_mpuCfg.c
 
 SRCS_ASM_COMMON += sdl_r5_utils.asm
-PACKAGE_SRCS_COMMON += sdl_r5_core.h
 
 SRCS_COMMON +=  sdl_vtm.c
 PACKAGE_SRCS_COMMON += sdl_vtm.h
@@ -277,7 +275,7 @@ PACKAGE_SRCS_COMMON += sdl_mcrc.h
 
 SRCS_COMMON += sdl_ecc.c
 SRCS_ASM_COMMON += sdl_ecc_utils.asm
-PACKAGE_SRCS_COMMON += sdl_ecc_core.h sdl_priv.h sdl_ecc_utils.h sdl_soc_ecc.h
+PACKAGE_SRCS_COMMON += sdl_ecc_core.h sdl_ecc_utils.h
 
 SRCS_COMMON += sdl_pok.c
 PACKAGE_SRCS_COMMON += sdl_pok.c
@@ -300,14 +298,13 @@ ifeq ($(SOC),$(filter $(SOC), j721e j7200))
 
 SRCS_COMMON += sdl_ecc_r5.c sdl_exception.c sdl_mpu.c sdl_mpuCfg.c
 SRCS_ASM_COMMON += sdl_r5_utils.asm
-PACKAGE_SRCS_COMMON += sdl_r5_core.h
 
 SRCS_COMMON += sdl_esm.c sdl_esm_priv.c sdl_esm_core.c
 PACKAGE_SRCS_COMMON += sdl_esm.h
 
 SRCS_COMMON += sdl_ecc.c
 SRCS_ASM_COMMON += sdl_ecc_utils.asm
-PACKAGE_SRCS_COMMON += sdl_ecc_core.h sdl_priv.h sdl_ecc_utils.h sdl_soc_ecc.h
+PACKAGE_SRCS_COMMON += sdl_ecc_core.h sdl_ecc_utils.h
 
 SRCS_COMMON +=  sdl_pbist.c sdl_soc_pbist.c
 PACKAGE_SRCS_COMMON += sdl_pbist.h sdl_pbist_priv.h
@@ -353,6 +350,8 @@ SRCS_COMMON +=  sdl_mtog.c
 PACKAGE_SRCS_COMMON += sdl_mtog.h
 
 endif
+
+PACKAGE_SRCS_COMMON += hw_types.h sdl_types.h sdlr.h tistdtypes.h
 
 MODULE_SRC_BASE_PATH = $(sdl_PATH)/src/sdl
 
