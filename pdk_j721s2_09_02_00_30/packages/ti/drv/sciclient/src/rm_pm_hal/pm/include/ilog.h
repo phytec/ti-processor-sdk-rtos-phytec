@@ -102,7 +102,7 @@ int32_t ilog64_nz(uint64_t _v) CONST_FUNCTION;
 /*Note the casts to (int) below: this prevents "upgrading"
  * the type of an entire expression to an (unsigned) size_t.*/
 #define builtin_ilog32_nz(v) \
-  ((u32)( (s32) (((int) sizeof(unsigned) * CHAR_BIT) - (int)__clz(v))))
+  ((u32)( (s32) (((int) sizeof(unsigned) * CHAR_BIT) - (int)__builtin_clz(v))))
 
 
 #define builtin_ilog64_nz(v) \
