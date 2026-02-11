@@ -15,7 +15,8 @@ COMP_LIST_COMMON  = r5f_startup r5f_core
 # Common source files and CFLAGS across all platforms and cores
 SRCS_COMMON = sciserver_testapp_main.c
 
-CFLAGS_LOCAL_COMMON = $(SDL_CFLAGS) -D$(SOCFAMILY)
+ECHO_TEST_BTCM = 1
+CFLAGS_LOCAL_COMMON = $(SDL_CFLAGS) -D$(SOCFAMILY) -DA72_LINUX_OS  -DECHO_TEST_BTCM
 
 # Core/SoC/platform specific source files and CFLAGS
 # Example:
