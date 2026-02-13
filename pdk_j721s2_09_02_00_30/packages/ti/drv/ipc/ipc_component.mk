@@ -44,7 +44,7 @@ ipc_LIB_LIST = ipc
 drvipc_RTOS_LIST       = $(DEFAULT_RTOS_LIST)
 
 drvipc_SOCLIST         = j721e j7200 j721s2 j784s4
-drvipc_BOARDLIST       = j721e_sim j721e_qt j721e_evm j7200_evm j721s2_evm j784s4_evm
+drvipc_BOARDLIST       = j721e_sim j721e_qt j721e_evm j7200_evm j721s2_evm j784s4_evm phyboard_izar
 drvipc_j721e_CORELIST  = mpu1_0 mcu1_0 mcu2_0 mcu3_0 mcu1_1 mcu2_1 mcu3_1 c66xdsp_1 c66xdsp_2 c7x_1
 drvipc_j721e_LASTCORE := $(word $(words $(drvipc_j721e_CORELIST)), $(drvipc_j721e_CORELIST))
 drvipc_j721e_BAREMETAL_CORELIST = mcu1_0 mcu1_1 mcu2_0 mcu2_1 mcu3_0 mcu3_1
