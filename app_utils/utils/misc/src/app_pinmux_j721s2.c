@@ -66,7 +66,11 @@
 
 #include <ti/board/board.h>
 #include <utils/misc/include/app_misc.h>
+#if defined (j721s2_evm)
 #include <ti/board/src/j721s2_evm/include/board_pinmux.h>
+#elif defined (phyboard_izar)
+#include <ti/board/src/phyboard_izar/include/board_pinmux.h>
+#endif
 /* ========================================================================== */
 /*                           Macros & Typedefs                                */
 /* ========================================================================== */
