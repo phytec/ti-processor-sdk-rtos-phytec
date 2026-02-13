@@ -85,6 +85,10 @@
 
 int main(void)
 {
+    /* Relocate FreeRTOS Reset Vectors from BTCM*/
+    void _freertosresetvectors (void);
+    memcpy((void *)0x0, (void *)_freertosresetvectors, 0x40);
+
     int32_t ret = CSL_PASS;
     Sciclient_ConfigPrms_t clientPrms;
     Sciserver_TirtosCfgPrms_t appPrms;
