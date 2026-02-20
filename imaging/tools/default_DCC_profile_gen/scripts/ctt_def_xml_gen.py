@@ -3,6 +3,7 @@
 import os
 import utils
 import sys
+import stat
 import dccxml
 import dccxml_awb
 import dccxml_rgb2rgb
@@ -52,7 +53,7 @@ def init_generic_params(sparams):
 
     wdr_names = ['linear', 'wdr']
     params['WDR_MODE'] = wdr_names[params['WDR_MODE']]
-    
+
     return params
 
 def init_dcc_regions(sys_params,Params):
@@ -158,7 +159,7 @@ def generate_dcc_gen_script(sys_params,params):
             utils.error('%s: %s' %(err.strerror, err.filename), skip=True)
 
     filename = os.path.join(dcc_gen_Dir, '%s' %(dcc_gen_File));
-    print ('Creating XML File:  %s\n' %filename)
+    print ('Creating script:  %s\n' %filename)
 
     handle = dccxml.OpenFile(filename)
     if(params['WDR_MODE'] == 'linear'):
@@ -217,7 +218,7 @@ def generate_dcc_gen_script(sys_params,params):
     handle.write('$DCC_TOOL_PATH/dcc_bin2c ../../dcc_bins/dcc_2a%s.bin $OUT_PATH/dcc_2a_%s%s.h dcc_2a_%s%s\n' %(wdr_suffix, params['SENSOR_NAME'], wdr_suffix, params['SENSOR_NAME'], wdr_suffix))
     handle.write('echo; echo\n')
     handle.write('rm -f *.bin\n')
-    
+
     handle.write('rm -f $OUT_PATH/dcc_ldc_%s%s.h\n' %(params['SENSOR_NAME'], wdr_suffix))
     handle.write('$DCC_TOOL_PATH/dcc_gen_linux %s_mesh_ldc_dcc.xml\n' %params['SENSOR_NAME'])
     handle.write('cp *.bin %s/\n' %"$bin_folder")
@@ -225,6 +226,10 @@ def generate_dcc_gen_script(sys_params,params):
     handle.write('$DCC_TOOL_PATH/dcc_bin2c ../../dcc_bins/dcc_ldc%s.bin $OUT_PATH/dcc_ldc_%s%s.h dcc_ldc_%s%s\n' %(wdr_suffix, params['SENSOR_NAME'], wdr_suffix, params['SENSOR_NAME'], wdr_suffix))
     handle.write('echo; echo\n')
     handle.write('rm -f *.bin\n')
+
+    mode = os.fstat(handle.fileno()).st_mode
+    mode |= stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH
+    os.fchmod(handle.fileno(), stat.S_IMODE(mode))
 
     return
 
@@ -235,11 +240,11 @@ def defaultXMLGen_Simulator(sensor_config_file):
     System Parameters Related to Project
     """
     sys_params = utils.get_params(sensor_config_file)
-    
+
     GEN_Params = init_generic_params(sys_params)
     wdr_mode = GEN_Params['WDR_MODE']
     rgbir = GEN_Params['COLOR_PATTERN']
-    
+
     GEN_Params['COLOR_PATTERN_4x4'] = -1
     if 10 <= rgbir < 18:
         PCID_Params = {}
@@ -272,7 +277,7 @@ def defaultXMLGen_Simulator(sensor_config_file):
     viss_blc_Params = {}
     init_dcc_regions(sys_params, viss_blc_Params)
     generate_viss_blc_xml(sys_params, viss_blc_Params, GEN_Params)
-    
+
     NSF4_Params = {}
     init_dcc_regions(sys_params, NSF4_Params)
     generate_nsf4_xml(sys_params, NSF4_Params, GEN_Params)
@@ -289,9 +294,9 @@ def defaultXMLGen_Simulator(sensor_config_file):
         GLBCE_Params = {}
         init_dcc_regions(sys_params, GLBCE_Params)
         generate_glbce_xml(sys_params, GLBCE_Params, GEN_Params)
-    
+
     generate_dcc_gen_script(sys_params, GEN_Params)
-    
+
     return
 
 if __name__ == '__main__':
@@ -301,4 +306,4 @@ if __name__ == '__main__':
         sensor_config_file = sys.argv[1]
 
         defaultXMLGen_Simulator(sensor_config_file)
-        
+
