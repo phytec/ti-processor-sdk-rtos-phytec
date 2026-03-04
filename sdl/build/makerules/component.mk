@@ -885,7 +885,7 @@ sdl_EXAMPLE_LIST +=  rti_app_uc1 rti_app_uc2 rti_app_uc3 rti_app_uc4 mcrc_app dc
 endif
 
 ifeq ($(SOC),$(filter $(SOC),  j721s2))
-sdl_EXAMPLE_LIST += osal_app rti_app_uc1 rti_app_uc2 rti_app_uc3 rti_app_uc4 vtm_app dcc_app_uc1 dcc_app_uc3 dcc_app_uc4_2 dcc_app_uc5 dcc_app_uc6 dcc_app_uc7 dcc_app_uc8 mtog_app mcrc_app pok_app esm_main_app esm_wkup_mcu_app ecc_app cpu_app tog_app bist_example_app rom_checksum_example
+sdl_EXAMPLE_LIST += osal_app rti_app_uc1 rti_app_uc2 rti_app_uc3 rti_app_uc4 vtm_app dcc_app_uc1 dcc_app_uc3 dcc_app_uc4_2 dcc_app_uc5 dcc_app_uc6 dcc_app_uc7 dcc_app_uc8 mtog_app mcrc_app pok_app esm_main_app esm_wkup_mcu_app ecc_app cpu_app tog_app bist_example_app rom_checksum_example dm_firmware
 endif
 
 ifeq ($(SOC),$(filter $(SOC),  j721e j7200))
@@ -1107,6 +1107,15 @@ export dcc_app_uc8_OSLIST = $(DEFAULT_OSLIST)
 export dcc_app_uc8_SOCLIST
 export dcc_app_uc8_PLATFORM_DEPENDENCY
 export dcc_app_uc8_SBL_APPIMAGEGEN = yes
+
+dm_firmware_RELPATH = examples/dm_firmware
+dm_firmware_PATH = $(sdl_PATH)/$(dm_firmware_RELPATH)
+dm_firmware_PLATFORM_DEPENDENCY = yes
+dm_firmware_SOCLIST = $(DEFAULT_SOCLIST)
+export dm_firmware_OSLIST = freertos
+export dm_firmware_SOCLIST
+export dm_firmware_PLATFORM_DEPENDENCY
+export dm_firmware_APPIMAGEGEN = no
 
 cpu_app_COMP_LIST = cpu_app
 cpu_app_RELPATH =examples/cpu

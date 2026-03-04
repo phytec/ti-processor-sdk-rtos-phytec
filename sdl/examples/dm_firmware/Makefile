@@ -1,0 +1,16 @@
+include $(sdl_PATH)/Rules.make
+
+BUILD_OS_TYPE=freertos
+APP_NAME = dm_firmware
+
+#Path for including common files
+IPC_COMMON_PATH = common
+
+INCDIR = $(IPC_COMMON_PATH)/$(SOC)/$(BUILD_OS_TYPE)/
+SRCS_COMMON = ipc_echo_test.c
+
+PACKAGE_SRCS_COMMON = .
+ECHO_TEST_BTCM = 1
+CFLAGS_LOCAL_COMMON = -DA72_LINUX_OS  -DECHO_TEST_BTCM #-DA72_LINUX_OS_IPC_ATTACH
+
+include $(IPC_COMMON_PATH)/makefile.mk
