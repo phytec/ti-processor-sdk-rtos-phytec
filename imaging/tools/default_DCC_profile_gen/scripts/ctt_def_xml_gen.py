@@ -149,7 +149,8 @@ def generate_decmp_xml(sys_params,decmp_params,params):
 
 def generate_dcc_gen_script(sys_params,params):
     dcc_gen_File = 'generate_dcc.sh'
-    dcc_gen_Dir  = sys_params['PRJ_DIR'] + '/dcc_xmls/'+params['WDR_MODE']
+    dcc_proj_dir = os.path.realpath(sys_params['PRJ_DIR'])
+    dcc_gen_Dir  = dcc_proj_dir + '/dcc_xmls/' + params['WDR_MODE']
 
     if (os.path.exists(dcc_gen_Dir) == False):
         print ('Creating directory:  %s\n' %dcc_gen_Dir)
@@ -167,19 +168,23 @@ def generate_dcc_gen_script(sys_params,params):
     else:
         wdr_suffix = "_wdr"
 
-    handle.write('DCC_TOOL_PATH=../../../../../tools/dcc_tools/\n')
-    handle.write('OUT_PATH=../../../../include\n')
+    # get the base path of 'imaging' starting from this script file
+    imaging_base_path = os.path.dirname(os.path.realpath(__file__ + '/../../..'))
+
+    handle.write(f'IMAGING_BASE_PATH={imaging_base_path}\n')
+    handle.write('DCC_TOOL_PATH=${IMAGING_BASE_PATH}/tools/dcc_tools/\n')
+    handle.write('DCC_HEADER_OUT_PATH=${IMAGING_BASE_PATH}/sensor_drv/include\n')
     handle.write('\n')
     handle.write('rm -f *.bin\n')
     handle.write('\n')
-    handle.write('bin_folder=../../dcc_bins/%s/\n' %params['SENSOR_DCC_NAME'])
+    handle.write('bin_folder=%s/dcc_bins/%s/%s\n' %(dcc_proj_dir, params['SENSOR_DCC_NAME'], params['WDR_MODE']))
     handle.write('if [ ! -d "$bin_folder" ]\n')
     handle.write('then\n')
     handle.write('    mkdir -p "$bin_folder"\n')
     handle.write('fi\n')
     handle.write('\n')
 
-    handle.write('rm -f $OUT_PATH/dcc_viss_%s%s.h\n' %(params['SENSOR_NAME'], wdr_suffix))
+    handle.write('rm -f ${DCC_HEADER_OUT_PATH}/dcc_viss_%s%s.h\n' %(params['SENSOR_NAME'], wdr_suffix))
     handle.write('$DCC_TOOL_PATH/dcc_gen_linux %s_rgb2rgb_dcc.xml\n' %params['SENSOR_NAME'])
     handle.write('$DCC_TOOL_PATH/dcc_gen_linux %s_h3a_aewb_dcc.xml\n' %params['SENSOR_NAME'])
     handle.write('$DCC_TOOL_PATH/dcc_gen_linux %s_viss_nsf4.xml\n' %params['SENSOR_NAME'])
@@ -193,25 +198,25 @@ def generate_dcc_gen_script(sys_params,params):
 
     handle.write('$DCC_TOOL_PATH/dcc_gen_linux %s_h3a_mux_luts_dcc.xml\n' %params['SENSOR_NAME'])
     handle.write('cp *.bin %s/\n' %"$bin_folder")
-    handle.write('cat *.bin > ../../dcc_bins/dcc_viss%s.bin\n' %wdr_suffix)
-    handle.write('$DCC_TOOL_PATH/dcc_bin2c ../../dcc_bins/dcc_viss%s.bin $OUT_PATH/dcc_viss_%s%s.h dcc_viss_%s%s\n' %(wdr_suffix, params['SENSOR_NAME'], wdr_suffix, params['SENSOR_NAME'], wdr_suffix))
+    handle.write('cat *.bin > %s/dcc_bins/dcc_viss%s.bin\n' %(dcc_proj_dir,wdr_suffix))
+    handle.write('$DCC_TOOL_PATH/dcc_bin2c %s/dcc_bins/dcc_viss%s.bin ${DCC_HEADER_OUT_PATH}/dcc_viss_%s%s.h dcc_viss_%s%s\n' %(dcc_proj_dir,wdr_suffix, params['SENSOR_NAME'], wdr_suffix, params['SENSOR_NAME'], wdr_suffix))
     handle.write('echo; echo\n')
     handle.write('rm -f *.bin\n')
 
-    handle.write('rm -f $OUT_PATH/dcc_2a_%s%s.h\n' %(params['SENSOR_NAME'], wdr_suffix))
+    handle.write('rm -f ${DCC_HEADER_OUT_PATH}/dcc_2a_%s%s.h\n' %(params['SENSOR_NAME'], wdr_suffix))
     handle.write('$DCC_TOOL_PATH/dcc_gen_linux %s_awb_alg_ti3_tuning.xml\n' %params['SENSOR_NAME'])
     handle.write('$DCC_TOOL_PATH/dcc_gen_linux %s_h3a_aewb_dcc.xml\n' %params['SENSOR_NAME'])
     handle.write('cp *.bin %s/\n' %"$bin_folder")
-    handle.write('cat *.bin > ../../dcc_bins/dcc_2a%s.bin\n'  %wdr_suffix)
-    handle.write('$DCC_TOOL_PATH/dcc_bin2c ../../dcc_bins/dcc_2a%s.bin $OUT_PATH/dcc_2a_%s%s.h dcc_2a_%s%s\n' %(wdr_suffix, params['SENSOR_NAME'], wdr_suffix, params['SENSOR_NAME'], wdr_suffix))
+    handle.write('cat *.bin > %s/dcc_bins/dcc_2a%s.bin\n' %(dcc_proj_dir,wdr_suffix))
+    handle.write('$DCC_TOOL_PATH/dcc_bin2c %s/dcc_bins/dcc_2a%s.bin ${DCC_HEADER_OUT_PATH}/dcc_2a_%s%s.h dcc_2a_%s%s\n' %(dcc_proj_dir,wdr_suffix, params['SENSOR_NAME'], wdr_suffix, params['SENSOR_NAME'], wdr_suffix))
     handle.write('echo; echo\n')
     handle.write('rm -f *.bin\n')
 
-    handle.write('rm -f $OUT_PATH/dcc_ldc_%s%s.h\n' %(params['SENSOR_NAME'], wdr_suffix))
+    handle.write('rm -f ${DCC_HEADER_OUT_PATH}/dcc_ldc_%s%s.h\n' %(params['SENSOR_NAME'], wdr_suffix))
     handle.write('$DCC_TOOL_PATH/dcc_gen_linux %s_mesh_ldc_dcc.xml\n' %params['SENSOR_NAME'])
     handle.write('cp *.bin %s/\n' %"$bin_folder")
-    handle.write('cat *.bin > ../../dcc_bins/dcc_ldc%s.bin\n' %wdr_suffix)
-    handle.write('$DCC_TOOL_PATH/dcc_bin2c ../../dcc_bins/dcc_ldc%s.bin $OUT_PATH/dcc_ldc_%s%s.h dcc_ldc_%s%s\n' %(wdr_suffix, params['SENSOR_NAME'], wdr_suffix, params['SENSOR_NAME'], wdr_suffix))
+    handle.write('cat *.bin > %s/dcc_bins/dcc_ldc%s.bin\n' %(dcc_proj_dir,wdr_suffix))
+    handle.write('$DCC_TOOL_PATH/dcc_bin2c %s/dcc_bins/dcc_ldc%s.bin ${DCC_HEADER_OUT_PATH}/dcc_ldc_%s%s.h dcc_ldc_%s%s\n' %(dcc_proj_dir,wdr_suffix, params['SENSOR_NAME'], wdr_suffix, params['SENSOR_NAME'], wdr_suffix))
     handle.write('echo; echo\n')
     handle.write('rm -f *.bin\n')
 
