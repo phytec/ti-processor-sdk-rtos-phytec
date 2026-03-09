@@ -51,6 +51,8 @@ def init_generic_params(sparams):
     params['VERSION'] = 0
     params['VENDOR_ID'] = 1
 
+    # WDR is just one variant out of (the combination of) many others like bit depth, color, resolution, lense type
+    # -> allow more and adopt the depth of relative paths!
     wdr_names = ['linear', 'wdr']
     params['WDR_MODE'] = wdr_names[params['WDR_MODE']]
 
@@ -163,10 +165,16 @@ def generate_dcc_gen_script(sys_params,params):
     print ('Creating script:  %s\n' %filename)
 
     handle = dccxml.OpenFile(filename)
+    # FIXME if we have the suffix, why have a linear/wdr folder additionally?
     if(params['WDR_MODE'] == 'linear'):
         wdr_suffix = ""
     else:
         wdr_suffix = "_wdr"
+
+    # FIXME get suffix/subpath from config:
+    #  COLOR_PATTERN==4  mono, else color
+    #  BIT_DEPTH +'bit'
+    #  lense and reduced resolution are hard to derive ...
 
     # get the base path of 'imaging' starting from this script file
     imaging_base_path = os.path.dirname(os.path.realpath(__file__ + '/../../..'))
