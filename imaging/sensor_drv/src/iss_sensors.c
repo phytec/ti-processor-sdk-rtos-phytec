@@ -66,13 +66,13 @@
 #include <app_ipc.h>
 #include "TI/tivx_mutex.h"
 
-#if defined (SOC_J721E)
+#if defined (j721e_evm)
 #include <ti/board/src/j721e_evm/include/board_cfg.h>
 #include <ti/board/src/j721e_evm/include/board_i2c_io_exp.h>
-#elif defined (SOC_J721S2)
+#elif defined (j721s2_evm)
 #include <ti/board/src/j721s2_evm/include/board_cfg.h>
 #include <ti/board/src/j721s2_evm/include/board_i2c_io_exp.h>
-#elif defined (SOC_J784S4)
+#elif defined (j784s4_evm)
 #include <ti/board/src/j784s4_evm/include/board_cfg.h>
 #include <ti/board/src/j784s4_evm/include/board_i2c_io_exp.h>
 #endif
