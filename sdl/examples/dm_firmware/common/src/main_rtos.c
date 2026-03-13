@@ -50,6 +50,8 @@
 #include <ti/osal/osal.h>
 #include <ti/osal/TaskP.h>
 
+#include "sdl_arm_r5.h"
+
 #include "ipc_utils.h"
 #include <ti/csl/csl_types.h>
 #if defined (BUILD_C7X)
@@ -334,6 +336,7 @@ void Ipc_setupSciServer(void *arg0, void *arg1)
     int32_t ret = CSL_PASS;
     char *version_str = NULL;
     char *rmpmhal_version_str = NULL;
+    SDL_ArmR5CPUInfo info;
 
     ret = Sciserver_tirtosInitPrms_Init(&appPrms);
 
@@ -347,11 +350,16 @@ void Ipc_setupSciServer(void *arg0, void *arg1)
         ret = Sciserver_tirtosInit(&appPrms);
     }
 
+    SDL_armR5GetCpuID(&info);
     version_str = Sciserver_getVersionStr();
     rmpmhal_version_str = Sciserver_getRmPmHalVersionStr();
+    App_printf("PHYTEC Custom DM Firmware!\n");
     App_printf("DM Built On: %s %s\n", __DATE__, __TIME__);
     App_printf("Sciserver Version: %s\n", version_str);
     App_printf("RM_PM_HAL Version: %s\n", rmpmhal_version_str);
+    if (info.multiprocessingExt) {
+        App_printf("R5F core is running in lock-step mode!\n");
+    }
 
     if (ret == CSL_PASS)
     {
