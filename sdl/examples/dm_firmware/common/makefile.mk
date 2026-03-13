@@ -49,6 +49,8 @@ ifeq ($(BUILD_OS_TYPE), freertos)
   CFLAGS_LOCAL_COMMON += -DFREERTOS
   INCLUDE_EXTERNAL_INTERFACES += freertos
   ifeq ($(ISA), r5f)
+    SRCS_ASM_COMMON += sdl_arm_r5.asm
+    SRCS_COMMON += sdl_r5.c
 	  SRCS_COMMON += r5f_mpu_$(SOC)_default.c
   endif
   ifeq ($(ISA), c66)
