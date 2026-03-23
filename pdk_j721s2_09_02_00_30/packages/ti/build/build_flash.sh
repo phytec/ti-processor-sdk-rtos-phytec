@@ -11,7 +11,9 @@ DEBUG=1
 
 # Define the build APP
 #APP_NAME="csl_uart_test_app"
-APP_NAME="ipc_rtos_echo_test_freertos"
+# Test without Linux running (without RSC Table)
+#APP_NAME="ipc_echo_test_freertos"
+APP_NAME="ipc_echo_baremetal_test"
 
 # debug | release
 BUILD_PROFILE=debug
