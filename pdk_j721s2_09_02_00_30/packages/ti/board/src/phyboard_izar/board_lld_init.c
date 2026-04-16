@@ -42,7 +42,6 @@
 #include "board_internal.h"
 #include "board_utils.h"
 #include "board_cfg.h"
-#include "board_control.h"
 
 extern Board_I2cInitCfg_t gBoardI2cInitCfg;
 extern Board_initParams_t gBoardInitParams;
