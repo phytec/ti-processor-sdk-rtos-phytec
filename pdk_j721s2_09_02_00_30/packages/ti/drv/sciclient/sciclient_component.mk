@@ -54,7 +54,7 @@ sciclient_LIB_LIST += sciclient_direct
 sciclient_LIB_LIST += sciclient_direct_hs
 endif
 
-drvsciclient_BOARDLIST =  j721e_sim j721e_evm j7200_evm j721s2_evm j784s4_evm
+drvsciclient_BOARDLIST =  j721e_sim j721e_evm j7200_evm j721s2_evm j784s4_evm phyboard_izar
 drvsciclient_SOCLIST = j721e j7200 j721s2 j784s4
 drvsciclient_j721e_CORELIST = mpu1_0 mcu1_0 mcu1_1 mcu2_0 mcu2_1 mcu3_0 mcu3_1 c66xdsp_1 c66xdsp_2 c7x_1 c7x-hostemu
 drvsciclient_j7200_CORELIST = mpu1_0 mcu1_0 mcu1_1 mcu2_0 mcu2_1
@@ -118,12 +118,12 @@ export sciclient_direct_LIBNAME = sciclient_direct
 export sciclient_direct_PATH = $(PDK_SCICLIENT_COMP_PATH)
 export sciclient_direct_LIBPATH = $(PDK_SCICLIENT_COMP_PATH)/lib
 export sciclient_direct_MAKEFILE = -fsrc/sciclient_direct_makefile BUILD_HS=no
-export sciclient_direct_BOARD_DEPENDENCY = no
+export sciclient_direct_BOARD_DEPENDENCY = yes
 export sciclient_direct_CORE_DEPENDENCY = yes
 export sciclient_direct_PKG_LIST = sciclient_direct
 export sciclient_direct_INCLUDE = $(sciclient_direct_PATH)
 export sciclient_direct_SOCLIST = j721e j7200 j721s2 j784s4
-export sciclient_direct_BOARDLIST = j721e_evm j7200_evm j721s2_evm j784s4_evm
+export sciclient_direct_BOARDLIST = j721e_evm j7200_evm j721s2_evm j784s4_evm phyboard_izar
 export sciclient_direct_$(SOC)_CORELIST = mcu1_0
 
 export sciclient_direct_hs_COMP_LIST = sciclient_direct_hs
@@ -138,7 +138,7 @@ export sciclient_direct_hs_CORE_DEPENDENCY = yes
 export sciclient_direct_hs_PKG_LIST = sciclient_direct_hs
 export sciclient_direct_hs_INCLUDE = $(sciclient_hs_direct_PATH)
 export sciclient_direct_hs_SOCLIST = j721e j7200 j721s2 j784s4
-export sciclient_direct_hs_BOARDLIST = j721e_evm j7200_evm j721s2_evm j784s4_evm
+export sciclient_direct_hs_BOARDLIST = j721e_evm j7200_evm j721s2_evm j784s4_evm phyboard_izar
 export sciclient_direct_hs_$(SOC)_CORELIST = mcu1_0
 
 export sciserver_tirtos_COMP_LIST = sciserver_tirtos
@@ -153,7 +153,7 @@ export sciserver_tirtos_CORE_DEPENDENCY = yes
 export sciserver_tirtos_PKG_LIST = sciserver_tirtos
 export sciserver_tirtos_INCLUDE = $(sciserver_PATH)
 export sciserver_tirtos_SOCLIST = j721e j7200 j721s2 j784s4
-export sciserver_tirtos_BOARDLIST = j721e_evm j7200_evm j721s2_evm j784s4_evm
+export sciserver_tirtos_BOARDLIST = j721e_evm j7200_evm j721s2_evm j784s4_evm phyboard_izar
 export sciserver_tirtos_$(SOC)_CORELIST = mcu1_0
 
 export sciserver_baremetal_COMP_LIST = sciserver_baremetal
@@ -168,7 +168,7 @@ export sciserver_baremetal_CORE_DEPENDENCY = yes
 export sciserver_baremetal_PKG_LIST = sciserver_baremetal
 export sciserver_baremetal_INCLUDE = $(sciserver_PATH)
 export sciserver_baremetal_SOCLIST = j721e j7200 j721s2 j784s4
-export sciserver_baremetal_BOARDLIST = j721e_evm j7200_evm j721s2_evm j784s4_evm
+export sciserver_baremetal_BOARDLIST = j721e_evm j7200_evm j721s2_evm j784s4_evm phyboard_izar
 export sciserver_baremetal_$(SOC)_CORELIST = mcu1_0
 
 
@@ -190,7 +190,7 @@ export sciclient_boardcfg_combined_PATH = $(PDK_SCICLIENT_COMP_PATH)
 export sciclient_boardcfg_combined_MAKEFILE = -fsrc/boardcfg_makefile SBL_IMAGE_TYPE=combined
 export sciclient_boardcfg_combined_BOARD_DEPENDENCY = yes
 export sciclient_boardcfg_combined_CORE_DEPENDENCY = yes
-export sciclient_boardcfg_combined_BOARDLIST = j7200_evm j721s2_evm j784s4_evm
+export sciclient_boardcfg_combined_BOARDLIST = j7200_evm j721s2_evm j784s4_evm phyboard_izar
 export sciclient_boardcfg_combined_$(SOC)_CORELIST = mcu1_0
 export sciclient_boardcfg_combined_LIBNAME = sciclient_boardcfg_combined
 
@@ -218,7 +218,7 @@ export rm_pm_hal_CORE_DEPENDENCY = yes
 export rm_pm_hal_PKG_LIST = rm_pm_hal
 export rm_pm_hal_INCLUDE = $(rm_pm_hal_PATH)
 export rm_pm_hal_SOCLIST = j721e j7200 j721s2 j784s4
-export rm_pm_hal_BOARDLIST = j721e_evm j7200_evm j721s2_evm j784s4_evm
+export rm_pm_hal_BOARDLIST = j721e_evm j7200_evm j721s2_evm j784s4_evm phyboard_izar
 export rm_pm_hal_$(SOC)_CORELIST = mcu1_0
 
 ############################
@@ -288,7 +288,7 @@ export sciclient_rtos_app_$(1)_BOARD_DEPENDENCY = no
 export sciclient_rtos_app_$(1)_CORE_DEPENDENCY = yes
 export sciclient_rtos_app_$(1)_PKG_LIST = sciclient_rtos_app_$(1)
 export sciclient_rtos_app_$(1)_INCLUDE = $(sciclient_rtos_app_$(1)_PATH)
-export sciclient_rtos_app_$(1)_BOARDLIST = $(filter $(DEFAULT_BOARDLIST_$(1)), j721e_sim j721e_evm j7200_evm j721s2_evm j784s4_evm)
+export sciclient_rtos_app_$(1)_BOARDLIST = $(filter $(DEFAULT_BOARDLIST_$(1)), j721e_sim j721e_evm j7200_evm j721s2_evm j784s4_evm phyboard_izar)
 export sciclient_rtos_app_$(1)_$(SOC)_CORELIST = $(filter $(DEFAULT_$(SOC)_CORELIST_$(1)), $(drvsciclient_$(SOC)_CORELIST))
 export sciclient_rtos_app_$(1)_SBL_APPIMAGEGEN = yes
 export sciclient_rtos_app_$(1)_SBL_IMAGEGEN = no
@@ -382,7 +382,7 @@ export sciserver_testapp_$(1)_BOARD_DEPENDENCY = no
 export sciserver_testapp_$(1)_CORE_DEPENDENCY = yes
 export sciserver_testapp_$(1)_PKG_LIST = sciserver_testapp_$(1)
 export sciserver_testapp_$(1)_INCLUDE = $(sciserver_testapp_$(1)_PATH)
-export sciserver_testapp_$(1)_BOARDLIST = $(filter $(DEFAULT_BOARDLIST_$(1)), j721e_evm j7200_evm j721s2_evm j784s4_evm)
+export sciserver_testapp_$(1)_BOARDLIST = $(filter $(DEFAULT_BOARDLIST_$(1)), j721e_evm j7200_evm j721s2_evm j784s4_evm phyboard_izar)
 export sciserver_testapp_$(1)_$(SOC)_CORELIST = $(filter $(DEFAULT_$(SOC)_CORELIST_$(1)), mcu1_0)
 export sciserver_testapp_$(1)_SBL_APPIMAGEGEN = yes
 export sciserver_testapp_$(1)_SBL_IMAGEGEN = no
