@@ -56,6 +56,7 @@ extern "C" {
 #include <stdio.h>
 #include <stdbool.h>
 
+//FIXME use defines from packages/ti/drv/pmic/include/pmic_power.h ??!
 #define TPS6594X_REG_DEV_REV                     (0x01U)
 #define TPS6594X_INT_STARTUP                     (0x65U)
 #define TPS6594X_INT_MISC                        (0x66U)

@@ -104,6 +104,7 @@
 
 #include <ti/board/board.h>
 
+//FIXME this is a board-based include, so do a BOARD-based include switch !!!
 #if defined(SOC_J721E)
 #include <ti/board/src/j721e_evm/include/board_utils.h>
 #elif defined(SOC_J7200)
