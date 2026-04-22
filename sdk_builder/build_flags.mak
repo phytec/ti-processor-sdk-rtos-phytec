@@ -25,8 +25,8 @@ export SOC?=j721s2
 # TISDK_IMAGE selection - supported values: default, adas, edgeai
 export TISDK_IMAGE?=ampliphy-edgeai
 
-# PDK board to build for, valid values: j721e_sim j721e_evm j721s2_evm j784s4_evm am62a_evm j722s_evm
-BUILD_PDK_BOARD=$(SOC)_evm
+# PDK board to build for, valid values: j721e_sim j721e_evm j721s2_evm j784s4_evm am62a_evm j722s_evm phyboard_izar
+BUILD_PDK_BOARD=phyboard_izar
 
 # Default RTOS SDK
 ifeq ($(SOC), $(filter $(SOC), am62a j722s))
