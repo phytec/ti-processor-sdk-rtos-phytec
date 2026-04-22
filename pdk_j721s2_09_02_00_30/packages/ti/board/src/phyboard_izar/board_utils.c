@@ -45,8 +45,6 @@
 #include "board_utils.h"
 #include "board_info_ddr.h"
 #include "board_cfg.h"
-#include <ti/drv/mmcsd/MMCSD.h>
-#include <ti/drv/mmcsd/soc/MMCSD_soc.h>
 
 Board_DetectCfg_t  gBoardDetCfg[BOARD_ID_MAX_BOARDS] =
  {{BOARD_COMMON_EEPROM_I2C_INST, BOARD_GESI_EEPROM_SLAVE_ADDR, BOARD_SOC_DOMAIN_WKUP, "J7X-GESI-EXP"},
@@ -64,40 +62,6 @@ static uint32_t gRatOffsetHi;
 static uint32_t gRatOffsetLo;
 static uint32_t gRatCfg;
 #endif
-
-/**
- *  \brief    Function to configure SD card voltage control gpio configuration.
- *
- *  \param    gpioValue [IN] GPIO pin value.
- *            1 for GPIO pin high
- *            0 for GPIO pin low
- *
- *  \return   BOARD_SOK in case of success or appropriate error code
- *
- */
-static void Board_sdVoltageCtrlGpioCfg(uint8_t gpioValue)
-{
-    uint32_t regVal;
-
-    /* Setting the GPIO direction to output */
-    regVal = HW_RD_REG32(CSL_GPIO0_BASE + 0x10);
-    regVal &= ~(0x01 << (BOARD_SDIO_1V8_EN_PIN_NUM % 32));
-    HW_WR_REG32((CSL_GPIO0_BASE + 0x10), regVal);
-
-    /* Setting the GPIO value */
-    regVal = HW_RD_REG32(CSL_GPIO0_BASE + 0x18);
-
-    if(0U == gpioValue)
-    {
-        regVal &= ~(0x01 << (BOARD_SDIO_1V8_EN_PIN_NUM % 32));
-        HW_WR_REG32((CSL_GPIO0_BASE + 0x18), regVal);
-    }
-    else
-    {
-        regVal |= (gpioValue << (BOARD_SDIO_1V8_EN_PIN_NUM % 32));
-        HW_WR_REG32((CSL_GPIO0_BASE + 0x18), regVal);
-    }
-}
 
 /**
  * \brief Board ID read function
@@ -445,43 +409,6 @@ Board_STATUS Board_setInitParams(Board_initParams_t *initParams)
     gBoardInitParams = *initParams;
 
     return BOARD_SOK;
-}
-
-/**
- * \brief Voltage Switching function for MMCSD
- *
- * Functionality: Change the voltage of the MMC CMD & DAT lines.
- *  This function is called by the MMCSD card driver (if the driver is
- *  configured to use this function at init time by the application) to change
- *  the CMD & DAT voltage from 3.0V to 1.8V if a UHS-I card is found.
- *  This function configures the PMIC controller of the board to switch the voltage
- *
- *  Note: This function uses non-standard board API naming and return type
- *        to align with existing platforms.
- *
- * \param   instance       [IN]  Device instance
- * \param   switchVoltage  [IN]  MMCSD IO voltage value
- *
- */
-MMCSD_Error Board_mmc_voltageSwitchFxn(uint32_t instance,
-                                       MMCSD_BusVoltage_e switchVoltage)
-{
-	MMCSD_Error mmcRetVal = MMCSD_OK;
-
-    if(switchVoltage == MMCSD_BUS_VOLTAGE_1_8V)
-    {
-       Board_sdVoltageCtrlGpioCfg(0);
-    }
-    else if(switchVoltage == MMCSD_BUS_VOLTAGE_3_3V)
-    {
-       Board_sdVoltageCtrlGpioCfg(1);
-	}
-    else
-    {
-        mmcRetVal = MMCSD_ERR;
-    }
-
-	return(mmcRetVal);
 }
 
 /**
