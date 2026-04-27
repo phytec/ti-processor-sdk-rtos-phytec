@@ -37,7 +37,7 @@ ifeq ($(SOC), $(filter $(SOC), j721s2))
 #PDK Build Options - used for building dependencies for test apps
 PDK_BUILD_OPTIONS = MAKERULEDIR=$(PDK_INSTALL_PATH)/ti/build/makerules PDK_INSTALL_PATH=$(PDK_INSTALL_PATH)
 PDK_BUILD_OPTIONS += TOOLCHAIN_PATH_R5=$(TOOLCHAIN_PATH_R5)
-PDK_BUILD_OPTIONS += SOC=$(SOC) BOARD=j721s2_evm CORE=mcu1_0 BUILD_PROFILE=$(PROFILE)
+PDK_BUILD_OPTIONS += SOC=$(SOC) BOARD=phyboard_izar CORE=mcu1_0 BUILD_PROFILE=$(PROFILE)
 sdl_DEPEND_LIST = pdk
 sdl_DEPEND_LIST_CLEAN = pdk_clean
 endif
@@ -112,7 +112,7 @@ help:
 	$(ECHO) "    Default: r5f"
 	$(ECHO) "PROFILE=[debug / release]"
 	$(ECHO) "    Default: debug"
-	$(ECHO) "BUILD_OS=[baremetal / freertos / safertos]"
+	$(ECHO) "BUILD_OS_TYPE=[baremetal / freertos / safertos]"
 	$(ECHO) "    Default: baremetal"
 	$(ECHO) "OS=[Linux / Windows]"
 	$(ECHO) "    Default: Linux"

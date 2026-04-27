@@ -46,7 +46,7 @@ endif
 
 ifeq ($(OS),Linux)
 #Paths for linux machine
-  TOOLCHAIN_PATH_R5 ?= $(abspath ../)/ti-cgt-armllvm_3.2.1.LTS
+  TOOLCHAIN_PATH_R5 ?= $(HOME)/ti/ti-cgt-armllvm_3.2.1.LTS
 endif
 
 # Utilities directory. This is required only if the build machine is Windows.
@@ -65,7 +65,7 @@ ROOTDIR ?= $(sdl_PATH)
 # Supported values: j721e
 
 ifeq ($(SOC),)
-  SOC := j721e
+  SOC := j721s2
 endif
 
 # Default core
