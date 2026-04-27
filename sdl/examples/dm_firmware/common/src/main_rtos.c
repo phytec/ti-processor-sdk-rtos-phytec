@@ -50,14 +50,13 @@
 #include <ti/osal/osal.h>
 #include <ti/osal/TaskP.h>
 
-#include "sdl_arm_r5.h"
-
 #include "ipc_utils.h"
+
 #include <ti/csl/csl_types.h>
+#include <ti/csl/arch/csl_arch.h>
 #if defined (BUILD_C7X)
 #include <ti/csl/soc.h>
 #include <ti/csl/csl_clec.h>
-#include <ti/csl/arch/csl_arch.h>
 
 #include <ti/osal/soc/osal_soc.h>
 
@@ -336,7 +335,7 @@ void Ipc_setupSciServer(void *arg0, void *arg1)
     int32_t ret = CSL_PASS;
     char *version_str = NULL;
     char *rmpmhal_version_str = NULL;
-    SDL_ArmR5CPUInfo info;
+    CSL_ArmR5CPUInfo info;
 
     ret = Sciserver_tirtosInitPrms_Init(&appPrms);
 
@@ -350,7 +349,7 @@ void Ipc_setupSciServer(void *arg0, void *arg1)
         ret = Sciserver_tirtosInit(&appPrms);
     }
 
-    SDL_armR5GetCpuID(&info);
+    CSL_armR5GetCpuID(&info);
     version_str = Sciserver_getVersionStr();
     rmpmhal_version_str = Sciserver_getRmPmHalVersionStr();
     App_printf("PHYTEC Custom DM Firmware!\n");
