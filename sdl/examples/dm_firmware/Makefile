@@ -3,6 +3,8 @@ include $(sdl_PATH)/Rules.make
 BUILD_OS_TYPE=freertos
 APP_NAME = dm_firmware
 
+BUILD_CORE = mcu1_0
+
 #Path for including common files
 IPC_COMMON_PATH = common
 

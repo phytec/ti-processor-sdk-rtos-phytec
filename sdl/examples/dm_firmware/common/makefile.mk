@@ -40,7 +40,7 @@ ifeq ($(BUILD_OS_TYPE), freertos)
   COMP_LIST_COMMON =  $(PDK_COMMON_FREERTOS_COMP)
   COMP_LIST_COMMON += ipc
   ifeq ($(SOC),$(filter $(SOC), j721e j7200 j721s2 j784s4))
-    ifeq ($(CORE),mcu1_0)
+    ifeq ($(BUILD_CORE), mcu1_0)
       COMP_LIST_COMMON += sciserver_tirtos
     endif
   endif
@@ -59,11 +59,11 @@ ifeq ($(BUILD_OS_TYPE), freertos)
     INCDIR += $(IPC_COMMON_PATH)/$(SOC)/$(BUILD_OS_TYPE)/
     SRCS_COMMON += c7x_mmu.c
   endif
-  EXTERNAL_LNKCMD_FILE_LOCAL = $(PDK_INSTALL_PATH)/../../sdl/examples/dm_firmware/common/$(SOC)/$(BUILD_OS_TYPE)/linker_$(ISA)_$(CORE)_$(BUILD_OS_TYPE).lds
+  EXTERNAL_LNKCMD_FILE_LOCAL = $(PDK_INSTALL_PATH)/../../sdl/examples/dm_firmware/common/$(SOC)/$(BUILD_OS_TYPE)/linker_$(ISA)_$(BUILD_CORE)_$(BUILD_OS_TYPE).lds
   APPEND_LNKCMD_FILE += $(PDK_INSTALL_PATH)/../../sdl/examples/dm_firmware/common/$(SOC)/$(BUILD_OS_TYPE)/memory_map_ddr.cmd
   ifeq ($(ECHO_TEST_BTCM), 1)
     ifeq ($(ISA), r5f)
-      EXTERNAL_LNKCMD_FILE_LOCAL = $(PDK_INSTALL_PATH)/../../sdl/examples/dm_firmware/common/$(SOC)/$(BUILD_OS_TYPE)/linker_$(ISA)_$(CORE)_btcm_$(BUILD_OS_TYPE).lds
+      EXTERNAL_LNKCMD_FILE_LOCAL = $(PDK_INSTALL_PATH)/../../sdl/examples/dm_firmware/common/$(SOC)/$(BUILD_OS_TYPE)/linker_$(ISA)_$(BUILD_CORE)_btcm_$(BUILD_OS_TYPE).lds
     endif
   endif
 endif
