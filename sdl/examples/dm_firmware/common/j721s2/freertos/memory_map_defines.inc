@@ -5,7 +5,7 @@
 #define DDR0_ALLOCATED_START    0xA0000000 /* DDR0_RESERVED_START + DDR0_RESERVED_SIZE */
 
 /*------------------------------------------------*/
-/* Size of various Memory Locations for each core */ 
+/* Size of various Memory Locations for each core */
 /*------------------------------------------------*/
 #define IPC_DATA_SIZE   0x00100000 /*  1MB */
 #define EXT_DATA_SIZE   0x00100000 /*  1MB */
@@ -16,11 +16,11 @@
 #define CORE_TOTAL_SIZE 0x01000000 /* 16MB (IPC_DATA_SIZE + R5F_MEM_TEXT_SIZE + R5F_MEM_DATA_SIZE + DDR_SPACE_SIZE) */
 
 /*-----------------------------*/
-/* Start address for each core */ 
+/* Start address for each core */
 /*-----------------------------*/
 
-#define MCU1_0_ALLOCATED_START   DDR0_ALLOCATED_START                     /* 0xA0000000 */  
-#define MCU1_1_ALLOCATED_START   MCU1_0_ALLOCATED_START + CORE_TOTAL_SIZE /* 0xA1000000 */ 
+#define MCU1_0_ALLOCATED_START   DDR0_ALLOCATED_START                     /* 0xA0000000 */
+#define MCU1_1_ALLOCATED_START   MCU1_0_ALLOCATED_START + CORE_TOTAL_SIZE /* 0xA1000000 */
 #define MCU2_0_ALLOCATED_START   MCU1_1_ALLOCATED_START + CORE_TOTAL_SIZE /* 0xA2000000 */
 #define MCU2_1_ALLOCATED_START   MCU2_0_ALLOCATED_START + CORE_TOTAL_SIZE /* 0xA3000000 */
 #define MCU3_0_ALLOCATED_START   MCU2_1_ALLOCATED_START + CORE_TOTAL_SIZE /* 0xA4000000 */
