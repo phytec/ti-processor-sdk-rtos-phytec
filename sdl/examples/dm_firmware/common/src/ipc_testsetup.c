@@ -569,7 +569,7 @@ int32_t Ipc_echo_test(void)
             TaskP_sleep(10);
         }
     }
-    //App_printf("Linux VDEV ready now .....\n");
+    App_printf("Linux VDEV ready now .....\n");
 #endif
 #endif
 
