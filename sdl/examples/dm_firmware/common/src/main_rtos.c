@@ -97,17 +97,17 @@
 /**< SCI Server Init Task stack size */
 #define APP_SCISERVER_INIT_TSK_STACK        (32U * 1024U)
 /* SCI Server Init Task Priority - must be higher than High priority Sciserver task */
-#define IPC_INIT_SCISERVER_TASK_PRI         (6)
+#define DMFW_INIT_SCISERVER_TASK_PRI         (6)
 #endif
 
 /* High Priority for SCI Server - must be higher than Low priority task */
-#define IPC_SETUP_SCISERVER_TASK_PRI_HIGH   (5)
+#define DMFW_SETUP_SCISERVER_TASK_PRI_HIGH   (5)
 /*
  * Low Priority for SCI Server - must be higher than IPC echo test tasks
  * to prevent delay in handling Sciserver requests when test is performing
  * multicore ping/pong.
  */
-#define IPC_SETUP_SCISERVER_TASK_PRI_LOW    (4)
+#define DMFW_SETUP_SCISERVER_TASK_PRI_LOW    (4)
 
 /* ========================================================================== */
 /*                         Structure Declarations                             */
@@ -122,7 +122,7 @@
 static void taskFxn(void* a0, void* a1);
 
 #if (defined (BUILD_MCU1_0) && (defined (SOC_J721E) || defined (SOC_J7200) || defined (SOC_J721S2) || defined (SOC_J784S4)))
-void Ipc_setupSciServer(void *arg0, void *arg1);
+void dmfw_setupSciServer(void *arg0, void *arg1);
 /**< Initialize SCI Server, to process RM/PM Requests by other cores */
 #endif
 
@@ -140,7 +140,7 @@ static uint8_t  gAppTskStackMain[APP_TSK_STACK_MAIN]
 __attribute__ ((aligned(8192)));
 #endif
 
-/* Variable to check if ipc_boardInit has completed or not*/
+/* Variable to check if dmfw_boardInit has completed or not*/
 uint8_t  gBoardinit=0;
 
 #if (defined (BUILD_MCU1_0) && (defined (SOC_J721E) || defined (SOC_J7200) || defined (SOC_J721S2) || defined (SOC_J784S4)))
@@ -160,7 +160,7 @@ extern Sciclient_ServiceHandle_t gSciclientHandle;
 /* ========================================================================== */
 
 
-void ipc_initSciclient()
+void dmfw_initSciclient()
 {
     int32_t ret = CSL_PASS;
     Sciclient_ConfigPrms_t        config;
@@ -205,7 +205,7 @@ void ipc_initSciclient()
     }
 }
 
-void ipc_boardInit()
+void dmfw_boardInit()
 {
     Board_initCfg           boardCfg;
 
@@ -266,14 +266,14 @@ static void taskFxn(void* a0, void* a1)
 {
 
     /* Initialize SCI Client - It must be called before board init */
-    ipc_initSciclient();
+    dmfw_initSciclient();
     /* IPC Board Init should be done only for MCU1_0 for Linux,
      * unconditionally for RTOS
      */
 #if defined(A72_LINUX_OS) && defined(BUILD_MCU1_0)
-    ipc_boardInit();
+    dmfw_boardInit();
 #elif !defined(A72_LINUX_OS)
-    ipc_boardInit();
+    dmfw_boardInit();
 #endif
 
 #if (defined (BUILD_MCU1_0) && (defined (SOC_J721E) || defined (SOC_J7200) || defined (SOC_J721S2) || defined (SOC_J784S4)))
@@ -282,11 +282,11 @@ static void taskFxn(void* a0, void* a1)
 
     /* Initialize SCI Client Server */
     TaskP_Params_init(&sciserverInitTaskParams);
-    sciserverInitTaskParams.priority     = IPC_INIT_SCISERVER_TASK_PRI;
+    sciserverInitTaskParams.priority     = DMFW_INIT_SCISERVER_TASK_PRI;
     sciserverInitTaskParams.stack        = gSciserverInitTskStack;
     sciserverInitTaskParams.stacksize    = sizeof (gSciserverInitTskStack);
 
-    sciserverInitTask = TaskP_create(&Ipc_setupSciServer, &sciserverInitTaskParams);
+    sciserverInitTask = TaskP_create(&dmfw_setupSciServer, &sciserverInitTaskParams);
     if(NULL == sciserverInitTask)
     {
         OS_stop();
@@ -328,7 +328,7 @@ void InitMmu(void)
 #endif
 
 #if (defined (BUILD_MCU1_0) && (defined (SOC_J721E) || defined (SOC_J7200) || defined (SOC_J721S2) || defined (SOC_J784S4)))
-void Ipc_setupSciServer(void *arg0, void *arg1)
+void dmfw_setupSciServer(void *arg0, void *arg1)
 {
 
     Sciserver_TirtosCfgPrms_t appPrms;
@@ -340,9 +340,9 @@ void Ipc_setupSciServer(void *arg0, void *arg1)
     ret = Sciserver_tirtosInitPrms_Init(&appPrms);
 
     appPrms.taskPriority[SCISERVER_TASK_USER_LO] =
-                                            IPC_SETUP_SCISERVER_TASK_PRI_LOW;
+                                            DMFW_SETUP_SCISERVER_TASK_PRI_LOW;
     appPrms.taskPriority[SCISERVER_TASK_USER_HI] =
-                                            IPC_SETUP_SCISERVER_TASK_PRI_HIGH;
+                                            DMFW_SETUP_SCISERVER_TASK_PRI_HIGH;
 
     if (ret == CSL_PASS)
     {
