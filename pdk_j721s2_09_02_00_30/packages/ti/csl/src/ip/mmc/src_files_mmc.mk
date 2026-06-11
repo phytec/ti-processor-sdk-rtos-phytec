@@ -22,7 +22,7 @@ INCDIR += . src/ip/mmc/V3 src/ip/mmc/V3/priv
 endif
 
 ifeq ($(SOC),$(filter $(SOC),j7200 j721e j721s2 j784s4 am64x am62x am62a am62px))
-PACKAGE_SRCS_COMMON += src/ip/mmc/V4
+PACKAGE_SRCS_COMMON += src/ip/mmc/V4 src/ip/mmc/V4/priv
 SRCS_COMMON += mmcsd.c mmcsdphy.c low_level_hw.c
 SRCDIR += src/ip/mmc/V4/priv
 INCDIR += . src/ip/mmc/V4 src/ip/mmc/V4/priv

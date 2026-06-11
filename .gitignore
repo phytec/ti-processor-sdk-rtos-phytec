@@ -19,12 +19,37 @@ sdl/**/*.o
 sdl/**/*.d
 sdl/binary/
 
+app_utils/lib/
 app_utils/out/
+
+c7x-mma-tidl/arm-tidl/tiovx_kernels/lib/
+c7x-mma-tidl/arm-tidl/tiovx_kernels/out/
+
 c7x-mma-tidl/out/
+
+imaging/lib/
+imaging/out/
+
+tiovx/lib/
+tiovx/out/
+
+video_io/lib/
+video_io/out/
+
+vision_apps/lib/
+vision_apps/out/
+
+vxlib/lib/
+vxlib/out/
 
 ti-perception-toolkit/lib/
 ti-perception-toolkit/out/
+
 tiadalg/lib/
 tiadalg/out/
+
+c7x-mma-tidl/ti_dl/lib/J721S2/dsp/algo/release/tidl_algo.lib
+c7x-mma-tidl/ti_dl/lib/J721S2/dsp/algo/release/tidl_custom.lib
+c7x-mma-tidl/ti_dl/lib/J721S2/dsp/algo/release/tidl_priv_algo.lib
 
 __pycache__/

@@ -27,9 +27,6 @@ ifeq ($(SOC), $(filter $(SOC), j721e j7200 j721s2 j784s4))
 endif
 
 PACKAGE_SRCS_COMMON = . ../../makefile ../../makefile.mk ../../pm_component.mk \
-                      ../../pmhal.h ../../pmlib.h \
-                      ../../docs/ReleaseNotes_PM_LLD.pdf ../../docs/Doxyfile \
-                      ../../docs/doxygen \
                       ../../include
 CFLAGS_LOCAL_COMMON = $(PDK_CFLAGS) $(PM_CFLAGS)
 
