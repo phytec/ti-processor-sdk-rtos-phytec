@@ -1177,6 +1177,12 @@ ifneq ($(drvi2c_LIB_LIST),)
   sdl_pdk_LIB_LIST += $(i2c_LIB_LIST)
 endif
 
+#include ipc
+-include $(PDK_IPC_COMP_PATH)/ipc_component.mk
+ifneq ($(ipc_LIB_LIST),)
+  sdl_pdk_LIB_LIST += $(ipc_LIB_LIST)
+endif
+
 #include osal
 -include $(PDK_OSAL_COMP_PATH)/osal_component.mk
 ifneq ($(osal_LIB_LIST),)
