@@ -5,6 +5,17 @@ APP_NAME = dm_firmware
 
 BUILD_CORE = mcu1_0
 
+ # also add 'csl sciclient_direct osal board uart ipc ...' here ?! Seems to work without
+INCLUDE_EXTERNAL_INTERFACES = pdk
+
+COMP_LIST_COMMON = sdl_api sdl_ip sdl_osal r5f_startup r5f_core
+
+EXT_LIB_LIST_COMMON += $(board_LIBPATH)/$(BOARD)/$(ISA_EXT)/$(PROFILE)/$(board_LIBNAME).$(LIBEXT)
+EXT_LIB_LIST_COMMON += $(sciclient_direct_LIBPATH)/$(BOARD)/$(BUILD_CORE)/$(PROFILE)/$(sciclient_direct_LIBNAME).$(LIBEXT)
+EXT_LIB_LIST_COMMON += $(rm_pm_hal_LIBPATH)/$(SOC)/$(BUILD_CORE)/$(PROFILE)/$(rm_pm_hal_LIBNAME).$(LIBEXT)
+EXT_LIB_LIST_COMMON += $(uart_LIBPATH)/$(BOARD)/$(ISA_EXT)/$(PROFILE)/$(uart_LIBNAME).$(LIBEXT)
+EXT_LIB_LIST_COMMON += $(i2c_LIBPATH)/$(SOC)/$(ISA_EXT)/$(PROFILE)/$(i2c_LIBNAME).$(LIBEXT)
+
 #Path for including common files
 IPC_COMMON_PATH = common
 

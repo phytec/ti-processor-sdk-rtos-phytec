@@ -37,13 +37,19 @@ ifeq ($(BUILD_OS_TYPE), baremetal)
 endif
 
 ifeq ($(BUILD_OS_TYPE), freertos)
-  COMP_LIST_COMMON =  $(PDK_COMMON_FREERTOS_COMP)
-  COMP_LIST_COMMON += ipc
+  EXT_LIB_LIST_COMMON += $(osal_freertos_LIBPATH)/$(SOC)/$(ISA_EXT)/$(PROFILE)/$(osal_freertos_LIBNAME).$(LIBEXT)
+  EXT_LIB_LIST_COMMON += $(freertos_LIBPATH)/$(SOC)/$(BUILD_CORE)/$(PROFILE)/$(freertos_LIBNAME).$(LIBEXT)
+  EXT_LIB_LIST_COMMON += $(csl_init_LIBPATH)/$(SOC)/$(ISA_EXT)/$(PROFILE)/$(csl_init_LIBNAME).$(LIBEXT)
+  # PDK_COMMON_FREERTOS_COMP only contained += csl_intc ..
+  EXT_LIB_LIST_COMMON += $(csl_LIBPATH)/$(SOC)/$(ISA_EXT)/$(PROFILE)/$(csl_LIBNAME).$(LIBEXT)
+  EXT_LIB_LIST_COMMON += $(ipc_LIBPATH)/$(SOC)/$(BUILD_CORE)/$(PROFILE)/$(ipc_LIBNAME).$(LIBEXT)
+
   ifeq ($(SOC),$(filter $(SOC), j721e j7200 j721s2 j784s4))
     ifeq ($(BUILD_CORE), mcu1_0)
-      COMP_LIST_COMMON += sciserver_tirtos
+      EXT_LIB_LIST_COMMON += $(sciserver_tirtos_LIBPATH)/$(SOC)/$(BUILD_CORE)/$(PROFILE)/$(sciserver_tirtos_LIBNAME).$(LIBEXT)
     endif
   endif
+
   SRCS_COMMON += main_rtos.c ipc_testsetup.c
   SRCS_COMMON += ipc_trace.c
   CFLAGS_LOCAL_COMMON += -DFREERTOS
