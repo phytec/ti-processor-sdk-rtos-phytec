@@ -20,9 +20,10 @@ EXT_LIB_LIST_COMMON += $(uart_LIBPATH)/$(BOARD)/$(ISA_EXT)/$(PROFILE)/$(uart_LIB
 EXT_LIB_LIST_COMMON += $(i2c_LIBPATH)/$(SOC)/$(ISA_EXT)/$(PROFILE)/$(i2c_LIBNAME).$(LIBEXT)
 
 #Path for including common files
-IPC_COMMON_PATH = common
+DMFW_COMMON_PATH = common
 
-INCDIR = $(IPC_COMMON_PATH)/$(SOC)/$(BUILD_OS_TYPE)/
+INCDIR = $(DMFW_COMMON_PATH)/$(SOC)/$(BUILD_OS_TYPE)/
+SRCDIR = .
 SRCS_COMMON = ipc_echo_test.c
 
 PACKAGE_SRCS_COMMON = .
@@ -30,4 +31,4 @@ ECHO_TEST_BTCM = 1
 CFLAGS_LOCAL_COMMON = $(SDL_CFLAGS) -DA72_LINUX_OS #-DA72_LINUX_OS_IPC_ATTACH
 
 $(info #Building 'dm_firmware' for $(SOC) / $(BUILD_CORE) / $(BOARD) / $(BUILD_OS_TYPE))
-include $(IPC_COMMON_PATH)/makefile.mk
+include $(DMFW_COMMON_PATH)/makefile.mk
