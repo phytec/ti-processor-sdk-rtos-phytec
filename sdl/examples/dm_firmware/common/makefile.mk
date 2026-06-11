@@ -46,6 +46,7 @@ ifeq ($(BUILD_OS_TYPE), freertos)
 
   ifeq ($(SOC),$(filter $(SOC), j721e j7200 j721s2 j784s4))
     ifeq ($(BUILD_CORE), mcu1_0)
+      CFLAGS_LOCAL_COMMON += -DBUILD_MCU1_0
       EXT_LIB_LIST_COMMON += $(sciserver_tirtos_LIBPATH)/$(SOC)/$(BUILD_CORE)/$(PROFILE)/$(sciserver_tirtos_LIBNAME).$(LIBEXT)
     endif
   endif
@@ -68,6 +69,7 @@ ifeq ($(BUILD_OS_TYPE), freertos)
   EXTERNAL_LNKCMD_FILE_LOCAL = $(sdl_PATH)/examples/dm_firmware/common/$(SOC)/$(BUILD_OS_TYPE)/linker_$(ISA)_$(BUILD_CORE)_$(BUILD_OS_TYPE).lds
   APPEND_LNKCMD_FILE += $(sdl_PATH)/examples/dm_firmware/common/$(SOC)/$(BUILD_OS_TYPE)/memory_map_ddr.cmd
   ifeq ($(ECHO_TEST_BTCM), 1)
+    CFLAGS_LOCAL_COMMON += -DECHO_TEST_BTCM
     ifeq ($(ISA), r5f)
       EXTERNAL_LNKCMD_FILE_LOCAL = $(sdl_PATH)/examples/dm_firmware/common/$(SOC)/$(BUILD_OS_TYPE)/linker_$(ISA)_$(BUILD_CORE)_btcm_$(BUILD_OS_TYPE).lds
     endif

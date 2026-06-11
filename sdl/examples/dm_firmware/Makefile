@@ -1,9 +1,12 @@
 include $(sdl_PATH)/Rules.make
 
-BUILD_OS_TYPE=freertos
 APP_NAME = dm_firmware
 
-BUILD_CORE = mcu1_0
+# must be set at call as Rules.make does already use parts of it... FIXME add checks?!
+#BUILD_OS_TYPE = freertos
+#SOC = j721s2
+#BOARD = phyboard_izar
+#BUILD_CORE = mcu1_0
 
  # also add 'csl sciclient_direct osal board uart ipc ...' here ?! Seems to work without
 INCLUDE_EXTERNAL_INTERFACES = pdk
@@ -24,6 +27,7 @@ SRCS_COMMON = ipc_echo_test.c
 
 PACKAGE_SRCS_COMMON = .
 ECHO_TEST_BTCM = 1
-CFLAGS_LOCAL_COMMON = -DA72_LINUX_OS  -DECHO_TEST_BTCM #-DA72_LINUX_OS_IPC_ATTACH
+CFLAGS_LOCAL_COMMON = $(SDL_CFLAGS) -DA72_LINUX_OS #-DA72_LINUX_OS_IPC_ATTACH
 
+$(info #Building 'dm_firmware' for $(SOC) / $(BUILD_CORE) / $(BOARD) / $(BUILD_OS_TYPE))
 include $(IPC_COMMON_PATH)/makefile.mk
