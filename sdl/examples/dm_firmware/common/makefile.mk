@@ -22,7 +22,7 @@ ifeq ($(BUILD_OS_TYPE), freertos)
 
   ifeq ($(SOC),$(filter $(SOC), j721e j7200 j721s2 j784s4))
     ifeq ($(BUILD_CORE), mcu1_0)
-      CFLAGS_LOCAL_COMMON += -DBUILD_MCU1_0
+      CFLAGS_LOCAL_COMMON += -DBUILD_MCU1_0 -DENABLE_UART_PRINT
       EXT_LIB_LIST_COMMON += $(sciserver_tirtos_LIBPATH)/$(SOC)/$(BUILD_CORE)/$(PROFILE)/$(sciserver_tirtos_LIBNAME).$(LIBEXT)
     endif
   endif
