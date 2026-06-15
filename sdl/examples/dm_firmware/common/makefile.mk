@@ -12,30 +12,6 @@ INCLUDE_EXTERNAL_INTERFACES = pdk
 PACKAGE_SRCS_COMMON += $(DMFW_COMMON_PATH)/src $(DMFW_COMMON_PATH)/$(SOC) $(DMFW_COMMON_PATH)/makefile.mk
 
 # List all the components required by the application
-ifeq ($(BUILD_OS_TYPE), baremetal)
-  COMP_LIST_COMMON =  $(PDK_COMMON_BAREMETAL_COMP)
-  SRCS_COMMON += main_baremetal.c ipc_testsetup_baremetal.c
-  SRCS_COMMON += ipc_trace.c
-  COMP_LIST_COMMON += ipc_baremetal
-  CFLAGS_LOCAL_COMMON += -DIPC_EXCLUDE_CTRL_TASKS -DBAREMETAL
-  ifeq ($(ISA),$(filter $(ISA), a53 a72))
-    LNKFLAGS_LOCAL_$(CORE) += --entry Entry
-  endif
-  ifeq ($(ISA), r5f)
-	  SRCS_COMMON += r5f_mpu_$(SOC)_default.c
-  endif
-  ifeq ($(SOC),$(filter $(SOC), j721e j7200 j721s2 j784s4))
-    EXTERNAL_LNKCMD_FILE_LOCAL = $(PDK_INSTALL_PATH)/../../sdl/examples/dm_firmware/common/$(SOC)/linker_$(ISA)_$(CORE).lds
-    ifeq ($(ECHO_TEST_BTCM), 1)
-      ifeq ($(ISA), r5f)
-        ifeq ($(CORE),mcu1_0)
-	        EXTERNAL_LNKCMD_FILE_LOCAL = $(PDK_INSTALL_PATH)/../../sdl/examples/dm_firmware/common/$(SOC)/linker_$(ISA)_$(CORE)_btcm.lds
-        endif
-      endif
-    endif
-  endif
-endif
-
 ifeq ($(BUILD_OS_TYPE), freertos)
   EXT_LIB_LIST_COMMON += $(osal_freertos_LIBPATH)/$(SOC)/$(ISA_EXT)/$(PROFILE)/$(osal_freertos_LIBNAME).$(LIBEXT)
   EXT_LIB_LIST_COMMON += $(freertos_LIBPATH)/$(SOC)/$(BUILD_CORE)/$(PROFILE)/$(freertos_LIBNAME).$(LIBEXT)
