@@ -29,6 +29,7 @@
 #                             "no" or "" or if this variable is not defined: means
 #                             this module has no core dependent code and hence
 #                             the obj/libs are not kept under <core> dir.
+# <mod>_BOARD_DEPENDENCY    - FIXME undocumented !!!
 # <mod>_APP_STAGE_FILES     - List of source files that belongs to the module
 #                             <mod>, but that needs to be compiled at application
 #                             build stage (in the context of the app). This is
@@ -1110,12 +1111,11 @@ export dcc_app_uc8_SBL_APPIMAGEGEN = yes
 
 dm_firmware_RELPATH = examples/dm_firmware
 dm_firmware_PATH = $(sdl_PATH)/$(dm_firmware_RELPATH)
-dm_firmware_PLATFORM_DEPENDENCY = yes
-dm_firmware_SOCLIST = $(DEFAULT_SOCLIST)
 export dm_firmware_OSLIST = freertos
-export dm_firmware_SOCLIST
-export dm_firmware_PLATFORM_DEPENDENCY
+export dm_firmware_SOCLIST = $(DEFAULT_SOCLIST)
 export dm_firmware_APPIMAGEGEN = no
+export dm_firmware_CORE_DEPENDENCY = yes
+export dm_firmware_PLATFORM_DEPENDENCY = yes
 
 cpu_app_COMP_LIST = cpu_app
 cpu_app_RELPATH =examples/cpu
