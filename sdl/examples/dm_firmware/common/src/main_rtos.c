@@ -90,8 +90,9 @@
 /*                           Macros & Typedefs                                */
 /* ========================================================================== */
 
-#define APP_TSK_STACK_MAIN              (32U * 1024U)
+#define IPC_TASK_STACK_SIZE              (32U * 1024U)
 /**< Test application stack size */
+#define IPC_TASK_PRIO                   2
 
 #if (defined (BUILD_MCU1_0) && (defined (SOC_J721E) || defined (SOC_J7200) || defined (SOC_J721S2) || defined (SOC_J784S4)))
 /**< SCI Server Init Task stack size */
@@ -119,7 +120,7 @@
 /*                          Function Declarations                             */
 /* ========================================================================== */
 
-static void taskFxn(void* a0, void* a1);
+static void ipcTaskFxn(void* a0, void* a1);
 
 #if (defined (BUILD_MCU1_0) && (defined (SOC_J721E) || defined (SOC_J7200) || defined (SOC_J721S2) || defined (SOC_J784S4)))
 void dmfw_setupSciServer(void *arg0, void *arg1);
@@ -133,10 +134,10 @@ void dmfw_setupSciServer(void *arg0, void *arg1);
 /* Test application stack */
 /* For SafeRTOS on R5F with FFI Support, task stack should be aligned to the stack size */
 #if defined(SAFERTOS) && defined (BUILD_MCU)
-static uint8_t  gAppTskStackMain[APP_TSK_STACK_MAIN]
-__attribute__ ((aligned(APP_TSK_STACK_MAIN)));
+static uint8_t  gIpcTaskStackMain[IPC_TASK_STACK_SIZE]
+__attribute__ ((aligned(IPC_TASK_STACK_SIZE)));
 #else
-static uint8_t  gAppTskStackMain[APP_TSK_STACK_MAIN]
+static uint8_t  gIpcTaskStackMain[IPC_TASK_STACK_SIZE]
 __attribute__ ((aligned(8192)));
 #endif
 
@@ -225,8 +226,8 @@ void dmfw_boardInit()
 
 int main(void)
 {
-    TaskP_Handle task;
-    TaskP_Params taskParams;
+    TaskP_Handle ipcTask;
+    TaskP_Params ipcTaskParams;
 
 
 
@@ -246,14 +247,14 @@ int main(void)
     OS_init();
 
     /* Initialize the task params */
-    TaskP_Params_init(&taskParams);
+    TaskP_Params_init(&ipcTaskParams);
     /* Set the task priority higher than the default priority (1) */
-    taskParams.priority = 2;
-    taskParams.stack        = gAppTskStackMain;
-    taskParams.stacksize    = sizeof (gAppTskStackMain);
+    ipcTaskParams.priority     = IPC_TASK_PRIO;
+    ipcTaskParams.stack        = gIpcTaskStackMain;
+    ipcTaskParams.stacksize    = sizeof (gIpcTaskStackMain);
 
-    task = TaskP_create(&taskFxn, &taskParams);
-    if(NULL == task)
+    ipcTask = TaskP_create(&ipcTaskFxn, &ipcTaskParams);
+    if(NULL == ipcTask)
     {
         OS_stop();
     }
@@ -262,7 +263,7 @@ int main(void)
     return(0);
 }
 
-static void taskFxn(void* a0, void* a1)
+static void ipcTaskFxn(void* a0, void* a1)
 {
 
     /* Initialize SCI Client - It must be called before board init */
