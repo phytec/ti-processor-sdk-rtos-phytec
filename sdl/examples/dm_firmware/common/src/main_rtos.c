@@ -94,13 +94,6 @@
 /**< Test application stack size */
 #define IPC_TASK_PRIO                   2
 
-#if (defined (BUILD_MCU1_0) && (defined (SOC_J721E) || defined (SOC_J7200) || defined (SOC_J721S2) || defined (SOC_J784S4)))
-/**< SCI Server Init Task stack size */
-#define APP_SCISERVER_INIT_TSK_STACK        (32U * 1024U)
-/* SCI Server Init Task Priority - must be higher than High priority Sciserver task */
-#define DMFW_INIT_SCISERVER_TASK_PRI         (6)
-#endif
-
 /* High Priority for SCI Server - must be higher than Low priority task */
 #define DMFW_SETUP_SCISERVER_TASK_PRI_HIGH   (5)
 /*
@@ -123,7 +116,7 @@
 static void ipcTaskFxn(void* a0, void* a1);
 
 #if (defined (BUILD_MCU1_0) && (defined (SOC_J721E) || defined (SOC_J7200) || defined (SOC_J721S2) || defined (SOC_J784S4)))
-void dmfw_setupSciServer(void *arg0, void *arg1);
+void dmfw_setupSciServer(void);
 /**< Initialize SCI Server, to process RM/PM Requests by other cores */
 #endif
 
@@ -145,14 +138,6 @@ __attribute__ ((aligned(8192)));
 uint8_t  gBoardinit=0;
 
 #if (defined (BUILD_MCU1_0) && (defined (SOC_J721E) || defined (SOC_J7200) || defined (SOC_J721S2) || defined (SOC_J784S4)))
-/* Sciserver Init TAsk stack */
-#if defined(SAFERTOS)
-static uint8_t  gSciserverInitTskStack[APP_SCISERVER_INIT_TSK_STACK]
-__attribute__ ((aligned(APP_SCISERVER_INIT_TSK_STACK)));
-#else
-static uint8_t  gSciserverInitTskStack[APP_SCISERVER_INIT_TSK_STACK]
-__attribute__ ((aligned(8192)));
-#endif
 extern Sciclient_ServiceHandle_t gSciclientHandle;
 #endif
 
@@ -243,6 +228,23 @@ int main(void)
     memcpy((void *)0x0, (void *)_axSafeRTOSresetVectors, 0x40);
 #endif
 
+    /* Initialize SCI Client - It must be called before board init */
+    dmfw_initSciclient();
+
+    /* Initialize SCI Client Server */
+    #if (defined (BUILD_MCU1_0) && (defined (SOC_J721E) || defined (SOC_J7200) || defined (SOC_J721S2) || defined (SOC_J784S4)))
+        dmfw_setupSciServer();
+    #endif
+
+    /* IPC Board Init should be done only for MCU1_0 for Linux,
+     * unconditionally for RTOS
+     */
+#if defined(A72_LINUX_OS) && defined(BUILD_MCU1_0)
+    dmfw_boardInit();
+#elif !defined(A72_LINUX_OS)
+    dmfw_boardInit();
+#endif
+
     /*  This should be called before any other OS calls (like Task creation, OS_start, etc..) */
     OS_init();
 
@@ -265,34 +267,6 @@ int main(void)
 
 static void ipcTaskFxn(void* a0, void* a1)
 {
-
-    /* Initialize SCI Client - It must be called before board init */
-    dmfw_initSciclient();
-    /* IPC Board Init should be done only for MCU1_0 for Linux,
-     * unconditionally for RTOS
-     */
-#if defined(A72_LINUX_OS) && defined(BUILD_MCU1_0)
-    dmfw_boardInit();
-#elif !defined(A72_LINUX_OS)
-    dmfw_boardInit();
-#endif
-
-#if (defined (BUILD_MCU1_0) && (defined (SOC_J721E) || defined (SOC_J7200) || defined (SOC_J721S2) || defined (SOC_J784S4)))
-    TaskP_Handle sciserverInitTask;
-    TaskP_Params sciserverInitTaskParams;
-
-    /* Initialize SCI Client Server */
-    TaskP_Params_init(&sciserverInitTaskParams);
-    sciserverInitTaskParams.priority     = DMFW_INIT_SCISERVER_TASK_PRI;
-    sciserverInitTaskParams.stack        = gSciserverInitTskStack;
-    sciserverInitTaskParams.stacksize    = sizeof (gSciserverInitTskStack);
-
-    sciserverInitTask = TaskP_create(&dmfw_setupSciServer, &sciserverInitTaskParams);
-    if(NULL == sciserverInitTask)
-    {
-        OS_stop();
-    }
-#endif
 
 #if defined (_TMS320C6X)
 #if defined (FREERTOS) || defined (SAFERTOS)
@@ -329,7 +303,7 @@ void InitMmu(void)
 #endif
 
 #if (defined (BUILD_MCU1_0) && (defined (SOC_J721E) || defined (SOC_J7200) || defined (SOC_J721S2) || defined (SOC_J784S4)))
-void dmfw_setupSciServer(void *arg0, void *arg1)
+void dmfw_setupSciServer(void)
 {
 
     Sciserver_TirtosCfgPrms_t appPrms;
