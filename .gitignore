@@ -29,6 +29,7 @@ c7x-mma-tidl/out/
 
 imaging/lib/
 imaging/out/
+imaging/**/dcc_bins/
 
 tiovx/lib/
 tiovx/out/
