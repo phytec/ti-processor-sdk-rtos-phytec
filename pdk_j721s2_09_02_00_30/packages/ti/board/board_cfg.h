@@ -173,6 +173,10 @@ typedef int32_t Board_STATUS;
 #elif defined (awr294x_evm)
 #include <ti/board/src/awr294x_evm/include/board_cfg.h>
 
+#else
+
+#error "Using <ti/board/board_cfg.h> requires a BOARD define to be set!"
+
 #endif
 
 #ifdef __cplusplus
