@@ -1116,6 +1116,7 @@ export dm_firmware_SOCLIST = $(DEFAULT_SOCLIST)
 export dm_firmware_APPIMAGEGEN = no
 export dm_firmware_CORE_DEPENDENCY = yes
 export dm_firmware_PLATFORM_DEPENDENCY = yes
+export dm_firmware_BOARD_DEPENDENCY = yes
 
 cpu_app_COMP_LIST = cpu_app
 cpu_app_RELPATH =examples/cpu
@@ -1275,6 +1276,8 @@ ifeq ($(SOC),$(filter $(SOC),j784s4))
   CFLAGS_GLOBAL_j784s4 += -DSOC_J784S4
   CFLAGS_GLOBAL_j784s4 += -Dmcu1_0
 endif
+
+# FIXME define CFLAGS_GLOBAL_to add -D$(BOARD)
 
 export SDL_LIBS
 export SDL_TEST_LIBS
