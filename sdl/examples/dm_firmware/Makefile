@@ -28,7 +28,9 @@ SRCS_COMMON = ipc_echo_test.c
 
 PACKAGE_SRCS_COMMON = .
 ECHO_TEST_BTCM = 1
-CFLAGS_LOCAL_COMMON = $(SDL_CFLAGS) -DA72_LINUX_OS #-DA72_LINUX_OS_IPC_ATTACH
+# FIXME there is as -Dphyboard_izar missing here !!! Otherwise the board_cfg.h includes are not resolved correctly!!! 
+# (dm_firmware_BOARD_DEPENDENCY does not help !?) -> this should be done automatically by setting 'dm_firmware_BOARD_DEPENDENCY'
+CFLAGS_LOCAL_COMMON = $(SDL_CFLAGS) -DA72_LINUX_OS -D$(BOARD)=$(BOARD) #-DA72_LINUX_OS_IPC_ATTACH
 
 $(info #Building 'dm_firmware' for $(SOC) / $(BUILD_CORE) / $(BOARD) / $(BUILD_OS_TYPE))
 include $(DMFW_COMMON_PATH)/makefile.mk
