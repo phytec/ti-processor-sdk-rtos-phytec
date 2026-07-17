@@ -117,15 +117,9 @@ extern "C" {
 /* I2C address for External RTC */
 #define BOARD_I2C_EXT_RTC_ADDR                          (0x6FU)
 
-/* Number of LEDS connected to IO expander on CP board */
-#define BOARD_GPIO_LED_NUM                              (2U)
-
 /* User LED Pin Details */
-#define BOARD_I2C_USER_LED_INSTANCE                     (0U)
-
 #define BOARD_USER_LED1                                 (6U)
 #define BOARD_USER_LED2                                 (7U)
-#define BOARD_USER_LED_IOEXP_PORT                       (2U)
 
 #define BOARD_ICSS_EMAC_PORT_MAX                        (1U)
 #define BOARD_CPSW9G_EMAC_PORT_MAX                      (0U)
@@ -140,18 +134,9 @@ extern "C" {
 #define BOARD_ICSS1_EMAC_PHY0_ADDR                      (0xCu)
 #define BOARD_ICSS1_EMAC_PHY1_ADDR                      (0xFu)
 
-
-/* PRG0_RGMII_RESETn */
-#define BOARD_GPIO_IOEXP_ICSS0_EMAC_RST_PORT_NUM        (0U) /* GPIO0_61 */
-#define BOARD_GPIO_IOEXP_ICSS0_EMAC_RST_PIN_NUM         (0x3DU)
-
 /* PRG0_RGMII_INTn */
 #define BOARD_GPIO_ICSS0_EMAC_INT_PORT_NUM              (1U) /* GPIO1_23 */
 #define BOARD_GPIO_ICSS0_EMAC_INT_PIN_NUM               (0x17U)
-
-/* PRG1_RGMII_RESETn */
-#define BOARD_GPIO_IOEXP_ICSS1_EMAC_RST_PORT_NUM        (0U) /* GPIO0_62 */
-#define BOARD_GPIO_IOEXP_ICSS1_EMAC_RST_PIN_NUM         (0x3EU)
 
 /* PRG1_RGMII_INTn */
 #define BOARD_GPIO_ICSS1_EMAC_INT_PORT_NUM              (1U) /* GPIO1_24 */
@@ -163,10 +148,6 @@ extern "C" {
 /* MAIN EMAC PHY MDIO address */
 #define BOARD_MAIN_EMAC_PHY_ADDR                        (0U)
 
-/* HDMI IO Exp instances */
-#define BOARD_HDMI_IO_EXP_INSTANCE                      (1U)
-#define BOARD_HDMI_IO_SLAVE_ADDR                        (0x21U)
-
 /* MCU EMAC MAX REG DUMP */
 #define BOARD_MCU_EMAC_REG_DUMP_MAX                     ((16U))
 
@@ -177,10 +158,6 @@ extern "C" {
 /* ICSS EMAC PHY register address definitions for reading strap values */
 #define BOARD_ICSS_EMAC_STRAP_STS1_ADDR                (0x6EU)
 #define BOARD_ICSS_EMAC_STRAP_STS2_ADDR                (0x6FU)
-
-/* MCU_ETH1_RESETn */
-#define BOARD_GPIO_IOEXP_MCU_EMAC_RST_PORT_NUM          (0U) /* WKUP_GPIO0_3 */
-#define BOARD_GPIO_IOEXP_MCU_EMAC_RST_PIN_NUM           (0x03U)
 
 /* MCU_ETH1_INTn */
 #define BOARD_GPIO_MCU_EMAC_INT_PORT_NUM                (0U) /* WKUP_GPIO0_55 */
@@ -265,13 +242,6 @@ extern "C" {
 #define BOARD_GPIO_ICSS0_EMAC_LED3_PORT_NUM             (0)
 #define BOARD_GPIO_ICSS0_EMAC_LED3_PIN_NUM              (0)
 
-#define BOARD_GPIO_IOEXP_SPI_RST_PORT_NUM               (0)
-#define BOARD_GPIO_IOEXP_SPI_RST_PIN_NUM                (0)
-
-/* TEST_GPIO1 */
-#define BOARD_GPIO_IOEXP_TEST_PORT_NUM                  (0)
-#define BOARD_GPIO_IOEXP_TEST_PIN_NUM                   (0)
-
 /* PRG1_ETH1_LED_LINK */
 #define BOARD_GPIO_ICSS1_EMAC_PHY0_LED_LINK_PORT_NUM    (0)
 #define BOARD_GPIO_ICSS1_EMAC_PHY0_LED_LINK_PIN_NUM     (0)
@@ -296,15 +266,9 @@ extern "C" {
 #define BOARD_GPIO_ICSS1_EMAC_LED3_PORT_NUM             (0)
 #define BOARD_GPIO_ICSS1_EMAC_LED3_PIN_NUM              (0)
 
-#define BOARD_GPIO_IOEXP_OSPI_RST_PORT_NUM              (0)
-#define BOARD_GPIO_IOEXP_OSPI_RST_PIN_NUM               (0)
-
 /* GPIO port & pin numbers for  MMC reset */
 #define GPIO_MMC_SDCD_PORT_NUM                          (0)
 #define GPIO_MMC_SDCD_PIN_NUM                           (0)
-
-#define BOARD_GPIO_IOEXP_EMMC_RST_PORT_NUM              (0x00)
-#define BOARD_GPIO_IOEXP_EMMC_RST_PIN_NUM               (0x00)
 
 #define BOARD_I2C_TOUCH_INSTANCE                        (0)
 #define BOARD_I2C_TOUCH_SLAVE_ADDR                      (0)
