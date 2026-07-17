@@ -77,22 +77,6 @@ extern "C" {
 /* ICSSG UART instance number */
 #define BOARD_ICSSG_UART_INSTANCE                       (4U)
 
-/* INFO and GESI board ID EEPROM address */
-#define BOARD_EXP_CON_BOARDID_EEPROM_ADDRS              (0x52U)
-
-/* I2C instance connected to EEPROM - WKUP I2C0 */
-#define BOARD_I2C_EEPROM_INSTANCE                       (0U)
-
-/* I2C instance for BOOT EEPROM */
-#define BOARD_I2C_BOOT_EEPROM_INSTANCE                  (0U)
-
-/* I2C address for Boot EEPROM */
-#define BOARD_I2C_BOOT_EEPROM_ADDR                      (0x50U)
-#define BOARD_I2C_BOOT_EEPROM_ADDR2                     (0x51U)
-
-/* I2C address for Board Id EEPROM */
-#define BOARD_I2C_EEPROM_ADDR                           (0x50U)
-
 /* QSPI instance number */
 #define BOARD_SPI_NOR_INSTANCE                          (1U)
 
@@ -228,22 +212,6 @@ extern "C" {
 /* Enable NAND flash driver */
 #define BOARD_NAND_FLASH_IN
 
-/* Maximum possible buffer length */
-#define BOARD_EEPROM_MAX_BUFF_LENGTH                    (197U)
-
-/* EEPROM board ID information */
-#define BOARD_EEPROM_HEADER_FIELD_SIZE                  (7U)
-#define BOARD_EEPROM_TYPE_SIZE                          (1U)
-#define BOARD_EEPROM_STRUCT_LENGTH_SIZE                 (2U)
-#define BOARD_EEPROM_MAGIC_NUMBER                       (0xEE3355AAU)
-
-#define BOARD_BOARD_FIELD_TYPE                          (0x10)
-#define BOARD_DDR_FIELD_TYPE                            (0x11)
-#define BOARD_MACINFO_FIELD_TYPE                        (0x13)
-#define BOARD_ENDLIST                                   (0xFEU)
-
-#define BOARD_EEPROM_HEADER_ADDR                        (0U)
-
 /* PinMux data to be programmed to configure a pin to be a GPIO */
 #define PINMUX_GPIO_CFG                                 (0x00050007U)
 
@@ -268,39 +236,6 @@ extern "C" {
 /* Clock frequency for UART module */
 #define BOARD_UART_CLK_MAIN      (48000000U)
 #define BOARD_UART_CLK_WKUP      (96000000U)
-
-/* Board detect ID for GESI */
-#define BOARD_ID_GESI            (0x0)
-/* Board detect ID for Fusion2 */
-#define BOARD_ID_FUSION2         (0x1U)
-/* Board detect ID for dual PMIC SoM */
-#define BOARD_ID_SOM             (0x2U)
-/* Board detect ID for CP Board */
-#define BOARD_ID_CP              (0x3U)
-
-/* Maximum number of supporting board ID */
-#define BOARD_ID_MAX_BOARDS      (0x4U)
-
-#define BOARD_EEPROM_HEADER_LENGTH                      (4U)
-#define BOARD_EEPROM_BOARD_NAME_LENGTH                  (8U)
-#define BOARD_EEPROM_VERSION_LENGTH                     (4U)
-#define BOARD_EEPROM_SERIAL_NO_LENGTH                   (12U)
-#define BOARD_EEPROM_CONFIG_LENGTH                      (32U)
-
-#define BOARD_EEPROM_BOARD_NAME_ADDR                    (BOARD_EEPROM_HEADER_ADDR + BOARD_EEPROM_HEADER_LENGTH)
-#define BOARD_EEPROM_VERSION_ADDR                       (BOARD_EEPROM_BOARD_NAME_ADDR + BOARD_EEPROM_BOARD_NAME_LENGTH)
-#define BOARD_EEPROM_SERIAL_NO_ADDR                     (BOARD_EEPROM_VERSION_ADDR + BOARD_EEPROM_VERSION_LENGTH)
-#define BOARD_EEPROM_CONFIG_ADDR                        (BOARD_EEPROM_SERIAL_NO_ADDR + BOARD_EEPROM_SERIAL_NO_LENGTH)
-
-#define BOARD_SOM_EEPROM_SLAVE_ADDR                   (0x50U)
-#define BOARD_CP_EEPROM_SLAVE_ADDR                    (0x51U)
-#define BOARD_ENET_EEPROM_SLAVE_ADDR                  (0x54U)
-#define BOARD_GESI_EEPROM_SLAVE_ADDR                  (0x52U)
-#define BOARD_CSI2_EEPROM_SLAVE_ADDR                  (0x52U)
-#define BOARD_DISPLAY_EEPROM_SLAVE_ADDR               (0x00U) //J7ES_TBD: Need to update salve addr when board design is complete
-
-#define BOARD_COMMON_EEPROM_I2C_INST                  (0)
-#define BOARD_CSI2_EEPROM_I2C_INST                    (6)
 
 #define BOARD_MMC_VOLTAGESWITCH_FN      Board_mmc_voltageSwitchFxn
 
