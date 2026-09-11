@@ -231,11 +231,6 @@ int main(void)
     /* Initialize SCI Client - It must be called before board init */
     dmfw_initSciclient();
 
-    /* Initialize SCI Client Server */
-    #if (defined (BUILD_MCU1_0) && (defined (SOC_J721E) || defined (SOC_J7200) || defined (SOC_J721S2) || defined (SOC_J784S4)))
-        dmfw_setupSciServer();
-    #endif
-
     /* IPC Board Init should be done only for MCU1_0 for Linux,
      * unconditionally for RTOS
      */
@@ -244,6 +239,11 @@ int main(void)
 #elif !defined(A72_LINUX_OS)
     dmfw_boardInit();
 #endif
+
+    /* Initialize SCI Client Server */
+    #if (defined (BUILD_MCU1_0) && (defined (SOC_J721E) || defined (SOC_J7200) || defined (SOC_J721S2) || defined (SOC_J784S4)))
+        dmfw_setupSciServer();
+    #endif
 
     /*  This should be called before any other OS calls (like Task creation, OS_start, etc..) */
     OS_init();
