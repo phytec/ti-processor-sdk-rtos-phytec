@@ -29,6 +29,7 @@
 #                             "no" or "" or if this variable is not defined: means
 #                             this module has no core dependent code and hence
 #                             the obj/libs are not kept under <core> dir.
+# <mod>_BOARD_DEPENDENCY    - FIXME undocumented !!!
 # <mod>_APP_STAGE_FILES     - List of source files that belongs to the module
 #                             <mod>, but that needs to be compiled at application
 #                             build stage (in the context of the app). This is
@@ -885,7 +886,7 @@ sdl_EXAMPLE_LIST +=  rti_app_uc1 rti_app_uc2 rti_app_uc3 rti_app_uc4 mcrc_app dc
 endif
 
 ifeq ($(SOC),$(filter $(SOC),  j721s2))
-sdl_EXAMPLE_LIST += osal_app rti_app_uc1 rti_app_uc2 rti_app_uc3 rti_app_uc4 vtm_app dcc_app_uc1 dcc_app_uc3 dcc_app_uc4_2 dcc_app_uc5 dcc_app_uc6 dcc_app_uc7 dcc_app_uc8 mtog_app mcrc_app pok_app esm_main_app esm_wkup_mcu_app ecc_app cpu_app tog_app bist_example_app rom_checksum_example
+sdl_EXAMPLE_LIST += osal_app rti_app_uc1 rti_app_uc2 rti_app_uc3 rti_app_uc4 vtm_app dcc_app_uc1 dcc_app_uc3 dcc_app_uc4_2 dcc_app_uc5 dcc_app_uc6 dcc_app_uc7 dcc_app_uc8 mtog_app mcrc_app pok_app esm_main_app esm_wkup_mcu_app ecc_app cpu_app tog_app bist_example_app rom_checksum_example dm_firmware
 endif
 
 ifeq ($(SOC),$(filter $(SOC),  j721e j7200))
@@ -1108,6 +1109,15 @@ export dcc_app_uc8_SOCLIST
 export dcc_app_uc8_PLATFORM_DEPENDENCY
 export dcc_app_uc8_SBL_APPIMAGEGEN = yes
 
+dm_firmware_RELPATH = examples/dm_firmware
+dm_firmware_PATH = $(sdl_PATH)/$(dm_firmware_RELPATH)
+export dm_firmware_OSLIST = freertos
+export dm_firmware_SOCLIST = $(DEFAULT_SOCLIST)
+export dm_firmware_APPIMAGEGEN = no
+export dm_firmware_CORE_DEPENDENCY = yes
+export dm_firmware_PLATFORM_DEPENDENCY = yes
+export dm_firmware_BOARD_DEPENDENCY = yes
+
 cpu_app_COMP_LIST = cpu_app
 cpu_app_RELPATH =examples/cpu
 cpu_app_PATH = $(sdl_PATH)/$(cpu_app_RELPATH)
@@ -1166,6 +1176,12 @@ endif
 -include $(PDK_I2C_COMP_PATH)/i2c_component.mk
 ifneq ($(drvi2c_LIB_LIST),)
   sdl_pdk_LIB_LIST += $(i2c_LIB_LIST)
+endif
+
+#include ipc
+-include $(PDK_IPC_COMP_PATH)/ipc_component.mk
+ifneq ($(ipc_LIB_LIST),)
+  sdl_pdk_LIB_LIST += $(ipc_LIB_LIST)
 endif
 
 #include osal
@@ -1260,6 +1276,8 @@ ifeq ($(SOC),$(filter $(SOC),j784s4))
   CFLAGS_GLOBAL_j784s4 += -DSOC_J784S4
   CFLAGS_GLOBAL_j784s4 += -Dmcu1_0
 endif
+
+# FIXME define CFLAGS_GLOBAL_to add -D$(BOARD)
 
 export SDL_LIBS
 export SDL_TEST_LIBS
