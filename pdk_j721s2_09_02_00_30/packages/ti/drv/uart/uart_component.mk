@@ -70,7 +70,7 @@ ifeq ($(uart_component_make_include), )
 drvuart_RTOS_LIST 		= $(DEFAULT_RTOS_LIST)
 
 drvuart_BOARDLIST       = am65xx_evm am65xx_idk j721e_sim j721e_evm j7200_evm am64x_evm
-drvuart_BOARDLIST      += tpr12_evm tpr12_qt awr294x_evm j721s2_evm j784s4_evm
+drvuart_BOARDLIST      += tpr12_evm tpr12_qt awr294x_evm j721s2_evm j784s4_evm phyboard_izar
 
 drvuart_SOCLIST         = tda2xx tda2px tda2ex tda3xx dra78x am574x am572x am571x dra72x
 drvuart_SOCLIST        += dra75x k2h k2k k2l k2e k2g c6678 c6657 am437x am335x omapl137
@@ -156,7 +156,7 @@ export uart_LIBNAME = ti.drv.uart
 export uart_LIBPATH = $(uart_PATH)/lib
 export uart_OBJPATH = $(uart_RELPATH)/uart
 export uart_MAKEFILE = -f build/makefile.mk
-export uart_BOARD_DEPENDENCY = no
+export uart_BOARD_DEPENDENCY = yes
 export uart_CORE_DEPENDENCY = no
 export uart_SOC_DEPENDENCY = yes
 uart_PKG_LIST = uart
@@ -188,7 +188,7 @@ export uart_dma_LIBNAME = ti.drv.uart.dma
 export uart_dma_LIBPATH = $(uart_dma_PATH)/lib
 export uart_dma_OBJPATH = $(uart_dma_RELPATH)/uart_dma
 export uart_dma_MAKEFILE = -f build/makefile_dma.mk
-export uart_dma_BOARD_DEPENDENCY = no
+export uart_dma_BOARD_DEPENDENCY = yes
 export uart_dma_CORE_DEPENDENCY = no
 export uart_dma_SOC_DEPENDENCY = yes
 uart_dma_PKG_LIST = uart_dma

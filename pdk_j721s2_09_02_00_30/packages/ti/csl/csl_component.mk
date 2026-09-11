@@ -514,9 +514,9 @@ export csl_uart_test_app_BOARD_DEPENDENCY
 export csl_uart_test_app_CORE_DEPENDENCY
 csl_uart_test_app_PKG_LIST = csl_uart_test_app
 csl_uart_test_app_INCLUDE = $(csl_uart_test_app_PATH)
-csl_uart_test_app_BOARDLIST = tda2xx-evm tda2px-evm tda2ex-evm tda3xx-evm idkAM572x evmAM572x idkAM571x evmDRA72x evmDRA75x evmDRA78x tda2xx-rvp idkAM574x am65xx_sim am65xx_evm am64x_evm j721e_sim j721e_evm j7200_evm j721s2_evm j784s4_evm
+csl_uart_test_app_BOARDLIST = tda2xx-evm tda2px-evm tda2ex-evm tda3xx-evm idkAM572x evmAM572x idkAM571x evmDRA72x evmDRA75x evmDRA78x tda2xx-rvp idkAM574x am65xx_sim am65xx_evm am64x_evm j721e_sim j721e_evm j7200_evm j721s2_evm phyboard_izar j784s4_evm
 export csl_uart_test_app_BOARDLIST
-ifeq ($(BOARD),$(filter $(BOARD), am65xx_sim am65xx_evm j721e_sim j721e_evm j721s2_evm j784s4_evm j7200_evm am64x_evm))
+ifeq ($(BOARD),$(filter $(BOARD), am65xx_sim am65xx_evm j721e_sim j721e_evm j721s2_evm phyboard_izar j784s4_evm j7200_evm am64x_evm))
 csl_uart_test_app_$(SOC)_CORELIST = mpu1_0 mcu1_0
 endif
 ifeq ($(BOARD),$(filter $(BOARD), tda2xx-evm tda2px-evm tda2ex-evm tda2xx-rvp))
@@ -616,7 +616,7 @@ export csl_mcspi_masterslave_app_BOARD_DEPENDENCY
 export csl_mcspi_masterslave_app_CORE_DEPENDENCY
 csl_mcspi_masterslave_app_PKG_LIST = csl_mcspi_masterslave_app
 csl_mcspi_masterslave_app_INCLUDE = $(csl_mcspi_masterslave_app_PATH)
-csl_mcspi_masterslave_app_BOARDLIST = tda2xx-evm tda2px-evm tda2ex-evm tda3xx-evm evmDRA72x evmDRA75x evmDRA78x tda2xx-rvp am65xx_evm j721e_evm j721s2_evm j7200_evm
+csl_mcspi_masterslave_app_BOARDLIST = tda2xx-evm tda2px-evm tda2ex-evm tda3xx-evm evmDRA72x evmDRA75x evmDRA78x tda2xx-rvp am65xx_evm j721e_evm j721s2_evm phyboard_izar j7200_evm
 export csl_mcspi_masterslave_app_BOARDLIST
 ifeq ($(BOARD),$(filter $(BOARD), tda2xx-evm tda2px-evm tda2ex-evm evmDRA72x evmDRA75x tda2xx-rvp))
 csl_mcspi_masterslave_app_$(SOC)_CORELIST = a15_0 ipu1_0
@@ -624,7 +624,7 @@ endif
 ifeq ($(BOARD),$(filter $(BOARD), tda3xx-evm evmDRA78x))
 csl_mcspi_masterslave_app_$(SOC)_CORELIST = ipu1_0
 endif
-ifeq ($(BOARD),$(filter $(BOARD), am65xx_evm j721e_evm j7200_evm j721s2_evm))
+ifeq ($(BOARD),$(filter $(BOARD), am65xx_evm j721e_evm j7200_evm j721s2_evm phyboard_izar))
 csl_mcspi_masterslave_app_$(SOC)_CORELIST = mcu1_0
 endif
 export csl_mcspi_masterslave_app_$(SOC)_CORELIST
@@ -698,7 +698,7 @@ export csl_spinlock_test_app_BOARD_DEPENDENCY
 export csl_spinlock_test_app_CORE_DEPENDENCY
 csl_spinlock_test_app_PKG_LIST = csl_spinlock_test_app
 csl_spinlock_test_app_INCLUDE = $(csl_spinlock_test_app_PATH)
-csl_spinlock_test_app_BOARDLIST = j721e_evm j7200_evm j721s2_evm j784s4_evm
+csl_spinlock_test_app_BOARDLIST = j721e_evm j7200_evm j721s2_evm phyboard_izar j784s4_evm
 export csl_spinlock_test_app_BOARDLIST
 csl_spinlock_test_app_$(SOC)_CORELIST = mcu1_0 mcu2_1 mpu1_0
 export csl_spinlock_test_app_$(SOC)_CORELIST
@@ -880,7 +880,7 @@ export csl_ospi_flash_app_BOARD_DEPENDENCY
 export csl_ospi_flash_app_CORE_DEPENDENCY
 csl_ospi_flash_app_PKG_LIST = csl_ospi_flash_app
 csl_ospi_flash_app_INCLUDE = $(csl_ospi_flash_app_PATH)
-csl_ospi_flash_app_BOARDLIST = am65xx_evm j721e_evm j7200_evm am64x_evm j721s2_evm j784s4_evm
+csl_ospi_flash_app_BOARDLIST = am65xx_evm j721e_evm j7200_evm am64x_evm j721s2_evm phyboard_izar j784s4_evm
 export csl_ospi_flash_app_BOARDLIST
 csl_ospi_flash_app_$(SOC)_CORELIST = mcu1_0
 export csl_ospi_flash_app_$(SOC)_CORELIST
@@ -906,7 +906,7 @@ export ocmc_memory_benchmarking_app_freertos_XDC_CONFIGURO
 export ocmc_memory_benchmarking_app_freertos_MAKEFILE = -f$(PDK_CSL_COMP_PATH)/example/ospi/memory_benchmarking_apps/makefile MEM=ocmc
 ocmc_memory_benchmarking_app_freertos_PKG_LIST = ocmc_memory_benchmarking_app_freertos
 ocmc_memory_benchmarking_app_freertos_INCLUDE = $(ocmc_memory_benchmarking_app_freertos_PATH)
-ocmc_memory_benchmarking_app_freertos_BOARDLIST = j7200_evm j721e_evm j721s2_evm j784s4_evm
+ocmc_memory_benchmarking_app_freertos_BOARDLIST = j7200_evm j721e_evm j721s2_evm phyboard_izar j784s4_evm
 export ocmc_memory_benchmarking_app_freertos_BOARDLIST
 ocmc_memory_benchmarking_app_freertos_$(SOC)_CORELIST = mcu1_0 mcu2_0
 export ocmc_memory_benchmarking_app_freertos_$(SOC)_CORELIST
@@ -937,7 +937,7 @@ export ocmc_dual_core_memory_benchmarking_app_freertos_XDC_CONFIGURO
 export ocmc_dual_core_memory_benchmarking_app_freertos_MAKEFILE = -f$(PDK_CSL_COMP_PATH)/example/ospi/memory_benchmarking_apps/makefile MEM=ocmc MULTICORE=1
 ocmc_dual_core_memory_benchmarking_app_freertos_PKG_LIST = ocmc_dual_core_memory_benchmarking_app_freertos
 ocmc_dual_core_memory_benchmarking_app_freertos_INCLUDE = $(ocmc_dual_core_memory_benchmarking_app_freertos_PATH)
-ocmc_dual_core_memory_benchmarking_app_freertos_BOARDLIST = j7200_evm j721e_evm j721s2_evm j784s4_evm
+ocmc_dual_core_memory_benchmarking_app_freertos_BOARDLIST = j7200_evm j721e_evm j721s2_evm phyboard_izar j784s4_evm
 export ocmc_dual_core_memory_benchmarking_app_freertos_BOARDLIST
 ocmc_dual_core_memory_benchmarking_app_freertos_$(SOC)_CORELIST = mcu1_0 mcu2_0
 export ocmc_dual_core_memory_benchmarking_app_freertos_$(SOC)_CORELIST
@@ -970,7 +970,7 @@ export ocmc_multicore_memory_benchmarking_app_freertos_MAKEFILE = -f$(PDK_CSL_CO
 ocmc_multicore_memory_benchmarking_app_freertos_DEPENDS_ON = ocmc_dual_core_memory_benchmarking_app_freertos
 ocmc_multicore_memory_benchmarking_app_freertos_PKG_LIST = ocmc_multicore_memory_benchmarking_app_freertos
 ocmc_multicore_memory_benchmarking_app_freertos_INCLUDE = $(ocmc_multicore_memory_benchmarking_app_freertos_PATH)
-ocmc_multicore_memory_benchmarking_app_freertos_BOARDLIST = j7200_evm j721e_evm j721s2_evm j784s4_evm
+ocmc_multicore_memory_benchmarking_app_freertos_BOARDLIST = j7200_evm j721e_evm j721s2_evm phyboard_izar j784s4_evm
 export ocmc_multicore_memory_benchmarking_app_freertos_BOARDLIST
 ocmc_multicore_memory_benchmarking_app_freertos_$(SOC)_CORELIST = mcu2_0
 export ocmc_multicore_memory_benchmarking_app_freertos_$(SOC)_CORELIST
@@ -1001,7 +1001,7 @@ export ddr_memory_benchmarking_app_freertos_XDC_CONFIGURO
 export ddr_memory_benchmarking_app_freertos_MAKEFILE = -f$(PDK_CSL_COMP_PATH)/example/ospi/memory_benchmarking_apps/makefile MEM=ddr
 ddr_memory_benchmarking_app_freertos_PKG_LIST = ddr_memory_benchmarking_app_freertos
 ddr_memory_benchmarking_app_freertos_INCLUDE = $(ddr_memory_benchmarking_app_freertos_PATH)
-ddr_memory_benchmarking_app_freertos_BOARDLIST = j7200_evm j721e_evm j721s2_evm j784s4_evm
+ddr_memory_benchmarking_app_freertos_BOARDLIST = j7200_evm j721e_evm j721s2_evm phyboard_izar j784s4_evm
 export ddr_memory_benchmarking_app_freertos_BOARDLIST
 ddr_memory_benchmarking_app_freertos_$(SOC)_CORELIST = mcu1_0 mcu2_0
 export ddr_memory_benchmarking_app_freertos_$(SOC)_CORELIST
@@ -1032,7 +1032,7 @@ export ddr_dual_core_memory_benchmarking_app_freertos_XDC_CONFIGURO
 export ddr_dual_core_memory_benchmarking_app_freertos_MAKEFILE = -f$(PDK_CSL_COMP_PATH)/example/ospi/memory_benchmarking_apps/makefile MEM=ddr MULTICORE=1
 ddr_dual_core_memory_benchmarking_app_freertos_PKG_LIST = ddr_dual_core_memory_benchmarking_app_freertos
 ddr_dual_core_memory_benchmarking_app_freertos_INCLUDE = $(ddr_dual_core_memory_benchmarking_app_freertos_PATH)
-ddr_dual_core_memory_benchmarking_app_freertos_BOARDLIST = j7200_evm j721e_evm j721s2_evm j784s4_evm
+ddr_dual_core_memory_benchmarking_app_freertos_BOARDLIST = j7200_evm j721e_evm j721s2_evm phyboard_izar j784s4_evm
 export ddr_dual_core_memory_benchmarking_app_freertos_BOARDLIST
 ddr_dual_core_memory_benchmarking_app_freertos_$(SOC)_CORELIST = mcu1_0 mcu2_0
 export ddr_dual_core_memory_benchmarking_app_freertos_$(SOC)_CORELIST
@@ -1065,7 +1065,7 @@ export ddr_multicore_memory_benchmarking_app_freertos_MAKEFILE = -f$(PDK_CSL_COM
 ddr_multicore_memory_benchmarking_app_freertos_DEPENDS_ON = ddr_dual_core_memory_benchmarking_app_freertos
 ddr_multicore_memory_benchmarking_app_freertos_PKG_LIST = ddr_multicore_memory_benchmarking_app_freertos
 ddr_multicore_memory_benchmarking_app_freertos_INCLUDE = $(ddr_multicore_memory_benchmarking_app_freertos_PATH)
-ddr_multicore_memory_benchmarking_app_freertos_BOARDLIST = j7200_evm j721e_evm j721s2_evm j784s4_evm
+ddr_multicore_memory_benchmarking_app_freertos_BOARDLIST = j7200_evm j721e_evm j721s2_evm phyboard_izar j784s4_evm
 export ddr_multicore_memory_benchmarking_app_freertos_BOARDLIST
 ddr_multicore_memory_benchmarking_app_freertos_$(SOC)_CORELIST = mcu2_0
 export ddr_multicore_memory_benchmarking_app_freertos_$(SOC)_CORELIST
@@ -1096,7 +1096,7 @@ export msmc_memory_benchmarking_app_freertos_XDC_CONFIGURO
 export msmc_memory_benchmarking_app_freertos_MAKEFILE = -f$(PDK_CSL_COMP_PATH)/example/ospi/memory_benchmarking_apps/makefile MEM=msmc
 msmc_memory_benchmarking_app_freertos_PKG_LIST = msmc_memory_benchmarking_app_freertos
 msmc_memory_benchmarking_app_freertos_INCLUDE = $(msmc_memory_benchmarking_app_freertos_PATH)
-msmc_memory_benchmarking_app_freertos_BOARDLIST = j7200_evm j721e_evm j721s2_evm j784s4_evm
+msmc_memory_benchmarking_app_freertos_BOARDLIST = j7200_evm j721e_evm j721s2_evm phyboard_izar j784s4_evm
 export msmc_memory_benchmarking_app_freertos_BOARDLIST
 msmc_memory_benchmarking_app_freertos_$(SOC)_CORELIST = mcu1_0 mcu2_0
 export msmc_memory_benchmarking_app_freertos_$(SOC)_CORELIST
@@ -1127,7 +1127,7 @@ export xip_memory_benchmarking_app_freertos_XDC_CONFIGURO
 export xip_memory_benchmarking_app_freertos_MAKEFILE = -f$(PDK_CSL_COMP_PATH)/example/ospi/memory_benchmarking_apps/makefile MEM=xip
 xip_memory_benchmarking_app_freertos_PKG_LIST = xip_memory_benchmarking_app_freertos
 xip_memory_benchmarking_app_freertos_INCLUDE = $(xip_memory_benchmarking_app_freertos_PATH)
-xip_memory_benchmarking_app_freertos_BOARDLIST = j7200_evm j721e_evm j721s2_evm j784s4_evm
+xip_memory_benchmarking_app_freertos_BOARDLIST = j7200_evm j721e_evm j721s2_evm phyboard_izar j784s4_evm
 export xip_memory_benchmarking_app_freertos_BOARDLIST
 xip_memory_benchmarking_app_freertos_$(SOC)_CORELIST = mcu1_0 mcu2_0
 export xip_memory_benchmarking_app_freertos_$(SOC)_CORELIST
@@ -1158,7 +1158,7 @@ export xip_dual_core_memory_benchmarking_app_freertos_XDC_CONFIGURO
 export xip_dual_core_memory_benchmarking_app_freertos_MAKEFILE = -f$(PDK_CSL_COMP_PATH)/example/ospi/memory_benchmarking_apps/makefile MEM=xip MULTICORE=1
 xip_dual_core_memory_benchmarking_app_freertos_PKG_LIST = xip_dual_core_memory_benchmarking_app_freertos
 xip_dual_core_memory_benchmarking_app_freertos_INCLUDE = $(xip_dual_core_memory_benchmarking_app_freertos_PATH)
-xip_dual_core_memory_benchmarking_app_freertos_BOARDLIST = j7200_evm j721e_evm j721s2_evm j784s4_evm
+xip_dual_core_memory_benchmarking_app_freertos_BOARDLIST = j7200_evm j721e_evm j721s2_evm phyboard_izar j784s4_evm
 export xip_dual_core_memory_benchmarking_app_freertos_BOARDLIST
 xip_dual_core_memory_benchmarking_app_freertos_$(SOC)_CORELIST = mcu1_0 mcu2_0
 export xip_dual_core_memory_benchmarking_app_freertos_$(SOC)_CORELIST
@@ -1193,7 +1193,7 @@ export xip_multicore_memory_benchmarking_app_freertos_MAKEFILE = -f$(PDK_CSL_COM
 xip_multicore_memory_benchmarking_app_freertos_DEPENDS_ON = xip_dual_core_memory_benchmarking_app_freertos
 xip_multicore_memory_benchmarking_app_freertos_PKG_LIST = xip_multicore_memory_benchmarking_app_freertos
 xip_multicore_memory_benchmarking_app_freertos_INCLUDE = $(xip_multicore_memory_benchmarking_app_freertos_PATH)
-xip_multicore_memory_benchmarking_app_freertos_BOARDLIST = j7200_evm j721e_evm j721s2_evm j784s4_evm
+xip_multicore_memory_benchmarking_app_freertos_BOARDLIST = j7200_evm j721e_evm j721s2_evm phyboard_izar j784s4_evm
 export xip_multicore_memory_benchmarking_app_freertos_BOARDLIST
 xip_multicore_memory_benchmarking_app_freertos_$(SOC)_CORELIST = mcu2_0
 export xip_multicore_memory_benchmarking_app_freertos_$(SOC)_CORELIST
@@ -1469,9 +1469,9 @@ export csl_crc_cputest_app_BOARD_DEPENDENCY
 export csl_crc_cputest_app_CORE_DEPENDENCY
 csl_crc_cputest_app_PKG_LIST = csl_crc_cputest_app
 csl_crc_cputest_app_INCLUDE = $(csl_crc_cputest_app_PATH)
-csl_crc_cputest_app_BOARDLIST = tda3xx-evm am65xx_evm j721e_evm j7200_evm tpr12_evm tpr12_qt awr294x_evm j721s2_evm j784s4_evm
+csl_crc_cputest_app_BOARDLIST = tda3xx-evm am65xx_evm j721e_evm j7200_evm tpr12_evm tpr12_qt awr294x_evm j721s2_evm  phyboard_izar j784s4_evm
 export csl_crc_cputest_app_BOARDLIST
-ifeq ($(BOARD),$(filter $(BOARD), am65xx_evm j721e_evm j721s2_evm j784s4_evm j7200_evm))
+ifeq ($(BOARD),$(filter $(BOARD), am65xx_evm j721e_evm j721s2_evm  phyboard_izar j784s4_evm j7200_evm))
 csl_crc_cputest_app_$(SOC)_CORELIST = mpu1_0 mcu1_0
 endif
 ifeq ($(BOARD),$(filter $(BOARD), tda3xx-evm ))
@@ -1504,7 +1504,7 @@ export csl_ecc_test_app_CORE_DEPENDENCY
 csl_ecc_test_app_PKG_LIST = csl_ecc_test_app
 csl_ecc_test_app_INCLUDE = $(csl_ecc_test_app_PATH)
 csl_ecc_test_app_BOARDLIST = tda2xx-evm tda2px-evm tda2ex-evm tda3xx-evm evmDRA72x evmDRA75x evmDRA78x tda2xx-rvp evmAM572x idkAM571x idkAM572x idkAM574x evmK2G evmK2K evmK2H evmK2L evmK2E evmC6657 evmC6678
-csl_ecc_test_app_BOARDLIST += am65xx_evm j721e_evm j7200_evm am64x_evm j721s2_evm j784s4_evm
+csl_ecc_test_app_BOARDLIST += am65xx_evm j721e_evm j7200_evm am64x_evm j721s2_evm  phyboard_izar j784s4_evm
 export csl_ecc_test_app_BOARDLIST
 csl_ecc_test_app_$(SOC)_CORELIST = ipu1_0
 ifeq ($(BOARD),$(filter $(BOARD), tda3xx-evm))
@@ -1519,7 +1519,7 @@ endif
 ifeq ($(BOARD),$(filter $(BOARD), tda2xx-evm tda2px-evm tda2ex-evm tda2xx-rvp evmAM572x idkAM571x idkAM572x idkAM574x))
 csl_ecc_test_app_$(SOC)_CORELIST += c66x a15_0
 endif
-ifeq ($(BOARD),$(filter $(BOARD), j721e_evm j721s2_evm j7200_evm))
+ifeq ($(BOARD),$(filter $(BOARD), j721e_evm j721s2_evm  phyboard_izar j7200_evm))
 csl_ecc_test_app_$(SOC)_CORELIST += mpu1_0 mcu1_0
 endif
 ifeq ($(BOARD),$(filter $(BOARD), j784s4_evm))
@@ -1538,7 +1538,7 @@ ifeq ($(CSL_BUILD),$(filter $(CSL_BUILD), CSL))
 csl_EXAMPLE_LIST += csl_ecc_test_app
 endif
 
-ifeq ($(BOARD),$(filter $(BOARD), am65xx_evm j721e_evm j721s2_evm j784s4_evm j7200_evm am64x_evm))
+ifeq ($(BOARD),$(filter $(BOARD), am65xx_evm j721e_evm j721s2_evm  phyboard_izar j784s4_evm j7200_evm am64x_evm))
 csl_ecc_test_app_SBL_APPIMAGEGEN = no
 export csl_ecc_test_app_SBL_APPIMAGEGEN
 endif
@@ -1602,7 +1602,7 @@ export csl_esm_clk_loss_test_app_BOARD_DEPENDENCY
 export csl_esm_clk_loss_test_app_CORE_DEPENDENCY
 csl_esm_clk_loss_test_app_PKG_LIST = csl_esm_clk_loss_test_app
 csl_esm_clk_loss_test_app_INCLUDE = $(csl_esm_clk_loss_test_app_PATH)
-csl_esm_clk_loss_test_app_BOARDLIST = am65xx_evm j721e_evm j7200_evm am64x_evm j721s2_evm j784s4_evm
+csl_esm_clk_loss_test_app_BOARDLIST = am65xx_evm j721e_evm j7200_evm am64x_evm j721s2_evm  phyboard_izar j784s4_evm
 export csl_esm_clk_loss_test_app_BOARDLIST
 csl_esm_clk_loss_test_app_$(SOC)_CORELIST = mcu1_0
 export csl_esm_clk_loss_test_app_$(SOC)_CORELIST
@@ -1626,12 +1626,12 @@ export csl_dcc_singleshotmode_app_BOARD_DEPENDENCY
 export csl_dcc_singleshotmode_app_CORE_DEPENDENCY
 csl_dcc_singleshotmode_app_PKG_LIST = csl_dcc_singleshotmode_app
 csl_dcc_singleshotmode_app_INCLUDE = $(csl_dcc_singleshotmode_app_PATH)
-csl_dcc_singleshotmode_app_BOARDLIST = tda3xx-evm evmDRA78x am65xx_evm j721e_evm j7200_evm am64x_evm j721s2_evm j784s4_evm
+csl_dcc_singleshotmode_app_BOARDLIST = tda3xx-evm evmDRA78x am65xx_evm j721e_evm j7200_evm am64x_evm j721s2_evm  phyboard_izar j784s4_evm
 export csl_dcc_singleshotmode_app_BOARDLIST
 ifeq ($(BOARD),$(filter $(BOARD), tda3xx-evm evmDRA78x))
 csl_dcc_singleshotmode_app_$(SOC)_CORELIST = ipu1_0
 endif
-ifeq ($(BOARD),$(filter $(BOARD), am65xx_evm j721e_evm j721s2_evm j784s4_evm j7200_evm am64x_evm))
+ifeq ($(BOARD),$(filter $(BOARD), am65xx_evm j721e_evm j721s2_evm  phyboard_izar j784s4_evm j7200_evm am64x_evm))
 csl_dcc_singleshotmode_app_$(SOC)_CORELIST = mcu1_0
 endif
 export csl_dcc_singleshotmode_app_$(SOC)_CORELIST
@@ -1660,12 +1660,12 @@ export csl_rti_dwwd_test_app_BOARD_DEPENDENCY
 export csl_rti_dwwd_test_app_CORE_DEPENDENCY
 csl_rti_dwwd_test_app_PKG_LIST = csl_rti_dwwd_test_app
 csl_rti_dwwd_test_app_INCLUDE = $(csl_rti_dwwd_test_app_PATH)
-csl_rti_dwwd_test_app_BOARDLIST = tda3xx-evm evmDRA78x am65xx_evm j721e_evm j7200_evm am64x_evm j721s2_evm j784s4_evm
+csl_rti_dwwd_test_app_BOARDLIST = tda3xx-evm evmDRA78x am65xx_evm j721e_evm j7200_evm am64x_evm j721s2_evm  phyboard_izar j784s4_evm
 export csl_rti_dwwd_test_app_BOARDLIST
 ifeq ($(BOARD),$(filter $(BOARD), tda3xx-evm evmDRA78x))
 csl_rti_dwwd_test_app_$(SOC)_CORELIST = ipu1_0
 endif
-ifeq ($(BOARD),$(filter $(BOARD), am65xx_evm j721e_evm j721s2_evm j784s4_evm j7200_evm am64x_evm))
+ifeq ($(BOARD),$(filter $(BOARD), am65xx_evm j721e_evm j721s2_evm  phyboard_izar j784s4_evm j7200_evm am64x_evm))
 csl_rti_dwwd_test_app_$(SOC)_CORELIST = mpu1_0 mcu1_0
 endif
 ifeq ($(BOARD),$(filter $(BOARD), am64x_evm))
@@ -1854,12 +1854,12 @@ export csl_mcan_evm_loopback_app_BOARD_DEPENDENCY
 export csl_mcan_evm_loopback_app_CORE_DEPENDENCY
 csl_mcan_evm_loopback_app_PKG_LIST = csl_mcan_evm_loopback_app
 csl_mcan_evm_loopback_app_INCLUDE = $(csl_mcan_evm_loopback_app_PATH)
-csl_mcan_evm_loopback_app_BOARDLIST = tda3xx-evm evmDRA78x tda2px-evm j721e_evm j7200_evm j721s2_evm j784s4_evm
+csl_mcan_evm_loopback_app_BOARDLIST = tda3xx-evm evmDRA78x tda2px-evm j721e_evm j7200_evm j721s2_evm  phyboard_izar j784s4_evm
 export csl_mcan_evm_loopback_app_BOARDLIST
 ifeq ($(BOARD),$(filter $(BOARD), tda3xx-evm tda2px-evm))
 csl_mcan_evm_loopback_app_$(SOC)_CORELIST = ipu1_0
 endif
-ifeq ($(BOARD),$(filter $(BOARD), j721e_evm j721s2_evm j7200_evm j784s4_evm))
+ifeq ($(BOARD),$(filter $(BOARD), j721e_evm j721s2_evm  phyboard_izar j7200_evm j784s4_evm))
 csl_mcan_evm_loopback_app_$(SOC)_CORELIST = mcu1_0 mcu2_1
 endif
 export csl_mcan_evm_loopback_app_$(SOC)_CORELIST
@@ -1869,7 +1869,7 @@ ifeq ($(CSL_BUILD),$(filter $(CSL_BUILD), CSL))
 csl_EXAMPLE_LIST += csl_mcan_evm_loopback_app
 endif
 
-ifeq ($(BOARD),$(filter $(BOARD), tda3xx-evm tda2px-evm j721e_evm j721s2_evm j7200_evm j784s4_evm))
+ifeq ($(BOARD),$(filter $(BOARD), tda3xx-evm tda2px-evm j721e_evm j721s2_evm  phyboard_izar j7200_evm j784s4_evm))
 csl_mcan_evm_loopback_app_SBL_APPIMAGEGEN = no
 export csl_mcan_evm_loopback_app_SBL_APPIMAGEGEN
 endif
@@ -1939,9 +1939,9 @@ export csl_vim_baremetal_test_app_BOARD_DEPENDENCY
 export csl_vim_baremetal_test_app_CORE_DEPENDENCY
 csl_vim_baremetal_test_app_PKG_LIST = csl_vim_baremetal_test_app
 csl_vim_baremetal_test_app_INCLUDE = $(csl_vim_baremetal_test_app_PATH)
-csl_vim_baremetal_test_app_BOARDLIST = am65xx_evm am65xx_idk am64x_evm j721e_evm j7200_evm j721s2_evm j784s4_evm
+csl_vim_baremetal_test_app_BOARDLIST = am65xx_evm am65xx_idk am64x_evm j721e_evm j7200_evm j721s2_evm  phyboard_izar j784s4_evm
 export csl_vim_baremetal_test_app_BOARDLIST
-ifeq ($(BOARD),$(filter $(BOARD), am65xx_evm am65xx_idk am64x_evm j721e_evm j721s2_evm j784s4_evm j7200_evm))
+ifeq ($(BOARD),$(filter $(BOARD), am65xx_evm am65xx_idk am64x_evm j721e_evm j721s2_evm  phyboard_izar j784s4_evm j7200_evm))
 csl_vim_baremetal_test_app_$(SOC)_CORELIST = mcu1_0 mcu1_1
 endif
 export csl_vim_test_app_$(SOC)_CORELIST
@@ -1992,9 +1992,9 @@ export csl_dmTimer_baremetal_test_app_BOARD_DEPENDENCY
 export csl_dmTimer_baremetal_test_app_CORE_DEPENDENCY
 csl_dmTimer_baremetal_test_app_PKG_LIST = csl_dmTimer_baremetal_test_app
 csl_dmTimer_baremetal_test_app_INCLUDE = $(csl_dmTimer_baremetal_test_app_PATH)
-csl_dmTimer_baremetal_test_app_BOARDLIST = am65xx_evm am65xx_idk am64x_evm j721e_evm j7200_evm j721s2_evm j784s4_evm
+csl_dmTimer_baremetal_test_app_BOARDLIST = am65xx_evm am65xx_idk am64x_evm j721e_evm j7200_evm j721s2_evm  phyboard_izar j784s4_evm
 export csl_dmTimer_baremetal_test_app_BOARDLIST
-ifeq ($(BOARD),$(filter $(BOARD), am65xx_evm am65xx_idk j721e_evm j721s2_evm j784s4_evm j7200_evm))
+ifeq ($(BOARD),$(filter $(BOARD), am65xx_evm am65xx_idk j721e_evm j721s2_evm  phyboard_izar j784s4_evm j7200_evm))
 csl_dmTimer_baremetal_test_app_$(SOC)_CORELIST = mcu1_0
 endif
 ifeq ($(BOARD),$(filter $(BOARD), am64x_evm ))
@@ -2074,9 +2074,9 @@ export csl_esm_baremetal_test_app_BOARD_DEPENDENCY
 export csl_esm_baremetal_test_app_CORE_DEPENDENCY
 csl_esm_baremetal_test_app_PKG_LIST = csl_esm_baremetal_test_app
 csl_esm_baremetal_test_app_INCLUDE = $(csl_esm_baremetal_test_app_PATH)
-csl_esm_baremetal_test_app_BOARDLIST = am65xx_evm am65xx_idk j721e_evm j7200_evm j721s2_evm j784s4_evm
+csl_esm_baremetal_test_app_BOARDLIST = am65xx_evm am65xx_idk j721e_evm j7200_evm j721s2_evm j784s4_evm phyboard_izar
 export csl_esm_baremetal_test_app_BOARDLIST
-ifeq ($(BOARD),$(filter $(BOARD), am65xx_evm am65xx_idk j721e_evm j721s2_evm j7200_evm j784s4_evm))
+ifeq ($(BOARD),$(filter $(BOARD), am65xx_evm am65xx_idk j721e_evm j721s2_evm j7200_evm j784s4_evm phyboard_izar))
 csl_esm_baremetal_test_app_$(SOC)_CORELIST = mcu1_0
 endif
 export csl_esm_baremetal_test_app_$(SOC)_CORELIST

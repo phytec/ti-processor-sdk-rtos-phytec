@@ -151,6 +151,10 @@ typedef int32_t Board_STATUS;
 #include <ti/board/src/j721s2_evm/include/board_cfg.h>
 #include <ti/board/src/j721s2_evm/include/board_pinmux.h>
 
+#elif defined (phyboard_izar)
+#include <ti/board/src/phyboard_izar/include/board_cfg.h>
+#include <ti/board/src/phyboard_izar/include/board_pinmux.h>
+
 #elif defined (j784s4_evm)
 #include <ti/board/src/j784s4_evm/include/board_cfg.h>
 #include <ti/board/src/j784s4_evm/include/board_pinmux.h>
@@ -168,6 +172,10 @@ typedef int32_t Board_STATUS;
 
 #elif defined (awr294x_evm)
 #include <ti/board/src/awr294x_evm/include/board_cfg.h>
+
+#else
+
+#error "Using <ti/board/board_cfg.h> requires a BOARD define to be set!"
 
 #endif
 

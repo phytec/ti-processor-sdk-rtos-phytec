@@ -22,7 +22,7 @@ endif
 INCLUDE_EXTERNAL_INTERFACES = pdk csl_arch
 
 # List all the components required by the application
-ifeq ($(BOARD),$(filter $(BOARD), evmK2G evmK2K evmK2H evmK2L evmK2E evmC6657 evmC6678 evmAM572x idkAM571x idkAM572x idkAM574x am65xx_evm j721e_evm j7200_evm am64x_evm j721s2_evm j784s4_evm))
+ifeq ($(BOARD),$(filter $(BOARD), evmK2G evmK2K evmK2H evmK2L evmK2E evmC6657 evmC6678 evmAM572x idkAM571x idkAM572x idkAM574x am65xx_evm j721e_evm j7200_evm am64x_evm j721s2_evm j784s4_evm phyboard_izar))
  COMP_LIST_COMMON += $(PDK_COMMON_BAREMETAL_COMP)
 else
  COMP_LIST_COMMON += csl

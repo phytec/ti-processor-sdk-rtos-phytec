@@ -57,6 +57,7 @@ CFLAGS_GLOBAL_j721e_evm         = -DSOC_J721E -Dj721e_evm=j721e_evm
 CFLAGS_GLOBAL_j7200_hostemu     = -DSOC_J7200 -DHOST_EMULATION
 CFLAGS_GLOBAL_j7200_evm         = -DSOC_J7200 -Dj7200_evm=j7200_evm
 CFLAGS_GLOBAL_j721s2_evm        = -DSOC_J721S2 -Dj721s2_evm=j721s2_evm
+CFLAGS_GLOBAL_phyboard_izar        = -DSOC_J721S2 -Dphyboard_izar=phyboard_izar
 CFLAGS_GLOBAL_j721s2_hostemu    = -DSOC_J721S2 -DHOST_EMULATION
 CFLAGS_GLOBAL_j784s4_evm        = -DSOC_J784S4 -Dj784s4_evm=j784s4_evm
 CFLAGS_GLOBAL_j784s4_hostemu    = -DSOC_J784S4 -DHOST_EMULATION

@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2019-2020 Texas Instruments Incorporated - http://www.ti.com
+ * Copyright (c) 2021 Texas Instruments Incorporated - http://www.ti.com
  *
  *  Redistribution and use in source and binary forms, with or without
  *  modification, are permitted provided that the following conditions
@@ -31,39 +31,41 @@
  *
  *****************************************************************************/
 
+/** \file board_clock.h
+*
+*   \brief This file contains structure, typedefs, functions and
+*          prototypes used for clock configurations.
+*/
+
+#ifndef BOARD_CLOCK_H
+#define BOARD_CLOCK_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include <ti/board/src/phyboard_izar/include/board_internal.h>
+
 /**
- *  \file   diag_common_cfg.h
+ * \brief Enables module clock
  *
- *  \brief  Common protoypes and data structures used by diagnostic tests.
+ * \return  BOARD_SOK   - Clock enable sucessful.
+ *          BOARD_FAIL  - Clock enable failed.
  *
  */
-#include <stdbool.h>
-#include <stdlib.h>
-#include <ti/drv/uart/soc/UART_soc.h>
-#include <ti/board/src/j721s2_evm/include/board_utils.h> // replace with
-// #include <ti/board/src/include/board_utils.h> //FIXME there is no such file
+Board_STATUS Board_moduleClockEnable(uint32_t moduleId);
 
-#include "board.h"
-#include "board_cfg.h"
+/**
+ * \brief Disables module clock
+ *
+ * \return  BOARD_SOK   - Clock disable successful.
+ *          BOARD_FAIL  - Clock disable failed.
+ *
+ */
+Board_STATUS Board_moduleClockDisable(uint32_t moduleId);
 
-#define DIAG_STRESS_TEST_ITERATIONS			(100)
+#ifdef __cplusplus
+}
+#endif /* __cplusplus */
 
-/* Macros used by test pattern generate function */ 
-#define BOARD_DIAG_TEST_PATTERN_FF     (0xFF)
-#define BOARD_DIAG_TEST_PATTERN_AA     (0xAA)
-#define BOARD_DIAG_TEST_PATTERN_55     (0x55)
-#define BOARD_DIAG_TEST_PATTERN_NULL   (0)
-#define BOARD_DIAG_TEST_PATTERN_RANDOM (1)
-#define BOARD_DIAG_TEST_PATTERN_INC    (2)
-#define BOARD_DIAG_TEST_PATTERN_AA_55  (3)
-
-extern UART_HwAttrs uartInitCfg[];
-
-Board_STATUS DIAG_init(void);
-bool BoardDiag_memCompare(uint8_t *buf1, uint8_t *buf2, uint32_t length,  
-                          uint32_t *failIndex);
-void BoardDiag_genPattern(uint8_t *buf, uint32_t length, uint8_t flag);
-int8_t BoardDiag_getUserInput(uint8_t instance);
-void enableMAINI2C(uint8_t instance, uint32_t baseAddr);
-void enableI2C(uint32_t baseAddr);
-void BoardDiag_timerIntrDisable(void);
+#endif  /* BOARD_CLOCK_H */

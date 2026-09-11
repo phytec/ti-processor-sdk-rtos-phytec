@@ -35,7 +35,7 @@
 ifeq ($(vhwa_component_make_include), )
 
 vhwa_default_SOCLIST         = j721e j721s2 j784s4
-vhwa_default_BOARDLIST       = j721e_evm j721s2_evm j784s4_evm
+vhwa_default_BOARDLIST       = j721e_evm j721s2_evm j784s4_evm phyboard_izar
 vhwa_flexconnect_BOARDLIST   = j721e_evm
 
 export vhwa_default_j721e_CORELIST  = mcu2_0 mcu2_1

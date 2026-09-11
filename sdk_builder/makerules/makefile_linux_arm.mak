@@ -357,6 +357,7 @@ yocto_build:
 		vx_app_arm_remote_log vx_app_arm_ipc vx_app_arm_mem \
 		vx_app_arm_fd_exchange_consumer vx_app_arm_fd_exchange_producer \
 		vx_app_c7x_kernel vx_app_heap_stats vx_app_load_test vx_app_viss
+# FIXME add vx_app_sfm here?!
 ifneq ($(SOC),am62a)
 	$(YOCTO_VARS) $(MAKE) -C $(VISION_APPS_PATH) vx_app_conformance_video_io
 endif

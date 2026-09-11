@@ -35,7 +35,7 @@
 ifeq ($(csitx_component_make_include), )
 
 drvcsitx_SOCLIST         = j721e j721s2 j784s4
-drvcsitx_BOARDLIST       = j721e_evm j721s2_evm j784s4_evm
+drvcsitx_BOARDLIST       = j721e_evm j721s2_evm phyboard_izar j784s4_evm
 drvcsitx_j721e_CORELIST  = mcu2_0
 drvcsitx_j721s2_CORELIST = mcu2_0
 drvcsitx_j784s4_CORELIST = mcu2_0

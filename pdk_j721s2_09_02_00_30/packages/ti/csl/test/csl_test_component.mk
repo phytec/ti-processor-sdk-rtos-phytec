@@ -104,7 +104,7 @@ export csl_mcan_unit_test_app_BOARD_DEPENDENCY
 export csl_mcan_unit_test_app_CORE_DEPENDENCY
 csl_mcan_unit_test_app_PKG_LIST = csl_mcan_unit_test_app
 csl_mcan_unit_test_app_INCLUDE = $(csl_mcan_unit_test_app_PATH)
-csl_mcan_unit_test_app_BOARDLIST = tda3xx-evm tda2px-evm am65xx_idk j721e_evm j7200_evm am64x_evm j721s2_evm
+csl_mcan_unit_test_app_BOARDLIST = tda3xx-evm tda2px-evm am65xx_idk j721e_evm j7200_evm am64x_evm j721s2_evm phyboard_izar
 export csl_mcan_unit_test_app_BOARDLIST
 ifeq ($(SOC),$(filter $(SOC), am65xx am64x))
 csl_mcan_unit_test_app_$(SOC)_CORELIST = mcu1_0 mcu1_1

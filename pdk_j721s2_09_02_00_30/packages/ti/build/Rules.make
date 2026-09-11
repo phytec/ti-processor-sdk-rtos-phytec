@@ -57,7 +57,7 @@ export BOARD ?= j721s2_evm
 export SOC ?= j721s2
 endif
 # Default to m4 build depending on BOARD selected!!
-ifeq ($(BOARD),$(filter $(BOARD),j721e_evm j7200_evm j721s2_evm j784s4_evm))
+ifeq ($(BOARD),$(filter $(BOARD),j721e_evm j7200_evm j721s2_evm j784s4_evm phyboard_izar))
   CORE ?= mcu1_0
 endif
 ifeq ($(BOARD),$(filter $(BOARD), j721e_hostemu j7200_hostemu j721s2_hostemu j784s4_hostemu))
@@ -80,7 +80,7 @@ export TREAT_WARNINGS_AS_ERROR ?= yes
 #Various boards support for J7 TDA family of devices
 BOARD_LIST_J7_TDA = j721e_hostemu j721e_evm
 BOARD_LIST_J7_TDA += j7200_hostemu j7200_evm
-BOARD_LIST_J7_TDA += j721s2_evm j721s2_hostemu
+BOARD_LIST_J7_TDA += j721s2_evm j721s2_hostemu phyboard_izar
 BOARD_LIST_J7_TDA += j784s4_evm j784s4_hostemu
 export BOARD_LIST_J7_TDA
 

@@ -45,7 +45,7 @@ ifeq ($(BOARD),$(filter $(BOARD),evmAM335x icev2AM335x iceAMIC110 skAM335x bbbAM
 SRCS_COMMON += board.c
 endif
 
-ifeq ($(BOARD),$(filter $(BOARD),evmAM335x icev2AM335x iceAMIC110 skAM335x bbbAM335x evmAM437x idkAM437x skAM437x evmAM572x idkAM571x idkAM572x evmK2H evmK2K evmK2E evmK2L iceK2G evmC6678 evmC6657 evmOMAPL137 lcdkOMAPL138 idkAM574x evmDRA72x evmDRA75x evmDRA78x evmTDAxx j721e_sim j721e_qt j721s2_evm j7200_evm tpr12_evm tpr12_qt awr294x_evm j784s4_evm))
+ifeq ($(BOARD),$(filter $(BOARD),evmAM335x icev2AM335x iceAMIC110 skAM335x bbbAM335x evmAM437x idkAM437x skAM437x evmAM572x idkAM571x idkAM572x evmK2H evmK2K evmK2E evmK2L iceK2G evmC6678 evmC6657 evmOMAPL137 lcdkOMAPL138 idkAM574x evmDRA72x evmDRA75x evmDRA78x evmTDAxx j721e_sim j721e_qt j721s2_evm j7200_evm tpr12_evm tpr12_qt awr294x_evm j784s4_evm phyboard_izar))
 # Board stub function enabled for all the boards except evmK2G
 SRCS_COMMON += boardStub.c
 endif
@@ -82,6 +82,15 @@ PACKAGE_SRCS_COMMON += src/devices
 endif
 
 ifeq ($(BOARD),$(filter $(BOARD), j721s2_evm))
+CFLAGS_LOCAL_COMMON = $(PDK_CFLAGS)
+include $(PDK_BOARD_COMP_PATH)/src/$(BOARD)/src_files_$(BOARD).mk
+include $(PDK_BOARD_COMP_PATH)/src/flash/src_files_flash.mk
+include $(PDK_BOARD_COMP_PATH)/src/devices/src_files_devices.mk
+PACKAGE_SRCS_COMMON += src/$(BOARD)
+PACKAGE_SRCS_COMMON += src/devices
+endif
+
+ifeq ($(BOARD),$(filter $(BOARD), phyboard_izar))
 CFLAGS_LOCAL_COMMON = $(PDK_CFLAGS)
 include $(PDK_BOARD_COMP_PATH)/src/$(BOARD)/src_files_$(BOARD).mk
 include $(PDK_BOARD_COMP_PATH)/src/flash/src_files_flash.mk
@@ -188,7 +197,7 @@ PACKAGE_SRCS_COMMON += makefile board_component.mk board.h
 PACKAGE_SRCS_COMMON += board_cfg.h build
 PACKAGE_SRCS_COMMON += config_mk.bld package.bld package.xdc package.xs
 PACKAGE_SRCS_COMMON += Settings.xdc.xdt utils.xs
-ifeq ($(BOARD),$(filter $(BOARD), j721e_sim j721e_qt j721e_evm j7200_evm j721s2_evm tpr12_evm tpr12_qt awr294x_evm j784s4_evm))
+ifeq ($(BOARD),$(filter $(BOARD), j721e_sim j721e_qt j721e_evm j7200_evm j721s2_evm tpr12_evm tpr12_qt awr294x_evm j784s4_evm phyboard_izar))
 PACKAGE_SRCS_COMMON += src/board.c src/boardStub.c src/Module.xs
 PACKAGE_SRCS_COMMON += src/src_files_lld.mk src/src_files_starterware.mk
 ifneq ($(BOARD),$(filter $(BOARD), j784s4_evm))
